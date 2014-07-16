@@ -1,0 +1,11 @@
+{
+    "added": "2013-07-24",
+    "id": "let-it-go",
+    "imageUrl": "sources/images/1.jpg",
+    "name": "Let It Go",
+    "snippet": "From Movie Frozen",
+    "instruments": ["piano", "cello"],
+    "price": 1,
+    "page": 5,
+    "audioUrl": "sources/let-it-go.mp3"
+}

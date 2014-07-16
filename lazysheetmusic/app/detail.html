@@ -1,0 +1,42 @@
+
+<div class="container breadcrumbBox">
+    <ol class="breadcrumb">
+        <li><a href="#/home"><span class="glyphicon glyphicon-home"></span></a></li>
+        <li><a href="#/sheetmusic">Sheet Music</a></li>
+        <li><a href="#/sheetmusic/{{score.id}}">{{score.name}}</a></li>
+    </ol>
+</div>
+<!-- Content -->
+<div class="container text-center">
+
+    <div class="col-md-4 col-sm-12 text-left score-detail">
+        <ul class="">
+            <li><h3>{{score.name}}</h3></li>
+            <li><button type="button" class="btn btn-warning">Add to cart</button></li>
+            <li>Price: <span class="glyphicon glyphicon-gbp"></span>{{score.price}}</li>
+            <li>Page: <span>{{score.page}}</span></li>
+            <li>Instruments: <button type="button" class="btn-detail btn btn-default" href="#/instruments/{{instrument}}" ng-repeat="instrument in score.instruments">{{instrument}} </button></li>
+            <li>
+                Links:
+                <button type="button" class="btn-detail btn btn-default"  ng-if="score.audioUrl" href="{{score.audioUrl}}" target="_blank" class="" title="Download Audio">Audio</button>
+                <button type="button" class="btn-detail btn btn-default"  ng-if="score.videoUrl" href="{{score.videoUrl}}" target="_blank" class="" title="Video Preview">Video</button>
+            </li>
+            <li>
+                <p class="well">{{score.snippet}}</p>
+            </li>
+        </ul>
+        <!-- 4:3 aspect ratio -->
+        <div ng-if="score.videoUrl" class="col-md-12 embed-responsive embed-responsive-16by9">
+            <iframe class="col-md-12 embed-responsive-item" src="//www.youtube.com/embed/qwXzbILRheM"></iframe>
+        </div>
+    </div>
+    <div class="col-md-8 col-sm-12 text-left">
+        <div ng-if="score.audioUrl" class="main-media">
+            <audio class="" src="{{score.audioUrl}}" controls="controls" preload="auto" >
+                Your browser does not support the HTML5 Audio element.
+            </audio>
+        </div>
+
+        <img class="main-image" ng-src="{{score.imageUrl}}">
+    </div>
+</div>

@@ -1,0 +1,94 @@
+
+
+<div class="container breadcrumbBox">
+    <ol class="breadcrumb">
+        <li><a href="#/home"><span class="glyphicon glyphicon-home"></span></a></li>
+        <li><a href="#/sheetmusic">Sheet Music</a></li>
+    </ol>
+</div>
+<!-- Content -->
+<div class="container text-center">
+
+    <div class="col-md-4 col-sm-12 text-left list-filter">
+
+        <div class="col-md-7 col-sm-7 dropdown-order">
+            <select class="form-control" ng-model="orderProp">
+                <option value="">Order By</option>
+                <option value="name">Name</option>
+                <option value="-added">Newest</option>
+                <option value="added">Oldest</option>
+            </select>
+        </div>
+
+        <!-- Split button -->
+        <div ng-app="InstrumentCtrl" class="btn-group btn-left">
+            <button type="button" class="btn btn-primary">Instrument</button>
+            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+                <li ng-repeat="category in categories"><a href="#">{{category.name}}</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+            </ul>
+        </div>
+
+        <!-- Split button -->
+        <div class="btn-group btn-left">
+            <button type="button" class="btn btn-primary">Composer</button>
+            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+                <li><a href="#">Title</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+            </ul>
+        </div>
+
+        <!-- Split button -->
+        <div class="btn-group btn-left">
+            <button type="button" class="btn btn-primary">Genres</button>
+            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+                <li><a href="#">15th Century</a></li>
+                <li><a href="#">16th Century</a></li>
+                <li><a href="#">17th Century</a></li>
+                <li><a href="#">18th Century</a></li>
+                <li><a href="#">19th Century</a></li>
+                <li><a href="#">20th Century</a></li>
+                <li><a href="#">Baroque</a></li>
+                <li><a href="#">Classical</a></li>
+                <li><a href="#">Romantic</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+            </ul>
+        </div>
+    </div>
+
+
+    <div class="col-md-8 col-sm-12">
+        <div class="col-md-12 col-sm-12 input-search">
+            <div class="input-group">
+                <input type="text" class="form-control" ng-model="query">
+                    <span class="input-group-btn">
+                    <button class="btn btn-default" type="button">Search</button>
+                    </span>
+            </div><!-- /input-group -->
+        </div>
+        <ul class="score-list">
+            <li class="row" ng-repeat="score in scores | filter:query | orderBy:orderProp">
+                <span class="list-added">{{score.added}}</span>
+                <span class="list-item"><a href="#/sheetmusic/{{score.id}}">{{score.name}}</a></span>
+                <span ng-if="score.audioUrl" class="list-icon glyphicon glyphicon-music" title="Audio Preview"></span>
+                <span ng-if="score.videoUrl" class="list-icon glyphicon glyphicon-film" title="Video Preview"></span>
+            </li>
+        </ul>
+    </div>
+
+</div>

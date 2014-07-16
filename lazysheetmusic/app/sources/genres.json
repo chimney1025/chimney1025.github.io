@@ -1,0 +1,48 @@
+[
+    {
+        "id": "15th",
+        "name": "15th Century",
+        "count": 5
+    },
+    {
+        "id": "16th",
+        "name": "16th Century",
+        "count": 1
+    },
+    {
+        "id": "17th",
+        "name": "17th Century",
+        "count": 15
+    },
+    {
+        "id": "18th",
+        "name": "18th Century",
+        "count": 5
+    },
+    {
+        "id": "19th",
+        "name": "19th Century",
+        "count": 12
+    },
+    {
+        "id": "20th",
+        "name": "20th Century",
+        "count": 2
+    },
+    {
+        "id": "baroque",
+        "name": "Baroque",
+        "count": 2
+    },
+    {
+        "id": "classical",
+        "name": "Classical",
+        "count": 12
+    },
+    {
+        "id": "romantic",
+        "name": "Romantic",
+        "count": 23
+    }
+
+]

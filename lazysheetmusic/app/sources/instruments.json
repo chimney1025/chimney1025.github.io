@@ -1,0 +1,26 @@
+[
+    {
+        "id": "piano",
+        "name": "Piano",
+        "count": 5,
+        "type": "other"
+    },
+    {
+        "id": "violin",
+        "name": "Violin",
+        "count": 10,
+        "type": "string"
+    },
+    {
+        "id": "cello",
+        "name": "Cello",
+        "count": 15,
+        "type": "string"
+    },
+    {
+        "id": "viola",
+        "name": "Viola",
+        "count": 5,
+        "type": "string"
+    }
+]
