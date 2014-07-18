@@ -1,24 +1,28 @@
 [
     {
-        "id": "piano",
+        "id": 1,
+        "uri": "piano",
         "name": "Piano",
         "count": 5,
         "type": "other"
     },
     {
-        "id": "violin",
+        "id": 2,
+        "uri": "violin",
         "name": "Violin",
         "count": 10,
         "type": "string"
     },
     {
-        "id": "cello",
+        "id": 3,
+        "uri": "cello",
         "name": "Cello",
         "count": 15,
         "type": "string"
     },
     {
-        "id": "viola",
+        "id": 4,
+        "uri": "viola",
         "name": "Viola",
         "count": 5,
         "type": "string"

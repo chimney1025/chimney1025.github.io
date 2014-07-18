@@ -5,31 +5,40 @@
 var rapidScoreControllers = angular.module('rapidScoreControllers', []);
 
 /*
-sheetmusicControllers.controller('SheetTopCtrl', ['$scope', 'Top',
-  function($scope, Top) {
-	$scope.myInterval = 5000;
-  	var slides = $scope.slides = [];
+angular.module('rapidScoreControllers', []).
+    controller('ScoreListCtrl', function($scope, ScoreAPIService){
+        console.log('in controller');
+        $scope.scores = [];
+        console.log(ScoreAPIService.getScores());
 
-    $scope.addSlide = function(imageUrl, name, text) {
-      slides.push({
-		title: name,
-        image: imageUrl,
-        text: text
-      });
-    };
-	
-	  Top.query(function(sheets){
-		for(var i=0; i<sheets.length; i++){
-	  		$scope.addSlide(sheets[i].imageUrl, sheets[i].name, sheets[i].snippet);
-	  	}
-	  });
-}]);
+        ScoreAPIService.getScores().
+            success(function(response) {
+                console.log('getSCores success');
+                console.log(response.status);
+                //$scope.scores = response;
+            }).
+            error(function (response) {
+                $scope.error = true;
+                console.log($scope.error);
+            });
+
+});
+
+rapidScoreControllers.controller('ScoreListCtrl', ['$scope', 'ScoreAPIService',
+    function($scope, List) {
+        $scope.scores = [];
+        List.query().success(function (response) {
+            alert(response);
+            $scope.scores = response;
+        });
+    }]);
 */
 
 rapidScoreControllers.controller('ScoreListCtrl', ['$scope', 'Score',
   function($scope, List) {
       $scope.scores = List.query();
   }]);
+
 
 rapidScoreControllers.controller('ScoreDetailCtrl', ['$scope', '$routeParams', 'Score',
     function($scope, $routeParams, Score) {

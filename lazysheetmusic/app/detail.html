@@ -15,7 +15,10 @@
             <li><button type="button" class="btn btn-warning">Add to cart</button></li>
             <li>Price: <span class="glyphicon glyphicon-gbp"></span>{{score.price}}</li>
             <li>Page: <span>{{score.page}}</span></li>
-            <li>Instruments: <button type="button" class="btn-detail btn btn-default" href="#/instruments/{{instrument}}" ng-repeat="instrument in score.instruments">{{instrument}} </button></li>
+            <li>Instruments: <a type="button" class="btn-detail btn btn-default" href="#/instruments/{{instrument.uri}}" ng-repeat="instrument in score.instruments">{{instrument.name}} </a></li>
+            <li>Composers: <a type="button" class="btn-detail btn btn-default" href="#/composers/{{composer.uri}}" ng-repeat="composer in score.composers">{{composer.name}} </a></li>
+            <li>Genres: <a type="button" class="btn-detail btn btn-default" href="#/genres/{{genre.uri}}" ng-repeat="genre in score.genres">{{genre.name}} </a></li>
+
             <li>
                 Links:
                 <button type="button" class="btn-detail btn btn-default"  ng-if="score.audioUrl" href="{{score.audioUrl}}" target="_blank" class="" title="Download Audio">Audio</button>
