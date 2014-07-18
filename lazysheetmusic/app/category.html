@@ -11,11 +11,14 @@
 
     <div class="col-md-4 col-sm-12 text-left list-filter">
 
-        <div class="col-md-7 col-sm-7 dropdown-order">
+        <span class="dropdown-label">Order By</span>
+        <div class="dropdown-order">
+
             <select class="form-control" ng-model="orderProp">
-                <option value="">Order By</option>
+                <option value="">--</option>
                 <option value="name">Name</option>
-                <option value="count">Count</option>
+                <option value="-count">Count of Sheet Music</option>
+                <option value="type">Type</option>
             </select>
         </div>
     </div>

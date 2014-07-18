@@ -1,12 +1,5 @@
 [
     {
-        "id": 1,
-        "uri": "piano",
-        "name": "Piano",
-        "count": 5,
-        "type": "other"
-    },
-    {
         "id": 2,
         "uri": "violin",
         "name": "Violin",
@@ -26,5 +19,12 @@
         "name": "Viola",
         "count": 5,
         "type": "string"
+    },
+    {
+        "id": 1,
+        "uri": "piano",
+        "name": "Piano",
+        "count": 5,
+        "type": "keyboard"
     }
 ]

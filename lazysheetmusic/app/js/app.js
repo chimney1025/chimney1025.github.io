@@ -3,10 +3,11 @@
 /* App Module */
 
 var rapidScoreApp = angular.module('rapidScoreApp', [
-  'rapidScoreControllers',
-  'rapidScoreServices',
-  'rapidScoreAnimations',
-  'ngRoute'
+    'rapidScoreControllers',
+    'rapidScoreServices',
+    'rapidScoreAnimations',
+    'rapidScoreFilters',
+    'ngRoute'
 ]);
 
 rapidScoreApp.config(['$routeProvider',

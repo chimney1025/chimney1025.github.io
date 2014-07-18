@@ -4,6 +4,7 @@
 
 html, body{
     height: 100%;
+    color: #727578;
 }
 body{
 	font-size : 14px;
@@ -113,11 +114,26 @@ a:hover {
     color: #008cba;
 }
 
-.dropdown-order{
-    float:left;
+.dropdown-label, .dropdown-label-sub{
+    float: left;
+    padding: 7px;
+    clear: left;
+    width: 70%;
+    font-weight: bold;
+    color: #727578;
+}
+
+.dropdown-label-sub{
+    padding-left: 13px;
+    font-weight: normal;
+}
+
+.dropdown-order, .dropdown-number, .dropdown-category{
+    clear: right;
+    float: left;
     padding: 0;
-    width: 120px;
     margin: 0 0 20px 0;
+    width: 30%;
 }
 
 .score-list {

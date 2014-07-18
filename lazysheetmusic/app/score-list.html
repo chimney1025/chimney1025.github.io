@@ -11,64 +11,54 @@
 
     <div class="col-md-4 col-sm-12 text-left list-filter">
 
-        <div class="col-md-7 col-sm-7 dropdown-order">
+        <span class="dropdown-label">Order By</span>
+        <div class="dropdown-order">
             <select class="form-control" ng-model="orderProp">
-                <option value="">Order By</option>
+                <option value="">--</option>
                 <option value="name">Name</option>
                 <option value="-added">Newest</option>
                 <option value="added">Oldest</option>
             </select>
         </div>
 
-        <!-- Split button -->
-        <div ng-app="InstrumentCtrl" class="btn-group btn-left">
-            <button type="button" class="btn btn-primary">Instrument</button>
-            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                <span class="caret"></span>
-                <span class="sr-only">Toggle Dropdown</span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-                <li><a href="#">Piano</a></li>
-                <li><a href="#">Violin</a></li>
-                <li><a href="#">Cello</a></li>
-                <li><a href="#">Viola</a></li>
-            </ul>
+        <span class="dropdown-label">Number of Instruments</span>
+        <div class="dropdown-number">
+            <select class="form-control" ng-model="numberInstrument">
+                <option value="">--</option>
+                <option value=1 >1</option>
+                <option value=2 >2</option>
+                <option value=3 >3</option>
+                <option value=4 >4</option>
+            </select>
         </div>
 
-        <!-- Split button -->
-        <div class="btn-group btn-left">
-            <button type="button" class="btn btn-primary">Composer</button>
-            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                <span class="caret"></span>
-                <span class="sr-only">Toggle Dropdown</span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-                <li><a href="#">Kristen Anderson-Lopez</a></li>
-                <li><a href="#">Robert Lopez</a></li>
-                <li><a href="#">Joe Hisaishi</a></li>
-            </ul>
+        <div ng-repeat="n in [] | range:numberInstrument">
+            <span class="dropdown-label-sub "> - Instrument {{n}}</span>
+            <div class="dropdown-category">
+                <select
+                        ng-model="instrumentList"
+                        ng-options="value.uri as value.name group by value.type for value in getInstruments" class="form-control">
+                    <option value="">--</option>
+                </select>
+            </div>
         </div>
 
-        <!-- Split button -->
-        <div class="btn-group btn-left">
-            <button type="button" class="btn btn-primary">Genres</button>
-            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                <span class="caret"></span>
-                <span class="sr-only">Toggle Dropdown</span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-                <li><a href="#">Soundtrack</a></li>
-                <li><a href="#">16th Century</a></li>
-                <li><a href="#">17th Century</a></li>
-                <li><a href="#">18th Century</a></li>
-                <li><a href="#">19th Century</a></li>
-                <li><a href="#">20th Century</a></li>
-                <li><a href="#">Baroque</a></li>
-                <li><a href="#">Classical</a></li>
-                <li><a href="#">Romantic</a></li>
-                <li class="divider"></li>
-                <li><a href="#">Separated link</a></li>
-            </ul>
+        <span class="dropdown-label">Composers</span>
+        <div class="dropdown-category">
+            <select
+                    ng-model="composerList"
+                    ng-options="value.uri as value.name for value in getComposers" class="form-control">
+                <option value="">--</option>
+            </select>
+        </div>
+
+        <span class="dropdown-label">Genres</span>
+        <div class="dropdown-category">
+            <select
+                    ng-model="genreList"
+                    ng-options="value.uri as value.name for value in getGenres" class="form-control">
+                <option value="">--</option>
+            </select>
         </div>
     </div>
 

@@ -34,9 +34,13 @@ rapidScoreControllers.controller('ScoreListCtrl', ['$scope', 'ScoreAPIService',
     }]);
 */
 
-rapidScoreControllers.controller('ScoreListCtrl', ['$scope', 'Score',
-  function($scope, List) {
+rapidScoreControllers.controller('ScoreListCtrl', ['$scope', 'Score', 'Instrument', 'Composer', 'Genre',
+  function($scope, List, Instrument, Composer, Genre) {
       $scope.scores = List.query();
+      $scope.getInstruments = Instrument.query();
+      $scope.getComposers = Composer.query();
+      $scope.getGenres = Genre.query();
+
   }]);
 
 
