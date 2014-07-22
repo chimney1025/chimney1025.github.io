@@ -21,6 +21,7 @@ a:hover {
 }
 
 
+
 /*-----------------------------------
 	Navbar
 -----------------------------------*/
@@ -333,7 +334,7 @@ audio{
 	Cart items list
 -----------------------------------*/
 
-.col-md-7.col-sm-12{
+.col-md-8.col-sm-12{
     margin-bottom: 72px;
 }
 
@@ -361,6 +362,7 @@ audio{
     text-transform: uppercase;
     padding: 0;
     box-shadow: 0 0 0;
+    margin: 20px 0 0 0;
 }
 
 .columnCaptions span:first-child{
@@ -416,7 +418,6 @@ audio{
 .price{
     font-size :18px;
     float: right;
-    margin-right: 50px;
 }
 
 /*User Page*/
@@ -511,13 +512,25 @@ audio{
     }
 
     .account-menu{
-        text-align: left;
-        padding-left: 40px;
+        text-align: center;
+        padding: 0;
+    }
+
+    .user-detail, .cart-list{
+        padding: 0 10px 0 5px;
     }
 
 	.totals{
 		box-shadow: 0 0 0;
 	}
+
+    .col-md-8.col-sm-12{
+        margin-bottom: 72px;
+    }
+
+    body{
+        padding-bottom: 70px;
+    }
 }
 
 
@@ -547,6 +560,10 @@ audio{
 		max-width: 300px;
 	}
 
+    .col-md-8.col-sm-12{
+        margin-bottom: 72px;
+    }
+
 	.col-md-7.col-sm-12{
 		padding-left: 0;
 		padding-right: 15px;
@@ -569,6 +586,19 @@ audio{
         padding: 0 50px;
     }
 
+    .account-menu{
+        text-align: center;
+        padding: 0;
+    }
+
+    .user-detail, .cart-list{
+        padding: 0 10px;
+    }
+
+    .user-label, .user-content{
+        width: 100%;
+    }
+
 	.columnCaptions span{
 		padding: 0 21px 0 0;
 	}
@@ -578,9 +608,20 @@ audio{
 		padding-right: 42px;
 	}
 
+    .columnCaptions{
+    }
+
+    .itemName{
+        width: 100%;
+    }
+
 	.row{
 		padding-bottom:10px;
 	}
+
+    .row:hover{
+        background: none;
+    }
 
 	.quantity{
 		width: 23px;
@@ -588,15 +629,9 @@ audio{
 	}
 
 	.popbtn{
-		background-color: white;
-		position: absolute;
-		height:40px;
-		right: 0;
 	}
 
 	.price{
-		position: absolute;
-		right: 42px;
 	}
 
 	.totals{
@@ -619,6 +654,10 @@ audio{
 		margin-top: 7px;
 		margin-left: -40px;
 	}
+
+    body{
+        padding-bottom: 70px;
+    }
 
 }
 

@@ -13,7 +13,7 @@
         <ul class="">
             <li><h3>{{score.name}}</h3></li>
             <li><a type="button" class="btn btn-danger" href="#/user/1/shopping-cart">Add to cart</a></li>
-            <li>Price: <span class="glyphicon glyphicon-gbp"></span>{{score.price}}</li>
+            <li>Price: {{score.price | currency:'£'}}</li>
             <li>Page: <span>{{score.page}}</span></li>
             <li>Instruments: <a type="button" class="btn-detail btn btn-default" href="#/instruments/{{instrument.uri}}" ng-repeat="instrument in score.instruments">{{instrument.name}} </a></li>
             <li>Composers: <a type="button" class="btn-detail btn btn-default" href="#/composers/{{composer.uri}}" ng-repeat="composer in score.composers">{{composer.name}} </a></li>
