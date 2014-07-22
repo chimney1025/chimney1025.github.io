@@ -4,6 +4,13 @@
 
 var rapidScoreServices = angular.module('rapidScoreServices', ['ngResource']);
 
+rapidScoreServices.factory('User', ['$resource',
+    function($resource){
+        return $resource('sources/:userId.json', {}, {
+            query: {method:'GET', params:{userId:'users'}, isArray:true}
+        });
+    }]);
+
 rapidScoreServices.factory('Score', ['$resource',
     function($resource){
         return $resource('sources/:scoreId.json', {}, {

@@ -69,3 +69,15 @@ rapidScoreControllers.controller('GenreCtrl', ['$scope', 'Genre',
         $scope.uri = "genres";
         $scope.categories = List.query();
     }]);
+
+rapidScoreControllers.controller('UserCtrl', ['$scope', 'User',
+    function($scope, UserList) {
+        $scope.users = List.query();
+    }]);
+
+
+rapidScoreControllers.controller('UserDetailCtrl', ['$scope', '$routeParams', 'User',
+    function($scope, $routeParams, User) {
+        $scope.user = User.get({userId: $routeParams.userId});
+
+    }]);

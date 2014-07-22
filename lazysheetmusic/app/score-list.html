@@ -10,57 +10,65 @@
 <div class="container text-center">
 
     <div class="col-md-4 col-sm-12 text-left list-filter">
+        <h4 class="dropdown-title">
+            <span class="icon-thin-right-arrow" onclick="$('#sortnfilter').toggle();"></span>
+            Sorting & Filtering
+        </h4>
 
-        <span class="dropdown-label">Order By</span>
-        <div class="dropdown-order">
-            <select class="form-control" ng-model="orderProp">
-                <option value="">--</option>
-                <option value="name">Name</option>
-                <option value="-added">Newest</option>
-                <option value="added">Oldest</option>
-            </select>
-        </div>
+        <div id="sortnfilter">
+            <span class="dropdown-label">Order By</span>
+            <div class="dropdown-order">
+                <select class="form-control" ng-model="orderProp">
+                    <option value="">--</option>
+                    <option value="name">Name</option>
+                    <option value="-added">Newest</option>
+                    <option value="added">Oldest</option>
+                </select>
+            </div>
 
-        <span class="dropdown-label">Number of Instruments</span>
-        <div class="dropdown-number">
-            <select class="form-control" ng-model="numberInstrument">
-                <option value="">--</option>
-                <option value=1 >1</option>
-                <option value=2 >2</option>
-                <option value=3 >3</option>
-                <option value=4 >4</option>
-            </select>
-        </div>
+            <span class="dropdown-label">Number of Instruments</span>
+            <div class="dropdown-number">
+                <select class="form-control" ng-model="numberInstrument">
+                    <option value="">--</option>
+                    <option value=1 >1</option>
+                    <option value=2 >2</option>
+                    <option value=3 >3</option>
+                    <option value=4 >4</option>
+                </select>
+            </div>
 
-        <div ng-repeat="n in [] | range:numberInstrument">
-            <span class="dropdown-label-sub "> - Instrument {{n}}</span>
+            <div ng-repeat="n in [] | range:numberInstrument">
+                <span class="dropdown-label-sub "> - Instrument {{n}}</span>
+                <div class="dropdown-category">
+                    <select
+                            ng-model="instrumentList"
+                            ng-options="value.uri as value.name group by value.type for value in getInstruments" class="form-control">
+                        <option value="">--</option>
+                    </select>
+                </div>
+            </div>
+
+            <span class="dropdown-label">Composers</span>
             <div class="dropdown-category">
                 <select
-                        ng-model="instrumentList"
-                        ng-options="value.uri as value.name group by value.type for value in getInstruments" class="form-control">
+                        ng-model="composerList"
+                        ng-options="value.uri as value.name for value in getComposers" class="form-control">
                     <option value="">--</option>
                 </select>
             </div>
-        </div>
 
-        <span class="dropdown-label">Composers</span>
-        <div class="dropdown-category">
-            <select
-                    ng-model="composerList"
-                    ng-options="value.uri as value.name for value in getComposers" class="form-control">
-                <option value="">--</option>
-            </select>
-        </div>
+            <span class="dropdown-label">Genres</span>
+            <div class="dropdown-category">
+                <select
+                        ng-model="genreList"
+                        ng-options="value.uri as value.name for value in getGenres" class="form-control">
+                    <option value="">--</option>
+                </select>
+            </div>
 
-        <span class="dropdown-label">Genres</span>
-        <div class="dropdown-category">
-            <select
-                    ng-model="genreList"
-                    ng-options="value.uri as value.name for value in getGenres" class="form-control">
-                <option value="">--</option>
-            </select>
-        </div>
-    </div>
+        </div><!-- End Sort and Filter -->
+
+    </div><!-- End Filters-->
 
 
     <div class="col-md-8 col-sm-12">

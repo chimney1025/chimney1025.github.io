@@ -22,7 +22,7 @@ a:hover {
 
 
 /*-----------------------------------
-	Navbar 
+	Navbar
 -----------------------------------*/
 
 .minicart{
@@ -59,7 +59,7 @@ a:hover {
     margin-top: 5px;
 }
 /*-----------------------------------
-	Breadcrumb 
+	Breadcrumb
 -----------------------------------*/
 
 .breadcrumb > .active a{
@@ -82,7 +82,7 @@ a:hover {
 	padding: 20px 0;
 }
 
-/*----------------------------------- 
+/*-----------------------------------
 	Main
 -----------------------------------*/
 
@@ -114,11 +114,16 @@ a:hover {
     color: #008cba;
 }
 
+.dropdown-title{
+    margin-top: 0;
+    margin-bottom: 30px;
+}
+
 .dropdown-label, .dropdown-label-sub{
     float: left;
     padding: 7px;
     clear: left;
-    width: 70%;
+    width: 60%;
     font-weight: bold;
     color: #727578;
 }
@@ -133,7 +138,7 @@ a:hover {
     float: left;
     padding: 0;
     margin: 0 0 20px 0;
-    width: 30%;
+    width: 40%;
 }
 
 .score-list {
@@ -144,6 +149,8 @@ a:hover {
 
 .list-filter{
     padding-left: 35px;
+    margin-bottom: 30px;
+    float: right;
 }
 
 .input-search{
@@ -170,11 +177,6 @@ a:hover {
     margin: 0 5px;
 }
 
-.col-md-4.col-sm-12, .col-md-8.col-sm-12 {
-    margin-bottom: 30px;
-    float: right;
-}
-
 /*-----------------------------------
     Score Detail
 ------------------------------------*/
@@ -192,6 +194,12 @@ a:hover {
 
 audio{
     width:100%;
+}
+
+.score-detail{
+    padding-left: 35px;
+    margin-bottom: 30px;
+    float: right;
 }
 
 .score-detail ul{
@@ -247,7 +255,7 @@ audio{
 .totals .order{
 	float: right;
 	padding: 0;
-	margin-top: 40px; 
+	margin-top: 40px;
 	padding-left: 5px;
 	cursor: pointer;
 }
@@ -299,10 +307,8 @@ audio{
     padding: 0;
 }
 
-.col-md-5.col-sm-12 h1{
+.col-md-5.col-sm-12 h2{
     color: #595c5f;
-    font-size: 24px;
-    font-weight: bold;
     margin-bottom:30px;
     text-align: left;
 }
@@ -358,10 +364,12 @@ audio{
 }
 
 .columnCaptions span:first-child{
+    float:left;
     padding-left:8px;
 }
 
 .columnCaptions span{
+    float:right;
     padding: 0 21px 0 0;
 }
 
@@ -393,33 +401,74 @@ audio{
 
 
 .popbtn{
-    background-color: #e6edf3;
-    margin-left: 25px;
-    height: 63px;
-    width: 40px;
-    padding: 32px 0 0 14px !important;
+    width: 80px;
+    padding: 11px 0 0 0 !important;
     float: right;
     cursor: pointer;
+    text-align: center;
 }
 
-.arrow{
-    width: 0;
-    height: 0;
-    border-left: 6px solid transparent;
-    border-right: 6px solid transparent;
-    border-top: 6px solid #858e97;
+.action{
+    margin-right: 21px;
+    float: right;
 }
 
 .price{
-    color: #f06953;
     font-size :18px;
-    font-weight: bold;
     float: right;
+    margin-right: 50px;
 }
 
+/*User Page*/
+.account-menu{
+    margin: 30px 0;
+    padding: 0;
+    font-size:16px;
+    text-align: center;
+}
+.account-menu li{
+    margin: 20px 0;
+}
 
-/*-----------------------------------  
-	Media Queries 
+.account-menu .btn{
+    width: 180px;
+}
+
+.user-detail, .cart-list{
+    margin: 0 0 30px 0;
+    padding: 0 0 0 40px;
+    font-size:16px;
+    text-align: left;
+}
+
+.user-detail li{
+    padding: 30px 0;
+    line-height: 40px;
+}
+
+.cart-list li{
+    padding: 10px 0;
+    line-height: 10px;
+  }
+
+.user-label {
+    width: 30%;
+    text-align: left;
+    float: left;
+}
+
+.user-content {
+    width: 70%;
+    text-align: left;
+    float: left;
+}
+
+.btn-danger{
+    background-color: #f06953;
+    border: #f06953;
+}
+/*-----------------------------------
+	Media Queries
 ----------------------------------- */
 
 /* Tablet size */
@@ -439,7 +488,7 @@ audio{
 		margin: 0 auto 40px auto;
 	}
 
-	.col-md-5.col-sm-12 h1{
+	.col-md-5.col-sm-12 h2{
 		text-align: center;
 	}
 
@@ -453,16 +502,22 @@ audio{
 		padding-right: 50px;
 	}
 
-    .col-md-4.col-sm-12, .col-md-8.col-sm-12{
-        float: left;
-        margin-bottom: 30px;
-        width: 100%;
+    .score-detail{
+        padding: 0 35px;
+    }
+
+    .list-filter{
+        padding: 0 50px;
+    }
+
+    .account-menu{
+        text-align: left;
+        padding-left: 40px;
     }
 
 	.totals{
 		box-shadow: 0 0 0;
 	}
-
 }
 
 
@@ -470,10 +525,10 @@ audio{
 
 @media (max-width: 768px) {
 
-	.navbar{ 
+	.navbar{
 		padding:10px 0;
 	}
-	
+
 	.minicart{
 		margin-right: -1px;
 		padding-right: 0;
@@ -503,9 +558,15 @@ audio{
 	}
 
     .col-md-4.col-sm-12, .col-md-8.col-sm-12{
-        float: left;
-        margin-bottom: 30px;
         width: 100%;
+    }
+
+    .score-detail{
+        padding: 0 35px;
+    }
+
+    .list-filter{
+        padding: 0 50px;
     }
 
 	.columnCaptions span{
@@ -521,7 +582,7 @@ audio{
 		padding-bottom:10px;
 	}
 
-	.quantity{	
+	.quantity{
 		width: 23px;
 		padding-right: 40px !important;
 	}
@@ -533,7 +594,7 @@ audio{
 		right: 0;
 	}
 
-	.price{	
+	.price{
 		position: absolute;
 		right: 42px;
 	}

@@ -1,0 +1,39 @@
+<div class="container breadcrumbBox">
+    <ol class="breadcrumb">
+        <li><a href="#/home"><span class="glyphicon glyphicon-home"></span></a></li>
+        <li><a href="#/user/{{user.id}}">Account Settings</a></li>
+    </ol>
+</div>
+
+<div class="container text-center">
+
+    <div class="col-md-4 col-sm-12 text-center">
+        <ul class="account-menu">
+            <li><a type="button" class="btn btn-primary" href="#/user/{{user.id}}">Account Settings</a></li>
+            <li><a type="button" class="btn btn-default" href="#/user/{{user.id}}/shopping-cart">My Shopping Cart</a></li>
+            <li><a type="button" class="btn btn-default" href="#/user/{{user.id}}/purchased">Purchased Scores</a></li>
+        </ul>
+    </div>
+
+    <div class="col-md-8 col-sm-12 text-left">
+        <ul class="user-detail">
+            <h2>Account Settings</h2>
+            <li>
+                <div class="user-label">Email : </div>
+                <div class="user-content">{{user.email}}</div>
+            </li>
+            <li>
+                <div class="user-label">Registered : </div>
+                <div class="user-content">{{user.added | date : 'yyyy-MM-dd'}}</div>
+            </li>
+            <li>
+                <div class="user-label">Password : </div>
+                <div class="user-content"><a type="button" class="btn btn-default btn-xs">Click to Change</a></div>
+            </li>
+            <li>
+                <a type="button" class="btn btn-default btn-sm">Logout</a>
+            </li>
+        </ul>
+    </div>
+
+</div>

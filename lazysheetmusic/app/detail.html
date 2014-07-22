@@ -12,7 +12,7 @@
     <div class="col-md-4 col-sm-12 text-left score-detail">
         <ul class="">
             <li><h3>{{score.name}}</h3></li>
-            <li><button type="button" class="btn btn-warning">Add to cart</button></li>
+            <li><a type="button" class="btn btn-danger" href="#/user/1/shopping-cart">Add to cart</a></li>
             <li>Price: <span class="glyphicon glyphicon-gbp"></span>{{score.price}}</li>
             <li>Page: <span>{{score.page}}</span></li>
             <li>Instruments: <a type="button" class="btn-detail btn btn-default" href="#/instruments/{{instrument.uri}}" ng-repeat="instrument in score.instruments">{{instrument.name}} </a></li>
