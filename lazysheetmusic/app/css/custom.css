@@ -576,14 +576,15 @@ audio{
 
     .col-md-4.col-sm-12, .col-md-8.col-sm-12{
         width: 100%;
+        padding: 0 10px;
     }
 
-    .score-detail{
+    .score-detail.col-md-4.col-sm-12{
         padding: 0 35px;
     }
 
-    .list-filter{
-        padding: 0 50px;
+    .list-filter.col-md-4.col-sm-12{
+        padding: 0 35px;
     }
 
     .account-menu{
@@ -613,6 +614,12 @@ audio{
 
     .itemName{
         width: 100%;
+        text-align:left;
+    }
+
+    .list-item{
+        width: 100%;
+        text-align:left;
     }
 
 	.row{
