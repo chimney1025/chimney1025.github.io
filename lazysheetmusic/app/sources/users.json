@@ -1,12 +1,12 @@
 [
     {
-        "id": 1,
+        "id": "user_1",
         "email": "holiday1025@gmail.com",
         "added": "2014-07-10",
         "purchased-count": 2
     },
     {
-        "id": 2,
+        "id": "user_2",
         "email": "holiday1025+1@gmail.com",
         "added": "2014-07-05",
         "purchased-count": 1

@@ -18,20 +18,24 @@
     <div class="col-md-8 col-sm-12 text-left">
         <ul class="user-detail">
             <h2>Account Settings</h2>
-            <li>
-                <div class="user-label">EMAIL : </div>
+            <li class="row">
+                <div class="user-label">USER NAME</div>
+                <div class="user-content">{{user.id}}</div>
+            </li>
+            <li class="row">
+                <div class="user-label">EMAIL</div>
                 <div class="user-content">{{user.email | uppercase}}</div>
             </li>
-            <li>
-                <div class="user-label">REGISTERED AT : </div>
+            <li class="row">
+                <div class="user-label">REGISTERED AT</div>
                 <div class="user-content">{{user.added | date : 'yyyy-MM-dd'}}</div>
             </li>
-            <li>
-                <div class="user-label">PASSWORD : </div>
-                <div class="user-content"><a type="button" class="btn btn-default btn-xs">Click to Change</a></div>
+            <li class="row">
+                <div class="user-label">PASSWORD</div>
+                <div class="user-content"><a type="button" class="btn btn-primary btn-sm">Click to Change</a></div>
             </li>
             <li>
-                <a type="button" class="btn btn-default btn-sm">Logout</a>
+                <a type="button" class="btn btn-default btn">Logout</a>
             </li>
         </ul>
     </div>
