@@ -25,12 +25,12 @@
                 <span>Price</span>
             </li>
             <li class="row" ng-repeat="score in user.carts">
-                <span class="itemName"><a href="#/sheetmusic/{{score.score_id}}">{{score.score_name}}</a></span>
-                <span class="popbtn"><a type="button" class="btn btn-default btn-xs">Remove</a></span>
+                <span class="list-item"><a href="#/sheetmusic/{{score.score_id}}">{{score.score_name}}</a></span>
+                <span class="list-action"><a type="button" class="btn btn-default btn-xs">Remove</a></span>
                 <span class="price">{{score.price | currency:'£'}}</span>
             </li>
             <li class="row totals">
-                <span class="itemName">Total:</span>
+                <span class="list-item">Total:</span>
                 <span class="action"><a type="button" class="btn btn-danger">Order</a></span>
                 <span class="price">{{user.total | currency: '£'}}</span>
             </li>

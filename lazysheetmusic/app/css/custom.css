@@ -154,10 +154,10 @@ a:hover {
     float: right;
 }
 
-.input-search{
-    margin-left:0;
+.input-search {
+    margin-left: 0;
     padding-left: 15px;
-    margin-bottom:25px;
+    margin-bottom: 25px;
 }
 
 .list-item{
@@ -249,7 +249,7 @@ audio{
 	float: left;
 }
 
-.totals .itemName{
+.totals .list-item{
 	margin-top: 1px;
 }
 
@@ -344,7 +344,6 @@ audio{
 
 .row{
     box-shadow: 0 1px 0 #e1e5e8;
-    padding :0 15px;
     background-color: #ffffff;
     margin: 5px 0 11px 0;
     border-radius: 4px 4px 0 0;
@@ -383,6 +382,7 @@ audio{
 
 /* Items */
 
+/*
 .itemName{
     color: #727578;
     font-size :16px;
@@ -390,7 +390,7 @@ audio{
     float: left;
     padding-left:25px;
 }
-
+*/
 
 .quantity{
     color: #4ea6bc;
@@ -402,10 +402,14 @@ audio{
 }
 
 
-.popbtn{
-    width: 80px;
-    padding: 11px 0 0 0 !important;
+.list-added, .list-action{
+    font-size: 14px;
     float: right;
+    margin: 0 10px;
+}
+
+.list-action{
+    padding: 11px 0 0 0 !important;
     cursor: pointer;
     text-align: center;
 }
@@ -428,7 +432,7 @@ audio{
     text-align: center;
 }
 .account-menu li{
-    margin: 20px 0;
+    margin: 0 0 20px 0;
 }
 
 .account-menu .btn{
@@ -504,16 +508,17 @@ audio{
 	}
 
     .score-detail{
-        padding: 0 35px;
+        padding: 0 15px;
     }
 
     .list-filter{
-        padding: 0 50px;
+        padding: 0 15px;
     }
 
     .account-menu{
         text-align: center;
         padding: 0;
+        margin-top: 0;
     }
 
     .user-detail, .cart-list{
@@ -580,16 +585,17 @@ audio{
     }
 
     .score-detail.col-md-4.col-sm-12{
-        padding: 0 35px;
+
     }
 
     .list-filter.col-md-4.col-sm-12{
-        padding: 0 35px;
+
     }
 
     .account-menu{
         text-align: center;
         padding: 0;
+        margin-top: 0;
     }
 
     .user-detail, .cart-list{
@@ -612,14 +618,10 @@ audio{
     .columnCaptions{
     }
 
-    .itemName{
-        width: 100%;
-        text-align:left;
-    }
-
     .list-item{
         width: 100%;
         text-align:left;
+        margin: 0;
     }
 
 	.row{
@@ -633,9 +635,6 @@ audio{
 	.quantity{
 		width: 23px;
 		padding-right: 40px !important;
-	}
-
-	.popbtn{
 	}
 
 	.price{

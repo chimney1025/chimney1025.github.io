@@ -24,8 +24,8 @@
                 <span>Price</span>
             </li>
             <li class="row" ng-repeat="score in user.purchased">
-                <span class="itemName"><a href="#/sheetmusic/{{score.score_id}}">{{score.score_name}}</a></span>
-                <span class="popbtn"><a type="button" class="btn btn-default btn-xs">Request</a></span>
+                <span class="list-item"><a href="#/sheetmusic/{{score.score_id}}">{{score.score_name}}</a></span>
+                <span class="list-action"><a type="button" class="btn btn-default btn-xs">Request</a></span>
                 <span class="price">{{score.price | currency:'£'}}</span>
             </li>
         </ul>
