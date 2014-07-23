@@ -19,15 +19,15 @@
         <ul class="user-detail">
             <h2>Account Settings</h2>
             <li>
-                <div class="user-label">Email : </div>
-                <div class="user-content">{{user.email}}</div>
+                <div class="user-label">EMAIL : </div>
+                <div class="user-content">{{user.email | uppercase}}</div>
             </li>
             <li>
-                <div class="user-label">Registered : </div>
+                <div class="user-label">REGISTERED AT : </div>
                 <div class="user-content">{{user.added | date : 'yyyy-MM-dd'}}</div>
             </li>
             <li>
-                <div class="user-label">Password : </div>
+                <div class="user-label">PASSWORD : </div>
                 <div class="user-content"><a type="button" class="btn btn-default btn-xs">Click to Change</a></div>
             </li>
             <li>

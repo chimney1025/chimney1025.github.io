@@ -137,7 +137,6 @@ a:hover {
     padding: 7px;
     clear: left;
     width: 60%;
-    font-weight: bold;
     color: #727578;
 }
 
@@ -174,7 +173,6 @@ a:hover {
 
 .list-item{
     font-size :16px;
-    font-weight: bold;
     float: left;
     margin-left: 10px;
 }
@@ -528,8 +526,8 @@ audio{
     }
 
     .account-menu{
-        text-align: center;
-        padding: 0;
+        text-align: left;
+        padding: 0 0 0 5px;
         margin-top: 0;
     }
 
@@ -605,8 +603,8 @@ audio{
     }
 
     .account-menu{
-        text-align: center;
-        padding: 0;
+        text-align: left;
+        padding: 0 0 0 5px;
         margin-top: 0;
     }
 
