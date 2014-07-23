@@ -290,6 +290,14 @@ audio{
     line-height: 10px;
 }
 
+.cart-list .list-item a{
+    color: #727578;
+}
+
+.cart-list .list-item a:hover{
+    color: #525558;
+}
+
 .user-label {
     width: 30%;
     text-align: left;
@@ -305,8 +313,12 @@ audio{
 }
 
 .btn-danger{
+    background-color: #f08573;
+    border: #f08573;
+}
+
+.btn-danger:hover{
     background-color: #f06953;
-    border: #f06953;
 }
 
 
@@ -392,7 +404,7 @@ audio{
 /* Totals */
 
 .totals{
-	background-color: #f2f6f9;
+	background-color: #f8f8f8;
 }
 
 .totals span{
