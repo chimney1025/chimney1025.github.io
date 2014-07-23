@@ -20,6 +20,32 @@ a:hover {
     cursor: pointer;
 }
 
+/* colors */
+
+.btn-danger, .btn-danger.active{
+    background-color: #f08573;
+    border-color: #f08573;
+}
+
+.btn-danger:hover{
+    background-color: #f06953;
+    border-color: #f08573;
+}
+
+.btn-primary, .btn-primary:hover, .btn-primary.active{
+    background-color: #468595;
+    border-color: #468595;
+}
+
+.btn-category{
+    font-weight: bold;
+    color: #468595;
+}
+
+a{
+    color: #468595;
+}
+
 /*View Container*/
 .view-container{
     margin-bottom: 80px;
@@ -113,11 +139,6 @@ a:hover {
     margin: 0 20px 20px 20px;
 }
 
-.btn-category{
-    font-weight: bold;
-    color: #008cba;
-}
-
 .dropdown-title{
     margin-top: 0;
     margin-bottom: 30px;
@@ -151,7 +172,7 @@ a:hover {
 }
 
 .list-filter{
-    padding-left: 35px;
+    padding-left: 30px;
     margin-bottom: 30px;
     float: right;
 }
@@ -179,6 +200,32 @@ a:hover {
     margin: 0 5px;
 }
 
+.col-md-8.col-sm-12{
+    margin-bottom: 72px;
+}
+
+.row:hover{
+    background-color: #f8f8f8;
+}
+
+.row{
+    box-shadow: 0 1px 0 #e1e5e8;
+    background-color: #ffffff;
+    margin: 5px 0 11px 0;
+    border-radius: 4px 4px 0 0;
+}
+
+.row span{
+    padding: 20px 0 6px 0;
+}
+
+.row p{
+    color: #898e92;
+    line-height: 1.5;
+    max-width: 400px;
+    text-align: justify;
+}
+
 /*-----------------------------------
     Score Detail
 ------------------------------------*/
@@ -199,7 +246,7 @@ audio{
 }
 
 .score-detail{
-    padding-left: 35px;
+    padding-left: 30px;
     margin-bottom: 30px;
     float: right;
 }
@@ -237,27 +284,6 @@ audio{
     padding: 0;
 }
 
-/* Lists */
-
-.col-md-8.col-sm-12{
-    margin-bottom: 72px;
-}
-
-.row:hover{
-    background-color: #f8f8f8;
-}
-
-.row{
-    box-shadow: 0 1px 0 #e1e5e8;
-    background-color: #ffffff;
-    margin: 5px 0 11px 0;
-    border-radius: 4px 4px 0 0;
-}
-
-.row span{
-    padding: 20px 0 6px 0;
-}
-
 /* User Account Page */
 .account-menu{
     margin: 30px 0;
@@ -290,6 +316,7 @@ audio{
     line-height: 10px;
 }
 
+/*
 .cart-list .list-item a{
     color: #727578;
 }
@@ -297,6 +324,7 @@ audio{
 .cart-list .list-item a:hover{
     color: #525558;
 }
+*/
 
 .user-label {
     width: 30%;
@@ -310,15 +338,6 @@ audio{
     width: 70%;
     text-align: left;
     float: left;
-}
-
-.btn-danger{
-    background-color: #f08573;
-    border: #f08573;
-}
-
-.btn-danger:hover{
-    background-color: #f06953;
 }
 
 
