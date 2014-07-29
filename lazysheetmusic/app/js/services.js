@@ -18,21 +18,6 @@ rapidScoreServices.factory('Score', ['$resource',
         });
     }]);
 
-
-rapidScoreServices.factory('ScoreAPIService', ['$http',
-    function($http){
-        var scoreAPI = {};
-        scoreAPI.getScores = function(){
-            return $http({
-                method: 'JSONP',
-                url: 'http://ergast.com/api/f1/2013/driverStandings.json?callback=JSON_CALLBACK'
-                //url: 'http://rapidscore.apiary-mock.com/sheetmusic?callback=JSON_CALLBACK'
-            })
-        };
-
-        return scoreAPI;
-    }]);
-
 rapidScoreServices.factory('Instrument', ['$resource',
     function($resource){
         return $resource('sources/:itemId.json', {}, {
@@ -53,3 +38,21 @@ rapidScoreServices.factory('Genre', ['$resource',
             query: {method:'GET', params:{itemId:'genres'}, isArray:true}
         });
     }]);
+
+
+
+/*
+ rapidScoreServices.factory('ScoreAPIService', ['$http',
+ function($http){
+ var scoreAPI = {};
+ scoreAPI.getScores = function(){
+ return $http({
+ method: 'JSONP',
+ url: 'http://ergast.com/api/f1/2013/driverStandings.json?callback=JSON_CALLBACK'
+ //url: 'http://rapidscore.apiary-mock.com/sheetmusic?callback=JSON_CALLBACK'
+ })
+ };
+
+ return scoreAPI;
+ }]);
+ */

@@ -8,7 +8,7 @@
 
 <div class="container text-center">
 
-    <div class="col-md-4 col-sm-12 text-center">
+    <div class="col-md-4 col-sm-12 text-left">
         <ul class="account-menu">
             <li><a type="button" class="btn btn-default" href="#/user/{{user.id}}">Account Settings</a></li>
             <li><a type="button" class="btn btn-default" href="#/user/{{user.id}}/shopping-cart">My Shopping Cart</a></li>
@@ -25,7 +25,7 @@
             </li>
             <li class="row" ng-repeat="score in user.purchased">
                 <span class="list-item"><a href="#/sheetmusic/{{score.score_id}}">{{score.score_name}}</a></span>
-                <span class="list-action"><a type="button" class="btn btn-default btn-xs">Request</a></span>
+                <span class="list-action"><a type="button" class="btn btn-warning btn-xs">Request</a></span>
                 <span class="price">{{score.price | currency:'£'}}</span>
             </li>
         </ul>

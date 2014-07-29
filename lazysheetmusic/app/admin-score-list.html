@@ -1,0 +1,37 @@
+<div class="container breadcrumbBox">
+    <ol class="breadcrumb">
+        <li><a href="#/home"><span class="glyphicon glyphicon-home"></span></a></li>
+        <li><a href="#/admin">Admin</a></li>
+        <li><a href="#/admin/sheetmusic">Manage SheetMusic</a></li>
+    </ol>
+</div>
+
+<div class="container text-center">
+
+    <div class="col-md-4 col-sm-12 text-left">
+        <ul class="account-menu">
+            <h4>Welcome Admin</h4>
+            <li><a type="button" class="btn btn-default" href="#/admin/users">User List</a></li>
+            <li><a type="button" class="btn btn-primary" href="#/admin/sheetmusic">Sheet Music</a></li>
+            <li><a type="button" class="btn btn-default" href="#/admin/categories">Categories</a></li>
+        </ul>
+    </div>
+
+    <div class="col-md-8 col-sm-12 text-left">
+        <ul class="user-detail">
+            <h2>Manage Sheet Music ({{scores.length}})</h2>
+            <li class="row" ng-repeat="score in scores | filter:query | orderBy:orderProp">
+                <span class="list-item"><a href="#/sheetmusic/{{score.id}}">{{score.name}}</a></span>
+                <span class="list-added">{{score.added | date : 'yyyy-MM-dd'}}</span>
+                <span ng-if="score.audioUrl" class="list-icon glyphicon glyphicon-music" title="Audio Preview"></span>
+                <span ng-if="score.videoUrl" class="list-icon glyphicon glyphicon-film" title="Video Preview"></span>
+                <span class="admin-action list-action">
+                    <a type="button" class="btn btn-warning btn-xs">Add to Slider</a>
+                    <a type="button" class="btn btn-primary btn-xs">Edit</a>
+                    <a type="button" class="btn btn-danger btn-xs">Remove</a>
+                </span>
+            </li>
+        </ul>
+    </div>
+
+</div>

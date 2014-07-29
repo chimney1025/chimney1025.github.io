@@ -1,0 +1,35 @@
+<div class="container breadcrumbBox">
+    <ol class="breadcrumb">
+        <li><a href="#/home"><span class="glyphicon glyphicon-home"></span></a></li>
+        <li><a href="#/admin">Admin</a></li>
+        <li><a href="#/admin/users">All Users</a></li>
+    </ol>
+</div>
+
+<div class="container text-center">
+
+    <div class="col-md-4 col-sm-12 text-left">
+        <ul class="account-menu">
+            <h4>Welcome Admin</h4>
+            <li><a type="button" class="btn btn-primary" href="#/admin/users">User List</a></li>
+            <li><a type="button" class="btn btn-default" href="#/admin/sheetmusic">Sheet Music</a></li>
+            <li><a type="button" class="btn btn-default" href="#/admin/categories">Categories</a></li>
+        </ul>
+    </div>
+
+    <div class="col-md-8 col-sm-12 text-left">
+        <ul class="user-detail">
+            <h2>Manage Users ({{users.length}})</h2>
+            <li class="row" ng-repeat="user in users">
+                <span class="list-item"><a href="#/user/{{user.id}}">{{user.id}}</a></span>
+                <span class="list-added">{{user.added}}</span>
+                <span class="admin-action list-action">
+                    <a type="button" class="btn btn-primary btn-xs">Send Message</a>
+                    <a type="button" class="btn btn-danger btn-xs">Block</a>
+                </span>
+                <span class="list-item">{{user.email | uppercase}}</span>
+            </li>
+        </ul>
+    </div>
+
+</div>

@@ -7,16 +7,16 @@ html, body{
     color: #727578;
 }
 body{
-	font-size : 14px;
+    font-size : 14px;
     padding-bottom: 70px;
 }
 
 ul{
-	list-style-type: none;
+    list-style-type: none;
 }
 
 a:hover {
-	text-decoration:none;
+    text-decoration:none;
     cursor: pointer;
 }
 
@@ -32,9 +32,24 @@ a:hover {
     border-color: #f08573;
 }
 
-.btn-primary, .btn-primary:hover, .btn-primary.active{
+.btn-primary, .btn-primary.active{
     background-color: #468595;
     border-color: #468595;
+}
+
+.btn-primary:hover{
+    background-color: #287A95;
+    border-color: #287A95;
+}
+
+.btn-warning, .btn-warning.active{
+    background-color: #f0b66d;
+    border-color: #f0b66d;
+}
+
+.btn-warning:hover{
+    background-color: #F0B723;
+    border-color: #F0B723;
 }
 
 .btn-category{
@@ -65,9 +80,9 @@ a{
 -----------------------------------*/
 
 .navbar{
-	padding: 15px ;
-	border-radius: 0;
-	margin: 0;
+    padding: 15px ;
+    border-radius: 0;
+    margin: 0;
 }
 
 .navbar-brand{
@@ -75,7 +90,7 @@ a{
 }
 
 .navbar-brand:hover{
-	color: #fff;
+    color: #fff;
 }
 
 .navbar-right{
@@ -99,7 +114,7 @@ a{
 }
 
 .breadcrumb>li+li:before {
-	content: "\00BB";
+    content: "\00BB";
 }
 
 .breadcrumb{
@@ -109,7 +124,7 @@ a{
 }
 
 .breadcrumbBox{
-	padding: 20px 0;
+    padding: 20px 0;
 }
 
 /*-----------------------------------
@@ -117,7 +132,7 @@ a{
 -----------------------------------*/
 
 .container.text-center{
-	padding: 0 32px;
+    padding: 0 32px;
 }
 
 /*-----------------------------------
@@ -179,7 +194,7 @@ a{
 
 .input-search {
     margin-left: 0;
-    padding-left: 15px;
+    padding: 0;
     margin-bottom: 25px;
 }
 
@@ -268,6 +283,11 @@ audio{
     text-align: justify;
 }
 
+.detail-header{
+    width:100%;
+    background-color:#363636;
+}
+
 .score-video{
 }
 
@@ -289,7 +309,6 @@ audio{
     margin: 30px 0;
     padding: 0;
     font-size:16px;
-    text-align: center;
 }
 .account-menu li{
     margin: 0 0 20px 0;
@@ -301,14 +320,22 @@ audio{
 
 .user-detail, .cart-list{
     margin: 0 0 30px 0;
-    padding: 0 0 0 40px;
+    /*padding: 0 0 0 40px;*/
+    padding: 0;
     font-size:16px;
     text-align: left;
 }
 
+.user-detail h2{
+    margin-bottom: 40px;
+}
+
 .user-detail li{
-    padding: 25px 0 15px 0;
-    line-height: 40px;
+    /*
+    padding: 15px 0 10px 0;
+    */
+    padding: 0;
+    line-height: 30px;
 }
 
 .cart-list li{
@@ -362,7 +389,7 @@ audio{
 
 .columnCaptions span:first-child{
     float:left;
-    padding-left:8px;
+    padding-left:15px;
 }
 
 .columnCaptions span{
@@ -410,6 +437,11 @@ audio{
     text-align: center;
 }
 
+.admin-action{
+    clear:left;
+    margin-bottom: 5px;
+}
+
 .action{
     margin-right: 21px;
     float: right;
@@ -423,65 +455,117 @@ audio{
 /* Totals */
 
 .totals{
-	background-color: #f8f8f8;
+    background-color: #f8f8f8;
 }
 
 .totals span{
-	padding: 40px 15px 40px 0;
+    padding: 40px 15px 40px 0;
 }
 
 .totals .price{
-	float: left;
+    float: left;
 }
 
 .totals .list-item{
-	margin-top: 1px;
+    margin-top: 1px;
 }
 
 .totals .order{
-	float: right;
-	padding: 0;
-	margin-top: 40px;
-	padding-left: 5px;
-	cursor: pointer;
+    float: right;
+    padding: 0;
+    margin-top: 40px;
+    padding-left: 5px;
+    cursor: pointer;
 }
 
 .order a{
-	background-color: #f08573;
-	color: #fbfffa;
-	font-weight: bold;
-	border-radius: 2px;
-	padding: 20px 30px;
+    background-color: #f08573;
+    color: #fbfffa;
+    font-weight: bold;
+    border-radius: 2px;
+    padding: 20px 30px;
 }
 
 /* Popovers */
 
 .popover{
-	border-radius: 3px;
-	box-shadow: 0 0 1px 1px rgba(0,0,0,0.2);
-	border: 0;
-	background-color: #ffffff;
+    border-radius: 3px;
+    box-shadow: 0 0 1px 1px rgba(0,0,0,0.2);
+    border: 0;
+    background-color: #ffffff;
 }
 
 .popover.bottom{
-	margin-top: -9px;
+    margin-top: -9px;
 }
 
 .glyphicon{
-	width: 20px;
-	font-size: 20px;
-	padding: 0;
+    width: 20px;
+    font-size: 20px;
+    padding: 0;
 }
 
 .glyphicon-pencil{
-	color: #858e97;
-	margin: 7px 12px 7px 10px;
+    color: #858e97;
+    margin: 7px 12px 7px 10px;
 }
 
 .glyphicon-remove{
-	color: #f06953;
-	margin-right: 10px;
+    color: #f06953;
+    margin-right: 10px;
 }
+
+/*-----------------------------------
+    Sign In Form
+------------------------------------*/
+.form-signin
+{
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+}
+.form-signin .form-signin-heading, .form-signin .checkbox
+{
+    margin-bottom: 10px;
+}
+
+.form-signin .need-help{
+    margin: 10px 0 12px 0;
+}
+.form-signin .checkbox
+{
+    font-weight: normal;
+}
+
+
+.form-signin .form-control
+{
+    position: relative;
+    font-size: 16px;
+    height: auto;
+    padding: 10px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.form-signin .form-control:focus
+{
+    z-index: 2;
+}
+.form-signin input[type="text"], .form-signin input[type="password"]
+{
+    margin-bottom: -1px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.form-signin button
+{
+    margin-top: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
 /*-----------------------------------
 	Media Queries
 ----------------------------------- */
@@ -490,19 +574,19 @@ audio{
 
 @media (max-width: 992px) {
 
-	.container.text-center{
-		padding: 0 15px;
-	}
+    .container.text-center{
+        padding: 0 15px;
+    }
 
-	.breadcrumb{
-		margin-bottom: 32px;
+    .breadcrumb{
+        margin-bottom: 32px;
         border: none;
-	}
+    }
 
-	.col-md-8.col-sm-12, .col-md-4.col-sm-12{
-		padding-left: 10px ;
-		padding-right: 15px;
-	}
+    .col-md-8.col-sm-12, .col-md-4.col-sm-12{
+        padding-left: 10px ;
+        padding-right: 15px;
+    }
 
     .account-menu{
         text-align: left;
@@ -514,9 +598,9 @@ audio{
         padding: 0 10px 0 5px;
     }
 
-	.totals{
-		box-shadow: 0 0 0;
-	}
+    .totals{
+        box-shadow: 0 0 0;
+    }
 
     .col-md-8.col-sm-12{
         margin-bottom: 72px;
@@ -532,18 +616,18 @@ audio{
 
 @media (max-width: 768px) {
 
-	.navbar{
-		padding:10px 0;
-	}
+    .navbar{
+        padding:10px 0;
+    }
 
-	.navbar-brand{
-		/* padding-left: 0; */
-	}
+    .navbar-brand{
+        /* padding-left: 0; */
+    }
 
-	.breadcrumbBox{
-		height:80px;
-		padding-top:21px;
-	}
+    .breadcrumbBox{
+        height:80px;
+        padding-top:21px;
+    }
 
     .col-md-8.col-sm-12{
         margin-bottom: 72px;
@@ -572,14 +656,14 @@ audio{
         text-align:right;
     }
 
-	.columnCaptions span{
-		padding: 0 21px 0 0;
-	}
+    .columnCaptions span{
+        padding: 0 21px 0 0;
+    }
 
-	.columnCaptions span:last-child{
-		float: right;
-		padding-right: 42px;
-	}
+    .columnCaptions span:last-child{
+        float: right;
+        padding-right: 42px;
+    }
 
     .columnCaptions{
     }
@@ -590,42 +674,46 @@ audio{
         margin: 0;
     }
 
-	.row{
-		padding-bottom:10px;
-	}
+    .row{
+        padding-bottom:10px;
+    }
+    .input-search{
+        padding: 0;
+    }
+    /*
+        .row:hover{
+            background: none;
+        }
+    */
 
-    .row:hover{
-        background: none;
+    .quantity{
+        width: 23px;
+        padding-right: 40px !important;
     }
 
-	.quantity{
-		width: 23px;
-		padding-right: 40px !important;
-	}
+    .price{
+    }
 
-	.price{
-	}
+    .totals{
+        padding: 0;
+    }
 
-	.totals{
-		padding: 0;
-	}
+    .totals .price{
+        position: static;
+    }
 
-	.totals .price{
-		position: static;
-	}
+    /* Change Bootstrap's default popover to make it look nice on a mobile device */
 
-	/* Change Bootstrap's default popover to make it look nice on a mobile device */
+    .popover.bottom>.arrow{
+        left: auto;
+        margin-left: 0;
+        right: 5px;
+    }
 
-	.popover.bottom>.arrow{
-		left: auto;
-		margin-left: 0;
-		right: 5px;
-	}
-
-	.popover.bottom{
-		margin-top: 7px;
-		margin-left: -40px;
-	}
+    .popover.bottom{
+        margin-top: 7px;
+        margin-left: -40px;
+    }
 
     body{
         padding-bottom: 70px;

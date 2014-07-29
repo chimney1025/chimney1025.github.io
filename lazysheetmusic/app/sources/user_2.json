@@ -4,25 +4,25 @@
     "added": "2014-07-05",
     "carts": [
         {
-            "score-id": "one-summers-day",
-            "score-name": "One Summer's Day",
+            "score_id": "one-summers-day",
+            "score_name": "One Summer's Day",
             "price": 1
         },
         {
-            "score-id": "suites-of-joe-hisaishi",
+            "score_id": "suites-of-joe-hisaishi",
             "score-name": "Suites of Joe Hisaish",
             "price": 1
         },
         {
-            "score-id": "let-it-go",
-            "score-name": "Let It Go",
+            "score_id": "let-it-go",
+            "score_name": "Let It Go",
             "price": 1
         }
     ],
     "purchased": [
         {
-            "score-id": "memory",
-            "score-name": "Memory",
+            "score_id": "memory",
+            "score_name": "Memory",
             "price": 1
         }
     ]

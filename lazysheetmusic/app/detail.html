@@ -12,21 +12,24 @@
     <div class="col-md-4 col-sm-12 text-left score-detail">
         <ul class="">
             <li><h3>{{score.name}}</h3></li>
-            <li><a type="button" class="btn btn-danger" href="#/user/user_1/shopping-cart">Add to cart</a></li>
-            <li>Price: {{score.price | currency:'£'}}</li>
-            <li>Page: <span>{{score.page}}</span></li>
-            <li>Instruments: <a type="button" class="btn-detail btn btn-default" href="#/instruments/{{instrument.uri}}" ng-repeat="instrument in score.instruments">{{instrument.name}} </a></li>
-            <li>Composers: <a type="button" class="btn-detail btn btn-default" href="#/composers/{{composer.uri}}" ng-repeat="composer in score.composers">{{composer.name}} </a></li>
-            <li>Genres: <a type="button" class="btn-detail btn btn-default" href="#/genres/{{genre.uri}}" ng-repeat="genre in score.genres">{{genre.name}} </a></li>
+            <li><a type="button" class="btn btn-warning" href="#/user/user_1/shopping-cart">Add to cart</a></li>
+            <li><a class="btn btn-default btn-block" ng-model="collapsed" ng-click="collapsed=!collapsed">More Detail</a></li>
+            <div ng-show="collapsed">
+                <li>Price: {{score.price | currency:'£'}}</li>
+                <li>Page: <span>{{score.page}}</span></li>
+                <li>Instruments: <a type="button" class="btn-detail btn btn-default" href="#/instruments/{{instrument.uri}}" ng-repeat="instrument in score.instruments">{{instrument.name}} </a></li>
+                <li>Composers: <a type="button" class="btn-detail btn btn-default" href="#/composers/{{composer.uri}}" ng-repeat="composer in score.composers">{{composer.name}} </a></li>
+                <li>Genres: <a type="button" class="btn-detail btn btn-default" href="#/genres/{{genre.uri}}" ng-repeat="genre in score.genres">{{genre.name}} </a></li>
 
-            <li>
-                Links:
-                <button type="button" class="btn-detail btn btn-default"  ng-if="score.audioUrl" href="{{score.audioUrl}}" target="_blank" class="" title="Download Audio">Audio</button>
-                <button type="button" class="btn-detail btn btn-default"  ng-if="score.videoUrl" href="{{score.videoUrl}}" target="_blank" class="" title="Video Preview">Video</button>
-            </li>
-            <li>
-                <p class="well">{{score.snippet}}</p>
-            </li>
+                <li>
+                    Links:
+                    <button type="button" class="btn-detail btn btn-default"  ng-if="score.audioUrl" href="{{score.audioUrl}}" target="_blank" class="" title="Download Audio">Audio</button>
+                    <button type="button" class="btn-detail btn btn-default"  ng-if="score.videoUrl" href="{{score.videoUrl}}" target="_blank" class="" title="Video Preview">Video</button>
+                </li>
+                <li>
+                    <p class="well">{{score.snippet}}</p>
+                </li>
+            </div>
         </ul>
         <!-- 4:3 aspect ratio -->
         <div ng-if="score.videoUrl" class="col-md-12 embed-responsive embed-responsive-16by9">

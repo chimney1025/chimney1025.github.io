@@ -7,8 +7,11 @@
 
 <div class="container text-center">
 
-    <div class="col-md-4 col-sm-12 text-center">
+    <div class="col-md-4 col-sm-12 text-left">
         <ul class="account-menu">
+            <li><h4>Welcome
+                <a href="#/user/{{user.id}}">{{user.id | uppercase}}</a>
+            </h4></li>
             <li><a type="button" class="btn btn-primary" href="#/user/{{user.id}}">Account Settings</a></li>
             <li><a type="button" class="btn btn-default" href="#/user/{{user.id}}/shopping-cart">My Shopping Cart</a></li>
             <li><a type="button" class="btn btn-default" href="#/user/{{user.id}}/purchased">Purchased Scores</a></li>
@@ -19,20 +22,20 @@
         <ul class="user-detail">
             <h2>Account Settings</h2>
             <li class="row">
-                <div class="user-label">USER NAME</div>
-                <div class="user-content">{{user.id}}</div>
+                <span class="user-label">USER NAME</span>
+                <span class="user-content">{{user.id}}</span>
             </li>
             <li class="row">
-                <div class="user-label">EMAIL</div>
-                <div class="user-content">{{user.email | uppercase}}</div>
+                <span class="user-label">EMAIL</span>
+                <span class="user-content">{{user.email | uppercase}}</span>
             </li>
             <li class="row">
-                <div class="user-label">REGISTERED AT</div>
-                <div class="user-content">{{user.added | date : 'yyyy-MM-dd'}}</div>
+                <span class="user-label">REGISTERED AT</span>
+                <span class="user-content">{{user.added | date : 'yyyy-MM-dd'}}</span>
             </li>
             <li class="row">
-                <div class="user-label">PASSWORD</div>
-                <div class="user-content"><a type="button" class="btn btn-primary btn-sm">Click to Change</a></div>
+                <span class="user-label">PASSWORD</span>
+                <span class="user-content"><a type="button" class="btn btn-primary btn-sm">Click to Change</a></span>
             </li>
             <li>
                 <a type="button" class="btn btn-default btn">Logout</a>

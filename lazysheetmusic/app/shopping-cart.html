@@ -8,8 +8,11 @@
 
 <div class="container text-center">
 
-    <div class="col-md-4 col-sm-12 text-center">
+    <div class="col-md-4 col-sm-12 text-left">
         <ul class="account-menu">
+            <li><h4>Welcome
+                <a href="#/user/{{user.id}}">{{user.id | uppercase}}</a>
+            </h4></li>
             <li><a type="button" class="btn btn-default" href="#/user/{{user.id}}">Account Settings</a></li>
             <li><a type="button" class="btn btn-primary" href="#/user/{{user.id}}/shopping-cart">My Shopping Cart</a></li>
             <li><a type="button" class="btn btn-default" href="#/user/{{user.id}}/purchased">Purchased Scores</a></li>
@@ -26,12 +29,12 @@
             </li>
             <li class="row" ng-repeat="score in user.carts">
                 <span class="list-item"><a href="#/sheetmusic/{{score.score_id}}">{{score.score_name}}</a></span>
-                <span class="list-action"><a type="button" class="btn btn-default btn-xs">Remove</a></span>
+                <span class="list-action"><a type="button" class="btn btn-danger btn-xs">Remove</a></span>
                 <span class="price">{{score.price | currency:'£'}}</span>
             </li>
             <li class="row totals">
                 <span class="list-item">Total:</span>
-                <span class="action"><a type="button" class="btn btn-danger">Order</a></span>
+                <span class="action"><a type="button" class="btn btn-primary">Order</a></span>
                 <span class="price">{{user.total | currency: '£'}}</span>
             </li>
         </ul>

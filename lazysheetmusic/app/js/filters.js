@@ -8,7 +8,9 @@ angular.module('rapidScoreFilters', []).filter('checkmark', function() {
   };
 });
 
+
 angular.module('rapidScoreFilters', []).filter('range', function() {
+    //convert select value to number, return an array with length equals to this number
     return function(val, range) {
         range = parseInt(range);
         for(var i=1; i<=range; ++i){

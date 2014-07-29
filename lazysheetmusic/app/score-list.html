@@ -10,11 +10,12 @@
 <div class="container text-center">
 
     <div class="col-md-4 col-sm-12 text-left list-filter">
-        <h4 class="dropdown-title">
-            Sorting & Filtering
-        </h4>
+        <div class="dropdown-title">
+            <a type="button" class="btn btn-block btn-primary"
+               ng-model="collapsed" ng-click="collapsed=!collapsed">Sort & Filters</a>
+        </div>
 
-        <div id="sortnfilter">
+        <div id="sortnfilter" ng-show="!collapsed">
             <span class="dropdown-label">Order By</span>
             <div class="dropdown-order">
                 <select class="form-control" ng-model="orderProp">
