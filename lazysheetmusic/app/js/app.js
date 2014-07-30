@@ -68,6 +68,10 @@ rapidScoreApp.config(['$routeProvider',
             when('/admin/categories', {
                 templateUrl: 'admin-category-list.html',
                 controller: 'AdminCategoryCtrl'
+            }).
+            when('/testapi', {
+                templateUrl: 'test.html',
+                controller: 'ScoreAPICtrl'
             })
     }
 ]);

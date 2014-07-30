@@ -23,24 +23,36 @@ var rapidScoreControllers = angular.module('rapidScoreControllers', []);
  });
 
  });
+*/
 
- rapidScoreControllers.controller('ScoreListCtrl', ['$scope', 'ScoreAPIService',
- function($scope, List) {
- $scope.scores = [];
- List.query().success(function (response) {
- alert(response);
- $scope.scores = response;
- });
- }]);
- */
+rapidScoreControllers.controller('ScoreAPICtrl', ['$scope', 'ScoreAPIService',
+    function($scope, List) {
+        $scope.scores = [];
+        alert('test');
+        List.getScores().success(function (response) {
+            alert(response);
+            $scope.scores = response;
+        });
+    }]);
 
-rapidScoreControllers.controller('ScoreListCtrl', ['$scope', 'Score', 'Instrument', 'Composer', 'Genre',
+rapidScoreControllers.controller('ScoreListLocalCtrl', ['$scope', 'Score', 'Instrument', 'Composer', 'Genre',
     function($scope, List, Instrument, Composer, Genre) {
         $scope.scores = List.query();
         $scope.getInstruments = Instrument.query();
         $scope.getComposers = Composer.query();
         $scope.getGenres = Genre.query();
+    }]);
 
+rapidScoreControllers.controller('ScoreListCtrl', ['$scope', 'ScoreAPIService', 'Instrument', 'Composer', 'Genre',
+    function($scope, List, Instrument, Composer, Genre) {
+        $scope.scores = [];
+        List.getScores().success(function (response) {
+            $scope.scores = response;
+        });
+
+        $scope.getInstruments = Instrument.query();
+        $scope.getComposers = Composer.query();
+        $scope.getGenres = Genre.query();
     }]);
 
 
