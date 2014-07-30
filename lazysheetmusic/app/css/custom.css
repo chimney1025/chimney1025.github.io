@@ -591,12 +591,13 @@ audio{
         margin-top: 0;
     }
 
-    .user-detail, .cart-list{
+    .user-detail{
         padding: 0 10px 0 5px;
         text-align: center;
     }
     
     .cart-list{
+        padding: 0 10px 0 5px;
     	text-align: left;
     }
     
