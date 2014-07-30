@@ -6,7 +6,6 @@ html, body{
     height: 100%;
     color: #727578;
     font-size: 100%;
-    font-size: 1em;
 }
 body{
     padding-bottom: 70px;
@@ -27,7 +26,11 @@ h2{
 	font-size:1.5em;
 }
 h4{
-	font-size:1.2em;
+	font-size:1.1em;
+}
+
+.container{
+    max-width: 960px;
 }
 /* colors */
 
@@ -189,23 +192,35 @@ a{
     width: 40%;
 }
 
+.list-score, .score-main{
+    min-width: 320px;
+    max-width: 640px;
+}
+
+.list-category{
+    min-with:320px;
+    max-width: 840px;
+}
+
+.list-filter, .score-detail{
+    padding-right: 30px;
+    margin-bottom: 30px;
+    float: right;
+    font-size :0.95em;
+    max-width: 320px;
+    min-width: 160px;
+}
+
+.input-search {
+    width: 100%;
+    margin: 0 0 25px 0;
+    padding: 0;
+}
+
 .score-list {
     clear:both;
     margin: 20px 0 0 0;
     padding: 0;
-}
-
-.list-filter{
-    padding-left: 30px;
-    margin-bottom: 30px;
-    float: right;
-    font-size :0.95em;
-}
-
-.input-search {
-    margin-left: 0;
-    padding: 0;
-    margin-bottom: 25px;
 }
 
 .list-item{
@@ -223,10 +238,6 @@ a{
 .list-icon{
     float:right;
     margin: 0 5px;
-}
-
-.col-md-8.col-sm-12{
-    margin-bottom: 72px;
 }
 
 .row:hover{
@@ -270,12 +281,7 @@ audio{
     width:100%;
 }
 
-.score-detail{
-    padding-left: 30px;
-    margin-bottom: 30px;
-    float: right;
-    font-size: 0.95em;
-}
+/* .score-detail same as .list-filter*/
 
 .score-detail ul{
     padding: 0 15px;
@@ -311,52 +317,36 @@ audio{
 
 /* User Account Page */
 .account-menu{
-    margin: 30px 0;
+    margin: 0 0 30px 0;
     padding: 0;
-    font-size:1em;
+    font-size :0.95em;
+    text-align: left;
+    max-width: 200px;
+    min-width: 180px;
 }
 .account-menu li{
     margin: 0 0 20px 0;
+    font-size: 1.1em;
 }
 
-.account-menu .btn{
-    width: 180px;
-}
-
-.user-detail, .cart-list{
+.act-list{
     margin: 0 0 30px 0;
     /*padding: 0 0 0 40px;*/
     padding: 0;
     font-size:1em;
     text-align: left;
+    max-width: 640px;
+    min-width: 320px;
 }
 
-.user-detail h2{
-    margin-bottom: 40px;
-}
-
-.user-detail li{
-    /*
-    padding: 15px 0 10px 0;
-    */
+.act-list ul, .account-menu ul{
     padding: 0;
-    line-height: 30px;
 }
 
-.cart-list li{
+.act-list li{
     padding: 10px 0;
     line-height: 10px;
 }
-
-/*
-.cart-list .list-item a{
-    color: #727578;
-}
-
-.cart-list .list-item a:hover{
-    color: #525558;
-}
-*/
 
 .user-label {
     width: 30%;
@@ -455,6 +445,7 @@ audio{
 
 .totals .total{
     float: left;
+    padding-left: 5px;
 }
 
 .totals .list-item{
@@ -576,54 +567,60 @@ audio{
     }
     */
 
-    .col-md-8.col-sm-12, .col-md-4.col-sm-12{
-        padding-left: 10px ;
-        padding-right: 15px;
+    /*score-detail*/
+
+    .list-filter, .score-detail{
+        padding: 0;
     }
 
-	.score-detail{
-		text-align:center;
-	}
-	
-    .account-menu{
-        text-align: center;
-        padding: 0 0 0 5px;
+    .score-detail ul{
+        padding: 0 10px;
+    }
+
+    .score-detail li{
+        margin-bottom: 15px;
+    }
+
+    .score-detail h1{
         margin-top: 0;
+        font-size:1.5em;
     }
 
-    .user-detail{
-        padding: 0 10px 0 5px;
-        text-align: center;
+    .score-detail p{
+        line-height: 1.5;
+        text-align: justify;
     }
-    
-    .cart-list{
-        padding: 0 10px 0 5px;
-    	text-align: left;
+
+    .score-detail .btn{
+        padding: 10px 20px;
     }
-    
-    .user-content{
-        text-align:center;
+
+    .btn.btn-detail{
+        padding: 2px 4px;
+        font-size: 0.7em;
+        margin: 2px 5px;
+        text-transform: uppercase;
     }
-    
-.list-action{
-    padding: 6px 0 0 0 !important;
-}
+
+    .list-score, .score-main, .act-list{
+        padding: 0 20px 0 10px;
+    }
+
+    .list-action{
+        padding: 6px 0 0 0 !important;
+    }
 
     .totals{
         box-shadow: 0 0 0;
-    }
-
-    .col-md-8.col-sm-12{
-        margin-bottom: 72px;
     }
 
     body{
         padding-bottom: 70px;
     }
 
-.row span{
+    .row span{
     	padding: 15px 0 4px 0;
-}
+    }
 }
 
 
@@ -644,58 +641,32 @@ audio{
         padding-top:21px;
     }
 
-    .col-md-8.col-sm-12{
-        margin-bottom: 72px;
-    }
-
-    .col-md-4.col-sm-12, .col-md-8.col-sm-12{
+    .list-filter, .score-detail, .list-score, .score-main, .account-menu, .act-list{
+        float: none;
         width: 100%;
-        padding: 0 15px 0 10px;
+        padding: 0;
+        margin: 0 auto;
+        clear: both;
     }
 
-    .account-menu{
+    .list-score, .score-main, .act-list{
+        padding: 0 10px 0 5px;
+    }
+
+    .score-detail, .account-menu{
         text-align: center;
-        padding: 0 0 0 5px;
-        margin-top: 0;
+        margin-bottom: 15px;
     }
 
-    .user-detail{
-    	/*
-        width: 100%;
-        */
-        margin: 0;
+    .user-label, .user-content{
         font-size: 0.95em;
-        text-align:center;
     }
-    
-    .list-item, .cart-list{
+
+    .list-item{
     	text-align:left;
     	margin: 0;
     	font-size: 0.95em;
     }
-
-    .user-detail, .cart-list{
-        padding: 0 10px 0 5px;
-    }
-    
-
-	.user-detail h2{
-    	margin-bottom: 15px;
-	}
-
-/*
-    .user-label, .user-content{
-        width: 100%;
-    }
-*/
-
-    .user-content{
-        text-align:center;
-    }
-    
-	.list-action{
-	    padding: 0 !important;
-	}
 
     .columnCaptions span{
         padding: 0 21px 0 0;
@@ -716,31 +687,6 @@ audio{
 	.row span{
     	padding: 10px 0 3px 0;
 	}
-    .input-search{
-        padding: 0;
-    }
-    /*
-        .row:hover{
-            background: none;
-        }
-    */
-
-    .quantity{
-        width: 23px;
-        padding-right: 40px !important;
-    }
-
-    .price{
-    }
-
-    .totals{
-        padding: 0;
-    }
-
-    .totals .price{
-        position: static;
-        font-size:1.3em;
-    }
 
     /* Change Bootstrap's default popover to make it look nice on a mobile device */
 

@@ -41,18 +41,17 @@ rapidScoreServices.factory('Genre', ['$resource',
 
 
 
-/*
- rapidScoreServices.factory('ScoreAPIService', ['$http',
- function($http){
- var scoreAPI = {};
- scoreAPI.getScores = function(){
- return $http({
- method: 'JSONP',
- url: 'http://ergast.com/api/f1/2013/driverStandings.json?callback=JSON_CALLBACK'
- //url: 'http://rapidscore.apiary-mock.com/sheetmusic?callback=JSON_CALLBACK'
- })
- };
 
- return scoreAPI;
- }]);
- */
+rapidScoreServices.factory('ScoreAPIService', ['$http',
+    function($http){
+        var scoreAPI = {};
+        scoreAPI.getScores = function(){
+            return $http({
+                method: 'GET',
+                //url: 'http://ergast.com/api/f1/2013/driverStandings.json?callback=JSON_CALLBACK'
+                url: 'http://rapidscore.apiary-mock.com/sheetmusic?callback=JSON_CALLBACK'
+            })
+        };
+
+        return scoreAPI;
+    }]);

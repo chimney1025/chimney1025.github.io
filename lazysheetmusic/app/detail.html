@@ -9,12 +9,14 @@
 <!-- Content -->
 <div class="container text-center">
 
-    <div class="col-md-4 col-sm-12 text-left score-detail">
+    <div class="col-md-4 col-sm-4 col-xs-4 text-left score-detail">
         <ul class="">
             <li><h1>{{score.name}}</h1></li>
             <li><a type="button" class="btn btn-warning" href="#/user/user_1/shopping-cart">Add to cart</a></li>
+            <!--
             <li><a class="btn btn-default btn-block" ng-model="collapsed" ng-click="collapsed=!collapsed">More Detail</a></li>
-            <div ng-show="collapsed">
+            -->
+            <div ng-show="!collapsed">
                 <li>Price: {{score.price | currency:'£'}}</li>
                 <li>Page: <span>{{score.page}}</span></li>
                 <li>Instruments: <a type="button" class="btn-detail btn btn-default" href="#/instruments/{{instrument.uri}}" ng-repeat="instrument in score.instruments">{{instrument.name}} </a></li>
@@ -37,7 +39,7 @@
         </div>
     </div>
 
-    <div class="col-md-8 col-sm-12 text-left">
+    <div class="col-md-8 col-sm-8 col-xs-8 text-left score-main">
         <div ng-if="score.audioUrl" class="main-media">
             <audio class="" ng-src="{{score.audioUrl}}" controls="controls" preload="auto" >
                 Your browser does not support the HTML5 Audio element.
