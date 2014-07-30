@@ -5,9 +5,10 @@
 html, body{
     height: 100%;
     color: #727578;
+    font-size: 100%;
+    font-size: 1em;
 }
 body{
-    font-size : 14px;
     padding-bottom: 70px;
 }
 
@@ -19,7 +20,15 @@ a:hover {
     text-decoration:none;
     cursor: pointer;
 }
-
+h2{
+	font-size:1.4em;
+}
+h3{
+	font-size:1.3em;
+}
+h4{
+	font-size:1.2em;
+}
 /* colors */
 
 .btn-danger, .btn-danger.active{
@@ -94,7 +103,7 @@ a{
 }
 
 .navbar-right{
-
+	font-size:16px;
 }
 
 .navbar-nav{
@@ -190,6 +199,7 @@ a{
     padding-left: 30px;
     margin-bottom: 30px;
     float: right;
+    font-size :0.95em;
 }
 
 .input-search {
@@ -199,13 +209,13 @@ a{
 }
 
 .list-item{
-    font-size :18px;
+    font-size :1em;
     float: left;
     margin-left: 15px;
 }
 
 .list-added{
-    font-size: 14px;
+    font-size: 0.85em;
     float: right;
     margin: 0 10px;
 }
@@ -264,6 +274,7 @@ audio{
     padding-left: 30px;
     margin-bottom: 30px;
     float: right;
+    font-size: 0.95em;
 }
 
 .score-detail ul{
@@ -293,22 +304,16 @@ audio{
 
 .btn-detail{
     padding: 4px 8px;
-    font-size: 12px;
+    font-size: 0.8em;
     margin: 2px 5px;
     text-transform: uppercase;
-}
-
-.glyphicon-gbp.glyphicon {
-    font-size: 12px;
-    width: 12px;
-    padding: 0;
 }
 
 /* User Account Page */
 .account-menu{
     margin: 30px 0;
     padding: 0;
-    font-size:16px;
+    font-size:1em;
 }
 .account-menu li{
     margin: 0 0 20px 0;
@@ -322,7 +327,7 @@ audio{
     margin: 0 0 30px 0;
     /*padding: 0 0 0 40px;*/
     padding: 0;
-    font-size:16px;
+    font-size:1em;
     text-align: left;
 }
 
@@ -380,7 +385,7 @@ audio{
 
 .columnCaptions{
     color: #7e93a7;
-    font-size:12px;
+    font-size:0.85em;
     text-transform: uppercase;
     padding: 0;
     box-shadow: 0 0 0;
@@ -414,24 +419,10 @@ audio{
     padding-left:25px;
 }
 */
-
-.quantity{
-    color: #4ea6bc;
-    font-size :18px;
-    font-weight: bold;
-    float : left;
-    width: 42px;
-    padding-left: 7px;
-}
-
-
-.list-added, .list-action{
-    font-size: 14px;
-    float: right;
-    margin: 0 10px;
-}
-
 .list-action{
+	font-size: 0.85em;
+	float:right;
+	margin: 0 10px;
     padding: 11px 0 0 0 !important;
     cursor: pointer;
     text-align: center;
@@ -448,7 +439,7 @@ audio{
 }
 
 .price{
-    font-size :18px;
+    font-size :1em;
     float: right;
 }
 
@@ -462,7 +453,7 @@ audio{
     padding: 40px 15px 40px 0;
 }
 
-.totals .price{
+.totals .total{
     float: left;
 }
 
@@ -487,7 +478,7 @@ audio{
 }
 
 /* Popovers */
-
+/*
 .popover{
     border-radius: 3px;
     box-shadow: 0 0 1px 1px rgba(0,0,0,0.2);
@@ -514,7 +505,7 @@ audio{
     color: #f06953;
     margin-right: 10px;
 }
-
+*/
 /*-----------------------------------
     Sign In Form
 ------------------------------------*/
@@ -541,7 +532,7 @@ audio{
 .form-signin .form-control
 {
     position: relative;
-    font-size: 16px;
+    font-size: 1em;
     height: auto;
     padding: 10px;
     -webkit-box-sizing: border-box;
@@ -597,6 +588,10 @@ audio{
     .user-detail, .cart-list{
         padding: 0 10px 0 5px;
     }
+    
+.list-action{
+    padding: 6px 0 0 0 !important;
+}
 
     .totals{
         box-shadow: 0 0 0;
@@ -609,6 +604,10 @@ audio{
     body{
         padding-bottom: 70px;
     }
+
+.row span{
+    	padding: 15px 0 4px 0;
+}
 }
 
 
@@ -655,6 +654,10 @@ audio{
     .user-content{
         text-align:right;
     }
+    
+.list-action{
+    padding: 0 !important;
+}
 
     .columnCaptions span{
         padding: 0 21px 0 0;
@@ -668,15 +671,20 @@ audio{
     .columnCaptions{
     }
 
-    .list-item{
+    .list-item, .user-detail, .cart-list{
         width: 100%;
         text-align:left;
         margin: 0;
+        font-size: 0.95em;
     }
 
     .row{
         padding-bottom:10px;
     }
+
+.row span{
+    	padding: 10px 0 3px 0;
+}
     .input-search{
         padding: 0;
     }
@@ -700,6 +708,7 @@ audio{
 
     .totals .price{
         position: static;
+        font-size:1.3em;
     }
 
     /* Change Bootstrap's default popover to make it look nice on a mobile device */
