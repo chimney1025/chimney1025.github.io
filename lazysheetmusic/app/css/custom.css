@@ -669,6 +669,10 @@ audio{
     	font-size: 0.95em;
     }
 
+    .list-added{
+        margin: 0;
+    }
+
     .columnCaptions span{
         padding: 0 21px 0 0;
     }
