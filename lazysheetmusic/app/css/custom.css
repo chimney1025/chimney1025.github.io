@@ -592,7 +592,7 @@ audio{
         text-transform: uppercase;
     }
 
-    .list-score, .score-main, .act-list{
+    .list-score, .score-main, .act-list, .list-category{
         padding: 0 15px 0 5px;
         margin-bottom: 72px;
     }
@@ -632,14 +632,14 @@ audio{
         padding-top:21px;
     }
 
-    .list-filter, .score-detail, .list-score, .score-main, .account-menu, .act-list{
+    .list-filter, .score-detail, .list-score, .score-main, .account-menu, .act-list, .list-category{
         float: none;
         padding: 0;
         margin: 0 auto;
         clear: both;
     }
 
-    .list-score, .score-main, .act-list{
+    .list-score, .score-main, .act-list, .list-category{
         padding: 0 15px 0 5px;
         margin-bottom: 72px;
     }
