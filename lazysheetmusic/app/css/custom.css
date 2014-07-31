@@ -335,7 +335,7 @@ audio{
     font-size:1em;
     text-align: left;
     max-width: 640px;
-    min-width: 320px;
+    min-width: 300px;
 }
 
 .act-list ul, .account-menu ul{
