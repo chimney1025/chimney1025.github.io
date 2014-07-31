@@ -193,12 +193,12 @@ a{
 }
 
 .list-score, .score-main{
-    min-width: 305px;
+    min-width: 300px;
     max-width: 640px;
 }
 
 .list-category{
-    min-with:305px;
+    min-with:300px;
     max-width: 840px;
 }
 
