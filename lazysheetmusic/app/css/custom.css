@@ -193,12 +193,12 @@ a{
 }
 
 .list-score, .score-main{
-    min-width: 320px;
+    min-width: 305px;
     max-width: 640px;
 }
 
 .list-category{
-    min-with:320px;
+    min-with:305px;
     max-width: 840px;
 }
 
@@ -504,6 +504,7 @@ audio{
     max-width: 330px;
     padding: 15px;
     margin: 0 auto;
+    font-size: 0.95em;
 }
 .form-signin .form-signin-heading, .form-signin .checkbox
 {
@@ -572,22 +573,12 @@ audio{
         padding: 0;
     }
 
-    .score-detail ul{
-        padding: 0 10px;
-    }
-
     .score-detail li{
         margin-bottom: 15px;
     }
 
     .score-detail h1{
-        margin-top: 0;
         font-size:1.5em;
-    }
-
-    .score-detail p{
-        line-height: 1.5;
-        text-align: justify;
     }
 
     .score-detail .btn{
@@ -602,7 +593,7 @@ audio{
     }
 
     .list-score, .score-main, .act-list{
-        padding: 0 20px 0 10px;
+        padding: 0 10px 0 5px;
     }
 
     .list-action{
@@ -642,7 +633,6 @@ audio{
 
     .list-filter, .score-detail, .list-score, .score-main, .account-menu, .act-list{
         float: none;
-        width: 100%;
         padding: 0;
         margin: 0 auto;
         clear: both;
@@ -650,11 +640,16 @@ audio{
 
     .list-score, .score-main, .act-list{
         padding: 0 10px 0 5px;
+        margin-bottom: 72px;
+    }
+
+    .score-detail, .account-menu, .list-filter{
+        width: 100%;
+        margin-bottom: 15px;
     }
 
     .score-detail, .account-menu{
         text-align: center;
-        margin-bottom: 15px;
     }
 
     .user-label, .user-content{
