@@ -13,67 +13,62 @@ rapidScoreServices.factory('Score', ['$resource',
     }]);
 */
 
-rapidScoreServices.factory('Instrument', ['$resource',
-    function($resource){
-        return $resource('sources/:itemId.json', {}, {
-            query: {method:'GET', params:{itemId:'instruments'}, isArray:true}
-        });
-    }]);
-
-rapidScoreServices.factory('Composer', ['$resource',
-    function($resource){
-        return $resource('sources/:itemId.json', {}, {
-            query: {method:'GET', params:{itemId:'composers'}, isArray:true}
-        });
-    }]);
-
-rapidScoreServices.factory('Genre', ['$resource',
-    function($resource){
-        return $resource('sources/:itemId.json', {}, {
-            query: {method:'GET', params:{itemId:'genres'}, isArray:true}
-        });
-    }]);
-
-rapidScoreServices.factory('UserListAPIService', ['$resource',
+rapidScoreServices.factory('InstrumentAPI', ['$resource',
     function($resource){
         return $resource(
-            'http://rapidscore.apiary-mock.com/users',
-            {},
+            'http://rapidscore.apiary-mock.com/instruments/:instrumentId', 
+            {}, 
             {
-                getUsers: {method:'GET', isArray:true}
+                getOne: {method: 'GET'},
+                getAll: {method:'GET', isArray:true}
             }
         );
     }]);
 
-rapidScoreServices.factory('UserDetailAPIService', ['$resource',
+rapidScoreServices.factory('ComposerAPI', ['$resource',
     function($resource){
         return $resource(
-            'http://rapidscore.apiary-mock.com/user/:userId',
-            {},
+            'http://rapidscore.apiary-mock.com/composers/:composerId', 
+            {}, 
             {
-                getUser: {method:'GET'}
+                getOne: {method: 'GET'},
+                getAll: {method:'GET', isArray:true}
             }
         );
     }]);
 
-rapidScoreServices.factory('ScoreListAPIService', ['$resource',
+rapidScoreServices.factory('GenreAPI', ['$resource',
     function($resource){
         return $resource(
-            'http://rapidscore.apiary-mock.com/sheetmusic',
-            {},
+            'http://rapidscore.apiary-mock.com/genres/:genreId', 
+            {}, 
             {
-                getScores: {method:'GET', isArray:true}
+                getOne: {method: 'GET'},
+                getAll: {method:'GET', isArray:true}
             }
         );
     }]);
 
-rapidScoreServices.factory('ScoreDetailAPIService', ['$resource',
+rapidScoreServices.factory('UserAPI', ['$resource',
+    function($resource){
+        return $resource(
+            'http://rapidscore.apiary-mock.com/users/:userId',
+            {},
+            {
+                getOne: {method:'GET'},
+                getAll: {method:'GET', isArray:true}
+            }
+        );
+    }]);
+
+rapidScoreServices.factory('ScoreAPI', ['$resource',
     function($resource){
         return $resource(
             'http://rapidscore.apiary-mock.com/sheetmusic/:scoreId',
             {},
             {
-                getScore: {method:'GET'}
+                getOne: {method:'GET'},
+                getAll: {method:'GET', isArray:true}
             }
         );
     }]);
