@@ -660,6 +660,7 @@ audio{
     }
 
     .user-label, .user-content{
+        width: 100%;
         font-size: 0.95em;
     }
 
@@ -671,6 +672,10 @@ audio{
 
     .list-added{
         margin: 0;
+    }
+
+    .list-action{
+        padding: 3px 0 0 0 !important;
     }
 
     .columnCaptions span{

@@ -25,41 +25,29 @@ var rapidScoreControllers = angular.module('rapidScoreControllers', []);
  });
 */
 
-rapidScoreControllers.controller('ScoreAPICtrl', ['$scope', 'ScoreAPIService',
-    function($scope, List) {
-        $scope.scores = [];
-        alert('test');
-        List.getScores().success(function (response) {
-            alert(response);
-            $scope.scores = response;
-        });
+rapidScoreControllers.controller('ScoreListCtrl', ['$scope', 'ScoreListAPIService', 'Instrument', 'Composer', 'Genre',
+    function($scope, List, Instrument, Composer, Genre) {
+        $scope.scores = List.getScores();
+        
+        $scope.getInstruments = Instrument.query();
+        $scope.getComposers = Composer.query();
+        $scope.getGenres = Genre.query();
     }]);
 
-rapidScoreControllers.controller('ScoreListLocalCtrl', ['$scope', 'Score', 'Instrument', 'Composer', 'Genre',
+rapidScoreControllers.controller('ScoreDetailCtrl', ['$scope', '$routeParams', 'ScoreDetailAPIService',
+    function($scope, $routeParams, Score) {
+        $scope.score = Score.getScore({scoreId: $routeParams.scoreId});
+    }]);
+
+/*
+rapidScoreControllers.controller('ScoreListCtrl', ['$scope', 'Score', 'Instrument', 'Composer', 'Genre',
     function($scope, List, Instrument, Composer, Genre) {
         $scope.scores = List.query();
         $scope.getInstruments = Instrument.query();
         $scope.getComposers = Composer.query();
         $scope.getGenres = Genre.query();
     }]);
-
-rapidScoreControllers.controller('ScoreListCtrl', ['$scope', 'ScoreAPIService', 'Instrument', 'Composer', 'Genre',
-    function($scope, List, Instrument, Composer, Genre) {
-        $scope.scores = [];
-        List.getScores().success(function (response) {
-            $scope.scores = response;
-        });
-
-        $scope.getInstruments = Instrument.query();
-        $scope.getComposers = Composer.query();
-        $scope.getGenres = Genre.query();
-    }]);
-
-
-rapidScoreControllers.controller('ScoreDetailCtrl', ['$scope', '$routeParams', 'Score',
-    function($scope, $routeParams, Score) {
-        $scope.score = Score.get({scoreId: $routeParams.scoreId});
-    }]);
+    */
 
 rapidScoreControllers.controller('InstrumentCtrl', ['$scope', 'Instrument',
     function($scope, List) {
