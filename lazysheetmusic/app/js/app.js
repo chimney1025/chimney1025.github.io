@@ -37,15 +37,15 @@ rapidScoreApp.config(['$routeProvider',
                 templateUrl: 'detail.html',
                 controller: 'ScoreDetailCtrl'
             }).
-            when('/user/:userId/shopping-cart', {
+            when('/users/:userId/shopping-cart', {
                 templateUrl: 'shopping-cart.html',
                 controller: 'UserDetailCtrl'
             }).
-            when('/user/:userId/purchased', {
+            when('/users/:userId/purchased', {
                 templateUrl: 'purchased.html',
                 controller: 'UserDetailCtrl'
             }).
-            when('/user/:userId', {
+            when('/users/:userId', {
                 templateUrl: 'user-detail.html',
                 controller: 'UserDetailCtrl'
             }).
@@ -71,7 +71,7 @@ rapidScoreApp.config(['$routeProvider',
             }).
             when('/testapi', {
                 templateUrl: 'test.html',
-                controller: 'ScoreAPICtrl'
+                controller: 'ScoreListCtrl'
             })
     }
 ]);
