@@ -35,7 +35,7 @@ rapidScoreControllers.controller('InstrumentCtrl', ['$scope', 'InstrumentAPI',
         $scope.categories = List.getAll();
     }]);
 
-rapidScoreControllers.controller('ComposerCtrl', ['$scope', 'Composer',
+rapidScoreControllers.controller('ComposerCtrl', ['$scope', 'ComposerAPI',
     function($scope, List) {
         $scope.itemname = "Composers";
         $scope.uri = "composers";
