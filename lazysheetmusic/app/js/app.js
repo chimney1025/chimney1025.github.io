@@ -15,7 +15,7 @@ rapidScoreApp.config(['$routeProvider',
         $routeProvider.
             when('/home', {
                 templateUrl: 'home.html',
-                controller: 'ScoreTopCtrl'
+                controller: ''
             }).
             when('/sheetmusic', {
                 templateUrl: 'score-list.html',
