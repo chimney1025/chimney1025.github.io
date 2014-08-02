@@ -1,0 +1,38 @@
+{
+    "added": "2013-07-24",
+    "id": "suites-of-joe-hisaishi",
+    "imageUrl": "sources/images/4.jpg",
+    "name": "Suites of Joe Hisaish",
+    "snippet": "",
+    "instruments": [
+        {
+            "id": 1,
+            "uri": "piano",
+            "name": "Piano"
+        },
+        {
+            "id": 3,
+            "uri": "cello",
+            "name": "Cello"
+        }
+    ],
+    "genres": [
+        {
+            "uri": "soundtrack",
+            "name": "Soundtrack"
+        }
+
+    ],
+    "composers": [
+        {
+            "id": 3,
+            "name": "Joe Hisaishi",
+            "uri": "joe-hisaishi"
+        }
+
+    ],
+    "price": 1,
+    "page": 5,
+    "audioUrl": "sources/suites-of-joe-hisaishi.mp3",
+    "videoUrl": ""
+}

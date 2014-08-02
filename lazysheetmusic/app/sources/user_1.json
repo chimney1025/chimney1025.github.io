@@ -1,0 +1,30 @@
+{
+    "id": "user_1",
+    "email": "holiday1025@gmail.com",
+    "added": "2014-07-10",
+    "carts": [
+        {
+            "score_id": "let-it-go",
+            "score_name": "Let It Go",
+            "price": 1
+        },
+        {
+            "score_id": "memory",
+            "score_name": "Memory",
+            "price": 1
+        }
+    ],
+    "total": 2,
+    "purchased": [
+        {
+            "score_id": "one-summers-day",
+            "score_name": "One Summer's Day",
+            "price": 1
+        },
+        {
+            "score_id": "suites-of-joe-hisaishi",
+            "score_name": "Suites of Joe Hisaish",
+            "price": 1
+        }
+    ]
+}
