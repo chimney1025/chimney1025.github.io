@@ -19,7 +19,7 @@ rapidScoreApp.config(['$routeProvider',
             }).
             when('/sheetmusic', {
                 templateUrl: 'views/score-list.html',
-                controller: 'ScoreListCtrl'
+                controller: 'ScoreCtrl'
             }).
             when('/instruments', {
                 templateUrl: 'views/category.html',
@@ -33,21 +33,33 @@ rapidScoreApp.config(['$routeProvider',
                 templateUrl: 'views/category.html',
                 controller: 'GenreCtrl'
             }).
+            when('/instruments/:instrumentId', {
+                templateUrl: 'views/category-detail.html',
+                controller: 'InstrumentCtrl'
+            }).
+            when('/composers/:composerId', {
+                templateUrl: 'views/category-detail.html',
+                controller: 'ComposerCtrl'
+            }).
+            when('/genres/:genreId', {
+                templateUrl: 'views/category-detail.html',
+                controller: 'GenreCtrl'
+            }).
             when('/sheetmusic/:scoreId', {
                 templateUrl: 'views/detail.html',
-                controller: 'ScoreDetailCtrl'
+                controller: 'ScoreCtrl'
             }).
             when('/users/:userId/shopping-cart', {
                 templateUrl: 'views/shopping-cart.html',
-                controller: 'UserDetailCtrl'
+                controller: 'UserCtrl'
             }).
             when('/users/:userId/purchased', {
                 templateUrl: 'views/purchased.html',
-                controller: 'UserDetailCtrl'
+                controller: 'UserCtrl'
             }).
             when('/users/:userId', {
                 templateUrl: 'views/user-detail.html',
-                controller: 'UserDetailCtrl'
+                controller: 'UserCtrl'
             }).
             when('/signup', {
                 templateUrl: 'views/signup.html',
@@ -63,7 +75,7 @@ rapidScoreApp.config(['$routeProvider',
             }).
             when('/admin/sheetmusic', {
                 templateUrl: 'views/admin-score-list.html',
-                controller: 'ScoreListCtrl'
+                controller: 'ScoreCtrl'
             }).
             when('/admin/categories', {
                 templateUrl: 'views/admin-category-list.html',
@@ -71,7 +83,7 @@ rapidScoreApp.config(['$routeProvider',
             }).
             when('/testapi', {
                 templateUrl: 'views/test.html',
-                controller: 'ScoreListCtrl'
+                controller: 'ScoreCtrl'
             })
     }
 ]);

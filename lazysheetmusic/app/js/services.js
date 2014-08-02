@@ -4,15 +4,6 @@
 
 var rapidScoreServices = angular.module('rapidScoreServices', ['ngResource']);
 
-/*
-rapidScoreServices.factory('Score', ['$resource',
-    function($resource){
-        return $resource('sources/:scoreId.json', {}, {
-            query: {method:'GET', params:{scoreId:'all'}, isArray:true}
-        });
-    }]);
-*/
-
 rapidScoreServices.factory('InstrumentAPI', ['$resource',
     function($resource){
         return $resource(

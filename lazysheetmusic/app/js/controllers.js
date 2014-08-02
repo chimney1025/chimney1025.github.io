@@ -4,59 +4,43 @@
 
 var rapidScoreControllers = angular.module('rapidScoreControllers', []);
 
-rapidScoreControllers.controller('ScoreListCtrl', ['$scope', 'ScoreAPI', 'InstrumentAPI', 'ComposerAPI', 'GenreAPI',
-    function($scope, Score, Instrument, Composer, Genre) {
+rapidScoreControllers.controller('ScoreCtrl', ['$scope', '$routeParams', 'ScoreAPI', 'InstrumentAPI', 'ComposerAPI', 'GenreAPI',
+    function($scope, $routeParams, Score, Instrument, Composer, Genre) {
         $scope.scores = Score.getAll();
+        $scope.score = Score.getOne({scoreId: $routeParams.scoreId});
         
         $scope.getInstruments = Instrument.getAll();
         $scope.getComposers = Composer.getAll();
         $scope.getGenres = Genre.getAll();
     }]);
 
-rapidScoreControllers.controller('ScoreDetailCtrl', ['$scope', '$routeParams', 'ScoreAPI',
-    function($scope, $routeParams, Score) {
-        $scope.score = Score.getOne({scoreId: $routeParams.scoreId});
+rapidScoreControllers.controller('UserCtrl', ['$scope', '$routeParams', 'UserAPI',
+    function($scope, $routeParams, User) {
+        $scope.users = User.getAll();
+        $scope.user = User.getOne({userId: $routeParams.userId});
     }]);
 
-/*
-rapidScoreControllers.controller('ScoreListCtrl', ['$scope', 'Score', 'Instrument', 'Composer', 'Genre',
-    function($scope, List, Instrument, Composer, Genre) {
-        $scope.scores = List.query();
-        $scope.getInstruments = Instrument.query();
-        $scope.getComposers = Composer.query();
-        $scope.getGenres = Genre.query();
-    }]);
-    */
-
-rapidScoreControllers.controller('InstrumentCtrl', ['$scope', 'InstrumentAPI',
-    function($scope, List) {
+rapidScoreControllers.controller('InstrumentCtrl', ['$scope', '$routeParams', 'InstrumentAPI',
+    function($scope, $routeParams, Instrument) {
         $scope.itemname = "Instruments";
         $scope.uri = "instruments";
-        $scope.categories = List.getAll();
+        $scope.categories = Instrument.getAll();
+        $scope.category = Instrument.getOne({instrumentId: $routeParams.instrumentId});
+        console.log($scope.category);
     }]);
 
-rapidScoreControllers.controller('ComposerCtrl', ['$scope', 'ComposerAPI',
-    function($scope, List) {
+rapidScoreControllers.controller('ComposerCtrl', ['$scope', '$routeParams', 'ComposerAPI',
+    function($scope, $routeParams, Composer) {
         $scope.itemname = "Composers";
         $scope.uri = "composers";
-        $scope.categories = List.getAll();
+        $scope.categories = Composer.getAll();
+        $scope.category = Composer.getOne({composerId: $routeParams.composerId});
     }]);
 
-rapidScoreControllers.controller('GenreCtrl', ['$scope', 'GenreAPI',
-    function($scope, List) {
+rapidScoreControllers.controller('GenreCtrl', ['$scope', '$routeParams', 'GenreAPI',
+    function($scope, $routeParams, Genre) {
         $scope.itemname = "Genres";
         $scope.uri = "genres";
-        $scope.categories = List.getAll();
-    }]);
-
-rapidScoreControllers.controller('UserCtrl', ['$scope', 'UserAPI',
-    function($scope, List) {
-        $scope.users = List.getAll();
-    }]);
-
-
-rapidScoreControllers.controller('UserDetailCtrl', ['$scope', '$routeParams', 'UserAPI',
-    function($scope, $routeParams, User) {
-        $scope.user = User.getOne({userId: $routeParams.userId});
-
+        $scope.categories = Genre.getAll();
+        $scope.category = Genre.getOne({genreId: $routeParams.genreId});
     }]);
