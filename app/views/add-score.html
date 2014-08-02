@@ -2,7 +2,7 @@
     <ol class="breadcrumb">
         <li><a href="#/home"><span class="glyphicon glyphicon-home"></span></a></li>
         <li><a href="#/admin">Admin</a></li>
-        <li><a href="#/admin/users">All Users</a></li>
+        <li><a href="#/admin/sheetmusic">Manage SheetMusic</a></li>
     </ol>
 </div>
 
@@ -19,15 +19,10 @@
 
     <div class="col-md-9 col-sm-9 col-xs-9 text-left act-list">
         <ul class="">
-            <h2>Manage Users ({{users.length}})</h2>
-            <li class="row" ng-repeat="item in users">
-                <span class="list-item"><a href="#/users/{{item.id}}">{{item.id}}</a></span>
-                <span class="list-added">{{item.added}}</span>
-                <span class="admin-action list-action">
-                    <a type="button" class="btn btn-primary btn-xs">Send Message</a>
-                    <a type="button" class="btn btn-danger btn-xs">Block</a>
-                </span>
-            </li>
+            <h2>Add New Sheet Music
+                <span><a type="button" class="btn btn-default btn-xs" href="#/admin/sheetmusic">BACK</a></span>
+            </h2>
+
         </ul>
     </div>
 

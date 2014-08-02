@@ -46,6 +46,8 @@ rapidScoreServices.factory('UserAPI', ['$resource',
             'http://rapidscore.apiary-mock.com/users/:userId',
             {},
             {
+                login: {method:'POST'},
+                register: {method:'POST'},
                 getOne: {method:'GET'},
                 getAll: {method:'GET', isArray:true}
             }

@@ -80,11 +80,11 @@
             </div><!-- /input-group -->
         </div>
         <ul class="score-list">
-            <li class="row" ng-repeat="score in scores | filter:query | orderBy:orderProp">
-                <span class="list-item"><a href="#/sheetmusic/{{score.id}}">{{score.name}}</a></span>
-                <span class="list-added">{{score.added | date : 'yyyy-MM-dd'}}</span>
-                <span ng-if="score.audioUrl" class="list-icon glyphicon glyphicon-music" title="Audio Preview"></span>
-                <span ng-if="score.videoUrl" class="list-icon glyphicon glyphicon-film" title="Video Preview"></span>
+            <li class="row" ng-repeat="item in scores | filter:query | orderBy:orderProp">
+                <span class="list-item"><a href="#/sheetmusic/{{item.id}}">{{item.name}}</a></span>
+                <span class="list-added">{{item.added | date : 'yyyy-MM-dd'}}</span>
+                <span ng-if="item.audioUrl" class="list-icon glyphicon glyphicon-music" title="Audio Preview"></span>
+                <span ng-if="item.videoUrl" class="list-icon glyphicon glyphicon-film" title="Video Preview"></span>
             </li>
         </ul>
     </div>

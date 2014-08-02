@@ -19,8 +19,8 @@
             </div>
         </div>
 
-        <a type="button"href="#/{{uri}}/{{category.uri}}" class="btn btn-default btn-inline btn-category" ng-repeat="category in categories | filter:query | orderBy:orderProp">
-            {{category.name}} ({{category.count}})
+        <a type="button"href="#/{{uri}}/{{item.uri}}" class="btn btn-default btn-inline btn-category" ng-repeat="item in categories | filter:query | orderBy:orderProp">
+            {{item.name}} ({{item.count}})
         </a>
     </div>
 

@@ -347,6 +347,11 @@ audio{
     line-height: 10px;
 }
 
+.act-list h2 span{
+    padding: 0;
+    margin: 0 0 0 15px;
+}
+
 .user-label {
     width: 30%;
     text-align: left;
@@ -506,6 +511,13 @@ audio{
     margin: 0 auto;
     font-size: 0.95em;
 }
+
+span.form-check{
+    padding: 0;
+    color: #f08573;
+    margin-top: 20px;
+}
+
 .form-signin .form-signin-heading, .form-signin .checkbox
 {
     margin-bottom: 10px;
@@ -518,7 +530,6 @@ audio{
 {
     font-weight: normal;
 }
-
 
 .form-signin .form-control
 {
@@ -535,15 +546,14 @@ audio{
 {
     z-index: 2;
 }
-.form-signin input[type="text"], .form-signin input[type="password"]
+.form-signin input
 {
     margin-bottom: -1px;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
+    border-radius: 0;
 }
 .form-signin button
 {
-    margin-top: 10px;
+    margin-top: 20px;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
 }
@@ -633,7 +643,7 @@ audio{
     }
 
     .breadcrumbBox{
-        height:50px;
+        height:60px;
         padding-top:21px;
     }
 
@@ -647,6 +657,11 @@ audio{
     .list-score, .score-main, .act-list, .list-category{
         padding: 0 15px 0 5px;
         margin-bottom: 72px;
+    }
+
+    .act-list h2 span{
+        padding: 0;
+        margin: 5px 0 0 0;
     }
 
     .list-filter{

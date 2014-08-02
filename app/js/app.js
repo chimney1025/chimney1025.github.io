@@ -19,19 +19,19 @@ rapidScoreApp.config(['$routeProvider',
             }).
             when('/sheetmusic', {
                 templateUrl: 'views/score-list.html',
-                controller: 'ScoreCtrl'
+                controller: 'ScoreListCtrl'
             }).
             when('/instruments', {
                 templateUrl: 'views/category.html',
-                controller: 'InstrumentCtrl'
+                controller: 'InstrumentListCtrl'
             }).
             when('/composers', {
                 templateUrl: 'views/category.html',
-                controller: 'ComposerCtrl'
+                controller: 'ComposerListCtrl'
             }).
             when('/genres', {
                 templateUrl: 'views/category.html',
-                controller: 'GenreCtrl'
+                controller: 'GenreListCtrl'
             }).
             when('/instruments/:instrumentId', {
                 templateUrl: 'views/category-detail.html',
@@ -63,23 +63,27 @@ rapidScoreApp.config(['$routeProvider',
             }).
             when('/signup', {
                 templateUrl: 'views/signup.html',
-                controller: ''
+                controller: 'SignUpCtrl'
             }).
             when('/admin', {
                 templateUrl: 'views/user-list.html',
-                controller: 'UserCtrl'
+                controller: 'UserListCtrl'
             }).
             when('/admin/users', {
                 templateUrl: 'views/user-list.html',
-                controller: 'UserCtrl'
+                controller: 'UserListCtrl'
             }).
             when('/admin/sheetmusic', {
                 templateUrl: 'views/admin-score-list.html',
-                controller: 'ScoreCtrl'
+                controller: 'ScoreListCtrl'
+            }).
+            when('/admin/sheetmusic/add', {
+                templateUrl: 'views/add-score.html',
+                controller: ''
             }).
             when('/admin/categories', {
                 templateUrl: 'views/admin-category-list.html',
-                controller: 'AdminCategoryCtrl'
+                controller: ''
             }).
             when('/testapi', {
                 templateUrl: 'views/test.html',
