@@ -14,63 +14,63 @@ rapidScoreApp.config(['$routeProvider',
     function($routeProvider) {
         $routeProvider.
             when('/home', {
-                templateUrl: 'home.html',
+                templateUrl: 'views/home.html',
                 controller: ''
             }).
             when('/sheetmusic', {
-                templateUrl: 'score-list.html',
+                templateUrl: 'views/score-list.html',
                 controller: 'ScoreListCtrl'
             }).
             when('/instruments', {
-                templateUrl: 'category.html',
+                templateUrl: 'views/category.html',
                 controller: 'InstrumentCtrl'
             }).
             when('/composers', {
-                templateUrl: 'category.html',
+                templateUrl: 'views/category.html',
                 controller: 'ComposerCtrl'
             }).
             when('/genres', {
-                templateUrl: 'category.html',
+                templateUrl: 'views/category.html',
                 controller: 'GenreCtrl'
             }).
             when('/sheetmusic/:scoreId', {
-                templateUrl: 'detail.html',
+                templateUrl: 'views/detail.html',
                 controller: 'ScoreDetailCtrl'
             }).
             when('/users/:userId/shopping-cart', {
-                templateUrl: 'shopping-cart.html',
+                templateUrl: 'views/shopping-cart.html',
                 controller: 'UserDetailCtrl'
             }).
             when('/users/:userId/purchased', {
-                templateUrl: 'purchased.html',
+                templateUrl: 'views/purchased.html',
                 controller: 'UserDetailCtrl'
             }).
             when('/users/:userId', {
-                templateUrl: 'user-detail.html',
+                templateUrl: 'views/user-detail.html',
                 controller: 'UserDetailCtrl'
             }).
             when('/signup', {
-                templateUrl: 'signup.html',
+                templateUrl: 'views/signup.html',
                 controller: ''
             }).
             when('/admin', {
-                templateUrl: 'user-list.html',
+                templateUrl: 'views/user-list.html',
                 controller: 'UserCtrl'
             }).
             when('/admin/users', {
-                templateUrl: 'user-list.html',
+                templateUrl: 'views/user-list.html',
                 controller: 'UserCtrl'
             }).
             when('/admin/sheetmusic', {
-                templateUrl: 'admin-score-list.html',
+                templateUrl: 'views/admin-score-list.html',
                 controller: 'ScoreListCtrl'
             }).
             when('/admin/categories', {
-                templateUrl: 'admin-category-list.html',
+                templateUrl: 'views/admin-category-list.html',
                 controller: 'AdminCategoryCtrl'
             }).
             when('/testapi', {
-                templateUrl: 'test.html',
+                templateUrl: 'views/test.html',
                 controller: 'ScoreListCtrl'
             })
     }
