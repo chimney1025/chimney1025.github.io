@@ -352,7 +352,7 @@ audio{
     margin: 0 0 0 15px;
 }
 
-.user-label {
+.act-label {
     width: 30%;
     text-align: left;
     float: left;
@@ -360,7 +360,7 @@ audio{
     font-weight: bold;
 }
 
-.user-content {
+.act-content {
     width: 70%;
     text-align: left;
     float: left;
@@ -684,7 +684,7 @@ span.form-check{
         margin-bottom: 15px;
     }
 
-    .user-label, .user-content{
+    .act-label, .act-content{
         width: 100%;
         font-size: 0.95em;
     }
