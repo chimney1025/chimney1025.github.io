@@ -17,6 +17,7 @@
             <li><a class="btn btn-default btn-block" ng-model="collapsed" ng-click="collapsed=!collapsed">More Detail</a></li>
             -->
             <div ng-show="!collapsed">
+                <li>Added: {{score.added | date : 'yyyy-MM-dd'}}</li>
                 <li>Price: {{score.price | currency:'£'}}</li>
                 <li>Page: <span>{{score.page}}</span></li>
                 <li>Instruments: <a type="button" class="btn-detail btn btn-default" href="#/instruments/{{instrument.uri}}" ng-repeat="instrument in score.instruments">{{instrument.name}} </a></li>

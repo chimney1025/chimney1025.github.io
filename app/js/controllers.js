@@ -24,7 +24,7 @@ rapidScoreControllers.controller('UserListCtrl', ['$scope', 'UserAPI',
 
 rapidScoreControllers.controller('UserCtrl', ['$scope', '$routeParams', 'UserAPI',
     function($scope, $routeParams, User) {
-        $scope.user = User.getOne({userId: $routeParams.userId});
+        $scope.user = User.getOne({username: $routeParams.username});
     }]);
 
 rapidScoreControllers.controller('SignUpCtrl', ['$scope', 'UserAPI', '$location',
@@ -33,7 +33,7 @@ rapidScoreControllers.controller('SignUpCtrl', ['$scope', 'UserAPI', '$location'
         $scope.regInfo = {};
         $scope.regCheck = '';
         var regData = {
-            "id":"",
+            "username":"",
             "email":"",
             "pass":""
         };
@@ -73,12 +73,12 @@ rapidScoreControllers.controller('SignUpCtrl', ['$scope', 'UserAPI', '$location'
             //submit data
             else{
                 console.log('posting data...');
-                regData.id = $scope.regInfo.username;
+                regData.username = $scope.regInfo.username;
                 regData.email = $scope.regInfo.email;
                 regData.pass = $scope.regInfo.pass1;
                 var res = User.register({}, regData);
 
-                $location.path('/users/'+regData.id);
+                $location.path('/users/'+regData.username);
                 console.log(res);
                 console.log(regData);
             }
@@ -113,7 +113,7 @@ rapidScoreControllers.controller('SignUpCtrl', ['$scope', 'UserAPI', '$location'
                 console.log('posting login data...');
                 regData.email = $scope.regInfo.email;
                 regData.pass = $scope.regInfo.pass;
-                var res = User.login({}, loginData);
+                var res = User.login({userId: regData.email});
 
                 $location.path('/users/'+res.id);
                 console.log(res);
@@ -125,43 +125,43 @@ rapidScoreControllers.controller('SignUpCtrl', ['$scope', 'UserAPI', '$location'
 
 rapidScoreControllers.controller('InstrumentListCtrl', ['$scope', 'InstrumentAPI',
     function($scope, Instrument) {
-        $scope.itemname = "Instruments";
-        $scope.uri = "instruments";
+        $scope.typename = "Instruments";
+        $scope.shortname = "instruments";
         $scope.categories = Instrument.getAll();
     }]);
 
 rapidScoreControllers.controller('InstrumentCtrl', ['$scope', '$routeParams', 'InstrumentAPI',
     function($scope, $routeParams, Instrument) {
-        $scope.itemname = "Instruments";
-        $scope.uri = "instruments";
+        $scope.typename = "Instruments";
+        $scope.shortname = "instruments";
         $scope.category = Instrument.getOne({instrumentId: $routeParams.instrumentId});
     }]);
 
 rapidScoreControllers.controller('ComposerListCtrl', ['$scope', 'ComposerAPI',
     function($scope, Composer) {
-        $scope.itemname = "Composers";
-        $scope.uri = "composers";
+        $scope.typename = "Composers";
+        $scope.shortname = "composers";
         $scope.categories = Composer.getAll();
     }]);
 
 rapidScoreControllers.controller('ComposerCtrl', ['$scope', '$routeParams', 'ComposerAPI',
     function($scope, $routeParams, Composer) {
-        $scope.itemname = "Composers";
-        $scope.uri = "composers";
+        $scope.typename = "Composers";
+        $scope.shortname = "composers";
         $scope.category = Composer.getOne({composerId: $routeParams.composerId});
     }]);
 
 rapidScoreControllers.controller('GenreListCtrl', ['$scope', 'GenreAPI',
     function($scope, Genre) {
-        $scope.itemname = "Genres";
-        $scope.uri = "genres";
+        $scope.typename = "Genres";
+        $scope.shortname = "genres";
         $scope.categories = Genre.getAll();
     }]);
 
 rapidScoreControllers.controller('GenreCtrl', ['$scope', '$routeParams', 'GenreAPI',
     function($scope, $routeParams, Genre) {
-        $scope.itemname = "Genres";
-        $scope.uri = "genres";
+        $scope.typename = "Genres";
+        $scope.shortname = "genres";
         $scope.categories = Genre.getAll();
         $scope.category = Genre.getOne({genreId: $routeParams.genreId});
     }]);

@@ -2,7 +2,7 @@
     <ol class="breadcrumb">
         <li><a href="#/home"><span class="glyphicon glyphicon-home"></span></a></li>
         <li><a href="#/admin">Admin</a></li>
-        <li><a href="#/admin/users">All Users</a></li>
+        <li><a href="#/users">All Users</a></li>
     </ol>
 </div>
 
@@ -21,7 +21,7 @@
         <ul class="">
             <h2>Manage Users ({{users.length}})</h2>
             <li class="row" ng-repeat="item in users">
-                <span class="list-item"><a href="#/users/{{item.id}}">{{item.id}}</a></span>
+                <span class="list-item"><a href="#/users/{{item.username}}">{{item.username}}</a></span>
                 <span class="list-added">{{item.added}}</span>
                 <span class="admin-action list-action">
                     <a type="button" class="btn btn-primary btn-xs">Send Message</a>

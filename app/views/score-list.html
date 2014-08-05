@@ -42,7 +42,7 @@
                 <div class="dropdown-category">
                     <select
                             ng-model="instrumentList"
-                            ng-options="value.uri as value.name group by value.type for value in getInstruments" class="form-control">
+                            ng-options="value.cshortname as value.cname group by value.type for value in getInstruments" class="form-control">
                         <option value="">--</option>
                     </select>
                 </div>
@@ -52,7 +52,7 @@
             <div class="dropdown-category">
                 <select
                         ng-model="composerList"
-                        ng-options="value.uri as value.name for value in getComposers" class="form-control">
+                        ng-options="value.cshortname as value.cname for value in getComposers" class="form-control">
                     <option value="">--</option>
                 </select>
             </div>
@@ -61,7 +61,7 @@
             <div class="dropdown-category">
                 <select
                         ng-model="genreList"
-                        ng-options="value.uri as value.name for value in getGenres" class="form-control">
+                        ng-options="value.cshortname as value.cname for value in getGenres" class="form-control">
                     <option value="">--</option>
                 </select>
             </div>
@@ -81,7 +81,7 @@
         </div>
         <ul class="score-list">
             <li class="row" ng-repeat="item in scores | filter:query | orderBy:orderProp">
-                <span class="list-item"><a href="#/sheetmusic/{{item.id}}">{{item.name}}</a></span>
+                <span class="list-item"><a href="#/sheetmusic/{{item.shortname}}">{{item.name}}</a></span>
                 <span class="list-added">{{item.added | date : 'yyyy-MM-dd'}}</span>
                 <span ng-if="item.audioUrl" class="list-icon glyphicon glyphicon-music" title="Audio Preview"></span>
                 <span ng-if="item.videoUrl" class="list-icon glyphicon glyphicon-film" title="Video Preview"></span>

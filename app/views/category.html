@@ -3,7 +3,7 @@
 <div class="container breadcrumbBox">
     <ol class="breadcrumb">
         <li><a href="#/home"><span class="glyphicon glyphicon-home"></span></a></li>
-        <li><a href="#/{{uri}}">{{itemname}}</a></li>
+        <li><a href="#/{{shortname}}">{{typename}}</a></li>
     </ol>
 </div>
 <!-- Content -->
@@ -19,8 +19,8 @@
             </div>
         </div>
 
-        <a type="button"href="#/{{uri}}/{{item.uri}}" class="btn btn-default btn-inline btn-category" ng-repeat="item in categories | filter:query | orderBy:orderProp">
-            {{item.name}} ({{item.count}})
+        <a type="button"href="#/{{shortname}}/{{item.cshortname}}" class="btn btn-default btn-inline btn-category" ng-repeat="item in categories | filter:query | orderBy:orderProp">
+            {{item.cname}} ({{item.count}})
         </a>
     </div>
 

@@ -3,12 +3,13 @@
 /* Services */
 
 var rapidScoreServices = angular.module('rapidScoreServices', ['ngResource']);
+var hostname = 'http://localhost:5000';
 
 rapidScoreServices.factory('InstrumentAPI', ['$resource',
     function($resource){
         return $resource(
-            'http://rapidscore.apiary-mock.com/instruments/:instrumentId', 
-            {}, 
+                hostname + '/instruments/:instrumentId',
+            {},
             {
                 getOne: {method: 'GET'},
                 getAll: {method:'GET', isArray:true}
@@ -19,8 +20,8 @@ rapidScoreServices.factory('InstrumentAPI', ['$resource',
 rapidScoreServices.factory('ComposerAPI', ['$resource',
     function($resource){
         return $resource(
-            'http://rapidscore.apiary-mock.com/composers/:composerId', 
-            {}, 
+                hostname + '/composers/:composerId',
+            {},
             {
                 getOne: {method: 'GET'},
                 getAll: {method:'GET', isArray:true}
@@ -31,8 +32,8 @@ rapidScoreServices.factory('ComposerAPI', ['$resource',
 rapidScoreServices.factory('GenreAPI', ['$resource',
     function($resource){
         return $resource(
-            'http://rapidscore.apiary-mock.com/genres/:genreId', 
-            {}, 
+                hostname + '/genres/:genreId',
+            {},
             {
                 getOne: {method: 'GET'},
                 getAll: {method:'GET', isArray:true}
@@ -43,10 +44,10 @@ rapidScoreServices.factory('GenreAPI', ['$resource',
 rapidScoreServices.factory('UserAPI', ['$resource',
     function($resource){
         return $resource(
-            'http://rapidscore.apiary-mock.com/users/:userId',
+                hostname + '/users/:username',
             {},
             {
-                login: {method:'POST'},
+                login: {method:'GET'},
                 register: {method:'POST'},
                 getOne: {method:'GET'},
                 getAll: {method:'GET', isArray:true}
@@ -57,7 +58,7 @@ rapidScoreServices.factory('UserAPI', ['$resource',
 rapidScoreServices.factory('ScoreAPI', ['$resource',
     function($resource){
         return $resource(
-            'http://rapidscore.apiary-mock.com/sheetmusic/:scoreId',
+                hostname + '/sheetmusic/:scoreId',
             {},
             {
                 getOne: {method:'GET'},
