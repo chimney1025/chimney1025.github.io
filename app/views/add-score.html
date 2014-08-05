@@ -18,12 +18,38 @@
     </div>
 
     <div class="col-md-9 col-sm-9 col-xs-9 text-left act-list">
+        <form name="addScoreForm" class="form-score" role="form">
         <ul class="">
-            <h2>Add New Sheet Music
-                <span><a type="button" class="btn btn-default btn-xs" href="#/admin/sheetmusic">BACK</a></span>
-            </h2>
-
+            <h2>Add New Sheet Music</h2>
+            <li class="row">
+                <span class="score-label">TITLE</span>
+                <input type="text" class="form-control" placeholder="Enter title" ng-model="scoreInfo.title" required ng-trim="true">
+            </li>
+            <li class="row">
+                <span class="score-label">PRICE</span>
+                <input type="text" class="form-control" placeholder="Enter price" ng-model="scoreInfo.price" required ng-trim="true">
+            </li>
+            <li class="row">
+                <span class="score-label">AUDIO UPLOAD</span>
+                <input type="file" class="form-control" placeholder="Choose Audio File" ng-model="scoreInfo.audioURL" ng-trim="true">
+            </li>
+            <li class="row">
+                <span class="score-label">VIDEO URL</span>
+                <input type="text" class="form-control" placeholder="Enter Video URL" ng-model="scoreInfo.videoURL" ng-trim="true">
+            </li>
+            <li class="row">
+                <span class="score-label">PREVIEW UPLOAD</span>
+                <input type="file" class="form-control" placeholder="Choose Preview Image File" ng-model="scoreInfo.imageURL" ng-trim="true">
+            </li>
+            <li class="row">
+                <span class="score-label">SHEET MUSIC UPLOAD</span>
+                <input type="file" class="form-control" placeholder="Choose Actual Sheet Music File" ng-model="scoreInfo.fileURL" ng-trim="true">
+            </li>
+            <li>
+                <a type="button" class="btn btn-default btn" href="#/admin/sheetmusic">Submit</a>
+            </li>
         </ul>
+        </form>
     </div>
 
 </div>
