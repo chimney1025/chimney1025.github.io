@@ -22,28 +22,40 @@
         <ul class="">
             <h2>Add New Sheet Music</h2>
             <li class="row">
-                <span class="score-label">TITLE</span>
-                <input type="text" class="form-control" placeholder="Enter title" ng-model="scoreInfo.title" required ng-trim="true">
+                <span class="act-label">TITLE</span>
+                <span class="act-content">
+                    <input type="text" class="form-control" placeholder="Enter title" ng-model="scoreInfo.title" required ng-trim="true">
+                </span>
             </li>
             <li class="row">
-                <span class="score-label">PRICE</span>
-                <input type="text" class="form-control" placeholder="Enter price" ng-model="scoreInfo.price" required ng-trim="true">
+                <span class="act-label">PRICE</span>
+                <span class="act-content">
+                    <input type="text" class="form-control" placeholder="Enter price" ng-model="scoreInfo.price" required ng-trim="true">
+                </span>
             </li>
             <li class="row">
-                <span class="score-label">AUDIO UPLOAD</span>
-                <input type="file" class="form-control" placeholder="Choose Audio File" ng-model="scoreInfo.audioURL" ng-trim="true">
+                <span class="act-label">AUDIO UPLOAD</span>
+                <span class="act-content">
+                    <input type="file" class="form-control" placeholder="Choose Audio File" ng-model="scoreInfo.audioURL" ng-trim="true">
+                </span>
             </li>
             <li class="row">
-                <span class="score-label">VIDEO URL</span>
-                <input type="text" class="form-control" placeholder="Enter Video URL" ng-model="scoreInfo.videoURL" ng-trim="true">
+                <span class="act-label">VIDEO URL</span>
+                <span class="act-content">
+                    <input type="text" class="form-control" placeholder="Enter Video URL" ng-model="scoreInfo.videoURL" ng-trim="true">
+                </span>
             </li>
             <li class="row">
-                <span class="score-label">PREVIEW UPLOAD</span>
-                <input type="file" class="form-control" placeholder="Choose Preview Image File" ng-model="scoreInfo.imageURL" ng-trim="true">
+                <span class="act-label">PREVIEW UPLOAD</span>
+                <span class="act-content">
+                    <input type="file" class="form-control" placeholder="Choose Preview Image File" ng-model="scoreInfo.imageURL" ng-trim="true">
+                </span>
             </li>
             <li class="row">
-                <span class="score-label">SHEET MUSIC UPLOAD</span>
-                <input type="file" class="form-control" placeholder="Choose Actual Sheet Music File" ng-model="scoreInfo.fileURL" ng-trim="true">
+                <span class="act-label">SHEET MUSIC UPLOAD</span>
+                <span class="act-content">
+                    <input type="file" class="form-control" placeholder="Choose Actual Sheet Music File" ng-model="scoreInfo.fileURL" ng-trim="true">
+                </span>
             </li>
             <li>
                 <a type="button" class="btn btn-default btn" href="#/admin/sheetmusic">Submit</a>
