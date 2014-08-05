@@ -1,7 +1,7 @@
 <div class="container breadcrumbBox">
     <ol class="breadcrumb">
         <li><a href="#/home"><span class="glyphicon glyphicon-home"></span></a></li>
-        <li><a href="#/users/{{user.id}}">Account Settings</a></li>
+        <li><a href="#/users/{{user.username}}">Account Settings</a></li>
     </ol>
 </div>
 
@@ -10,11 +10,11 @@
     <div class="col-md-3 col-sm-3 col-xs-3 text-left account-menu">
         <ul class="">
             <li><h4>Welcome
-                <a href="#/users/{{user.id}}">{{user.id | uppercase}}</a>
+                <a href="#/users/{{user.username}}">{{user.username | uppercase}}</a>
             </h4></li>
-            <li><a href="#/users/{{user.id}}">Account Settings</a></li>
-            <li><a href="#/users/{{user.id}}/shopping-cart">My Shopping Cart</a></li>
-            <li><a href="#/users/{{user.id}}/purchased">Purchased Scores</a></li>
+            <li><a href="#/users/{{user.username}}">Account Settings</a></li>
+            <li><a href="#/users/{{user.username}}/shopping-cart">My Shopping Cart</a></li>
+            <li><a href="#/users/{{user.username}}/purchased">Purchased Scores</a></li>
         </ul>
     </div>
 
@@ -22,20 +22,20 @@
         <ul class="">
             <h2>Account Settings</h2>
             <li class="row">
-                <span class="user-label">USERNAME</span>
-                <span class="user-content">{{user.id}}</span>
+                <span class="act-label">USERNAME</span>
+                <span class="act-content">{{user.username}}</span>
             </li>
             <li class="row">
-                <span class="user-label">EMAIL</span>
-                <span class="user-content">{{user.email | uppercase}}</span>
+                <span class="act-label">EMAIL</span>
+                <span class="act-content">{{user.email | uppercase}}</span>
             </li>
             <li class="row">
-                <span class="user-label">REGISTERED</span>
-                <span class="user-content">{{user.added | date : 'yyyy-MM-dd'}}</span>
+                <span class="act-label">REGISTERED</span>
+                <span class="act-content">{{user.added | date : 'yyyy-MM-dd'}}</span>
             </li>
             <li class="row">
-                <span class="user-label">PASSWORD</span>
-                <span class="user-content"><a type="button" class="btn btn-primary btn-sm">Click to Change</a></span>
+                <span class="act-label">PASSWORD</span>
+                <span class="act-content"><a type="button" class="btn btn-primary btn-sm">Click to Change</a></span>
             </li>
             <li>
                 <a type="button" class="btn btn-default btn" href="#/signup">Logout</a>
