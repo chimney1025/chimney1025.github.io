@@ -41,9 +41,11 @@ rapidScoreControllers.controller('UserAdminCtrl', ['$scope', '$routeParams', 'Us
         $scope.total = 0;
     }]);
 
-rapidScoreControllers.controller('UserCtrl', ['$scope', '$routeParams', 'UserAPI',
-    function($scope, $routeParams, User) {
+rapidScoreControllers.controller('UserCtrl', ['$scope', '$routeParams', 'UserAPI', 'UserCartAPI', 'UserOrderAPI',
+    function($scope, $routeParams, User, Cart, Purchased) {
         $scope.user = User.getOne({username: $routeParams.username});
+        $scope.cart = Cart.getAll({username: $routeParams.username});
+        $scope.purchased = Purchased.getAll({username: $routeParams.username});
     }]);
 
 rapidScoreControllers.controller('SignUpCtrl', ['$scope', 'UserAPI', '$location',

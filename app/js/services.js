@@ -3,7 +3,8 @@
 /* Services */
 
 var rapidScoreServices = angular.module('rapidScoreServices', ['ngResource']);
-var hostname = 'http://localhost:5000';
+//var hostname = 'http://localhost:5000';
+var hostname = 'http://lazyscore.herokuapp.com';
 
 rapidScoreServices.factory('InstrumentAPI', ['$resource',
     function($resource){
@@ -50,6 +51,28 @@ rapidScoreServices.factory('UserAPI', ['$resource',
                 login: {method:'GET'},
                 register: {method:'POST'},
                 getOne: {method:'GET'}
+            }
+        );
+    }]);
+
+rapidScoreServices.factory('UserCartAPI', ['$resource',
+    function($resource){
+        return $resource(
+                hostname + '/users/:username/shopping-cart',
+            {},
+            {
+                getAll: {method:'GET', isArray:true}
+            }
+        );
+    }]);
+
+rapidScoreServices.factory('UserOrderAPI', ['$resource',
+    function($resource){
+        return $resource(
+                hostname + '/users/:username/purchased',
+            {},
+            {
+                getAll: {method:'GET', isArray:true}
             }
         );
     }]);
