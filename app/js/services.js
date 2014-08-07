@@ -8,10 +8,10 @@ var hostname = 'http://localhost:5000';
 rapidScoreServices.factory('InstrumentAPI', ['$resource',
     function($resource){
         return $resource(
-                hostname + '/instruments/:instrumentId',
+                hostname + '/instruments/:cname',
             {},
             {
-                getOne: {method: 'GET'},
+                getOne: {method:'GET'},
                 getAll: {method:'GET', isArray:true}
             }
         );
@@ -20,10 +20,10 @@ rapidScoreServices.factory('InstrumentAPI', ['$resource',
 rapidScoreServices.factory('ComposerAPI', ['$resource',
     function($resource){
         return $resource(
-                hostname + '/composers/:composerId',
+                hostname + '/composers/:cname',
             {},
             {
-                getOne: {method: 'GET'},
+                getOne: {method:'GET'},
                 getAll: {method:'GET', isArray:true}
             }
         );
@@ -32,10 +32,10 @@ rapidScoreServices.factory('ComposerAPI', ['$resource',
 rapidScoreServices.factory('GenreAPI', ['$resource',
     function($resource){
         return $resource(
-                hostname + '/genres/:genreId',
+                hostname + '/genres/:cname',
             {},
             {
-                getOne: {method: 'GET'},
+                getOne: {method:'GET'},
                 getAll: {method:'GET', isArray:true}
             }
         );
@@ -49,6 +49,17 @@ rapidScoreServices.factory('UserAPI', ['$resource',
             {
                 login: {method:'GET'},
                 register: {method:'POST'},
+                getOne: {method:'GET'}
+            }
+        );
+    }]);
+
+rapidScoreServices.factory('UserAdminAPI', ['$resource',
+    function($resource){
+        return $resource(
+                hostname + '/admin/users/:username',
+            {},
+            {
                 getOne: {method:'GET'},
                 getAll: {method:'GET', isArray:true}
             }
@@ -59,6 +70,18 @@ rapidScoreServices.factory('ScoreAPI', ['$resource',
     function($resource){
         return $resource(
                 hostname + '/sheetmusic/:scoreId',
+            {},
+            {
+                getOne: {method:'GET'},
+                getAll: {method:'GET', isArray:true}
+            }
+        );
+    }]);
+
+rapidScoreServices.factory('ScoreAdminAPI', ['$resource',
+    function($resource){
+        return $resource(
+                hostname + '/admin/sheetmusic/:scoreId',
             {},
             {
                 getOne: {method:'GET'},

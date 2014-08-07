@@ -17,9 +17,15 @@ rapidScoreControllers.controller('ScoreCtrl', ['$scope', '$routeParams', 'ScoreA
         $scope.score = Score.getOne({scoreId: $routeParams.scoreId});
     }]);
 
-rapidScoreControllers.controller('UserListCtrl', ['$scope', 'UserAPI',
-    function($scope, User) {
+rapidScoreControllers.controller('ScoreAdminCtrl', ['$scope', 'ScoreAdminAPI',
+    function($scope, Score) {
+        $scope.scores = Score.getAll();
+    }]);
+
+rapidScoreControllers.controller('UserAdminCtrl', ['$scope', '$routeParams', 'UserAdminAPI',
+    function($scope, $routeParams, User) {
         $scope.users = User.getAll();
+        $scope.user = User.getOne({username: $routeParams.username});
     }]);
 
 rapidScoreControllers.controller('UserCtrl', ['$scope', '$routeParams', 'UserAPI',
@@ -134,7 +140,7 @@ rapidScoreControllers.controller('InstrumentCtrl', ['$scope', '$routeParams', 'I
     function($scope, $routeParams, Instrument) {
         $scope.typename = "Instruments";
         $scope.shortname = "instruments";
-        $scope.category = Instrument.getOne({instrumentId: $routeParams.instrumentId});
+        $scope.category = Instrument.getOne({cname: $routeParams.instrumentId});
     }]);
 
 rapidScoreControllers.controller('ComposerListCtrl', ['$scope', 'ComposerAPI',
@@ -148,7 +154,7 @@ rapidScoreControllers.controller('ComposerCtrl', ['$scope', '$routeParams', 'Com
     function($scope, $routeParams, Composer) {
         $scope.typename = "Composers";
         $scope.shortname = "composers";
-        $scope.category = Composer.getOne({composerId: $routeParams.composerId});
+        $scope.category = Composer.getOne({cname: $routeParams.composerId});
     }]);
 
 rapidScoreControllers.controller('GenreListCtrl', ['$scope', 'GenreAPI',
@@ -162,6 +168,5 @@ rapidScoreControllers.controller('GenreCtrl', ['$scope', '$routeParams', 'GenreA
     function($scope, $routeParams, Genre) {
         $scope.typename = "Genres";
         $scope.shortname = "genres";
-        $scope.categories = Genre.getAll();
-        $scope.category = Genre.getOne({genreId: $routeParams.genreId});
+        $scope.category = Genre.getOne({cname: $routeParams.genreId});
     }]);

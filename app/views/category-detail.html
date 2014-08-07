@@ -4,7 +4,7 @@
     <ol class="breadcrumb">
         <li><a href="#/home"><span class="glyphicon glyphicon-home"></span></a></li>
         <li><a href="#/{{shortname}}">{{typename}}</a></li>
-        <li><a href="#/{{category.uri}}">{{category.name}}</a></li>
+        <li><a href="#/{{shortname}}/{{category.c_shortname}}">{{category.c_name}}</a></li>
     </ol>
 </div>
 <!-- Content -->
@@ -12,8 +12,8 @@
 
     <div class="col-md-4 col-sm-4 col-xs-4 text-left score-detail">
         <ul class="">
-            <li><h1>{{category.name}}</h1></li>
-            <li><h4>{{category.typename}} | <a href="#/{{category.typeuri}}">View All</a> </h4></li>
+            <li><h1>{{category.c_name}}</h1></li>
+            <li><h4>{{typename}} | <a href="#/{{shortname}}">View All</a> </h4></li>
             <li><h4>Sheet Music Count  : {{category.scorelist.length}}</h4></li>
         </ul>
     </div>
@@ -30,7 +30,7 @@
         </div>
         <ul class="score-list">
             <li class="row" ng-repeat="score in category.scorelist | filter:query | orderBy:orderProp">
-                <span class="list-item"><a href="#/sheetmusic/{{score.id}}">{{score.name}}</a></span>
+                <span class="list-item"><a href="#/sheetmusic/{{score.shortname}}">{{score.name}}</a></span>
                 <span class="list-added">{{score.added | date : 'yyyy-MM-dd'}}</span>
                 <span ng-if="score.audioUrl" class="list-icon glyphicon glyphicon-music" title="Audio Preview"></span>
                 <span ng-if="score.videoUrl" class="list-icon glyphicon glyphicon-film" title="Video Preview"></span>

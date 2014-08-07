@@ -342,14 +342,26 @@ audio{
     padding: 0;
 }
 
+.act-list ul{
+    margin-bottom: 50px;
+}
+
 .act-list li{
     padding: 10px 0;
     line-height: 10px;
 }
 
+.act-list h2 {
+    margin-top: 10px;
+}
+
 .act-list h2 span{
     padding: 0;
     margin: 0 0 0 15px;
+}
+
+.act-list .list-item{
+    font-size: 1.1em;
 }
 
 .act-label {

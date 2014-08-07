@@ -20,9 +20,9 @@
                 <li>Added: {{score.added | date : 'yyyy-MM-dd'}}</li>
                 <li>Price: {{score.price | currency:'£'}}</li>
                 <li>Page: <span>{{score.page}}</span></li>
-                <li>Instruments: <a type="button" class="btn-detail btn btn-default" href="#/instruments/{{instrument.uri}}" ng-repeat="instrument in score.instruments">{{instrument.name}} </a></li>
-                <li>Composers: <a type="button" class="btn-detail btn btn-default" href="#/composers/{{composer.uri}}" ng-repeat="composer in score.composers">{{composer.name}} </a></li>
-                <li>Genres: <a type="button" class="btn-detail btn btn-default" href="#/genres/{{genre.uri}}" ng-repeat="genre in score.genres">{{genre.name}} </a></li>
+                <li>Instruments: <a type="button" class="btn-detail btn btn-default" href="#/instruments/{{instrument.c_shortname}}" ng-repeat="instrument in score.instruments">{{instrument.c_name}} </a></li>
+                <li>Composers: <a type="button" class="btn-detail btn btn-default" href="#/composers/{{composer.c_shortname}}" ng-repeat="composer in score.composers">{{composer.c_name}} </a></li>
+                <li>Genres: <a type="button" class="btn-detail btn btn-default" href="#/genres/{{genre.c_shortname}}" ng-repeat="genre in score.genres">{{genre.c_name}} </a></li>
 
                 <li>
                     Links:
