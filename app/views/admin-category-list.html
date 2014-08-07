@@ -22,7 +22,7 @@
             <h2>Manage Instruments ({{getInstruments.length}})
             </h2>
             <li>
-                <a type="button"href="#/{{shortname}}/{{item.c_shortname}}" class="btn btn-default btn-inline btn-category" ng-repeat="item in getInstruments | filter:query | orderBy:orderProp">
+                <a type="button"href="#/instruments/{{item.c_shortname}}" class="btn btn-default btn-inline btn-category" ng-repeat="item in getInstruments | filter:query | orderBy:orderProp">
                     {{item.c_name}}
                 </a>
                 <a type="button" class="btn btn-warning btn-inline" href="#/admin/instruments/add">ADD</a>
@@ -32,7 +32,7 @@
             <h2>Manage Composers ({{getComposers.length}})
             </h2>
             <li>
-                <a type="button"href="#/{{shortname}}/{{item.c_shortname}}" class="btn btn-default btn-inline btn-category" ng-repeat="item in getComposers | filter:query | orderBy:orderProp">
+                <a type="button"href="#/composers/{{item.c_shortname}}" class="btn btn-default btn-inline btn-category" ng-repeat="item in getComposers | filter:query | orderBy:orderProp">
                 {{item.c_name}}
                 </a>
                 <a type="button" class="btn btn-warning btn-inline" href="#/admin/instruments/add">ADD</a>
@@ -42,7 +42,7 @@
             <h2>Manage Genres ({{getGenres.length}})
             </h2>
             <li>
-                <a type="button"href="#/{{shortname}}/{{item.c_shortname}}" class="btn btn-default btn-inline btn-category" ng-repeat="item in getGenres | filter:query | orderBy:orderProp">
+                <a type="button"href="#/genres/{{item.c_shortname}}" class="btn btn-default btn-inline btn-category" ng-repeat="item in getGenres | filter:query | orderBy:orderProp">
                 {{item.c_name}}
                 </a>
                 <a type="button" class="btn btn-warning btn-inline" href="#/admin/instruments/add">ADD</a>
