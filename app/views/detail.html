@@ -26,8 +26,8 @@
 
                 <li>
                     Links:
-                    <button type="button" class="btn-detail btn btn-default"  ng-if="score.audioUrl" href="{{score.audioUrl}}" target="_blank" class="" title="Download Audio">Audio</button>
-                    <button type="button" class="btn-detail btn btn-default"  ng-if="score.videoUrl" href="{{score.videoUrl}}" target="_blank" class="" title="Video Preview">Video</button>
+                    <button type="button" class="btn-detail btn btn-default"  ng-if="score.audiourl" href="{{score.audiourl}}" target="_blank" class="" title="Download Audio">Audio</button>
+                    <button type="button" class="btn-detail btn btn-default"  ng-if="score.videourl" href="{{score.videourl}}" target="_blank" class="" title="Video Preview">Video</button>
                 </li>
                 <li>
                     <p class="well">{{score.snippet}}</p>
@@ -35,18 +35,18 @@
             </div>
         </ul>
         <!-- 4:3 aspect ratio -->
-        <div ng-if="score.videoUrl" class="col-md-12 embed-responsive embed-responsive-16by9">
+        <div ng-if="score.videourl" class="col-md-12 embed-responsive embed-responsive-16by9">
             <iframe class="col-md-12 embed-responsive-item" src="//www.youtube.com/embed/qwXzbILRheM"></iframe>
         </div>
     </div>
 
     <div class="col-md-8 col-sm-8 col-xs-8 text-left score-main">
-        <div ng-if="score.audioUrl" class="main-media">
-            <audio class="" ng-src="{{score.audioUrl}}" controls="controls" preload="auto" >
+        <div ng-if="score.audiourl" class="main-media">
+            <audio class="" ng-src="{{score.audiourl}}" controls="controls" preload="auto" >
                 Your browser does not support the HTML5 Audio element.
             </audio>
         </div>
 
-        <img class="main-image" ng-src="{{score.imageUrl}}">
+        <img class="main-image" ng-src="{{score.imageurl}}">
     </div>
 </div>
