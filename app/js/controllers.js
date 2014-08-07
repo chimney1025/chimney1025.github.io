@@ -22,10 +22,23 @@ rapidScoreControllers.controller('ScoreAdminCtrl', ['$scope', 'ScoreAdminAPI',
         $scope.scores = Score.getAll();
     }]);
 
+rapidScoreControllers.controller('CategoryAdminCtrl', ['$scope', 'CategoryAdminAPI', 'InstrumentAPI', 'ComposerAPI', 'GenreAPI',
+    function($scope, Category, Instrument, Composer, Genre) {
+        $scope.categories = Category.getAll();
+        $scope.getInstruments = Instrument.getAll();
+        $scope.getComposers = Composer.getAll();
+        $scope.getGenres = Genre.getAll();
+    }]);
+
+rapidScoreControllers.controller('UserAdminListCtrl', ['$scope', 'UserAdminAPI',
+    function($scope, User) {
+        $scope.users = User.getAll();
+    }]);
+
 rapidScoreControllers.controller('UserAdminCtrl', ['$scope', '$routeParams', 'UserAdminAPI',
     function($scope, $routeParams, User) {
-        $scope.users = User.getAll();
         $scope.user = User.getOne({username: $routeParams.username});
+        $scope.total = 0;
     }]);
 
 rapidScoreControllers.controller('UserCtrl', ['$scope', '$routeParams', 'UserAPI',

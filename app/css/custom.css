@@ -163,6 +163,7 @@ a{
 
 .btn-inline{
     float:left;
+    padding: 7px 20px;
     margin: 0 20px 20px 0;
 }
 
@@ -344,6 +345,7 @@ audio{
 
 .act-list ul{
     margin-bottom: 50px;
+    min-height: 120px;
 }
 
 .act-list li{
@@ -353,6 +355,7 @@ audio{
 
 .act-list h2 {
     margin-top: 10px;
+    clear:both;
 }
 
 .act-list h2 span{
@@ -604,8 +607,8 @@ span.form-check{
     }
 
     .score-detail .btn, .btn-inline{
-        padding: 10px 20px;
-        font-weight: normal;
+        padding: 7px 20px;
+        font-size: 0.85em;
     }
 
     .btn-inline{

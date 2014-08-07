@@ -33,33 +33,37 @@
             </li>
         </ul>
         <ul class="">
-            <h2>Shopping Cart</h2>
-            <li class="row list-inline columnCaptions">
-                <span>Title</span>
-                <span>Price</span>
-            </li>
-            <li class="row" ng-repeat="score in user.carts">
-                <span class="list-item"><a href="#/sheetmusic/{{score.shortname}}">{{score.name}}</a></span>
-                <span class="list-action"><a type="button" class="btn btn-danger btn-xs">Remove</a></span>
-                <span class="price">{{score.price | currency:'£'}}</span>
-            </li>
-            <li class="row totals">
-                <span class="list-item">Total:</span>
-                <span class="action"><a type="button" class="btn btn-primary">Order</a></span>
-                <span class="total">{{user.total | currency: '£'}}</span>
-            </li>
+            <h2>Shopping Cart ({{user.carts.length}})</h2>
+            <div ng-if="user.carts.length">
+                <li class="row list-inline columnCaptions">
+                    <span>Title</span>
+                    <span>Price</span>
+                </li>
+                <li class="row" ng-repeat="score in user.carts">
+                    <span class="list-item"><a href="#/sheetmusic/{{score.shortname}}">{{score.name}}</a></span>
+                    <span class="list-action"><a type="button" class="btn btn-danger btn-xs">Remove</a></span>
+                    <span class="price">{{score.price | currency:'£'}}</span>
+                </li>
+                <li class="row totals">
+                    <span class="list-item">Total:</span>
+                    <span class="action"><a type="button" class="btn btn-primary">Order</a></span>
+                    <span class="total">{{total | currency: '£'}}</span>
+                </li>
+            </div>
         </ul>
         <ul class="">
-            <h2>Purchased</h2>
-            <li class="row list-inline columnCaptions">
-                <span>Title</span>
-                <span>Price</span>
-            </li>
-            <li class="row" ng-repeat="score in user.purchased">
-                <span class="list-item"><a href="#/sheetmusic/{{score.shortname}}">{{score.name}}</a></span>
-                <span class="list-action"><a type="button" class="btn btn-warning btn-xs">Request</a></span>
-                <span class="price">{{score.price | currency:'£'}}</span>
-            </li>
+            <h2>Purchased ({{user.purchased.length}})</h2>
+            <div ng-if="user.purchased.length">
+                <li class="row list-inline columnCaptions">
+                    <span>Title</span>
+                    <span>Price</span>
+                </li>
+                <li class="row" ng-repeat="score in user.purchased">
+                    <span class="list-item"><a href="#/sheetmusic/{{score.shortname}}">{{score.name}}</a></span>
+                    <span class="list-action"><a type="button" class="btn btn-warning btn-xs">Request</a></span>
+                    <span class="price">{{score.price | currency:'£'}}</span>
+                </li>
+            </div>
         </ul>
     </div>
 

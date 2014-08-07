@@ -42,7 +42,7 @@
                 <div class="dropdown-category">
                     <select
                             ng-model="instrumentList"
-                            ng-options="value.cshortname as value.cname group by value.type for value in getInstruments" class="form-control">
+                            ng-options="value.c_shortname as value.c_name group by value.type for value in getInstruments" class="form-control">
                         <option value="">--</option>
                     </select>
                 </div>
@@ -52,7 +52,7 @@
             <div class="dropdown-category">
                 <select
                         ng-model="composerList"
-                        ng-options="value.cshortname as value.cname for value in getComposers" class="form-control">
+                        ng-options="value.c_shortname as value.c_name for value in getComposers" class="form-control">
                     <option value="">--</option>
                 </select>
             </div>
@@ -61,7 +61,7 @@
             <div class="dropdown-category">
                 <select
                         ng-model="genreList"
-                        ng-options="value.cshortname as value.cname for value in getGenres" class="form-control">
+                        ng-options="value.c_shortname as value.c_name for value in getGenres" class="form-control">
                     <option value="">--</option>
                 </select>
             </div>

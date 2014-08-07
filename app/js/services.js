@@ -89,3 +89,15 @@ rapidScoreServices.factory('ScoreAdminAPI', ['$resource',
             }
         );
     }]);
+
+rapidScoreServices.factory('CategoryAdminAPI', ['$resource',
+    function($resource){
+        return $resource(
+                hostname + '/admin/categories',
+            {},
+            {
+                getOne: {method:'GET'},
+                getAll: {method:'GET', isArray:true}
+            }
+        );
+    }]);

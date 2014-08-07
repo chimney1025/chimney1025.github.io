@@ -1,10 +1,53 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
+<div class="container breadcrumbBox">
+    <ol class="breadcrumb">
+        <li><a href="#/home"><span class="glyphicon glyphicon-home"></span></a></li>
+        <li><a href="#/admin">Admin</a></li>
+        <li><a href="#/admin/sheetmusic">Manage SheetMusic</a></li>
+    </ol>
+</div>
 
-</body>
-</html>
+<div class="container text-center">
+
+    <div class="col-md-3 col-sm-3 col-xs-3 text-left account-menu">
+        <ul class="">
+            <h4>Welcome Admin</h4>
+            <li><a href="#/admin/users">User List</a></li>
+            <li><a href="#/admin/sheetmusic">Sheet Music</a></li>
+            <li><a href="#/admin/categories">Categories</a></li>
+        </ul>
+    </div>
+
+    <div class="col-md-9 col-sm-9 col-xs-9 text-left act-list">
+        <ul class="">
+            <h2>Manage Instruments ({{getInstruments.length}})
+            </h2>
+            <li>
+                <a type="button"href="#/{{shortname}}/{{item.c_shortname}}" class="btn btn-default btn-inline btn-category" ng-repeat="item in getInstruments | filter:query | orderBy:orderProp">
+                    {{item.c_name}}
+                </a>
+                <a type="button" class="btn btn-warning btn-inline" href="#/admin/instruments/add">ADD</a>
+            </li>
+        </ul>
+        <ul class="">
+            <h2>Manage Composers ({{getComposers.length}})
+            </h2>
+            <li>
+                <a type="button"href="#/{{shortname}}/{{item.c_shortname}}" class="btn btn-default btn-inline btn-category" ng-repeat="item in getComposers | filter:query | orderBy:orderProp">
+                {{item.c_name}}
+                </a>
+                <a type="button" class="btn btn-warning btn-inline" href="#/admin/instruments/add">ADD</a>
+            </li>
+        </ul>
+        <ul class="">
+            <h2>Manage Genres ({{getGenres.length}})
+            </h2>
+            <li>
+                <a type="button"href="#/{{shortname}}/{{item.c_shortname}}" class="btn btn-default btn-inline btn-category" ng-repeat="item in getGenres | filter:query | orderBy:orderProp">
+                {{item.c_name}}
+                </a>
+                <a type="button" class="btn btn-warning btn-inline" href="#/admin/instruments/add">ADD</a>
+            </li>
+        </ul>
+    </div>
+
+</div>
