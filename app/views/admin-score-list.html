@@ -20,7 +20,7 @@
     <div class="col-md-9 col-sm-9 col-xs-9 text-left act-list">
         <ul class="">
             <h2>Manage Sheet Music ({{scores.length}})
-                <span><a type="button" class="btn btn-warning btn-xs" href="#/admin/sheetmusic/add">ADD</a></span>
+                <span><a type="button" class="btn btn-warning" href="#/admin/sheetmusic/add">ADD</a></span>
             </h2>
             <li class="row" ng-repeat="item in scores | filter:query | orderBy:orderProp">
                 <span class="list-item"><a href="#/sheetmusic/{{item.id}}">{{item.name}}</a></span>

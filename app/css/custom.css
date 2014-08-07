@@ -350,17 +350,23 @@ audio{
 
 .act-list li{
     padding: 10px 0;
-    line-height: 10px;
+    line-height: 0px;
 }
 
 .act-list h2 {
     margin-top: 10px;
     clear:both;
+    min-height: 40px;
+    line-height:40px;
 }
 
 .act-list h2 span{
     padding: 0;
     margin: 0 0 0 15px;
+}
+
+.act-list h2 span .btn{
+    padding: 7px 30px;
 }
 
 .act-list .list-item{
@@ -379,6 +385,10 @@ audio{
     width: 70%;
     text-align: left;
     float: left;
+}
+
+.act-btn{
+    padding-top: 0px !important;
 }
 
 
@@ -432,7 +442,7 @@ audio{
 	font-size: 0.85em;
 	float:right;
 	margin: 0 10px;
-    padding: 11px 0 0 0 !important;
+    padding: 7px 0 0 0 !important;
     cursor: pointer;
     text-align: center;
 }
@@ -616,7 +626,7 @@ span.form-check{
     }
 
     .btn.btn-detail{
-        padding: 2px 4px;
+        padding: 2px 6px;
         font-size: 0.7em;
         margin: 2px 5px;
         text-transform: uppercase;
@@ -704,7 +714,7 @@ span.form-check{
         font-size: 0.95em;
     }
 
-    .list-item{
+    .act-list .list-item, .list-item{
     	text-align:left;
     	margin: 0;
     	font-size: 0.95em;
@@ -715,7 +725,7 @@ span.form-check{
     }
 
     .list-action{
-        padding: 3px 0 0 0 !important;
+        padding: 6px 0 0 0 !important;
     }
 
     .columnCaptions span{
