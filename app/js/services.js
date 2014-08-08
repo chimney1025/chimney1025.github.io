@@ -116,7 +116,7 @@ rapidScoreServices.factory('ScoreAdminAPI', ['$resource',
 rapidScoreServices.factory('CategoryAdminAPI', ['$resource',
     function($resource){
         return $resource(
-                hostname + '/admin/categories',
+                hostname + '/admin/categorytypes',
             {},
             {
                 getOne: {method:'GET'},
