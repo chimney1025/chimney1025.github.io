@@ -76,7 +76,7 @@ a{
 /*View Container*/
 .view-container{
     margin-bottom: 80px;
-    min-height: 300px;
+    min-height: 100%;
 }
 
 /*Footer*/
