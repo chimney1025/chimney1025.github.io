@@ -723,10 +723,14 @@ span.form-check{
         margin-bottom: 10px;
     }
 
-    .act-list .list-item, .list-item{
+    .list-item{
     	text-align:left;
     	margin: 0;
     	font-size: 0.95em;
+    }
+    
+    .act-list .list-item, .act-list .price{
+    	margin-top: 10px;
     }
 
     .list-added{
@@ -757,9 +761,9 @@ span.form-check{
         padding-bottom:10px;
     }
 
-	.row span{
+.row span{
     	padding: 10px 0 3px 0;
-	}
+}
 
     /* Change Bootstrap's default popover to make it look nice on a mobile device */
 
