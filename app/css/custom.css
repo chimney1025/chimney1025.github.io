@@ -736,6 +736,10 @@ span.form-check{
     .list-action{
         padding: 10px 0 0 0 !important;
     }
+    
+    .admin-action{
+    	margin-right: 0px;
+}
 
     .columnCaptions span{
         padding: 0 21px 0 0;
