@@ -717,6 +717,10 @@ span.form-check{
         width: 100%;
         font-size: 0.95em;
     }
+    
+    .act-label {
+    	padding-bottom: 10px !important;
+    }
 
     .act-list .list-item, .list-item{
     	text-align:left;
