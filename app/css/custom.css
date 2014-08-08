@@ -723,7 +723,7 @@ span.form-check{
         margin-bottom: 10px;
     }
 
-    .list-item{
+    .list-item, .act-list .list-item{
     	text-align:left;
     	margin: 0;
     	font-size: 0.95em;
@@ -731,8 +731,6 @@ span.form-check{
     
     .act-list .list-item, .act-list .price{
     	margin-top: 10px;
-    	text-align:left;
-    	font-size: 0.95em;
     }
 
     .list-added{
