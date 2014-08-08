@@ -652,10 +652,6 @@ span.form-check{
         box-shadow: 0 0 0;
     }
 
-    body{
-        padding-bottom: 70px;
-    }
-
     .row span{
     	padding: 15px 0 4px 0;
     }
@@ -766,10 +762,6 @@ span.form-check{
     .popover.bottom{
         margin-top: 7px;
         margin-left: -40px;
-    }
-
-    body{
-        padding-bottom: 70px;
     }
 
     #footer {
