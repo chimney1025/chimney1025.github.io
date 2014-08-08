@@ -720,10 +720,7 @@ span.form-check{
     .act-label, .act-content{
         width: 100%;
         font-size: 0.95em;
-    }
-    
-    .act-label {
-    	padding-bottom: 10px !important;
+        margin-bottom: 10px;
     }
 
     .act-list .list-item, .list-item{
