@@ -9,7 +9,7 @@ html, body{
     font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 body{
-    padding-bottom: 70px;
+	padding: 0;
 }
 
 ul{
