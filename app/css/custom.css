@@ -687,6 +687,10 @@ span.form-check{
         padding: 0 15px 0 5px;
         margin-bottom: 72px;
     }
+    
+    .act-list li{
+    	padding: 0px;
+    }
 
     .act-list h2 span{
         padding: 0;
@@ -733,7 +737,7 @@ span.form-check{
     }
 
     .list-action{
-        padding: 6px 0 0 0 !important;
+        padding: 10px 0 0 0 !important;
     }
 
     .columnCaptions span{
