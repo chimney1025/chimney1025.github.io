@@ -65,6 +65,10 @@ rapidScoreApp.config(['$routeProvider',
                 templateUrl: 'views/signup.html',
                 controller: 'SignUpCtrl'
             }).
+            when('/redirecting', {
+                templateUrl: 'views/redirect.html',
+                controller: 'RedirectCtrl'
+            }).
             when('/admin/users', {
                 templateUrl: 'views/user-list.html',
                 controller: 'UserAdminListCtrl'

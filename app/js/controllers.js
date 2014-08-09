@@ -48,16 +48,30 @@ rapidScoreControllers.controller('UserCtrl', ['$scope', '$routeParams', 'UserAPI
         $scope.purchased = Purchased.getAll({username: $routeParams.username});
     }]);
 
-rapidScoreControllers.controller('SignUpCtrl', ['$scope', 'UserAPI', '$location',
-    function($scope, User, $location) {
+rapidScoreControllers.controller('RedirectCtrl', ['$scope', '$location', '$timeout',
+    function($scope, $location, $timeout) {
+        $scope.timeInMs = 0;
+        $scope.gif='';
+
+        var countUp = function() {
+            $scope.timeInMs+= 500;
+            $scope.gif += '.';
+            $timeout(countUp, 500);
+            if($scope.timeInMs == 2000){
+                $location.path('/sheetmusic');
+            }
+        };
+
+        $timeout(countUp, 500);
+
+        //
+    }]);
+
+rapidScoreControllers.controller('SignUpCtrl', ['$scope', 'RegisterAPI', 'CheckUsernameAPI', 'CheckEmailAPI', '$location',
+    function($scope, User, CheckUsername, CheckEmail, $location) {
         //Sign Up
         $scope.regInfo = {};
         $scope.regCheck = '';
-        var regData = {
-            "username":"",
-            "email":"",
-            "pass":""
-        };
 
         $scope.regSave = function() {
             $scope.regCheck = '';
@@ -91,17 +105,25 @@ rapidScoreControllers.controller('SignUpCtrl', ['$scope', 'UserAPI', '$location'
                 $scope.regCheck = 'Two Passwords do not match';
                 return;
             }
+            /*
+            need to check username and email existence
+            */
             //submit data
             else{
                 console.log('posting data...');
+                //create json to be posted
+                var regData = new Object();
                 regData.username = $scope.regInfo.username;
                 regData.email = $scope.regInfo.email;
-                regData.pass = $scope.regInfo.pass1;
-                var res = User.register({}, regData);
-
-                $location.path('/users/'+regData.username);
-                console.log(res);
+                regData.password = $scope.regInfo.pass1;
                 console.log(regData);
+
+                //convert to json
+                User.save({}, regData, function(res){
+                    if(res){
+                        $location.path('/redirecting');
+                    }
+                });
             }
         };
 
