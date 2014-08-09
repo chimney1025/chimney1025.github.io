@@ -20,15 +20,16 @@
     <div class="col-md-9 col-sm-9 col-xs-9 text-left act-list">
         <ul class="">
             <h2>Manage Sheet Music ({{scores.length}})
-                <span><a type="button" class="btn btn-warning" href="#/admin/sheetmusic/add">ADD</a></span>
+                <span><a type="button" ng-click="launch('create')" class="btn btn-warning">ADD</a></span>
             </h2>
             <li class="row" ng-repeat="item in scores | filter:query | orderBy:orderProp">
                 <span class="list-item"><a href="#/sheetmusic/{{item.shortname}}">{{item.name}}</a></span>
                 <span class="list-added">{{item.added | date : 'yyyy-MM-dd'}}</span>
                 <span class="admin-action list-action">
-                    <a type="button" class="btn btn-primary btn-xs">Add to Slider</a>
-                    <a type="button" class="btn btn-danger btn-xs">Remove</a>
+                    <a type="button" ng-click="launch('confirm')" class="btn btn-primary btn-xs">Add to Slider</a>
+                    <a type="button" ng-click="launch('confirm')" class="btn btn-danger btn-xs">Remove</a>
                 </span>
+
             </li>
         </ul>
     </div>

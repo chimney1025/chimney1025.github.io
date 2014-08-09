@@ -319,7 +319,7 @@ rapidScoreServices.factory('EditScoreAPI', ['$resource',
         return $resource(
                 hostname + '/admin/sheetmusic/:scoreid',
             //scoreData
-            {},
+            {scoreid:'@scoreid'},
             {
                 save: {
                     method: 'PUT',
@@ -327,7 +327,12 @@ rapidScoreServices.factory('EditScoreAPI', ['$resource',
                         'Content-Type': 'application/json'
                     }
                 },
-                remove: {method:'DELETE'}
+                remove: {
+                    method:'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                }
             }
         );
     }]);

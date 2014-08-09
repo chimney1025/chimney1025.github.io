@@ -29,7 +29,7 @@
             </li>
             <li class="row" ng-repeat="score in purchased">
                 <span class="list-item"><a href="#/sheetmusic/{{score.shortname}}">{{score.name}}</a></span>
-                <span class="list-action"><a type="button" class="btn btn-primary btn-xs">Request</a></span>
+                <span class="list-action"><a type="button" ng-click="launch('confirm')" class="btn btn-primary btn-xs">Request</a></span>
                 <span class="price">{{score.price | currency:'£'}}</span>
             </li>
             </div>

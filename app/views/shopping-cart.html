@@ -29,7 +29,7 @@
             </li>
             <li class="row" ng-repeat="score in cart">
                 <span class="list-item"><a href="#/sheetmusic/{{score.shortname}}">{{score.name}}</a></span>
-                <span class="list-action"><a type="button" class="btn btn-danger btn-xs">Remove</a></span>
+                <span class="list-action"><a type="button" ng-click="launch('notify')" class="btn btn-danger btn-xs">Remove</a></span>
                 <span class="price">{{score.price | currency:'£'}}</span>
             </li>
             <li class="row totals">

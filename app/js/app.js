@@ -25,6 +25,10 @@ rapidScoreApp.config(['$routeProvider',
                 templateUrl: 'views/detail.html',
                 controller: 'ScoreCtrl'
             }).
+            when('/sheetmusic/add', {
+                templateUrl: 'views/add-score.html',
+                controller: ''
+            }).
             when('/instruments', {
                 templateUrl: 'views/category.html',
                 controller: 'InstrumentListCtrl'
