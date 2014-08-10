@@ -83,6 +83,17 @@ a{
 	position: relative;
 }
 
+#logo{
+    width: 200px;
+}
+
+.biglogo{
+    margin-top: 50px;
+    filter: grayscale(0);
+    -webkit-filter: grayscale(0);
+    -moz-filter: grayscale(0);
+}
+
 /*Footer*/
 #footer {
     padding: 20px 0;
@@ -96,7 +107,7 @@ a{
 
 #footer img{
     height: 30px;
-    margin: 0;
+    margin: 0 2px;
 }
 
 
