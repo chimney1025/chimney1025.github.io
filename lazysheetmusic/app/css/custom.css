@@ -9,7 +9,7 @@ html, body{
     font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 body{
-    padding-bottom: 70px;
+	padding: 0;
 }
 
 ul{
@@ -75,7 +75,12 @@ a{
 
 /*View Container*/
 .view-container{
-    margin-bottom: 80px;
+    padding-bottom: 80px;
+}
+
+#main-container{
+	min-height: 100%;
+	position: relative;
 }
 
 /*Footer*/
@@ -83,6 +88,15 @@ a{
     padding: 20px 0;
     border-top: 1px solid #e5e5e5;
     background-color: #f5f5f5;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+
+#footer img{
+    height: 30px;
+    margin: 0;
 }
 
 
@@ -245,14 +259,17 @@ a{
 }
 
 .row{
-    box-shadow: 0 1px 0 #e1e5e8;
+    border-bottom: 1px solid #e1e5e8;
     background-color: #ffffff;
     margin: 5px 0 11px 0;
-    border-radius: 4px 4px 0 0;
 }
 
 .row span{
     padding: 20px 0 6px 0;
+}
+
+.row span span{
+    padding: 0;
 }
 
 .row p{
@@ -342,12 +359,37 @@ audio{
     padding: 0;
 }
 
-.act-list li{
-    padding: 10px 0;
-    line-height: 10px;
+.act-list ul{
+    margin-bottom: 50px;
+    min-height: 120px;
 }
 
-.user-label {
+.act-list li{
+    padding: 10px 0;
+    line-height: 0px;
+}
+
+.act-list h2{
+    margin-top: 2px;
+    clear:both;
+    min-height: 40px;
+    line-height:40px;
+}
+
+.act-list h2 span{
+    padding: 0;
+    margin: 0 0 0 15px;
+}
+
+.act-list h2 span .btn{
+    padding: 7px 30px;
+}
+
+.act-list .list-item{
+    font-size: 1.1em;
+}
+
+.act-label {
     width: 30%;
     text-align: left;
     float: left;
@@ -355,10 +397,32 @@ audio{
     font-weight: bold;
 }
 
-.user-content {
+.act-content {
     width: 70%;
     text-align: left;
     float: left;
+}
+
+.act-btn{
+    padding-top: 0px !important;
+}
+
+.act-list .admin-action-bar{
+    clear:both;
+    padding: 0;
+    margin: 5px 0;
+}
+
+.act-list .admin-search{
+    padding: 0;
+    margin: 0;
+    float: left;
+}
+
+.act-list .admin-dropdown-order{
+    padding: 0;
+    margin: 0;
+    float: right;
 }
 
 
@@ -412,7 +476,7 @@ audio{
 	font-size: 0.85em;
 	float:right;
 	margin: 0 10px;
-    padding: 11px 0 0 0 !important;
+    padding: 7px 0 0 0 !important;
     cursor: pointer;
     text-align: center;
 }
@@ -439,7 +503,7 @@ audio{
 }
 
 .totals span{
-    padding: 40px 15px 40px 0;
+    padding: 40px 15px 0 0;
 }
 
 .totals .total{
@@ -457,6 +521,14 @@ audio{
     margin-top: 40px;
     padding-left: 5px;
     cursor: pointer;
+}
+
+.totals .paypal{
+    clear:both;
+    float: right;
+    margin: 0 36px 0 0;
+    width: 78px;
+    padding: 10px 0;
 }
 
 .order a{
@@ -506,6 +578,13 @@ audio{
     margin: 0 auto;
     font-size: 0.95em;
 }
+
+span.form-check{
+    padding: 0;
+    color: #f08573;
+    margin-top: 20px;
+}
+
 .form-signin .form-signin-heading, .form-signin .checkbox
 {
     margin-bottom: 10px;
@@ -518,7 +597,6 @@ audio{
 {
     font-weight: normal;
 }
-
 
 .form-signin .form-control
 {
@@ -535,18 +613,38 @@ audio{
 {
     z-index: 2;
 }
-.form-signin input[type="text"], .form-signin input[type="password"]
+.form-signin input
 {
     margin-bottom: -1px;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
+    border-radius: 0;
 }
 .form-signin button
 {
-    margin-top: 10px;
+    margin-top: 20px;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
 }
+
+/*----------------------------------
+    admin forms and dialogs
+-------------------------------------*/
+/* Fix for Bootstrap 3 with Angular UI Bootstrap */
+
+.modal {
+    display: block;
+}
+
+/* Custom dialog/modal headers */
+
+.dialog-header-error { background-color: #d2322d; }
+.dialog-header-wait { background-color: #428bca; }
+.dialog-header-notify { background-color: #eeeeee; }
+.dialog-header-confirm { background-color: #333333; }
+.dialog-header-error span, .dialog-header-error h4,
+.dialog-header-wait span, .dialog-header-wait h4,
+.dialog-header-confirm span, .dialog-header-confirm h4 { color: #ffffff; }
+
+/* Ease Display */
 
 /*-----------------------------------
 	Media Queries
@@ -582,8 +680,8 @@ audio{
     }
 
     .score-detail .btn, .btn-inline{
-        padding: 10px 20px;
-        font-weight: normal;
+        padding: 7px 20px;
+        font-size: 0.85em;
     }
 
     .btn-inline{
@@ -591,7 +689,7 @@ audio{
     }
 
     .btn.btn-detail{
-        padding: 2px 4px;
+        padding: 2px 6px;
         font-size: 0.7em;
         margin: 2px 5px;
         text-transform: uppercase;
@@ -608,10 +706,6 @@ audio{
 
     .totals{
         box-shadow: 0 0 0;
-    }
-
-    body{
-        padding-bottom: 70px;
     }
 
     .row span{
@@ -633,7 +727,7 @@ audio{
     }
 
     .breadcrumbBox{
-        height:50px;
+        height:60px;
         padding-top:21px;
     }
 
@@ -647,6 +741,15 @@ audio{
     .list-score, .score-main, .act-list, .list-category{
         padding: 0 15px 0 5px;
         margin-bottom: 72px;
+    }
+
+    .act-list li{
+    	padding: 3px 0;
+    }
+
+    .act-list h2 span{
+        padding: 0;
+        margin: 5px 0 0 0;
     }
 
     .list-filter{
@@ -669,15 +772,20 @@ audio{
         margin-bottom: 15px;
     }
 
-    .user-label, .user-content{
+    .act-label, .act-content{
         width: 100%;
         font-size: 0.95em;
+        margin-bottom: 10px;
     }
 
-    .list-item{
+    .list-item, .act-list .list-item{
     	text-align:left;
     	margin: 0;
     	font-size: 0.95em;
+    }
+
+    .act-list .list-item, .act-list .price{
+    	margin-top: 10px;
     }
 
     .list-added{
@@ -685,8 +793,12 @@ audio{
     }
 
     .list-action{
-        padding: 3px 0 0 0 !important;
+        padding: 10px 0 0 0 !important;
     }
+
+    .admin-action{
+    	margin-right: 0px;
+}
 
     .columnCaptions span{
         padding: 0 21px 0 0;
@@ -704,9 +816,9 @@ audio{
         padding-bottom:10px;
     }
 
-	.row span{
+.row span{
     	padding: 10px 0 3px 0;
-	}
+}
 
     /* Change Bootstrap's default popover to make it look nice on a mobile device */
 
@@ -719,10 +831,6 @@ audio{
     .popover.bottom{
         margin-top: 7px;
         margin-left: -40px;
-    }
-
-    body{
-        padding-bottom: 70px;
     }
 
     #footer {

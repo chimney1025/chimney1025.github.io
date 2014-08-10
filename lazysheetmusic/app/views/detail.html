@@ -12,21 +12,22 @@
     <div class="col-md-4 col-sm-4 col-xs-4 text-left score-detail">
         <ul class="">
             <li><h1>{{score.name}}</h1></li>
-            <li><a type="button" class="btn btn-warning" href="#/users/user_1/shopping-cart">Add to cart</a></li>
+            <li><a type="button" class="btn btn-warning" ng-click="launch('notify')">Add to cart</a></li>
             <!--
             <li><a class="btn btn-default btn-block" ng-model="collapsed" ng-click="collapsed=!collapsed">More Detail</a></li>
             -->
             <div ng-show="!collapsed">
+                <li>Added: {{score.added | date : 'yyyy-MM-dd'}}</li>
                 <li>Price: {{score.price | currency:'£'}}</li>
                 <li>Page: <span>{{score.page}}</span></li>
-                <li>Instruments: <a type="button" class="btn-detail btn btn-default" href="#/instruments/{{instrument.uri}}" ng-repeat="instrument in score.instruments">{{instrument.name}} </a></li>
-                <li>Composers: <a type="button" class="btn-detail btn btn-default" href="#/composers/{{composer.uri}}" ng-repeat="composer in score.composers">{{composer.name}} </a></li>
-                <li>Genres: <a type="button" class="btn-detail btn btn-default" href="#/genres/{{genre.uri}}" ng-repeat="genre in score.genres">{{genre.name}} </a></li>
+                <li>Instruments: <a type="button" class="btn-detail btn btn-default" href="#/instruments/{{instrument.c_shortname}}" ng-repeat="instrument in score.instruments">{{instrument.c_name}} </a></li>
+                <li>Composers: <a type="button" class="btn-detail btn btn-default" href="#/composers/{{composer.c_shortname}}" ng-repeat="composer in score.composers">{{composer.c_name}} </a></li>
+                <li>Genres: <a type="button" class="btn-detail btn btn-default" href="#/genres/{{genre.c_shortname}}" ng-repeat="genre in score.genres">{{genre.c_name}} </a></li>
 
                 <li>
                     Links:
-                    <button type="button" class="btn-detail btn btn-default"  ng-if="score.audioUrl" href="{{score.audioUrl}}" target="_blank" class="" title="Download Audio">Audio</button>
-                    <button type="button" class="btn-detail btn btn-default"  ng-if="score.videoUrl" href="{{score.videoUrl}}" target="_blank" class="" title="Video Preview">Video</button>
+                    <button type="button" class="btn-detail btn btn-default"  ng-if="score.audiourl" href="{{score.audiourl}}" target="_blank" class="" title="Download Audio">Audio</button>
+                    <button type="button" class="btn-detail btn btn-default"  ng-if="score.videourl" href="{{score.videourl}}" target="_blank" class="" title="Video Preview">Video</button>
                 </li>
                 <li>
                     <p class="well">{{score.snippet}}</p>
@@ -34,18 +35,18 @@
             </div>
         </ul>
         <!-- 4:3 aspect ratio -->
-        <div ng-if="score.videoUrl" class="col-md-12 embed-responsive embed-responsive-16by9">
+        <div ng-if="score.videourl" class="col-md-12 embed-responsive embed-responsive-16by9">
             <iframe class="col-md-12 embed-responsive-item" src="//www.youtube.com/embed/qwXzbILRheM"></iframe>
         </div>
     </div>
 
     <div class="col-md-8 col-sm-8 col-xs-8 text-left score-main">
-        <div ng-if="score.audioUrl" class="main-media">
-            <audio class="" ng-src="{{score.audioUrl}}" controls="controls" preload="auto" >
+        <div ng-if="score.audiourl" class="main-media">
+            <audio class="" ng-src="{{score.audiourl}}" controls="controls" preload="auto" >
                 Your browser does not support the HTML5 Audio element.
             </audio>
         </div>
 
-        <img class="main-image" ng-src="{{score.imageUrl}}">
+        <img class="main-image" ng-src="{{score.imageurl}}">
     </div>
 </div>

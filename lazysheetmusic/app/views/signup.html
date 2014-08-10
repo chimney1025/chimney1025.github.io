@@ -8,34 +8,39 @@
 <!-- Content -->
 <div class="container text-center">
 
-    <div class="col-md-4 col-sm-5 text-center">
-        <h2>Log In</h2>
-        <form class="form-signin">
-            <input type="text" class="form-control" placeholder="Username or Email" required autofocus>
-            <input type="password" class="form-control" placeholder="Password" required>
-            <button class="btn btn-primary btn-block" type="submit">
-                Sign in</button>
-            <label class="checkbox pull-left">
-                <input type="checkbox" value="remember-me">
-                Remember me
-            </label>
-            <a href="#" class="pull-right need-help">Need help? </a><span class="clearfix"></span>
-        </form>
+    <div class="col-md-5 col-sm-5 col-xs-12">
 
-        *For Testing only: <a href="#/admin">Admin</a> | <a href="#/users/user_1">My Account</a>
+
+        *Testing : <a href="#/admin/users">Admin</a> | <a href="#/users/ttddlplp">My Account</a>
     </div>
-    
-    <div class="col-md-3 col-sm-2 text-center"></div>
+    <div class="col-md-7 col-sm-7 col-xs-12 text-center" ng-show="!regform">
+        <h2>Log In</h2>
 
-    <div class="col-md-5 col-sm-5 text-center">
+        <a class="pull-center need-help" ng-model="regform" ng-click="regform=!regform">Not Registered? </a><span class="clearfix"></span>
+        <form name="LoginForm" class="form-signin" role="form">
+            <input type="email" class="form-control" placeholder="Email" ng-model="loginInfo.email" required autofocus>
+            <input type="password" class="form-control" placeholder="Password" ng-model="loginInfo.pass" required>
+            <span class="form-check" ng-show="loginCheck">{{loginCheck}}</span>
+            <button class="btn btn-primary btn-block" type="submit" ng-click="loginSave()">
+                Sign in
+            </button>
+            <a href="#" class="pull-right need-help">Forgotten password? </a><span class="clearfix"></span>
+        </form>
+    </div>
+
+    <div class="col-md-7 col-sm-7 col-xs-12 text-center" ng-show="regform">
+
         <h2>Sign Up</h2>
-        <form class="form-signin">
-            <input type="text" class="form-control" placeholder="Email" required autofocus>
-            <input type="text" class="form-control" placeholder="Username" required>
-            <input type="password" class="form-control" placeholder="Password" required>
-            <input type="password" class="form-control" placeholder="Re-enter Password" required>
-            <button class="btn btn-primary btn-block" type="submit">
-                Register</button>
-    </form>
+        <a class="pull-center need-help" ng-model="regform" ng-click="regform=!regform">Registered? Click to Login </a><span class="clearfix"></span>
+        <form name="RegForm" class="form-signin" role="form">
+            <input type="email" class="form-control" placeholder="Email" ng-model="regInfo.email" required>
+            <input type="text" maxlength="20" minlength="4" class="form-control" placeholder="Username (4-20 characters)" ng-model="regInfo.username" required ng-trim="true">
+            <input type="password" maxlength="20" minlength="6" class="form-control" placeholder="Password (6-20 characters)" ng-model="regInfo.pass1" required>
+            <input type="password" maxlength="20" minlength="6" class="form-control" placeholder="Re-enter Password" ng-model="regInfo.pass2" required>
+            <span class="form-check" ng-show="regCheck">{{regCheck}}</span>
+            <button class="btn btn-primary btn-block" type="submit" ng-click="regSave()">
+                Register
+            </button>
+        </form>
     </div>
 </div>

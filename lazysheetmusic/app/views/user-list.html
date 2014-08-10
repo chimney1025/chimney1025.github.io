@@ -18,11 +18,12 @@
     </div>
 
     <div class="col-md-9 col-sm-9 col-xs-9 text-left act-list">
+
+        <h2>Manage Users ({{users.length}})</h2>
         <ul class="">
-            <h2>Manage Users ({{users.length}})</h2>
-            <li class="row" ng-repeat="user in users">
-                <span class="list-item"><a href="#/users/{{user.id}}">{{user.id}}</a></span>
-                <span class="list-added">{{user.added}}</span>
+            <li class="row" ng-repeat="item in users">
+                <span class="list-item"><a href="#/admin/users/{{item.username}}">{{item.username}}</a></span>
+                <span class="list-added">{{item.added | date : 'yyyy-MM-dd'}}</span>
                 <span class="admin-action list-action">
                     <a type="button" class="btn btn-primary btn-xs">Send Message</a>
                     <a type="button" class="btn btn-danger btn-xs">Block</a>
