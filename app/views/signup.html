@@ -8,8 +8,15 @@
 <!-- Content -->
 <div class="container text-center">
 
-    <div class="col-md-4 col-sm-5 text-center">
+    <div class="col-md-5 col-sm-5 col-xs-12">
+
+
+        *Testing : <a href="#/admin/users">Admin</a> | <a href="#/users/ttddlplp">My Account</a>
+    </div>
+    <div class="col-md-7 col-sm-7 col-xs-12 text-center" ng-show="!regform">
         <h2>Log In</h2>
+
+        <a class="pull-center need-help" ng-model="regform" ng-click="regform=!regform">Not Registered? </a><span class="clearfix"></span>
         <form name="LoginForm" class="form-signin" role="form">
             <input type="email" class="form-control" placeholder="Email" ng-model="loginInfo.email" required autofocus>
             <input type="password" class="form-control" placeholder="Password" ng-model="loginInfo.pass" required>
@@ -17,20 +24,14 @@
             <button class="btn btn-primary btn-block" type="submit" ng-click="loginSave()">
                 Sign in
             </button>
-            <label class="checkbox pull-left">
-                <input type="checkbox" value="remember-me">
-                Remember me
-            </label>
-            <a href="#" class="pull-right need-help">Need help? </a><span class="clearfix"></span>
+            <a href="#" class="pull-right need-help">Forgotten password? </a><span class="clearfix"></span>
         </form>
-
-        *Testing : <a href="#/admin/users">Admin</a> | <a href="#/users/ttddlplp">My Account</a>
     </div>
-    
-    <div class="col-md-3 col-sm-2 text-center"></div>
 
-    <div class="col-md-5 col-sm-5 text-center">
+    <div class="col-md-7 col-sm-7 col-xs-12 text-center" ng-show="regform">
+
         <h2>Sign Up</h2>
+        <a class="pull-center need-help" ng-model="regform" ng-click="regform=!regform">Registered? Click to Login </a><span class="clearfix"></span>
         <form name="RegForm" class="form-signin" role="form">
             <input type="email" class="form-control" placeholder="Email" ng-model="regInfo.email" required>
             <input type="text" maxlength="20" minlength="4" class="form-control" placeholder="Username (4-20 characters)" ng-model="regInfo.username" required ng-trim="true">
