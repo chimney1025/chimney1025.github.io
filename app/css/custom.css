@@ -171,7 +171,6 @@ a{
 
 .btn-inline{
     float:left;
-    padding: 7px 20px;
     margin: 0 20px 20px 0;
 }
 
@@ -254,14 +253,17 @@ a{
 }
 
 .row{
-    box-shadow: 0 1px 0 #e1e5e8;
+    border-bottom: 1px solid #e1e5e8;
     background-color: #ffffff;
     margin: 5px 0 11px 0;
-    border-radius: 4px 4px 0 0;
 }
 
 .row span{
     padding: 20px 0 6px 0;
+}
+
+.row span span{
+    padding: 0;
 }
 
 .row p{
@@ -361,8 +363,8 @@ audio{
     line-height: 0px;
 }
 
-.act-list h2 {
-    margin-top: 10px;
+.act-list h2{
+    margin-top: 2px;
     clear:both;
     min-height: 40px;
     line-height:40px;
@@ -397,6 +399,24 @@ audio{
 
 .act-btn{
     padding-top: 0px !important;
+}
+
+.act-list .admin-action-bar{
+    clear:both;
+    padding: 0;
+    margin: 5px 0;
+}
+
+.act-list .admin-search{
+    padding: 0;
+    margin: 0;
+    float: left;
+}
+
+.act-list .admin-dropdown-order{
+    padding: 0;
+    margin: 0;
+    float: right;
 }
 
 
@@ -708,7 +728,7 @@ span.form-check{
         padding: 0 15px 0 5px;
         margin-bottom: 72px;
     }
-    
+
     .act-list li{
     	padding: 3px 0;
     }
@@ -749,7 +769,7 @@ span.form-check{
     	margin: 0;
     	font-size: 0.95em;
     }
-    
+
     .act-list .list-item, .act-list .price{
     	margin-top: 10px;
     }
@@ -761,7 +781,7 @@ span.form-check{
     .list-action{
         padding: 10px 0 0 0 !important;
     }
-    
+
     .admin-action{
     	margin-right: 0px;
 }

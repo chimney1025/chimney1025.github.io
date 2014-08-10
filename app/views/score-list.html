@@ -12,7 +12,10 @@
     <div class="col-md-4 col-sm-4 col-xs-4 text-left list-filter">
         <div class="dropdown-title">
             <a type="button" class="btn btn-block btn-primary"
-               ng-model="collapsed" ng-click="collapsed=!collapsed">Sort & Filters</a>
+               ng-model="collapsed" ng-click="collapsed=!collapsed">Sort & Filters
+                <span ng-show="!collapsed" class="glyphicon glyphicon-chevron-up"></span>
+                <span ng-show="collapsed" class="glyphicon glyphicon-chevron-down"></span>
+            </a>
         </div>
 
         <div id="sortnfilter" ng-show="!collapsed">

@@ -17,8 +17,9 @@
     </div>
 
     <div class="col-md-9 col-sm-9 col-xs-9 text-left act-list">
+
+        <h2>Account Detail</h2>
         <ul class="">
-            <h2>Account Detail</h2>
             <li class="row">
                 <span class="act-label">USERNAME</span>
                 <span class="act-content">{{user.username}}</span>
@@ -32,8 +33,9 @@
                 <span class="act-content">{{user.added | date : 'yyyy-MM-dd'}}</span>
             </li>
         </ul>
+
+        <h2>Shopping Cart ({{user.carts.length}})</h2>
         <ul class="">
-            <h2>Shopping Cart ({{user.carts.length}})</h2>
             <div ng-if="user.carts.length">
                 <li class="row" ng-repeat="score in user.carts">
                     <span class="list-item"><a href="#/sheetmusic/{{score.shortname}}">{{score.name}}</a></span>
@@ -41,8 +43,9 @@
                 </li>
             </div>
         </ul>
+
+        <h2>Purchased ({{user.purchased.length}})</h2>
         <ul class="">
-            <h2>Purchased ({{user.purchased.length}})</h2>
             <div ng-if="user.purchased.length">
                 <li class="row" ng-repeat="score in user.purchased">
                     <span class="list-item"><a href="#/sheetmusic/{{score.shortname}}">{{score.name}}</a></span>

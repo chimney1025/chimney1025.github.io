@@ -17,25 +17,56 @@ rapidScoreControllers.controller('ScoreCtrl', ['$scope', '$routeParams', 'ScoreA
         $scope.score = Score.getOne({scoreId: $routeParams.scoreId});
     }]);
 
-rapidScoreControllers.controller('ScoreAdminCtrl', ['$scope', 'ScoreAdminAPI', 'AddScoreAPI', 'EditScoreAPI',
-    function($scope, Score, AddScore, EditScore) {
+rapidScoreControllers.controller('ScoreAdminCtrl', ['$scope', 'ScoreAdminAPI', 'AddScoreAPI', 'EditScoreAPI', 'AddScoreCategoryAPI', 'RemoveScoreCategoryAPI',
+    function($scope, Score, AddScore, EditScore, AddScoreCategory, RemoveScoreCategory) {
         $scope.scores = Score.getAll();
 
+        //remove
         $scope.removeScore = function(sid){
             alert(sid);
             EditScore.remove({}, {'scoreid':sid}, function(res){
                 console.log(res + ' deleted : ' + sid);
                 $scope.scores = Score.getAll();
             });
-        }
+        };
+
+        //edit
+
+        //add
     }]);
 
-rapidScoreControllers.controller('CategoryAdminCtrl', ['$scope', 'CategoryAdminAPI', 'InstrumentAPI', 'ComposerAPI', 'GenreAPI',
-    function($scope, Category, Instrument, Composer, Genre) {
+rapidScoreControllers.controller('CategoryAdminCtrl', ['$scope', 'CategoryAdminAPI', 'InstrumentAPI', 'ComposerAPI', 'GenreAPI', 'AddCategoryAPI', 'EditCategoryAPI',
+    function($scope, Category, Instrument, Composer, Genre, AddCategory, EditCategory) {
         $scope.categories = Category.getAll();
         $scope.getInstruments = Instrument.getAll();
         $scope.getComposers = Composer.getAll();
         $scope.getGenres = Genre.getAll();
+
+        //remove
+        //edit
+        //add
+        $scope.cInfo = {};
+        $scope.cCheck = '';
+        $scope.addCategory = function(){
+            if(!$scope.cInfo.cname){
+                $scope.cCheck = 'Invalid category name';
+                return;
+            }
+            else if(!$scope.cInfo.cshortname){
+                $scope.cCheck = 'Invalid category short name';
+                return;
+            }
+            else{
+                var cData = new Object();
+                cData.cname = $scope.cInfo.cname;
+                cData.cshortname = $scope.cInfo.cshortname;
+                cData.ctnumber = $scope.cInfo.ctnumber;
+                AddCategory.save({}, cData, function(res){
+                    console.log(res + ' added : ' + cname);
+
+                });
+            }
+        }
     }]);
 
 rapidScoreControllers.controller('UserAdminListCtrl', ['$scope', 'UserAdminAPI',
@@ -221,24 +252,51 @@ rapidScoreControllers.controller('dialogService',function($scope,$rootScope,$tim
         $scope.confirmed = 'You have yet to be confirmed!';
         $scope.name = '"Your name here."';
 
-        $scope.launch = function(which){
+    $scope.addcategory = function(ctnumber, ctname){
+        var dlg = null;
+
+        dlg = $dialogs.create('/dialogs/add-'+ctnumber+'.html','addDialogCtrl',{},{key: false,back: 'static'});
+
+
+        dlg.result.then(function(name){
+            $scope.name = name;
+        },function(){
+            $scope.name = 'You decided not to enter in your name, that makes me sad.';
+        });
+    }; // end addcategory
+
+    $scope.editcategory = function(which, cnumber, cname, ctnumber, ctname){
+        var dlg = null;
+        switch(which){
+            // Confirm Dialog
+            case 'remove':
+                dlg = $dialogs.confirm('Please Confirm','Is this awesome or what?');
+                dlg.result.then(function(btn){
+                    $scope.confirmed = 'You thought this quite awesome!';
+                },function(btn){
+                    $scope.confirmed = 'Shame on you for not thinking this is awesome!';
+                });
+                break;
+
+            // custom add score dialog
+            case 'rename':
+                dlg = $dialogs.create('/dialogs/rename-'+  ctnumber +'.html','editDialogCtrl',{},{key: false,back: 'static'});
+                dlg.result.then(function(name){
+                    $scope.name = name;
+                },function(){
+                    $scope.name = 'You decided not to enter in your name, that makes me sad.';
+                });
+
+                break;
+        }; // end switch
+    }; // end editcategory
+
+        $scope.launch = function(which, sid, name){
             var dlg = null;
             switch(which){
-
-                // Error Dialog
-                case 'error':
-                    dlg = $dialogs.error('This is my error message');
-                    break;
-
-                // Wait / Progress Dialog
-                case 'wait':
-                    dlg = $dialogs.wait(msgs[i++],progress);
-                    fakeProgress();
-                    break;
-
                 // Notify Dialog
-                case 'notify':
-                    dlg = $dialogs.notify('Something Happened!','Something happened that I need to tell you.');
+                case 'userremovecart':
+                    dlg = $dialogs.notify('Shopping Cart','Removed '+name+ ' from your Shopping Cart!');
                     break;
 
                 // Confirm Dialog
@@ -251,9 +309,41 @@ rapidScoreControllers.controller('dialogService',function($scope,$rootScope,$tim
                     });
                     break;
 
+                //remove button, request button
+                case 'removescore':
+                    dlg = $dialogs.confirm('Please Confirm','Is this awesome or what?');
+                    dlg.result.then(function(btn){
+                        $scope.confirmed = 'You thought this quite awesome!';
+                    },function(btn){
+                        $scope.confirmed = 'Shame on you for not thinking this is awesome!';
+                    });
+                    break;
+
+                // custom add score dialog
+                case 'addscore':
+                    dlg = $dialogs.create('/dialogs/addscore.html','addDialogCtrl',{},{key: false,back: 'static'});
+                    dlg.result.then(function(name){
+                        $scope.name = name;
+                    },function(){
+                        $scope.name = 'You decided not to enter in your name, that makes me sad.';
+                    });
+
+                    break;
+
+                // custom add score dialog
+                case 'editscore':
+                    dlg = $dialogs.create('/dialogs/editscore.html','editDialogCtrl',{},{key: false,back: 'static'});
+                    dlg.result.then(function(name){
+                        $scope.name = name;
+                    },function(){
+                        $scope.name = 'You decided not to enter in your name, that makes me sad.';
+                    });
+
+                    break;
+
                 // Create Your Own Dialog
                 case 'create':
-                    dlg = $dialogs.create('/dialogs/whatsyourname.html','whatsYourNameCtrl',{},{key: false,back: 'static'});
+                    dlg = $dialogs.create('/dialogs/create.html','whatsYourNameCtrl',{},{key: false,back: 'static'});
                     dlg.result.then(function(name){
                         $scope.name = name;
                     },function(){
@@ -287,6 +377,38 @@ rapidScoreControllers.controller('dialogService',function($scope,$rootScope,$tim
         }; // end fakeProgress
 
     }) // end dialogsServiceTest
+    .controller('addDialogCtrl',function($scope,$modalInstance,data){
+        $scope.user = {name : ''};
+
+        $scope.cancel = function(){
+            $modalInstance.dismiss('canceled');
+        }; // end cancel
+
+        $scope.save = function(){
+            $modalInstance.close($scope.user.name);
+        }; // end save
+
+        $scope.hitEnter = function(evt){
+            if(angular.equals(evt.keyCode,13) && !(angular.equals($scope.name,null) || angular.equals($scope.name,'')))
+                $scope.save();
+        }; // end hitEnter
+    }) // end addScoreDialogCtrl
+    .controller('editDialogCtrl',function($scope,$modalInstance,data){
+        $scope.user = {name : ''};
+
+        $scope.cancel = function(){
+            $modalInstance.dismiss('canceled');
+        }; // end cancel
+
+        $scope.save = function(){
+            $modalInstance.close($scope.user.name);
+        }; // end save
+
+        $scope.hitEnter = function(evt){
+            if(angular.equals(evt.keyCode,13) && !(angular.equals($scope.name,null) || angular.equals($scope.name,'')))
+                $scope.save();
+        }; // end hitEnter
+    }) // end editScoreDialogCtrl
     .controller('whatsYourNameCtrl',function($scope,$modalInstance,data){
         $scope.user = {name : ''};
 
@@ -304,5 +426,118 @@ rapidScoreControllers.controller('dialogService',function($scope,$rootScope,$tim
         }; // end hitEnter
     }) // end whatsYourNameCtrl
     .run(['$templateCache',function($templateCache){
-        $templateCache.put('/dialogs/whatsyourname.html','<div class="modal"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><h4 class="modal-title"><span class="glyphicon glyphicon-star"></span> User\'s Name</h4></div><div class="modal-body"><ng-form name="nameDialog" novalidate role="form"><div class="form-group input-group-lg" ng-class="{true: \'has-error\'}[nameDialog.username.$dirty && nameDialog.username.$invalid]"><label class="control-label" for="username">Name:</label><input type="text" class="form-control" name="username" id="username" ng-model="user.name" ng-keyup="hitEnter($event)" required><span class="help-block">Enter your full name, first &amp; last.</span></div></ng-form></div><div class="modal-footer"><button type="button" class="btn btn-default" ng-click="cancel()">Cancel</button><button type="button" class="btn btn-primary" ng-click="save()" ng-disabled="(nameDialog.$dirty && nameDialog.$invalid) || nameDialog.$pristine">Save</button></div></div></div></div>');
+        $templateCache.put('/dialogs/addscore.html',
+            '<div class="modal"><div class="modal-dialog"><div class="modal-content"><div class="modal-header">' +
+                '<h4 class="modal-title"><span class="glyphicon glyphicon-star"></span> ' +
+                'Adding New Sheet Music</h4></div>' +
+                '<div class="modal-body"><ng-form name="nameDialog" novalidate role="form">' +
+                '<div class="form-group input-group-lg" ng-class="{true: \'has-error\'}[nameDialog.username.$dirty && nameDialog.username.$invalid]">' +
+                '<label class="control-label" for="username">Title:</label>' +
+                '<input type="text" class="form-control" name="username" id="username" ng-model="user.name" ng-keyup="hitEnter($event)" required>' +
+                '<span class="help-block">Enter Score Title.</span>' +
+                '</div></ng-form></div><div class="modal-footer">' +
+                '<button type="button" class="btn btn-default" ng-click="cancel()">Cancel</button>' +
+                '<button type="button" class="btn btn-primary" ng-click="save()" ng-disabled="(nameDialog.$dirty && nameDialog.$invalid) || nameDialog.$pristine">Save</button>' +
+                '</div></div></div></div>');
+
+        $templateCache.put('/dialogs/editscore.html',
+                '<div class="modal"><div class="modal-dialog"><div class="modal-content"><div class="modal-header">' +
+                '<h4 class="modal-title"><span class="glyphicon glyphicon-star"></span> ' +
+                'Editing Sheet Music</h4></div>' +
+                '<div class="modal-body"><ng-form name="nameDialog" novalidate role="form">' +
+                '<div class="form-group input-group-lg" ng-class="{true: \'has-error\'}[nameDialog.username.$dirty && nameDialog.username.$invalid]">' +
+                '<label class="control-label" for="username">Title:</label>' +
+                '<input type="text" class="form-control" name="username" id="username" ng-model="user.name" ng-keyup="hitEnter($event)" required>' +
+                '<span class="help-block">Enter Score Title.</span>' +
+                '</div></ng-form></div><div class="modal-footer">' +
+                '<button type="button" class="btn btn-default" ng-click="cancel()">Cancel</button>' +
+                '<button type="button" class="btn btn-primary" ng-click="save()" ng-disabled="(nameDialog.$dirty && nameDialog.$invalid) || nameDialog.$pristine">Save</button>' +
+                '</div></div></div></div>');
+
+        $templateCache.put('/dialogs/add-1.html',
+                '<div class="modal"><div class="modal-dialog"><div class="modal-content"><div class="modal-header">' +
+                '<h4 class="modal-title"><span class="glyphicon glyphicon-star"></span> ' +
+                'Adding Instrument</h4></div>' +
+                '<div class="modal-body"><ng-form name="nameDialog" novalidate role="form">' +
+                '<div class="form-group input-group-lg" ng-class="{true: \'has-error\'}[nameDialog.username.$dirty && nameDialog.username.$invalid]">' +
+                '<label class="control-label" for="username">Instrument Name:</label>' +
+                '<input type="text" class="form-control" name="username" id="username" ng-model="user.name" ng-keyup="hitEnter($event)" required>' +
+                '<span class="help-block">Enter Instrument Name</span>' +
+                '</div></ng-form></div><div class="modal-footer">' +
+                '<button type="button" class="btn btn-default" ng-click="cancel()">Cancel</button>' +
+                '<button type="button" class="btn btn-primary" ng-click="save()" ng-disabled="(nameDialog.$dirty && nameDialog.$invalid) || nameDialog.$pristine">Save</button>' +
+                '</div></div></div></div>');
+
+        $templateCache.put('/dialogs/add-2.html',
+                '<div class="modal"><div class="modal-dialog"><div class="modal-content"><div class="modal-header">' +
+                '<h4 class="modal-title"><span class="glyphicon glyphicon-star"></span> ' +
+                'Adding Composer</h4></div>' +
+                '<div class="modal-body"><ng-form name="nameDialog" novalidate role="form">' +
+                '<div class="form-group input-group-lg" ng-class="{true: \'has-error\'}[nameDialog.username.$dirty && nameDialog.username.$invalid]">' +
+                '<label class="control-label" for="username">Composer Name:</label>' +
+                '<input type="text" class="form-control" name="username" id="username" ng-model="user.name" ng-keyup="hitEnter($event)" required>' +
+                '<span class="help-block">Enter Composer Name</span>' +
+                '</div></ng-form></div><div class="modal-footer">' +
+                '<button type="button" class="btn btn-default" ng-click="cancel()">Cancel</button>' +
+                '<button type="button" class="btn btn-primary" ng-click="save()" ng-disabled="(nameDialog.$dirty && nameDialog.$invalid) || nameDialog.$pristine">Save</button>' +
+                '</div></div></div></div>');
+
+        $templateCache.put('/dialogs/add-3.html',
+                '<div class="modal"><div class="modal-dialog"><div class="modal-content"><div class="modal-header">' +
+                '<h4 class="modal-title"><span class="glyphicon glyphicon-star"></span> ' +
+                'Adding Genre</h4></div>' +
+                '<div class="modal-body"><ng-form name="nameDialog" novalidate role="form">' +
+                '<div class="form-group input-group-lg" ng-class="{true: \'has-error\'}[nameDialog.username.$dirty && nameDialog.username.$invalid]">' +
+                '<label class="control-label" for="username">Genre Name:</label>' +
+                '<input type="text" class="form-control" name="username" id="username" ng-model="user.name" ng-keyup="hitEnter($event)" required>' +
+                '<span class="help-block">Enter Genre Name</span>' +
+                '</div></ng-form></div><div class="modal-footer">' +
+                '<button type="button" class="btn btn-default" ng-click="cancel()">Cancel</button>' +
+                '<button type="button" class="btn btn-primary" ng-click="save()" ng-disabled="(nameDialog.$dirty && nameDialog.$invalid) || nameDialog.$pristine">Save</button>' +
+                '</div></div></div></div>');
+
+        $templateCache.put('/dialogs/rename-1.html',
+                '<div class="modal"><div class="modal-dialog"><div class="modal-content"><div class="modal-header">' +
+                '<h4 class="modal-title"><span class="glyphicon glyphicon-star"></span> ' +
+                'Renaming Instrument</h4></div>' +
+                '<div class="modal-body"><ng-form name="nameDialog" novalidate role="form">' +
+                '<div class="form-group input-group-lg" ng-class="{true: \'has-error\'}[nameDialog.username.$dirty && nameDialog.username.$invalid]">' +
+                '<label class="control-label" for="username">Instrument Name:</label>' +
+                '<input type="text" class="form-control" name="username" id="username" ng-model="user.name" ng-keyup="hitEnter($event)" required>' +
+                '<span class="help-block">Enter new instrument name</span>' +
+                '</div></ng-form></div><div class="modal-footer">' +
+                '<button type="button" class="btn btn-default" ng-click="cancel()">Cancel</button>' +
+                '<button type="button" class="btn btn-primary" ng-click="save()" ng-disabled="(nameDialog.$dirty && nameDialog.$invalid) || nameDialog.$pristine">Save</button>' +
+                '</div></div></div></div>');
+
+        $templateCache.put('/dialogs/rename-2.html',
+                '<div class="modal"><div class="modal-dialog"><div class="modal-content"><div class="modal-header">' +
+                '<h4 class="modal-title"><span class="glyphicon glyphicon-star"></span> ' +
+                'Renaming Composer</h4></div>' +
+                '<div class="modal-body"><ng-form name="nameDialog" novalidate role="form">' +
+                '<div class="form-group input-group-lg" ng-class="{true: \'has-error\'}[nameDialog.username.$dirty && nameDialog.username.$invalid]">' +
+                '<label class="control-label" for="username">Composer Name:</label>' +
+                '<input type="text" class="form-control" name="username" id="username" ng-model="user.name" ng-keyup="hitEnter($event)" required>' +
+                '<span class="help-block">Enter new composer name</span>' +
+                '</div></ng-form></div><div class="modal-footer">' +
+                '<button type="button" class="btn btn-default" ng-click="cancel()">Cancel</button>' +
+                '<button type="button" class="btn btn-primary" ng-click="save()" ng-disabled="(nameDialog.$dirty && nameDialog.$invalid) || nameDialog.$pristine">Save</button>' +
+                '</div></div></div></div>');
+
+        $templateCache.put('/dialogs/rename-3.html',
+                '<div class="modal"><div class="modal-dialog"><div class="modal-content"><div class="modal-header">' +
+                '<h4 class="modal-title"><span class="glyphicon glyphicon-star"></span> ' +
+                'Renaming Genre</h4></div>' +
+                '<div class="modal-body"><ng-form name="nameDialog" novalidate role="form">' +
+                '<div class="form-group input-group-lg" ng-class="{true: \'has-error\'}[nameDialog.username.$dirty && nameDialog.username.$invalid]">' +
+                '<label class="control-label" for="username">Genre Name:</label>' +
+                '<input type="text" class="form-control" name="username" id="username" ng-model="user.name" ng-keyup="hitEnter($event)" required>' +
+                '<span class="help-block">Enter new genre name</span>' +
+                '</div></ng-form></div><div class="modal-footer">' +
+                '<button type="button" class="btn btn-default" ng-click="cancel()">Cancel</button>' +
+                '<button type="button" class="btn btn-primary" ng-click="save()" ng-disabled="(nameDialog.$dirty && nameDialog.$invalid) || nameDialog.$pristine">Save</button>' +
+                '</div></div></div></div>');
+
+        $templateCache.put('/dialogs/create.html','<div class="modal"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><h4 class="modal-title"><span class="glyphicon glyphicon-star"></span> User\'s Name</h4></div><div class="modal-body"><ng-form name="nameDialog" novalidate role="form"><div class="form-group input-group-lg" ng-class="{true: \'has-error\'}[nameDialog.username.$dirty && nameDialog.username.$invalid]"><label class="control-label" for="username">Name:</label><input type="text" class="form-control" name="username" id="username" ng-model="user.name" ng-keyup="hitEnter($event)" required><span class="help-block">Enter your full name, first &amp; last.</span></div></ng-form></div><div class="modal-footer"><button type="button" class="btn btn-default" ng-click="cancel()">Cancel</button><button type="button" class="btn btn-primary" ng-click="save()" ng-disabled="(nameDialog.$dirty && nameDialog.$invalid) || nameDialog.$pristine">Save</button></div></div></div></div>');
+
     }]); // end run / module

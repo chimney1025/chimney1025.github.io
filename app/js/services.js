@@ -180,14 +180,20 @@ rapidScoreServices.factory('AddOrClearCartAPI', ['$resource',
         return $resource(
                 hostname + '/users/:userid/shopping-cart',
             //sid
-            {},
+            {userid:'@userid'},
             {
                 add: {
                     method:'POST',
                     headers: {
                         'Content-Type': 'application/json'
-                    }},
-                clear: {method: 'DELETE'}
+                    }
+                },
+                clear: {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                }
             }
         );
     }]);
@@ -195,10 +201,15 @@ rapidScoreServices.factory('AddOrClearCartAPI', ['$resource',
 rapidScoreServices.factory('RemoveCartAPI', ['$resource',
     function($resource){
         return $resource(
-                hostname + '/users/:userid/shopping-cart/:scoreid',
-            {},
+                hostname + '/users/:userid/shopping-cart/:scoreId',
+            {userid:'@userid', scoreId:'@scoreId'},
             {
-                remove: {method: 'DELETE'}
+                remove: {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                }
             }
         );
     }]);
@@ -207,9 +218,9 @@ rapidScoreServices.factory('RemoveCartAPI', ['$resource',
 rapidScoreServices.factory('PlaceOrderAPI', ['$resource',
     function($resource){
         return $resource(
-                hostname + '/users/:username/purchased',
+                hostname + '/users/:userid/purchased',
             //info
-            {},
+            {userid:'@userid'},
             {
                 order: {
                     method: 'POST',
@@ -221,7 +232,14 @@ rapidScoreServices.factory('PlaceOrderAPI', ['$resource',
         );
     }]);
 
-//admin insert category type
+/* *
+* Currently category types are
+* instruments
+* composers
+* genres
+* */
+
+ //admin insert category type
 rapidScoreServices.factory('AddCategoryTypeAPI', ['$resource',
     function($resource){
         return $resource(
@@ -243,9 +261,9 @@ rapidScoreServices.factory('AddCategoryTypeAPI', ['$resource',
 rapidScoreServices.factory('EditCategoryTypeAPI', ['$resource',
     function($resource){
         return $resource(
-                hostname + '/admin/categorytypes/ctnumber',
+                hostname + '/admin/categorytypes/:ctnumber',
             //ctname
-            {},
+            {ctnumber:'@ctnumber'},
             {
                 save: {
                     method: 'PUT',
@@ -253,18 +271,25 @@ rapidScoreServices.factory('EditCategoryTypeAPI', ['$resource',
                         'Content-Type': 'application/json'
                     }
                 },
-                remove: {method:'DELETE'}
+                remove: {
+                    method:'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                }
             }
         );
     }]);
+
+/* End Category Type*/
 
 //admin insert category
 rapidScoreServices.factory('AddCategoryAPI', ['$resource',
     function($resource){
         return $resource(
-                hostname + '/admin/categorytypes/:ctname',
-            //cname
-            {},
+                hostname + '/admin/categorytypes/:ctnumber',
+            //ctnumber and cname
+            {ctnumber:'@ctnumber'},
             {
                 save: {
                     method:'POST',
@@ -282,7 +307,7 @@ rapidScoreServices.factory('EditCategoryAPI', ['$resource',
         return $resource(
                 hostname + '/admin/category/cnumber',
             //cname
-            {},
+            {cnumber:'@cnumber'},
             {
                 save: {
                     method: 'PUT',
@@ -290,7 +315,12 @@ rapidScoreServices.factory('EditCategoryAPI', ['$resource',
                         'Content-Type': 'application/json'
                     }
                 },
-                remove: {method:'DELETE'}
+                remove: {
+                    method:'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                }
             }
         );
     }]);
@@ -317,9 +347,9 @@ rapidScoreServices.factory('AddScoreAPI', ['$resource',
 rapidScoreServices.factory('EditScoreAPI', ['$resource',
     function($resource){
         return $resource(
-                hostname + '/admin/sheetmusic/:scoreid',
+                hostname + '/admin/sheetmusic/:scoreId',
             //scoreData
-            {scoreid:'@scoreid'},
+            {scoreId:'@scoreId'},
             {
                 save: {
                     method: 'PUT',
@@ -341,9 +371,9 @@ rapidScoreServices.factory('EditScoreAPI', ['$resource',
 rapidScoreServices.factory('AddScoreCategoryAPI', ['$resource',
     function($resource){
         return $resource(
-                hostname + '/admin/sheetmusic/:scoreid',
+                hostname + '/admin/sheetmusic/:scoreId',
             //cnumber
-            {},
+            {scoreId:'@scoreId'},
             {
                 save: {
                     method: 'POST',
@@ -360,9 +390,14 @@ rapidScoreServices.factory('RemoveScoreCategoryAPI', ['$resource',
     function($resource){
         return $resource(
                 hostname + '/admin/score-category/:scnumber',
-            {},
+            {scnumber:'@scnumber'},
             {
-                remove: {method:'DELETE'}
+                remove: {
+                    method:'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                }
             }
         );
     }]);

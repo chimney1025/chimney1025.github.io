@@ -18,34 +18,42 @@
     </div>
 
     <div class="col-md-9 col-sm-9 col-xs-9 text-left act-list">
+
+        <h2>Manage Instruments ({{getInstruments.length}})</h2>
         <ul class="">
-            <h2>Manage Instruments ({{getInstruments.length}})
-            </h2>
             <li>
-                <a type="button" ng-click="launch('create')" class="btn btn-default btn-inline btn-category" ng-repeat="item in getInstruments | filter:query | orderBy:orderProp">
+            <li>
+                <button type="button" class="btn btn-default btn-inline btn-category" ng-repeat="item in getInstruments | filter:query | orderBy:orderProp">
                     {{item.c_name}}
-                </a>
-                <a type="button" class="btn btn-warning btn-inline" ng-click="launch('create')">ADD</a>
+                    <a ng-click="editcategory('rename', item.c_number, item.c_name, 1, 'Instrument')"><span class="glyphicon glyphicon-pencil"></span></a>
+                    <a ng-click="editcategory('rename', item.c_number, item.c_name, 1, 'Instrument')" ><span class="glyphicon glyphicon-remove"></span></a>
+                </button>
+                <a type="button" class="btn btn-warning btn-inline" ng-click="addcategory(1, 'Instruments')">ADD</a>
             </li>
         </ul>
+
+        <h2>Manage Composers ({{getComposers.length}})</h2>
         <ul class="">
-            <h2>Manage Composers ({{getComposers.length}})
-            </h2>
             <li>
-                <a type="button" ng-click="launch('create')" class="btn btn-default btn-inline btn-category" ng-repeat="item in getComposers | filter:query | orderBy:orderProp">
-                {{item.c_name}}
-                </a>
-                <a type="button" class="btn btn-warning btn-inline" ng-click="launch('create')">ADD</a>
+            <li>
+                <button type="button" class="btn btn-default btn-inline btn-category" ng-repeat="item in getComposers | filter:query | orderBy:orderProp">
+                    {{item.c_name}}
+                    <a ng-click="editcategory('rename', item.c_number, item.c_name, 2, 'Composer')"><span class="glyphicon glyphicon-pencil"></span></a>
+                    <a ng-click="editcategory('rename', item.c_number, item.c_name, 2, 'Composer')" ><span class="glyphicon glyphicon-remove"></span></a>
+                </button>
+                <a type="button" class="btn btn-warning btn-inline" ng-click="addcategory(2, 'Composers')">ADD</a>
             </li>
         </ul>
+
+        <h2>Manage Genres ({{getGenres.length}})</h2>
         <ul class="">
-            <h2>Manage Genres ({{getGenres.length}})
-            </h2>
             <li>
-                <a type="button" ng-click="launch('create')" class="btn btn-default btn-inline btn-category" ng-repeat="item in getGenres | filter:query | orderBy:orderProp">
+                <button type="button" class="btn btn-default btn-inline btn-category" ng-repeat="item in getGenres | filter:query | orderBy:orderProp">
                 {{item.c_name}}
-                </a>
-                <a type="button" class="btn btn-warning btn-inline" ng-click="launch('create')">ADD</a>
+                    <a ng-click="editcategory('rename', item.c_number, item.c_name, 3, 'Genre')"><span class="glyphicon glyphicon-pencil"></span></a>
+                    <a ng-click="editcategory('rename', item.c_number, item.c_name, 3, 'Genre')" ><span class="glyphicon glyphicon-remove"></span></a>
+                </button>
+                <a type="button" class="btn btn-warning btn-inline" ng-click="addcategory(3, 'Genres')">ADD</a>
             </li>
         </ul>
     </div>
