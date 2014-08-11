@@ -83,7 +83,7 @@ rapidScoreApp.config(['$routeProvider',
             }).
             when('/admin/add-sheetmusic', {
                 templateUrl: 'views/add-score.html',
-                controller: 'ScoreAdminCtrl'
+                controller: 'ScoreAddCtrl'
             }).
             when('/admin/categories', {
                 templateUrl: 'views/admin-category-list.html',
