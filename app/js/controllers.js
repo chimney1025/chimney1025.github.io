@@ -26,7 +26,7 @@ rapidScoreControllers.controller('ScoreAdminCtrl', ['$scope', 'ScoreAdminAPI', '
             alert(sid);
             EditScore.remove({}, {'scoreid':sid}, function(res){
                 console.log(res + ' deleted : ' + sid);
-                $scope.scores = Score.getAll();
+                $location.path('#/admin/sheetmusic');
             });
         };
 
@@ -78,7 +78,7 @@ rapidScoreControllers.controller('ScoreAddCtrl', ['$scope', 'AddScoreAPI', 'AddS
                 AddScore.save({}, scoreData, function(res){
                     if(res){
                         alert('added');
-                        $location.path('/admin/sheetmusic');
+                        $location.path('#/admin/sheetmusic');
                     }
                 });
             }
