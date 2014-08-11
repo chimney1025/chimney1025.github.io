@@ -17,8 +17,8 @@ rapidScoreControllers.controller('ScoreCtrl', ['$scope', '$routeParams', 'ScoreA
         $scope.score = Score.getOne({scoreId: $routeParams.scoreId});
     }]);
 
-rapidScoreControllers.controller('ScoreAdminCtrl', ['$scope', 'ScoreAdminAPI', 'AddScoreAPI', 'EditScoreAPI', 'AddScoreCategoryAPI', 'RemoveScoreCategoryAPI',
-    function($scope, Score, AddScore, EditScore, AddScoreCategory, RemoveScoreCategory) {
+rapidScoreControllers.controller('ScoreAdminCtrl', ['$scope', 'ScoreAdminAPI', 'EditScoreAPI', 'RemoveScoreCategoryAPI',
+    function($scope, Score, EditScore, RemoveScoreCategory) {
         $scope.scores = Score.getAll();
 
         //remove
@@ -33,6 +33,56 @@ rapidScoreControllers.controller('ScoreAdminCtrl', ['$scope', 'ScoreAdminAPI', '
         //edit
 
         //add
+    }]);
+    
+rapidScoreControllers.controller('ScoreAddCtrl', ['$scope', 'CheckScoreAPI', 'AddScoreAPI', 'AddScoreCategoryAPI', 'AddCategoryAPI', '$location',
+    function($scope, CheckScore, AddScore, AddScoreCategory, AddCategory, $location){
+        
+        //Sign Up
+        $scope.scoreInfo = {};
+        $scope.scoreCheck = '';
+
+        $scope.scoreSave = function() {
+            $scope.scoreCheck = '';
+            console.log($scope.scoreInfo);
+
+            if(!$scope.scoreInfo.name) {
+                $scope.scoreCheck = 'Invalid title';
+                return;
+            }
+            //submit data
+            else{
+                console.log('posting data...');
+                //create json to be posted
+                var scoreData = new Object();
+                scoreData.category = [];
+                
+                scoreData.name = $scope.scoreInfo.name;
+                scoreData.shortname = $scope.scoreInfo.shortname;
+                scoreData.price = $scope.scoreInfo.price;
+                scoreData.page = $scope.scoreInfo.page;
+                scoreData.snippet = $scope.scoreInfo.snippet;
+                scoreData.audioUrl = $scope.scoreInfo.audioUrl;
+                scoreData.videoUrl = $scope.scoreInfo.videoUrl;
+                scoreData.imageUrl = $scope.scoreInfo.imageUrl;
+                scoreData.fileUrl = $scope.scoreInfo.fileUrl;
+                //category
+                /*
+                for(var i=0; i<$scope.scoreInfo.category.length; i++){
+                    scoreData.category.push($scope.scoreInfo.category[i]);
+                }
+                */
+                console.log(scoreData);
+
+                //convert to json
+                AddScore.save({}, scoreData, function(res){
+                    if(res){
+                        alert('added');
+                        $location.path('/admin/sheetmusic');
+                    }
+                });
+            }
+        };
     }]);
 
 rapidScoreControllers.controller('CategoryAdminCtrl', ['$scope', 'CategoryAdminAPI', 'InstrumentAPI', 'ComposerAPI', 'GenreAPI', 'AddCategoryAPI', 'EditCategoryAPI',
