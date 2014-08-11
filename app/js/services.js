@@ -349,7 +349,7 @@ rapidScoreServices.factory('EditScoreAPI', ['$resource',
         return $resource(
                 hostname + '/admin/sheetmusic/:scoreId',
             //scoreData
-            {scoreId:'@scoreId'},
+            {},
             {
                 save: {
                     method: 'PUT',

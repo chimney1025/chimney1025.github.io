@@ -22,11 +22,12 @@ rapidScoreControllers.controller('ScoreAdminCtrl', ['$scope', 'ScoreAdminAPI', '
         $scope.scores = Score.getAll();
 
         //remove
-        $scope.removeScore = function(sid){
-            alert(sid);
-            EditScore.remove({}, {'scoreid':sid}, function(res){
+        $scope.removeScore = function(sid, name){
+            alert('Deleting ' + name);
+            EditScore.remove({scoreId:sid}, function (res) {
                 console.log(res + ' deleted : ' + sid);
-                $location.path('#/admin/sheetmusic');
+                //$location.path('#/admin/sheetmusic');
+                $scope.scores = Score.getAll();
             });
         };
 
@@ -38,7 +39,7 @@ rapidScoreControllers.controller('ScoreAdminCtrl', ['$scope', 'ScoreAdminAPI', '
 rapidScoreControllers.controller('ScoreAddCtrl', ['$scope', 'AddScoreAPI', 'AddScoreCategoryAPI', 'AddCategoryAPI', '$location',
     function($scope, AddScore, AddScoreCategory, AddCategory, $location){
         
-        //Sign Up
+        //Add Score
         $scope.scoreInfo = {};
         $scope.scoreCheck = '';
 
@@ -58,14 +59,46 @@ rapidScoreControllers.controller('ScoreAddCtrl', ['$scope', 'AddScoreAPI', 'AddS
                 scoreData.category = [];
                 
                 scoreData.name = $scope.scoreInfo.name;
-                scoreData.shortname = $scope.scoreInfo.shortname;
-                scoreData.price = $scope.scoreInfo.price;
-                scoreData.page = $scope.scoreInfo.page;
-                scoreData.snippet = $scope.scoreInfo.snippet;
-                scoreData.audioUrl = $scope.scoreInfo.audioUrl;
-                scoreData.videoUrl = $scope.scoreInfo.videoUrl;
-                scoreData.imageUrl = $scope.scoreInfo.imageUrl;
-                scoreData.fileUrl = $scope.scoreInfo.fileUrl;
+                scoreData.shortname = $scope.scoreInfo.name.split(' ').join('-').toLowerCase();
+
+                if($scope.scoreInfo.price){
+                    scoreData.price = $scope.scoreInfo.price;
+                }
+                else {
+                    scoreData.price = 0;
+                }
+                if($scope.scoreInfo.page){
+                    scoreData.page = $scope.scoreInfo.page;
+                }
+                else {
+                    scoreData.page = 0;
+                }
+
+                if($scope.scoreInfo.snippet){
+                    scoreData.snippet = $scope.scoreInfo.snippet;
+                } else{
+                    scoreData.snippet = '';
+                }
+                if($scope.scoreInfo.audioUrl){
+                    scoreData.audioUrl = $scope.scoreInfo.audiourl;
+                } else{
+                    scoreData.audioUrl = '';
+                }
+                if($scope.scoreInfo.videoUrl){
+                    scoreData.videoUrl = $scope.scoreInfo.videourl;
+                } else{
+                    scoreData.videoUrl = '';
+                }
+                if($scope.scoreInfo.imageUrl){
+                    scoreData.imageUrl = $scope.scoreInfo.imageurl;
+                } else{
+                    scoreData.imageUrl = '';
+                }
+                if($scope.scoreInfo.fileUrl){
+                    scoreData.fileUrl = $scope.scoreInfo.fileurl;
+                } else{
+                    scoreData.fileUrl = '';
+                }
                 //category
                 /*
                 for(var i=0; i<$scope.scoreInfo.category.length; i++){
@@ -76,9 +109,90 @@ rapidScoreControllers.controller('ScoreAddCtrl', ['$scope', 'AddScoreAPI', 'AddS
 
                 //convert to json
                 AddScore.save({}, scoreData, function(res){
+                    console.log('res:' + res);
                     if(res){
-                        alert('added');
-                        $location.path('#/admin/sheetmusic');
+                        alert('added ' + scoreData.shortname);
+                        $location.path('/admin/sheetmusic');
+                    }
+                });
+            }
+        };
+    }]);
+
+rapidScoreControllers.controller('ScoreEditCtrl', ['$scope', '$routeParams', 'ScoreAPI', 'EditScoreAPI', 'AddScoreCategoryAPI', 'AddCategoryAPI', 'RemoveScoreCategoryAPI', '$location',
+    function($scope, $routeParams, Score, EditScore, AddScoreCategory, AddCategory, RemoveScoreCategory, $location){
+
+        $scope.scoreInfo = Score.getOne({scoreId: $routeParams.scoreId});
+        $scope.scoreCheck = '';
+
+        $scope.scoreSave = function() {
+            $scope.scoreCheck = '';
+            console.log($scope.scoreInfo);
+
+            if(!$scope.scoreInfo.name) {
+                $scope.scoreCheck = 'Invalid title';
+                return;
+            }
+            //submit data
+            else{
+                console.log('posting data...');
+                //create json to be posted
+                var scoreData = new Object();
+                scoreData.category = [];
+
+                scoreData.name = $scope.scoreInfo.name;
+                scoreData.shortname = $scope.scoreInfo.name.split(' ').join('-').toLowerCase();
+
+                if($scope.scoreInfo.price){
+                    scoreData.price = $scope.scoreInfo.price;
+                }
+                else {
+                    scoreData.price = 0;
+                }
+                if($scope.scoreInfo.page){
+                    scoreData.page = $scope.scoreInfo.page;
+                }
+                else {
+                    scoreData.page = 0;
+                }
+                if($scope.scoreInfo.snippet){
+                    scoreData.snippet = $scope.scoreInfo.snippet;
+                } else{
+                    scoreData.snippet = '';
+                }
+                if($scope.scoreInfo.audioUrl){
+                    scoreData.audioUrl = $scope.scoreInfo.audiourl;
+                } else{
+                    scoreData.audioUrl = '';
+                }
+                if($scope.scoreInfo.videoUrl){
+                    scoreData.videoUrl = $scope.scoreInfo.videourl;
+                } else{
+                    scoreData.videoUrl = '';
+                }
+                if($scope.scoreInfo.imageUrl){
+                    scoreData.imageUrl = $scope.scoreInfo.imageurl;
+                } else{
+                    scoreData.imageUrl = '';
+                }
+                if($scope.scoreInfo.fileUrl){
+                    scoreData.fileUrl = $scope.scoreInfo.fileurl;
+                } else{
+                    scoreData.fileUrl = '';
+                }
+                //category
+                /*
+                 for(var i=0; i<$scope.scoreInfo.category.length; i++){
+                 scoreData.category.push($scope.scoreInfo.category[i]);
+                 }
+                 */
+                console.log(scoreData);
+
+                //convert to json
+                EditScore.save({scoreId:$scope.scoreInfo.sid}, scoreData, function(res){
+                    if(res){
+                        alert('edited ' + scoreData.shortname);
+                        $location.path('/admin/sheetmusic');
                     }
                 });
             }
