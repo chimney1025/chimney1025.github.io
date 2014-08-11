@@ -18,19 +18,25 @@
     </div>
 
     <div class="col-md-9 col-sm-9 col-xs-9 text-left act-list">
-        <form name="addScoreForm" class="form-score" role="form">
+        <form name="ScoreForm" class="form-score" role="form">
         <ul class="">
             <h2>Add New Sheet Music</h2>
             <li class="row">
                 <span class="act-label">TITLE</span>
                 <span class="act-content">
-                    <input type="text" class="form-control" placeholder="Enter title" ng-model="scoreInfo.title" required ng-trim="true">
+                    <input type="text" class="form-control" placeholder="Enter title" ng-model="scoreInfo.name" required ng-trim="true">
                 </span>
             </li>
             <li class="row">
                 <span class="act-label">PRICE</span>
                 <span class="act-content">
                     <input type="text" class="form-control" placeholder="Enter price" ng-model="scoreInfo.price" required ng-trim="true">
+                </span>
+            </li>
+            <li class="row">
+                <span class="act-label">PAGE</span>
+                <span class="act-content">
+                    <input type="text" class="form-control" placeholder="Enter page" ng-model="scoreInfo.page" required ng-trim="true">
                 </span>
             </li>
             <li class="row">
@@ -57,8 +63,21 @@
                     <input type="file" class="form-control" placeholder="Choose Actual Sheet Music File" ng-model="scoreInfo.fileURL" ng-trim="true">
                 </span>
             </li>
+            <li class="row">
+                <span class="act-label">DESCRIPTION</span>
+                <span class="act-content">
+                    <input type="text" class="form-control" placeholder="Description" ng-model="scoreInfo.snippet" ng-trim="true">
+                </span>
+            </li>
             <li>
-                <a type="button" class="btn btn-default btn" href="#/admin/sheetmusic">Submit</a>
+                <span class="form-check" ng-show="regCheck">{{regCheck}}</span>
+            
+            </li>
+            <li>
+                <button class="btn btn-primary btn-block" type="submit" ng-click="scoreSave()">
+                Save
+                </button>
+                
             </li>
         </ul>
         </form>
