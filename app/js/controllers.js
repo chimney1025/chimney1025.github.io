@@ -35,8 +35,8 @@ rapidScoreControllers.controller('ScoreAdminCtrl', ['$scope', 'ScoreAdminAPI', '
         //add
     }]);
     
-rapidScoreControllers.controller('ScoreAddCtrl', ['$scope', 'CheckScoreAPI', 'AddScoreAPI', 'AddScoreCategoryAPI', 'AddCategoryAPI', '$location',
-    function($scope, CheckScore, AddScore, AddScoreCategory, AddCategory, $location){
+rapidScoreControllers.controller('ScoreAddCtrl', ['$scope', 'AddScoreAPI', 'AddScoreCategoryAPI', 'AddCategoryAPI', '$location',
+    function($scope, AddScore, AddScoreCategory, AddCategory, $location){
         
         //Sign Up
         $scope.scoreInfo = {};
