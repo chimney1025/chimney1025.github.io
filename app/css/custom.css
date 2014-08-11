@@ -275,6 +275,10 @@ a{
     margin: 5px 0 11px 0;
 }
 
+form .row{
+	border-bottom: none;
+}
+
 .row span{
     padding: 20px 0 6px 0;
 }
