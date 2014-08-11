@@ -43,7 +43,7 @@
             <li class="row" ng-repeat="item in scores | filter:query | orderBy:orderProp">
                 <span class="list-item"><a href="#/sheetmusic/{{item.shortname}}">{{item.name}}</a>
                     <a ng-click="launch('editscore', item.sid, item.name)" ><span class="glyphicon glyphicon-pencil"></span></a>
-                    <a ng-click="launch('removescore', item.sid, item.name)" ><span class="glyphicon glyphicon-remove"></span></a>
+                    <a ng-click="removeScore(item.sid)" ><span class="glyphicon glyphicon-remove"></span></a>
                 </span>
                 <span class="list-added">{{item.added | date : 'yyyy-MM-dd'}}</span>
                 <span class="admin-action list-action">
