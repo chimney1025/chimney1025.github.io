@@ -95,6 +95,10 @@ a{
     -moz-filter: grayscale(0);
 }
 
+.centered{
+    margin-top: 1%;
+}
+
 /*Footer*/
 #footer {
     padding: 20px 0;
