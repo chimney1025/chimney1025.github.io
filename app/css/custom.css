@@ -88,7 +88,8 @@ a{
 }
 
 .biglogo{
-    margin-top: 50px;
+    margin-top: 100px;
+    width: 380px;
     filter: grayscale(0);
     -webkit-filter: grayscale(0);
     -moz-filter: grayscale(0);
@@ -685,6 +686,11 @@ span.form-check{
         padding: 0 15px;
     }
 
+    .biglogo{
+        margin-top: 100px;
+        width: 300px;
+    }
+
 /*
     .breadcrumb{
         margin-bottom: 32px;
@@ -756,6 +762,12 @@ span.form-check{
     .breadcrumbBox{
         height:60px;
         padding-top:21px;
+    }
+
+    .biglogo{
+        margin-top: 50px;
+        width: 250px;
+        margin: 0 auto;
     }
 
     .list-filter, .score-detail, .list-score, .score-main, .account-menu, .act-list, .list-category{
