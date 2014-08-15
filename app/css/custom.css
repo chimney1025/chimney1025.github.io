@@ -281,7 +281,7 @@ a{
 }
 
 .act-list .row:hover{
-    background: none;
+    /*background: none;*/
 }
 
 .row{
