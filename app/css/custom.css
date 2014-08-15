@@ -21,7 +21,7 @@ a{
     padding: 3px 5px;
 }
 
-a:hover {
+a:hover, a.active {
     text-decoration:none;
     cursor: pointer;
     background-color: #468595;
