@@ -19,6 +19,9 @@ ul{
 a:hover {
     text-decoration:none;
     cursor: pointer;
+    background-color: #468595;
+    color: #fff;
+    padding: 3px 5px;
 }
 h1{
 	font-size:1.8em;
@@ -270,7 +273,7 @@ a{
 }
 
 .row:hover{
-    background-color: #f8f8f8;
+    /*background-color: #f8f8f8;*/
 }
 
 .act-list .row:hover{
