@@ -270,6 +270,55 @@ rapidScoreControllers.controller('RedirectCtrl', ['$scope', '$location', '$timeo
         //
     }]);
 
+rapidScoreControllers.controller('LoginCtrl', ['$scope', '$location', '$window', 'LoginAPI', 'AuthenticationService',
+    function($scope, $location, $window, LoginService, AuthenticationService){
+        //Login
+        $scope.loginInfo = {};
+        $scope.loginCheck = '';
+
+        $scope.login = function login(loginInfo) {
+            $scope.loginCheck = '';
+            console.log(loginInfo);
+
+            if(!$scope.loginInfo.email) {
+                $scope.loginCheck = 'Invalid Email';
+                return;
+            }
+
+            else if(!$scope.loginInfo.pass) {
+                $scope.loginCheck = 'Please enter your Password';
+                return;
+            }
+            else if($scope.loginInfo.pass.length < 6 || $scope.loginInfo.pass.length > 20){
+                $scope.loginCheck = 'Password length should be 6 to 20 characters long';
+                return;
+            }
+
+            else {
+                LoginService.login(loginInfo.email, loginInfo.pass).success(function(data){
+
+                    AuthenticationService.isLogged = true;
+                    $window.sessionStorage.setItem('token', data.token);
+                    $location.path("/users/"+data.username);
+
+                }).error(function(status, data){
+
+                    $window.sessionStorage.removeItem('token');
+                    console.log(status);
+                    console.log(data);
+                });
+            }
+        };
+
+        $scope.logout = function logout(){
+            if (AuthenticationService.isLogged) {
+                AuthenticationService.isLogged = false;
+                delete $window.sessionStorage.token;
+                $location.path("/sheetmusic");
+            }
+        }
+    }]);
+
 rapidScoreControllers.controller('SignUpCtrl', ['$scope', 'RegisterAPI', 'CheckUsernameAPI', 'CheckEmailAPI', '$location',
     function($scope, User, CheckUsername, CheckEmail, $location) {
         //Sign Up
@@ -328,44 +377,6 @@ rapidScoreControllers.controller('SignUpCtrl', ['$scope', 'RegisterAPI', 'CheckU
                     }
                 });
             }
-        };
-
-        //Login
-        $scope.loginInfo = {};
-        $scope.loginCheck = '';
-        var loginData = {
-            "email":"",
-            "pass":""
-        };
-        $scope.loginSave = function() {
-            $scope.loginCheck = '';
-            console.log($scope.loginInfo);
-
-            if(!$scope.loginInfo.email) {
-                $scope.loginCheck = 'Invalid Email';
-                return;
-            }
-
-            else if(!$scope.loginInfo.pass) {
-                $scope.loginCheck = 'Please enter your Password';
-                return;
-            }
-            else if($scope.loginInfo.pass.length < 6 || $scope.loginInfo.pass.length > 20){
-                $scope.loginCheck = 'Password length should be 6 to 20 characters long';
-                return;
-            }
-
-            else {
-                console.log('posting login data...');
-                regData.email = $scope.regInfo.email;
-                regData.pass = $scope.regInfo.pass;
-                var res = User.login({userId: regData.email});
-
-                $location.path('/users/'+res.id);
-                console.log(res);
-                console.log(loginData);
-            }
-            console.log($scope.loginInfo);
         };
     }]);
 

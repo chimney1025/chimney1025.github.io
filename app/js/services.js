@@ -156,6 +156,50 @@ rapidScoreServices.factory('CheckEmailAPI', ['$resource',
 
 /* post, put, delete by id */
 
+//options.api.base_url
+//user login
+rapidScoreServices.factory('LoginAPI', function($http){
+    return {
+        login: function(email, password) {
+            return $http.post(hostname + '/login', {username: email, password: password});
+        },
+
+        logout: function() {
+
+        }
+    }
+});
+
+rapidScoreServices.factory('AuthenticationService', function(){
+    var auth = {
+        isLogged: false
+    }
+
+    return auth;
+});
+
+rapidScoreServices.factory('TokenInterceptor', function ($q, $window, AuthenticationService) {
+    return {
+        request: function (config) {
+            config.headers = config.headers || {};
+
+            console.log($window.sessionStorage);
+
+            if ($window.sessionStorage.getItem('token')) {
+                config.headers.Authorization = 'Bearer ' + $window.sessionStorage.getItem('token');
+            }
+            return config || $q.when(config);
+        },
+
+        response: function (response) {
+            if(response.status === 401){
+                console.log(response.status);
+            }
+            return response || $q.when(response);
+        }
+    };
+});
+
 //user register
 rapidScoreServices.factory('RegisterAPI', ['$resource',
     function($resource){
