@@ -183,8 +183,6 @@ rapidScoreServices.factory('TokenInterceptor', function ($q, $window, Authentica
         request: function (config) {
             config.headers = config.headers || {};
 
-            console.log($window.sessionStorage);
-
             if ($window.sessionStorage.getItem('token')) {
                 config.headers.Authorization = 'Bearer ' + $window.sessionStorage.getItem('token');
             }
