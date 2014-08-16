@@ -128,7 +128,8 @@ rapidScoreApp.config(['$routeProvider',
                 access: {requiredLogin: false }
             }).
             otherwise({
-                redirectTo: '/'
+                redirectTo: '/home',
+                access: {requiredLogin: false }
             })
     }
 ]);
