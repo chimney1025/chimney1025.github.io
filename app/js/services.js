@@ -161,7 +161,12 @@ rapidScoreServices.factory('CheckEmailAPI', ['$resource',
 rapidScoreServices.factory('LoginAPI', function($http){
     return {
         login: function(email, password) {
-            return $http.post(hostname + '/login', {username: email, password: password});
+            return $http({
+                method: 'POST',
+                url: hostname + '/login',
+                data: $.param({email: email, pass: password}),
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+            });
         },
 
         logout: function() {
@@ -170,18 +175,11 @@ rapidScoreServices.factory('LoginAPI', function($http){
     }
 });
 
-rapidScoreServices.factory('AuthenticationService', function(){
-    var auth = {
-        isLogged: false
-    }
-
-    return auth;
-});
-
-rapidScoreServices.factory('TokenInterceptor', function ($q, $window, AuthenticationService) {
+rapidScoreServices.factory('TokenInterceptor', function ($q, $window) {
     return {
         request: function (config) {
             config.headers = config.headers || {};
+            console.log($window.sessionStorage);
 
             if ($window.sessionStorage.getItem('token')) {
                 config.headers.Authorization = 'Bearer ' + $window.sessionStorage.getItem('token');
@@ -203,7 +201,7 @@ rapidScoreServices.factory('RegisterAPI', ['$resource',
     function($resource){
 
         return $resource(
-                hostname + '/users',
+                hostname + '/register',
             {},
             {
                 save: {

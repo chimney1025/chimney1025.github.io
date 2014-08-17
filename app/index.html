@@ -16,7 +16,7 @@
     <link href="css/custom.css" rel="stylesheet">
 
 </head>
-<body ng-controller="dialogService">
+<body ng-controller="sessionService">
 <!-- NAVBAR
 ================================================== -->
 <div id="main-container">
@@ -59,13 +59,27 @@
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#/users/lianshi1025/shopping-cart">
-                    <span class="badge pull-right">42</span>
+                <li ng-if="logged"><a href="#{{usercartlink}}">
+                    <span class="badge pull-right">{{cart.length}}</span>
                     <span class="glyphicon glyphicon-shopping-cart"></span>
                 </a></li>
-                <li><a href="#/signup">
-                    <span class="glyphicon glyphicon-cog"></span>
-                </a></li>
+
+                <li ng-if="logged" class="dropdown" >
+                    <a class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#{{userlink}}">My Account - {{username}}</a></li>
+                        <li><a ng-click="logout()">Log Out</a></li>
+                    </ul>
+                </li>
+
+                <li ng-if="!logged" class="dropdown" >
+                    <a class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#/login">Log In</a></li>
+                        <li><a href="#/register">New Account</a></li>
+                    </ul>
+                </li>
+
             </ul>
 
         </div><!--/.nav-collapse -->
