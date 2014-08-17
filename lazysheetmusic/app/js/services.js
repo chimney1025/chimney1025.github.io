@@ -156,12 +156,52 @@ rapidScoreServices.factory('CheckEmailAPI', ['$resource',
 
 /* post, put, delete by id */
 
+//options.api.base_url
+//user login
+rapidScoreServices.factory('LoginAPI', function($http){
+    return {
+        login: function(email, password) {
+            return $http({
+                method: 'POST',
+                url: hostname + '/login',
+                data: $.param({email: email, pass: password}),
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+            });
+        },
+
+        logout: function() {
+
+        }
+    }
+});
+
+rapidScoreServices.factory('TokenInterceptor', function ($q, $window) {
+    return {
+        request: function (config) {
+            config.headers = config.headers || {};
+            console.log($window.sessionStorage);
+
+            if ($window.sessionStorage.getItem('token')) {
+                config.headers.Authorization = 'Bearer ' + $window.sessionStorage.getItem('token');
+            }
+            return config || $q.when(config);
+        },
+
+        response: function (response) {
+            if(response.status === 401){
+                console.log(response.status);
+            }
+            return response || $q.when(response);
+        }
+    };
+});
+
 //user register
 rapidScoreServices.factory('RegisterAPI', ['$resource',
     function($resource){
 
         return $resource(
-                hostname + '/users',
+                hostname + '/register',
             {},
             {
                 save: {
@@ -175,12 +215,13 @@ rapidScoreServices.factory('RegisterAPI', ['$resource',
     }]);
 
 //add, remove, clear cart
-rapidScoreServices.factory('AddOrClearCartAPI', ['$resource',
+
+rapidScoreServices.factory('CartAPI', ['$resource',
     function($resource){
         return $resource(
-                hostname + '/users/:userid/shopping-cart',
+                hostname + '/users/:uid/shopping-cart',
             //sid
-            {userid:'@userid'},
+            {uid:'@uid'},
             {
                 add: {
                     method:'POST',
@@ -201,8 +242,8 @@ rapidScoreServices.factory('AddOrClearCartAPI', ['$resource',
 rapidScoreServices.factory('RemoveCartAPI', ['$resource',
     function($resource){
         return $resource(
-                hostname + '/users/:userid/shopping-cart/:scoreId',
-            {userid:'@userid', scoreId:'@scoreId'},
+                hostname + '/users/:uid/shopping-cart/:sid',
+            {uid:'@uid', sid:'@sid'},
             {
                 remove: {
                     method: 'DELETE',
@@ -218,9 +259,9 @@ rapidScoreServices.factory('RemoveCartAPI', ['$resource',
 rapidScoreServices.factory('PlaceOrderAPI', ['$resource',
     function($resource){
         return $resource(
-                hostname + '/users/:userid/purchased',
+                hostname + '/users/:uid/purchased',
             //info
-            {userid:'@userid'},
+            {uid:'@uid'},
             {
                 order: {
                     method: 'POST',
@@ -349,7 +390,7 @@ rapidScoreServices.factory('EditScoreAPI', ['$resource',
         return $resource(
                 hostname + '/admin/sheetmusic/:scoreId',
             //scoreData
-            {scoreId:'@scoreId'},
+            {},
             {
                 save: {
                     method: 'PUT',

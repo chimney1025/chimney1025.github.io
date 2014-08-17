@@ -1,8 +1,8 @@
 <div class="container breadcrumbBox">
     <ol class="breadcrumb">
         <li><a href="#/home"><span class="glyphicon glyphicon-home"></span></a></li>
-        <li><a href="#/users/{{user.username}}">Account Settings</a></li>
-        <li><a href="#/users/{{user.username}}/shopping-cart">My Shopping Cart</a></li>
+        <li><a href="#/users/{{logged_username}}">Account Settings</a></li>
+        <li><a href="#/users/{{logged_username}}/shopping-cart">My Shopping Cart</a></li>
     </ol>
 </div>
 
@@ -11,30 +11,32 @@
     <div class="col-md-3 col-sm-3 col-xs-3 text-left account-menu">
         <ul class="">
             <li><h4>Welcome
-                <a href="#/users/{{user.username}}">{{user.username | uppercase}}</a>
+                <a href="#/users/{{logged_username}}">{{logged_username | uppercase}}</a>
             </h4></li>
-            <li><a href="#/users/{{user.username}}">Account Settings</a></li>
-            <li><a href="#/users/{{user.username}}/shopping-cart">My Shopping Cart</a></li>
-            <li><a href="#/users/{{user.username}}/purchased">Purchased Scores</a></li>
+            <li><a href="#/users/{{logged_username}}">Account Settings</a></li>
+            <li><a href="#/users/{{logged_username}}/shopping-cart" class="active">My Shopping Cart</a></li>
+            <li><a href="#/users/{{logged_username}}/purchased">Purchased Scores</a></li>
         </ul>
     </div>
 
     <div class="col-md-9 col-sm-9 col-xs-9 text-left act-list">
         <ul class="">
-            <h2>Shopping Cart ({{cart.length}})</h2>
-            <div ng-if="cart.length">
+            <h2>Shopping Cart ({{logged_cart.length}})</h2>
+            <div ng-if="logged_cart.length">
             <li class="row list-inline columnCaptions">
                 <span>Title</span>
                 <span>Price</span>
             </li>
-            <li class="row" ng-repeat="score in cart">
-                <span class="list-item"><a href="#/sheetmusic/{{score.shortname}}">{{score.name}}</a></span>
-                <span class="list-action"><a type="button" ng-click="launch('userremovecart', score.sid, score.name)" class="btn btn-danger btn-xs">Remove</a></span>
+            <li class="row" ng-repeat="score in logged_cart">
+                <span class="list-item">
+                    <a href="#/sheetmusic/{{score.shortname}}">{{score.name}}</a>
+                </span>
+                <span class="list-action"><a type="button" ng-click="removecart(score.name, score.sid)" class="btn btn-danger btn-xs">Remove</a></span>
                 <span class="price">{{score.price | currency:'£'}}</span>
             </li>
             <li class="row totals">
                 <span class="list-item">Total:</span>
-                <span class="action"><a type="button" class="btn btn-primary">Order</a></span>
+                <span class="action"><a type="button" class="btn btn-primary" ng-click="order()">Order</a></span>
                 <span class="total">{{total | currency: '£'}}</span>
                 <img class="paypal" src="images/paypal.png">
             </li>

@@ -12,20 +12,69 @@ rapidScoreControllers.controller('ScoreListCtrl', ['$scope', 'ScoreAPI', 'Instru
         $scope.getGenres = Genre.getAll();
     }]);
 
-rapidScoreControllers.controller('ScoreCtrl', ['$scope', '$routeParams', 'ScoreAPI',
-    function($scope, $routeParams, Score, Instrument, Composer, Genre) {
+rapidScoreControllers.controller('ScoreCtrl', ['$scope', '$routeParams', 'ScoreAPI', 'CartAPI', '$location', '$window',
+    function($scope, $routeParams, Score, AddCart, $location, $window, Instrument, Composer, Genre) {
         $scope.score = Score.getOne({scoreId: $routeParams.scoreId});
+        console.log($scope.score);
+        console.log($window.sessionStorage.getItem('uid'));
+
+        $scope.action = 'Add to Cart';
+
+        $scope.link = function(){
+            console.log('sid:');
+            console.log($scope.score.sid);
+
+            if(!$window.sessionStorage.getItem('uid')){
+                $location.path('/login');
+            }
+
+            else{
+                var flag = 0;
+                for(var i=0; i<$scope.logged_cart.length; i++){
+                    if($scope.logged_cart[i].sid == $scope.score.sid){
+                        flag = 1;
+                        alert('Already in Cart');
+                        break;
+                    }
+                }
+
+                if(flag==0){
+
+                    for(var i=0; i<$scope.logged_purchased.length; i++){
+                        if($scope.logged_purchased[i].sid == $scope.score.sid){
+                            flag = 1;
+                            alert('Already in Purchased');
+                            break;
+                        }
+                    }
+                }
+
+                if(flag == 0){
+                    AddCart.add({'uid':$window.sessionStorage.getItem('uid')}, {'sid':$scope.score.sid}, function(res){
+                        console.log('res:');
+                        console.log(res);
+                        if(res){
+                            alert('added');
+                            $window.location.reload();
+                            //$location.path('/users/'+$window.sessionStorage.getItem('username')+'/shopping-cart');
+
+                        }
+                    });
+                }
+            }
+        };
     }]);
 
-rapidScoreControllers.controller('ScoreAdminCtrl', ['$scope', 'ScoreAdminAPI', 'AddScoreAPI', 'EditScoreAPI', 'AddScoreCategoryAPI', 'RemoveScoreCategoryAPI',
-    function($scope, Score, AddScore, EditScore, AddScoreCategory, RemoveScoreCategory) {
+rapidScoreControllers.controller('ScoreAdminCtrl', ['$scope', 'ScoreAdminAPI', 'EditScoreAPI', 'RemoveScoreCategoryAPI',
+    function($scope, Score, EditScore, RemoveScoreCategory) {
         $scope.scores = Score.getAll();
 
         //remove
-        $scope.removeScore = function(sid){
-            alert(sid);
-            EditScore.remove({}, {'scoreid':sid}, function(res){
+        $scope.removeScore = function(sid, name){
+            alert('Deleting ' + name);
+            EditScore.remove({scoreId:sid}, function (res) {
                 console.log(res + ' deleted : ' + sid);
+                //$location.path('/admin/sheetmusic');
                 $scope.scores = Score.getAll();
             });
         };
@@ -33,6 +82,169 @@ rapidScoreControllers.controller('ScoreAdminCtrl', ['$scope', 'ScoreAdminAPI', '
         //edit
 
         //add
+    }]);
+    
+rapidScoreControllers.controller('ScoreAddCtrl', ['$scope', 'AddScoreAPI', 'AddScoreCategoryAPI', 'AddCategoryAPI', '$location',
+    function($scope, AddScore, AddScoreCategory, AddCategory, $location){
+        
+        //Add Score
+        $scope.scoreInfo = {};
+        $scope.scoreCheck = '';
+
+        $scope.scoreSave = function() {
+            $scope.scoreCheck = '';
+            console.log($scope.scoreInfo);
+
+            if(!$scope.scoreInfo.name) {
+                $scope.scoreCheck = 'Invalid title';
+                return;
+            }
+            //submit data
+            else{
+                console.log('posting data...');
+                //create json to be posted
+                var scoreData = new Object();
+                scoreData.category = [];
+                
+                scoreData.name = $scope.scoreInfo.name;
+                scoreData.shortname = $scope.scoreInfo.name.split(' ').join('-').toLowerCase();
+
+                if($scope.scoreInfo.price){
+                    scoreData.price = $scope.scoreInfo.price;
+                }
+                else {
+                    scoreData.price = 0;
+                }
+                if($scope.scoreInfo.page){
+                    scoreData.page = $scope.scoreInfo.page;
+                }
+                else {
+                    scoreData.page = 0;
+                }
+
+                if($scope.scoreInfo.snippet){
+                    scoreData.snippet = $scope.scoreInfo.snippet;
+                } else{
+                    scoreData.snippet = '';
+                }
+                if($scope.scoreInfo.audioUrl){
+                    scoreData.audioUrl = $scope.scoreInfo.audiourl;
+                } else{
+                    scoreData.audioUrl = '';
+                }
+                if($scope.scoreInfo.videoUrl){
+                    scoreData.videoUrl = $scope.scoreInfo.videourl;
+                } else{
+                    scoreData.videoUrl = '';
+                }
+                if($scope.scoreInfo.imageUrl){
+                    scoreData.imageUrl = $scope.scoreInfo.imageurl;
+                } else{
+                    scoreData.imageUrl = '';
+                }
+                if($scope.scoreInfo.fileUrl){
+                    scoreData.fileUrl = $scope.scoreInfo.fileurl;
+                } else{
+                    scoreData.fileUrl = '';
+                }
+                //category
+                /*
+                for(var i=0; i<$scope.scoreInfo.category.length; i++){
+                    scoreData.category.push($scope.scoreInfo.category[i]);
+                }
+                */
+                console.log(scoreData);
+
+                //convert to json
+                AddScore.save({}, scoreData, function(res){
+                    console.log('res:' + res);
+                    if(res){
+                        alert('added ' + scoreData.shortname);
+                        $location.path('/admin/sheetmusic');
+                    }
+                });
+            }
+        };
+    }]);
+
+rapidScoreControllers.controller('ScoreEditCtrl', ['$scope', '$routeParams', 'ScoreAPI', 'EditScoreAPI', 'AddScoreCategoryAPI', 'AddCategoryAPI', 'RemoveScoreCategoryAPI', '$location',
+    function($scope, $routeParams, Score, EditScore, AddScoreCategory, AddCategory, RemoveScoreCategory, $location){
+
+        $scope.scoreInfo = Score.getOne({scoreId: $routeParams.scoreId});
+        $scope.scoreCheck = '';
+
+        $scope.scoreSave = function() {
+            $scope.scoreCheck = '';
+            console.log($scope.scoreInfo);
+
+            if(!$scope.scoreInfo.name) {
+                $scope.scoreCheck = 'Invalid title';
+                return;
+            }
+            //submit data
+            else{
+                console.log('posting data...');
+                //create json to be posted
+                var scoreData = new Object();
+                scoreData.category = [];
+
+                scoreData.name = $scope.scoreInfo.name;
+                scoreData.shortname = $scope.scoreInfo.name.split(' ').join('-').toLowerCase();
+
+                if($scope.scoreInfo.price){
+                    scoreData.price = $scope.scoreInfo.price;
+                }
+                else {
+                    scoreData.price = 0;
+                }
+                if($scope.scoreInfo.page){
+                    scoreData.page = $scope.scoreInfo.page;
+                }
+                else {
+                    scoreData.page = 0;
+                }
+                if($scope.scoreInfo.snippet){
+                    scoreData.snippet = $scope.scoreInfo.snippet;
+                } else{
+                    scoreData.snippet = '';
+                }
+                if($scope.scoreInfo.audioUrl){
+                    scoreData.audioUrl = $scope.scoreInfo.audiourl;
+                } else{
+                    scoreData.audioUrl = '';
+                }
+                if($scope.scoreInfo.videoUrl){
+                    scoreData.videoUrl = $scope.scoreInfo.videourl;
+                } else{
+                    scoreData.videoUrl = '';
+                }
+                if($scope.scoreInfo.imageUrl){
+                    scoreData.imageUrl = $scope.scoreInfo.imageurl;
+                } else{
+                    scoreData.imageUrl = '';
+                }
+                if($scope.scoreInfo.fileUrl){
+                    scoreData.fileUrl = $scope.scoreInfo.fileurl;
+                } else{
+                    scoreData.fileUrl = '';
+                }
+                //category
+                /*
+                 for(var i=0; i<$scope.scoreInfo.category.length; i++){
+                 scoreData.category.push($scope.scoreInfo.category[i]);
+                 }
+                 */
+                console.log(scoreData);
+
+                //convert to json
+                EditScore.save({scoreId:$scope.scoreInfo.sid}, scoreData, function(res){
+                    if(res){
+                        alert('edited ' + scoreData.shortname);
+                        $location.path('/admin/sheetmusic');
+                    }
+                });
+            }
+        };
     }]);
 
 rapidScoreControllers.controller('CategoryAdminCtrl', ['$scope', 'CategoryAdminAPI', 'InstrumentAPI', 'ComposerAPI', 'GenreAPI', 'AddCategoryAPI', 'EditCategoryAPI',
@@ -80,30 +292,127 @@ rapidScoreControllers.controller('UserAdminCtrl', ['$scope', '$routeParams', 'Us
         $scope.total = 0;
     }]);
 
-rapidScoreControllers.controller('UserCtrl', ['$scope', '$routeParams', 'UserAPI', 'UserCartAPI', 'UserOrderAPI',
-    function($scope, $routeParams, User, Cart, Purchased) {
+rapidScoreControllers.controller('UserCtrl', ['$window', '$location', '$scope', '$routeParams', 'UserAPI', 'UserCartAPI', 'UserOrderAPI', 'RemoveCartAPI', 'PlaceOrderAPI',
+    function($window, $location, $scope, $routeParams, User, Cart, Purchased, RemoveCart, PlaceOrder) {
+
+        if($routeParams.username != $window.sessionStorage.getItem('username')){
+            $location.path($scope.logged_userlink);
+        }
+
         $scope.user = User.getOne({username: $routeParams.username});
-        $scope.cart = Cart.getAll({username: $routeParams.username});
-        $scope.purchased = Purchased.getAll({username: $routeParams.username});
+        //$scope.cart = Cart.getAll({username: $routeParams.username});
+        //$scope.purchased = Purchased.getAll({username: $routeParams.username});
+
+        $scope.removecart = function(name, sid){
+            RemoveCart.remove({'uid': $window.sessionStorage.getItem('uid'), 'sid':sid}, function(res){
+                if(res){
+                    alert('Removed ' + name);
+                    $window.location.reload();
+                }
+                else{
+                    console.log(res);
+                }
+            });
+        }
+
+        $scope.order = function(){
+            PlaceOrder.order({'uid': $window.sessionStorage.getItem('uid')}, function(res){
+                if(res){
+                    alert('Placing Order - ' + $scope.logged_cart.length + ' items');
+                    $window.location.reload();
+                }
+                else{
+                    console.log(res);
+                }
+            });
+        }
     }]);
 
-rapidScoreControllers.controller('RedirectCtrl', ['$scope', '$location', '$timeout',
-    function($scope, $location, $timeout) {
-        $scope.timeInMs = 0;
-        $scope.gif='';
+rapidScoreControllers.controller('sessionService', ['$scope', '$window', '$location', 'UserCartAPI', 'UserOrderAPI',
+    function($scope, $window, $location, Cart, Order){
 
-        var countUp = function() {
-            $scope.timeInMs+= 500;
-            $scope.gif += '.';
-            $timeout(countUp, 500);
-            if($scope.timeInMs == 2000){
-                $location.path('/sheetmusic');
+        if(!$window.sessionStorage.getItem('token')){
+            $scope.logged = false;
+            $window.sessionStorage.removeItem('token');
+            $window.sessionStorage.removeItem('username');
+            $window.sessionStorage.removeItem('uid');
+            $window.sessionStorage.removeItem('info');
+        }
+        else{
+            $scope.logged = true;
+            $scope.logged_usercartlink = '/users/'+$window.sessionStorage.getItem('username')+'/shopping-cart';
+            $scope.logged_userlink = '/users/'+$window.sessionStorage.getItem('username');
+            $scope.logged_username = $window.sessionStorage.getItem('username');
+            $scope.logged_user = $window.sessionStorage.getItem('info');
+            $scope.logged_cart = Cart.getAll({username: $window.sessionStorage.getItem('username')});
+            $scope.logged_purchased = Order.getAll({username: $window.sessionStorage.getItem('username')});
+        }
+
+        $scope.logout = function logout(){
+            console.log('logging out');
+            $scope.logged = false;
+            $window.sessionStorage.removeItem('token');
+            $window.sessionStorage.removeItem('username');
+            $window.sessionStorage.removeItem('uid');
+            $window.sessionStorage.removeItem('info');
+            $location.path("/login");
+        }
+}]);
+
+rapidScoreControllers.controller('LoginCtrl', ['$scope', '$location', '$window', 'LoginAPI',
+    function($scope, $location, $window, LoginService){
+
+        //if logged in, go to user page
+        if($window.sessionStorage.getItem('token')){
+            $location.path("/users/"+$window.sessionStorage.getItem('username'));
+        }
+
+        //Login
+        $scope.loginInfo = {};
+        $scope.loginCheck = '';
+
+        $scope.login = function login(loginInfo) {
+            $scope.loginCheck = '';
+            console.log(loginInfo);
+
+            if(!$scope.loginInfo.email) {
+                $scope.loginCheck = 'Invalid Email';
+                return;
+            }
+
+            else if(!$scope.loginInfo.pass) {
+                $scope.loginCheck = 'Please enter your Password';
+                return;
+            }
+            else if($scope.loginInfo.pass.length < 6 || $scope.loginInfo.pass.length > 20){
+                $scope.loginCheck = 'Password length should be 6 to 20 characters long';
+                return;
+            }
+
+            else {
+                LoginService.login(loginInfo.email, loginInfo.pass).success(function(data){
+                    console.log(data);
+                    if(Object.keys(data).length){
+                        $window.sessionStorage.setItem('token', data.token);
+                        $window.sessionStorage.setItem('username', data.username);
+                        $window.sessionStorage.setItem('uid', data.uid);
+                        $window.sessionStorage.setItem('info', data.info);
+
+                        //refresh
+
+                        $window.location.reload(function(){
+                            $location.path("/users/"+data.username);
+
+                        });
+                    }
+                    else{
+                        $window.sessionStorage.removeItem('token');
+                        console.log(status);
+                        $scope.loginCheck = "Login Failed";
+                    }
+                });
             }
         };
-
-        $timeout(countUp, 500);
-
-        //
     }]);
 
 rapidScoreControllers.controller('SignUpCtrl', ['$scope', 'RegisterAPI', 'CheckUsernameAPI', 'CheckEmailAPI', '$location',
@@ -160,48 +469,10 @@ rapidScoreControllers.controller('SignUpCtrl', ['$scope', 'RegisterAPI', 'CheckU
                 //convert to json
                 User.save({}, regData, function(res){
                     if(res){
-                        $location.path('/redirecting');
+                        $location.path('/login');
                     }
                 });
             }
-        };
-
-        //Login
-        $scope.loginInfo = {};
-        $scope.loginCheck = '';
-        var loginData = {
-            "email":"",
-            "pass":""
-        };
-        $scope.loginSave = function() {
-            $scope.loginCheck = '';
-            console.log($scope.loginInfo);
-
-            if(!$scope.loginInfo.email) {
-                $scope.loginCheck = 'Invalid Email';
-                return;
-            }
-
-            else if(!$scope.loginInfo.pass) {
-                $scope.loginCheck = 'Please enter your Password';
-                return;
-            }
-            else if($scope.loginInfo.pass.length < 6 || $scope.loginInfo.pass.length > 20){
-                $scope.loginCheck = 'Password length should be 6 to 20 characters long';
-                return;
-            }
-
-            else {
-                console.log('posting login data...');
-                regData.email = $scope.regInfo.email;
-                regData.pass = $scope.regInfo.pass;
-                var res = User.login({userId: regData.email});
-
-                $location.path('/users/'+res.id);
-                console.log(res);
-                console.log(loginData);
-            }
-            console.log($scope.loginInfo);
         };
     }]);
 
@@ -246,298 +517,3 @@ rapidScoreControllers.controller('GenreCtrl', ['$scope', '$routeParams', 'GenreA
         $scope.shortname = "genres";
         $scope.category = Genre.getOne({cname: $routeParams.genreId});
     }]);
-
-
-rapidScoreControllers.controller('dialogService',function($scope,$rootScope,$timeout,$dialogs){
-        $scope.confirmed = 'You have yet to be confirmed!';
-        $scope.name = '"Your name here."';
-
-    $scope.addcategory = function(ctnumber, ctname){
-        var dlg = null;
-
-        dlg = $dialogs.create('/dialogs/add-'+ctnumber+'.html','addDialogCtrl',{},{key: false,back: 'static'});
-
-
-        dlg.result.then(function(name){
-            $scope.name = name;
-        },function(){
-            $scope.name = 'You decided not to enter in your name, that makes me sad.';
-        });
-    }; // end addcategory
-
-    $scope.editcategory = function(which, cnumber, cname, ctnumber, ctname){
-        var dlg = null;
-        switch(which){
-            // Confirm Dialog
-            case 'remove':
-                dlg = $dialogs.confirm('Please Confirm','Is this awesome or what?');
-                dlg.result.then(function(btn){
-                    $scope.confirmed = 'You thought this quite awesome!';
-                },function(btn){
-                    $scope.confirmed = 'Shame on you for not thinking this is awesome!';
-                });
-                break;
-
-            // custom add score dialog
-            case 'rename':
-                dlg = $dialogs.create('/dialogs/rename-'+  ctnumber +'.html','editDialogCtrl',{},{key: false,back: 'static'});
-                dlg.result.then(function(name){
-                    $scope.name = name;
-                },function(){
-                    $scope.name = 'You decided not to enter in your name, that makes me sad.';
-                });
-
-                break;
-        }; // end switch
-    }; // end editcategory
-
-        $scope.launch = function(which, sid, name){
-            var dlg = null;
-            switch(which){
-                // Notify Dialog
-                case 'userremovecart':
-                    dlg = $dialogs.notify('Shopping Cart','Removed '+name+ ' from your Shopping Cart!');
-                    break;
-
-                // Confirm Dialog
-                case 'confirm':
-                    dlg = $dialogs.confirm('Please Confirm','Is this awesome or what?');
-                    dlg.result.then(function(btn){
-                        $scope.confirmed = 'You thought this quite awesome!';
-                    },function(btn){
-                        $scope.confirmed = 'Shame on you for not thinking this is awesome!';
-                    });
-                    break;
-
-                //remove button, request button
-                case 'removescore':
-                    dlg = $dialogs.confirm('Please Confirm','Is this awesome or what?');
-                    dlg.result.then(function(btn){
-                        $scope.confirmed = 'You thought this quite awesome!';
-                    },function(btn){
-                        $scope.confirmed = 'Shame on you for not thinking this is awesome!';
-                    });
-                    break;
-
-                // custom add score dialog
-                case 'addscore':
-                    dlg = $dialogs.create('/dialogs/addscore.html','addDialogCtrl',{},{key: false,back: 'static'});
-                    dlg.result.then(function(name){
-                        $scope.name = name;
-                    },function(){
-                        $scope.name = 'You decided not to enter in your name, that makes me sad.';
-                    });
-
-                    break;
-
-                // custom add score dialog
-                case 'editscore':
-                    dlg = $dialogs.create('/dialogs/editscore.html','editDialogCtrl',{},{key: false,back: 'static'});
-                    dlg.result.then(function(name){
-                        $scope.name = name;
-                    },function(){
-                        $scope.name = 'You decided not to enter in your name, that makes me sad.';
-                    });
-
-                    break;
-
-                // Create Your Own Dialog
-                case 'create':
-                    dlg = $dialogs.create('/dialogs/create.html','whatsYourNameCtrl',{},{key: false,back: 'static'});
-                    dlg.result.then(function(name){
-                        $scope.name = name;
-                    },function(){
-                        $scope.name = 'You decided not to enter in your name, that makes me sad.';
-                    });
-
-                    break;
-            }; // end switch
-        }; // end launch
-
-        // for faking the progress bar in the wait dialog
-        var progress = 25;
-        var msgs = [
-            'Hey! I\'m waiting here...',
-            'About half way done...',
-            'Almost there?',
-            'Woo Hoo! I made it!'
-        ];
-        var i = 0;
-
-        var fakeProgress = function(){
-            $timeout(function(){
-                if(progress < 100){
-                    progress += 25;
-                    $rootScope.$broadcast('dialogs.wait.progress',{msg: msgs[i++],'progress': progress});
-                    fakeProgress();
-                }else{
-                    $rootScope.$broadcast('dialogs.wait.complete');
-                }
-            },1000);
-        }; // end fakeProgress
-
-    }) // end dialogsServiceTest
-    .controller('addDialogCtrl',function($scope,$modalInstance,data){
-        $scope.user = {name : ''};
-
-        $scope.cancel = function(){
-            $modalInstance.dismiss('canceled');
-        }; // end cancel
-
-        $scope.save = function(){
-            $modalInstance.close($scope.user.name);
-        }; // end save
-
-        $scope.hitEnter = function(evt){
-            if(angular.equals(evt.keyCode,13) && !(angular.equals($scope.name,null) || angular.equals($scope.name,'')))
-                $scope.save();
-        }; // end hitEnter
-    }) // end addScoreDialogCtrl
-    .controller('editDialogCtrl',function($scope,$modalInstance,data){
-        $scope.user = {name : ''};
-
-        $scope.cancel = function(){
-            $modalInstance.dismiss('canceled');
-        }; // end cancel
-
-        $scope.save = function(){
-            $modalInstance.close($scope.user.name);
-        }; // end save
-
-        $scope.hitEnter = function(evt){
-            if(angular.equals(evt.keyCode,13) && !(angular.equals($scope.name,null) || angular.equals($scope.name,'')))
-                $scope.save();
-        }; // end hitEnter
-    }) // end editScoreDialogCtrl
-    .controller('whatsYourNameCtrl',function($scope,$modalInstance,data){
-        $scope.user = {name : ''};
-
-        $scope.cancel = function(){
-            $modalInstance.dismiss('canceled');
-        }; // end cancel
-
-        $scope.save = function(){
-            $modalInstance.close($scope.user.name);
-        }; // end save
-
-        $scope.hitEnter = function(evt){
-            if(angular.equals(evt.keyCode,13) && !(angular.equals($scope.name,null) || angular.equals($scope.name,'')))
-                $scope.save();
-        }; // end hitEnter
-    }) // end whatsYourNameCtrl
-    .run(['$templateCache',function($templateCache){
-        $templateCache.put('/dialogs/addscore.html',
-            '<div class="modal"><div class="modal-dialog"><div class="modal-content"><div class="modal-header">' +
-                '<h4 class="modal-title"><span class="glyphicon glyphicon-star"></span> ' +
-                'Adding New Sheet Music</h4></div>' +
-                '<div class="modal-body"><ng-form name="nameDialog" novalidate role="form">' +
-                '<div class="form-group input-group-lg" ng-class="{true: \'has-error\'}[nameDialog.username.$dirty && nameDialog.username.$invalid]">' +
-                '<label class="control-label" for="username">Title:</label>' +
-                '<input type="text" class="form-control" name="username" id="username" ng-model="user.name" ng-keyup="hitEnter($event)" required>' +
-                '<span class="help-block">Enter Score Title.</span>' +
-                '</div></ng-form></div><div class="modal-footer">' +
-                '<button type="button" class="btn btn-default" ng-click="cancel()">Cancel</button>' +
-                '<button type="button" class="btn btn-primary" ng-click="save()" ng-disabled="(nameDialog.$dirty && nameDialog.$invalid) || nameDialog.$pristine">Save</button>' +
-                '</div></div></div></div>');
-
-        $templateCache.put('/dialogs/editscore.html',
-                '<div class="modal"><div class="modal-dialog"><div class="modal-content"><div class="modal-header">' +
-                '<h4 class="modal-title"><span class="glyphicon glyphicon-star"></span> ' +
-                'Editing Sheet Music</h4></div>' +
-                '<div class="modal-body"><ng-form name="nameDialog" novalidate role="form">' +
-                '<div class="form-group input-group-lg" ng-class="{true: \'has-error\'}[nameDialog.username.$dirty && nameDialog.username.$invalid]">' +
-                '<label class="control-label" for="username">Title:</label>' +
-                '<input type="text" class="form-control" name="username" id="username" ng-model="user.name" ng-keyup="hitEnter($event)" required>' +
-                '<span class="help-block">Enter Score Title.</span>' +
-                '</div></ng-form></div><div class="modal-footer">' +
-                '<button type="button" class="btn btn-default" ng-click="cancel()">Cancel</button>' +
-                '<button type="button" class="btn btn-primary" ng-click="save()" ng-disabled="(nameDialog.$dirty && nameDialog.$invalid) || nameDialog.$pristine">Save</button>' +
-                '</div></div></div></div>');
-
-        $templateCache.put('/dialogs/add-1.html',
-                '<div class="modal"><div class="modal-dialog"><div class="modal-content"><div class="modal-header">' +
-                '<h4 class="modal-title"><span class="glyphicon glyphicon-star"></span> ' +
-                'Adding Instrument</h4></div>' +
-                '<div class="modal-body"><ng-form name="nameDialog" novalidate role="form">' +
-                '<div class="form-group input-group-lg" ng-class="{true: \'has-error\'}[nameDialog.username.$dirty && nameDialog.username.$invalid]">' +
-                '<label class="control-label" for="username">Instrument Name:</label>' +
-                '<input type="text" class="form-control" name="username" id="username" ng-model="user.name" ng-keyup="hitEnter($event)" required>' +
-                '<span class="help-block">Enter Instrument Name</span>' +
-                '</div></ng-form></div><div class="modal-footer">' +
-                '<button type="button" class="btn btn-default" ng-click="cancel()">Cancel</button>' +
-                '<button type="button" class="btn btn-primary" ng-click="save()" ng-disabled="(nameDialog.$dirty && nameDialog.$invalid) || nameDialog.$pristine">Save</button>' +
-                '</div></div></div></div>');
-
-        $templateCache.put('/dialogs/add-2.html',
-                '<div class="modal"><div class="modal-dialog"><div class="modal-content"><div class="modal-header">' +
-                '<h4 class="modal-title"><span class="glyphicon glyphicon-star"></span> ' +
-                'Adding Composer</h4></div>' +
-                '<div class="modal-body"><ng-form name="nameDialog" novalidate role="form">' +
-                '<div class="form-group input-group-lg" ng-class="{true: \'has-error\'}[nameDialog.username.$dirty && nameDialog.username.$invalid]">' +
-                '<label class="control-label" for="username">Composer Name:</label>' +
-                '<input type="text" class="form-control" name="username" id="username" ng-model="user.name" ng-keyup="hitEnter($event)" required>' +
-                '<span class="help-block">Enter Composer Name</span>' +
-                '</div></ng-form></div><div class="modal-footer">' +
-                '<button type="button" class="btn btn-default" ng-click="cancel()">Cancel</button>' +
-                '<button type="button" class="btn btn-primary" ng-click="save()" ng-disabled="(nameDialog.$dirty && nameDialog.$invalid) || nameDialog.$pristine">Save</button>' +
-                '</div></div></div></div>');
-
-        $templateCache.put('/dialogs/add-3.html',
-                '<div class="modal"><div class="modal-dialog"><div class="modal-content"><div class="modal-header">' +
-                '<h4 class="modal-title"><span class="glyphicon glyphicon-star"></span> ' +
-                'Adding Genre</h4></div>' +
-                '<div class="modal-body"><ng-form name="nameDialog" novalidate role="form">' +
-                '<div class="form-group input-group-lg" ng-class="{true: \'has-error\'}[nameDialog.username.$dirty && nameDialog.username.$invalid]">' +
-                '<label class="control-label" for="username">Genre Name:</label>' +
-                '<input type="text" class="form-control" name="username" id="username" ng-model="user.name" ng-keyup="hitEnter($event)" required>' +
-                '<span class="help-block">Enter Genre Name</span>' +
-                '</div></ng-form></div><div class="modal-footer">' +
-                '<button type="button" class="btn btn-default" ng-click="cancel()">Cancel</button>' +
-                '<button type="button" class="btn btn-primary" ng-click="save()" ng-disabled="(nameDialog.$dirty && nameDialog.$invalid) || nameDialog.$pristine">Save</button>' +
-                '</div></div></div></div>');
-
-        $templateCache.put('/dialogs/rename-1.html',
-                '<div class="modal"><div class="modal-dialog"><div class="modal-content"><div class="modal-header">' +
-                '<h4 class="modal-title"><span class="glyphicon glyphicon-star"></span> ' +
-                'Renaming Instrument</h4></div>' +
-                '<div class="modal-body"><ng-form name="nameDialog" novalidate role="form">' +
-                '<div class="form-group input-group-lg" ng-class="{true: \'has-error\'}[nameDialog.username.$dirty && nameDialog.username.$invalid]">' +
-                '<label class="control-label" for="username">Instrument Name:</label>' +
-                '<input type="text" class="form-control" name="username" id="username" ng-model="user.name" ng-keyup="hitEnter($event)" required>' +
-                '<span class="help-block">Enter new instrument name</span>' +
-                '</div></ng-form></div><div class="modal-footer">' +
-                '<button type="button" class="btn btn-default" ng-click="cancel()">Cancel</button>' +
-                '<button type="button" class="btn btn-primary" ng-click="save()" ng-disabled="(nameDialog.$dirty && nameDialog.$invalid) || nameDialog.$pristine">Save</button>' +
-                '</div></div></div></div>');
-
-        $templateCache.put('/dialogs/rename-2.html',
-                '<div class="modal"><div class="modal-dialog"><div class="modal-content"><div class="modal-header">' +
-                '<h4 class="modal-title"><span class="glyphicon glyphicon-star"></span> ' +
-                'Renaming Composer</h4></div>' +
-                '<div class="modal-body"><ng-form name="nameDialog" novalidate role="form">' +
-                '<div class="form-group input-group-lg" ng-class="{true: \'has-error\'}[nameDialog.username.$dirty && nameDialog.username.$invalid]">' +
-                '<label class="control-label" for="username">Composer Name:</label>' +
-                '<input type="text" class="form-control" name="username" id="username" ng-model="user.name" ng-keyup="hitEnter($event)" required>' +
-                '<span class="help-block">Enter new composer name</span>' +
-                '</div></ng-form></div><div class="modal-footer">' +
-                '<button type="button" class="btn btn-default" ng-click="cancel()">Cancel</button>' +
-                '<button type="button" class="btn btn-primary" ng-click="save()" ng-disabled="(nameDialog.$dirty && nameDialog.$invalid) || nameDialog.$pristine">Save</button>' +
-                '</div></div></div></div>');
-
-        $templateCache.put('/dialogs/rename-3.html',
-                '<div class="modal"><div class="modal-dialog"><div class="modal-content"><div class="modal-header">' +
-                '<h4 class="modal-title"><span class="glyphicon glyphicon-star"></span> ' +
-                'Renaming Genre</h4></div>' +
-                '<div class="modal-body"><ng-form name="nameDialog" novalidate role="form">' +
-                '<div class="form-group input-group-lg" ng-class="{true: \'has-error\'}[nameDialog.username.$dirty && nameDialog.username.$invalid]">' +
-                '<label class="control-label" for="username">Genre Name:</label>' +
-                '<input type="text" class="form-control" name="username" id="username" ng-model="user.name" ng-keyup="hitEnter($event)" required>' +
-                '<span class="help-block">Enter new genre name</span>' +
-                '</div></ng-form></div><div class="modal-footer">' +
-                '<button type="button" class="btn btn-default" ng-click="cancel()">Cancel</button>' +
-                '<button type="button" class="btn btn-primary" ng-click="save()" ng-disabled="(nameDialog.$dirty && nameDialog.$invalid) || nameDialog.$pristine">Save</button>' +
-                '</div></div></div></div>');
-
-        $templateCache.put('/dialogs/create.html','<div class="modal"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><h4 class="modal-title"><span class="glyphicon glyphicon-star"></span> User\'s Name</h4></div><div class="modal-body"><ng-form name="nameDialog" novalidate role="form"><div class="form-group input-group-lg" ng-class="{true: \'has-error\'}[nameDialog.username.$dirty && nameDialog.username.$invalid]"><label class="control-label" for="username">Name:</label><input type="text" class="form-control" name="username" id="username" ng-model="user.name" ng-keyup="hitEnter($event)" required><span class="help-block">Enter your full name, first &amp; last.</span></div></ng-form></div><div class="modal-footer"><button type="button" class="btn btn-default" ng-click="cancel()">Cancel</button><button type="button" class="btn btn-primary" ng-click="save()" ng-disabled="(nameDialog.$dirty && nameDialog.$invalid) || nameDialog.$pristine">Save</button></div></div></div></div>');
-
-    }]); // end run / module

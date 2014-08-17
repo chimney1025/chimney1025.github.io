@@ -1,0 +1,30 @@
+
+<div class="container breadcrumbBox">
+    <ol class="breadcrumb">
+        <li><a href="#/home"><span class="glyphicon glyphicon-home"></span></a></li>
+        <li><a href="#/users">Sign Up</a></li>
+    </ol>
+</div>
+<!-- Content -->
+<div class="container text-center centered">
+
+    <div class="col-md-6 col-sm-6 col-xs-12 text-center">
+        <img class="biglogo" src="images/logo-wendy-big.png">
+    </div>
+    <div class="col-md-6 col-sm-6 col-xs-12 text-center">
+        <h2>Log In</h2>
+
+        <a class="pull-center need-help" href="#/register">Not Registered? Click to Sign Up </a><span class="clearfix"></span>
+        <form name="LoginForm" class="form-signin" role="form" ng-submit="login(loginInfo)">
+            <input type="email" class="form-control" placeholder="Email" ng-model="loginInfo.email" required autofocus>
+            <input type="password" class="form-control" placeholder="Password" ng-model="loginInfo.pass" required>
+            <span class="form-check" ng-show="loginCheck">{{loginCheck}}</span>
+            <button class="btn btn-primary btn-block" type="submit">
+            Sign in
+            </button>
+            <a href="#" class="pull-right need-help">Forgotten password? </a><span class="clearfix"></span>
+        </form>
+
+        For Testing : <a href="#/admin/users">Admin</a>
+    </div>
+</div>

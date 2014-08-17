@@ -12,38 +12,20 @@
         <ul class="">
             <h4>Welcome Admin</h4>
             <li><a href="#/admin/users">User List</a></li>
-            <li><a href="#/admin/sheetmusic">Sheet Music</a></li>
+            <li><a href="#/admin/sheetmusic" class="active">Sheet Music</a></li>
             <li><a href="#/admin/categories">Categories</a></li>
         </ul>
     </div>
 
     <div class="col-md-9 col-sm-9 col-xs-9 text-left act-list">
         <h2>Manage Sheet Music ({{scores.length}})
-            <span><a type="button" ng-click="launch('addscore')" class="btn btn-warning">ADD</a></span>
+            <span><a type="button" href="#/admin/add-sheetmusic" class="btn btn-warning">ADD</a></span>
         </h2>
-        <h4 class="text-left col-md-12 col-sm-12 col-xs-12 admin-action-bar">
-            <div class="text-left admin-search col-md-9 col-sm-9 col-xs-9">
-                <div class="input-group">
-                    <input type="text" class="form-control" ng-model="query">
-                    <span class="input-group-btn">
-                    <button class="btn btn-default" type="button">Search</button>
-                    </span>
-                </div><!-- /input-group -->
-            </div>
-            <div class="text-right admin-dropdown-order col-md-2 col-sm-2 col-xs-2">
-                <select class="form-control" ng-model="orderProp">
-                    <option value="">Order By</option>
-                    <option value="name">Name</option>
-                    <option value="-added">Newest</option>
-                    <option value="added">Oldest</option>
-                </select>
-            </div>
-        </h4>
         <ul class="">
             <li class="row" ng-repeat="item in scores | filter:query | orderBy:orderProp">
                 <span class="list-item"><a href="#/sheetmusic/{{item.shortname}}">{{item.name}}</a>
-                    <a ng-click="launch('editscore', item.sid, item.name)" ><span class="glyphicon glyphicon-pencil"></span></a>
-                    <a ng-click="launch('removescore', item.sid, item.name)" ><span class="glyphicon glyphicon-remove"></span></a>
+                    <a href="#/admin/sheetmusic/{{item.shortname}}" ><span class="glyphicon glyphicon-pencil"></span></a>
+                    <a ng-click="removeScore(item.sid, item.name)" ><span class="glyphicon glyphicon-remove"></span></a>
                 </span>
                 <span class="list-added">{{item.added | date : 'yyyy-MM-dd'}}</span>
                 <span class="admin-action list-action">

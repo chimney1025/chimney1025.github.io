@@ -16,9 +16,16 @@ ul{
     list-style-type: none;
 }
 
-a:hover {
+a{
+	
+    padding: 3px 5px;
+}
+
+a:hover, a.active {
     text-decoration:none;
     cursor: pointer;
+    background-color: #468595;
+    color: #fff;
 }
 h1{
 	font-size:1.8em;
@@ -88,10 +95,14 @@ a{
 }
 
 .biglogo{
-    margin-top: 50px;
+    margin-top: 120px;
+    width: 380px;
     filter: grayscale(0);
     -webkit-filter: grayscale(0);
     -moz-filter: grayscale(0);
+}
+
+.centered{
 }
 
 /*Footer*/
@@ -266,13 +277,21 @@ a{
 }
 
 .row:hover{
-    background-color: #f8f8f8;
+    /*background-color: #f8f8f8;*/
+}
+
+.act-list .row:hover{
+    /*background: none;*/
 }
 
 .row{
     border-bottom: 1px solid #e1e5e8;
     background-color: #ffffff;
     margin: 5px 0 11px 0;
+}
+
+form .row{
+	border-bottom: none;
 }
 
 .row span{
@@ -381,7 +400,7 @@ audio{
 }
 
 .act-list h2{
-    margin-top: 2px;
+    margin: 0 0 20px 0;
     clear:both;
     min-height: 40px;
     line-height:40px;
@@ -412,6 +431,14 @@ audio{
     width: 70%;
     text-align: left;
     float: left;
+}
+
+input.act-content{
+    border:none;
+    border-bottom: 1px solid #ccc;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
 }
 
 .act-btn{
@@ -669,6 +696,11 @@ span.form-check{
         padding: 0 15px;
     }
 
+    .biglogo{
+        margin-top: 100px;
+        width: 300px;
+    }
+
 /*
     .breadcrumb{
         margin-bottom: 32px;
@@ -740,6 +772,12 @@ span.form-check{
     .breadcrumbBox{
         height:60px;
         padding-top:21px;
+    }
+
+    .biglogo{
+        margin-top: 50px;
+        width: 250px;
+        margin: 0 auto;
     }
 
     .list-filter, .score-detail, .list-score, .score-main, .account-menu, .act-list, .list-category{

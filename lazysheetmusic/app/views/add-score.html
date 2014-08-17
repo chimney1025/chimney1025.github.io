@@ -12,53 +12,64 @@
         <ul class="">
             <h4>Welcome Admin</h4>
             <li><a href="#/admin/users">User List</a></li>
-            <li><a href="#/admin/sheetmusic">Sheet Music</a></li>
+            <li><a href="#/admin/sheetmusic" class="active">Sheet Music</a></li>
             <li><a href="#/admin/categories">Categories</a></li>
         </ul>
     </div>
 
     <div class="col-md-9 col-sm-9 col-xs-9 text-left act-list">
-        <form name="addScoreForm" class="form-score" role="form">
+    
+            <h2>Add New Sheet Music
+                <span><a type="button" href="#/admin/sheetmusic" class="btn btn-default">BACK</a></span>
+            </h2>
+        <form name="ScoreForm" class="form-score" role="form">
         <ul class="">
-            <h2>Add New Sheet Music</h2>
             <li class="row">
                 <span class="act-label">TITLE</span>
-                <span class="act-content">
-                    <input type="text" class="form-control" placeholder="Enter title" ng-model="scoreInfo.title" required ng-trim="true">
-                </span>
+                <input type="text" class="act-content form-control" placeholder="Enter title" ng-model="scoreInfo.name" required ng-trim="true">
+                
             </li>
             <li class="row">
                 <span class="act-label">PRICE</span>
-                <span class="act-content">
-                    <input type="text" class="form-control" placeholder="Enter price" ng-model="scoreInfo.price" required ng-trim="true">
-                </span>
+                <input type="text" class="act-content form-control" placeholder="Enter price" ng-model="scoreInfo.price" required ng-trim="true">
+                
             </li>
             <li class="row">
-                <span class="act-label">AUDIO UPLOAD</span>
-                <span class="act-content">
-                    <input type="file" class="form-control" placeholder="Choose Audio File" ng-model="scoreInfo.audioURL" ng-trim="true">
-                </span>
+                <span class="act-label">PAGE</span>
+                <input type="text" class="act-content form-control" placeholder="Enter page" ng-model="scoreInfo.page" required ng-trim="true">
+                
             </li>
             <li class="row">
-                <span class="act-label">VIDEO URL</span>
-                <span class="act-content">
-                    <input type="text" class="form-control" placeholder="Enter Video URL" ng-model="scoreInfo.videoURL" ng-trim="true">
-                </span>
+                <span class="act-label">AUDIO</span>
+                <input type="text" class="act-content form-control" placeholder="Audio URL" ng-model="scoreInfo.audiourl" ng-trim="true">
+                
             </li>
             <li class="row">
-                <span class="act-label">PREVIEW UPLOAD</span>
-                <span class="act-content">
-                    <input type="file" class="form-control" placeholder="Choose Preview Image File" ng-model="scoreInfo.imageURL" ng-trim="true">
-                </span>
+                <span class="act-label">VIDEO</span>
+                <input type="text" class="act-content form-control" placeholder="Video URL" ng-model="scoreInfo.videourl" ng-trim="true">
+                
             </li>
             <li class="row">
-                <span class="act-label">SHEET MUSIC UPLOAD</span>
-                <span class="act-content">
-                    <input type="file" class="form-control" placeholder="Choose Actual Sheet Music File" ng-model="scoreInfo.fileURL" ng-trim="true">
-                </span>
+                <span class="act-label">IMAGE</span>
+                <input type="file" class="act-content form-control" placeholder="Image Upload" ng-model="scoreInfo.imageurl" ng-trim="true">
+                
+            </li>
+            <li class="row">
+                <span class="act-label">FILE</span>
+                <input type="file" class="act-content form-control" placeholder="Sheet Music Upload" ng-model="scoreInfo.fileurl" ng-trim="true">
+                
+            </li>
+            <li class="row">
+                <span class="act-label">DESCRIPTION</span>
+                <textarea class="act-content form-control" placeholder="Description" ng-model="scoreInfo.snippet" ng-trim="true"></textarea>
+                
             </li>
             <li>
-                <a type="button" class="btn btn-default btn" href="#/admin/sheetmusic">Submit</a>
+                <span class="form-check" ng-show="scoreCheck">{{scoreCheck}}</span>
+            
+            </li>
+            <li>
+                <a type="button" ng-click="scoreSave()" class="btn btn-primary btn-sm">Save</a>
             </li>
         </ul>
         </form>
