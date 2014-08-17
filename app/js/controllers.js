@@ -334,9 +334,9 @@ rapidScoreControllers.controller('LoginCtrl', ['$scope', '$location', '$window',
 
                         //refresh
 
+                        $window.location.reload(function(){
+                            $location.path("/users/"+data.username);
 
-                        $location.path("/users/"+data.username, function(){
-                            $window.location.reload();
                         });
                     }
                     else{
