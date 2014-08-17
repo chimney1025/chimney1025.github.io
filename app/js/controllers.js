@@ -296,6 +296,12 @@ rapidScoreControllers.controller('sessionService', ['$scope', '$window', '$locat
 
 rapidScoreControllers.controller('LoginCtrl', ['$scope', '$location', '$window', 'LoginAPI',
     function($scope, $location, $window, LoginService){
+
+        //if logged in, go to user page
+        if($window.sessionStorage.getItem('token')){
+            $location.path("/users/"+$window.sessionStorage.getItem('username'));
+        }
+
         //Login
         $scope.loginInfo = {};
         $scope.loginCheck = '';
@@ -325,6 +331,10 @@ rapidScoreControllers.controller('LoginCtrl', ['$scope', '$location', '$window',
                         $window.sessionStorage.setItem('token', data.token);
                         $window.sessionStorage.setItem('username', data.username);
                         $window.sessionStorage.setItem('uid', data.uid);
+
+                        //refresh
+                        $window.location.reload();
+
                         $location.path("/users/"+data.username);
                     }
                     else{
