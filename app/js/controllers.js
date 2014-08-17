@@ -333,9 +333,11 @@ rapidScoreControllers.controller('LoginCtrl', ['$scope', '$location', '$window',
                         $window.sessionStorage.setItem('uid', data.uid);
 
                         //refresh
-                        $window.location.reload();
 
-                        $location.path("/users/"+data.username);
+
+                        $location.path("/users/"+data.username, function(){
+                            $window.location.reload();
+                        });
                     }
                     else{
                         $window.sessionStorage.removeItem('token');
