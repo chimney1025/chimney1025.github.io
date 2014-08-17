@@ -12,9 +12,57 @@ rapidScoreControllers.controller('ScoreListCtrl', ['$scope', 'ScoreAPI', 'Instru
         $scope.getGenres = Genre.getAll();
     }]);
 
-rapidScoreControllers.controller('ScoreCtrl', ['$scope', '$routeParams', 'ScoreAPI',
-    function($scope, $routeParams, Score, Instrument, Composer, Genre) {
+rapidScoreControllers.controller('ScoreCtrl', ['$scope', '$routeParams', 'ScoreAPI', 'CartAPI', '$location', '$window',
+    function($scope, $routeParams, Score, AddCart, $location, $window, Instrument, Composer, Genre) {
         $scope.score = Score.getOne({scoreId: $routeParams.scoreId});
+        console.log($scope.score);
+        console.log($window.sessionStorage.getItem('uid'));
+
+        $scope.action = 'Add to Cart';
+
+        $scope.link = function(){
+            console.log('sid:');
+            console.log($scope.score.sid);
+
+            if(!$window.sessionStorage.getItem('uid')){
+                $location.path('/login');
+            }
+
+            else{
+                var flag = 0;
+                for(var i=0; i<$scope.logged_cart.length; i++){
+                    if($scope.logged_cart[i].sid == $scope.score.sid){
+                        flag = 1;
+                        alert('Already in Cart');
+                        break;
+                    }
+                }
+
+                if(flag==0){
+
+                    for(var i=0; i<$scope.logged_purchased.length; i++){
+                        if($scope.logged_purchased[i].sid == $scope.score.sid){
+                            flag = 1;
+                            alert('Already in Purchased');
+                            break;
+                        }
+                    }
+                }
+
+                if(flag == 0){
+                    AddCart.add({'uid':$window.sessionStorage.getItem('uid')}, {'sid':$scope.score.sid}, function(res){
+                        console.log('res:');
+                        console.log(res);
+                        if(res){
+                            alert('added');
+                            $window.location.reload();
+                            //$location.path('/users/'+$window.sessionStorage.getItem('username')+'/shopping-cart');
+
+                        }
+                    });
+                }
+            }
+        };
     }]);
 
 rapidScoreControllers.controller('ScoreAdminCtrl', ['$scope', 'ScoreAdminAPI', 'EditScoreAPI', 'RemoveScoreCategoryAPI',
@@ -26,7 +74,7 @@ rapidScoreControllers.controller('ScoreAdminCtrl', ['$scope', 'ScoreAdminAPI', '
             alert('Deleting ' + name);
             EditScore.remove({scoreId:sid}, function (res) {
                 console.log(res + ' deleted : ' + sid);
-                //$location.path('#/admin/sheetmusic');
+                //$location.path('/admin/sheetmusic');
                 $scope.scores = Score.getAll();
             });
         };
@@ -244,44 +292,60 @@ rapidScoreControllers.controller('UserAdminCtrl', ['$scope', '$routeParams', 'Us
         $scope.total = 0;
     }]);
 
-rapidScoreControllers.controller('UserCtrl', ['$scope', '$routeParams', 'UserAPI', 'UserCartAPI', 'UserOrderAPI',
-    function($scope, $routeParams, User, Cart, Purchased) {
+rapidScoreControllers.controller('UserCtrl', ['$window', '$location', '$scope', '$routeParams', 'UserAPI', 'UserCartAPI', 'UserOrderAPI', 'RemoveCartAPI', 'PlaceOrderAPI',
+    function($window, $location, $scope, $routeParams, User, Cart, Purchased, RemoveCart, PlaceOrder) {
+
+        if($routeParams.username != $window.sessionStorage.getItem('username')){
+            $location.path($scope.logged_userlink);
+        }
+
         $scope.user = User.getOne({username: $routeParams.username});
-        $scope.cart = Cart.getAll({username: $routeParams.username});
-        $scope.purchased = Purchased.getAll({username: $routeParams.username});
+        //$scope.cart = Cart.getAll({username: $routeParams.username});
+        //$scope.purchased = Purchased.getAll({username: $routeParams.username});
+
+        $scope.removecart = function(name, sid){
+            RemoveCart.remove({'uid': $window.sessionStorage.getItem('uid'), 'sid':sid}, function(res){
+                if(res){
+                    alert('Removed ' + name);
+                    $window.location.reload();
+                }
+                else{
+                    console.log(res);
+                }
+            });
+        }
+
+        $scope.order = function(){
+            PlaceOrder.order({'uid': $window.sessionStorage.getItem('uid')}, function(res){
+                if(res){
+                    alert('Placing Order - ' + $scope.logged_cart.length + ' items');
+                    $window.location.reload();
+                }
+                else{
+                    console.log(res);
+                }
+            });
+        }
     }]);
 
-rapidScoreControllers.controller('RedirectCtrl', ['$scope', '$location', '$timeout',
-    function($scope, $location, $timeout) {
-        $scope.timeInMs = 0;
-        $scope.gif='';
-
-        var countUp = function() {
-            $scope.timeInMs+= 500;
-            $scope.gif += '.';
-            $timeout(countUp, 500);
-            if($scope.timeInMs == 2000){
-                $location.path('/sheetmusic');
-            }
-        };
-
-        $timeout(countUp, 500);
-
-        //
-    }]);
-
-rapidScoreControllers.controller('sessionService', ['$scope', '$window', '$location', 'UserCartAPI',
-    function($scope, $window, $location, Cart){
+rapidScoreControllers.controller('sessionService', ['$scope', '$window', '$location', 'UserCartAPI', 'UserOrderAPI',
+    function($scope, $window, $location, Cart, Order){
 
         if(!$window.sessionStorage.getItem('token')){
             $scope.logged = false;
+            $window.sessionStorage.removeItem('token');
+            $window.sessionStorage.removeItem('username');
+            $window.sessionStorage.removeItem('uid');
+            $window.sessionStorage.removeItem('info');
         }
         else{
             $scope.logged = true;
-            $scope.usercartlink = '/users/'+$window.sessionStorage.getItem('username')+'/shopping-cart';
-            $scope.userlink = '/users/'+$window.sessionStorage.getItem('username');
-            $scope.username = $window.sessionStorage.getItem('username');
-            $scope.cart = Cart.getAll({username: $window.sessionStorage.getItem('username')});
+            $scope.logged_usercartlink = '/users/'+$window.sessionStorage.getItem('username')+'/shopping-cart';
+            $scope.logged_userlink = '/users/'+$window.sessionStorage.getItem('username');
+            $scope.logged_username = $window.sessionStorage.getItem('username');
+            $scope.logged_user = $window.sessionStorage.getItem('info');
+            $scope.logged_cart = Cart.getAll({username: $window.sessionStorage.getItem('username')});
+            $scope.logged_purchased = Order.getAll({username: $window.sessionStorage.getItem('username')});
         }
 
         $scope.logout = function logout(){
@@ -290,6 +354,7 @@ rapidScoreControllers.controller('sessionService', ['$scope', '$window', '$locat
             $window.sessionStorage.removeItem('token');
             $window.sessionStorage.removeItem('username');
             $window.sessionStorage.removeItem('uid');
+            $window.sessionStorage.removeItem('info');
             $location.path("/login");
         }
 }]);
@@ -331,6 +396,7 @@ rapidScoreControllers.controller('LoginCtrl', ['$scope', '$location', '$window',
                         $window.sessionStorage.setItem('token', data.token);
                         $window.sessionStorage.setItem('username', data.username);
                         $window.sessionStorage.setItem('uid', data.uid);
+                        $window.sessionStorage.setItem('info', data.info);
 
                         //refresh
 

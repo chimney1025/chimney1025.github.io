@@ -215,12 +215,13 @@ rapidScoreServices.factory('RegisterAPI', ['$resource',
     }]);
 
 //add, remove, clear cart
-rapidScoreServices.factory('AddOrClearCartAPI', ['$resource',
+
+rapidScoreServices.factory('CartAPI', ['$resource',
     function($resource){
         return $resource(
-                hostname + '/users/:userid/shopping-cart',
+                hostname + '/users/:uid/shopping-cart',
             //sid
-            {userid:'@userid'},
+            {uid:'@uid'},
             {
                 add: {
                     method:'POST',
@@ -241,8 +242,8 @@ rapidScoreServices.factory('AddOrClearCartAPI', ['$resource',
 rapidScoreServices.factory('RemoveCartAPI', ['$resource',
     function($resource){
         return $resource(
-                hostname + '/users/:userid/shopping-cart/:scoreId',
-            {userid:'@userid', scoreId:'@scoreId'},
+                hostname + '/users/:uid/shopping-cart/:sid',
+            {uid:'@uid', sid:'@sid'},
             {
                 remove: {
                     method: 'DELETE',
@@ -258,9 +259,9 @@ rapidScoreServices.factory('RemoveCartAPI', ['$resource',
 rapidScoreServices.factory('PlaceOrderAPI', ['$resource',
     function($resource){
         return $resource(
-                hostname + '/users/:userid/purchased',
+                hostname + '/users/:uid/purchased',
             //info
-            {userid:'@userid'},
+            {uid:'@uid'},
             {
                 order: {
                     method: 'POST',
