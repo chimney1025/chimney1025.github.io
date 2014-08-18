@@ -405,6 +405,15 @@ rapidScoreControllers.controller('LoginCtrl', ['$scope', '$rootScope', '$locatio
                         $window.sessionStorage.setItem('username', data.username);
                         $window.sessionStorage.setItem('uid', data.uid);
                         $window.sessionStorage.setItem('info', data.info);
+                        
+                        //set global variables
+                        $rootScope.logged = true;
+                        $rootScope.logged_usercartlink = '/users/'+$window.sessionStorage.getItem('username')+'/shopping-cart';
+                        $rootScope.logged_userlink = '/users/'+$window.sessionStorage.getItem('username');
+                        $rootScope.logged_username = $window.sessionStorage.getItem('username');
+                        $rootScope.logged_user = $window.sessionStorage.getItem('info');
+                        $rootScope.logged_cart = Cart.getAll({username: $window.sessionStorage.getItem('username')});
+                        $rootScope.logged_purchased = Order.getAll({username: $window.sessionStorage.getItem('username')});
 
                         //refresh
                         $location.path("/users/"+data.username);
