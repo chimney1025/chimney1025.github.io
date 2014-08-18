@@ -367,8 +367,8 @@ rapidScoreControllers.controller('sessionService', ['$scope','$rootScope', '$win
         }
 }]);
 
-rapidScoreControllers.controller('LoginCtrl', ['$scope', '$location', '$window', 'LoginAPI',
-    function($scope, $location, $window, LoginService){
+rapidScoreControllers.controller('LoginCtrl', ['$scope', '$rootScope', '$location', '$window', 'LoginAPI',
+    function($scope, $rootScope, $location, $window, LoginService){
 
         //if logged in, go to user page
         if($window.sessionStorage.getItem('token')){
