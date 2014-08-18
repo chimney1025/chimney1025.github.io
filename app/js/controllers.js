@@ -411,8 +411,10 @@ rapidScoreControllers.controller('LoginCtrl', ['$scope', '$rootScope', '$locatio
                         //$rootScope.user = User.getOne({username: data.username});
                         
                         //refresh
-                        $location.path("/users/"+data.username);
-                        $window.location.reload(function(){});
+                        $location.path("/users/"+data.username , function(){
+                            $window.location.reload();
+                        });
+                        
                     }
                     else{
                         $window.sessionStorage.removeItem('token');
