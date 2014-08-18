@@ -294,7 +294,7 @@ rapidScoreControllers.controller('UserAdminCtrl', ['$scope', '$routeParams', 'Us
     }]);
 
 rapidScoreControllers.controller('UserCtrl', ['$window', '$location', '$scope', '$rootScope', '$routeParams', 'UserAPI', 'UserCartAPI', 'UserOrderAPI', 'RemoveCartAPI', 'PlaceOrderAPI',
-    function($window, $location, $scope, $rootScope, $routeParams, User, Cart, Purchased, RemoveCart, PlaceOrder) {
+    function($window, $location, $scope, $rootScope, $routeParams, User, Cart, Order, RemoveCart, PlaceOrder) {
 
         if($routeParams.username != $window.sessionStorage.getItem('username')){
             $location.path($scope.logged_userlink);
@@ -325,7 +325,7 @@ rapidScoreControllers.controller('UserCtrl', ['$window', '$location', '$scope', 
                 if(res){
                     alert('Placing Order - ' + $scope.logged_cart.length + ' items');
                     $rootScope.logged_cart = Cart.getAll({username: $window.sessionStorage.getItem('username')});
-                    //$rootScope.logged_purchased = Purchased.getAll({username: $window.sessionStorage.getItem('username')});
+                    $rootScope.logged_purchased = Order.getAll({username: $window.sessionStorage.getItem('username')});
 
                     //$window.location.reload();
                 }
