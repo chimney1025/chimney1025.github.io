@@ -12,8 +12,8 @@ rapidScoreControllers.controller('ScoreListCtrl', ['$scope', 'ScoreAPI', 'Instru
         $scope.getGenres = Genre.getAll();
     }]);
 
-rapidScoreControllers.controller('ScoreCtrl', ['$scope', '$routeParams', 'ScoreAPI', 'CartAPI', '$location', '$window',
-    function($scope, $routeParams, Score, AddCart, $location, $window, Instrument, Composer, Genre) {
+rapidScoreControllers.controller('ScoreCtrl', ['$scope', '$routeParams', 'ScoreAPI', 'CartAPI', '$location', '$window', '$UserCartAPI',
+    function($scope, $routeParams, Score, AddCart, $location, $window, Cart, Instrument, Composer, Genre) {
         $scope.score = Score.getOne({scoreId: $routeParams.scoreId});
         console.log($scope.score);
         console.log($window.sessionStorage.getItem('uid'));
@@ -55,7 +55,8 @@ rapidScoreControllers.controller('ScoreCtrl', ['$scope', '$routeParams', 'ScoreA
                         console.log(res);
                         if(res){
                             alert('added');
-                            $window.location.reload();
+                            $scope.logged_cart = Cart.getAll({username: $window.sessionStorage.getItem('username')});
+                            //$window.location.reload();
                             //$location.path('/users/'+$window.sessionStorage.getItem('username')+'/shopping-cart');
 
                         }
