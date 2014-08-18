@@ -329,7 +329,7 @@ rapidScoreControllers.controller('UserCtrl', ['$window', '$location', '$scope', 
         }
     }]);
 
-rapidScoreControllers.controller('sessionService', ['$scope', '$window', '$location', 'UserCartAPI', 'UserOrderAPI',
+rapidScoreControllers.controller('sessionService', ['$rootScope', '$window', '$location', 'UserCartAPI', 'UserOrderAPI',
     function($scope, $window, $location, Cart, Order){
 
         if(!$window.sessionStorage.getItem('token')){
