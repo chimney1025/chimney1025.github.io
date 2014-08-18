@@ -293,14 +293,16 @@ rapidScoreControllers.controller('UserAdminCtrl', ['$scope', '$routeParams', 'Us
         $scope.total = 0;
     }]);
 
-rapidScoreControllers.controller('UserCtrl', ['$window', '$location', '$scope', '$routeParams', 'UserAPI', 'UserCartAPI', 'UserOrderAPI', 'RemoveCartAPI', 'PlaceOrderAPI',
-    function($window, $location, $scope, $routeParams, User, Cart, Purchased, RemoveCart, PlaceOrder) {
+rapidScoreControllers.controller('UserCtrl', ['$window', '$location', '$scope', '$rootScope', '$rootScope', '$routeParams', 'UserAPI', 'UserCartAPI', 'UserOrderAPI', 'RemoveCartAPI', 'PlaceOrderAPI',
+    function($window, $location, $scope, $rootScope, $rootScope, $routeParams, User, Cart, Purchased, RemoveCart, PlaceOrder) {
 
         if($routeParams.username != $window.sessionStorage.getItem('username')){
             $location.path($scope.logged_userlink);
         }
-
-        $scope.user = User.getOne({username: $routeParams.username});
+        
+        $rootScope.user = User.getOne({username: $window.sessionStorage.getItem('username')});
+        
+        //$rootScope.user = User.getOne({username: $routeParams.username});
         //$scope.cart = Cart.getAll({username: $routeParams.username});
         //$scope.purchased = Purchased.getAll({username: $routeParams.username});
 
@@ -308,7 +310,9 @@ rapidScoreControllers.controller('UserCtrl', ['$window', '$location', '$scope', 
             RemoveCart.remove({'uid': $window.sessionStorage.getItem('uid'), 'sid':sid}, function(res){
                 if(res){
                     alert('Removed ' + name);
-                    $window.location.reload();
+                    $rootScope.logged_cart = Cart.getAll({username: $window.sessionStorage.getItem('username')});
+
+                    //$window.location.reload();
                 }
                 else{
                     console.log(res);
@@ -320,7 +324,10 @@ rapidScoreControllers.controller('UserCtrl', ['$window', '$location', '$scope', 
             PlaceOrder.order({'uid': $window.sessionStorage.getItem('uid')}, function(res){
                 if(res){
                     alert('Placing Order - ' + $scope.logged_cart.length + ' items');
-                    $window.location.reload();
+                    $rootScope.logged_cart = Cart.getAll({username: $window.sessionStorage.getItem('username')});
+                    //$rootScope.logged_purchased = Purchased.getAll({username: $window.sessionStorage.getItem('username')});
+
+                    //$window.location.reload();
                 }
                 else{
                     console.log(res);
@@ -400,11 +407,9 @@ rapidScoreControllers.controller('LoginCtrl', ['$scope', '$location', '$window',
                         $window.sessionStorage.setItem('info', data.info);
 
                         //refresh
-
-                        $window.location.reload(function(){
-                            $location.path("/users/"+data.username);
-
-                        });
+                        $location.path("/users/"+data.username);
+                        $rootScope.user = User.getOne({username: data.username});
+                        //$window.location.reload(function(){});
                     }
                     else{
                         $window.sessionStorage.removeItem('token');
