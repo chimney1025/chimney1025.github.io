@@ -293,8 +293,8 @@ rapidScoreControllers.controller('UserAdminCtrl', ['$scope', '$routeParams', 'Us
         $scope.total = 0;
     }]);
 
-rapidScoreControllers.controller('UserCtrl', ['$window', '$location', '$scope', '$rootScope', '$rootScope', '$routeParams', 'UserAPI', 'UserCartAPI', 'UserOrderAPI', 'RemoveCartAPI', 'PlaceOrderAPI',
-    function($window, $location, $scope, $rootScope, $rootScope, $routeParams, User, Cart, Purchased, RemoveCart, PlaceOrder) {
+rapidScoreControllers.controller('UserCtrl', ['$window', '$location', '$scope', '$rootScope', '$routeParams', 'UserAPI', 'UserCartAPI', 'UserOrderAPI', 'RemoveCartAPI', 'PlaceOrderAPI',
+    function($window, $location, $scope, $rootScope, $routeParams, User, Cart, Purchased, RemoveCart, PlaceOrder) {
 
         if($routeParams.username != $window.sessionStorage.getItem('username')){
             $location.path($scope.logged_userlink);
