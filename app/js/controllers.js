@@ -12,7 +12,7 @@ rapidScoreControllers.controller('ScoreListCtrl', ['$scope', 'ScoreAPI', 'Instru
         $scope.getGenres = Genre.getAll();
     }]);
 
-rapidScoreControllers.controller('ScoreCtrl', ['$scope', '$routeParams', 'ScoreAPI', 'CartAPI', '$location', '$window', '$UserCartAPI',
+rapidScoreControllers.controller('ScoreCtrl', ['$scope', '$routeParams', 'ScoreAPI', 'CartAPI', '$location', '$window', 'UserCartAPI',
     function($scope, $routeParams, Score, AddCart, $location, $window, Cart, Instrument, Composer, Genre) {
         $scope.score = Score.getOne({scoreId: $routeParams.scoreId});
         console.log($scope.score);
