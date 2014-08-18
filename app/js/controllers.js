@@ -475,6 +475,7 @@ rapidScoreControllers.controller('SignUpCtrl', ['$scope', 'RegisterAPI', 'CheckU
                 //convert to json
                 User.save({}, regData, function(res){
                     if(res){
+                        alert('Registration Successful!');
                         $location.path('/login');
                     }
                 });
