@@ -411,9 +411,8 @@ rapidScoreControllers.controller('LoginCtrl', ['$scope', '$rootScope', '$locatio
                         //$rootScope.user = User.getOne({username: data.username});
                         
                         //refresh
-                        $location.path("/users/"+data.username , function(){
-                            $window.location.reload();
-                        });
+                        //$location.path("/users/"+data.username);
+                        $window.location.reload();
                         
                     }
                     else{
