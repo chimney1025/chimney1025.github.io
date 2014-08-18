@@ -12,8 +12,8 @@ rapidScoreControllers.controller('ScoreListCtrl', ['$scope', 'ScoreAPI', 'Instru
         $scope.getGenres = Genre.getAll();
     }]);
 
-rapidScoreControllers.controller('ScoreCtrl', ['$scope', '$routeParams', 'ScoreAPI', 'CartAPI', '$location', '$window', 'UserCartAPI',
-    function($scope, $routeParams, Score, AddCart, $location, $window, Cart, Instrument, Composer, Genre) {
+rapidScoreControllers.controller('ScoreCtrl', ['$scope', '$rootScope', '$routeParams', 'ScoreAPI', 'CartAPI', '$location', '$window', 'UserCartAPI',
+    function($scope, $rootScope, $routeParams, Score, AddCart, $location, $window, Cart, Instrument, Composer, Genre) {
         $scope.score = Score.getOne({scoreId: $routeParams.scoreId});
         console.log($scope.score);
         console.log($window.sessionStorage.getItem('uid'));
@@ -55,7 +55,7 @@ rapidScoreControllers.controller('ScoreCtrl', ['$scope', '$routeParams', 'ScoreA
                         console.log(res);
                         if(res){
                             alert('added');
-                            $scope.logged_cart = Cart.getAll({username: $window.sessionStorage.getItem('username')});
+                            $rootScope.logged_cart = Cart.getAll({username: $window.sessionStorage.getItem('username')});
                             //$window.location.reload();
                             //$location.path('/users/'+$window.sessionStorage.getItem('username')+'/shopping-cart');
 
@@ -329,29 +329,29 @@ rapidScoreControllers.controller('UserCtrl', ['$window', '$location', '$scope', 
         }
     }]);
 
-rapidScoreControllers.controller('sessionService', ['$rootScope', '$window', '$location', 'UserCartAPI', 'UserOrderAPI',
-    function($scope, $window, $location, Cart, Order){
+rapidScoreControllers.controller('sessionService', ['$scope','$rootScope', '$window', '$location', 'UserCartAPI', 'UserOrderAPI',
+    function($scope, $rootScope, $window, $location, Cart, Order){
 
         if(!$window.sessionStorage.getItem('token')){
-            $scope.logged = false;
+            $rootScope.logged = false;
             $window.sessionStorage.removeItem('token');
             $window.sessionStorage.removeItem('username');
             $window.sessionStorage.removeItem('uid');
             $window.sessionStorage.removeItem('info');
         }
         else{
-            $scope.logged = true;
-            $scope.logged_usercartlink = '/users/'+$window.sessionStorage.getItem('username')+'/shopping-cart';
-            $scope.logged_userlink = '/users/'+$window.sessionStorage.getItem('username');
-            $scope.logged_username = $window.sessionStorage.getItem('username');
-            $scope.logged_user = $window.sessionStorage.getItem('info');
-            $scope.logged_cart = Cart.getAll({username: $window.sessionStorage.getItem('username')});
-            $scope.logged_purchased = Order.getAll({username: $window.sessionStorage.getItem('username')});
+            $rootScope.logged = true;
+            $rootScope.logged_usercartlink = '/users/'+$window.sessionStorage.getItem('username')+'/shopping-cart';
+            $rootScope.logged_userlink = '/users/'+$window.sessionStorage.getItem('username');
+            $rootScope.logged_username = $window.sessionStorage.getItem('username');
+            $rootScope.logged_user = $window.sessionStorage.getItem('info');
+            $rootScope.logged_cart = Cart.getAll({username: $window.sessionStorage.getItem('username')});
+            $rootScope.logged_purchased = Order.getAll({username: $window.sessionStorage.getItem('username')});
         }
 
         $scope.logout = function logout(){
             console.log('logging out');
-            $scope.logged = false;
+            $rootScope.logged = false;
             $window.sessionStorage.removeItem('token');
             $window.sessionStorage.removeItem('username');
             $window.sessionStorage.removeItem('uid');
