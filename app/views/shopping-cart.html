@@ -23,7 +23,10 @@
         <ul class="">
             <h2>Shopping Cart ({{logged_cart.length}})</h2>
             <div ng-if="logged_cart.length">
-            <span ng-if="add_score_name">Newly added : {{add_score_name}}</span>
+            <div class="col-md-12" ng-if="added_score_name">
+            Newly added : {{added_score_name}}
+            <a href="#/sheetmusic/{{added_score_shortname}}">Continue Shopping</a>
+            </div>
             <li class="row list-inline columnCaptions">
                 <span>Title</span>
                 <span>Price</span>
