@@ -1,8 +1,8 @@
 <div class="slider">
 	<div class="slide" ng-repeat="image in images" ng-show="image.name">
-		<img ng-src="{{image.imagesrc}}"/>
+		<img ng-src="{{image.imageurl}}"/>
 	</div>
 	<div class="arrows">
-		<a href="#" ng-click="prev()"><img src="img/left-arrow.png"/></a> <a href="#" ng-click="next()"><img src="img/right-arrow.png"/></a>
+		<a href="#" ng-click="prev()">Prev</a> <a href="#" ng-click="next()">Next</a>
 	</div>
 </div>
