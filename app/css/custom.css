@@ -182,7 +182,7 @@ a{
 .slider{
 	position: relative;
 	padding:5px;
-	width:610px;
+	max-width:950px;
 	margin: auto;
 }
 .slide{
@@ -190,6 +190,9 @@ a{
 	top:0;
 	left:0;
 	box-shadow: 0px 0px 15px #999;
+}
+.slide img{
+	max-width:950px;
 }
 .arrows{
 	position: absolute;
