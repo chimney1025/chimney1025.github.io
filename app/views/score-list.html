@@ -1,11 +1,4 @@
 
-
-<div class="container breadcrumbBox">
-    <ol class="breadcrumb">
-        <li><a href="#/home"><span class="glyphicon glyphicon-home"></span></a></li>
-        <li><a href="#/sheetmusic">Sheet Music</a></li>
-    </ol>
-</div>
 <!-- Content -->
 <div class="container text-center">
 
@@ -74,14 +67,6 @@
     </div><!-- End Filters-->
 
     <div class="col-md-8 col-sm-8 col-xs-8 list-score">
-        <div class="input-search">
-            <div class="input-group">
-                <input type="text" class="form-control" ng-model="query">
-                    <span class="input-group-btn">
-                    <button class="btn btn-default" type="button">Search</button>
-                    </span>
-            </div><!-- /input-group -->
-        </div>
         <ul class="score-list">
             <li class="row" ng-repeat="item in scores | filter:query | orderBy:orderProp">
                 <span class="list-item"><a href="#/sheetmusic/{{item.shortname}}">{{item.name}}</a></span>

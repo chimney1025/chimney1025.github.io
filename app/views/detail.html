@@ -1,11 +1,4 @@
 
-<div class="container breadcrumbBox">
-    <ol class="breadcrumb">
-        <li><a href="#/home"><span class="glyphicon glyphicon-home"></span></a></li>
-        <li><a href="#/sheetmusic">Sheet Music</a></li>
-        <li><a href="#/sheetmusic/{{score.id}}">{{score.name}}</a></li>
-    </ol>
-</div>
 <!-- Content -->
 <div class="container text-center">
 
@@ -13,7 +6,7 @@
         <ul class="">
             <li><h1>{{score.name}}</h1></li>
             <span ng-show=0 ng-model="sid" >{{score.sid}}</span>
-            <li><a type="button" class="btn btn-warning" ng-click="link()" >{{action}}</a></li>
+            <li><a type="button" class="btn {{action_class}}" ng-click="link()" >{{action}}</a></li>
             <!--
             <li><a class="btn btn-default btn-block" ng-model="collapsed" ng-click="collapsed=!collapsed">More Detail</a></li>
             -->

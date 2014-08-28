@@ -2,7 +2,7 @@
 
 /* Controllers */
 
-var rapidScoreControllers = angular.module('rapidScoreControllers', ['ui.bootstrap','dialogs']);
+var rapidScoreControllers = angular.module('rapidScoreControllers', ['ui.bootstrap']);
 
 rapidScoreControllers.controller('ScoreListCtrl', ['$scope', 'ScoreAPI', 'InstrumentAPI', 'ComposerAPI', 'GenreAPI',
     function($scope, Score, Instrument, Composer, Genre) {
@@ -18,7 +18,9 @@ rapidScoreControllers.controller('ScoreCtrl', ['$scope', '$rootScope', '$routePa
         console.log($scope.score);
         console.log($window.sessionStorage.getItem('uid'));
 
-        $scope.action = 'Add to Cart';
+        $rootScope.action = 'Add to Cart';
+        $rootScope.action_class = 'btn-warning';
+
 
         $scope.link = function(){
             console.log('sid:');
@@ -33,7 +35,8 @@ rapidScoreControllers.controller('ScoreCtrl', ['$scope', '$rootScope', '$routePa
                 for(var i=0; i<$scope.logged_cart.length; i++){
                     if($scope.logged_cart[i].sid == $scope.score.sid){
                         flag = 1;
-                        alert('Already in Cart');
+                        alert('Already in Shopping Cart');
+                        $location.path('/users/'+$window.sessionStorage.getItem('username')+'/shopping-cart');
                         break;
                     }
                 }
@@ -43,7 +46,8 @@ rapidScoreControllers.controller('ScoreCtrl', ['$scope', '$rootScope', '$routePa
                     for(var i=0; i<$scope.logged_purchased.length; i++){
                         if($scope.logged_purchased[i].sid == $scope.score.sid){
                             flag = 1;
-                            alert('Already in Purchased');
+                            alert('Already Purchased');
+                            $location.path('/users/'+$window.sessionStorage.getItem('username')+'/purchased');
                             break;
                         }
                     }
@@ -56,6 +60,8 @@ rapidScoreControllers.controller('ScoreCtrl', ['$scope', '$rootScope', '$routePa
                         if(res){
                             alert('added');
                             $rootScope.logged_cart = Cart.getAll({username: $window.sessionStorage.getItem('username')});
+                            //$rootScope.action = "Already In Cart";
+                            //$rootScope.action_class = 'btn-danger';
                             //$window.location.reload();
                             //$location.path('/users/'+$window.sessionStorage.getItem('username')+'/shopping-cart');
 
@@ -309,7 +315,7 @@ rapidScoreControllers.controller('UserCtrl', ['$window', '$location', '$scope', 
         $scope.removecart = function(name, sid){
             RemoveCart.remove({'uid': $window.sessionStorage.getItem('uid'), 'sid':sid}, function(res){
                 if(res){
-                    alert('Removed ' + name);
+                    alert('Removing ' + name);
                     $rootScope.logged_cart = Cart.getAll({username: $window.sessionStorage.getItem('username')});
 
                     //$window.location.reload();
@@ -336,8 +342,9 @@ rapidScoreControllers.controller('UserCtrl', ['$window', '$location', '$scope', 
         }
     }]);
 
-rapidScoreControllers.controller('sessionService', ['$scope','$rootScope', '$window', '$location', 'UserCartAPI', 'UserOrderAPI',
-    function($scope, $rootScope, $window, $location, Cart, Order){
+rapidScoreControllers.controller('sessionService', ['$scope','$rootScope', '$window', '$location', 'UserCartAPI', 'UserOrderAPI', 'breadcrumbs',
+    function($scope, $rootScope, $window, $location, Cart, Order, breadcrumbs){
+        $scope.breadcrumbs = breadcrumbs;
 
         if(!$window.sessionStorage.getItem('token')){
             $rootScope.logged = false;

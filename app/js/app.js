@@ -7,7 +7,8 @@ var rapidScoreApp = angular.module('rapidScoreApp', [
     'rapidScoreServices',
     'rapidScoreAnimations',
     'rapidScoreFilters',
-    'ngRoute'
+    'ngRoute',
+    'ng-breadcrumbs'
 ]);
 
 rapidScoreApp.config(function ($httpProvider) {
@@ -19,11 +20,13 @@ rapidScoreApp.config(['$routeProvider',
         $routeProvider.
             when('/home', {
                 templateUrl: 'views/home.html',
+                label: 'Home',
                 controller: '',
                 access: { requiredLogin: false }
             }).
             when('/sheetmusic', {
                 templateUrl: 'views/score-list.html',
+                label: 'Sheet Music',
                 controller: 'ScoreListCtrl',
                 access: { requiredLogin: false }
             }).
@@ -34,16 +37,19 @@ rapidScoreApp.config(['$routeProvider',
             }).
             when('/instruments', {
                 templateUrl: 'views/category.html',
+                label: 'Instruments',
                 controller: 'InstrumentListCtrl',
                 access: { requiredLogin: false }
             }).
             when('/composers', {
                 templateUrl: 'views/category.html',
+                label: 'Composers',
                 controller: 'ComposerListCtrl',
                 access: { requiredLogin: false }
             }).
             when('/genres', {
                 templateUrl: 'views/category.html',
+                label: 'Genres',
                 controller: 'GenreListCtrl',
                 access: { requiredLogin: false }
             }).
@@ -64,26 +70,31 @@ rapidScoreApp.config(['$routeProvider',
             }).
             when('/users/:username/shopping-cart', {
                 templateUrl: 'views/shopping-cart.html',
+                label: 'Shopping Cart',
                 controller: 'UserCtrl',
                 access: { requiredLogin: true }
             }).
             when('/users/:username/purchased', {
                 templateUrl: 'views/purchased.html',
+                label: 'Purchased',
                 controller: 'UserCtrl',
                 access: { requiredLogin: true }
             }).
             when('/users/:username', {
                 templateUrl: 'views/user-detail.html',
+                label: 'Account Settings',
                 controller: 'UserCtrl',
                 access: { requiredLogin: true }
             }).
             when('/register', {
                 templateUrl: 'views/signup.html',
+                label: 'Register',
                 controller: 'SignUpCtrl',
                 access: { requiredLogin: false }
             }).
             when('/login', {
                 templateUrl: 'views/login.html',
+                label: 'Login',
                 controller: 'LoginCtrl',
                 access: { requiredLogin: false }
             }).
@@ -94,6 +105,7 @@ rapidScoreApp.config(['$routeProvider',
             }).
             when('/admin/users', {
                 templateUrl: 'views/user-list.html',
+                label: 'Users',
                 controller: 'UserAdminListCtrl',
                 access: { requiredLogin: true }
             }).
@@ -104,21 +116,25 @@ rapidScoreApp.config(['$routeProvider',
             }).
             when('/admin/sheetmusic', {
                 templateUrl: 'views/admin-score-list.html',
+                label: 'Sheet Music',
                 controller: 'ScoreAdminCtrl',
                 access: { requiredLogin: true }
             }).
             when('/admin/add-sheetmusic', {
                 templateUrl: 'views/add-score.html',
+                label: 'Add Sheet Music',
                 controller: 'ScoreAddCtrl',
                 access: { requiredLogin: true }
             }).
             when('/admin/sheetmusic/:scoreId', {
                 templateUrl: 'views/edit-score.html',
+                label: 'Edit Sheet Music',
                 controller: 'ScoreEditCtrl',
                 access: { requiredLogin: true }
             }).
             when('/admin/categories', {
                 templateUrl: 'views/admin-category-list.html',
+                label: 'Categories',
                 controller: 'CategoryAdminCtrl',
                 access: { requiredLogin: true }
             }).
@@ -129,6 +145,7 @@ rapidScoreApp.config(['$routeProvider',
             }).
             otherwise({
                 redirectTo: '/home',
+                label: 'Home',
                 access: { requiredLogin: false }
             })
     }
