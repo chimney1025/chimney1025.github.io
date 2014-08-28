@@ -52,6 +52,6 @@ rapidScoreAnimations.directive('slider', function($timeout){
 		/* End : For Automatic slideshow*/
 		
     },
-	templateUrl:'views/home.html'
+	templateUrl:'views/slider.html'
   }
 })
