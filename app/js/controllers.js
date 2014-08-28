@@ -316,6 +316,8 @@ rapidScoreControllers.controller('UserCtrl', ['$window', '$location', '$scope', 
             RemoveCart.remove({'uid': $window.sessionStorage.getItem('uid'), 'sid':sid}, function(res){
                 if(res){
                     alert('Removed ' + name);
+                    $rootScope.added_score_name = "";
+                    $rootScope.added_score_shortname = "";
                     $rootScope.logged_cart = Cart.getAll({username: $window.sessionStorage.getItem('username')});
 
                     //$window.location.reload();
