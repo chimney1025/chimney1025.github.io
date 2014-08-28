@@ -3,7 +3,7 @@ var rapidScoreAnimations = angular.module('rapidScoreAnimations', ['ngAnimate'])
 
 rapidScoreAnimations.controller('SliderCtrl', ['$scope',
   function($scope) {
-  	$scope.images=[{src:'img1.png',title:'Pic 1'},{src:'img2.png',title:'Pic 2'},{src:'img3.png',title:'Pic 3'},{src:'img4.png',title:'Pic 4'},{src:'img5.png',title:'Pic 5'}];
+  	$scope.images=[{src:'p1.jpg',title:'Pic 1'},{src:'p2.jpg',title:'Pic 2'},{src:'p3.jpg',title:'Pic 3'},{src:'s1.jpg',title:'Pic 4'},{src:'s2.jpg',title:'Pic 5'}];
   }]);
 
 rapidScoreAnimations.directive('slider', function($timeout){
