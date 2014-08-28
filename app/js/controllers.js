@@ -34,6 +34,7 @@ rapidScoreControllers.controller('ScoreCtrl', ['$scope', '$rootScope', '$routePa
                     if($scope.logged_cart[i].sid == $scope.score.sid){
                         flag = 1;
                         alert('Already in Cart');
+                        //redirect to cart
                         break;
                     }
                 }
@@ -44,6 +45,7 @@ rapidScoreControllers.controller('ScoreCtrl', ['$scope', '$rootScope', '$routePa
                         if($scope.logged_purchased[i].sid == $scope.score.sid){
                             flag = 1;
                             alert('Already in Purchased');
+                            //redirect to purchased
                             break;
                         }
                     }
@@ -55,6 +57,8 @@ rapidScoreControllers.controller('ScoreCtrl', ['$scope', '$rootScope', '$routePa
                         console.log(res);
                         if(res){
                             alert('added');
+                            $rootScope.added_score_name = $scope.score.name;
+                            $rootScope.added_score_shortname = $scope.score.shortname;
                             $rootScope.logged_cart = Cart.getAll({username: $window.sessionStorage.getItem('username')});
                             //$window.location.reload();
                             //$location.path('/users/'+$window.sessionStorage.getItem('username')+'/shopping-cart');
