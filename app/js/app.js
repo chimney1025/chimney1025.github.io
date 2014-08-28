@@ -19,7 +19,7 @@ rapidScoreApp.config(['$routeProvider',
         $routeProvider.
             when('/home', {
                 templateUrl: 'views/home.html',
-                controller: '',
+                controller: 'SliderCtrl',
                 access: { requiredLogin: false }
             }).
             when('/sheetmusic', {
