@@ -61,7 +61,7 @@ rapidScoreControllers.controller('ScoreCtrl', ['$scope', '$rootScope', '$routePa
                             $rootScope.added_score_shortname = $scope.score.shortname;
                             $rootScope.logged_cart = Cart.getAll({username: $window.sessionStorage.getItem('username')});
                             //$window.location.reload();
-                            //$location.path('/users/'+$window.sessionStorage.getItem('username')+'/shopping-cart');
+                            $location.path('/users/'+$window.sessionStorage.getItem('username')+'/shopping-cart');
 
                         }
                     });
