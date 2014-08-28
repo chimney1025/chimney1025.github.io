@@ -90,6 +90,7 @@
     <div class="container breadcrumbBox">
         <!-- breadcrumb -->
         <ol class="breadcrumb col-md-8 text-left">
+            <li><a href="#"><span class="glyphicon glyphicon-home"></span></a></li>
             <li ng-repeat="breadcrumb in breadcrumbs.breadcrumbs track by breadcrumb.path"
                 ng-class="{ active: $last }">
                 <a href="#{{ breadcrumb.path }}" ng-if="!$last" ng-bind="breadcrumb.label" ></a>
@@ -118,12 +119,12 @@
         <p>&copy; 2014 Company, Inc. &middot;
             <a href="#">Privacy</a> &middot;
             <a href="#">Terms</a> &middot;
-            <a href="#"><img src="images/icon-facebook.png"></a>
-            <a href="#"><img src="images/icon-googleplus.png"></a>
-            <a href="#"><img src="images/icon-twitter.png"></a>
-            <a href="#"><img src="images/icon-youtube2.png"></a>
-            <a href="#"><img src="images/icon-weibo2.png"></a>
-            <a href="#"><img src="images/paypal.png"></a>
+            <img src="images/icon-facebook.png">
+            <img src="images/icon-googleplus.png">
+            <img src="images/icon-twitter.png">
+            <img src="images/icon-youtube2.png">
+            <img src="images/icon-weibo2.png">
+            <img src="images/paypal.png">
         </p>
     </div>
 </footer>
