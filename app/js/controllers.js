@@ -35,7 +35,8 @@ rapidScoreControllers.controller('ScoreCtrl', ['$scope', '$rootScope', '$routePa
                 for(var i=0; i<$scope.logged_cart.length; i++){
                     if($scope.logged_cart[i].sid == $scope.score.sid){
                         flag = 1;
-                        alert('Already in Shopping Cart');
+                        alert('Already in Cart');
+                        //redirect to cart
                         $location.path('/users/'+$window.sessionStorage.getItem('username')+'/shopping-cart');
                         break;
                     }
@@ -46,7 +47,8 @@ rapidScoreControllers.controller('ScoreCtrl', ['$scope', '$rootScope', '$routePa
                     for(var i=0; i<$scope.logged_purchased.length; i++){
                         if($scope.logged_purchased[i].sid == $scope.score.sid){
                             flag = 1;
-                            alert('Already Purchased');
+                            alert('Already in Purchased');
+                            //redirect to purchased
                             $location.path('/users/'+$window.sessionStorage.getItem('username')+'/purchased');
                             break;
                         }
@@ -59,11 +61,13 @@ rapidScoreControllers.controller('ScoreCtrl', ['$scope', '$rootScope', '$routePa
                         console.log(res);
                         if(res){
                             alert('added');
+                            $rootScope.added_score_name = $scope.score.name;
+                            $rootScope.added_score_shortname = $scope.score.shortname;
                             $rootScope.logged_cart = Cart.getAll({username: $window.sessionStorage.getItem('username')});
                             //$rootScope.action = "Already In Cart";
                             //$rootScope.action_class = 'btn-danger';
                             //$window.location.reload();
-                            //$location.path('/users/'+$window.sessionStorage.getItem('username')+'/shopping-cart');
+                            $location.path('/users/'+$window.sessionStorage.getItem('username')+'/shopping-cart');
 
                         }
                     });
@@ -315,7 +319,9 @@ rapidScoreControllers.controller('UserCtrl', ['$window', '$location', '$scope', 
         $scope.removecart = function(name, sid){
             RemoveCart.remove({'uid': $window.sessionStorage.getItem('uid'), 'sid':sid}, function(res){
                 if(res){
-                    alert('Removing ' + name);
+                    alert('Removed ' + name);
+                    $rootScope.added_score_name = "";
+                    $rootScope.added_score_shortname = "";
                     $rootScope.logged_cart = Cart.getAll({username: $window.sessionStorage.getItem('username')});
 
                     //$window.location.reload();
