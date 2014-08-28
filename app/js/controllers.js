@@ -36,7 +36,7 @@ rapidScoreControllers.controller('ScoreCtrl', ['$scope', '$rootScope', '$routePa
                         alert('Already in Cart');
                         //redirect to cart
                         $location.path('/users/'+$window.sessionStorage.getItem('username')+'/shopping-cart');
-                        break;
+                        //break;
                     }
                 }
 
@@ -48,7 +48,7 @@ rapidScoreControllers.controller('ScoreCtrl', ['$scope', '$rootScope', '$routePa
                             alert('Already in Purchased');
                             //redirect to purchased
                             $location.path('/users/'+$window.sessionStorage.getItem('username')+'/purchasedt');
-                            break;
+                            //break;
                         }
                     }
                 }
