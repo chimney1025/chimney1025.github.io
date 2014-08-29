@@ -108,8 +108,7 @@ a{
 
 /*Footer*/
 #footer {
-    padding: 20px 0;
-    border-top: 1px solid #e5e5e5;
+    padding: 0;
     background-color: #f5f5f5;
     position: absolute;
     bottom: 0;
@@ -123,6 +122,12 @@ a{
 }
 
 #footer a:hover{
+}
+
+#footer .container{
+    padding-top:20px;
+    padding-bottom:20px;
+    border-top: 1px solid #e5e5e5;
 }
 
 
