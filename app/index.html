@@ -89,7 +89,7 @@
 
     <div class="container breadcrumbBox">
         <!-- breadcrumb -->
-        <ol class="breadcrumb col-md-8 text-left">
+        <ol class="breadcrumb col-md-8 col-sm-8 col-xs-12 text-left">
             <li><a href="#"><span class="glyphicon glyphicon-home"></span></a></li>
             <li ng-repeat="breadcrumb in breadcrumbs.breadcrumbs track by breadcrumb.path"
                 ng-class="{ active: $last }">
@@ -98,7 +98,7 @@
             </li>
         </ol>
         <!-- search -->
-        <div class="input-search col-md-4 text-right">
+        <div class="input-search col-md-4 col-sm-4 col-xs-12 text-right">
             <div class="input-group input-group-sm">
                 <input type="text" class="form-control" ng-model="query">
                     <span class="input-group-btn">
