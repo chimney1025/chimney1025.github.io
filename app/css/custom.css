@@ -211,7 +211,7 @@ a{
 .slide-caption{
 	width:100%;
 	height: 30px;
-	postition:absolute;
+	position:absolute;
 	left:0;
 	bottom:30px;
 	background-color:#333;
