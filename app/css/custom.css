@@ -213,7 +213,7 @@ a{
 .left-arrow{
 	position: absolute;
 	top: 10px;
-	left:0;
+	left: 20px;
 	text-align:left;
 	display: block;
 	width: 25px;
@@ -232,14 +232,14 @@ a{
 	height: 25px;
 	background-image:url(../images/arrows.png);
 	background-repeat: no-repeat;
-	background-position: 25px 0px;
+	background-position: -25px 0px;
 	cursor:pointer;
 }
 .left-arrow:hover{
 	background-position: 0px 25px;
 }
 .right-arrow:hover{
-	background-position: 25px 25px;
+	background-position: -25px 25px;
 }
 
 .arrows img{
