@@ -198,6 +198,7 @@ a{
 	max-width:950px;
 	max-height:710px;
 	margin: auto;
+	background-color:#333333;
 }
 .slide{
 	position:absolute;
