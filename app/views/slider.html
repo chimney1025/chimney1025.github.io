@@ -1,8 +1,17 @@
 <div class="slider">
+	<!-- Slide Show-->
 	<div class="slide" ng-repeat="image in images" ng-show="image.visible">
 		<img ng-src="{{image.imageurl}}"/>
 		<h1 class="slide-caption"><a href="#/sheetmusic/{{image.shortname}}">{{image.name}}</a></h1>
 	</div>
+	<!-- Arrows -->
 	<div class="left-arrow" ng-click="prev()"></div>
 	<div class="right-arrow" ng-click="next()"></div>
+	
+	<!-- Slide Previews-->
+	<div class="preview">
+		<ul><li ng-repeat="image in images">
+			<img ng-src="{{image.imageurl}}" ng-click="show({{image.index}})" />
+		</li></ul>
+	</div>
 </div>
