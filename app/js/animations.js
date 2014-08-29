@@ -18,6 +18,10 @@ rapidScoreAnimations.directive('slider', function($timeout){
     link: function (scope, elem, attrs) {
 	
 		scope.currentIndex=0;
+		
+		scope.show=function(index){
+			scope.currentIndex=index;
+		};
 
 		scope.next=function(){
 			scope.currentIndex<scope.images.length-1?scope.currentIndex++:scope.currentIndex=0;
