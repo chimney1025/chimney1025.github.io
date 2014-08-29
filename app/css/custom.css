@@ -203,7 +203,6 @@ a{
 	position:absolute;
 	top:0;
 	left:0;
-	background-color:#333333;
 	/*
 	-webkit-box-shadow: 0px 0px 15px #999;
 	-moz-box-shadow: 0px 0px 15px #999;
@@ -212,7 +211,9 @@ a{
 }
 .slide img{
 	width:50%;
-	height: 80%;
+	-webkit-box-shadow: 0px 0px 15px #999;
+	-moz-box-shadow: 0px 0px 15px #999;
+	box-shadow: 0px 0px 15px #999;
 }
 
 .left-arrow, .left-arrow:hover{
