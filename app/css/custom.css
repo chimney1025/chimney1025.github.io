@@ -196,6 +196,7 @@ a{
 	position: relative;
 	padding:5px;
 	max-width:950px;
+	max-height:710px;
 	margin: auto;
 }
 .slide{
@@ -216,11 +217,10 @@ a{
 	left: 20px;
 	text-align:left;
 	display: block;
-	width: 25px;
-	height: 25px;
-	background-image:url(../images/arrows.png);
+	width: 36px;
+	height: 71px;
+	background-image:url(../images/paddle_prev_999.png);
 	background-repeat: no-repeat;
-	background-position: 0px 0px;
 	cursor:pointer;
 	}
 .right-arrow, .right-arrow:hover{
@@ -228,18 +228,17 @@ a{
 	top: 10px;
 	right: 20px;
 	display: block;
-	width: 25px;
-	height: 25px;
-	background-image:url(../images/arrows.png);
+	width: 36px;
+	height: 71px;
+	background-image:url(../images/paddle_next_999.png);
 	background-repeat: no-repeat;
-	background-position: -25px 0px;
 	cursor:pointer;
 }
 .left-arrow:hover{
-	background-position: 0px -25px;
+	background-image:url(../images/paddle_prev_fff.png);
 }
 .right-arrow:hover{
-	background-position: -25px -25px;
+	background-image:url(../images/paddle_next_fff.png);
 }
 
 .arrows img{
