@@ -195,8 +195,7 @@ a{
 .slider{
 	position: relative;
 	padding:0;
-	max-width:920px;
-	max-height:680px;
+	width: 100%;
 	margin: auto;
 }
 .slide{
@@ -213,6 +212,7 @@ a{
 }
 .slide img{
 	width:50%;
+	height: 80%;
 }
 
 .left-arrow, .left-arrow:hover{
