@@ -88,7 +88,7 @@ a{
 #main-container{
 	min-height: 100%;
 	position: relative;
-	background-color:#f8f8f8;
+	background-color:whitesmoke;
 }
 
 #logo{
@@ -336,10 +336,6 @@ a{
 .list-icon{
     float:right;
     margin: 0 5px;
-}
-
-.row:hover{
-    /*background-color: #f8f8f8;*/
 }
 
 .act-list .row:hover{
