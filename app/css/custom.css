@@ -195,11 +195,12 @@ a{
 .slider{
 	position: relative;
 	padding:5px;
-	max-width:950px;
-	max-height:710px;
+	max-width:940px;
+	max-height:700px;
 	margin: auto;
 }
 .slide{
+	padding:10px;
 	position:absolute;
 	top:0;
 	left:0;
