@@ -183,7 +183,7 @@ a{
 .breadcrumbBox{
     padding: 20px 0 5px 0;
     border-bottom: 1px solid #e5e5e5;
-    margin-bottom: 15px;
+    margin-bottom: 30px;
 }
 
 /*-----------------------------------
@@ -312,14 +312,9 @@ a{
 
 .input-search .form-control{
     background-color:#fff;
-    height:26px;
-    padding:2px 4px;
-    font-size:11px;
 }
 
 .input-search .input-group-btn .btn{
-    padding: 4px 7px;
-    font-size: 11px;
 }
 
 .score-list {
