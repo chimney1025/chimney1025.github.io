@@ -193,6 +193,8 @@ a{
 	position:absolute;
 	top:0;
 	left:0;
+	-webkit-box-shadow: 0px 0px 15px #999;
+	-moz-box-shadow: 0px 0px 15px #999;
 	box-shadow: 0px 0px 15px #999;
 }
 .slide img{
@@ -373,7 +375,9 @@ form .row{
 ------------------------------------*/
 .main-image{
     width:100%;
-    border: 3px solid #e5e5e5;
+    -webkit-box-shadow: 0 0 .625em .07em rgba(0,0,0,0.05);
+    -moz-box-shadow: 0 0 .625em .07em rgba(0,0,0,0.05);
+    box-shadow: 0 0 .625em .07em rgba(0,0,0,0.05);
     padding: 0;
     margin-bottom: 10px;
 }
@@ -807,6 +811,8 @@ span.form-check{
     }
 
     .totals{
+        -webkit-box-shadow: 0 0 0;
+        -moz-box-shadow: 0 0 0;
         box-shadow: 0 0 0;
     }
 
