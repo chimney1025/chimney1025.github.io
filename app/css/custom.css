@@ -225,11 +225,12 @@ a{
 	float:left;
 	margin:0 5px;
 }
-.preivew ul li img{
+.preivew img{
 	height:60px;
+	width: auto;
 	cursor:pointer;
 }
-.preview ul li img:hover{
+.preview img:hover{
 	border:1px solid #e5e5e5;
 }
 
