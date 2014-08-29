@@ -236,10 +236,26 @@ a{
 	cursor:pointer;
 }
 .left-arrow:hover{
+	position: absolute;
+	top: 10px;
+	left: 20px;
+	display: block;
+	background-image:url(../images/arrows.png);
 	background-position: 0px 25px;
+	cursor:pointer;
+	width: 25px;
+	height: 25px;
 }
 .right-arrow:hover{
+	position: absolute;
+	top: 10px;
+	right: 20px;
+	display: block;
+	width: 25px;
+	height: 25px;
+	background-image:url(../images/arrows.png);
 	background-position: -25px 25px;
+	cursor:pointer;
 }
 
 .arrows img{
