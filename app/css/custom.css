@@ -828,6 +828,11 @@ span.form-check{
     .navbar-brand{
         /* padding-left: 0; */
     }
+    
+    .breadcrumbBox{
+    	padding-bottom: 10px;
+    	border-bottom: none;
+    	}
 
     .biglogo{
         margin-top: 50px;
