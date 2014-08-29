@@ -209,7 +209,13 @@ a{
 .slide img{
 	width:50%;
 }
-.arrows{
+.left-arrow{
+	position: absolute;
+	top: 10px;
+	left:0;
+	text-align:left;
+}
+.arrows, .right-arrow{
 	position: absolute;
 	top: 10px;
 	right: 20px;
