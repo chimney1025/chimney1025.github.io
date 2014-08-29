@@ -198,15 +198,17 @@ a{
 	max-width:950px;
 	max-height:710px;
 	margin: auto;
-	background-color:#333333;
 }
 .slide{
 	position:absolute;
 	top:0;
 	left:0;
+	background-color:#333333;
+	/*
 	-webkit-box-shadow: 0px 0px 15px #999;
 	-moz-box-shadow: 0px 0px 15px #999;
 	box-shadow: 0px 0px 15px #999;
+	*/
 }
 .slide img{
 	width:50%;
