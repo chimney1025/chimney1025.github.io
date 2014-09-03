@@ -1,9 +1,9 @@
 var rapidScoreAnimations = angular.module('rapidScoreAnimations', ['ngAnimate']);
 
 
-rapidScoreAnimations.controller('SliderCtrl', ['$scope', 'ScoreAPI',
-  function($scope, Score) {
-  	$scope.images = Score.getAll();
+rapidScoreAnimations.controller('SliderCtrl', ['$scope', 'SliderAPI',
+  function($scope, Top) {
+  	$scope.images = Top.getAll();
   	console.log($scope.images);
   	//$scope.images=[{src:'p1.jpg',title:'Pic 1'},{src:'p2.jpg',title:'Pic 2'},{src:'p3.jpg',title:'Pic 3'},{src:'s1.jpg',title:'Pic 4'},{src:'s2.jpg',title:'Pic 5'}];
   }]);
@@ -32,10 +32,15 @@ rapidScoreAnimations.directive('slider', function($timeout){
 		};
 		
 		scope.$watch('currentIndex',function(){
-			scope.images.forEach(function(image){
-				image.visible=false;
-			});
-			scope.images[scope.currentIndex].visible=true;
+            if(scope.images.length){
+                scope.images.forEach(function(image){
+                    image.visible=false;
+                });
+                scope.images[scope.currentIndex].visible=true;
+            } else{
+                console.log("no images yet");
+            }
+
 		});
 		
 		/* Start: For Automatic slideshow*/

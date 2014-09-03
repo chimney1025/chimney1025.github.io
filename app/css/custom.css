@@ -184,7 +184,7 @@ a{
 .breadcrumbBox{
     padding: 20px 0 5px 0;
     border-bottom: 1px solid #e5e5e5;
-    margin-bottom: 30px;
+    margin-bottom: 15px;
 }
 
 /*-----------------------------------
@@ -195,7 +195,7 @@ a{
 	position: relative;
 	padding:0;
 	width: 100%;
-	height: 580px;
+	min-height: 640px;
 	margin: auto;
 }
 .slide{
@@ -204,7 +204,7 @@ a{
 	top:0;
 	left:0;
 	width:100%;
-	height: 480px;
+	min-height: 640px;
 	overflow:hidden;
 	/*
 	-webkit-box-shadow: 0px 0px 15px #999;
@@ -215,24 +215,22 @@ a{
 
 .slide-caption{
 	width:100%;
-	height: 100px;
 	padding: 20px 0;
 	margin: 0;
-	position: absolute;
-	left:0;
-	bottom: 0;
-	background-color:rgba(51,51,51,1);
-	color:#fff;
 	text-align:center;
 }
 .slide-caption:hover{
 	background-color:rgba(51,51,51,1);
 }
 .slide img{
-	width:50%;
+	width:45%;
 	-webkit-box-shadow: 0px 0px 15px #999;
 	-moz-box-shadow: 0px 0px 15px #999;
 	box-shadow: 0px 0px 15px #999;
+}
+.slide .slide-desc{
+    width:50%;
+    float:right;
 }
 .preview{
 	position:absolute;
@@ -254,8 +252,8 @@ a{
 
 .left-arrow, .left-arrow:hover{
 	position: absolute;
-	top: 10px;
-	left: 20px;
+	top: 30%;
+	left: 10px;
 	text-align:left;
 	display: block;
 	/*
@@ -272,8 +270,8 @@ a{
 	}
 .right-arrow, .right-arrow:hover{
 	position: absolute;
-	top: 10px;
-	right: 20px;
+	top: 30%;
+	right: 10px;
 	display: block;
 	width: 25px;
 	height: 25px;
@@ -833,6 +831,10 @@ span.form-check{
         width: 300px;
     }
 
+    .slider, .slide{
+        min-height: 540px;
+    }
+
 /*
     .breadcrumb{
         margin-bottom: 32px;
@@ -902,10 +904,13 @@ span.form-check{
     .navbar-brand{
         /* padding-left: 0; */
     }
+
+    .slider, .slide{
+        min-height: 500px;
+    }
     
     .breadcrumbBox{
     	padding-bottom: 10px;
-    	border-bottom: none;
     	}
 
     .biglogo{

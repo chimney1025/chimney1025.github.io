@@ -76,8 +76,8 @@ rapidScoreControllers.controller('ScoreCtrl', ['$scope', '$rootScope', '$routePa
         };
     }]);
 
-rapidScoreControllers.controller('ScoreAdminCtrl', ['$scope', 'ScoreAdminAPI', 'EditScoreAPI', 'RemoveScoreCategoryAPI',
-    function($scope, Score, EditScore, RemoveScoreCategory) {
+rapidScoreControllers.controller('ScoreAdminCtrl', ['$scope', 'ScoreAdminAPI', 'EditScoreAPI', 'SliderAdminAPI',
+    function($scope, Score, EditScore, Slider) {
         $scope.scores = Score.getAll();
 
         //remove
@@ -88,6 +88,28 @@ rapidScoreControllers.controller('ScoreAdminCtrl', ['$scope', 'ScoreAdminAPI', '
                 //$location.path('/admin/sheetmusic');
                 $scope.scores = Score.getAll();
             });
+        };
+
+        $scope.addSlider = function(value, sid){
+            //convert to json
+            var scoreData = new Object();
+            scoreData.slider = value;
+            console.log(scoreData);
+
+            Slider.save({scoreId:sid}, scoreData, function(res){
+                if(res){
+                    if(value == true){
+                        alert('Added to slider');
+                        $scope.scores = Score.getAll();
+                    } else{
+                        alert('Removed from slider');
+                        $scope.scores = Score.getAll();
+                    }
+
+                    //$location.path('/admin/sheetmusic');
+                }
+            });
+
         };
 
         //edit
@@ -138,22 +160,22 @@ rapidScoreControllers.controller('ScoreAddCtrl', ['$scope', 'AddScoreAPI', 'AddS
                 } else{
                     scoreData.snippet = '';
                 }
-                if($scope.scoreInfo.audioUrl){
+                if($scope.scoreInfo.audiourl){
                     scoreData.audioUrl = $scope.scoreInfo.audiourl;
                 } else{
                     scoreData.audioUrl = '';
                 }
-                if($scope.scoreInfo.videoUrl){
+                if($scope.scoreInfo.videourl){
                     scoreData.videoUrl = $scope.scoreInfo.videourl;
                 } else{
                     scoreData.videoUrl = '';
                 }
-                if($scope.scoreInfo.imageUrl){
+                if($scope.scoreInfo.imageurl){
                     scoreData.imageUrl = $scope.scoreInfo.imageurl;
                 } else{
                     scoreData.imageUrl = '';
                 }
-                if($scope.scoreInfo.fileUrl){
+                if($scope.scoreInfo.fileurl){
                     scoreData.fileUrl = $scope.scoreInfo.fileurl;
                 } else{
                     scoreData.fileUrl = '';
@@ -182,6 +204,7 @@ rapidScoreControllers.controller('ScoreEditCtrl', ['$scope', '$routeParams', 'Sc
     function($scope, $routeParams, Score, EditScore, AddScoreCategory, AddCategory, RemoveScoreCategory, $location){
 
         $scope.scoreInfo = Score.getOne({scoreId: $routeParams.scoreId});
+        console.log($scope.scoreInfo);
         $scope.scoreCheck = '';
 
         $scope.scoreSave = function() {
@@ -202,6 +225,15 @@ rapidScoreControllers.controller('ScoreEditCtrl', ['$scope', '$routeParams', 'Sc
                 scoreData.name = $scope.scoreInfo.name;
                 scoreData.shortname = $scope.scoreInfo.name.split(' ').join('-').toLowerCase();
 
+                console.log($scope.scoreInfo);
+
+                if($scope.scoreInfo.slider){
+                    scoreData.slider = $scope.scoreInfo.slider;
+                }
+                else {
+                    scoreData.slider = false;
+                }
+
                 if($scope.scoreInfo.price){
                     scoreData.price = $scope.scoreInfo.price;
                 }
@@ -219,22 +251,22 @@ rapidScoreControllers.controller('ScoreEditCtrl', ['$scope', '$routeParams', 'Sc
                 } else{
                     scoreData.snippet = '';
                 }
-                if($scope.scoreInfo.audioUrl){
+                if($scope.scoreInfo.audiourl){
                     scoreData.audioUrl = $scope.scoreInfo.audiourl;
                 } else{
                     scoreData.audioUrl = '';
                 }
-                if($scope.scoreInfo.videoUrl){
+                if($scope.scoreInfo.videourl){
                     scoreData.videoUrl = $scope.scoreInfo.videourl;
                 } else{
                     scoreData.videoUrl = '';
                 }
-                if($scope.scoreInfo.imageUrl){
+                if($scope.scoreInfo.imageurl){
                     scoreData.imageUrl = $scope.scoreInfo.imageurl;
                 } else{
                     scoreData.imageUrl = '';
                 }
-                if($scope.scoreInfo.fileUrl){
+                if($scope.scoreInfo.fileurl){
                     scoreData.fileUrl = $scope.scoreInfo.fileurl;
                 } else{
                     scoreData.fileUrl = '';
@@ -251,6 +283,7 @@ rapidScoreControllers.controller('ScoreEditCtrl', ['$scope', '$routeParams', 'Sc
                 EditScore.save({scoreId:$scope.scoreInfo.sid}, scoreData, function(res){
                     if(res){
                         alert('edited ' + scoreData.shortname);
+                        //$scope.scoreInfo = Score.getOne({scoreId: $routeParams.scoreId});
                         $location.path('/admin/sheetmusic');
                     }
                 });
@@ -350,6 +383,7 @@ rapidScoreControllers.controller('UserCtrl', ['$window', '$location', '$scope', 
 
 rapidScoreControllers.controller('sessionService', ['$scope','$rootScope', '$window', '$location', 'UserCartAPI', 'UserOrderAPI', 'breadcrumbs',
     function($scope, $rootScope, $window, $location, Cart, Order, breadcrumbs){
+        console.log($location.path());
         $scope.breadcrumbs = breadcrumbs;
 
         if(!$window.sessionStorage.getItem('token')){

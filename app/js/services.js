@@ -88,6 +88,34 @@ rapidScoreServices.factory('ScoreAPI', ['$resource',
         );
     }]);
 
+rapidScoreServices.factory('SliderAPI', ['$resource',
+    function($resource){
+        return $resource(
+                hostname + '/sheetmusic/top',
+            {},
+            {
+                getAll: {method:'GET', isArray:true}
+            }
+        );
+    }]);
+
+rapidScoreServices.factory('SliderAdminAPI', ['$resource',
+    function($resource){
+        return $resource(
+                hostname + '/admin/sheetmusic/top/:scoreId',
+            //scoreData
+            {},
+            {
+                save: {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                }
+            }
+        );
+    }]);
+
 rapidScoreServices.factory('ScoreAdminAPI', ['$resource',
     function($resource){
         return $resource(

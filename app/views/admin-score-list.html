@@ -22,8 +22,8 @@
                 </span>
                 <span class="list-added">{{item.added | date : 'yyyy-MM-dd'}}</span>
                 <span class="admin-action list-action">
-                    <a type="button" ng-if="item.slider" ng-click="launch('confirm')" class="btn btn-default btn-xs">In Slider</a>
-                    <a type="button" ng-if="!item.slider" ng-click="launch('confirm')" class="btn btn-primary btn-xs">Add to Slider</a>
+                    <a type="button" ng-if="item.slider" ng-click="addSlider(false, item.sid)" class="btn btn-default btn-xs">In Slider</a>
+                    <a type="button" ng-if="!item.slider" ng-click="addSlider(true, item.sid)" class="btn btn-primary btn-xs">Add to Slider</a>
                 </span>
 
             </li>

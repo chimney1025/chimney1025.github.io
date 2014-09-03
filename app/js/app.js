@@ -158,8 +158,14 @@ rapidScoreApp.run(function($rootScope, $location, $window) {
             $location.path("/login");
         }
     });
+    $rootScope.$on('$routeChangeSuccess', function(e, current, pre){
+            if($location.path() == "/home" || $location.path() == "/login" || $location.path() == "/register"){
+                $rootScope.noBreadcrumb = true;
+            } else{
+                $rootScope.noBreadcrumb = false;
+            }
+        });
 });
-
 
 rapidScoreApp.config(['$httpProvider', function ($httpProvider) {
     //Reset headers to avoid OPTIONS request (aka preflight)
