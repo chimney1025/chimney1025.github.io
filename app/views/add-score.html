@@ -2,7 +2,7 @@
 
     <div class="col-md-3 col-sm-3 col-xs-3 text-left account-menu">
         <ul class="">
-            <h4>Welcome Admin</h4>
+            <li><h4>Welcome Admin</h4></li>
             <li><a href="#/admin/users">User List</a></li>
             <li><a href="#/admin/sheetmusic" class="active">Sheet Music</a></li>
             <li><a href="#/admin/categories">Categories</a></li>
@@ -48,7 +48,7 @@
             </li>
             <li class="row">
                 <span class="act-label">FILE</span>
-                <input type="file" class="act-content form-control" placeholder="Sheet Music Upload" ng-model="scoreInfo.fileurl" ng-trim="true">
+                <input type="file" file-model="myFile" class="act-content form-control" placeholder="Sheet Music Upload" ng-model="scoreInfo.fileurl" ng-trim="true">
                 
             </li>
             <li class="row">
@@ -61,7 +61,7 @@
             
             </li>
             <li>
-                <a type="button" ng-click="scoreSave()" class="btn btn-primary btn-sm">Save</a>
+                <a type="button" ng-click="scoreSave()" class="btn btn-primary">Save</a>
             </li>
         </ul>
         </form>

@@ -257,7 +257,26 @@ a{
     width:35px;
     padding: 3px 5px;
     background:#333;
-    color:#f8f8f8;
+    color:#eee;
+}
+
+.slide-name{
+    position:absolute;
+    top:10px;
+    left:20px;
+    padding: 3px 5px;
+    background:#333;
+    color:#eee;
+}
+
+.slide-name a{
+    color: #eee;
+}
+
+.slide-name a:hover{
+    text-decoration: underline;
+    background-color: #333;
+    color: #f8f8f8;
 }
 
 .left-arrow, .left-arrow:hover{
@@ -579,10 +598,11 @@ audio{
 
 input.act-content{
     border:none;
-    border-bottom: 1px solid #ccc;
+    border: 1px solid #ccc;
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
     box-shadow: none;
+    height: 40px;
 }
 
 .act-btn{

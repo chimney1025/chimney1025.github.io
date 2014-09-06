@@ -76,9 +76,41 @@ rapidScoreControllers.controller('ScoreCtrl', ['$scope', '$rootScope', '$routePa
         };
     }]);
 
+rapidScoreControllers.directive('fileModel', ['$parse', function ($parse) {
+    return {
+        restrict: 'A',
+        link: function(scope, element, attrs) {
+            var model = $parse(attrs.fileModel);
+            var modelSetter = model.assign;
+
+            element.bind('change', function(){
+                scope.$apply(function(){
+                    modelSetter(scope, element[0].files[0]);
+                });
+            });
+        }
+    };
+}]);
+
+rapidScoreControllers.service('fileUpload', ['$http', function ($http) {
+    this.uploadFileToUrl = function(file, uploadUrl){
+        var fd = new FormData();
+        fd.append('file', file);
+        $http.post(uploadUrl, fd, {
+            transformRequest: angular.identity,
+            headers: {'Content-Type': undefined}
+        })
+            .success(function(){
+            })
+            .error(function(){
+            });
+    }
+}]);
+
 rapidScoreControllers.controller('ScoreAdminCtrl', ['$scope', 'ScoreAdminAPI', 'EditScoreAPI', 'SliderAdminAPI',
     function($scope, Score, EditScore, Slider) {
         $scope.scores = Score.getAll();
+        $scope.orderProp = 'name';
 
         //remove
         $scope.removeScore = function(sid, name){
@@ -176,6 +208,10 @@ rapidScoreControllers.controller('ScoreAddCtrl', ['$scope', 'AddScoreAPI', 'AddS
                     scoreData.imageUrl = '';
                 }
                 if($scope.scoreInfo.fileurl){
+                    var file = $scope.myFile;
+                    var uploadUrl = 'http://www.example.com/images';
+                    fileUpload.uploadFileToUrl(file, uploadUrl);
+
                     scoreData.fileUrl = $scope.scoreInfo.fileurl;
                 } else{
                     scoreData.fileUrl = '';

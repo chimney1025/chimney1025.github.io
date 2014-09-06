@@ -3,7 +3,7 @@
 
     <div class="col-md-3 col-sm-3 col-xs-3 text-left account-menu">
         <ul class="">
-            <h4>Welcome Admin</h4>
+            <li><h4>Welcome Admin</h4></li>
             <li><a href="#/admin/users">User List</a></li>
             <li><a href="#/admin/sheetmusic" class="active">Sheet Music</a></li>
             <li><a href="#/admin/categories">Categories</a></li>
@@ -22,7 +22,7 @@
                 </span>
                 <span class="list-added">{{item.added | date : 'yyyy-MM-dd'}}</span>
                 <span class="admin-action list-action">
-                    <a type="button" ng-if="item.slider" ng-click="addSlider(false, item.sid)" class="btn btn-default btn-xs">In Slider</a>
+                    <a type="button" ng-if="item.slider" ng-click="addSlider(false, item.sid)" class="btn btn-default btn-xs">Remove from Slider</a>
                     <a type="button" ng-if="!item.slider" ng-click="addSlider(true, item.sid)" class="btn btn-primary btn-xs">Add to Slider</a>
                 </span>
 
