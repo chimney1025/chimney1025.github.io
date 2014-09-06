@@ -76,34 +76,22 @@ rapidScoreControllers.controller('ScoreCtrl', ['$scope', '$rootScope', '$routePa
         };
     }]);
 
-rapidScoreControllers.directive('fileModel', ['$parse', function ($parse) {
+rapidScoreControllers.directive("fileread", [function () {
     return {
-        restrict: 'A',
-        link: function(scope, element, attrs) {
-            var model = $parse(attrs.fileModel);
-            var modelSetter = model.assign;
-
-            element.bind('change', function(){
-                scope.$apply(function(){
-                    modelSetter(scope, element[0].files[0]);
-                });
+        scope: {
+            fileread: "="
+        },
+        link: function (scope, element, attributes) {
+            element.bind("change", function (changeEvent) {
+                var reader = new FileReader();
+                reader.onload = function (loadEvent) {
+                    scope.$apply(function () {
+                        scope.fileread = loadEvent.target.result;
+                    });
+                }
+                reader.readAsDataURL(changeEvent.target.files[0]);
             });
         }
-    };
-}]);
-
-rapidScoreControllers.service('fileUpload', ['$http', function ($http) {
-    this.uploadFileToUrl = function(file, uploadUrl){
-        var fd = new FormData();
-        fd.append('file', file);
-        $http.post(uploadUrl, fd, {
-            transformRequest: angular.identity,
-            headers: {'Content-Type': undefined}
-        })
-            .success(function(){
-            })
-            .error(function(){
-            });
     }
 }]);
 
@@ -114,12 +102,17 @@ rapidScoreControllers.controller('ScoreAdminCtrl', ['$scope', 'ScoreAdminAPI', '
 
         //remove
         $scope.removeScore = function(sid, name){
-            alert('Deleting ' + name);
-            EditScore.remove({scoreId:sid}, function (res) {
-                console.log(res + ' deleted : ' + sid);
-                //$location.path('/admin/sheetmusic');
-                $scope.scores = Score.getAll();
-            });
+            var r = confirm('Deleting ' + name);
+            if(r==true){
+                EditScore.remove({scoreId:sid}, function (res) {
+                    console.log(res + ' deleted : ' + sid);
+                    //$location.path('/admin/sheetmusic');
+                    $scope.scores = Score.getAll();
+                });
+            } else{
+
+            }
+
         };
 
         $scope.addSlider = function(value, sid){
@@ -143,10 +136,6 @@ rapidScoreControllers.controller('ScoreAdminCtrl', ['$scope', 'ScoreAdminAPI', '
             });
 
         };
-
-        //edit
-
-        //add
     }]);
     
 rapidScoreControllers.controller('ScoreAddCtrl', ['$scope', 'AddScoreAPI', 'AddScoreCategoryAPI', 'AddCategoryAPI', '$location',
@@ -208,10 +197,8 @@ rapidScoreControllers.controller('ScoreAddCtrl', ['$scope', 'AddScoreAPI', 'AddS
                     scoreData.imageUrl = '';
                 }
                 if($scope.scoreInfo.fileurl){
-                    var file = $scope.myFile;
-                    var uploadUrl = 'http://www.example.com/images';
-                    fileUpload.uploadFileToUrl(file, uploadUrl);
-
+                    //var uploadUrl = 'http://www.example.com/images';
+                    //fileUpload.uploadFileToUrl(file, uploadUrl);
                     scoreData.fileUrl = $scope.scoreInfo.fileurl;
                 } else{
                     scoreData.fileUrl = '';

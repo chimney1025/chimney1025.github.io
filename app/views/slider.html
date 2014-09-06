@@ -1,6 +1,6 @@
 <div class="slider">
 	<!-- Slide Show-->
-	<div class="slide" ng-repeat="image in images" ng-show="image.visible">
+	<div class="slide" ng-repeat="image in images | orderBy:orderProp" ng-show="image.visible">
 		<img class="" ng-src="{{image.imageurl}}"/>
         <!--
 		<h1 class="slide-caption"><a href="#/sheetmusic/{{image.shortname}}">{{image.name}}</a></h1>
