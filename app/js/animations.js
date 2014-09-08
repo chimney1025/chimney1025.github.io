@@ -14,7 +14,6 @@ rapidScoreAnimations.directive('slider', function($timeout){
             images: '='
         },
         link: function (scope, elem, attrs) {
-            scope.$apply('images');
             
             scope.currentIndex=0;
 
@@ -30,16 +29,10 @@ rapidScoreAnimations.directive('slider', function($timeout){
                 console.log('new: '); console.log(newValue);
                 console.log('old: '); console.log(oldValue);
                 console.log(scope.images);
-                if(newValue === oldValue && scope.images.length){
-                    scope.images[0].visible = true;
-                }
-                
-                if(newValue !== oldValue) {
-                    scope.images.forEach(function(image){
-                        image.visible=false;
-                    });
-                    scope.images[scope.currentIndex].visible=true;
-                }
+                scope.images.forEach(function(image){
+                    image.visible=false;
+                });
+                scope.images[scope.currentIndex].visible=true;
             });
             
             /* Start: For Automatic slideshow*/
