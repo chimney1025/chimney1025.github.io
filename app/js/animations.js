@@ -1,7 +1,7 @@
 var rapidScoreAnimations = angular.module('rapidScoreAnimations', ['ngAnimate']);
 
 
-rapidScoreAnimations.directive('slider', ['$timeout', '$q', function($timeout, $q){
+rapidScoreAnimations.directive('slider', function($timeout, $q){
     return {
         restrict: 'AE',
         replace: true,
@@ -60,4 +60,4 @@ rapidScoreAnimations.directive('slider', ['$timeout', '$q', function($timeout, $
         },
         templateUrl:'views/slider.html'
     }
-}])
+})
