@@ -559,14 +559,14 @@ rapidScoreControllers.controller('SignUpCtrl', ['$scope', 'RegisterAPI', 'CheckU
                             if(res2 == 1){
                                 $scope.regCheck = 'Username exists. Try another one.';
                             } else{
-                                User.save({}, $scope.regInfo, function(res){
+                                User.save({}, $scope.regInfo, function(res, err){
                                     console.log("validation success");
                                     console.log($scope.regInfo);
                                     if(res){
                                         alert('Registration Successful!');
                                         $location.path('/login');
                                     }
-                                    else{
+                                    if(err){
                                         $scope.regCheck = 'Registration failed';
                                     }
                                 });
