@@ -34,7 +34,7 @@ rapidScoreAnimations.directive('slider', ['$timeout', function($timeout){
                         image.visible=false;
                     });
                     scope.images[scope.currentIndex].visible=true;
-                })
+                }, 0);
             });
 
             /* Start: For Automatic slideshow*/
