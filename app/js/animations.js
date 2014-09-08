@@ -17,7 +17,7 @@ rapidScoreAnimations.directive('slider', function($timeout, $q){
             images: '='
         },
         link: function (scope, elem, attrs) {
-            scope.$on("Data_Ready", function  (){
+            scope.$on("Data_Ready", function(){
             
             scope.currentIndex=0;
 
@@ -55,7 +55,7 @@ rapidScoreAnimations.directive('slider', function($timeout, $q){
             });
 
             /* End : For Automatic slideshow*/
-            }
+            });
 
         },
         templateUrl:'views/slider.html'
