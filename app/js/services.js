@@ -114,7 +114,7 @@ rapidScoreServices.factory('SliderPromise', function($resource, SliderAPI ,$q) {
                  .then(function(data) {
                       defer.resolve(data);
                  });
-        };
+        });
         return defer.promise;
      }
    }
