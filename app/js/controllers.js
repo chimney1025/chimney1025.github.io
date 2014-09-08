@@ -546,11 +546,22 @@ rapidScoreControllers.controller('SignUpCtrl', ['$scope', 'RegisterAPI', 'CheckU
                 regData.password = $scope.regInfo.pass1;
                 console.log(regData);
 
+                //check username and email before submit
+                if(CheckUsername.getOne(regData.username)){
+                    $scope.regCheck = 'Username exists. Try another one.';
+                    return;
+                }
+                if(CheckEmail.getOne(regData.email)){
+                    $scope.regCheck = 'Email exists. Try another one';
+                }
                 //convert to json
                 User.save({}, regData, function(res){
                     if(res){
                         alert('Registration Successful!');
                         $location.path('/login');
+                    }
+                    else{
+                        $scope.regCheck = 'Registration failed';
                     }
                 });
             }
