@@ -67,4 +67,4 @@ rapidScoreAnimations
         },
         templateUrl:'views/slider.html'
     }
-}])
+})
