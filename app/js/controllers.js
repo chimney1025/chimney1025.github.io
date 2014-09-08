@@ -449,7 +449,7 @@ rapidScoreControllers.controller('LoginCtrl', ['$scope', '$rootScope', '$locatio
         $scope.loginInfo = {};
         $scope.loginCheck = '';
 
-        $scope.login = function login($scope.loginInfo) {
+        $scope.login = function() {
             $scope.loginCheck = '';
             console.log($scope.loginInfo);
 
