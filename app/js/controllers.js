@@ -514,9 +514,9 @@ rapidScoreControllers.controller('LoginCtrl', ['$scope', '$rootScope', '$locatio
         $scope.loginInfo = {};
         $scope.loginCheck = '';
 
-        $scope.login = function login(loginInfo) {
+        $scope.login = function() {
             $scope.loginCheck = '';
-            console.log(loginInfo);
+            console.log($scope.loginInfo);
 
             if(!$scope.loginInfo.email) {
                 $scope.loginCheck = 'Invalid Email';
@@ -533,7 +533,7 @@ rapidScoreControllers.controller('LoginCtrl', ['$scope', '$rootScope', '$locatio
             }
 
             else {
-                LoginService.login(loginInfo.email, loginInfo.pass).success(function(data){
+                LoginService.login($scope.loginInfo.email, $scope.loginInfo.pass).success(function(data){
                     console.log(data);
                     if(Object.keys(data).length){
                         $window.sessionStorage.setItem('token', data.token);
@@ -605,17 +605,38 @@ rapidScoreControllers.controller('SignUpCtrl', ['$scope', 'RegisterAPI', 'CheckU
             else{
                 console.log('posting data...');
                 //create json to be posted
+                /*
                 var regData = new Object();
                 regData.username = $scope.regInfo.username;
                 regData.email = $scope.regInfo.email;
                 regData.password = $scope.regInfo.pass1;
                 console.log(regData);
+                */
 
-                //convert to json
-                User.save({}, regData, function(res){
-                    if(res){
-                        alert('Registration Successful!');
-                        $location.path('/login');
+                //check username and email before submit
+                CheckEmail.getOne({email:$scope.regInfo.email} , function(res1){
+                    console.log(res1);
+                    if(res1 == 1){
+                        $scope.regCheck = 'Email exists. Try another one';
+                    } else {
+                        CheckUsername.getOne({username:$scope.regInfo.username} , function(res2){
+                            console.log(res2);
+                            if(res2 == 1){
+                                $scope.regCheck = 'Username exists. Try another one.';
+                            } else{
+                                User.save({}, $scope.regInfo, function(res, err){
+                                    console.log("validation success");
+                                    console.log($scope.regInfo);
+                                    if(res){
+                                        alert('Registration Successful!');
+                                        $location.path('/login');
+                                    }
+                                    if(err){
+                                        $scope.regCheck = 'Registration failed';
+                                    }
+                                });
+                            }
+                        })
                     }
                 });
             }
