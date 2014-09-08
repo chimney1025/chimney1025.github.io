@@ -26,9 +26,13 @@ rapidScoreAnimations.directive('slider', function($timeout){
             };
 
             scope.$watch('currentIndex',function(newValue, oldValue){
-                console.log('2new: '); console.log(newValue);
-                console.log('2old: '); console.log(oldValue);
+                console.log('new: '); console.log(newValue);
+                console.log('old: '); console.log(oldValue);
                 console.log(scope.images);
+                if(newValue === oldValue && scope.images.length){
+                    scope.images[0].visible = true;
+                }
+                
                 if(newValue !== oldValue) {
                     scope.images.forEach(function(image){
                         image.visible=false;
