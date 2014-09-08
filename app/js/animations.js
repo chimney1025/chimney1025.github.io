@@ -28,17 +28,14 @@ rapidScoreAnimations.directive('slider', ['$timeout', function($timeout){
                 scope.currentIndex>0?scope.currentIndex--:scope.currentIndex=scope.images.length-1;
             };
 
-            timer(scope.$watch('currentIndex',function(){
-                if(scope.images.length){
+            scope.$watch('currentIndex',function(){
+                $timeout(function(){
                     scope.images.forEach(function(image){
                         image.visible=false;
                     });
                     scope.images[scope.currentIndex].visible=true;
-                } else{
-                    console.log("no images yet");
-                }
-
-            }) , 0);
+                })
+            });
 
             /* Start: For Automatic slideshow*/
 
