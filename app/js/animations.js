@@ -8,6 +8,7 @@ rapidScoreAnimations.directive('slider', function($timeout, $q){
         controller: ['$scope', 'SliderAPI', function($scope, Top) {
             $scope.images = Top.getAll(function(res){
                 console.log('scope result: ');
+                $scope.currentIndex=0;
                 console.log(res);
             });
             $scope.orderProp = 'added';
@@ -18,7 +19,7 @@ rapidScoreAnimations.directive('slider', function($timeout, $q){
         },
         link: function (scope, elem, attrs) {
             
-            scope.currentIndex=0;
+            //scope.currentIndex=0;
 
             scope.next=function(){
                 scope.currentIndex<scope.images.length-1?scope.currentIndex++:scope.currentIndex=0;
