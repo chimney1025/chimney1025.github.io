@@ -1,7 +1,7 @@
 var rapidScoreAnimations = angular.module('rapidScoreAnimations', ['ngAnimate']);
 
 
-rapidScoreAnimations.directive('slider', function($timeout){
+rapidScoreAnimations.directive('slider', ['$timeout', '$q', function($timeout, $q){
     return {
         restrict: 'AE',
         replace: true,
@@ -24,6 +24,11 @@ rapidScoreAnimations.directive('slider', function($timeout){
             scope.prev=function(){
                 scope.currentIndex>0?scope.currentIndex--:scope.currentIndex=scope.images.length-1;
             };
+            
+            var deferred = $q.defer();
+            var dataPromise = deferred.promise;
+            deferred.resolve(scope.images);
+            console.log(dataPromise);
 
             scope.$watch('currentIndex',function(newValue, oldValue){
                 console.log('new: '); console.log(newValue);
@@ -58,4 +63,4 @@ rapidScoreAnimations.directive('slider', function($timeout){
         },
         templateUrl:'views/slider.html'
     }
-})
+}])
