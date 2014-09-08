@@ -98,6 +98,27 @@ rapidScoreServices.factory('SliderAPI', ['$resource',
             }
         );
     }]);
+    
+rapidScoreServices.factory('SliderPromise', function($resource, SliderAPI ,$q) {
+
+  function fetchAppId() {
+    return SliderAPI.getAll();
+  }
+
+  return {
+    getAll: function() {
+        var defer=$q.defer();
+        fetchAppId().then(function(data) {
+             var appId=data;
+             $resource('getAll', {applicationId: appId})
+                 .then(function(data) {
+                      defer.resolve(data);
+                 })
+        }
+        return defer.promise;
+     }
+   }
+};
 
 rapidScoreServices.factory('SliderAdminAPI', ['$resource',
     function($resource){
