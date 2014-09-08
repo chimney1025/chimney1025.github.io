@@ -113,8 +113,8 @@ rapidScoreServices.factory('SliderPromise', function($resource, SliderAPI ,$q) {
              $resource('getAll', {applicationId: appId})
                  .then(function(data) {
                       defer.resolve(data);
-                 })
-        }
+                 });
+        };
         return defer.promise;
      }
    }
