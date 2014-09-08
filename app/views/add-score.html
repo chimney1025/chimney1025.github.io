@@ -22,15 +22,81 @@
                 
             </li>
             <li class="row">
+                <span class="act-label">SLIDER</span>
+                <input type="checkbox" value="true" name="" class="" placeholder="Add to Slider" ng-model="scoreInfo.slider" ng-trim="true">
+
+            </li>
+            <li class="row">
                 <span class="act-label">PRICE</span>
                 <input type="text" class="act-content form-control" placeholder="Enter price" ng-model="scoreInfo.price" required ng-trim="true">
                 
             </li>
             <li class="row">
+                <span class="act-label">DESCRIPTION</span>
+                <textarea class="act-content form-control" placeholder="Description" ng-model="scoreInfo.snippet" ng-trim="true"></textarea>
+
+            </li>
+            <li class="row">
                 <span class="act-label">PAGE</span>
-                <input type="text" class="act-content form-control" placeholder="Enter page" ng-model="scoreInfo.page" required ng-trim="true">
+                <input type="text" class="act-content form-control" placeholder="Enter total page number" ng-model="scoreInfo.page" required ng-trim="true">
                 
             </li>
+            <hr>
+            <li class="row">
+                <span class="act-label">INSTRUMENTS</span>
+
+                <div class="act-content">
+                    <select
+                            ng-change="addinstrument(scoreInfo.instrument)"
+                            ng-model="scoreInfo.instrument"
+                            ng-options="value as value.c_name for value in getInstruments" class="form-control">
+                        <option value="">--</option>
+                    </select>
+                </div>
+            </li>
+            <li class="row" ng-if="scoreInfo.instruments.length">
+                <span class="act-label"></span>
+                <div class="act-content">
+                    <a type="button" class="btn-detail btn btn-default" ng-repeat="instrument in scoreInfo.instruments">{{instrument.c_name}} </a>
+                </div>
+            </li>
+            <li class="row">
+                <span class="act-label">COMPOSERS</span>
+
+                <div class="act-content">
+                    <select
+                            ng-change="addcomposer(scoreInfo.composer)"
+                            ng-model="scoreInfo.composer"
+                            ng-options="value as value.c_name for value in getComposers" class="form-control">
+                        <option value="">--</option>
+                    </select>
+                </div>
+            </li>
+            <li class="row" ng-if="scoreInfo.composers.length">
+                <span class="act-label"></span>
+                <div class="act-content">
+                    <a type="button" class="btn-detail btn btn-default" ng-repeat="composer in scoreInfo.composers">{{composer.c_name}} </a>
+                </div>
+            </li>
+            <li class="row">
+                <span class="act-label">GENRES</span>
+
+                <div class="act-content">
+                    <select
+                            ng-change="addgenre(scoreInfo.genre)"
+                            ng-model="scoreInfo.genre"
+                            ng-options="value as value.c_name for value in getGenres" class="form-control">
+                        <option value="">--</option>
+                    </select>
+                </div>
+            </li>
+            <li class="row" ng-if="scoreInfo.genres.length">
+                <span class="act-label"></span>
+                <div class="act-content">
+                    <a type="button" class="btn-detail btn btn-default" ng-repeat="genre in scoreInfo.genres">{{genre.c_name}} </a>
+                </div>
+            </li>
+            <hr>
             <li class="row">
                 <span class="act-label">AUDIO</span>
                 <input type="text" class="act-content form-control" placeholder="Audio URL" ng-model="scoreInfo.audiourl" ng-trim="true">
@@ -51,14 +117,8 @@
                 <input type="text" class="act-content form-control" placeholder="Sheet Music URL" ng-model="scoreInfo.fileurl" ng-trim="true">
                 
             </li>
-            <li class="row">
-                <span class="act-label">DESCRIPTION</span>
-                <textarea class="act-content form-control" placeholder="Description" ng-model="scoreInfo.snippet" ng-trim="true"></textarea>
-                
-            </li>
             <li>
                 <span class="form-check" ng-show="scoreCheck">{{scoreCheck}}</span>
-            
             </li>
             <li>
                 <a type="button" ng-click="scoreSave()" class="btn btn-primary btn-sm">Save</a>

@@ -3,8 +3,8 @@
 /* Services */
 
 var rapidScoreServices = angular.module('rapidScoreServices', ['ngResource']);
-//var hostname = 'http://localhost:5000';
-var hostname = 'http://lazyscore.herokuapp.com';
+var hostname = 'http://localhost:5000';
+//var hostname = 'http://lazyscore.herokuapp.com';
 
 rapidScoreServices.factory('InstrumentAPI', ['$resource',
     function($resource){

@@ -138,14 +138,32 @@ rapidScoreControllers.controller('ScoreAdminCtrl', ['$scope', 'ScoreAdminAPI', '
         };
     }]);
     
-rapidScoreControllers.controller('ScoreAddCtrl', ['$scope', 'AddScoreAPI', 'AddScoreCategoryAPI', 'AddCategoryAPI', '$location',
-    function($scope, AddScore, AddScoreCategory, AddCategory, $location){
-        
+rapidScoreControllers.controller('ScoreAddCtrl', ['$scope', 'AddScoreAPI', 'AddScoreCategoryAPI', 'AddCategoryAPI', 'InstrumentAPI', 'ComposerAPI', 'GenreAPI', '$location',
+    function($scope, AddScore, AddScoreCategory, AddCategory, Instrument, Composer, Genre, $location){
+
+        $scope.getInstruments = Instrument.getAll();
+        $scope.getComposers = Composer.getAll();
+        $scope.getGenres = Genre.getAll();
+
         //Add Score
         $scope.scoreInfo = {};
         $scope.scoreCheck = '';
+        $scope.scoreInfo.instruments = [];
+        $scope.scoreInfo.composers = [];
+        $scope.scoreInfo.genres = [];
+
+        $scope.addinstrument = function(value){
+            $scope.scoreInfo.instruments.push(value);
+        };
+        $scope.addcomposer = function(value){
+            $scope.scoreInfo.composers.push(value);
+        };
+        $scope.addgenre = function(value){
+            $scope.scoreInfo.genres.push(value);
+        };
 
         $scope.scoreSave = function() {
+
             $scope.scoreCheck = '';
             console.log($scope.scoreInfo);
 
@@ -162,6 +180,22 @@ rapidScoreControllers.controller('ScoreAddCtrl', ['$scope', 'AddScoreAPI', 'AddS
                 
                 scoreData.name = $scope.scoreInfo.name;
                 scoreData.shortname = $scope.scoreInfo.name.split(' ').join('-').toLowerCase();
+
+                if($scope.scoreInfo.instruments.length){
+                    for(var i=0; i<$scope.scoreInfo.instruments.length; i++){
+                        scoreData.category.push($scope.scoreInfo.instruments[i].c_number);
+                    }
+                }
+                if($scope.scoreInfo.composers.length){
+                    for(var i=0; i<$scope.scoreInfo.composers.length; i++){
+                        scoreData.category.push($scope.scoreInfo.composers[i].c_number);
+                    }
+                }
+                if($scope.scoreInfo.genres.length){
+                    for(var i=0; i<$scope.scoreInfo.genres.length; i++){
+                        scoreData.category.push($scope.scoreInfo.genres[i].c_number);
+                    }
+                }
 
                 if($scope.scoreInfo.price){
                     scoreData.price = $scope.scoreInfo.price;
@@ -223,12 +257,29 @@ rapidScoreControllers.controller('ScoreAddCtrl', ['$scope', 'AddScoreAPI', 'AddS
         };
     }]);
 
-rapidScoreControllers.controller('ScoreEditCtrl', ['$scope', '$routeParams', 'ScoreAPI', 'EditScoreAPI', 'AddScoreCategoryAPI', 'AddCategoryAPI', 'RemoveScoreCategoryAPI', '$location',
-    function($scope, $routeParams, Score, EditScore, AddScoreCategory, AddCategory, RemoveScoreCategory, $location){
+rapidScoreControllers.controller('ScoreEditCtrl', ['$scope', '$routeParams', 'ScoreAPI', 'EditScoreAPI', 'AddScoreCategoryAPI', 'AddCategoryAPI', 'RemoveScoreCategoryAPI', 'InstrumentAPI', 'ComposerAPI', 'GenreAPI', '$location',
+    function($scope, $routeParams, Score, EditScore, AddScoreCategory, AddCategory, RemoveScoreCategory, Instrument, Composer, Genre, $location){
+
+        $scope.getInstruments = Instrument.getAll();
+        $scope.getComposers = Composer.getAll();
+        $scope.getGenres = Genre.getAll();
 
         $scope.scoreInfo = Score.getOne({scoreId: $routeParams.scoreId});
-        console.log($scope.scoreInfo);
         $scope.scoreCheck = '';
+
+        $scope.scoreInfo.instruments = [];
+        $scope.scoreInfo.composers = [];
+        $scope.scoreInfo.genres = [];
+
+        $scope.addinstrument = function(value){
+            $scope.scoreInfo.instruments.push(value);
+        };
+        $scope.addcomposer = function(value){
+            $scope.scoreInfo.composers.push(value);
+        };
+        $scope.addgenre = function(value){
+            $scope.scoreInfo.genres.push(value);
+        };
 
         $scope.scoreSave = function() {
             $scope.scoreCheck = '';
@@ -248,7 +299,21 @@ rapidScoreControllers.controller('ScoreEditCtrl', ['$scope', '$routeParams', 'Sc
                 scoreData.name = $scope.scoreInfo.name;
                 scoreData.shortname = $scope.scoreInfo.name.split(' ').join('-').toLowerCase();
 
-                console.log($scope.scoreInfo);
+                if($scope.scoreInfo.instruments.length){
+                    for(var i=0; i<$scope.scoreInfo.instruments.length; i++){
+                        scoreData.category.push($scope.scoreInfo.instruments[i].c_number);
+                    }
+                }
+                if($scope.scoreInfo.composers.length){
+                    for(var i=0; i<$scope.scoreInfo.composers.length; i++){
+                        scoreData.category.push($scope.scoreInfo.composers[i].c_number);
+                    }
+                }
+                if($scope.scoreInfo.genres.length){
+                    for(var i=0; i<$scope.scoreInfo.genres.length; i++){
+                        scoreData.category.push($scope.scoreInfo.genres[i].c_number);
+                    }
+                }
 
                 if($scope.scoreInfo.slider){
                     scoreData.slider = $scope.scoreInfo.slider;
