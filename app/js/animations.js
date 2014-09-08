@@ -29,12 +29,12 @@ rapidScoreAnimations.directive('slider', function($timeout){
             };
 
             scope.$watch('currentIndex',function(){
-                $(window).load(function(){
+                $timeout(function(){
                     scope.images.forEach(function(image){
                         image.visible=false;
                     });
                     scope.images[scope.currentIndex].visible=true;
-                });
+                } , 0);
             });
 
             /* Start: For Automatic slideshow*/
