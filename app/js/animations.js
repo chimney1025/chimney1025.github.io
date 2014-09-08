@@ -9,7 +9,7 @@ rapidScoreAnimations.controller('SliderCtrl', ['$scope', 'SliderAPI',
         //$scope.images=[{src:'p1.jpg',title:'Pic 1'},{src:'p2.jpg',title:'Pic 2'},{src:'p3.jpg',title:'Pic 3'},{src:'s1.jpg',title:'Pic 4'},{src:'s2.jpg',title:'Pic 5'}];
     }]);
 
-rapidScoreAnimations.directive('slider', ['$timeout', function($timeout){
+rapidScoreAnimations.directive('slider', function($timeout){
     return {
         restrict: 'AE',
         replace: true,
@@ -29,12 +29,12 @@ rapidScoreAnimations.directive('slider', ['$timeout', function($timeout){
             };
 
             scope.$watch('currentIndex',function(){
-                $timeout(function(){
+                $(window).load(function(){
                     scope.images.forEach(function(image){
                         image.visible=false;
                     });
                     scope.images[scope.currentIndex].visible=true;
-                }, 0);
+                });
             });
 
             /* Start: For Automatic slideshow*/
@@ -59,4 +59,4 @@ rapidScoreAnimations.directive('slider', ['$timeout', function($timeout){
         },
         templateUrl:'views/slider.html'
     }
-}])
+})
