@@ -28,11 +28,7 @@ rapidScoreAnimations
                 scope.currentIndex>0?scope.currentIndex--:scope.currentIndex=scope.images.length-1;
             };
 
-            scope.$watch('images',function(newValue, oldValue){
-                console.log('1new: '); console.log(newValue);
-                console.log('1old: '); console.log(oldValue);
-                if(newValue !== oldValue){
-                scope.$watch('currentIndex',function(newValue, oldValue){
+            scope.$watch('currentIndex',function(newValue, oldValue){
                     console.log('2new: '); console.log(newValue);
                     console.log('2old: '); console.log(oldValue);
                     if(newValue !== oldValue) {
@@ -42,8 +38,6 @@ rapidScoreAnimations
                         scope.images[scope.currentIndex].visible=true;
                     }
                 });
-                }
-            });
             
             /* Start: For Automatic slideshow*/
 
