@@ -547,12 +547,12 @@ rapidScoreControllers.controller('SignUpCtrl', ['$scope', 'RegisterAPI', 'CheckU
                 console.log(regData);
 
                 //check username and email before submit
-                if(CheckUsername.getOne(regData.username)){
-                    $scope.regCheck = 'Username exists. Try another one.';
-                    return;
-                }
                 if(CheckEmail.getOne(regData.email)){
                     $scope.regCheck = 'Email exists. Try another one';
+                    return;
+                }
+                if(CheckUsername.getOne(regData.username)){
+                    $scope.regCheck = 'Username exists. Try another one.';
                     return;
                 }
                 //convert to json
