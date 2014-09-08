@@ -553,6 +553,7 @@ rapidScoreControllers.controller('SignUpCtrl', ['$scope', 'RegisterAPI', 'CheckU
                 }
                 if(CheckEmail.getOne(regData.email)){
                     $scope.regCheck = 'Email exists. Try another one';
+                    return;
                 }
                 //convert to json
                 User.save({}, regData, function(res){
