@@ -28,22 +28,21 @@ rapidScoreAnimations
                 scope.currentIndex>0?scope.currentIndex--:scope.currentIndex=scope.images.length-1;
             };
 
-            scope.$watch('currentIndex',function(newValue, oldValue){
-                console.log('new: '); console.log(newValue);
-                console.log('old: '); console.log(oldValue);
-                if(newValue === oldValue){
-                    console.log('init slider');
-                    scope.images[0].visible=true;
+            scope.$watch('images',function(newValue, oldValue){
+                if(newValue !== oldValue){
+                scope.$watch('currentIndex',function(newValue, oldValue){
+                    console.log('new: '); console.log(newValue);
+                    console.log('old: '); console.log(oldValue);
+                    if(newValue !== oldValue) {
+                        scope.images.forEach(function(image){
+                            image.visible=false;
+                        });
+                        scope.images[scope.currentIndex].visible=true;
+                    }
+                });
                 }
-                else {
-                    scope.images.forEach(function(image){
-                        image.visible=false;
-                    });
-                    scope.images[scope.currentIndex].visible=true;
-                }
-                
             });
-
+            
             /* Start: For Automatic slideshow*/
 
             var timer;
