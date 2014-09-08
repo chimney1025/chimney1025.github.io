@@ -14,6 +14,7 @@ rapidScoreAnimations.directive('slider', function($timeout){
             images: '='
         },
         link: function (scope, elem, attrs) {
+            scope.$apply('images');
             
             scope.currentIndex=0;
 
