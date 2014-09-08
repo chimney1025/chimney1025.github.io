@@ -9,6 +9,7 @@ rapidScoreAnimations.directive('slider', function($timeout, $q){
             $scope.images = Top.getAll(function(res){
                 console.log('scope result: ');
                 console.log(res);
+                $scope.$broadcast("Data_Ready");
             });
             $scope.orderProp = 'added';
             console.log($scope.images);
