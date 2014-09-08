@@ -28,13 +28,14 @@ rapidScoreAnimations.directive('slider', ['$timeout', '$q', function($timeout, $
             var deferred = $q.defer();
             var dataPromise = deferred.promise;
             deferred.resolve(scope.images);
-            console.log(dataPromise);
+            console.log(scope.images);
 
             scope.$watch('currentIndex',function(newValue, oldValue){
                 console.log('new: '); console.log(newValue);
                 console.log('old: '); console.log(oldValue);
                 console.log(scope.images);
                 console.log('length: '); console.log(scope.images.length);
+                
                 scope.images.forEach(function(image){
                     image.visible=false;
                 });
