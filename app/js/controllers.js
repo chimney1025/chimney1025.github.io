@@ -549,33 +549,31 @@ rapidScoreControllers.controller('SignUpCtrl', ['$scope', 'RegisterAPI', 'CheckU
                 */
 
                 //check username and email before submit
-                var check1 = CheckEmail.getOne({email:$scope.regInfo.email});
-                console.log(check1);
-                if(check1 == 1){
-                    $scope.regCheck = 'Email exists. Try another one';
-                    return;
-                } else {
-                    var check2 = CheckUsername.getOne({username:$scope.regInfo.username});
-                    console.log(check2);
-                    if(check2 == 1){
-                        console.log($scope.regInfo);
-                        $scope.regCheck = 'Username exists. Try another one.';
-                        return;
+                CheckEmail.getOne({email:$scope.regInfo.email} , function(res1){
+                    console.log(res1);
+                    if(res1 == 1){
+                        $scope.regCheck = 'Email exists. Try another one';
                     } else {
-                        //convert to json
-                        User.save({}, $scope.regInfo, function(res){
-                            console.log("validation success");
-                            console.log($scope.regInfo);
-                            if(res){
-                                alert('Registration Successful!');
-                                $location.path('/login');
+                        CheckUsername.getOne({username:$scope.regInfo.username} , function(res2){
+                            console.log(res2);
+                            if(res2 == 1){
+                                $scope.regCheck = 'Username exists. Try another one.';
+                            } else{
+                                User.save({}, $scope.regInfo, function(res){
+                                    console.log("validation success");
+                                    console.log($scope.regInfo);
+                                    if(res){
+                                        alert('Registration Successful!');
+                                        $location.path('/login');
+                                    }
+                                    else{
+                                        $scope.regCheck = 'Registration failed';
+                                    }
+                                });
                             }
-                            else{
-                                $scope.regCheck = 'Registration failed';
-                            }
-                        });
+                        })
                     }
-                }
+                });
             }
         };
     }]);
