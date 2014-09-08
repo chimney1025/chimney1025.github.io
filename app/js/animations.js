@@ -29,6 +29,7 @@ rapidScoreAnimations.directive('slider', function($timeout){
                 console.log('new: '); console.log(newValue);
                 console.log('old: '); console.log(oldValue);
                 console.log(scope.images);
+                console.log('length: '); console.log(scope.images.length);
                 scope.images.forEach(function(image){
                     image.visible=false;
                 });
