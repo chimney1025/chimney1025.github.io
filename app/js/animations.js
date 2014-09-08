@@ -31,10 +31,13 @@ rapidScoreAnimations.directive('slider', function($timeout){
             scope.$watch('currentIndex',function(newValue, oldValue){
                 console.log('new: '); console.log(newValue);
                 console.log('old: '); console.log(oldValue);
-                scope.images.forEach(function(image){
+                if(newValue !== oldValue){
+                    scope.images.forEach(function(image){
                         image.visible=false;
                     });
-                scope.images[scope.currentIndex].visible=true;
+                    scope.images[scope.currentIndex].visible=true;
+                }
+                
             });
 
             /* Start: For Automatic slideshow*/
