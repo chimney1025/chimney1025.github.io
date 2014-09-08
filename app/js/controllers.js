@@ -449,9 +449,9 @@ rapidScoreControllers.controller('LoginCtrl', ['$scope', '$rootScope', '$locatio
         $scope.loginInfo = {};
         $scope.loginCheck = '';
 
-        $scope.login = function login(loginInfo) {
+        $scope.login = function login($scope.loginInfo) {
             $scope.loginCheck = '';
-            console.log(loginInfo);
+            console.log($scope.loginInfo);
 
             if(!$scope.loginInfo.email) {
                 $scope.loginCheck = 'Invalid Email';
@@ -468,7 +468,7 @@ rapidScoreControllers.controller('LoginCtrl', ['$scope', '$rootScope', '$locatio
             }
 
             else {
-                LoginService.login(loginInfo.email, loginInfo.pass).success(function(data){
+                LoginService.login($scope.loginInfo.email, $scope.loginInfo.pass).success(function(data){
                     console.log(data);
                     if(Object.keys(data).length){
                         $window.sessionStorage.setItem('token', data.token);
