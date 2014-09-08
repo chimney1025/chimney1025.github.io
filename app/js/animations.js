@@ -13,10 +13,9 @@ rapidScoreAnimations
     return {
         restrict: 'AE',
         replace: true,
-        /*
         scope:{
             images: '='
-        },*/
+        },
         link: function (scope, elem, attrs) {
             
             scope.currentIndex=0;
