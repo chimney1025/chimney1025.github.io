@@ -6,9 +6,9 @@ rapidScoreAnimations.directive('slider', function($timeout, $q){
         restrict: 'AE',
         replace: true,
         controller: ['$scope', 'SliderAPI', function($scope, Top) {
-            Top.getAll(function(res){
-                $scope.images = res;
-                console.log($scope.images);
+            $scope.images = Top.getAll(function(res){
+                console.log('scope result: ');
+                console.log(res);
             });
             $scope.orderProp = 'added';
             console.log($scope.images);
