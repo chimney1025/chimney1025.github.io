@@ -554,27 +554,28 @@ rapidScoreControllers.controller('SignUpCtrl', ['$scope', 'RegisterAPI', 'CheckU
                 if(check1 == 1){
                     $scope.regCheck = 'Email exists. Try another one';
                     return;
-                }
-                var check2 = CheckUsername.getOne({username:$scope.regInfo.username});
-                console.log(check2);
-                if(check2 == 1){
-                    console.log($scope.regInfo);
-                    $scope.regCheck = 'Username exists. Try another one.';
-                    return;
-                }
-                
-                //convert to json
-                User.save({}, $scope.regInfo, function(res){
-                    console.log("validation success");
-                    console.log($scope.regInfo);
-                    if(res){
-                        alert('Registration Successful!');
-                        $location.path('/login');
+                } else {
+                    var check2 = CheckUsername.getOne({username:$scope.regInfo.username});
+                    console.log(check2);
+                    if(check2 == 1){
+                        console.log($scope.regInfo);
+                        $scope.regCheck = 'Username exists. Try another one.';
+                        return;
+                    } else {
+                        //convert to json
+                        User.save({}, $scope.regInfo, function(res){
+                            console.log("validation success");
+                            console.log($scope.regInfo);
+                            if(res){
+                                alert('Registration Successful!');
+                                $location.path('/login');
+                            }
+                            else{
+                                $scope.regCheck = 'Registration failed';
+                            }
+                        });
                     }
-                    else{
-                        $scope.regCheck = 'Registration failed';
-                    }
-                });
+                }
             }
         };
     }]);
