@@ -118,7 +118,7 @@ rapidScoreServices.factory('SliderPromise', function($resource, SliderAPI ,$q) {
         return defer.promise;
      }
    }
-};
+});
 
 rapidScoreServices.factory('SliderAdminAPI', ['$resource',
     function($resource){
