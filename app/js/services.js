@@ -99,7 +99,7 @@ rapidScoreServices.factory('SliderAPI', ['$resource',
         );
     }]);
     
-rapidScoreServices.factory('SliderPromise', function($resource, SliderAPI ,$q) {
+rapidScoreServices.factory('SliderPromise', ['$resource', 'SliderAPI', '$q', function($resource, SliderAPI ,$q) {
 
   function fetchAppId() {
     return SliderAPI.getAll();
@@ -118,7 +118,7 @@ rapidScoreServices.factory('SliderPromise', function($resource, SliderAPI ,$q) {
         return defer.promise;
      }
    }
-});
+}]);
 
 rapidScoreServices.factory('SliderAdminAPI', ['$resource',
     function($resource){
