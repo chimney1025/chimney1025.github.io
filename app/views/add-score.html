@@ -64,11 +64,11 @@
             
             <hr>
             <li class="row">
-                <span class="act-label">INSTRUMENTS</span>
+                <span class="act-label">INSTRUMENTS<span class="glyphicon glyphicon-info-sign"></span></span>
 
                 <div class="act-content">
                     <select
-                            ng-click="addinstrument(scoreInfo.instrument)"
+                            ng-change="addinstrument(scoreInfo.instrument)"
                             ng-model="scoreInfo.instrument"
                             ng-options="value as value.c_name for value in getInstruments" class="form-control">
                         <option value="">--</option>
