@@ -610,11 +610,13 @@ rapidScoreControllers.controller('SignUpCtrl', ['$scope', 'RegisterAPI', 'CheckU
                                     console.log("validation success");
                                     console.log($scope.regInfo);
                                     if(res){
+                                        $scope.regCheck = 'Registration Successful';
                                         alert('Registration Successful!');
                                         $location.path('/login');
                                     }
-                                    if(err){
-                                        $scope.regCheck = 'Registration failed';
+                                    else{
+                                        console.log('registration failed: ');
+                                        console.log(err);
                                     }
                                 });
                             }
