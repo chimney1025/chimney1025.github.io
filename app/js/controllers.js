@@ -138,16 +138,18 @@ rapidScoreControllers.controller('ScoreAddCtrl', ['$scope', 'AddScoreAPI', 'AddS
                 $scope.scoreInfo.instruments.push(value);
             }
         };
-        $scope.addcomposer = function(value){
+        $scope.addcomposer = function(value, i){
             if(value){
                 $scope.scoreInfo.composers.push(value);
-                var i = $scope.getComposers.indexOf(value);
+                //var i = $scope.getComposers.indexOf(value);
                 $scope.getComposers.splice(i, 1);
             }
         };
-        $scope.addgenre = function(value){
+        $scope.addgenre = function(value, i){
             if(value){
                 $scope.scoreInfo.genres.push(value);
+                //var i = $scope.getGenres.indexOf(value);
+                $scope.getGenres.splice(i, 1);
             }
         };
 
