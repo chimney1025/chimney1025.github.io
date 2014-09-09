@@ -77,7 +77,6 @@
             </li>
             <li class="row" ng-if="scoreInfo.instruments.length">
                 <span class="act-label"></span>
-                <div class="act-content">You can choose same instrument multiple times</div>
                 <div class="act-content">
                     <a type="button" class="btn-detail btn btn-default" ng-repeat="instrument in scoreInfo.instruments track by $index">{{instrument.c_name}} </a>
                 </div>
