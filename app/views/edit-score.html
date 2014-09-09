@@ -37,11 +37,6 @@
                     <input type="text" class="act-content form-control" placeholder="Enter page" ng-model="scoreInfo.page" required ng-trim="true">
 
                 </li>
-                <li class="row">
-                    <span class="act-label">DESCRIPTION</span>
-                    <textarea class="act-content form-control" placeholder="Description" ng-model="scoreInfo.snippet" ng-trim="true"></textarea>
-
-                </li>
                 <!--
                 <hr>
                 <li class="row">
@@ -98,8 +93,8 @@
                         <a type="button" class="btn-detail btn btn-default" ng-repeat="genre in scoreInfo.genres">{{genre.c_name}} </a>
                     </div>
                 </li>
-                -->
                 <hr>
+                -->
                 <li class="row">
                     <span class="act-label">AUDIO</span>
                     <input type="text" class="act-content form-control" placeholder="Audio URL" ng-model="scoreInfo.audiourl" ng-trim="true">
@@ -118,6 +113,11 @@
                 <li class="row">
                     <span class="act-label">FILE</span>
                     <input type="text" class="act-content form-control" placeholder="Sheet Music URL" ng-model="scoreInfo.fileurl" ng-trim="true">
+
+                </li>
+                <li class="row">
+                    <span class="act-label">DESCRIPTION</span>
+                    <textarea class="act-content form-control" placeholder="Description" ng-model="scoreInfo.snippet" ng-trim="true"></textarea>
 
                 </li>
                 <li>
