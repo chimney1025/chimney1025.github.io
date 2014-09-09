@@ -216,12 +216,6 @@ rapidScoreControllers.controller('ScoreAddCtrl', ['$scope', 'AddScoreAPI', 'AddS
                 } else{
                     scoreData.fileUrl = '';
                 }
-                //category
-                if($scope.scoreInfo.category.length){
-                    for(var i=0; i<$scope.scoreInfo.category.length; i++){
-                        scoreData.category.push($scope.scoreInfo.category[i]);
-                    }
-                }
                 
                 console.log(scoreData);
 
