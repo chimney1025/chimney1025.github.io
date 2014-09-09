@@ -156,9 +156,10 @@ rapidScoreControllers.controller('ScoreAddCtrl', ['$scope', 'AddScoreAPI', 'AddS
                 $scope.getComposers.splice(i, 1);
             }
         };
-        $scope.removecomposer = function(i){
+        $scope.removecomposer = function(value, i){
             console.log(i);
             $scope.scoreInfo.composers.splice(i,1);
+            $scope.getComposers.push(value);
         };
         
         $scope.addgenre = function(value){
@@ -169,9 +170,10 @@ rapidScoreControllers.controller('ScoreAddCtrl', ['$scope', 'AddScoreAPI', 'AddS
                 $scope.getGenres.splice(i, 1);
             }
         };
-        $scope.removegenre = function(i){
+        $scope.removegenre = function(value, i){
             console.log(i);
             $scope.scoreInfo.genres.splice(i,1);
+            $scope.getGenres.push(value);
         };
 
         $scope.scoreSave = function() {
