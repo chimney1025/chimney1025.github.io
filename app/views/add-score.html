@@ -95,7 +95,7 @@
             <li class="row" ng-if="scoreInfo.composers.length">
                 <span class="act-label"></span>
                 <div class="act-content">
-                    <a type="button" class="btn-detail btn btn-default" ng-repeat="composer in scoreInfo.composers track by $index">{{composer.c_name}} </a>
+                    <a type="button" ng-click="removecomposer($index)" class="btn-detail btn btn-default" ng-repeat="composer in scoreInfo.composers track by $index">{{composer.c_name}} </a>
                 </div>
             </li>
             <li class="row">
@@ -113,7 +113,7 @@
             <li class="row" ng-if="scoreInfo.genres.length">
                 <span class="act-label"></span>
                 <div class="act-content">
-                    <a type="button" class="btn-detail btn btn-default" ng-repeat="genre in scoreInfo.genres track by $index">{{genre.c_name}} </a>
+                    <a type="button" ng-click="removegenre($index)" class="btn-detail btn btn-default" ng-repeat="genre in scoreInfo.genres track by $index">{{genre.c_name}} </a>
                 </div>
             </li>
             <hr>
