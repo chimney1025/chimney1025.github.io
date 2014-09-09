@@ -133,6 +133,8 @@ rapidScoreControllers.controller('ScoreAddCtrl', ['$scope', 'AddScoreAPI', 'AddS
         $scope.scoreInfo.composers = [];
         $scope.scoreInfo.genres = [];
         
+        $scope.orderProp = 'c_name';
+        
         $scope.info = function(){
             alert('To add same instrument multiple times, choose -- back then choose the same instrument again');
         }
