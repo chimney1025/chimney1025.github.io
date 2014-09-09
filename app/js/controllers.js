@@ -76,25 +76,6 @@ rapidScoreControllers.controller('ScoreCtrl', ['$scope', '$rootScope', '$routePa
         };
     }]);
 
-rapidScoreControllers.directive("fileread", [function () {
-    return {
-        scope: {
-            fileread: "="
-        },
-        link: function (scope, element, attributes) {
-            element.bind("change", function (changeEvent) {
-                var reader = new FileReader();
-                reader.onload = function (loadEvent) {
-                    scope.$apply(function () {
-                        scope.fileread = loadEvent.target.result;
-                    });
-                }
-                reader.readAsDataURL(changeEvent.target.files[0]);
-            });
-        }
-    }
-}]);
-
 rapidScoreControllers.controller('ScoreAdminCtrl', ['$scope', 'ScoreAdminAPI', 'EditScoreAPI', 'SliderAdminAPI',
     function($scope, Score, EditScore, Slider) {
         $scope.scores = Score.getAll();
@@ -614,6 +595,7 @@ rapidScoreControllers.controller('SignUpCtrl', ['$scope', 'RegisterAPI', 'CheckU
                 */
 
                 //check username and email before submit
+                $scope.regInfo.password = $scope.regInfo.pass1;
                 CheckEmail.getOne({email:$scope.regInfo.email} , function(res1){
                     console.log(res1);
                     if(res1 == 1){
