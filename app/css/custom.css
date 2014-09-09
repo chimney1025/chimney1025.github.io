@@ -198,6 +198,9 @@ a{
 	min-height: 640px;
 	margin: auto;
 	background-color: #333;
+	-webkit-box-shadow: 0px 0px 15px #999;
+	-moz-box-shadow: 0px 0px 15px #999;
+	box-shadow: 0px 0px 15px #999;
 }
 .slide{
 	padding:20px;
@@ -207,50 +210,11 @@ a{
 	width: 100%;
 	min-height: 640px;
 	overflow:hidden;
-	/*
-	-webkit-box-shadow: 0px 0px 15px #999;
-	-moz-box-shadow: 0px 0px 15px #999;
-	box-shadow: 0px 0px 15px #999;
-	*/
-}
-
-.slide-caption{
-	width:100%;
-	padding: 20px 0;
-	margin: 0;
-	text-align:center;
-}
-.slide-caption:hover{
-	background-color:rgba(51,51,51,0.5);
 }
 .slide img{
 	width:45%;
 	min-width: 260px;
 	max-width: 640px;
-	-webkit-box-shadow: 0px 0px 15px #999;
-	-moz-box-shadow: 0px 0px 15px #999;
-	box-shadow: 0px 0px 15px #999;
-}
-.slide .slide-desc{
-    width:50%;
-    float:right;
-}
-.preview{
-	position:absolute;
-	left:0;
-	bottom: 0;
-	width:100%;
-	height:50px;
-	padding-top:40px;
-}
-.preview ul li{
-	height:252px;
-	float:left;
-	margin:0 15px;
-}
-.preview .bullet{
-	background:url(../images/bullet.png);
-	cursor:pointer;
 }
 
 .slide-index{
@@ -259,7 +223,7 @@ a{
     right:20px;
     width:35px;
     padding: 3px 5px;
-    background:#333;
+    background-color:rgba(51,51,51,0.8);
     color:#eee;
 }
 
@@ -268,7 +232,7 @@ a{
     top:10px;
     left:20px;
     padding: 3px 5px;
-    background:#333;
+    background-color:rgba(51,51,51,0.8);
     color:#eee;
 }
 
@@ -278,7 +242,7 @@ a{
 
 .slide-name a:hover{
     text-decoration: underline;
-    background-color: #333;
+    background-color:rgba(51,51,51,0.8);
     color: #f8f8f8;
 }
 
@@ -288,15 +252,17 @@ a{
 	left: 10px;
 	text-align:left;
 	display: block;
-	/*
+	
 	width: 36px;
 	height: 71px;
 	background-image:url(../images/paddle_prev_999.png);
-	*/
+	/*
 	width: 25px;
 	height: 25px;
 	background-image:url(../images/arrows.png);
 	background-position:0 0;
+	*/
+	
 	background-repeat: no-repeat;
 	cursor:pointer;
 	}
@@ -305,18 +271,36 @@ a{
 	top: 30%;
 	right: 10px;
 	display: block;
+	/*
 	width: 25px;
 	height: 25px;
 	background-image:url(../images/arrows.png);
 	background-position:-25px 0;
+	*/
+	
+	width: 36px;
+	height: 71px;
+	background-image:url(../images/paddle_next_999.png);
+	
 	background-repeat: no-repeat;
 	cursor:pointer;
 }
 .left-arrow:hover{
+	/*
 	background-position:0px -25px;
+	*/
+	
+	width: 36px;
+	height: 71px;
+	background-image:url(../images/paddle_prev_fff.png);
 }
 .right-arrow:hover{
+	/*
 	background-position:-25px -25px;
+	*/
+	width: 36px;
+	height: 71px;
+	background-image:url(../images/paddle_next_fff.png);
 }
 
 .arrows img{
