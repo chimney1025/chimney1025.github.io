@@ -64,8 +64,7 @@
             
             <hr>
             <li class="row">
-                <span class="act-label">INSTRUMENTS<span class="glyphicon glyphicon-info-sign"></span></span>
-
+                <span class="act-label">INSTRUMENTS</span>
                 <div class="act-content">
                     <select
                             ng-change="addinstrument(scoreInfo.instrument)"
@@ -76,7 +75,7 @@
                 </div>
             </li>
             <li class="row" ng-if="scoreInfo.instruments.length">
-                <span class="act-label"></span>
+                <span class="act-label"><span class="glyphicon glyphicon-info-sign" ng-click="alert('To add same instrument multiple times, choose -- back then choose the same instrument again)"></span></span>
                 <div class="act-content">
                     <a type="button" class="btn-detail btn btn-default" ng-repeat="instrument in scoreInfo.instruments track by $index">{{instrument.c_name}} </a>
                 </div>
