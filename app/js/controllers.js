@@ -142,6 +142,12 @@ rapidScoreControllers.controller('ScoreAddCtrl', ['$scope', 'AddScoreAPI', 'AddS
                 $scope.scoreInfo.instruments.push(value);
             }
         };
+        
+        $scope.removeinstrument = function(i){
+            console.log(i);
+            $scope.scoreInfo.instruments.splice(i,1);
+        };
+        
         $scope.addcomposer = function(value){
             if(value){
                 $scope.scoreInfo.composers.push(value);
