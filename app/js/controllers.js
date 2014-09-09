@@ -158,10 +158,11 @@ rapidScoreControllers.controller('ScoreAddCtrl', ['$scope', 'AddScoreAPI', 'AddS
         $scope.scoreSave = function() {
 
             $scope.scoreCheck = '';
-            console.log($scope.scoreInfo);
+            //console.log($scope.scoreInfo);
 
             if(!$scope.scoreInfo.name) {
                 $scope.scoreCheck = 'Invalid title';
+                console.log($scope.scoreCheck);
                 return;
             }
             //submit data
@@ -205,33 +206,37 @@ rapidScoreControllers.controller('ScoreAddCtrl', ['$scope', 'AddScoreAPI', 'AddS
 
                 if($scope.scoreInfo.snippet){
                     scoreData.snippet = $scope.scoreInfo.snippet;
-                } else{
+                } 
+                else{
                     scoreData.snippet = '';
                 }
                 if($scope.scoreInfo.audiourl){
                     scoreData.audioUrl = $scope.scoreInfo.audiourl;
-                } else{
+                } 
+                else{
                     scoreData.audioUrl = '';
                 }
                 if($scope.scoreInfo.videourl){
                     scoreData.videoUrl = $scope.scoreInfo.videourl;
-                } else{
+                }
+                else{
                     scoreData.videoUrl = '';
                 }
                 if($scope.scoreInfo.imageurl){
                     scoreData.imageUrl = $scope.scoreInfo.imageurl;
-                } else{
+                } 
+                else{
                     scoreData.imageUrl = '';
                 }
                 if($scope.scoreInfo.fileurl){
                     scoreData.fileUrl = $scope.scoreInfo.fileurl;
-                } else{
+                } 
+                else{
                     scoreData.fileUrl = '';
                 }
                 
                 console.log(scoreData);
 
-                //convert to json
                 /*
                 AddScore.save({}, scoreData, function(res){
                     console.log('res:' + res);
