@@ -212,21 +212,21 @@ rapidScoreControllers.controller('ScoreAddCtrl', ['$scope', 'AddScoreAPI', 'AddS
                     scoreData.imageUrl = '';
                 }
                 if($scope.scoreInfo.fileurl){
-                    //var uploadUrl = 'http://www.example.com/images';
-                    //fileUpload.uploadFileToUrl(file, uploadUrl);
                     scoreData.fileUrl = $scope.scoreInfo.fileurl;
                 } else{
                     scoreData.fileUrl = '';
                 }
                 //category
-                /*
-                for(var i=0; i<$scope.scoreInfo.category.length; i++){
-                    scoreData.category.push($scope.scoreInfo.category[i]);
+                if($scope.scoreInfo.category.length){
+                    for(var i=0; i<$scope.scoreInfo.category.length; i++){
+                        scoreData.category.push($scope.scoreInfo.category[i]);
+                    }
                 }
-                */
+                
                 console.log(scoreData);
 
                 //convert to json
+                /*
                 AddScore.save({}, scoreData, function(res){
                     console.log('res:' + res);
                     if(res){
@@ -234,6 +234,7 @@ rapidScoreControllers.controller('ScoreAddCtrl', ['$scope', 'AddScoreAPI', 'AddS
                         $location.path('/admin/sheetmusic');
                     }
                 });
+                */
             }
         };
     }]);
