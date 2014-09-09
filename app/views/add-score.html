@@ -32,11 +32,6 @@
                 
             </li>
             <li class="row">
-                <span class="act-label">DESCRIPTION</span>
-                <textarea class="act-content form-control" placeholder="Description" ng-model="scoreInfo.snippet" ng-trim="true"></textarea>
-
-            </li>
-            <li class="row">
                 <span class="act-label">PAGE</span>
                 <input type="text" class="act-content form-control" placeholder="Enter total page number" ng-model="scoreInfo.page" required ng-trim="true">
                 
@@ -118,6 +113,11 @@
                 <span class="act-label">FILE</span>
                 <input type="text" class="act-content form-control" placeholder="Sheet Music URL" ng-model="scoreInfo.fileurl" ng-trim="true">
                 
+            </li>
+            <li class="row">
+                <span class="act-label">DESCRIPTION</span>
+                <textarea class="act-content form-control" placeholder="Description" ng-model="scoreInfo.snippet" ng-trim="true"></textarea>
+
             </li>
             <li>
                 <span class="form-check" ng-show="scoreCheck">{{scoreCheck}}</span>
