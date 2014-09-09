@@ -68,7 +68,7 @@
 
                 <div class="act-content">
                     <select
-                            ng-selected="addinstrument(scoreInfo.instrument)"
+                            ng-click="addinstrument(scoreInfo.instrument)"
                             ng-model="scoreInfo.instrument"
                             ng-options="value as value.c_name for value in getInstruments" class="form-control">
                         <option value="">--</option>
@@ -86,7 +86,7 @@
 
                 <div class="act-content">
                     <select
-                            ng-selected="addcomposer(scoreInfo.composer)"
+                            ng-change="addcomposer(scoreInfo.composer)"
                             ng-model="scoreInfo.composer"
                             ng-options="value as value.c_name for value in getComposers" class="form-control">
                         <option value="">--</option>
@@ -104,7 +104,7 @@
 
                 <div class="act-content">
                     <select
-                            ng-selected="addgenre(scoreInfo.genre)"
+                            ng-change="addgenre(scoreInfo.genre)"
                             ng-model="scoreInfo.genre"
                             ng-options="value as value.c_name for value in getGenres" class="form-control">
                         <option value="">--</option>
