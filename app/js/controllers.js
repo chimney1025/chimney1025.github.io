@@ -140,17 +140,17 @@ rapidScoreControllers.controller('ScoreAddCtrl', ['$scope', 'AddScoreAPI', 'AddS
         };
         $scope.addcomposer = function(value){
             if(value){
-                console.log(i);
                 $scope.scoreInfo.composers.push(value);
                 var i = $scope.getComposers.indexOf(value);
+                console.log(i);
                 $scope.getComposers.splice(i, 1);
             }
         };
         $scope.addgenre = function(value){
             if(value){
-                console.log(i);
                 $scope.scoreInfo.genres.push(value);
                 var i = $scope.getGenres.indexOf(value);
+                console.log(i);
                 $scope.getGenres.splice(i, 1);
             }
         };
