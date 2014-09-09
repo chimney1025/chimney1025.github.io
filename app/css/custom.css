@@ -203,7 +203,7 @@ a{
 	position:absolute;
 	top:0;
 	left:0;
-	width:100%;
+	width: 100%;
 	min-height: 640px;
 	overflow:hidden;
 	/*
@@ -224,6 +224,8 @@ a{
 }
 .slide img{
 	width:45%;
+	min-width: 300px;
+	max-width: 640px;
 	-webkit-box-shadow: 0px 0px 15px #999;
 	-moz-box-shadow: 0px 0px 15px #999;
 	box-shadow: 0px 0px 15px #999;
