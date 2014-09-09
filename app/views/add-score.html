@@ -77,7 +77,7 @@
             <li class="row" ng-if="scoreInfo.instruments.length">
                 <span class="act-label"><a ng-click="info()"><span class="glyphicon glyphicon-info-sign"></span></a></span>
                 <div class="act-content">
-                    <a type="button" ng-click="removeinstrument(instrument)" class="btn-detail btn btn-default" ng-repeat="instrument in scoreInfo.instruments track by $index">{{instrument.c_name}} </a>
+                    <a type="button" ng-click="removeinstrument($index)" class="btn-detail btn btn-default" ng-repeat="instrument in scoreInfo.instruments track by $index">{{instrument.c_name}} </a>
                 </div>
             </li>
             <li class="row">
