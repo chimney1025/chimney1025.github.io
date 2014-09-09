@@ -134,13 +134,21 @@ rapidScoreControllers.controller('ScoreAddCtrl', ['$scope', 'AddScoreAPI', 'AddS
         $scope.scoreInfo.genres = [];
 
         $scope.addinstrument = function(value){
-            $scope.scoreInfo.instruments.push(value);
+            if(value){
+                $scope.scoreInfo.instruments.push(value);
+            }
         };
         $scope.addcomposer = function(value){
-            $scope.scoreInfo.composers.push(value);
+            if(value){
+                $scope.scoreInfo.composers.push(value);
+                var i = $scope.getComposers.indexOf(value);
+                $scope.getComposers.splice(i, 1);
+            }
         };
         $scope.addgenre = function(value){
-            $scope.scoreInfo.genres.push(value);
+            if(value){
+                $scope.scoreInfo.genres.push(value);
+            }
         };
 
         $scope.scoreSave = function() {
