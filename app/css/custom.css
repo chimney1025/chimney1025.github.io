@@ -850,6 +850,10 @@ span.form-check{
     .container.text-center{
         padding: 0 15px;
     }
+    
+    .view-container{
+    	padding-bottom: 120px;
+    }
 
     .biglogo{
         margin-top: 100px;
@@ -1047,7 +1051,7 @@ span.form-check{
     }
 
     #footer {
-        padding: 15px 0;
+        padding: 0;
     }
 
 }
