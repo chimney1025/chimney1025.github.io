@@ -2,15 +2,16 @@
 	<!-- Slide Show-->
 	<div class="slide" ng-style="slide" ng-repeat="image in images | orderBy:orderProp" ng-show="image.visible">
 		<img class="" ng-src="{{image.imageurl}}"/>
-        <!--
-		<h1 class="slide-caption"><a href="#/sheetmusic/{{image.shortname}}">{{image.name}}</a></h1>
-		-->
-        <div class="slide-name">
-            <a href="#/sheetmusic/{{image.shortname}}">{{image.name}}</a>
-        </div>
+        	<div class="slide-name"><a href="#/sheetmusic/{{image.shortname}}">{{image.name}}</a></div>
+        	<div class="slide-leftimage">
+        		<img class="" ng-src="{{leftimage.imageurl}}" />
+        	</div>
+        	<div class="slide-rightimage">
+        		<img class="" ng-src="{{rightimage.imageurl}}" />
+        	</div>
 	</div>
 	<!-- Arrows -->
-    <div class="slide-index">{{currentIndex+1}}/{{images.length}}</div>
+    	<div class="slide-index">{{currentIndex+1}}/{{images.length}}</div>
 	<div class="left-arrow" ng-style="sliderarrow" ng-click="prev()"></div>
 	<div class="right-arrow" ng-style="sliderarrow" ng-click="next()"></div>
 	
