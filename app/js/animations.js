@@ -14,7 +14,7 @@ rapidScoreAnimations.directive('slider', function($timeout, $q){
             $scope.orderProp = 'added';
             console.log($scope.images);
             //setting arrow css
-            $scope.sliderarrow="top: 50%";
+            $scope.sliderarrow="{top: 50%}";
         }],
         scope:{
             images: '='
