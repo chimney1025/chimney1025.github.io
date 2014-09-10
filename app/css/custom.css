@@ -207,9 +207,13 @@ a{
 	top:0;
 	left:0;
 	width: 100%;
-	min-height:585px;
 	overflow:hidden;
 }
+
+.slider, .slide{
+	min-height:585px;
+}
+
 .slide img{
 	width:45%;
 	min-width: 240px;
@@ -248,6 +252,7 @@ a{
 .left-arrow, .left-arrow:hover{
 	position: absolute;
 	left: 10px;
+	top: 257px;
 	text-align:left;
 	display: block;
 	
