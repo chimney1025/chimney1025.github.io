@@ -3,12 +3,6 @@
 	<div class="slide" ng-style="slide" ng-repeat="image in images | orderBy:orderProp" ng-show="image.visible">
 		<img class="" ng-src="{{image.imageurl}}"/>
         	<div class="slide-name"><a href="#/sheetmusic/{{image.shortname}}">{{image.name}}</a></div>
-        	<div class="slide-leftimage">
-        		<img class="" ng-src="{{leftimage.imageurl}}" />
-        	</div>
-        	<div class="slide-rightimage">
-        		<img class="" ng-src="{{rightimage.imageurl}}" />
-        	</div>
 	</div>
 	<!-- Arrows -->
     	<div class="slide-index">{{currentIndex+1}}/{{images.length}}</div>
