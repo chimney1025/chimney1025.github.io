@@ -8,7 +8,7 @@ rapidScoreAnimations.directive('sliderimg', function(){
             console.log(elem[0].clientHeight);
         }
     }
-})
+});
 
 rapidScoreAnimations.directive('slider', function($timeout, $q){
     return {
