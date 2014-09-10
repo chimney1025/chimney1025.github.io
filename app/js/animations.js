@@ -25,6 +25,8 @@ rapidScoreAnimations.directive('slider', function($timeout, $q){
                 console.log(elem.children());
                 
                 scope.currentIndex=0;
+                scope.leftIndex=scope.images.length-1;
+                scope.rightIndex=1;
 
                 scope.next=function(){
                     scope.currentIndex<scope.images.length-1?scope.currentIndex++:scope.currentIndex=0;
@@ -38,7 +40,29 @@ rapidScoreAnimations.directive('slider', function($timeout, $q){
                     scope.images.forEach(function(image){
                         image.visible=false;
                     });
+                    
                     scope.images[scope.currentIndex].visible=true;
+                    
+                    if(currentIndex==0){
+                        leftIndex=scope.images.length-1;
+                    } else{
+                        leftIndex=currentIndex-1;
+                    }
+                    
+                    if(currentIndex!=leftIndex){
+                        scope.images[scope.leftIndex].visible=true;
+                    }
+                    
+                    if(currentIndex==scope.images.length-1){
+                        rightIndex=0;
+                    } else{
+                        rightIndex=currentIndex+1;
+                    }
+                    
+                    if(currentIndex!=rightIndex){
+                        scope.images[scope.rightIndex+1].visible=true;
+                    }
+                    
                 });
             
             
