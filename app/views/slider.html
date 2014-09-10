@@ -1,7 +1,7 @@
 <div class="slider" ng-style="slider">
 	<!-- Slide Show-->
 	<div class="slide" ng-style="slide" ng-repeat="image in images | orderBy:orderProp" ng-show="image.visible">
-		<img class="" ng-src="{{image.imageurl}}"/>
+		<img class="" ng-src="{{image.imageurl}}" sliderimg/>
         	<div class="slide-name"><a href="#/sheetmusic/{{image.shortname}}">{{image.name}}</a></div>
 	</div>
 	<!-- Arrows -->
