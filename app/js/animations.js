@@ -23,7 +23,7 @@ rapidScoreAnimations.directive('slider', function($timeout, $q){
             
             scope.$on("Data_Ready", function(){
                 
-                console.log(elem[0].clientHeight);
+                console.log(elem[0].find('img').clientHeight);
             
                 scope.currentIndex=0;
 
