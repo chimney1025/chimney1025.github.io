@@ -1,15 +1,5 @@
 var rapidScoreAnimations = angular.module('rapidScoreAnimations', ['ngAnimate']);
 
-rapidScoreAnimations.directive('sliderimg', function(){
-    return {
-        restrict: 'AE',
-        replace: true,
-        link: function (scope, elem, attrs) {
-            console.log(elem[0].clientHeight);
-        }
-    }
-});
-
 rapidScoreAnimations.directive('slider', function($timeout, $q){
     return {
         restrict: 'AE',
@@ -31,6 +21,9 @@ rapidScoreAnimations.directive('slider', function($timeout, $q){
         link: function (scope, elem, attrs) {
             
             scope.$on("Data_Ready", function(){
+                
+                console.log(elem.children());
+                
                 scope.currentIndex=0;
 
                 scope.next=function(){
