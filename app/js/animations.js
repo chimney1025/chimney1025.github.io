@@ -20,44 +20,47 @@ rapidScoreAnimations.directive('slider', function($timeout, $q){
             images: '='
         },
         link: function (scope, elem, attrs) {
+            
             scope.$on("Data_Ready", function(){
+                
+                console.log(elem[0].clientHeight);
             
-            scope.currentIndex=0;
+                scope.currentIndex=0;
 
-            scope.next=function(){
-                scope.currentIndex<scope.images.length-1?scope.currentIndex++:scope.currentIndex=0;
-            };
+                scope.next=function(){
+                    scope.currentIndex<scope.images.length-1?scope.currentIndex++:scope.currentIndex=0;
+                };
 
-            scope.prev=function(){
-                scope.currentIndex>0?scope.currentIndex--:scope.currentIndex=scope.images.length-1;
-            };
+                scope.prev=function(){
+                    scope.currentIndex>0?scope.currentIndex--:scope.currentIndex=scope.images.length-1;
+                };
             
-            scope.$watch('currentIndex',function(){
-                scope.images.forEach(function(image){
-                    image.visible=false;
+                scope.$watch('currentIndex',function(){
+                    scope.images.forEach(function(image){
+                        image.visible=false;
+                    });
+                    scope.images[scope.currentIndex].visible=true;
                 });
-                scope.images[scope.currentIndex].visible=true;
-            });
             
             
-            /* Start: For Automatic slideshow*/
+                /* Start: For Automatic slideshow*/
 
-            var timer;
+                var timer;
 
-            var sliderFunc=function(){
-                timer=$timeout(function(){
-                    scope.next();
-                    timer=$timeout(sliderFunc,5000);
-                },5000);
-            };
+                var sliderFunc=function(){
+                    timer=$timeout(function(){
+                        scope.next();
+                        timer=$timeout(sliderFunc,5000);
+                    },5000);
+                };
 
-            sliderFunc();
+                sliderFunc();
 
-            scope.$on('$destroy',function(){
-                $timeout.cancel(timer);
-            });
+                scope.$on('$destroy',function(){
+                    $timeout.cancel(timer);
+                });
 
-            /* End : For Automatic slideshow*/
+                /* End : For Automatic slideshow*/
             });
 
         },
