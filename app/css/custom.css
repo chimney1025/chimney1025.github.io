@@ -252,7 +252,7 @@ a{
 .left-arrow, .left-arrow:hover{
 	position: absolute;
 	left: 10px;
-	top: 257px;
+	top: 40%;
 	text-align:left;
 	display: block;
 	
@@ -273,6 +273,7 @@ a{
 .right-arrow, .right-arrow:hover{
 	position: absolute;
 	right: 10px;
+	top: 40%;
 	display: block;
 	/*
 	width: 25px;
