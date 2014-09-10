@@ -207,6 +207,7 @@ a{
 	top:0;
 	left:0;
 	width: 100%;
+	min-height:585px;
 	overflow:hidden;
 }
 .slide img{
@@ -850,6 +851,7 @@ span.form-check{
     }
 
     .slider, .slide{
+	min-height:473px;
     }
 
 /*
@@ -923,6 +925,7 @@ span.form-check{
     }
 
     .slider, .slide{
+    	min-height: 380px;
     }
     
     .breadcrumbBox{
