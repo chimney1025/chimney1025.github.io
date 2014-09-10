@@ -426,7 +426,23 @@ rapidScoreControllers.controller('CategoryAdminCtrl', ['$scope', 'CategoryAdminA
 
                 });
             }
-        }
+        };
+        $scope.removeCategory = function(cnumber, cname){
+            var r = confirm('Deleting ' + cname);
+            //deleting score category records before deleting this category
+            if(r==true){
+                EditCategory.remove({cnumber:cnumber}, function (res) {
+                    console.log(res + ' deleted : ' + cnumber);
+                    //$location.path('/admin/sheetmusic');
+                    $scope.getInstruments = Instrument.getAll();
+                    $scope.getComposers = Composer.getAll();
+                    $scope.getGenres = Genre.getAll();
+                });
+            } else{
+
+            }
+
+        };
     }]);
 
 rapidScoreControllers.controller('UserAdminListCtrl', ['$scope', 'UserAdminAPI',
