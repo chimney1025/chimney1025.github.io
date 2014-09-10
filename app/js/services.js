@@ -374,7 +374,7 @@ rapidScoreServices.factory('AddCategoryAPI', ['$resource',
 rapidScoreServices.factory('EditCategoryAPI', ['$resource',
     function($resource){
         return $resource(
-                hostname + '/admin/category/cnumber',
+                hostname + '/admin/category/:cnumber',
             //cname
             {},
             {
