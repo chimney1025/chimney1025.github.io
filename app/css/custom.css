@@ -215,24 +215,6 @@ a{
 	max-width: 440px;
 }
 
-.slide-leftimage img, .slide-rightimage img{
-	width:23%;
-	min-width: 120px;
-	max-width: 220px;
-}
-
-.slide-leftimage{
-	position:absolute;
-	top:30%;
-	left:-20px;
-}
-
-.slide-leftimage{
-	position:absolute;
-	top:30%;
-	right:-20px;
-}
-
 .slide-index{
     position:absolute;
     top:10px;
