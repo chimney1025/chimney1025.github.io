@@ -332,7 +332,7 @@ rapidScoreServices.factory('EditCategoryTypeAPI', ['$resource',
         return $resource(
                 hostname + '/admin/categorytypes/:ctnumber',
             //ctname
-            {ctnumber:'@ctnumber'},
+            {},
             {
                 save: {
                     method: 'PUT',
@@ -358,7 +358,7 @@ rapidScoreServices.factory('AddCategoryAPI', ['$resource',
         return $resource(
                 hostname + '/admin/categorytypes/:ctnumber',
             //ctnumber and cname
-            {ctnumber:'@ctnumber'},
+            {},
             {
                 save: {
                     method:'POST',
@@ -376,7 +376,7 @@ rapidScoreServices.factory('EditCategoryAPI', ['$resource',
         return $resource(
                 hostname + '/admin/category/cnumber',
             //cname
-            {cnumber:'@cnumber'},
+            {},
             {
                 save: {
                     method: 'PUT',
@@ -442,7 +442,7 @@ rapidScoreServices.factory('AddScoreCategoryAPI', ['$resource',
         return $resource(
                 hostname + '/admin/sheetmusic/:scoreId',
             //cnumber
-            {scoreId:'@scoreId'},
+            {},
             {
                 save: {
                     method: 'POST',
@@ -459,7 +459,7 @@ rapidScoreServices.factory('RemoveScoreCategoryAPI', ['$resource',
     function($resource){
         return $resource(
                 hostname + '/admin/score-category/:scnumber',
-            {scnumber:'@scnumber'},
+            {},
             {
                 remove: {
                     method:'DELETE',
