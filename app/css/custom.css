@@ -43,9 +43,14 @@ h4{
 }
 /* colors */
 
-.btn-default:hover{
-	color: #325050;
+.btn-default{
 	background-color: #f5f5f5;
+}
+
+.btn-default:hover{
+	color: #f5f5f5;
+	background-color: #468595;
+	border-color: #468595;
 }
 
 .btn-danger, .btn-danger.active{
