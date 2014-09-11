@@ -458,6 +458,7 @@ a{
 .row{
     border-bottom: 1px solid #e1e5e8;
     margin: 5px 0 11px 0;
+    clear:both;
 }
 
 form .row{
