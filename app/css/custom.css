@@ -10,6 +10,7 @@ html, body{
 }
 body{
 	padding: 0;
+	background-color: #edf4f0;
 }
 
 ul{
@@ -87,7 +88,7 @@ a{
 #main-container{
 	min-height: 100%;
 	position: relative;
-	background-color:whitesmoke;
+	/*background-color:whitesmoke;*/
 }
 
 #logo{
@@ -108,7 +109,7 @@ a{
 /*Footer*/
 #footer {
     padding: 0;
-    background-color: #f5f5f5;
+    /*background-color: #f5f5f5;*/
     position: absolute;
     bottom: 0;
     width: 100%;
@@ -817,27 +818,6 @@ span.form-check{
     border-top-left-radius: 0;
     border-top-right-radius: 0;
 }
-
-/*----------------------------------
-    admin forms and dialogs
--------------------------------------*/
-/* Fix for Bootstrap 3 with Angular UI Bootstrap */
-
-.modal {
-    display: block;
-}
-
-/* Custom dialog/modal headers */
-
-.dialog-header-error { background-color: #d2322d; }
-.dialog-header-wait { background-color: #428bca; }
-.dialog-header-notify { background-color: #eeeeee; }
-.dialog-header-confirm { background-color: #333333; }
-.dialog-header-error span, .dialog-header-error h4,
-.dialog-header-wait span, .dialog-header-wait h4,
-.dialog-header-confirm span, .dialog-header-confirm h4 { color: #ffffff; }
-
-/* Ease Display */
 
 /*-----------------------------------
 	Media Queries
