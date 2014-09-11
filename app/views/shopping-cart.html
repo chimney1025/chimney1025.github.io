@@ -20,6 +20,9 @@
                 Newly added : {{added_score_name}}
                 <a href="#/sheetmusic/{{added_score_shortname}}">Continue Shopping</a>
             </li>
+            <li ng-if="!added_score_name">
+                <a href="#/sheetmusic">Continue Shopping</a>
+            </li>
             <li class="row list-inline columnCaptions">
                 <span>Title</span>
                 <span>Price</span>
