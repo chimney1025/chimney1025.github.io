@@ -493,6 +493,7 @@ rapidScoreControllers.controller('UserCtrl', ['$window', '$location', '$scope', 
                     $rootScope.logged_purchased = Order.getAll({username: $window.sessionStorage.getItem('username')});
 
                     //$window.location.reload();
+                    $location.path('/users/'+$window.sessionStorage.getItem('username')+'/purchased');
                 }
                 else{
                     console.log(res);
