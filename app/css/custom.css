@@ -955,6 +955,7 @@ span.form-check{
 
     .act-list li{
     	padding: 3px 0;
+    	font-size: 0.95em;
     }
 
     .act-list h2 span{
@@ -1008,7 +1009,7 @@ span.form-check{
 
     .admin-action{
     	margin-right: 0px;
-}
+    }
 
     .columnCaptions span{
         padding: 0 21px 0 0;
@@ -1025,10 +1026,10 @@ span.form-check{
     .row{
         padding-bottom:10px;
     }
-
-.row span{
+    
+    .row span{
     	padding: 10px 0 3px 0;
-}
+    }
 
     /* Change Bootstrap's default popover to make it look nice on a mobile device */
 
