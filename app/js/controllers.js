@@ -260,7 +260,7 @@ rapidScoreControllers.controller('ScoreAddCtrl', ['$scope', 'AddScoreAPI', 'AddS
                 
                 console.log(scoreData);
 
-                /*
+                
                 AddScore.save({}, scoreData, function(res){
                     console.log('res:' + res);
                     if(res){
@@ -268,7 +268,7 @@ rapidScoreControllers.controller('ScoreAddCtrl', ['$scope', 'AddScoreAPI', 'AddS
                         $location.path('/admin/sheetmusic');
                     }
                 });
-                */
+                
             }
         };
     }]);
