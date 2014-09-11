@@ -607,13 +607,14 @@ audio{
     float: left;
 }
 
-input.act-content{
+input.act-content, textarea{
     border:none;
     border: 1px solid #ccc;
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
     box-shadow: none;
     height: 40px;
+    resize:none;
 }
 
 .act-btn{
