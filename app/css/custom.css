@@ -492,7 +492,7 @@ form .row{
     -moz-box-shadow: 0 0 .625em .07em rgba(0,0,0,0.05);
     box-shadow: 0 0 .625em .07em rgba(0,0,0,0.05);
     */
-    border: 10px solid #e5e5e5;
+    border: 1px solid #e5e5e5;
     padding: 0;
     margin-bottom: 10px;
 }
