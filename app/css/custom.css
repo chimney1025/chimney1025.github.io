@@ -844,10 +844,6 @@ span.form-check{
 /* Tablet size */
 
 @media (max-width: 992px) {
-   h1{
-	font-size:1.8em;
-   }
-
     .container.text-center{
         padding: 0 15px;
     }
@@ -883,7 +879,7 @@ span.form-check{
     }
 
     .score-detail h1{
-        font-size:1.5em;
+        font-size:2.0em;
     }
 
     .score-detail .btn, .btn-inline{
@@ -989,6 +985,10 @@ span.form-check{
         text-align: left;
         width: 100%;
         margin-bottom: 15px;
+    }
+
+    .score-detail h1{
+        font-size:1.8em;
     }
 
     .act-label, .act-content{
