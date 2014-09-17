@@ -92,6 +92,12 @@ a{
     color: #468595;
 }
 
+.well {
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+}
+
 /*View Container*/
 .view-container{
     padding-bottom: 120px;
