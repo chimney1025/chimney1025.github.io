@@ -30,7 +30,7 @@ a:hover, a.active {
     color: #fff;
 }
 h1{
-	font-size:1.8em;
+	font-size:2.3em;
 }
 h2{
 	font-size:1.5em;
@@ -844,6 +844,9 @@ span.form-check{
 /* Tablet size */
 
 @media (max-width: 992px) {
+   h1{
+	font-size:1.8em;
+   }
 
     .container.text-center{
         padding: 0 15px;
