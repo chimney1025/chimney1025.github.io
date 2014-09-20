@@ -157,7 +157,7 @@ rapidScoreApp.config(['$routeProvider',
 ]);
 
 
-rapidScoreApp.run(function($rootScope, $location, $window) {
+rapidScoreApp.run(function($rootScope, $location, $window, $http) {
     $rootScope.$on("$routeChangeStart", function(event, nextRoute, currentRoute) {
         if(nextRoute.access.requiredLogin && !$window.sessionStorage.getItem('token')){
             $location.path("/login");
@@ -170,6 +170,9 @@ rapidScoreApp.run(function($rootScope, $location, $window) {
                 $rootScope.noBreadcrumb = false;
             }
         });
+
+    $http.defaults.headers.common = {};
+    $http.defaults.headers.common['X-Access-Token'] = $window.sessionStorage.getItem('token');
 });
 
 rapidScoreApp.config(['$httpProvider', function ($httpProvider) {
