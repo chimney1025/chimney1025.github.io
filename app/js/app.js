@@ -171,8 +171,8 @@ rapidScoreApp.run(function($rootScope, $location, $window, $http) {
             }
         });
 
-    $http.defaults.headers.common = {};
-    $http.defaults.headers.common['X-Access-Token'] = $window.sessionStorage.getItem('token');
+    //$http.defaults.headers.common = {};
+    //$http.defaults.headers.common['X-Access-Token'] = $window.sessionStorage.getItem('token');
 });
 
 rapidScoreApp.config(['$httpProvider', function ($httpProvider) {
