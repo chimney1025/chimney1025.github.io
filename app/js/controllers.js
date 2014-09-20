@@ -551,22 +551,22 @@ rapidScoreControllers.controller('LoginCtrl', ['$scope', '$rootScope', '$locatio
             $scope.loginCheck = '';
             console.log($scope.loginInfo);
 
-            if(!$scope.loginInfo.email) {
-                $scope.loginCheck = 'Invalid Email';
+            if(!$scope.loginInfo.username) {
+                $scope.loginCheck = 'Invalid Username';
                 return;
             }
 
-            else if(!$scope.loginInfo.pass) {
+            else if(!$scope.loginInfo.password) {
                 $scope.loginCheck = 'Please enter your Password';
                 return;
             }
-            else if($scope.loginInfo.pass.length < 6 || $scope.loginInfo.pass.length > 20){
+            else if($scope.loginInfo.password.length < 6 || $scope.loginInfo.password.length > 20){
                 $scope.loginCheck = 'Password length should be 6 to 20 characters long';
                 return;
             }
 
             else {
-                LoginService.login($scope.loginInfo.email, $scope.loginInfo.pass).success(function(data){
+                LoginService.login($scope.loginInfo.username, $scope.loginInfo.password).success(function(data){
                     console.log(data);
                     if(Object.keys(data).length){
                         $window.sessionStorage.setItem('token', data.token);
@@ -637,30 +637,34 @@ rapidScoreControllers.controller('SignUpCtrl', ['$scope', 'RegisterAPI', 'CheckU
             //submit data
             else{
                 console.log('posting data...');
-                //create json to be posted
-                /*
-                var regData = new Object();
-                regData.username = $scope.regInfo.username;
-                regData.email = $scope.regInfo.email;
-                regData.password = $scope.regInfo.pass1;
-                console.log(regData);
-                */
 
                 //check username and email before submit
-                $scope.regInfo.password = $scope.regInfo.pass1;
                 CheckEmail.getOne({email:$scope.regInfo.email} , function(res1){
+                    console.log("check email ");
                     console.log(res1);
-                    if(res1 == 1){
+                    if(res1.email){
                         $scope.regCheck = 'Email exists. Try another one';
                     } else {
                         CheckUsername.getOne({username:$scope.regInfo.username} , function(res2){
+                            console.log("check username ");
                             console.log(res2);
-                            if(res2 == 1){
+                            if(res2.email){
                                 $scope.regCheck = 'Username exists. Try another one.';
                             } else{
-                                User.save({}, $scope.regInfo, function(res, err){
+
+                                console.log($scope.regInfo);
+                                //create json to be posted
+
+                                 var regData = new Object();
+                                 regData.username = $scope.regInfo.username;
+                                 regData.email = $scope.regInfo.email;
+                                 regData.password = $scope.regInfo.pass1;
+                                 console.log(regData);
+
+
+                                User.save(regData.username, regData.email, regData.password).success(function(res){
                                     console.log("validation success");
-                                    console.log($scope.regInfo);
+                                    console.log(regData);
                                     if(res){
                                         $scope.regCheck = 'Registration Successful';
                                         alert('Registration Successful!');

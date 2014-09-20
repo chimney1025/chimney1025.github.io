@@ -3,8 +3,8 @@
 /* Services */
 
 var rapidScoreServices = angular.module('rapidScoreServices', ['ngResource']);
-//var hostname = 'http://localhost:5000';
-var hostname = 'http://lazyscore.herokuapp.com';
+var hostname = 'http://localhost:5000';
+//var hostname = 'http://lazyscore.herokuapp.com';
 
 rapidScoreServices.factory('InstrumentAPI', ['$resource',
     function($resource){
@@ -188,17 +188,31 @@ rapidScoreServices.factory('CheckEmailAPI', ['$resource',
 //user login
 rapidScoreServices.factory('LoginAPI', function($http){
     return {
-        login: function(email, password) {
+        login: function(username, password) {
             return $http({
                 method: 'POST',
                 url: hostname + '/login',
-                data: $.param({email: email, pass: password}),
+                data: $.param({username: username, password: password}),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             });
         },
 
         logout: function() {
 
+        }
+    }
+});
+
+//user register
+rapidScoreServices.factory('RegisterAPI', function($http){
+    return {
+        save: function(username, email, password){
+            return $http({
+                method: 'POST',
+                url: hostname + '/register',
+                data: $.param({email: email, username: username, password: password}),
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+            });
         }
     }
 });
@@ -223,24 +237,6 @@ rapidScoreServices.factory('TokenInterceptor', function ($q, $window) {
         }
     };
 });
-
-//user register
-rapidScoreServices.factory('RegisterAPI', ['$resource',
-    function($resource){
-
-        return $resource(
-                hostname + '/register',
-            {},
-            {
-                save: {
-                    method:'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                }
-            }
-        );
-    }]);
 
 //add, remove, clear cart
 
