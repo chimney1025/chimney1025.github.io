@@ -192,7 +192,7 @@ rapidScoreServices.factory('LoginAPI', function($http){
             return $http({
                 method: 'POST',
                 url: hostname + '/login',
-                data: $.param({username: username, password: password}),
+                data: $.param({email: username, password: password}),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             });
         },
