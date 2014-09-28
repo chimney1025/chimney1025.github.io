@@ -5,8 +5,8 @@
 
     <div class="col-md-4 col-sm-4 col-xs-4 text-left score-detail">
         <ul class="">
-            <li><h1>{{score.name}}</h1></li>
-            <span ng-show=0 ng-model="sid" >{{score.sid}}</span>
+            <li><h1>{{score.title}}</h1></li>
+            <span ng-show=0 ng-model="sid" >{{score.id}}</span>
             <li><a type="button" class="btn {{action_class}}" ng-click="link()" >{{action}}</a></li>
             <!--
             <li><a class="btn btn-default btn-block" ng-model="collapsed" ng-click="collapsed=!collapsed">More Detail</a></li>
@@ -23,8 +23,8 @@
                     <button type="button" class="btn-detail btn btn-default"  ng-if="score.audiourl" href="{{score.audiourl}}" target="_blank" class="" title="Download Audio">Audio</button>
                     <button type="button" class="btn-detail btn btn-default"  ng-if="score.videourl" href="{{score.videourl}}" target="_blank" class="" title="Video Preview">Video</button>
                 </li>
-                <li ng-if="score.snippet">
-                    <p class="well">{{score.snippet}}</p>
+                <li ng-if="score.desc">
+                    <p class="well">{{score.desc}}</p>
                 </li>
             </div>
         </ul>

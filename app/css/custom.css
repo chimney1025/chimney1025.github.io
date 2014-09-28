@@ -40,7 +40,7 @@ h4{
 }
 
 .container{
-/*   max-width: 960px; */
+   max-width: 960px;
 }
 /* colors */
 
@@ -101,6 +101,7 @@ a{
 /*View Container*/
 .view-container{
     padding-bottom: 120px;
+
 }
 
 #main-container{
@@ -444,10 +445,17 @@ a{
     padding: 0;
 }
 
+.act-list ul.list-detail{
+    margin: 20px 0 0 10px;
+    padding-top: 10px;
+    font-size: 0.9em;
+    min-height: none;
+}
+
 .list-item{
     font-size :1em;
     float: left;
-    margin-left: 15px;
+    margin-left: 0;
 }
 
 .list-added{
@@ -476,7 +484,7 @@ form .row{
 }
 
 .row span{
-    padding: 20px 0 6px 0;
+    padding: 15px 0 6px 0;
 }
 
 .row span span{
@@ -583,7 +591,7 @@ audio{
 
 .act-list li{
     padding: 10px 0;
-    line-height: 0px;
+    line-height: 10px;
 }
 
 .act-list h2{
@@ -674,7 +682,7 @@ input.act-content, textarea{
 
 .columnCaptions span:first-child{
     float:left;
-    padding-left:15px;
+    padding-left:0;
 }
 
 .columnCaptions span{
@@ -684,7 +692,7 @@ input.act-content, textarea{
 
 .columnCaptions span:last-child{
     float: right;
-    padding-right: 72px;
+    padding-right: 0;
 }
 
 
@@ -1010,7 +1018,7 @@ span.form-check{
 
     .list-item, .act-list .list-item{
     	text-align:left;
-    	margin: 0;
+    	margin-left: 0;
     	font-size: 0.95em;
     }
 
@@ -1036,7 +1044,6 @@ span.form-check{
 
     .columnCaptions span:last-child{
         float: right;
-        padding-right: 42px;
     }
 
     .columnCaptions{

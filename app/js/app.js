@@ -13,6 +13,32 @@ var rapidScoreApp = angular.module('rapidScoreApp', [
 
 rapidScoreApp.config(function ($httpProvider) {
     $httpProvider.interceptors.push('TokenInterceptor');
+
+    $httpProvider.responseInterceptors.push(function($q, $location, $window, $rootScope){
+        return function (promise) {
+            return promise.then(
+                // Success: just return the response
+                function (response) {
+                    return response;
+                },
+                // Error: check the error status to get only the 401
+                function (response) {
+                    if (response.status === 401) {
+                        console.log('removing');
+                        console.log($window.sessionStorage.getItem('username'));
+                        $rootScope.logged = false;
+                        $window.sessionStorage.removeItem('token');
+                        $window.sessionStorage.removeItem('username');
+                        $window.sessionStorage.removeItem('uid');
+                        $window.sessionStorage.removeItem('admin');
+                        //$location.url('/login');
+                    }
+                    //
+                    return $q.reject(response);
+                }
+            );
+        }
+    });
 });
 
 rapidScoreApp.config(['$routeProvider',
@@ -67,19 +93,19 @@ rapidScoreApp.config(['$routeProvider',
                 controller: 'GenreCtrl',
                 access: { requiredLogin: false }
             }).
-            when('/users/:username/shopping-cart', {
+            when('/account/shopping-cart', {
                 templateUrl: 'views/shopping-cart.html',
                 label: 'Shopping Cart',
                 controller: 'UserCtrl',
                 access: { requiredLogin: true }
             }).
-            when('/users/:username/purchased', {
+            when('/account/purchased', {
                 templateUrl: 'views/purchased.html',
-                label: 'Purchased',
+                label: 'Orders',
                 controller: 'UserCtrl',
                 access: { requiredLogin: true }
             }).
-            when('/users/:username', {
+            when('/account', {
                 templateUrl: 'views/user-detail.html',
                 label: 'Account Settings',
                 controller: 'UserCtrl',
@@ -103,10 +129,7 @@ rapidScoreApp.config(['$routeProvider',
                 access: { requiredLogin: false }
             }).
             when('/admin', {
-                templateUrl: '',
-                label: 'Admin',
-                controller: '',
-                access: { requiredLogin: true }
+                redirectTo: '/admin/users'
             }).
             when('/admin/users', {
                 templateUrl: 'views/user-list.html',
@@ -147,11 +170,6 @@ rapidScoreApp.config(['$routeProvider',
                 templateUrl: 'views/test.html',
                 controller: 'ScoreCtrl',
                 access: { requiredLogin: true }
-            }).
-            otherwise({
-                redirectTo: '/home',
-                label: 'Home',
-                access: { requiredLogin: false }
             })
     }
 ]);
@@ -159,6 +177,7 @@ rapidScoreApp.config(['$routeProvider',
 
 rapidScoreApp.run(function($rootScope, $location, $window, $http) {
     $rootScope.$on("$routeChangeStart", function(event, nextRoute, currentRoute) {
+
         if(nextRoute.access.requiredLogin && !$window.sessionStorage.getItem('token')){
             $location.path("/login");
         }
@@ -170,9 +189,6 @@ rapidScoreApp.run(function($rootScope, $location, $window, $http) {
                 $rootScope.noBreadcrumb = false;
             }
         });
-
-    //$http.defaults.headers.common = {};
-    //$http.defaults.headers.common['X-Access-Token'] = $window.sessionStorage.getItem('token');
 });
 
 rapidScoreApp.config(['$httpProvider', function ($httpProvider) {

@@ -15,7 +15,7 @@
         <h2>Manage Users ({{users.length}})</h2>
         <ul class="">
             <li class="row" ng-repeat="item in users">
-                <span class="list-item"><a href="#/admin/users/{{item.username}}">{{item.username}}</a></span>
+                <span class="list-item"><a href="#/admin/users/{{item.id}}">{{item.username}}</a></span>
                 <span class="list-added">{{item.added | date : 'yyyy-MM-dd'}}</span>
                 <span class="admin-action list-action">
                     <a type="button" class="btn btn-primary btn-xs">Send Message</a>

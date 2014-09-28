@@ -16,14 +16,14 @@
         </h2>
         <ul class="">
             <li class="row" ng-repeat="item in scores | filter:query | orderBy:orderProp">
-                <span class="list-item"><a href="#/sheetmusic/{{item.shortname}}">{{item.name}}</a>
-                    <a href="#/admin/sheetmusic/{{item.shortname}}" ><span class="glyphicon glyphicon-pencil"></span></a>
-                    <a ng-click="removeScore(item.sid, item.name)" ><span class="glyphicon glyphicon-remove"></span></a>
+                <span class="list-item"><a href="#/sheetmusic/{{item.shortname}}">{{item.title}}</a>
+                    <a href="#/admin/sheetmusic/{{item.id}}" ><span class="glyphicon glyphicon-pencil"></span></a>
+                    <a ng-click="removeScore(item.id, item.title)" ><span class="glyphicon glyphicon-remove"></span></a>
                 </span>
                 <span class="list-added">{{item.added | date : 'yyyy-MM-dd'}}</span>
                 <span class="admin-action list-action">
-                    <a type="button" ng-if="item.slider" ng-click="addSlider(false, item.sid)" class="btn btn-default btn-xs">Remove from Slider</a>
-                    <a type="button" ng-if="!item.slider" ng-click="addSlider(true, item.sid)" class="btn btn-primary btn-xs">Add to Slider</a>
+                    <a type="button" ng-if="item.slider" ng-click="addSlider(false, item.id)" class="btn btn-default btn-xs">Remove from Slider</a>
+                    <a type="button" ng-if="!item.slider" ng-click="addSlider(true, item.id)" class="btn btn-primary btn-xs">Add to Slider</a>
                 </span>
 
             </li>

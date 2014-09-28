@@ -18,7 +18,7 @@
         <ul class="">
             <li class="row">
                 <span class="act-label">TITLE</span>
-                <input type="text" maxlength="40" class="act-content form-control" placeholder="Enter title" ng-model="scoreInfo.name" required ng-trim="true">
+                <input type="text" maxlength="40" class="act-content form-control" placeholder="Enter title" ng-model="scoreInfo.title" required ng-trim="true">
                 
             </li>
             <li class="row">
@@ -53,7 +53,7 @@
             </li>
             <li class="row">
                 <span class="act-label">DESCRIPTION</span>
-                <textarea class="act-content form-control" placeholder="Description" ng-model="scoreInfo.snippet" ng-trim="true"></textarea>
+                <textarea class="act-content form-control" placeholder="Description" ng-model="scoreInfo.desc" ng-trim="true"></textarea>
 
             </li>
             <li class="row">
@@ -122,7 +122,7 @@
                 <span class="form-check" ng-show="scoreCheck">{{scoreCheck}}</span>
             </li>
             <li>
-                <a type="button" ng-click="scoreSave()" class="btn btn-primary btn-sm">Save</a>
+                <a type="button" ng-click="scoreAdd()" class="btn btn-primary btn-sm">Save</a>
             </li>
         </ul>
         </form>

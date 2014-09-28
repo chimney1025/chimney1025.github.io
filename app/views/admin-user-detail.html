@@ -19,12 +19,8 @@
                 <span class="act-content">{{user.username}}</span>
             </li>
             <li class="row">
-                <span class="act-label">EMAIL</span>
-                <span class="act-content">{{user.email | uppercase}}</span>
-            </li>
-            <li class="row">
                 <span class="act-label">REGISTERED</span>
-                <span class="act-content">{{user.added | date : 'yyyy-MM-dd'}}</span>
+                <span class="act-content">{{user.createdAt | date : 'yyyy-MM-dd'}}</span>
             </li>
         </ul>
 

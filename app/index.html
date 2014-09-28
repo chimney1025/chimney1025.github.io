@@ -59,7 +59,7 @@
             <ul class="nav navbar-nav navbar-right">
 
 
-                <li ng-if="logged"><a href="#{{logged_usercartlink}}">
+                <li ng-if="logged"><a href="#/account/shopping-cart">
                     <span class="badge pull-right">{{logged_cart.length}}</span>
                     <span class="glyphicon glyphicon-shopping-cart"></span>
                 </a></li>
@@ -67,9 +67,9 @@
                 <li ng-if="logged" class="dropdown" >
                     <a class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"></span></a>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href="#{{logged_userlink}}">My Account - {{logged_username}}</a></li>
+                        <li><a href="#/account">My Account</a></li>
                         <li><a ng-click="logout()">Log Out</a></li>
-                        <li><a href="#/admin/users">Admin</a></li>
+                        <li ng-if="logged_admin"><a href="#/admin/users">Admin</a></li>
                     </ul>
                 </li>
 
