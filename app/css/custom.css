@@ -125,6 +125,18 @@ a{
 .centered{
 }
 
+.fade {
+    opacity: 0;
+    -webkit-transition: opacity 0.25s ease-in;
+    -moz-transition: opacity 0.25s ease-in;
+    -o-transition: opacity 0.25s ease-in;
+    -ms-transition: opacity 0.25s ease-in;
+    transition: opacity 0.25s ease-in;
+}
+.fade.in{
+    opacity: 1;
+}
+
 /*Footer*/
 #footer {
     padding: 0;
@@ -449,7 +461,7 @@ a{
     margin: 20px 0 0 10px;
     padding-top: 10px;
     font-size: 0.9em;
-    min-height: none;
+    min-height: 0;
 }
 
 .list-item{
