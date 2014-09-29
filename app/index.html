@@ -59,8 +59,8 @@
             <ul class="nav navbar-nav navbar-right">
 
 
-                <li ng-if="logged"><a href="#/account/shopping-cart">
-                    <span class="badge pull-right fade" ng-class="{in:logged_cart.length}">{{logged_cart.length}}</span>
+                <li ng-if="logged" class="fade" ng-class="{in:logged_cart.length}"><a href="#/account/shopping-cart">
+                    <span class="badge pull-right">{{logged_cart.length}}</span>
                     <span class="glyphicon glyphicon-shopping-cart"></span>
                 </a></li>
 
