@@ -30,13 +30,13 @@
         </ul>
         <!-- 4:3 aspect ratio -->
         <div ng-if="score.videourl" class="col-md-12 embed-responsive embed-responsive-16by9">
-            <iframe class="col-md-12 embed-responsive-item" src="//www.youtube.com/embed/qwXzbILRheM"></iframe>
+            <iframe type="text/html" class="col-md-12 embed-responsive-item" ng-src="{{trustSrc(score.videourl)}}"></iframe>
         </div>
     </div>
 
     <div class="col-md-8 col-sm-8 col-xs-8 text-left score-main">
         <div ng-if="score.audiourl" class="main-media">
-            <audio class="" ng-src="{{score.audiourl}}" controls="controls" preload="auto" >
+            <audio class="" ng-src="{{trustSrc(score.audiourl)}}" controls="controls" preload="auto" >
                 Your browser does not support the HTML5 Audio element.
             </audio>
         </div>

@@ -18,12 +18,14 @@ rapidScoreControllers.controller('ScoreListCtrl', ['$scope', 'ScoreAPI', 'Instru
 rapidScoreControllers.controller('ScoreCtrl', ['$scope', '$rootScope', '$routeParams', 'ScoreAPI', 'UserCartAPI', 'CheckOrderAPI', '$location', '$window',
     function($scope, $rootScope, $routeParams, Score, Cart, CheckOrder, $location, $window, Instrument, Composer, Genre) {
         $scope.score = Score.getOne({scoreid: $routeParams.scoreId});
-        console.log($scope.score);
         console.log($window.sessionStorage.getItem('uid'));
 
         $rootScope.action = 'Add to Cart';
         $rootScope.action_class = 'btn-warning';
 
+        $scope.trustSrc = function(src){
+            return $sce.trustAsResourceUrl(src);
+        }
 
         $scope.link = function(){
             console.log('score id:');
