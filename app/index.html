@@ -60,7 +60,7 @@
 
 
                 <li ng-if="logged"><a href="#/account/shopping-cart">
-                    <span class="badge pull-right">{{logged_cart.length}}</span>
+                    <span class="badge pull-right" ng-if="logged_cart.length">{{logged_cart.length}}</span>
                     <span class="glyphicon glyphicon-shopping-cart"></span>
                 </a></li>
 
