@@ -15,8 +15,8 @@ rapidScoreControllers.controller('ScoreListCtrl', ['$scope', 'ScoreAPI', 'Instru
         */
     }]);
 
-rapidScoreControllers.controller('ScoreCtrl', ['$scope', '$rootScope', '$routeParams', 'ScoreAPI', 'UserCartAPI', 'CheckOrderAPI', '$location', '$window',
-    function($scope, $rootScope, $routeParams, Score, Cart, CheckOrder, $location, $window, Instrument, Composer, Genre) {
+rapidScoreControllers.controller('ScoreCtrl', ['$scope', '$rootScope', '$routeParams', 'ScoreAPI', 'UserCartAPI', 'CheckOrderAPI', '$location', '$window', '$sce',
+    function($scope, $rootScope, $routeParams, Score, Cart, CheckOrder, $location, $window, $sce, Instrument, Composer, Genre) {
         $scope.score = Score.getOne({scoreid: $routeParams.scoreId});
         console.log($window.sessionStorage.getItem('uid'));
 
