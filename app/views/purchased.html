@@ -1,10 +1,9 @@
 
-<div class="container text-center fade" ng-class="{in:logged_purchased.length}">
+<div class="container text-center">
 
     <div class="col-md-3 col-sm-3 col-xs-3 text-left account-menu">
         <ul class="">
             <li><h4>Welcome</h4></li>
-            <li><h4><a href="#/account">{{logged_username | uppercase}}</a></h4></li>
             <li><a href="#/account">Account Settings</a></li>
             <li><a href="#/account/shopping-cart">My Shopping Cart</a></li>
             <li><a href="#/account/purchased" class="active">My Orders</a></li>
@@ -12,14 +11,14 @@
     </div>
 
     <div class="col-md-9 col-sm-9 col-xs-9 text-left act-list">
-        <ul class="">
-            <h2>Orders ({{logged_purchased.length}})</h2>
-            <div ng-if="logged_purchased.length">
+        <ul>
+            <h2>Orders<span ng-if="logged_purchased.length">({{logged_purchased.length}})</span></h2>
+            <div class="fade" ng-class="{in:purchased.length}">
             <li class="row list-inline columnCaptions">
                 <span>Order</span>
                 <span>Total Price</span>
             </li>
-            <li class="row" ng-repeat="order in logged_purchased | orderBy:orderProp">
+            <li class="row" ng-repeat="order in purchased | orderBy:orderProp">
 
                 <span class="list-item">
                     <a ng-class="order.showdetail ? 'active' : ''" ng-click="showorder(order.id)">Order - {{order.id}}</a>
