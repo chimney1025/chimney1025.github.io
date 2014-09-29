@@ -203,7 +203,7 @@ rapidScoreControllers.controller('ScoreAddCtrl', ['$scope', 'ScoreAdminAPI', 'Sc
                 scoreData.category = [];
                 
                 scoreData.title = $scope.scoreInfo.title;
-                scoreData.shortname = $scope.scoreInfo.title.replace('-',' ').split(' ').join('-').toLowerCase();
+                scoreData.shortname = $scope.scoreInfo.title.replace('-',' ').replace('\'','').split(/\s{2,}/g).join('-').toLowerCase();
 
                 if($scope.scoreInfo.instruments.length){
                     for(var i=0; i<$scope.scoreInfo.instruments.length; i++){
@@ -483,38 +483,34 @@ rapidScoreControllers.controller('UserCtrl', ['$window', '$location', '$scope', 
         $scope.user = User.getOne();
         console.log($scope.user);
 
-        $scope.logged_cart = Cart.getAll();
-        console.log('cart:');
-        console.log($scope.logged_cart);
-        $scope.logged_purchased = Order.getAll();
-        console.log('order:');
-        console.log($scope.logged_purchased);
-        for(var i=0; i<$scope.logged_purchased.length; i++){
-            $scope.logged_purchased[i].showdetail = false;
+        $scope.cart = Cart.getAll();
+        $scope.purchased = Order.getAll();
+        for(var i=0; i<$scope.purchased.length; i++){
+            $scope.purchased[i].showdetail = false;
         }
         //get scores of each order
 
         $scope.showorder = function(orderid){
-            for(var i=0; i<$scope.logged_purchased.length; i++){
-                if($scope.logged_purchased[i].id == orderid){
+            for(var i=0; i<$scope.purchased.length; i++){
+                if($scope.purchased[i].id == orderid){
                     var index = i;
-                    console.log($scope.logged_purchased[i].id);
-                    if($scope.logged_purchased[i].showdetail){
-                        $scope.logged_purchased[i].showdetail = false;
+                    console.log($scope.purchased[i].id);
+                    if($scope.purchased[i].showdetail){
+                        $scope.purchased[i].showdetail = false;
                         break;
                     }
                     OrderDetail.getScores({orderid:orderid}, function(scores){
                         if(scores.length > 0){
                             console.log(scores);
                             console.log(index);
-                            $scope.logged_purchased[index].showdetail = true;
+                            $scope.purchased[index].showdetail = true;
                             $scope.orderdetails = scores;
                         } else{
 
                         }
                     })
                 } else{
-                    $scope.logged_purchased[i].showdetail = false;
+                    $scope.purchased[i].showdetail = false;
                 }
             }
         }
@@ -527,6 +523,7 @@ rapidScoreControllers.controller('UserCtrl', ['$window', '$location', '$scope', 
                     $rootScope.added_score_shortname = "";
                     //$rootScope.logged_cart = res;
                     $rootScope.logged_cart = Cart.getAll();
+                    $scope.cart = Cart.getAll();
 
                     //$window.location.reload();
                 }
@@ -543,6 +540,8 @@ rapidScoreControllers.controller('UserCtrl', ['$window', '$location', '$scope', 
                     alert('Placing Order - ' + $scope.logged_cart.length + ' items');
                     $rootScope.logged_cart = Cart.getAll();
                     $rootScope.logged_purchased = Order.getAll();
+                    $scope.cart = Cart.getAll();
+                    $scope.purchased = Order.getAll();
 
                     //$window.location.reload();
                     $location.path('/account/purchased');
