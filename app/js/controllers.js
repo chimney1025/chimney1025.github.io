@@ -561,7 +561,9 @@ rapidScoreControllers.controller('sessionService', ['$scope','$rootScope', '$win
         else{
             $rootScope.logged = true;
             $rootScope.logged_username = $window.sessionStorage.getItem('username');
+            console.log($window.sessionStorage.getItem('username'));
             $rootScope.logged_admin = $window.sessionStorage.getItem('admin');
+            console.log($window.sessionStorage.getItem('admin'));
             $rootScope.logged_cart = Cart.getAll();
             console.log($rootScope.logged_cart);
             $rootScope.logged_purchased = Order.getAll();
