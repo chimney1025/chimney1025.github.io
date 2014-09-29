@@ -124,19 +124,6 @@ a{
 
 .centered{
 }
-
-.fade {
-    opacity: 0;
-    -webkit-transition: opacity 0.25s ease-in;
-    -moz-transition: opacity 0.25s ease-in;
-    -o-transition: opacity 0.25s ease-in;
-    -ms-transition: opacity 0.25s ease-in;
-    transition: opacity 0.25s ease-in;
-}
-.fade.in{
-    opacity: 1;
-}
-
 /*Footer*/
 #footer {
     padding: 0;
