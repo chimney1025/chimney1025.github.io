@@ -81,21 +81,26 @@ rapidScoreControllers.controller('ScoreCtrl', ['$scope', '$rootScope', '$routePa
 rapidScoreControllers.controller('ScoreAdminCtrl', ['$scope', 'ScoreAdminAPI', 'SliderAdminAPI',
     function($scope, Score, Slider) {
         $scope.scores = Score.getAll();
+        console.log($scope.scores);
         $scope.orderProp = 'title';
 
         //remove
-        $scope.removeScore = function(sid, name){
-            var r = confirm('Deleting ' + name);
+        $scope.removeScore = function(value, sid, name){
+            if(value){
+                var r = confirm('Deleting ' + name);
+            } else{
+                var r = confirm('Re adding ' + name);
+            }
             if(r==true){
                 Score.remove({scoreid:sid}, function (res) {
-                    console.log(res + ' deleted : ' + sid);
+                    if(value) console.log(res + ' deleted : ' + sid);
+                    else console.log(res + ' re added : ' + sid);
                     //$location.path('/admin/sheetmusic');
                     $scope.scores = Score.getAll();
                 });
             } else{
 
             }
-
         };
 
         $scope.addSlider = function(value, sid){
@@ -198,7 +203,7 @@ rapidScoreControllers.controller('ScoreAddCtrl', ['$scope', 'ScoreAdminAPI', 'Sc
                 scoreData.category = [];
                 
                 scoreData.title = $scope.scoreInfo.title;
-                scoreData.shortname = $scope.scoreInfo.title.split(' ').join('-').toLowerCase();
+                scoreData.shortname = $scope.scoreInfo.title.replace('-',' ').split(' ').join('-').toLowerCase();
 
                 if($scope.scoreInfo.instruments.length){
                     for(var i=0; i<$scope.scoreInfo.instruments.length; i++){
@@ -326,7 +331,8 @@ rapidScoreControllers.controller('ScoreEditCtrl', ['$scope', '$routeParams', 'Sc
                 scoreData.category = [];
 
                 scoreData.title = $scope.scoreInfo.title;
-                scoreData.shortname = $scope.scoreInfo.title.split(' ').join('-').toLowerCase();
+                alert($scope.scoreInfo.title);
+                scoreData.shortname = $scope.scoreInfo.title.replace('-',' ').replace('\'','').split(/\s{2,}/g).join('-').toLowerCase();
 
                 /*
                 if($scope.scoreInfo.instruments.length){
@@ -474,41 +480,41 @@ rapidScoreControllers.controller('UserAdminCtrl', ['$scope', '$routeParams', 'Us
 rapidScoreControllers.controller('UserCtrl', ['$window', '$location', '$scope', '$rootScope', '$routeParams', 'UserAPI', 'UserCartAPI', 'UserOrderAPI', 'UserOrderDetailAPI',
     function($window, $location, $scope, $rootScope, $routeParams, User, Cart, Order, OrderDetail) {
 
-        $rootScope.user = User.getOne();
-        console.log($rootScope.user);
+        $scope.user = User.getOne();
+        console.log($scope.user);
 
-        $rootScope.logged_cart = Cart.getAll();
+        $scope.logged_cart = Cart.getAll();
         console.log('cart:');
-        console.log($rootScope.logged_cart);
-        $rootScope.logged_purchased = Order.getAll();
+        console.log($scope.logged_cart);
+        $scope.logged_purchased = Order.getAll();
         console.log('order:');
-        console.log($rootScope.logged_purchased);
-        for(var i=0; i<$rootScope.logged_purchased.length; i++){
-            $rootScope.logged_purchased[i].showdetail = false;
+        console.log($scope.logged_purchased);
+        for(var i=0; i<$scope.logged_purchased.length; i++){
+            $scope.logged_purchased[i].showdetail = false;
         }
         //get scores of each order
 
         $scope.showorder = function(orderid){
-            for(var i=0; i<$rootScope.logged_purchased.length; i++){
-                if($rootScope.logged_purchased[i].id == orderid){
+            for(var i=0; i<$scope.logged_purchased.length; i++){
+                if($scope.logged_purchased[i].id == orderid){
                     var index = i;
-                    console.log($rootScope.logged_purchased[i].id);
-                    if($rootScope.logged_purchased[i].showdetail){
-                        $rootScope.logged_purchased[i].showdetail = false;
+                    console.log($scope.logged_purchased[i].id);
+                    if($scope.logged_purchased[i].showdetail){
+                        $scope.logged_purchased[i].showdetail = false;
                         break;
                     }
                     OrderDetail.getScores({orderid:orderid}, function(scores){
                         if(scores.length > 0){
                             console.log(scores);
                             console.log(index);
-                            $rootScope.logged_purchased[index].showdetail = true;
+                            $scope.logged_purchased[index].showdetail = true;
                             $scope.orderdetails = scores;
                         } else{
 
                         }
                     })
                 } else{
-                    $rootScope.logged_purchased[i].showdetail = false;
+                    $scope.logged_purchased[i].showdetail = false;
                 }
             }
         }

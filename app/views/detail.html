@@ -7,7 +7,7 @@
         <ul class="">
             <li><h1>{{score.title}}</h1></li>
             <span ng-show=0 ng-model="sid" >{{score.id}}</span>
-            <li><a type="button" class="btn {{action_class}}" ng-click="link()" >{{action}}</a></li>
+            <li ng-if="!score.obsolete"><a type="button" class="btn {{action_class}}" ng-click="link()" >{{action}}</a></li>
             <!--
             <li><a class="btn btn-default btn-block" ng-model="collapsed" ng-click="collapsed=!collapsed">More Detail</a></li>
             -->

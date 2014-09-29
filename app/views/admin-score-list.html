@@ -16,16 +16,18 @@
         </h2>
         <ul class="">
             <li class="row" ng-repeat="item in scores | filter:query | orderBy:orderProp">
-                <span class="list-item"><a href="#/sheetmusic/{{item.shortname}}">{{item.title}}</a>
-                    <a href="#/admin/sheetmusic/{{item.id}}" ><span class="glyphicon glyphicon-pencil"></span></a>
-                    <a ng-click="removeScore(item.id, item.title)" ><span class="glyphicon glyphicon-remove"></span></a>
+                <span class="list-item">
+                    <a href="#/sheetmusic/{{item.shortname}}" ng-if="item.obsolete"><strike>{{item.title}}</strike></a>
+                    <a href="#/sheetmusic/{{item.shortname}}" ng-if="!item.obsolete">{{item.title}}</a>
+                    <a href="#/admin/sheetmusic/{{item.id}}" ng-if="!item.obsolete" ><span class="glyphicon glyphicon-pencil"></span></a>
+                    <a ng-click="removeScore(true, item.id, item.title)" ng-if="!item.obsolete" ><span class="glyphicon glyphicon-remove"></span></a>
                 </span>
-                <span class="list-added">{{item.added | date : 'yyyy-MM-dd'}}</span>
+                <span class="list-added">{{item.createdAt | date : 'yyyy-MM-dd'}}</span>
+                <span class="list-added" ng-if="item.obsolete"><b>Deleted at {{item.updatedAt | date : 'yyyy-MM-dd'}}</b></span>
                 <span class="admin-action list-action">
-                    <a type="button" ng-if="item.slider" ng-click="addSlider(false, item.id)" class="btn btn-default btn-xs">Remove from Slider</a>
-                    <a type="button" ng-if="!item.slider" ng-click="addSlider(true, item.id)" class="btn btn-primary btn-xs">Add to Slider</a>
+                    <a type="button" ng-if="item.slider && !item.obsolete" ng-click="addSlider(false, item.id)" class="btn btn-default btn-xs">Remove from Slider</a>
+                    <a type="button" ng-if="!item.slider && !item.obsolete" ng-click="addSlider(true, item.id)" class="btn btn-primary btn-xs">Add to Slider</a>
                 </span>
-
             </li>
         </ul>
     </div>
