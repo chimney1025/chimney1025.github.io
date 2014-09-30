@@ -518,7 +518,7 @@ rapidScoreControllers.controller('UserCtrl', ['$window', '$location', '$scope', 
         $scope.removecart = function(name, sid){
             Cart.remove({scoreid:sid}, function(res){
                 if(res){
-                    //alert('Removed ' + name);
+                    alert('Removed ' + name);
                     $rootScope.added_score_name = "";
                     $rootScope.added_score_shortname = "";
                     //$rootScope.logged_cart = res;
