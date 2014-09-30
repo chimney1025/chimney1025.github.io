@@ -173,6 +173,10 @@ rapidScoreApp.config(['$routeProvider',
                 templateUrl: 'views/test.html',
                 controller: 'ScoreCtrl',
                 access: { requiredLogin: true }
+            }).
+            otherwise({
+                redirectTo:'/home'
+                
             })
     }
 ]);
