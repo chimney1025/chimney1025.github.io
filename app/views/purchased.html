@@ -12,7 +12,7 @@
 
     <div class="col-md-9 col-sm-9 col-xs-9 text-left act-list">
         <ul>
-            <h2>Orders<span ng-if="logged_purchased.length">({{logged_purchased.length}})</span></h2>
+            <h2>Orders (<span ng-if="logged_purchased.length" ng-bind="logged_purchased.length">0</span>)</h2>
             <div class="fade" ng-class="{in:purchased.length}">
             <li class="row list-inline columnCaptions">
                 <span>Order</span>
@@ -21,13 +21,13 @@
             <li class="row" ng-repeat="order in purchased | orderBy:orderProp">
 
                 <span class="list-item">
-                    <a ng-class="order.showdetail ? 'active' : ''" ng-click="showorder(order.id)">Order - {{order.id}}</a>
+                    <a ng-class="order.showdetail ? 'active' : ''" ng-click="showorder(order.id)">Order - <span ng-bind="order.id"></span></a>
                 </span>
-                <span class="price">{{order.total | currency:'£'}}</span>
+                <span class="price" ng-bind="order.total | currency:'£'"></span>
                 <ul class="list-detail" ng-show="order.showdetail">
                     <li class="row" ng-repeat="score in orderdetails">
-                        <span class="list-item"><a href="#/sheetmusic/{{score.shortname}}">{{score.title}}</a></span>
-                        <span class="price">{{score.price | currency:'£'}}</span>
+                        <span class="list-item"><a href="#/sheetmusic/{{score.shortname}}" ng-bind="score.title"></a></span>
+                        <span class="price" ng-bind="score.price | currency:'£'"></span>
                         <span class="list-action"><a type="button" ng-click="launch('confirm')" class="btn btn-primary btn-xs">Request</a></span>
                     </li>
                 </ul>
