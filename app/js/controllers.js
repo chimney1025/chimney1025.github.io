@@ -63,7 +63,9 @@ rapidScoreControllers.controller('ScoreCtrl', ['$scope', '$rootScope', '$routePa
                                     alert('added');
                                     $rootScope.added_score_name = $scope.score.name;
                                     $rootScope.added_score_shortname = $scope.score.shortname;
-                                    $rootScope.logged_cart = Cart.getAll();
+                                    $rootScope.logged_cart = Cart.getAll(function(res){
+                                        $rootScope.cartcount = res.length;
+                                    });
                                     //$rootScope.action = "Already In Cart";
                                     //$rootScope.action_class = 'btn-danger';
                                     //$window.location.reload();
@@ -522,7 +524,9 @@ rapidScoreControllers.controller('UserCtrl', ['$window', '$location', '$scope', 
                     $rootScope.added_score_name = "";
                     $rootScope.added_score_shortname = "";
                     //$rootScope.logged_cart = res;
-                    $rootScope.logged_cart = Cart.getAll();
+                    $rootScope.logged_cart = Cart.getAll(function(res){
+                        $rootScope.cartcount = res.length;
+                    });
                     $scope.cart = Cart.getAll();
 
                     //$window.location.reload();
@@ -538,7 +542,9 @@ rapidScoreControllers.controller('UserCtrl', ['$window', '$location', '$scope', 
                 if(res){
                     console.log(res);
                     alert('Placing Order - ' + $scope.logged_cart.length + ' items');
-                    $rootScope.logged_cart = Cart.getAll();
+                    $rootScope.logged_cart = Cart.getAll(function(res){
+                        $rootScope.cartcount = res.length;
+                    });
                     $rootScope.logged_purchased = Order.getAll();
                     $scope.cart = Cart.getAll();
                     $scope.purchased = Order.getAll();
@@ -571,7 +577,9 @@ rapidScoreControllers.controller('sessionService', ['$scope','$rootScope', '$win
             console.log($window.sessionStorage.getItem('username'));
             $rootScope.logged_admin = $window.sessionStorage.getItem('admin');
             console.log($window.sessionStorage.getItem('admin'));
-            $rootScope.logged_cart = Cart.getAll();
+            $rootScope.logged_cart = Cart.getAll(function(res){
+                $rootScope.cartcount = res.length;
+            });
             console.log($rootScope.logged_cart);
             $rootScope.logged_purchased = Order.getAll();
             console.log($rootScope.logged_purchased);
