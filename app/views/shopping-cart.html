@@ -21,7 +21,7 @@
                 <span>Title</span>
                 <span>Price</span>
             </li>
-            <li class="row" ng-repeat="score in cart | orderBy:orderProp">
+            <li class="row" ng-repeat="score in logged_cart | orderBy:orderProp">
                 <span class="list-item">
                     <a href="#/sheetmusic/{{score.shortname}}">{{score.title}}</a>
                 </span>
