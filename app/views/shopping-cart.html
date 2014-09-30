@@ -12,8 +12,8 @@
 
     <div class="col-md-9 col-sm-9 col-xs-9 text-left act-list">
         <ul>
-            <h2>Shopping Cart<span ng-if="logged_cart.length">({{logged_cart.length}})</span></h2>
-            <div class="fade" ng-class="{in:cart.length}">
+            <h2>Shopping Cart<span ng-bind="logged_cart.length"></span></h2>
+            <div>
             <li class="pull-right row">
                 <a href="#/sheetmusic">Continue Shopping</a>
             </li>
