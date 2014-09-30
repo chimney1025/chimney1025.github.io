@@ -42,7 +42,7 @@ rapidScoreControllers.controller('ScoreCtrl', ['$scope', '$rootScope', '$routePa
                         flag = 1;
                         alert('Already in Cart');
                         //redirect to cart
-                        $location.path('/account/shopping-cart');
+                        //$location.path('/account/shopping-cart');
                         break;
                     }
                 }
@@ -54,7 +54,7 @@ rapidScoreControllers.controller('ScoreCtrl', ['$scope', '$rootScope', '$routePa
                         //alert(res.hasOrdered);
                         if(res && res.hasOrdered){
                             alert('Already in Purchased');
-                            $location.path('/account/purchased');
+                            //$location.path('/account/purchased');
                         } else{
                             Cart.add({}, {score_id:$scope.score.id}, function(res){
                                 console.log('res:');
@@ -67,7 +67,7 @@ rapidScoreControllers.controller('ScoreCtrl', ['$scope', '$rootScope', '$routePa
                                     //$rootScope.action = "Already In Cart";
                                     //$rootScope.action_class = 'btn-danger';
                                     //$window.location.reload();
-                                    $location.path('/account/shopping-cart');
+                                    //$location.path('/account/shopping-cart');
 
                                 }
                             });
