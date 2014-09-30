@@ -2,10 +2,10 @@
 	<!-- Slide Show-->
 	<div class="slide" ng-repeat="image in images | orderBy:orderProp" ng-show="image.visible">
 		<img ng-src="{{image.imageurl}}" />
-        	<div class="slide-name"><a href="#/sheetmusic/{{image.shortname}}">{{image.title}}</a></div>
+        	<div class="slide-name"><a href="#/sheetmusic/{{image.shortname}}" ng-bind="image.title"></a></div>
 	</div>
 	<!-- Arrows -->
-    	<div class="slide-index">{{currentIndex+1}}/{{images.length}}</div>
+    	<div class="slide-index"><span ng-bind="(currentIndex+1)/images.length"></span></div>
 	<div class="left-arrow" ng-style="sliderarrow" ng-click="prev()"></div>
 	<div class="right-arrow" ng-style="sliderarrow" ng-click="next()"></div>
 	
