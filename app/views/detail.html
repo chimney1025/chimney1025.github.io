@@ -13,10 +13,10 @@
             -->
             <div ng-show="!collapsed">
                 <li>Price: <span ng-bind="score.price | currency:'£'"></span></li>
-                <li>Page: <span>{{score.page}}</span></li>
-                <li ng-if="score.instruments.length">Instruments: <a type="button" class="btn-detail btn btn-default" href="#/instruments/{{instrument.c_shortname}}" ng-repeat="instrument in score.instruments">{{instrument.c_name}} </a></li>
-                <li ng-if="score.composers.length">Composers: <a type="button" class="btn-detail btn btn-default" href="#/composers/{{composer.c_shortname}}" ng-repeat="composer in score.composers">{{composer.c_name}} </a></li>
-                <li ng-if="score.genres.length">Genres: <a type="button" class="btn-detail btn btn-default" href="#/genres/{{genre.c_shortname}}" ng-repeat="genre in score.genres">{{genre.c_name}} </a></li>
+                <li>Page: <span ng-bind="score.page"></span></li>
+                <li ng-if="score.instruments.length">Instruments: <a type="button" class="btn-detail btn btn-default" href="#/instruments/{{instrument.c_shortname}}" ng-repeat="instrument in score.instruments" ng-bind="instrument.c_name"> </a></li>
+                <li ng-if="score.composers.length">Composers: <a type="button" class="btn-detail btn btn-default" href="#/composers/{{composer.c_shortname}}" ng-repeat="composer in score.composers" ng-bind="composer.c_name"> </a></li>
+                <li ng-if="score.genres.length">Genres: <a type="button" class="btn-detail btn btn-default" href="#/genres/{{genre.c_shortname}}" ng-repeat="genre in score.genres" ng-bind="genre.c_name"> </a></li>
 
                 <li ng-if="score.audiourl || score.videourl">
                     Links:
@@ -24,7 +24,7 @@
                     <button type="button" class="btn-detail btn btn-default"  ng-if="score.videourl" href="{{score.videourl}}" target="_blank" class="" title="Video Preview">Video</button>
                 </li>
                 <li ng-if="score.desc">
-                    <p class="well">{{score.desc}}</p>
+                    <p class="well" ng-bind="score.desc"></p>
                 </li>
             </div>
         </ul>
