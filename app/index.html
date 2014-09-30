@@ -60,7 +60,7 @@
 
 
                 <li ng-if="logged"><a href="#/account/shopping-cart">
-                    <span class="badge pull-right">{{logged_cart.length}}</span>
+                    <span class="badge pull-right" ng-bind="logged_cart.length"></span>
                     <span class="glyphicon glyphicon-shopping-cart"></span>
                 </a></li>
 
@@ -144,7 +144,6 @@
 <!-- AngularJS -->
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <script src="bower_components/angular/angular.js"></script>
-<script src="bower_components/angular-cookies/angular-cookies.js"></script>
 <script src="bower_components/angular-animate/angular-animate.js"></script>
 <script src="bower_components/angular-route/angular-route.js"></script>
 <script src="bower_components/angular-resource/angular-resource.js"></script>
