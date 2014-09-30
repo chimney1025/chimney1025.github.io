@@ -5,14 +5,14 @@
 
     <div class="col-md-4 col-sm-4 col-xs-4 text-left score-detail">
         <ul class="">
-            <li><h1>{{score.title}}</h1></li>
-            <span ng-show=0 ng-model="sid" >{{score.id}}</span>
-            <li ng-if="!score.obsolete"><a type="button" class="btn {{action_class}}" ng-click="link()" >{{action}}</a></li>
+            <li><h1><span ng-bind="score.title"></span></h1></li>
+            <span ng-show=0 ng-model="sid" ng-bind="score.id"></span>
+            <li ng-if="!score.obsolete"><a type="button" class="btn {{action_class}}" ng-click="link()" ng-bind="action"></a></li>
             <!--
             <li><a class="btn btn-default btn-block" ng-model="collapsed" ng-click="collapsed=!collapsed">More Detail</a></li>
             -->
             <div ng-show="!collapsed">
-                <li>Price: {{score.price | currency:'£'}}</li>
+                <li>Price: <span ng-bind="score.price | currency:'£'"></span></li>
                 <li>Page: <span>{{score.page}}</span></li>
                 <li ng-if="score.instruments.length">Instruments: <a type="button" class="btn-detail btn btn-default" href="#/instruments/{{instrument.c_shortname}}" ng-repeat="instrument in score.instruments">{{instrument.c_name}} </a></li>
                 <li ng-if="score.composers.length">Composers: <a type="button" class="btn-detail btn btn-default" href="#/composers/{{composer.c_shortname}}" ng-repeat="composer in score.composers">{{composer.c_name}} </a></li>
