@@ -1044,7 +1044,9 @@ span.form-check {
     margin: 0 auto;
 		padding: 3px 5px;
 		float: none;
-		font-size:20px;
+	}
+	.slide-name a{
+    font-size:25px;
 	}
 	.slide img{
 	 margin: 0 auto;
