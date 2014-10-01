@@ -329,6 +329,15 @@ rapidScoreServices.factory('SliderAPI', [ '$resource', function($resource) {
 	});
 } ]);
 
+rapidScoreServices.factory('SearchAPI', [ '$resource', function($resource) {
+	return $resource(hostname + '/search/:string', {}, {
+		getAll : {
+			method : 'GET',
+			isArray : true
+		}
+	});
+} ]);
+
 rapidScoreServices.factory('InstrumentAPI', [ '$resource', function($resource) {
 	return $resource(hostname + '/instruments/:cname', {}, {
 		getOne : {
