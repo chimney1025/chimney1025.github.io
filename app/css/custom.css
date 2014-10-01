@@ -260,11 +260,10 @@ a {
 	width: 45%;
 	min-width: 240px;
 	max-width: 385px;
-	position: absolute;
-	top: 20px;
-	left: 20px;
-	padding: 3px 5px;
+	float: left;
+	margin-left: 20px; padding : 3px 5px;
 	color: #eee;
+	padding: 3px 5px;
 }
 
 .slide-name a {
@@ -1038,6 +1037,17 @@ span.form-check {
 /*Small mobile device size*/
 @media ( max-width : 620px) {
 	.slider,.slide {
-		min-height: 380px;
+		min-height: 420px;
+	}
+	.slide-name {
+		width: 80%;
+    margin: 0 auto;
+		padding: 3px 5px;
+	}
+	.slide image{
+	 margin: 0 auto;
+	 }
+	.slide-name p {
+  display: none;
 	}
 }
