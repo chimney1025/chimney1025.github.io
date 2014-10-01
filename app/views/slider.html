@@ -3,14 +3,7 @@
 	<div class="slide" ng-repeat="image in images | orderBy:orderProp"
 		ng-show="image.visible">
 		<div class="slide-name">
-			<ul>
-				<li><div class="left-arrow" ng-style="sliderarrow"
-						ng-click="prev()"></div></li>
-				<li><a href="#/sheetmusic/{{image.shortname}}"
-					ng-bind="image.title"></a></li>
-				<li><div class="right-arrow" ng-style="sliderarrow"
-						ng-click="next()"></div></li>
-			</ul>
+			<a href="#/sheetmusic/{{image.shortname}}" ng-bind="image.title"></a>
 			<p class="well">Some description here</p>
 			<div class="slide-index">
 				<span ng-bind="(currentIndex+1)"></span>/<span
