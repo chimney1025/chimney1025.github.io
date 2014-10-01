@@ -633,7 +633,6 @@ rapidScoreControllers.controller('UserCtrl', [
 						$rootScope.logged_cart = Cart.getAll(function(res) {
 							$rootScope.cartcount = res.length;
 						});
-						$rootScope.logged_purchased = Order.getAll();
 						$scope.cart = Cart.getAll();
 						$scope.purchased = Order.getAll();
 
