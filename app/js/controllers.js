@@ -760,7 +760,7 @@ rapidScoreControllers.controller('LoginCtrl', [
 								} else {
 									$window.sessionStorage.removeItem('token');
 									console.log(data.status);
-									$rootScope.loginCheck = "Login Failed";
+									$rootScope.loginCheck = "Invalid Login";
 								}
 							}).error(function(err) {
 						console.log(err);
