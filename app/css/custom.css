@@ -250,6 +250,7 @@ a {
 	padding: 3px 5px;
 	margin: 0 auto;
 	color: #333;
+	display: none;
 }
 
 #pagination {
