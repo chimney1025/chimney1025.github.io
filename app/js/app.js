@@ -140,7 +140,7 @@ rapidScoreApp.config([ '$routeProvider', function($routeProvider) {
 	}).when('/admin', {
 		templateUrl : 'views/admin-settings.html',
 		label : 'Admin',
-		controller : 'UserAdminListCtrl',
+		controller : 'AdminCtrl',
 		access : {
 			requiredLogin : true
 		}

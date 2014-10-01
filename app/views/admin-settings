@@ -3,7 +3,8 @@
     <div class="col-md-3 col-sm-3 col-xs-3 text-left account-menu">
         <ul class="">
             <li><h4>Welcome Admin</h4></li>
-            <li><a href="#/admin/users" class="active">User List</a></li>
+            <li><a href="#/admin" class="active">Settings</a></li>
+            <li><a href="#/admin/users">User List</a></li>
             <li><a href="#/admin/sheetmusic">Sheet Music</a></li>
             <li><a href="#/admin/categories">Categories</a></li>
         </ul>
@@ -11,36 +12,20 @@
 
     <div class="col-md-9 col-sm-9 col-xs-9 text-left act-list">
 
-        <h2>Account Detail</h2>
+        <h2>Admin Settings</h2>
         <ul class="">
             <li class="row">
                 <span class="act-label">USERNAME</span>
                 <span class="act-content">{{user.username}}</span>
             </li>
             <li class="row">
-                <span class="act-label">REGISTERED</span>
-                <span class="act-content">{{user.createdAt | date : 'yyyy-MM-dd'}}</span>
+                <span class="act-label">EMAIL</span>
+                <span class="act-content">{{user.email}}</span>
             </li>
-        </ul>
-
-        <h2>Shopping Cart ({{user.carts.length}})</h2>
-        <ul class="">
-            <div ng-if="user.carts.length">
-                <li class="row" ng-repeat="score in user.carts">
-                    <span class="list-item"><a href="#/sheetmusic/{{score.shortname}}">{{score.name}}</a></span>
-                    <span class="price">{{score.price | currency:'£'}}</span>
-                </li>
-            </div>
-        </ul>
-
-        <h2>Purchased ({{user.purchased.length}})</h2>
-        <ul class="">
-            <div ng-if="user.purchased.length">
-                <li class="row" ng-repeat="score in user.purchased">
-                    <span class="list-item"><a href="#/sheetmusic/{{score.shortname}}">{{score.name}}</a></span>
-                    <span class="price">{{score.price | currency:'£'}}</span>
-                </li>
-            </div>
+            <li class="row">
+                <span class="act-label">PASSWORD</span>
+                <span class="act-content act-btn"><a type="button" ng-click="launch('create')" class="btn btn-primary btn-sm">Click to Change</a></span>
+            </li>
         </ul>
     </div>
 
