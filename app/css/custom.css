@@ -256,14 +256,14 @@ a {
 #pagination {
     clear:both;
     width:75px;
-    margin:25px auto 0;
+    margin:0 auto;
     padding:0;
 }
 
 #pagination li {
     list-style:none;
     float:left;
-    margin:0 2px;
+    margin:10px 2px;
 }
 
 #pagination li a {
