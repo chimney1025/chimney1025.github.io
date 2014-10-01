@@ -21,14 +21,12 @@ rapidScoreApp.config(function($httpProvider) {
 			function(response) {
 				if (response.status === 401) {
 					console.log('401 returned');
-					console.log($window.sessionStorage.getItem('username'),
-							function() {
-								$rootScope.logged = false;
-								$window.sessionStorage.removeItem('token');
-								$window.sessionStorage.removeItem('username');
-								$window.sessionStorage.removeItem('uid');
-								$window.sessionStorage.removeItem('admin');
-							});
+					console.log($window.sessionStorage.getItem('username'));
+					$rootScope.logged = false;
+					$window.sessionStorage.removeItem('token');
+					$window.sessionStorage.removeItem('username');
+					$window.sessionStorage.removeItem('uid');
+					$window.sessionStorage.removeItem('admin');
 					$rootScope.loginCheck = "Invalid User Credentials";
 					//$location.url('/login');
 				}

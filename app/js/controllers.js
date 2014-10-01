@@ -710,19 +710,19 @@ rapidScoreControllers.controller('LoginCtrl', [
 
 			//Login
 			$scope.loginInfo = {};
-			$scope.loginCheck = '';
+			$rootScope.loginCheck = '';
 
 			$scope.login = function() {
-				$scope.loginCheck = '';
+				$rootScope.loginCheck = '';
 				console.log($scope.loginInfo);
 
 				if (!$scope.loginInfo.username) {
-					$scope.loginCheck = 'Invalid Username';
+					$rootScope.loginCheck = 'Invalid Username';
 					return;
 				}
 
 				else if (!$scope.loginInfo.password) {
-					$scope.loginCheck = 'Please enter your Password';
+					$rootScope.loginCheck = 'Please enter your Password';
 					return;
 				}
 				/*
@@ -753,7 +753,8 @@ rapidScoreControllers.controller('LoginCtrl', [
 									//$rootScope.user = User.getOne({username: data.username});
 
 									//refresh
-									$location.path("/account");
+									$rootScope.loginCheck = "Login Successful. Redirecting...";
+									//$location.path("/account");
 									$window.location.reload();
 
 								} else {
