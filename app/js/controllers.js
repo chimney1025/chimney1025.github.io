@@ -667,6 +667,10 @@ rapidScoreControllers.controller('sessionService', [
 			$rootScope.fields = {
 					query : ""
 			}
+			
+			$scope.search = function(){
+				console.log($rootScope.fields.query);
+			}
 
 			if (!$window.sessionStorage.getItem('token')) {
 				$rootScope.logged = false;
