@@ -651,9 +651,12 @@ rapidScoreControllers.controller('LoginCtrl', ['$scope', '$rootScope', '$locatio
                     }
                     else{
                         $window.sessionStorage.removeItem('token');
-                        console.log(status);
-                        $scope.loginCheck = "Login Failed";
+                        console.log(data.status);
+                        $rootScope.loginCheck = "Login Failed";
                     }
+                }).error(function(err){
+                	console.log(err);
+                    $rootScope.loginCheck = "Login Failed";
                 });
             }
         };
