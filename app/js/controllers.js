@@ -632,7 +632,7 @@ rapidScoreControllers.controller('LoginCtrl', ['$scope', '$rootScope', '$locatio
 
             else {
                 LoginService.login($scope.loginInfo.username, $scope.loginInfo.password).success(function(data){
-                    console.log(data);
+                    console.log(data.header);
                     if(data && data.token){
                         $window.sessionStorage.setItem('token', data.token);
                         $window.sessionStorage.setItem('username', data.username);
