@@ -725,9 +725,9 @@ rapidScoreControllers
 								console.log($window.sessionStorage
 										.getItem('token'));
 
-								if ($window.sessionStorage
-										.getItem('token')) {
-									$location.path("/admin");
+								if ($rootScope.logged_admin) {
+									//$location.path("/admin");
+									$location.path("/account");
 								} else {
 									$location.path("/account");
 								}
