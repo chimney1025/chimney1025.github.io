@@ -5,11 +5,12 @@
 var rapidScoreControllers = angular.module('rapidScoreControllers',
 		[ 'ui.bootstrap' ]);
 
-rapidScoreControllers.controller('ScoreListCtrl', [ '$scope', 'ScoreAPI',
+rapidScoreControllers.controller('ScoreListCtrl', [ '$scope', '$rootScope', 'ScoreAPI',
 		'InstrumentAPI', 'ComposerAPI', 'GenreAPI',
-		function($scope, Score, Instrument, Composer, Genre) {
+		function($scope, $rootScope, Score, Instrument, Composer, Genre) {
 			$scope.scores = Score.getAll();
 			console.log($scope.scores);
+			console.log($rootScope.query);
 			/*
 			 * $scope.getInstruments = Instrument.getAll(); $scope.getComposers =
 			 * Composer.getAll(); $scope.getGenres = Genre.getAll();
