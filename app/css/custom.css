@@ -284,48 +284,47 @@ a {
 }
 
 .left-arrow,.left-arrow:hover {
-	position: absolute;
-	left: 10px;
-	top: 40%;
 	text-align: left;
 	display: block;
+	/*
 	width: 36px;
 	height: 71px;
 	background-image: url(../images/paddle_prev_fff.png);
 	opacity: 0.4;
-	/*
+	*/
+	
 	width: 25px;
 	height: 25px;
 	background-image:url(../images/arrows.png);
 	background-position:0 0;
-	*/
+	
 	background-repeat: no-repeat;
 	cursor: pointer;
 }
 
 .right-arrow,.right-arrow:hover {
-	position: absolute;
-	right: 10px;
-	top: 40%;
 	display: block;
-	/*
+	
 	width: 25px;
 	height: 25px;
 	background-image:url(../images/arrows.png);
 	background-position:-25px 0;
-	*/
+	
+	/*
 	width: 36px;
 	height: 71px;
 	background-image: url(../images/paddle_next_fff.png);
 	opacity: 0.4;
+	*/
+	
 	background-repeat: no-repeat;
 	cursor: pointer;
 }
 
 .left-arrow:hover {
-	/*
-	background-position:0px -25px;
 	
+	background-position:0px -25px;
+	/*
 	width: 36px;
 	height: 71px;
 	background-image:url(../images/paddle_prev_fff.png);
@@ -334,8 +333,9 @@ a {
 }
 
 .right-arrow:hover {
-	/*
+	
 	background-position:-25px -25px;
+	/*
 	width: 36px;
 	height: 71px;
 	background-image:url(../images/paddle_next_fff.png);
