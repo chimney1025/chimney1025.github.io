@@ -102,7 +102,7 @@ a {
 
 /*View Container*/
 .view-container {
-	padding-bottom: 120px;
+	padding-bottom: 60px;
 }
 
 #main-container {
@@ -871,7 +871,7 @@ span.form-check {
 		padding: 0 15px;
 	}
 	.view-container {
-		padding-bottom: 120px;
+		padding-bottom: 80px;
 	}
 	.biglogo {
 		margin-top: 100px;
