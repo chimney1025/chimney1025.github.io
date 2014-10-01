@@ -252,6 +252,35 @@ a {
 	color: #333;
 }
 
+#pagination {
+    clear:both;
+    width:75px;
+    margin:25px auto 0;
+    padding:0;
+}
+
+#pagination li {
+    list-style:none;
+    float:left;
+    margin:0 2px;
+}
+
+#pagination li a {
+    display:block;
+    width:10px;
+    height:10px;
+    text-indent:-10000px;
+    background: #999;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    box-shadow: inset 1px 1px 1px rgba(0, 0 ,0, 0.4);
+}
+
+#pagination li a.active {
+    background: #668CFF;
+}
+
 .slide-name {
 	width: 45%;
 	min-width: 240px;
