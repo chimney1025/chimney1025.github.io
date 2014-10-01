@@ -52,27 +52,27 @@ rapidScoreApp.config([ '$routeProvider', function($routeProvider) {
 			requiredLogin : false
 		}
 	}).when('/sheetmusic/:scoreId', {
-		templateUrl : 'views/detail.html',
+		templateUrl : 'views/score-detail.html',
 		controller : 'ScoreCtrl',
 		access : {
 			requiredLogin : false
 		}
 	}).when('/instruments', {
-		templateUrl : 'views/category.html',
+		templateUrl : 'views/category-list.html',
 		label : 'Instruments',
 		controller : 'InstrumentListCtrl',
 		access : {
 			requiredLogin : false
 		}
 	}).when('/composers', {
-		templateUrl : 'views/category.html',
+		templateUrl : 'views/category-list.html',
 		label : 'Composers',
 		controller : 'ComposerListCtrl',
 		access : {
 			requiredLogin : false
 		}
 	}).when('/genres', {
-		templateUrl : 'views/category.html',
+		templateUrl : 'views/category-list.html',
 		label : 'Genres',
 		controller : 'GenreListCtrl',
 		access : {
@@ -97,21 +97,21 @@ rapidScoreApp.config([ '$routeProvider', function($routeProvider) {
 			requiredLogin : false
 		}
 	}).when('/account/shopping-cart', {
-		templateUrl : 'views/shopping-cart.html',
+		templateUrl : 'views/account-cart.html',
 		label : 'Shopping Cart',
 		controller : 'UserCtrl',
 		access : {
 			requiredLogin : true
 		}
 	}).when('/account/purchased', {
-		templateUrl : 'views/purchased.html',
+		templateUrl : 'views/account-order.html',
 		label : 'Orders',
 		controller : 'UserCtrl',
 		access : {
 			requiredLogin : true
 		}
 	}).when('/account', {
-		templateUrl : 'views/user-detail.html',
+		templateUrl : 'views/account-detail.html',
 		label : 'Account Settings',
 		controller : 'UserCtrl',
 		access : {
@@ -138,14 +138,14 @@ rapidScoreApp.config([ '$routeProvider', function($routeProvider) {
 			requiredLogin : false
 		}
 	}).when('/admin', {
-		templateUrl : 'views/user-list.html',
+		templateUrl : 'views/admin-settings.html',
 		label : 'Admin',
 		controller : 'UserAdminListCtrl',
 		access : {
 			requiredLogin : true
 		}
 	}).when('/admin/users', {
-		templateUrl : 'views/user-list.html',
+		templateUrl : 'views/admin-user-list.html',
 		label : 'Users',
 		controller : 'UserAdminListCtrl',
 		access : {
@@ -165,14 +165,14 @@ rapidScoreApp.config([ '$routeProvider', function($routeProvider) {
 			requiredLogin : true
 		}
 	}).when('/admin/add-sheetmusic', {
-		templateUrl : 'views/add-score.html',
+		templateUrl : 'views/admin-add-score.html',
 		label : 'Add Sheet Music',
 		controller : 'ScoreAddCtrl',
 		access : {
 			requiredLogin : true
 		}
 	}).when('/admin/sheetmusic/:scoreId', {
-		templateUrl : 'views/edit-score.html',
+		templateUrl : 'views/admin-edit-score.html',
 		label : 'Edit Sheet Music',
 		controller : 'ScoreEditCtrl',
 		access : {
