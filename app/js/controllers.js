@@ -651,7 +651,6 @@ rapidScoreControllers.controller('sessionService', [
 		'$window',
 		'$location',
 		'UserCartAPI',
-		'UserOrderAPI',
 		'breadcrumbs',
 		function($scope, $rootScope, $window, $location, Cart, breadcrumbs) {
 			console.log($location.path());
