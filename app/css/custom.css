@@ -266,6 +266,10 @@ a {
 	padding: 3px 5px;
 }
 
+.slide-name ul li{
+	float:left;
+}
+
 .slide-name a {
 	color: #333;
 	font-size: 32px;
