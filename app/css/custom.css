@@ -249,6 +249,7 @@ a {
 	width: 35px;
 	padding: 3px 5px;
 	margin: 0 auto;
+	color: #333;
 }
 
 .slide-name {
@@ -258,7 +259,6 @@ a {
 	float: left;
 	margin-left: 20px; 
 	padding : 3px 5px;
-	color: #eee;
 	padding: 3px 5px;
 }
 
