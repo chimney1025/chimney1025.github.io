@@ -268,7 +268,7 @@ a {
 
 .slide-name a {
 	color: #333;
-	font-size: 35px;
+	font-size: 32px;
 }
 
 .slide-name p {
@@ -878,7 +878,12 @@ span.form-check {
 	.slider,.slide {
 		min-height: 473px;
 	}
-
+  .slide-name a{
+    font-size:28px;
+  }
+  .slide-name p{
+    margin-top:30px;
+  }
 	/*
     .breadcrumb{
         margin-bottom: 32px;
