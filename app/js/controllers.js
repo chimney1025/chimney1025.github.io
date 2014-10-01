@@ -10,7 +10,7 @@ rapidScoreControllers.controller('ScoreListCtrl', [ '$scope', '$rootScope', 'Sco
 		function($scope, $rootScope, Score, Instrument, Composer, Genre) {
 			$scope.scores = Score.getAll();
 			console.log($scope.scores);
-			console.log($rootScope.query);
+			console.log($rootScope.fields.query);
 			/*
 			 * $scope.getInstruments = Instrument.getAll(); $scope.getComposers =
 			 * Composer.getAll(); $scope.getGenres = Genre.getAll();
@@ -664,7 +664,9 @@ rapidScoreControllers.controller('sessionService', [
 		function($scope, $rootScope, $window, $location, Cart, breadcrumbs, Search) {
 			console.log($location.path());
 			$scope.breadcrumbs = breadcrumbs;
-			$rootScope.query = "";
+			$rootScope.fields = {
+					query : ""
+			}
 
 			if (!$window.sessionStorage.getItem('token')) {
 				$rootScope.logged = false;
