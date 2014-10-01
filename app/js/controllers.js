@@ -538,6 +538,16 @@ rapidScoreControllers.controller('UserAdminListCtrl', [ '$scope',
 			$scope.users = User.getAll();
 		} ]);
 
+rapidScoreControllers.controller('AdminCtrl', [ '$scope', '$routeParams',
+		'UserAPI', function($scope, $routeParams, User) {
+			$scope.user = User.getOne();
+			if($rootScope.logged_admin){
+				//correct
+			} else{
+				$location.path("/account");
+			}
+		} ]);
+
 rapidScoreControllers.controller('UserAdminCtrl', [ '$scope', '$routeParams',
 		'UserAdminAPI', function($scope, $routeParams, User) {
 			$scope.user = User.getOne({
@@ -561,10 +571,10 @@ rapidScoreControllers.controller('UserCtrl', [
 
 			$scope.user = User.getOne();
 			console.log($scope.user);
-			
+
 			if ($rootScope.logged_admin) {
 				$location.path("/admin");
-			} 
+			}
 
 			$scope.cart = Cart.getAll();
 			$scope.purchased = Order.getAll();
