@@ -18,7 +18,7 @@ rapidScoreServices.factory('UserAPI', [
 					headers : {
 						'Content-Type' : 'application/json',
 						'Authorization' : 'Bearer '
-								+ $window.sessionStorage.getItem('token')
+								+ $window.localStorage.getItem('token')
 					}
 				}
 
@@ -35,7 +35,7 @@ rapidScoreServices.factory('CheckOrderAPI', [
 					headers : {
 						'Content-Type' : 'application/json',
 						'Authorization' : 'Bearer '
-								+ $window.sessionStorage.getItem('token')
+								+ $window.localStorage.getItem('token')
 					}
 				}
 			});
@@ -53,7 +53,7 @@ rapidScoreServices.factory('UserOrderAPI', [
 					headers : {
 						'Content-Type' : 'application/json',
 						'Authorization' : 'Bearer '
-								+ $window.sessionStorage.getItem('token')
+								+ $window.localStorage.getItem('token')
 					}
 				},
 				order : {
@@ -61,7 +61,7 @@ rapidScoreServices.factory('UserOrderAPI', [
 					headers : {
 						'Content-Type' : 'application/json',
 						'Authorization' : 'Bearer '
-								+ $window.sessionStorage.getItem('token')
+								+ $window.localStorage.getItem('token')
 					}
 				}
 			});
@@ -79,7 +79,7 @@ rapidScoreServices.factory('UserOrderDetailAPI', [
 					headers : {
 						'Content-Type' : 'application/json',
 						'Authorization' : 'Bearer '
-								+ $window.sessionStorage.getItem('token')
+								+ $window.localStorage.getItem('token')
 					}
 				}
 			});
@@ -99,7 +99,7 @@ rapidScoreServices.factory('UserCartAPI', [
 					headers : {
 						'Content-Type' : 'application/json',
 						'Authorization' : 'Bearer '
-								+ $window.sessionStorage.getItem('token')
+								+ $window.localStorage.getItem('token')
 					}
 				},
 				add : {
@@ -108,7 +108,7 @@ rapidScoreServices.factory('UserCartAPI', [
 					headers : {
 						'Content-Type' : 'application/json',
 						'Authorization' : 'Bearer '
-								+ $window.sessionStorage.getItem('token')
+								+ $window.localStorage.getItem('token')
 					}
 				},
 				clear : {
@@ -117,7 +117,7 @@ rapidScoreServices.factory('UserCartAPI', [
 					headers : {
 						'Content-Type' : 'application/json',
 						'Authorization' : 'Bearer '
-								+ $window.sessionStorage.getItem('token')
+								+ $window.localStorage.getItem('token')
 					}
 				},
 				remove : {
@@ -126,7 +126,7 @@ rapidScoreServices.factory('UserCartAPI', [
 					headers : {
 						'Content-Type' : 'application/json',
 						'Authorization' : 'Bearer '
-								+ $window.sessionStorage.getItem('token')
+								+ $window.localStorage.getItem('token')
 					}
 				}
 			});
@@ -145,7 +145,7 @@ rapidScoreServices.factory('SliderAdminAPI', [
 					headers : {
 						'Content-Type' : 'application/json',
 						'Authorization' : 'Bearer '
-								+ $window.sessionStorage.getItem('token')
+								+ $window.localStorage.getItem('token')
 					}
 				}
 			});
@@ -162,7 +162,7 @@ rapidScoreServices.factory('ScoreAdminAPI', [
 					headers : {
 						'Content-Type' : 'application/json',
 						'Authorization' : 'Bearer '
-								+ $window.sessionStorage.getItem('token')
+								+ $window.localStorage.getItem('token')
 					}
 				},
 				getAll : {
@@ -171,7 +171,7 @@ rapidScoreServices.factory('ScoreAdminAPI', [
 					headers : {
 						'Content-Type' : 'application/json',
 						'Authorization' : 'Bearer '
-								+ $window.sessionStorage.getItem('token')
+								+ $window.localStorage.getItem('token')
 					}
 				},
 				add : {
@@ -179,7 +179,7 @@ rapidScoreServices.factory('ScoreAdminAPI', [
 					headers : {
 						'Content-Type' : 'application/json',
 						'Authorization' : 'Bearer '
-								+ $window.sessionStorage.getItem('token')
+								+ $window.localStorage.getItem('token')
 					}
 				},
 				save : {
@@ -187,7 +187,7 @@ rapidScoreServices.factory('ScoreAdminAPI', [
 					headers : {
 						'Content-Type' : 'application/json',
 						'Authorization' : 'Bearer '
-								+ $window.sessionStorage.getItem('token')
+								+ $window.localStorage.getItem('token')
 					}
 				},
 				remove : {
@@ -195,7 +195,7 @@ rapidScoreServices.factory('ScoreAdminAPI', [
 					headers : {
 						'Content-Type' : 'application/json',
 						'Authorization' : 'Bearer '
-								+ $window.sessionStorage.getItem('token')
+								+ $window.localStorage.getItem('token')
 					}
 				}
 			});
@@ -212,7 +212,7 @@ rapidScoreServices.factory('TypeAdminAPI', [
 					headers : {
 						'Content-Type' : 'application/json',
 						'Authorization' : 'Bearer '
-								+ $window.sessionStorage.getItem('token')
+								+ $window.localStorage.getItem('token')
 					}
 				},
 				getAll : {
@@ -221,7 +221,7 @@ rapidScoreServices.factory('TypeAdminAPI', [
 					headers : {
 						'Content-Type' : 'application/json',
 						'Authorization' : 'Bearer '
-								+ $window.sessionStorage.getItem('token')
+								+ $window.localStorage.getItem('token')
 					}
 				},
 				add : {
@@ -229,7 +229,7 @@ rapidScoreServices.factory('TypeAdminAPI', [
 					headers : {
 						'Content-Type' : 'application/json',
 						'Authorization' : 'Bearer '
-								+ $window.sessionStorage.getItem('token')
+								+ $window.localStorage.getItem('token')
 					}
 				},
 				save : {
@@ -237,7 +237,7 @@ rapidScoreServices.factory('TypeAdminAPI', [
 					headers : {
 						'Content-Type' : 'application/json',
 						'Authorization' : 'Bearer '
-								+ $window.sessionStorage.getItem('token')
+								+ $window.localStorage.getItem('token')
 					}
 				},
 				remove : {
@@ -245,7 +245,7 @@ rapidScoreServices.factory('TypeAdminAPI', [
 					headers : {
 						'Content-Type' : 'application/json',
 						'Authorization' : 'Bearer '
-								+ $window.sessionStorage.getItem('token')
+								+ $window.localStorage.getItem('token')
 					}
 				}
 			});
@@ -264,7 +264,7 @@ rapidScoreServices.factory('UserAdminAPI', [
 					headers : {
 						'Content-Type' : 'application/json',
 						'Authorization' : 'Bearer '
-								+ $window.sessionStorage.getItem('token')
+								+ $window.localStorage.getItem('token')
 					}
 				},
 				getAll : {
@@ -273,7 +273,7 @@ rapidScoreServices.factory('UserAdminAPI', [
 					headers : {
 						'Content-Type' : 'application/json',
 						'Authorization' : 'Bearer '
-								+ $window.sessionStorage.getItem('token')
+								+ $window.localStorage.getItem('token')
 					}
 				}
 			});
@@ -292,7 +292,7 @@ rapidScoreServices.factory('ScoreTypeAPI', [
 					headers : {
 						'Content-Type' : 'application/json',
 						'Authorization' : 'Bearer '
-								+ $window.sessionStorage.getItem('token')
+								+ $window.localStorage.getItem('token')
 					}
 				},
 				remove : {
@@ -300,7 +300,7 @@ rapidScoreServices.factory('ScoreTypeAPI', [
 					headers : {
 						'Content-Type' : 'application/json',
 						'Authorization' : 'Bearer '
-								+ $window.sessionStorage.getItem('token')
+								+ $window.localStorage.getItem('token')
 					}
 				}
 			});
@@ -437,9 +437,9 @@ rapidScoreServices.factory('TokenInterceptor', function($q, $window) {
 			config.headers = config.headers || {};
 			console.log('token interceptor');
 
-			if ($window.sessionStorage.getItem('token')) {
+			if ($window.localStorage.getItem('token')) {
 				config.headers.Authorization = 'Bearer '
-						+ $window.sessionStorage.getItem('token');
+						+ $window.localStorage.getItem('token');
 				console.log(config.headers);
 			}
 			return config || $q.when(config);
