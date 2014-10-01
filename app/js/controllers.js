@@ -576,7 +576,7 @@ rapidScoreControllers.controller('UserCtrl', [
 			console.log('if admin: ');
 			console.log($rootScope.logged_admin);
 			if ($rootScope.logged_admin) {
-				$location.path("/admin");
+				//$location.path("/admin");
 			}
 
 			$scope.cart = Cart.getAll();
