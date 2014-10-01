@@ -654,8 +654,7 @@ rapidScoreControllers.controller('sessionService', [
 		'UserCartAPI',
 		'UserOrderAPI',
 		'breadcrumbs',
-		function($scope, $rootScope, $window, $location, Cart, Order,
-				breadcrumbs) {
+		function($scope, $rootScope, $window, $location, Cart, breadcrumbs) {
 			console.log($location.path());
 			$scope.breadcrumbs = breadcrumbs;
 
@@ -677,8 +676,6 @@ rapidScoreControllers.controller('sessionService', [
 					$rootScope.cartcount = res.length;
 				});
 				console.log($rootScope.logged_cart);
-				$rootScope.logged_purchased = Order.getAll();
-				console.log($rootScope.logged_purchased);
 			}
 
 			$scope.logout = function logout() {
