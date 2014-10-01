@@ -403,7 +403,6 @@ rapidScoreControllers.controller('ScoreEditCtrl', [
 					scoreData.category = [];
 
 					scoreData.title = $scope.scoreInfo.title;
-					alert($scope.scoreInfo.title);
 					scoreData.shortname = $scope.scoreInfo.title.replace('-',
 							' ').replace('\'', '').split(/\s{2,}/g).join('-')
 							.toLowerCase();
