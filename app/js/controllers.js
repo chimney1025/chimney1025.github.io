@@ -538,8 +538,8 @@ rapidScoreControllers.controller('UserAdminListCtrl', [ '$scope',
 			$scope.users = User.getAll();
 		} ]);
 
-rapidScoreControllers.controller('AdminCtrl', [ '$scope', '$routeParams',
-		'UserAPI', function($scope, $routeParams, User) {
+rapidScoreControllers.controller('AdminCtrl', [ '$rootScope', '$scope', '$routeParams',
+		'UserAPI', function($rootScope, $scope, $routeParams, User) {
 			$scope.user = User.getOne();
 			if($rootScope.logged_admin){
 				//correct
