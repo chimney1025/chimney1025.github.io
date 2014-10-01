@@ -68,7 +68,7 @@
     </div><!-- End Filters-->
 
     <div class="col-md-8 col-sm-8 col-xs-8 list-score">
-        <h4 >Search result:</h4>
+        <h4 ng-if="query" >Search result:</h4>
         <ul class="score-list">
             <li class="row" ng-repeat="item in scores | filter:query | orderBy:orderProp">
                 <span class="list-item"><a href="#/sheetmusic/{{item.shortname}}" ng-bind="item.title"></a></span>
