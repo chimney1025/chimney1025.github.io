@@ -572,7 +572,9 @@ rapidScoreControllers.controller('UserCtrl', [
 
 			$scope.user = User.getOne();
 			console.log($scope.user);
-
+			
+			console.log('if admin: ');
+			console.log($rootScope.logged_admin);
 			if ($rootScope.logged_admin) {
 				$location.path("/admin");
 			}
@@ -680,6 +682,7 @@ rapidScoreControllers.controller('sessionService', [
 				$window.sessionStorage.removeItem('admin');
 			} else {
 				$rootScope.logged = true;
+				console.log('session:');
 				$rootScope.logged_username = $window.sessionStorage
 						.getItem('username');
 				console.log($window.sessionStorage.getItem('username'));
