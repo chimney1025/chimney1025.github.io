@@ -1043,9 +1043,11 @@ span.form-check {
 		width: 80%;
     margin: 0 auto;
 		padding: 3px 5px;
+		float: none;
 	}
 	.slide image{
 	 margin: 0 auto;
+	 float: none;
 	 }
 	.slide-name p {
   display: none;
