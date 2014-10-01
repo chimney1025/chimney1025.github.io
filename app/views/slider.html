@@ -9,6 +9,9 @@
 				<span ng-bind="(currentIndex+1)"></span>/<span
 					ng-bind="images.length"></span>
 			</div>
+			<ol id="pagination">
+    				<li ng-repeat="image in images"><a href="#">1</a></li>
+			</ol>
 		</div>
 		<img ng-src="{{image.imageurl}}" />
 	</div>
