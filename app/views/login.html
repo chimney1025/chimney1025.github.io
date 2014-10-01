@@ -12,7 +12,7 @@
         <form name="LoginForm" class="form-signin" role="form" ng-submit="login()">
             <input type="text" class="form-control" placeholder="Username" ng-model="loginInfo.username" required autofocus>
             <input type="password" class="form-control" placeholder="Password" ng-model="loginInfo.password" required>
-            <span class="form-check" ng-show="loginCheck">{{loginCheck}}</span>
+            <span class="form-check" ng-show="loginCheck" ng-bind="loginCheck"></span>
             <a href="#" class="pull-right need-help">Forgotten password? </a>
             <button class="btn btn-primary" type="submit">
             Sign in

@@ -11,9 +11,8 @@ rapidScoreControllers.controller('ScoreListCtrl', [ '$scope', 'ScoreAPI',
 			$scope.scores = Score.getAll();
 			console.log($scope.scores);
 			/*
-			$scope.getInstruments = Instrument.getAll();
-			$scope.getComposers = Composer.getAll();
-			$scope.getGenres = Genre.getAll();
+			 * $scope.getInstruments = Instrument.getAll(); $scope.getComposers =
+			 * Composer.getAll(); $scope.getGenres = Genre.getAll();
 			 */
 		} ]);
 
@@ -59,8 +58,8 @@ rapidScoreControllers
 										if ($scope.logged_cart[i].id == $scope.score.id) {
 											flag = 1;
 											alert('Already in Cart');
-											//redirect to cart
-											//$location.path('/account/shopping-cart');
+											// redirect to cart
+											// $location.path('/account/shopping-cart');
 											break;
 										}
 									}
@@ -75,11 +74,11 @@ rapidScoreControllers
 															console
 																	.log('checking order');
 															console.log(res);
-															//alert(res.hasOrdered);
+															// alert(res.hasOrdered);
 															if (res
 																	&& res.hasOrdered) {
 																alert('Already in Purchased');
-																//$location.path('/account/purchased');
+																// $location.path('/account/purchased');
 															} else {
 																Cart
 																		.add(
@@ -102,10 +101,16 @@ rapidScoreControllers
 																										res) {
 																									$rootScope.cartcount = res.length;
 																								});
-																						//$rootScope.action = "Already In Cart";
-																						//$rootScope.action_class = 'btn-danger';
-																						//$window.location.reload();
-																						//$location.path('/account/shopping-cart');
+																						// $rootScope.action
+																						// =
+																						// "Already
+																						// In
+																						// Cart";
+																						// $rootScope.action_class
+																						// =
+																						// 'btn-danger';
+																						// $window.location.reload();
+																						// $location.path('/account/shopping-cart');
 
 																					}
 																				});
@@ -122,7 +127,7 @@ rapidScoreControllers.controller('ScoreAdminCtrl', [ '$scope', 'ScoreAdminAPI',
 			console.log($scope.scores);
 			$scope.orderProp = 'title';
 
-			//remove
+			// remove
 			$scope.removeScore = function(value, sid, name) {
 				if (value) {
 					var r = confirm('Deleting ' + name);
@@ -137,7 +142,7 @@ rapidScoreControllers.controller('ScoreAdminCtrl', [ '$scope', 'ScoreAdminAPI',
 							console.log(res + ' deleted : ' + sid);
 						else
 							console.log(res + ' re added : ' + sid);
-						//$location.path('/admin/sheetmusic');
+						// $location.path('/admin/sheetmusic');
 						$scope.scores = Score.getAll();
 					});
 				} else {
@@ -146,7 +151,7 @@ rapidScoreControllers.controller('ScoreAdminCtrl', [ '$scope', 'ScoreAdminAPI',
 			};
 
 			$scope.addSlider = function(value, sid) {
-				//convert to json
+				// convert to json
 				var scoreData = new Object();
 				scoreData.slider = value;
 				console.log(scoreData);
@@ -163,7 +168,7 @@ rapidScoreControllers.controller('ScoreAdminCtrl', [ '$scope', 'ScoreAdminAPI',
 							$scope.scores = Score.getAll();
 						}
 
-						//$location.path('/admin/sheetmusic');
+						// $location.path('/admin/sheetmusic');
 					}
 				});
 
@@ -189,7 +194,7 @@ rapidScoreControllers
 							$scope.getComposers = Composer.getAll();
 							$scope.getGenres = Genre.getAll();
 
-							//Add Score
+							// Add Score
 							$scope.scoreInfo = {};
 							$scope.scoreCheck = '';
 							$scope.scoreInfo.instruments = [];
@@ -244,17 +249,17 @@ rapidScoreControllers
 							$scope.scoreAdd = function() {
 
 								$scope.scoreCheck = '';
-								//console.log($scope.scoreInfo);
+								// console.log($scope.scoreInfo);
 
 								if (!$scope.scoreInfo.title) {
 									$scope.scoreCheck = 'Invalid title';
 									console.log($scope.scoreCheck);
 									return;
 								}
-								//submit data
+								// submit data
 								else {
 									console.log('posting data...');
-									//create json to be posted
+									// create json to be posted
 									var scoreData = new Object();
 									scoreData.category = [];
 
@@ -361,9 +366,8 @@ rapidScoreControllers.controller('ScoreEditCtrl', [
 				Composer, Genre, $location) {
 
 			/*
-			$scope.getInstruments = Instrument.getAll();
-			$scope.getComposers = Composer.getAll();
-			$scope.getGenres = Genre.getAll();
+			 * $scope.getInstruments = Instrument.getAll(); $scope.getComposers =
+			 * Composer.getAll(); $scope.getGenres = Genre.getAll();
 			 */
 
 			$scope.scoreInfo = Score.getOne({
@@ -376,15 +380,11 @@ rapidScoreControllers.controller('ScoreEditCtrl', [
 			$scope.scoreInfo.genres = [];
 
 			/*
-			$scope.addinstrument = function(value){
-			    $scope.scoreInfo.instruments.push(value);
-			};
-			$scope.addcomposer = function(value){
-			    $scope.scoreInfo.composers.push(value);
-			};
-			$scope.addgenre = function(value){
-			    $scope.scoreInfo.genres.push(value);
-			};
+			 * $scope.addinstrument = function(value){
+			 * $scope.scoreInfo.instruments.push(value); }; $scope.addcomposer =
+			 * function(value){ $scope.scoreInfo.composers.push(value); };
+			 * $scope.addgenre = function(value){
+			 * $scope.scoreInfo.genres.push(value); };
 			 */
 
 			$scope.scoreSave = function() {
@@ -395,10 +395,10 @@ rapidScoreControllers.controller('ScoreEditCtrl', [
 					$scope.scoreCheck = 'Invalid title';
 					return;
 				}
-				//submit data
+				// submit data
 				else {
 					console.log('posting data...');
-					//create json to be posted
+					// create json to be posted
 					var scoreData = new Object();
 					scoreData.category = [];
 
@@ -409,21 +409,15 @@ rapidScoreControllers.controller('ScoreEditCtrl', [
 							.toLowerCase();
 
 					/*
-					if($scope.scoreInfo.instruments.length){
-					    for(var i=0; i<$scope.scoreInfo.instruments.length; i++){
-					        scoreData.category.push($scope.scoreInfo.instruments[i].c_number);
-					    }
-					}
-					if($scope.scoreInfo.composers.length){
-					    for(var i=0; i<$scope.scoreInfo.composers.length; i++){
-					        scoreData.category.push($scope.scoreInfo.composers[i].c_number);
-					    }
-					}
-					if($scope.scoreInfo.genres.length){
-					    for(var i=0; i<$scope.scoreInfo.genres.length; i++){
-					        scoreData.category.push($scope.scoreInfo.genres[i].c_number);
-					    }
-					}
+					 * if($scope.scoreInfo.instruments.length){ for(var i=0; i<$scope.scoreInfo.instruments.length;
+					 * i++){
+					 * scoreData.category.push($scope.scoreInfo.instruments[i].c_number); } }
+					 * if($scope.scoreInfo.composers.length){ for(var i=0; i<$scope.scoreInfo.composers.length;
+					 * i++){
+					 * scoreData.category.push($scope.scoreInfo.composers[i].c_number); } }
+					 * if($scope.scoreInfo.genres.length){ for(var i=0; i<$scope.scoreInfo.genres.length;
+					 * i++){
+					 * scoreData.category.push($scope.scoreInfo.genres[i].c_number); } }
 					 */
 
 					if ($scope.scoreInfo.slider) {
@@ -467,21 +461,21 @@ rapidScoreControllers.controller('ScoreEditCtrl', [
 					} else {
 						scoreData.fileurl = '';
 					}
-					//category
+					// category
 					/*
-					 for(var i=0; i<$scope.scoreInfo.category.length; i++){
-					 scoreData.category.push($scope.scoreInfo.category[i]);
-					 }
+					 * for(var i=0; i<$scope.scoreInfo.category.length; i++){
+					 * scoreData.category.push($scope.scoreInfo.category[i]); }
 					 */
 					console.log(scoreData);
 
-					//convert to json
+					// convert to json
 					Score.save({
 						scoreid : $routeParams.scoreId
 					}, scoreData, function(res) {
 						if (res) {
 							alert('edited ' + scoreData.shortname);
-							//$scope.scoreInfo = Score.getOne({scoreid: $routeParams.scoreId});
+							// $scope.scoreInfo = Score.getOne({scoreid:
+							// $routeParams.scoreId});
 							$location.path('/admin/sheetmusic');
 						}
 					});
@@ -497,9 +491,9 @@ rapidScoreControllers.controller('TypeAdminCtrl', [ '$scope', 'TypeAdminAPI',
 			$scope.getComposers = Composer.getAll();
 			$scope.getGenres = Genre.getAll();
 
-			//remove
-			//edit
-			//add
+			// remove
+			// edit
+			// add
 			$scope.cInfo = {};
 			$scope.cCheck = '';
 			$scope.addCategory = function() {
@@ -522,13 +516,13 @@ rapidScoreControllers.controller('TypeAdminCtrl', [ '$scope', 'TypeAdminAPI',
 			};
 			$scope.removeCategory = function(cnumber, cname) {
 				var r = confirm('Deleting ' + cname);
-				//deleting score category records before deleting this category
+				// deleting score category records before deleting this category
 				if (r == true) {
 					Type.remove({
 						cnumber : cnumber
 					}, function(res) {
 						console.log(res + ' deleted : ' + cnumber);
-						//$location.path('/admin/sheetmusic');
+						// $location.path('/admin/sheetmusic');
 						$scope.getInstruments = Instrument.getAll();
 						$scope.getComposers = Composer.getAll();
 						$scope.getGenres = Genre.getAll();
@@ -568,13 +562,17 @@ rapidScoreControllers.controller('UserCtrl', [
 
 			$scope.user = User.getOne();
 			console.log($scope.user);
+			
+			if ($rootScope.logged_admin) {
+				$location.path("/admin");
+			} 
 
 			$scope.cart = Cart.getAll();
 			$scope.purchased = Order.getAll();
 			for (var i = 0; i < $scope.purchased.length; i++) {
 				$scope.purchased[i].showdetail = false;
 			}
-			//get scores of each order
+			// get scores of each order
 
 			$scope.showorder = function(orderid) {
 				for (var i = 0; i < $scope.purchased.length; i++) {
@@ -611,13 +609,13 @@ rapidScoreControllers.controller('UserCtrl', [
 						alert('Removed ' + name);
 						$rootScope.added_score_name = "";
 						$rootScope.added_score_shortname = "";
-						//$rootScope.logged_cart = res;
+						// $rootScope.logged_cart = res;
 						$rootScope.logged_cart = Cart.getAll(function(res) {
 							$rootScope.cartcount = res.length;
 						});
 						$scope.cart = Cart.getAll();
 
-						//$window.location.reload();
+						// $window.location.reload();
 					} else {
 						console.log(res);
 					}
@@ -636,7 +634,7 @@ rapidScoreControllers.controller('UserCtrl', [
 						$scope.cart = Cart.getAll();
 						$scope.purchased = Order.getAll();
 
-						//$window.location.reload();
+						// $window.location.reload();
 						$location.path('/account/purchased');
 					} else {
 						console.log(res);
@@ -687,83 +685,116 @@ rapidScoreControllers.controller('sessionService', [
 			}
 		} ]);
 
-rapidScoreControllers.controller('LoginCtrl', [
-		'$scope',
-		'$rootScope',
-		'$location',
-		'$window',
-		'LoginAPI',
-		'UserAPI',
-		function($scope, $rootScope, $location, $window, LoginService, User) {
+rapidScoreControllers
+		.controller(
+				'LoginCtrl',
+				[
+						'$scope',
+						'$rootScope',
+						'$location',
+						'$window',
+						'LoginAPI',
+						'UserAPI',
+						function($scope, $rootScope, $location, $window,
+								LoginService, User) {
 
-			//if logged in, go to user page
-			if ($window.sessionStorage.getItem('token')) {
-				console.log('token ');
-				console.log($window.sessionStorage.getItem('token'));
-				$location.path("/account");
-			}
+							// if logged in, go to user page
+							if ($rootScope.logged) {
+								console.log('token ');
+								console.log($window.sessionStorage
+										.getItem('token'));
 
-			//Login
-			$scope.loginInfo = {};
-			$rootScope.loginCheck = '';
-
-			$scope.login = function() {
-				$rootScope.loginCheck = '';
-				console.log($scope.loginInfo);
-
-				if (!$scope.loginInfo.username) {
-					$rootScope.loginCheck = 'Invalid Username';
-					return;
-				}
-
-				else if (!$scope.loginInfo.password) {
-					$rootScope.loginCheck = 'Please enter your Password';
-					return;
-				}
-				/*
-				else if($scope.loginInfo.password.length < 6 || $scope.loginInfo.password.length > 20){
-				    $scope.loginCheck = 'Password length should be 6 to 20 characters long';
-				    return;
-				}
-				 */
-
-				else {
-					LoginService.login($scope.loginInfo.username,
-							$scope.loginInfo.password).success(
-							function(data) {
-								console.log(data.header);
-								if (data && data.token) {
-									$window.sessionStorage.setItem('token',
-											data.token);
-									$window.sessionStorage.setItem('username',
-											data.username);
-									$window.sessionStorage.setItem('uid',
-											data.id);
-									$window.sessionStorage.setItem('admin',
-											data.admin);
-									console.log($window.sessionStorage);
-
-									//set global variables
-									//too quick, a refresh of the page gives better user experience
-									//$rootScope.user = User.getOne({username: data.username});
-
-									//refresh
-									$rootScope.loginCheck = "Login Successful. Redirecting...";
-									//$location.path("/account");
-									$window.location.reload();
-
+								if ($rootScope.logged_admin) {
+									$location.path("/admin");
 								} else {
-									$window.sessionStorage.removeItem('token');
-									console.log(data.status);
-									$rootScope.loginCheck = "Invalid Login";
+									$location.path("/account");
 								}
-							}).error(function(err) {
-						console.log(err);
-						$rootScope.loginCheck = "Login Failed";
-					});
-				}
-			};
-		} ]);
+							}
+
+							// Login
+							$scope.loginInfo = {};
+							$rootScope.loginCheck = '';
+
+							$scope.login = function() {
+								$rootScope.loginCheck = '';
+								console.log($scope.loginInfo);
+
+								if (!$scope.loginInfo.username) {
+									$rootScope.loginCheck = 'Invalid Username';
+									return;
+								}
+
+								else if (!$scope.loginInfo.password) {
+									$rootScope.loginCheck = 'Please enter your Password';
+									return;
+								}
+								/*
+								 * else if($scope.loginInfo.password.length < 6 ||
+								 * $scope.loginInfo.password.length > 20){
+								 * $scope.loginCheck = 'Password length should
+								 * be 6 to 20 characters long'; return; }
+								 */
+
+								else {
+									LoginService
+											.login($scope.loginInfo.username,
+													$scope.loginInfo.password)
+											.success(
+													function(data) {
+														console
+																.log(data.header);
+														if (data && data.token) {
+															$window.sessionStorage
+																	.setItem(
+																			'token',
+																			data.token);
+															$window.sessionStorage
+																	.setItem(
+																			'username',
+																			data.username);
+															$window.sessionStorage
+																	.setItem(
+																			'uid',
+																			data.id);
+															$window.sessionStorage
+																	.setItem(
+																			'admin',
+																			data.admin);
+															console
+																	.log($window.sessionStorage);
+
+															// set global
+															// variables
+															// too quick, a
+															// refresh of the
+															// page gives better
+															// user experience
+															// $rootScope.user =
+															// User.getOne({username:
+															// data.username});
+
+															// refresh
+															$rootScope.loginCheck = "Login Successful. Redirecting...";
+															// $location.path("/account");
+															$window.location
+																	.reload();
+
+														} else {
+															$window.sessionStorage
+																	.removeItem('token');
+															console
+																	.log(data.status);
+															$rootScope.loginCheck = "Invalid Login";
+														}
+													})
+											.error(
+													function(err) {
+														console.log(err);
+														$rootScope.loginCheck = "Login Failed";
+													});
+								}
+							};
+						} ]);
 
 rapidScoreControllers
 		.controller(
@@ -774,7 +805,7 @@ rapidScoreControllers
 						'CheckUsernameAPI',
 						'$location',
 						function($scope, User, CheckUsername, $location) {
-							//Sign Up
+							// Sign Up
 							$scope.regInfo = {};
 							$scope.regCheck = '';
 
@@ -800,13 +831,14 @@ rapidScoreControllers
 									return;
 								}
 								/*
-								still need to check username and email existence
+								 * still need to check username and email
+								 * existence
 								 */
-								//submit data
+								// submit data
 								else {
 									console.log('posting data...');
 
-									//check username before submit
+									// check username before submit
 									CheckUsername
 											.getOne(
 													{
@@ -824,7 +856,8 @@ rapidScoreControllers
 
 															console
 																	.log($scope.regInfo);
-															//create json to be posted
+															// create json to be
+															// posted
 
 															var regData = new Object();
 															regData.username = $scope.regInfo.username;
