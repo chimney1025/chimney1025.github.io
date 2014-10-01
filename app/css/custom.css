@@ -237,7 +237,7 @@ a {
 }
 
 .slide img {
-	float:right;
+	float: right;
 	margin-right: 20px;
 	width: 40%;
 	min-width: 240px;
@@ -258,8 +258,8 @@ a {
 
 .slide-name {
 	width: 45%;
-  min-width: 240px;
-  max-width: 385px;
+	min-width: 240px;
+	max-width: 385px;
 	position: absolute;
 	top: 20px;
 	left: 20px;
@@ -271,8 +271,11 @@ a {
 	color: #333;
 	font-size: 35px;
 }
-.slide-name p{
-	margin-top: 20px;
+
+.slide-name p {
+	margin-top: 60px;
+	height: 100px;
+	font-style: italic;
 }
 
 .slide-name a:hover {
