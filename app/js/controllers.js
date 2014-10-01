@@ -36,7 +36,7 @@ rapidScoreControllers
 							$scope.score = Score.getOne({
 								scoreid : $routeParams.scoreId
 							});
-							console.log($window.sessionStorage.getItem('uid'));
+							console.log($window.localStorage.getItem('uid'));
 
 							$rootScope.action = 'Add to Cart';
 							$rootScope.action_class = 'btn-warning';
@@ -49,7 +49,7 @@ rapidScoreControllers
 								console.log('score id:');
 								console.log($scope.score.id);
 
-								if (!$window.sessionStorage.getItem('uid')) {
+								if (!$window.localStorage.getItem('uid')) {
 									$location.path('/login');
 								}
 
@@ -674,21 +674,21 @@ rapidScoreControllers.controller('sessionService', [
 				console.log($rootScope.fields.query);
 			}
 
-			if (!$window.sessionStorage.getItem('token')) {
+			if (!$window.localStorage.getItem('token')) {
 				$rootScope.logged = false;
-				$window.sessionStorage.removeItem('token');
-				$window.sessionStorage.removeItem('username');
-				$window.sessionStorage.removeItem('uid');
-				$window.sessionStorage.removeItem('admin');
+				$window.localStorage.removeItem('token');
+				$window.localStorage.removeItem('username');
+				$window.localStorage.removeItem('uid');
+				$window.localStorage.removeItem('admin');
 			} else {
 				$rootScope.logged = true;
 				console.log('session:');
-				$rootScope.logged_username = $window.sessionStorage
+				$rootScope.logged_username = $window.localStorage
 						.getItem('username');
-				console.log($window.sessionStorage.getItem('username'));
-				$rootScope.logged_admin = $window.sessionStorage
+				console.log($window.localStorage.getItem('username'));
+				$rootScope.logged_admin = $window.localStorage
 						.getItem('admin');
-				console.log($window.sessionStorage.getItem('admin'));
+				console.log($window.localStorage.getItem('admin'));
 				$rootScope.logged_cart = Cart.getAll(function(res) {
 					$rootScope.cartcount = res.length;
 				});
@@ -698,10 +698,10 @@ rapidScoreControllers.controller('sessionService', [
 			$scope.logout = function logout() {
 				console.log('logging out');
 				$rootScope.logged = false;
-				$window.sessionStorage.removeItem('token');
-				$window.sessionStorage.removeItem('username');
-				$window.sessionStorage.removeItem('uid');
-				$window.sessionStorage.removeItem('admin');
+				$window.localStorage.removeItem('token');
+				$window.localStorage.removeItem('username');
+				$window.localStorage.removeItem('uid');
+				$window.localStorage.removeItem('admin');
 				$location.path("/login");
 			}
 		} ]);
@@ -722,7 +722,7 @@ rapidScoreControllers
 							// if logged in, go to user page
 							if ($rootScope.logged) {
 								console.log('token ');
-								console.log($window.sessionStorage
+								console.log($window.localStorage
 										.getItem('token'));
 
 								if ($rootScope.logged_admin) {
@@ -766,24 +766,24 @@ rapidScoreControllers
 														console
 																.log(data.header);
 														if (data && data.token) {
-															$window.sessionStorage
+															$window.localStorage
 																	.setItem(
 																			'token',
 																			data.token);
-															$window.sessionStorage
+															$window.localStorage
 																	.setItem(
 																			'username',
 																			data.username);
-															$window.sessionStorage
+															$window.localStorage
 																	.setItem(
 																			'uid',
 																			data.id);
-															$window.sessionStorage
+															$window.localStorage
 																	.setItem(
 																			'admin',
 																			data.admin);
 															console
-																	.log($window.sessionStorage);
+																	.log($window.localStorage);
 
 															// set global
 															// variables
@@ -802,7 +802,7 @@ rapidScoreControllers
 																	.reload();
 
 														} else {
-															$window.sessionStorage
+															$window.localStorage
 																	.removeItem('token');
 															console
 																	.log(data.status);
