@@ -4,7 +4,7 @@
 		<img ng-src="{{image.imageurl}}" />
         	<div class="slide-name">
         	<a href="#/sheetmusic/{{image.shortname}}" ng-bind="image.title"></a>
-        	<p class="well"><span ng-bind="image.desc">Some introduction here</span></p>
+        	<p class="well"><span class="fade" ng-class="{in:image.desc}" ng-bind="image.desc">Some introduction here</span></p>
         	</div>
 	</div>
 	<!-- Arrows -->

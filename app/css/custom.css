@@ -253,6 +253,7 @@ a {
 	padding: 3px 5px;
 	background-color: rgba(51, 51, 51, 0.8);
 	color: #eee;
+	display: none;
 }
 
 .slide-name {
@@ -263,7 +264,6 @@ a {
 	top: 20px;
 	left: 20px;
 	padding: 3px 5px;
-	background-color: rgba(51, 51, 51, 0.8);
 	color: #eee;
 }
 
