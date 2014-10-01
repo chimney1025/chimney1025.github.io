@@ -266,8 +266,12 @@ a {
 	padding: 3px 5px;
 }
 
+.slide-name ul{
+	width: 100%;
+}
 .slide-name ul li{
 	float:left;
+	width: auto;
 }
 
 .slide-name a {
