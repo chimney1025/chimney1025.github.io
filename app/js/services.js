@@ -346,8 +346,7 @@ rapidScoreServices.factory('ScoreAPI', [ '$resource', function($resource) {
 rapidScoreServices.factory('TypeAPI', [ '$resource', function($resource) {
 	return $resource(hostname + '/types/:typename', {}, {
 		getAll : {
-			method : 'GET',
-			isArray : true
+			method : 'GET'
 		}
 	});
 } ]);
@@ -355,8 +354,7 @@ rapidScoreServices.factory('TypeAPI', [ '$resource', function($resource) {
 rapidScoreServices.factory('SubTypeAPI', [ '$resource', function($resource) {
 	return $resource(hostname + '/sheetmusic-types/:pname/:subname', {}, {
 		getAll : {
-			method : 'GET',
-			isArray : true
+			method : 'GET'
 		}
 	});
 } ]);
