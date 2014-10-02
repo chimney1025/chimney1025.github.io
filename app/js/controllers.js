@@ -22,6 +22,7 @@ rapidScoreControllers.controller('TypeCtrl', [ '$scope', '$rootScope',
 				typename : $routeParams.typename
 			});
 			$scope.typename = $routeParams.typename;
+			$scope.pshortname = $routeParams.typename;
 			console.log($scope.subtypes);
 		} ]);
 
