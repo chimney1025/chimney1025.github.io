@@ -692,6 +692,8 @@ rapidScoreControllers.controller('sessionService',
 					console.log($location.path());
 					$scope.breadcrumbs = breadcrumbs;
 					
+					$rootScope.parent_types = Type.getAll();
+					
 
 					if (!$window.localStorage.getItem('token')) {
 						$rootScope.logged = false;
