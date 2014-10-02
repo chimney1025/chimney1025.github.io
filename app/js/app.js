@@ -57,42 +57,15 @@ rapidScoreApp.config([ '$routeProvider', function($routeProvider) {
 		access : {
 			requiredLogin : false
 		}
-	}).when('/instruments', {
+	}).when('/types/:typename', {
 		templateUrl : 'views/category-list.html',
-		label : 'Instruments',
-		controller : 'InstrumentListCtrl',
+		controller : 'TypeCtrl',
 		access : {
 			requiredLogin : false
 		}
-	}).when('/composers', {
-		templateUrl : 'views/category-list.html',
-		label : 'Composers',
-		controller : 'ComposerListCtrl',
-		access : {
-			requiredLogin : false
-		}
-	}).when('/genres', {
-		templateUrl : 'views/category-list.html',
-		label : 'Genres',
-		controller : 'GenreListCtrl',
-		access : {
-			requiredLogin : false
-		}
-	}).when('/instruments/:instrumentId', {
+	}).when('/sheetmusic-types/:pname/:subname', {
 		templateUrl : 'views/category-detail.html',
-		controller : 'InstrumentCtrl',
-		access : {
-			requiredLogin : false
-		}
-	}).when('/composers/:composerId', {
-		templateUrl : 'views/category-detail.html',
-		controller : 'ComposerCtrl',
-		access : {
-			requiredLogin : false
-		}
-	}).when('/genres/:genreId', {
-		templateUrl : 'views/category-detail.html',
-		controller : 'GenreCtrl',
+		controller : 'SubTypeCtrl',
 		access : {
 			requiredLogin : false
 		}
@@ -180,8 +153,8 @@ rapidScoreApp.config([ '$routeProvider', function($routeProvider) {
 		}
 	}).when('/admin/categories', {
 		templateUrl : 'views/admin-category-list.html',
-		label : 'Categories',
-		controller : 'CategoryAdminCtrl',
+		label : 'Types',
+		controller : 'TypeAdminCtrl',
 		access : {
 			requiredLogin : true
 		}

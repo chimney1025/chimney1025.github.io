@@ -73,8 +73,8 @@
             <li class="row" ng-repeat="item in scores | filter:fields.query | orderBy:orderProp">
                 <span class="list-item"><a href="#/sheetmusic/{{item.shortname}}" ng-bind="item.title"></a></span>
                 <span class="list-added" ng-bind="item.createdAt | date : 'yyyy-MM-dd'"></span>
-                <span ng-if="item.audioUrl" class="list-icon glyphicon glyphicon-music" title="Audio Preview"></span>
-                <span ng-if="item.videoUrl" class="list-icon glyphicon glyphicon-film" title="Video Preview"></span>
+                <span ng-if="item.audiourl" class="list-icon glyphicon glyphicon-music" title="Audio Preview"></span>
+                <span ng-if="item.videourl" class="list-icon glyphicon glyphicon-film" title="Video Preview"></span>
             </li>
         </ul>
     </div>

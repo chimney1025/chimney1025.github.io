@@ -3,11 +3,11 @@
 /* Services */
 
 var rapidScoreServices = angular.module('rapidScoreServices', [ 'ngResource' ]);
-//var hostname = 'http://localhost:5000/api';
+// var hostname = 'http://localhost:5000/api';
 var hostname = 'http://lazyscore.herokuapp.com/api';
 
-//Protected URL
-//user account get, edit
+// Protected URL
+// user account get, edit
 rapidScoreServices.factory('UserAPI', [
 		'$resource',
 		'$window',
@@ -41,7 +41,7 @@ rapidScoreServices.factory('CheckOrderAPI', [
 			});
 		} ]);
 
-//user purchased add, getall
+// user purchased add, getall
 rapidScoreServices.factory('UserOrderAPI', [
 		'$resource',
 		'$window',
@@ -67,7 +67,7 @@ rapidScoreServices.factory('UserOrderAPI', [
 			});
 		} ]);
 
-//user purchased add, getall
+// user purchased add, getall
 rapidScoreServices.factory('UserOrderDetailAPI', [
 		'$resource',
 		'$window',
@@ -85,13 +85,13 @@ rapidScoreServices.factory('UserOrderDetailAPI', [
 			});
 		} ]);
 
-//user cart get, add, remove
+// user cart get, add, remove
 rapidScoreServices.factory('UserCartAPI', [
 		'$resource',
 		'$window',
 		function($resource, $window) {
 			return $resource(hostname + '/account/shopping-cart/:scoreid',
-			//sid
+			// sid
 			{}, {
 				getAll : {
 					method : 'GET',
@@ -132,13 +132,13 @@ rapidScoreServices.factory('UserCartAPI', [
 			});
 		} ]);
 
-//admin slider add
+// admin slider add
 rapidScoreServices.factory('SliderAdminAPI', [
 		'$resource',
 		'$window',
 		function($resource, $window) {
 			return $resource(hostname + '/admin/slider/:scoreid',
-			//scoreData
+			// scoreData
 			{}, {
 				save : {
 					method : 'PUT',
@@ -151,7 +151,7 @@ rapidScoreServices.factory('SliderAdminAPI', [
 			});
 		} ]);
 
-//admin score get, get all, add, edit, remove
+// admin score get, get all, add, edit, remove
 rapidScoreServices.factory('ScoreAdminAPI', [
 		'$resource',
 		'$window',
@@ -192,6 +192,7 @@ rapidScoreServices.factory('ScoreAdminAPI', [
 				},
 				remove : {
 					method : 'DELETE',
+					isArray: true,
 					headers : {
 						'Content-Type' : 'application/json',
 						'Authorization' : 'Bearer '
@@ -201,20 +202,12 @@ rapidScoreServices.factory('ScoreAdminAPI', [
 			});
 		} ]);
 
-//admin category type get, get all, add
+// admin category type get, get all, add
 rapidScoreServices.factory('TypeAdminAPI', [
 		'$resource',
 		'$window',
 		function($resource, $window) {
-			return $resource(hostname + '/admin/types/:typeid', {}, {
-				getOne : {
-					method : 'GET',
-					headers : {
-						'Content-Type' : 'application/json',
-						'Authorization' : 'Bearer '
-								+ $window.localStorage.getItem('token')
-					}
-				},
+			return $resource(hostname + '/admin/types', {}, {
 				getAll : {
 					method : 'GET',
 					isArray : true,
@@ -226,12 +219,41 @@ rapidScoreServices.factory('TypeAdminAPI', [
 				},
 				add : {
 					method : 'POST',
+					isArray: true,
+					headers : {
+						'Content-Type' : 'application/json',
+						'Authorization' : 'Bearer '
+								+ $window.localStorage.getItem('token')
+					}
+				}
+			});
+		} ]);
+
+// get sub type list of given type; add sub type; edit type(p/s) name, remove
+// type
+rapidScoreServices.factory('SubTypeAdminAPI', [
+		'$resource',
+		'$window',
+		function($resource, $window) {
+			return $resource(hostname + '/admin/types/:typeid', {}, {
+				getSub : {
+					method : 'GET',
+					isArray: true,
 					headers : {
 						'Content-Type' : 'application/json',
 						'Authorization' : 'Bearer '
 								+ $window.localStorage.getItem('token')
 					}
 				},
+				add : {
+					method : 'POST',
+					isArray: true,
+					headers : {
+						'Content-Type' : 'application/json',
+						'Authorization' : 'Bearer '
+								+ $window.localStorage.getItem('token')
+					}
+				}
 				save : {
 					method : 'PUT',
 					headers : {
@@ -242,6 +264,36 @@ rapidScoreServices.factory('TypeAdminAPI', [
 				},
 				remove : {
 					method : 'DELETE',
+					isArray: true,
+					headers : {
+						'Content-Type' : 'application/json',
+						'Authorization' : 'Bearer '
+								+ $window.localStorage.getItem('token')
+					}
+				}
+			})
+		} ]);
+
+// admin add score type
+rapidScoreServices.factory('ScoreTypeAPI', [
+		'$resource',
+		'$window',
+		function($resource, $window) {
+			return $resource(hostname + '/admin/score-type/',
+			//
+			{}, {
+				add : {
+					method : 'POST',
+					isArray: true,
+					headers : {
+						'Content-Type' : 'application/json',
+						'Authorization' : 'Bearer '
+								+ $window.localStorage.getItem('token')
+					}
+				},
+				remove : {
+					method : 'DELETE',
+					isArray: true,
 					headers : {
 						'Content-Type' : 'application/json',
 						'Authorization' : 'Bearer '
@@ -251,9 +303,7 @@ rapidScoreServices.factory('TypeAdminAPI', [
 			});
 		} ]);
 
-//score type admin api
-
-//users admin get all, get one
+// users admin get all, get one
 rapidScoreServices.factory('UserAdminAPI', [
 		'$resource',
 		'$window',
@@ -279,34 +329,7 @@ rapidScoreServices.factory('UserAdminAPI', [
 			});
 		} ]);
 
-//admin add score category
-rapidScoreServices.factory('ScoreTypeAPI', [
-		'$resource',
-		'$window',
-		function($resource, $window) {
-			return $resource(hostname + '/admin/score-type/',
-			//
-			{}, {
-				add : {
-					method : 'POST',
-					headers : {
-						'Content-Type' : 'application/json',
-						'Authorization' : 'Bearer '
-								+ $window.localStorage.getItem('token')
-					}
-				},
-				remove : {
-					method : 'DELETE',
-					headers : {
-						'Content-Type' : 'application/json',
-						'Authorization' : 'Bearer '
-								+ $window.localStorage.getItem('token')
-					}
-				}
-			});
-		} ]);
-
-//Unprotected URI
+// Unprotected URI
 
 rapidScoreServices.factory('ScoreAPI', [ '$resource', function($resource) {
 	return $resource(hostname + '/sheetmusic/:scoreid', {}, {
@@ -319,6 +342,25 @@ rapidScoreServices.factory('ScoreAPI', [ '$resource', function($resource) {
 		}
 	});
 } ]);
+
+rapidScoreServices.factory('TypeAPI', [ '$resource', function($resource) {
+	return $resource(hostname + '/types/:typename', {}, {
+		getAll : {
+			method : 'GET',
+			isArray : true
+		}
+	});
+} ]);
+
+rapidScoreServices.factory('SubTypeAPI', [ '$resource', function($resource) {
+	return $resource(hostname + '/sheetmusic-types/:pname/:subname', {}, {
+		getAll : {
+			method : 'GET',
+			isArray : true
+		}
+	});
+} ]);
+
 
 rapidScoreServices.factory('SliderAPI', [ '$resource', function($resource) {
 	return $resource(hostname + '/slider', {}, {
@@ -388,8 +430,8 @@ rapidScoreServices.factory('CheckUsernameAPI', [ '$resource',
 
 /* post, put, delete by id */
 
-//options.api.base_url
-//user login
+// options.api.base_url
+// user login
 rapidScoreServices.factory('LoginAPI', function($http) {
 	return {
 		login : function(username, password) {
@@ -412,7 +454,7 @@ rapidScoreServices.factory('LoginAPI', function($http) {
 	}
 });
 
-//user register
+// user register
 rapidScoreServices.factory('RegisterAPI', function($http) {
 	return {
 		save : function(username, password) {

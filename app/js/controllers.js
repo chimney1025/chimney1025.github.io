@@ -5,9 +5,8 @@
 var rapidScoreControllers = angular.module('rapidScoreControllers',
 		[ 'ui.bootstrap' ]);
 
-rapidScoreControllers.controller('ScoreListCtrl', [ '$scope', '$rootScope', 'ScoreAPI',
-		'InstrumentAPI', 'ComposerAPI', 'GenreAPI',
-		function($scope, $rootScope, Score, Instrument, Composer, Genre) {
+rapidScoreControllers.controller('ScoreListCtrl', [ '$scope', '$rootScope',
+		'ScoreAPI', function($scope, $rootScope, Score) {
 			$scope.scores = Score.getAll();
 			console.log($scope.scores);
 			console.log($rootScope.fields.query);
@@ -15,6 +14,28 @@ rapidScoreControllers.controller('ScoreListCtrl', [ '$scope', '$rootScope', 'Sco
 			 * $scope.getInstruments = Instrument.getAll(); $scope.getComposers =
 			 * Composer.getAll(); $scope.getGenres = Genre.getAll();
 			 */
+		} ]);
+
+rapidScoreControllers.controller('TypeCtrl', [ '$scope', '$rootScope',
+		'$routeParams', 'TypeAPI',
+		function($scope, $rootScope, $routeParams, Type) {
+			$scope.subtypes = Type.getAll({
+				typename : $routeParams.typename
+			});
+			$scope.typename = $routeParams.typename;
+			console.log($scope.subtypes);
+		} ]);
+
+rapidScoreControllers.controller('SubTypeCtrl', [ '$scope', '$rootScope',
+		'$routeParams', 'SubTypeAPI',
+		function($scope, $rootScope, $routeParams, SubType) {
+			$scope.scores = SubType.getAll({
+				pname : $routeParams.pname,
+				subname : $routeParams.subname
+			});
+			$scope.subname = $routeParams.subname;
+			$scope.pname = $routeParams.pname;
+			console.log($scope.scores);
 		} ]);
 
 rapidScoreControllers
@@ -36,6 +57,7 @@ rapidScoreControllers
 							$scope.score = Score.getOne({
 								scoreid : $routeParams.scoreId
 							});
+							console.log($scope.score);
 							console.log($window.localStorage.getItem('uid'));
 
 							$rootScope.action = 'Add to Cart';
@@ -539,12 +561,13 @@ rapidScoreControllers.controller('UserAdminListCtrl', [ '$scope',
 			$scope.users = User.getAll();
 		} ]);
 
-rapidScoreControllers.controller('AdminCtrl', [ '$rootScope', '$scope', '$routeParams',
-		'UserAPI', function($rootScope, $scope, $routeParams, User) {
+rapidScoreControllers.controller('AdminCtrl', [ '$rootScope', '$scope',
+		'$routeParams', 'UserAPI',
+		function($rootScope, $scope, $routeParams, User) {
 			$scope.user = User.getOne();
-			if($rootScope.logged_admin){
-				//correct
-			} else{
+			if ($rootScope.logged_admin) {
+				// correct
+			} else {
 				$location.path("/account");
 			}
 		} ]);
@@ -572,11 +595,11 @@ rapidScoreControllers.controller('UserCtrl', [
 
 			$scope.user = User.getOne();
 			console.log($scope.user);
-			
+
 			console.log('if admin: ');
 			console.log($rootScope.logged_admin);
 			if ($rootScope.logged_admin) {
-				//$location.path("/admin");
+				// $location.path("/admin");
 			}
 
 			$scope.cart = Cart.getAll();
@@ -655,56 +678,58 @@ rapidScoreControllers.controller('UserCtrl', [
 			}
 		} ]);
 
-rapidScoreControllers.controller('sessionService', [
-		'$scope',
-		'$rootScope',
-		'$window',
-		'$location',
-		'UserCartAPI',
-		'breadcrumbs',
-		'SearchAPI',
-		function($scope, $rootScope, $window, $location, Cart, breadcrumbs, Search) {
-			console.log($location.path());
-			$scope.breadcrumbs = breadcrumbs;
-			$rootScope.fields = {
-					query : ""
-			}
-			
-			$scope.search = function(){
-				console.log($rootScope.fields.query);
-			}
+rapidScoreControllers.controller('sessionService',
+		[
+				'$scope',
+				'$rootScope',
+				'$window',
+				'$location',
+				'UserCartAPI',
+				'breadcrumbs',
+				'SearchAPI',
+				function($scope, $rootScope, $window, $location, Cart,
+						breadcrumbs, Search) {
+					console.log($location.path());
+					$scope.breadcrumbs = breadcrumbs;
+					$rootScope.fields = {
+						query : ""
+					}
 
-			if (!$window.localStorage.getItem('token')) {
-				$rootScope.logged = false;
-				$window.localStorage.removeItem('token');
-				$window.localStorage.removeItem('username');
-				$window.localStorage.removeItem('uid');
-				$window.localStorage.removeItem('admin');
-			} else {
-				$rootScope.logged = true;
-				console.log('session:');
-				$rootScope.logged_username = $window.localStorage
-						.getItem('username');
-				console.log($window.localStorage.getItem('username'));
-				$rootScope.logged_admin = $window.localStorage
-						.getItem('admin');
-				console.log($window.localStorage.getItem('admin'));
-				$rootScope.logged_cart = Cart.getAll(function(res) {
-					$rootScope.cartcount = res.length;
-				});
-				console.log($rootScope.logged_cart);
-			}
+					$scope.search = function() {
+						console.log($rootScope.fields.query);
+					}
 
-			$scope.logout = function logout() {
-				console.log('logging out');
-				$rootScope.logged = false;
-				$window.localStorage.removeItem('token');
-				$window.localStorage.removeItem('username');
-				$window.localStorage.removeItem('uid');
-				$window.localStorage.removeItem('admin');
-				$location.path("/login");
-			}
-		} ]);
+					if (!$window.localStorage.getItem('token')) {
+						$rootScope.logged = false;
+						$window.localStorage.removeItem('token');
+						$window.localStorage.removeItem('username');
+						$window.localStorage.removeItem('uid');
+						$window.localStorage.removeItem('admin');
+					} else {
+						$rootScope.logged = true;
+						console.log('session:');
+						$rootScope.logged_username = $window.localStorage
+								.getItem('username');
+						console.log($window.localStorage.getItem('username'));
+						$rootScope.logged_admin = $window.localStorage
+								.getItem('admin');
+						console.log($window.localStorage.getItem('admin'));
+						$rootScope.logged_cart = Cart.getAll(function(res) {
+							$rootScope.cartcount = res.length;
+						});
+						console.log($rootScope.logged_cart);
+					}
+
+					$scope.logout = function logout() {
+						console.log('logging out');
+						$rootScope.logged = false;
+						$window.localStorage.removeItem('token');
+						$window.localStorage.removeItem('username');
+						$window.localStorage.removeItem('uid');
+						$window.localStorage.removeItem('admin');
+						$location.path("/login");
+					}
+				} ]);
 
 rapidScoreControllers
 		.controller(
@@ -726,7 +751,7 @@ rapidScoreControllers
 										.getItem('token'));
 
 								if ($rootScope.logged_admin) {
-									//$location.path("/admin");
+									// $location.path("/admin");
 									$location.path("/account");
 								} else {
 									$location.path("/account");
@@ -913,51 +938,3 @@ rapidScoreControllers
 								}
 							};
 						} ]);
-
-rapidScoreControllers.controller('InstrumentListCtrl', [ '$scope',
-		'InstrumentAPI', function($scope, Instrument) {
-			$scope.typename = "Instruments";
-			$scope.shortname = "instruments";
-			$scope.categories = Instrument.getAll();
-		} ]);
-
-rapidScoreControllers.controller('InstrumentCtrl', [ '$scope', '$routeParams',
-		'InstrumentAPI', function($scope, $routeParams, Instrument) {
-			$scope.typename = "Instruments";
-			$scope.shortname = "instruments";
-			$scope.category = Instrument.getOne({
-				cname : $routeParams.instrumentId
-			});
-		} ]);
-
-rapidScoreControllers.controller('ComposerListCtrl', [ '$scope', 'ComposerAPI',
-		function($scope, Composer) {
-			$scope.typename = "Composers";
-			$scope.shortname = "composers";
-			$scope.categories = Composer.getAll();
-		} ]);
-
-rapidScoreControllers.controller('ComposerCtrl', [ '$scope', '$routeParams',
-		'ComposerAPI', function($scope, $routeParams, Composer) {
-			$scope.typename = "Composers";
-			$scope.shortname = "composers";
-			$scope.category = Composer.getOne({
-				cname : $routeParams.composerId
-			});
-		} ]);
-
-rapidScoreControllers.controller('GenreListCtrl', [ '$scope', 'GenreAPI',
-		function($scope, Genre) {
-			$scope.typename = "Genres";
-			$scope.shortname = "genres";
-			$scope.categories = Genre.getAll();
-		} ]);
-
-rapidScoreControllers.controller('GenreCtrl', [ '$scope', '$routeParams',
-		'GenreAPI', function($scope, $routeParams, Genre) {
-			$scope.typename = "Genres";
-			$scope.shortname = "genres";
-			$scope.category = Genre.getOne({
-				cname : $routeParams.genreId
-			});
-		} ]);

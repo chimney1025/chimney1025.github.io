@@ -14,10 +14,7 @@
             <div ng-show="!collapsed">
                 <li>Price: <span ng-bind="score.price | currency:'£'"></span></li>
                 <li>Page: <span ng-bind="score.page"></span></li>
-                <li ng-if="score.instruments.length">Instruments: <a type="button" class="btn-detail btn btn-default" href="#/instruments/{{instrument.c_shortname}}" ng-repeat="instrument in score.instruments" ng-bind="instrument.c_name"> </a></li>
-                <li ng-if="score.composers.length">Composers: <a type="button" class="btn-detail btn btn-default" href="#/composers/{{composer.c_shortname}}" ng-repeat="composer in score.composers" ng-bind="composer.c_name"> </a></li>
-                <li ng-if="score.genres.length">Genres: <a type="button" class="btn-detail btn btn-default" href="#/genres/{{genre.c_shortname}}" ng-repeat="genre in score.genres" ng-bind="genre.c_name"> </a></li>
-
+                <li ng-repeat="type in score.types"><a type="button" class="btn-detail btn btn-default" href="#" ng-bind="type.name"> </a></li>
                 <li ng-if="score.audiourl || score.videourl">
                     Links:
                     <button type="button" class="btn-detail btn btn-default"  ng-if="score.audiourl" href="{{score.audiourl}}" target="_blank" class="" title="Download Audio">Audio</button>
