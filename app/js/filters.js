@@ -24,6 +24,9 @@ angular.module('rapidScoreFilters', []).filter('range', function() {
 angular.module('rapidScoreFilters', []).filter('titlelize', function() {
     //convert select value first letter capital
     return function(input) {
-      return _.titleize(input);
+      if (input!=null) {
+        input = input.toLowerCase();
+      }
+      return input.substring(0,1).toUpperCase()+input.substring(1);
     };
 });
