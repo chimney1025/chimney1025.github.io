@@ -1023,7 +1023,7 @@ span.form-check {
 		margin-bottom: 10px;
 	}
 	.list-item,.act-list .list-item {
-		text-align: center;
+		text-align: left;
 		margin-left: 0;
 		font-size: 0.95em;
 	}
