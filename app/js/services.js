@@ -253,7 +253,7 @@ rapidScoreServices.factory('SubTypeAdminAPI', [
 						'Authorization' : 'Bearer '
 								+ $window.localStorage.getItem('token')
 					}
-				}
+				},
 				save : {
 					method : 'PUT',
 					headers : {
