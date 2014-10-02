@@ -18,11 +18,11 @@
                 <select class="form-control" ng-model="orderProp">
                     <option value="">--</option>
                     <option value="name">Name</option>
-                    <option value="-added">Newest</option>
+                    <option value="-added">Latest</option>
                     <option value="added">Oldest</option>
                 </select>
             </div>
-
+            <!--
             <span class="dropdown-label">Number of Instruments</span>
             <div class="dropdown-number">
                 <select class="form-control" ng-model="numberInstrument">
@@ -39,7 +39,7 @@
                 <div class="dropdown-category">
                     <select
                             ng-model="instrumentList"
-                            ng-options="value.c_shortname as value.c_name group by value.type for value in getInstruments" class="form-control">
+                            ng-options="" class="form-control">
                         <option value="">--</option>
                     </select>
                 </div>
@@ -49,7 +49,7 @@
             <div class="dropdown-category">
                 <select
                         ng-model="composerList"
-                        ng-options="value.c_shortname as value.c_name for value in getComposers" class="form-control">
+                        ng-options="" class="form-control">
                     <option value="">--</option>
                 </select>
             </div>
@@ -58,11 +58,11 @@
             <div class="dropdown-category">
                 <select
                         ng-model="genreList"
-                        ng-options="value.c_shortname as value.c_name for value in getGenres" class="form-control">
+                        ng-options="" class="form-control">
                     <option value="">--</option>
                 </select>
             </div>
-
+            -->
         </div><!-- End Sort and Filter -->
 
     </div><!-- End Filters-->
