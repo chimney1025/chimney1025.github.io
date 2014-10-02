@@ -672,6 +672,12 @@ rapidScoreControllers.controller('UserCtrl', [
 					}
 				});
 			}
+			
+			$scope.showscore = function(file) {
+				//open pdf file in a new page/or send email to user
+				var win = window.open(file, '_blank');
+  				win.focus();
+			}
 		} ]);
 
 rapidScoreControllers.controller('sessionService',
