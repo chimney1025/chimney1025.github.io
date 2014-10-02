@@ -453,7 +453,7 @@ a {
 }
 
 .list-filter,.score-detail {
-	padding-right: 30px;
+	padding-right: 0;
 	margin-bottom: 30px;
 	float: right;
 	font-size: 0.95em;
