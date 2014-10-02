@@ -9,7 +9,6 @@ rapidScoreControllers.controller('ScoreListCtrl', [ '$scope', '$rootScope',
 		'ScoreAPI', function($scope, $rootScope, Score) {
 			$scope.scores = Score.getAll();
 			console.log($scope.scores);
-			console.log($rootScope.fields.query);
 			/*
 			 * $scope.getInstruments = Instrument.getAll(); $scope.getComposers =
 			 * Composer.getAll(); $scope.getGenres = Genre.getAll();
