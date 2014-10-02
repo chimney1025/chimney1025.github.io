@@ -18,24 +18,20 @@ rapidScoreControllers.controller('ScoreListCtrl', [ '$scope', '$rootScope',
 rapidScoreControllers.controller('TypeCtrl', [ '$scope', '$rootScope',
 		'$routeParams', 'TypeAPI',
 		function($scope, $rootScope, $routeParams, Type) {
-			$scope.subtypes = Type.getAll({
+			$scope.result = Type.getAll({
 				typename : $routeParams.typename
 			});
-			$scope.typename = $routeParams.typename;
-			$scope.pshortname = $routeParams.typename;
-			console.log($scope.subtypes);
+			console.log($scope.result);
 		} ]);
 
 rapidScoreControllers.controller('SubTypeCtrl', [ '$scope', '$rootScope',
 		'$routeParams', 'SubTypeAPI',
 		function($scope, $rootScope, $routeParams, SubType) {
-			$scope.scores = SubType.getAll({
+			$scope.result = SubType.getAll({
 				pname : $routeParams.pname,
 				subname : $routeParams.subname
 			});
-			$scope.subname = $routeParams.subname;
-			$scope.pname = $routeParams.pname;
-			console.log($scope.scores);
+			console.log($scope.result);
 		} ]);
 
 rapidScoreControllers
