@@ -1065,16 +1065,16 @@ span.form-check {
 	#footer {
 		padding: 0;
 	}
-	.slider{
-		margin-top: -20px;
-		margin-bottom: 80px;
-	}
 }
 
 /*Small mobile device size*/
 @media ( max-width : 620px) {
 	.slider,.slide {
 		min-height: 420px;
+	}
+	.slider{
+		margin-top: -20px;
+		margin-bottom: 80px;
 	}
 	.slide-name {
 		width: 80%;
