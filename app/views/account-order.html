@@ -26,7 +26,7 @@
                 <span class="price" ng-bind="order.total | currency:'£'"></span>
                 <ul class="list-detail" ng-show="order.showdetail">
                     <li class="row" ng-repeat="score in orderdetails">
-                        <span class="list-item"><a href="#/sheetmusic/{{score.shortname}}" ng-bind="score.title"></a></span>
+                        <span class="list-item"><a ng-click="showscore(score.fileurl)" ng-bind="score.title"></a></span>
                         <span class="price" ng-bind="score.price | currency:'£'"></span>
                         <span class="list-action"><a type="button" ng-click="showscore(score.fileurl)" class="btn btn-primary btn-xs">Request</a></span>
                     </li>
