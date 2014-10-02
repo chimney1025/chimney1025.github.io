@@ -346,6 +346,10 @@ rapidScoreServices.factory('ScoreAPI', [ '$resource', function($resource) {
 rapidScoreServices.factory('TypeAPI', [ '$resource', function($resource) {
 	return $resource(hostname + '/types/:typename', {}, {
 		getAll : {
+			method : 'GET',
+			isArray: true
+		},
+		getOne : {
 			method : 'GET'
 		}
 	});
