@@ -19,3 +19,11 @@ angular.module('rapidScoreFilters', []).filter('range', function() {
         return val;
     }
 });
+
+
+angular.module('rapidScoreFilters', []).filter('titlelize', function() {
+    //convert select value first letter capital
+    return function(input) {
+      return _.titleize(input);
+    };
+});
