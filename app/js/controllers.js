@@ -686,18 +686,13 @@ rapidScoreControllers.controller('sessionService',
 				'$location',
 				'UserCartAPI',
 				'breadcrumbs',
-				'SearchAPI',
+				'TypeAPI',
 				function($scope, $rootScope, $window, $location, Cart,
-						breadcrumbs, Search) {
+						breadcrumbs, Type) {
 					console.log($location.path());
 					$scope.breadcrumbs = breadcrumbs;
-					$rootScope.fields = {
-						query : ""
-					}
-
-					$scope.search = function() {
-						console.log($rootScope.fields.query);
-					}
+					
+					$rootScope.parent_types = Type.getAll();
 
 					if (!$window.localStorage.getItem('token')) {
 						$rootScope.logged = false;
