@@ -979,6 +979,10 @@ span.form-check {
 	.view-container {
 		padding-bottom: 120px;
 	}
+
+	.input-search {
+		padding: 0 30px;
+	}
 	.list-filter,.score-detail,.list-score,.score-main,.account-menu,.act-list,.list-category
 		{
 		float: none;
