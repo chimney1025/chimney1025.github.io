@@ -3,16 +3,16 @@
 
     <div class="col-md-4 col-sm-4 col-xs-4 text-left score-detail">
         <ul class="">
-            <li><h1 ng-bind="subname | titlelize"></h1></li>
-            <li><h4><span ng-bind="pname | titlelize"></span> | <a href="#/types/{{pshortname}}">View All</a> </h4></li>
-            <li><h4>Sheet Music Count  : {{scores.length}}</h4></li>
+            <li><h1 ng-bind="result.subname | titlelize"></h1></li>
+            <li><h4><span ng-bind="result.pname | titlelize"></span> | <a href="#/types/{{result.pshortname}}">View All</a> </h4></li>
+            <li><h4>Sheet Music Count  : {{result.scores.length}}</h4></li>
         </ul>
     </div>
 
 
     <div class="col-md-8 col-sm-8 col-xs-8 list-score">
         <ul class="score-list">
-            <li class="row" ng-repeat="score in scores | filter:query | orderBy:orderProp">
+            <li class="row" ng-repeat="score in result.scores | filter:query | orderBy:orderProp">
                 <span class="list-item"><a href="#/sheetmusic/{{score.shortname}}" ng-bind="score.title"></a></span>
                 <span class="list-added" ng-bind="score.createdAt | date : 'yyyy-MM-dd'"></span>
                 <span ng-if="score.audiourl" class="list-icon glyphicon glyphicon-music" title="Audio Preview"></span>
