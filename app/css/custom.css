@@ -1065,6 +1065,10 @@ span.form-check {
 	#footer {
 		padding: 0;
 	}
+	.slider{
+		margin-top: -20px;
+		margin-bottom: 80px;
+	}
 }
 
 /*Small mobile device size*/
