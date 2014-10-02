@@ -976,6 +976,9 @@ span.form-check {
 		width: 250px;
 		margin: 0 auto;
 	}
+	.view-container {
+		padding-bottom: 120px;
+	}
 	.list-filter,.score-detail,.list-score,.score-main,.account-menu,.act-list,.list-category
 		{
 		float: none;
@@ -1007,7 +1010,7 @@ span.form-check {
 		margin-bottom: 15px;
 	}
 	.score-detail {
-		text-align: left;
+		text-align: center;
 		width: 100%;
 		margin-bottom: 15px;
 	}
@@ -1020,7 +1023,7 @@ span.form-check {
 		margin-bottom: 10px;
 	}
 	.list-item,.act-list .list-item {
-		text-align: left;
+		text-align: center;
 		margin-left: 0;
 		font-size: 0.95em;
 	}
@@ -1074,7 +1077,7 @@ span.form-check {
 	}
 	.slider{
 		margin-top: -40px;
-		margin-bottom: 90px;
+		margin-bottom: 10px;
 	}
 	.slide-name {
 		width: 80%;
