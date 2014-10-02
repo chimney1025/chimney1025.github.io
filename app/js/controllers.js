@@ -692,7 +692,7 @@ rapidScoreControllers.controller('sessionService',
 					$scope.breadcrumbs = breadcrumbs;
 					
 					$rootScope.parent_types = Type.getAll(function(res){
-						console.log(res);
+						//console.log(res);
 					});
 					
 
