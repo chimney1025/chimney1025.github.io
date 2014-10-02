@@ -18,7 +18,7 @@ rapidScoreControllers.controller('ScoreListCtrl', [ '$scope', '$rootScope',
 rapidScoreControllers.controller('TypeCtrl', [ '$scope', '$rootScope',
 		'$routeParams', 'TypeAPI',
 		function($scope, $rootScope, $routeParams, Type) {
-			$scope.result = Type.getAll({
+			$scope.result = Type.getOne({
 				typename : $routeParams.typename
 			});
 			console.log($scope.result);
