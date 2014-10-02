@@ -13,7 +13,7 @@
     <div class="col-md-8 col-sm-8 col-xs-8 list-score">
         <ul class="score-list">
             <li class="row" ng-repeat="score in scores | filter:query | orderBy:orderProp">
-                <span class="list-item"><a href="#/sheetmusic/{{score.shortname}}">{{score.name}}</a></span>
+                <span class="list-item"><a href="#/sheetmusic/{{score.shortname}}">{{score.title}}</a></span>
                 <span class="list-added">{{score.createdAt | date : 'yyyy-MM-dd'}}</span>
                 <span ng-if="score.audiourl" class="list-icon glyphicon glyphicon-music" title="Audio Preview"></span>
                 <span ng-if="score.videourl" class="list-icon glyphicon glyphicon-film" title="Video Preview"></span>
