@@ -63,7 +63,7 @@ rapidScoreApp.config([ '$routeProvider', function($routeProvider) {
 		access : {
 			requiredLogin : false
 		}
-	}).when('/sheetmusic-types/:pname/:subname', {
+	}).when('/types/:pname/:subname', {
 		templateUrl : 'views/category-detail.html',
 		controller : 'SubTypeCtrl',
 		access : {
