@@ -14,7 +14,7 @@
     <div class="col-md-9 col-sm-9 col-xs-9 text-left act-list">
 
         <div ng-repeat="ptype in types">
-        <h2>Manage {{ptype.name}}</h2>
+        <h2>Manage<span ng-bind="ptype.name | titlelize"></span></h2>
         <ul class="">
             <li>
                 <button type="button" class="btn btn-default btn-inline btn-category" ng-repeat="subtype in getsubtypes(ptype.id)">
