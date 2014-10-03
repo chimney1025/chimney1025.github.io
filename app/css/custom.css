@@ -454,7 +454,7 @@ a {
 }
 
 .list-filter,.score-detail {
-	padding: 0 20px;
+	padding: 20px;
 	margin-bottom: 30px;
 	float: right;
 	font-size: 0.95em;
