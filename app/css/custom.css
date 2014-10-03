@@ -90,6 +90,12 @@ h4 {
 	color: #468595;
 }
 
+.btn-category:hover {
+	color: #468595;
+	background-color: #f5f5f5;
+	border-color: #468595;
+}
+
 a {
 	color: #468595;
 }
