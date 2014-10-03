@@ -16,8 +16,9 @@
         <h2>Manage Users ({{users.length}})</h2>
         <ul class="">
             <li class="row" ng-repeat="item in users">
-                <span class="list-item"><a href="#/admin/users/{{item.id}}">{{item.username}}</a>
-                    <span ng-if="item.admin" class="glyphicon glyphicon-user"></span>
+                <span class="list-item">
+                <span ng-if="item.admin" class="glyphicon glyphicon-user"></span>
+                <a href="#/admin/users/{{item.id}}">{{item.username}}</a>
                 </span>
                 <span class="list-added">{{item.added | date : 'yyyy-MM-dd'}}</span>
                 <span class="admin-action list-action">
