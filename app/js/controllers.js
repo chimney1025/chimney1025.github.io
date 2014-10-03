@@ -512,6 +512,9 @@ rapidScoreControllers.controller('TypeAdminCtrl', [ '$scope', 'TypeAdminAPI',
 			$scope.cInfo = {};
 			$scope.cCheck = '';
 			$scope.addtype = function() {
+				var result = prompt("Enter a value");
+				alert(result);
+				/*
 				if (!$scope.cInfo.cname) {
 					$scope.cCheck = 'Invalid category name';
 					return;
@@ -528,6 +531,7 @@ rapidScoreControllers.controller('TypeAdminCtrl', [ '$scope', 'TypeAdminAPI',
 
 					});
 				}
+				*/
 			};
 			$scope.removetype = function(cnumber, cname) {
 				var r = confirm('Deleting ' + cname);
