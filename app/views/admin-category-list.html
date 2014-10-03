@@ -17,7 +17,7 @@
         <h2>Manage<span ng-bind="ptype.name | titlelize"></span></h2>
         <ul class="">
             <li>
-                <button type="button" class="btn btn-default btn-inline btn-category" ng-repeat="subtypes[ptype.id]">
+                <button type="button" class="btn btn-default btn-inline btn-category" ng-repeat="subtype in ptype.subtypes">
                     {{subtype.name}}
                     <a ng-click="edittype('rename', subtype.id, subtype.name, ptype.id, ptype.name)"><span class="glyphicon glyphicon-pencil"></span></a>
                     <a ng-click="removetype('remove', subtype.id, subtype.name, ptype.id, ptype.name)" ><span class="glyphicon glyphicon-remove"></span></a>
