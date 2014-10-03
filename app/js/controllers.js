@@ -502,19 +502,20 @@ rapidScoreControllers.controller('ScoreEditCtrl', [
 		} ]);
 
 rapidScoreControllers.controller('TypeAdminCtrl', [ '$scope', 'TypeAdminAPI',
-		'InstrumentAPI', 'ComposerAPI', 'GenreAPI',
-		function($scope, Type, Instrument, Composer, Genre) {
-			$scope.categories = Category.getAll();
-			$scope.getInstruments = Instrument.getAll();
-			$scope.getComposers = Composer.getAll();
-			$scope.getGenres = Genre.getAll();
+		'SubTypeAdminAPI',
+		function($scope, Type, SubType) {
+			$scope.types = Type.getAll();
+			
+			$scope.getsubtypes = function(ptypeid){
+				return SubType.getAll(ptypeid);
+			}
 
 			// remove
 			// edit
 			// add
 			$scope.cInfo = {};
 			$scope.cCheck = '';
-			$scope.addCategory = function() {
+			$scope.addtype = function() {
 				if (!$scope.cInfo.cname) {
 					$scope.cCheck = 'Invalid category name';
 					return;
@@ -532,7 +533,7 @@ rapidScoreControllers.controller('TypeAdminCtrl', [ '$scope', 'TypeAdminAPI',
 					});
 				}
 			};
-			$scope.removeCategory = function(cnumber, cname) {
+			$scope.removetype = function(cnumber, cname) {
 				var r = confirm('Deleting ' + cname);
 				// deleting score category records before deleting this category
 				if (r == true) {
