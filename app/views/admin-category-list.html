@@ -13,7 +13,8 @@
 
     <div class="col-md-9 col-sm-9 col-xs-9 text-left act-list">
 
-        <h2 ng-repeat="ptype in types">Manage {{ptype.name}}</h2>
+        <div ng-repeat="ptype in types">
+        <h2>Manage {{ptype.name}}</h2>
         <ul class="">
             <li>
                 <button type="button" class="btn btn-default btn-inline btn-category" ng-repeat="subtype in getsubtypes(ptype.id)">
@@ -24,6 +25,7 @@
                 <a type="button" class="btn btn-warning btn-inline" ng-click="addtype(ptype.id, ptype.name)">ADD</a>
             </li>
         </ul>
+        </div>
     </div>
 
 </div>
