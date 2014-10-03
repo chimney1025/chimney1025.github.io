@@ -26,6 +26,7 @@
                 <span class="list-added">{{item.createdAt | date : 'yyyy-MM-dd'}}</span>
                 <span class="list-added" ng-if="item.obsolete"><b>Deleted at {{item.updatedAt | date : 'yyyy-MM-dd'}}</b></span>
                 <span class="admin-action list-action">
+                    <a type="button" class="btn btn-primary btn-xs">Edit Tag</a>
                     <a type="button" ng-if="item.slider && !item.obsolete" ng-click="addSlider(false, item.id)" class="btn btn-default btn-xs">Remove from Slider</a>
                     <a type="button" ng-if="!item.slider && !item.obsolete" ng-click="addSlider(true, item.id)" class="btn btn-primary btn-xs">Add to Slider</a>
                 </span>
