@@ -924,13 +924,13 @@ span.form-check {
 
 	/*score-detail*/
 	.list-filter,.score-detail {
-		padding: 0;
+		padding: 10px;
 	}
 	.score-detail li {
 		margin-bottom: 15px;
 	}
 	.score-detail h1 {
-		font-size: 2.0em;
+		font-size: 1.8em;
 	}
 	.score-detail .btn,.btn-inline {
 		padding: 7px 20px;
@@ -989,7 +989,6 @@ span.form-check {
 	.list-filter,.score-detail,.list-score,.score-main,.account-menu,.act-list,.list-category
 		{
 		float: none;
-		padding: 0;
 		margin: 0 auto;
 		clear: both;
 	}
