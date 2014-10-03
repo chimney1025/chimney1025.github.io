@@ -265,6 +265,7 @@ a {
     list-style:none;
     float:left;
     margin:10px 2px;
+    display: inline;
 }
 
 #pagination li a {
