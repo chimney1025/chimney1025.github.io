@@ -504,7 +504,9 @@ rapidScoreControllers.controller('ScoreEditCtrl', [
 rapidScoreControllers.controller('TypeAdminCtrl', [ '$scope', 'TypeAdminAPI',
 		'SubTypeAdminAPI',
 		function($scope, Type, SubType) {
-			$scope.types = Type.getAll();
+			$scope.types = Type.getAll(function(res){
+				console.log(res[0].name);
+			});
 			
 			$scope.getsubtypes = function(ptypeid){
 				return SubType.getAll(ptypeid);
