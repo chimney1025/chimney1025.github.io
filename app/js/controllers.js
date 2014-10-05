@@ -520,7 +520,7 @@ rapidScoreControllers.controller('TypeAdminCtrl', [ '$scope', '$rootScope', 'Typ
 						shortname: shortname
 					},function(res){
 						$scope.types = Type.getAll();
-						$rootScope.parent_types = Type.getAll();
+						$rootScope.parent_types = MenuType.getAll();
 					})
 				}
 			}
@@ -550,7 +550,7 @@ rapidScoreControllers.controller('TypeAdminCtrl', [ '$scope', '$rootScope', 'Typ
 						shortname: shortname
 					},function(res){
 						$scope.types = Type.getAll();
-						$rootScope.parent_types = Type.getAll();
+						$rootScope.parent_types = MenuType.getAll();
 					})
 				}
 			};
