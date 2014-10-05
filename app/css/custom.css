@@ -999,6 +999,7 @@ span.form-check {
 		float: none;
 		margin: 0 auto;
 		clear: both;
+		min-height: 56px;
 	}
 	.account-menu{
 		padding: 10px;
