@@ -13,7 +13,7 @@
 
     <div class="col-md-9 col-sm-9 col-xs-9 text-left act-list">
 
-        <div ng-repeat="ptype in types">
+        <div ng-repeat="ptype in types" ng-if="!ptype.obsolete">
         <h2>Manage<span ng-bind="ptype.name | titlelize"></span>
         <span><a ng-click="updatetype(ptype.id, ptype.name)"><span class="glyphicon glyphicon-pencil"></span></a>
         <a ng-click="removetype(ptype.id, '', ptype.name)" ><span class="glyphicon glyphicon-remove"></span></a></span>
@@ -22,7 +22,7 @@
         
         <ul class="">
             <li>
-                <button type="button" class="btn btn-default btn-inline btn-category" ng-repeat="subtype in ptype.subtypes">
+                <button type="button" class="btn btn-default btn-inline btn-category" ng-repeat="subtype in ptype.subtypes" ng-if="!subtype.obsolete">
                     {{subtype.name}}
                     <a ng-click="updatetype(subtype.id, subtype.name)"><span class="glyphicon glyphicon-pencil"></span></a>
                     <a ng-click="removetype(subtype.id, ptype.name, subtype.name)" ><span class="glyphicon glyphicon-remove"></span></a>
