@@ -15,8 +15,8 @@
 
         <div ng-repeat="ptype in types">
         <h2>Manage<span ng-bind="ptype.name | titlelize"></span>
-        <span><a ng-click="updatetype(ptype.id, ptype.name)">Edit</a>
-        <a ng-click="removetype(ptype.id, '', ptype.name)" >Remove</a></span>
+        <span><a ng-click="updatetype(ptype.id, ptype.name)"><span class="glyphicon glyphicon-pencil"></span></a>
+        <a ng-click="removetype(ptype.id, '', ptype.name)" ><span class="glyphicon glyphicon-remove"></span></a></span>
             
         </h2>
         
