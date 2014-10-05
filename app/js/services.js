@@ -219,7 +219,6 @@ rapidScoreServices.factory('TypeAdminAPI', [
 				},
 				add : {
 					method : 'POST',
-					isArray: true,
 					headers : {
 						'Content-Type' : 'application/json',
 						'Authorization' : 'Bearer '
@@ -263,7 +262,6 @@ rapidScoreServices.factory('SubTypeAdminAPI', [
 				},
 				remove : {
 					method : 'DELETE',
-					isArray: true,
 					headers : {
 						'Content-Type' : 'application/json',
 						'Authorization' : 'Bearer '
@@ -365,51 +363,6 @@ rapidScoreServices.factory('SubTypeAPI', [ '$resource', function($resource) {
 
 rapidScoreServices.factory('SliderAPI', [ '$resource', function($resource) {
 	return $resource(hostname + '/slider', {}, {
-		getAll : {
-			method : 'GET',
-			isArray : true
-		}
-	});
-} ]);
-
-rapidScoreServices.factory('SearchAPI', [ '$resource', function($resource) {
-	return $resource(hostname + '/search/:string', {}, {
-		getAll : {
-			method : 'GET',
-			isArray : true
-		}
-	});
-} ]);
-
-rapidScoreServices.factory('InstrumentAPI', [ '$resource', function($resource) {
-	return $resource(hostname + '/instruments/:cname', {}, {
-		getOne : {
-			method : 'GET'
-		},
-		getAll : {
-			method : 'GET',
-			isArray : true
-		}
-	});
-} ]);
-
-rapidScoreServices.factory('ComposerAPI', [ '$resource', function($resource) {
-	return $resource(hostname + '/composers/:cname', {}, {
-		getOne : {
-			method : 'GET'
-		},
-		getAll : {
-			method : 'GET',
-			isArray : true
-		}
-	});
-} ]);
-
-rapidScoreServices.factory('GenreAPI', [ '$resource', function($resource) {
-	return $resource(hostname + '/genres/:cname', {}, {
-		getOne : {
-			method : 'GET'
-		},
 		getAll : {
 			method : 'GET',
 			isArray : true
