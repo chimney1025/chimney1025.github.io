@@ -559,7 +559,7 @@ rapidScoreControllers.controller('TypeAdminCtrl', [ '$scope', '$rootScope', 'Typ
 				var r = confirm('Deleting ' + pname + ' - ' + subname);
 				// deleting score category records before deleting this category
 				if (r == true) {
-					Type.remove({
+					SubType.remove({
 						typeid : subid
 					}, function(res) {
 						console.log(' deleted : ' +res.name);
