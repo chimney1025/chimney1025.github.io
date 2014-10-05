@@ -502,8 +502,8 @@ rapidScoreControllers.controller('ScoreEditCtrl', [
 		} ]);
 
 rapidScoreControllers.controller('TypeAdminCtrl', [ '$scope', '$rootScope', 'TypeAdminAPI',
-		'SubTypeAdminAPI',
-		function($scope, $rootScope, Type, SubType) {
+		'SubTypeAdminAPI', 'TypeAPI',
+		function($scope, $rootScope, Type, SubType, MenuType) {
 			$scope.types = Type.getAll();
 
 			// remove
@@ -564,7 +564,7 @@ rapidScoreControllers.controller('TypeAdminCtrl', [ '$scope', '$rootScope', 'Typ
 					}, function(res) {
 						console.log(' deleted : ' +res.name);
 						$scope.types = Type.getAll();
-						$rootScope.parent_types = Type.getAll();
+						$rootScope.parent_types = MenuType.getAll();
 					});
 				} else {
 
