@@ -513,15 +513,18 @@ rapidScoreControllers.controller('TypeAdminCtrl', [ '$scope', 'TypeAdminAPI',
 			$scope.cCheck = '';
 			$scope.addtype = function(pid, pname) {
 				var result = prompt("Adding type to : " + pname);
-				var shortname = result.replace('-', ' ')
-				.replace('\'', '').split(/\s{2,}/g)
-				.join('-').toLowerCase();
-				SubType.add({typeid:pid},{
-					name: result,
-					shortname: shortname
-				},function(res){
-					$scope.types = Type.getAll();
-				})
+				if(result){
+					var shortname = result.replace('-', ' ')
+					.replace('\'', '').split(/\s{2,}/g)
+					.join('-').toLowerCase();
+					SubType.add({typeid:pid},{
+						name: result,
+						shortname: shortname
+					},function(res){
+						$scope.types = Type.getAll();
+					})
+				}
+				
 				/*
 				if (!$scope.cInfo.cname) {
 					$scope.cCheck = 'Invalid category name';
