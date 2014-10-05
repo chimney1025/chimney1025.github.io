@@ -625,7 +625,7 @@ audio {
 	padding: 0 0 0 40px;
 	font-size: 1em;
 	text-align: left;
-	max-width: 640px;
+	max-width: 720px;
 	min-width: 300px;
 }
 
@@ -941,7 +941,7 @@ span.form-check {
 		font-size: 1.8em;
 	}
 	.score-detail .btn,.btn-inline {
-		padding: 7px 20px;
+		padding: 10px 15px;
 		font-size: 0.85em;
 	}
 	.btn-inline {
@@ -954,7 +954,7 @@ span.form-check {
 		text-transform: uppercase;
 	}
 	.list-score,.score-main,.act-list,.list-category {
-		padding: 0 15px 0 5px;
+		/*padding: 0 15px 0 5px;*/
 		margin-bottom: 72px;
 	}
 	.list-action {
