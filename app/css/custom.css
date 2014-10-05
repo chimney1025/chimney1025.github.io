@@ -1000,6 +1000,9 @@ span.form-check {
 		margin: 0 auto;
 		clear: both;
 	}
+	.account-menu{
+		padding: 10px;
+	}
 	.list-score,.score-main,.act-list,.list-category {
 		padding: 0 15px 0 5px;
 		margin-bottom: 72px;
