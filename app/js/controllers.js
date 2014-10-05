@@ -509,9 +509,21 @@ rapidScoreControllers.controller('TypeAdminCtrl', [ '$scope', 'TypeAdminAPI',
 			// remove
 			// edit
 			// add
-			$scope.cInfo = {};
-			$scope.cCheck = '';
-			$scope.addtype = function(pid, pname) {
+			$scope.addptype = function(){
+				var result = prompt("Adding main type");
+				if(result){
+					var shortname = result.replace('-', ' ')
+					.replace('\'', '').split(/\s{2,}/g)
+					.join('-').toLowerCase();
+					Type.add({},{
+						name: result,
+						shortname: shortname
+					},function(res){
+						$scope.types = Type.getAll();
+					})
+				}
+			}
+			$scope.addsubtype = function(pid, pname) {
 				var result = prompt("Adding type to : " + pname);
 				if(result){
 					var shortname = result.replace('-', ' ')
@@ -525,6 +537,7 @@ rapidScoreControllers.controller('TypeAdminCtrl', [ '$scope', 'TypeAdminAPI',
 					})
 				}
 			};
+			//either parent or sub
 			$scope.updatetype = function(pid, pname) {
 				var result = prompt("Updating type : " + pname);
 				if(result){
@@ -539,6 +552,7 @@ rapidScoreControllers.controller('TypeAdminCtrl', [ '$scope', 'TypeAdminAPI',
 					})
 				}
 			};
+			//either parent or sub
 			$scope.removetype = function(subid, pname, subname) {
 				var r = confirm('Deleting ' + pname + ' - ' + subname);
 				// deleting score category records before deleting this category
