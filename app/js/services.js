@@ -247,7 +247,6 @@ rapidScoreServices.factory('SubTypeAdminAPI', [
 				},
 				add : {
 					method : 'POST',
-					isArray: true,
 					headers : {
 						'Content-Type' : 'application/json',
 						'Authorization' : 'Bearer '
