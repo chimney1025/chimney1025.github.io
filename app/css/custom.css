@@ -655,6 +655,10 @@ audio {
 	margin: 0 0 0 15px;
 }
 
+.act-list h2 span span{
+	margin: 0;
+}
+
 .act-list h2 span .btn {
 	padding: 7px 30px;
 }
@@ -940,10 +944,6 @@ span.form-check {
 	.score-detail h1 {
 		font-size: 1.8em;
 	}
-	.score-detail .btn,.btn-inline {
-		padding: 10px 15px;
-		font-size: 0.85em;
-	}
 	.btn-inline {
 		margin: 0 10px 10px 0;
 	}
@@ -1010,10 +1010,6 @@ span.form-check {
 	.act-list li {
 		padding: 3px 0;
 		font-size: 0.95em;
-	}
-	.act-list h2 span {
-		padding: 0;
-		margin: 5px 0 0 0;
 	}
 	.list-filter {
 		width: 80%;
