@@ -48,8 +48,7 @@ rapidScoreControllers
 						'$window',
 						'$sce',
 						function($scope, $rootScope, $routeParams, Score, Cart,
-								CheckOrder, $location, $window, $sce,
-								Instrument, Composer, Genre) {
+								CheckOrder, $location, $window, $sce) {
 							$scope.score = Score.getOne({
 								scoreid : $routeParams.scoreId
 							});
@@ -202,41 +201,20 @@ rapidScoreControllers
 						'ScoreAdminAPI',
 						'ScoreTypeAPI',
 						'TypeAdminAPI',
-						'InstrumentAPI',
-						'ComposerAPI',
-						'GenreAPI',
 						'$location',
-						function($scope, Score, ScoreType, Type, Instrument,
-								Composer, Genre, $location) {
-
-							$scope.getInstruments = Instrument.getAll();
-							$scope.getComposers = Composer.getAll();
-							$scope.getGenres = Genre.getAll();
+						function($scope, Score, ScoreType, Type, $location) {
 
 							// Add Score
 							$scope.scoreInfo = {};
 							$scope.scoreCheck = '';
-							$scope.scoreInfo.instruments = [];
-							$scope.scoreInfo.composers = [];
-							$scope.scoreInfo.genres = [];
 
-							$scope.orderProp = 'c_name';
+							$scope.orderProp = 'title';
 
 							$scope.info = function() {
 								alert('To add same instrument multiple times, choose -- back then choose the same instrument again');
 							}
 
-							$scope.addinstrument = function(value) {
-								if (value) {
-									$scope.scoreInfo.instruments.push(value);
-								}
-							};
-
-							$scope.removeinstrument = function(i) {
-								console.log(i);
-								$scope.scoreInfo.instruments.splice(i, 1);
-							};
-
+/*
 							$scope.addcomposer = function(value) {
 								if (value) {
 									$scope.scoreInfo.composers.push(value);
@@ -250,20 +228,7 @@ rapidScoreControllers
 								$scope.scoreInfo.composers.splice(i, 1);
 								$scope.getComposers.push(value);
 							};
-
-							$scope.addgenre = function(value) {
-								if (value) {
-									$scope.scoreInfo.genres.push(value);
-									var i = $scope.getGenres.indexOf(value);
-									console.log(i);
-									$scope.getGenres.splice(i, 1);
-								}
-							};
-							$scope.removegenre = function(value, i) {
-								console.log(i);
-								$scope.scoreInfo.genres.splice(i, 1);
-								$scope.getGenres.push(value);
-							};
+*/
 
 							$scope.scoreAdd = function() {
 
@@ -280,32 +245,12 @@ rapidScoreControllers
 									console.log('posting data...');
 									// create json to be posted
 									var scoreData = new Object();
-									scoreData.category = [];
 
 									scoreData.title = $scope.scoreInfo.title;
 									scoreData.shortname = $scope.scoreInfo.title
 											.replace('-', ' ')
 											.replace('\'', '').split(/\s{2,}/g)
 											.join('-').toLowerCase();
-
-									if ($scope.scoreInfo.instruments.length) {
-										for (var i = 0; i < $scope.scoreInfo.instruments.length; i++) {
-											scoreData.category
-													.push($scope.scoreInfo.instruments[i].c_number);
-										}
-									}
-									if ($scope.scoreInfo.composers.length) {
-										for (var i = 0; i < $scope.scoreInfo.composers.length; i++) {
-											scoreData.category
-													.push($scope.scoreInfo.composers[i].c_number);
-										}
-									}
-									if ($scope.scoreInfo.genres.length) {
-										for (var i = 0; i < $scope.scoreInfo.genres.length; i++) {
-											scoreData.category
-													.push($scope.scoreInfo.genres[i].c_number);
-										}
-									}
 
 									if ($scope.scoreInfo.slider) {
 										scoreData.slider = $scope.scoreInfo.slider;
@@ -377,12 +322,8 @@ rapidScoreControllers.controller('ScoreEditCtrl', [
 		'ScoreAdminAPI',
 		'ScoreTypeAPI',
 		'TypeAdminAPI',
-		'InstrumentAPI',
-		'ComposerAPI',
-		'GenreAPI',
 		'$location',
-		function($scope, $routeParams, Score, ScoreType, Type, Instrument,
-				Composer, Genre, $location) {
+		function($scope, $routeParams, Score, ScoreType, Type, $location) {
 
 			/*
 			 * $scope.getInstruments = Instrument.getAll(); $scope.getComposers =
@@ -393,10 +334,6 @@ rapidScoreControllers.controller('ScoreEditCtrl', [
 				scoreid : $routeParams.scoreId
 			});
 			$scope.scoreCheck = '';
-
-			$scope.scoreInfo.instruments = [];
-			$scope.scoreInfo.composers = [];
-			$scope.scoreInfo.genres = [];
 
 			/*
 			 * $scope.addinstrument = function(value){
@@ -419,7 +356,6 @@ rapidScoreControllers.controller('ScoreEditCtrl', [
 					console.log('posting data...');
 					// create json to be posted
 					var scoreData = new Object();
-					scoreData.category = [];
 
 					scoreData.title = $scope.scoreInfo.title;
 					scoreData.shortname = $scope.scoreInfo.title.replace('-',
