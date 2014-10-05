@@ -501,9 +501,9 @@ rapidScoreControllers.controller('ScoreEditCtrl', [
 			};
 		} ]);
 
-rapidScoreControllers.controller('TypeAdminCtrl', [ '$scope', 'TypeAdminAPI',
+rapidScoreControllers.controller('TypeAdminCtrl', [ '$scope', '$rootScope', 'TypeAdminAPI',
 		'SubTypeAdminAPI',
-		function($scope, Type, SubType) {
+		function($scope, $rootScope, Type, SubType) {
 			$scope.types = Type.getAll();
 
 			// remove
@@ -520,6 +520,7 @@ rapidScoreControllers.controller('TypeAdminCtrl', [ '$scope', 'TypeAdminAPI',
 						shortname: shortname
 					},function(res){
 						$scope.types = Type.getAll();
+						$rootScope.parent_types = Type.getAll();
 					})
 				}
 			}
@@ -549,6 +550,7 @@ rapidScoreControllers.controller('TypeAdminCtrl', [ '$scope', 'TypeAdminAPI',
 						shortname: shortname
 					},function(res){
 						$scope.types = Type.getAll();
+						$rootScope.parent_types = Type.getAll();
 					})
 				}
 			};
@@ -562,6 +564,7 @@ rapidScoreControllers.controller('TypeAdminCtrl', [ '$scope', 'TypeAdminAPI',
 					}, function(res) {
 						console.log(' deleted : ' +res.name);
 						$scope.types = Type.getAll();
+						$rootScope.parent_types = Type.getAll();
 					});
 				} else {
 
