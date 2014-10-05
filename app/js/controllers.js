@@ -524,38 +524,30 @@ rapidScoreControllers.controller('TypeAdminCtrl', [ '$scope', 'TypeAdminAPI',
 						$scope.types = Type.getAll();
 					})
 				}
-				
-				/*
-				if (!$scope.cInfo.cname) {
-					$scope.cCheck = 'Invalid category name';
-					return;
-				} else if (!$scope.cInfo.cshortname) {
-					$scope.cCheck = 'Invalid category short name';
-					return;
-				} else {
-					var cData = new Object();
-					cData.cname = $scope.cInfo.cname;
-					cData.cshortname = $scope.cInfo.cshortname;
-					cData.ctnumber = $scope.cInfo.ctnumber;
-					Type.save({}, cData, function(res) {
-						console.log(res + ' added : ' + cname);
-
-					});
-				}
-				*/
 			};
-			$scope.removetype = function(cnumber, cname) {
-				var r = confirm('Deleting ' + cname);
+			$scope.updatetype = function(pid, pname) {
+				var result = prompt("Updating type : " + pname);
+				if(result){
+					var shortname = result.replace('-', ' ')
+					.replace('\'', '').split(/\s{2,}/g)
+					.join('-').toLowerCase();
+					SubType.save({typeid:pid},{
+						name: result,
+						shortname: shortname
+					},function(res){
+						$scope.types = Type.getAll();
+					})
+				}
+			};
+			$scope.removetype = function(subid, pname, subname) {
+				var r = confirm('Deleting ' + pname + ' - ' + subname);
 				// deleting score category records before deleting this category
 				if (r == true) {
 					Type.remove({
-						cnumber : cnumber
+						typeid : subid
 					}, function(res) {
-						console.log(res + ' deleted : ' + cnumber);
-						// $location.path('/admin/sheetmusic');
-						$scope.getInstruments = Instrument.getAll();
-						$scope.getComposers = Composer.getAll();
-						$scope.getGenres = Genre.getAll();
+						console.log(' deleted : ' +res.name);
+						$scope.types = Type.getAll();
 					});
 				} else {
 
