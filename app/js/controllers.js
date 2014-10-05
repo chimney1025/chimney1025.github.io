@@ -98,8 +98,7 @@ rapidScoreControllers
 																alert('Already in Purchased');
 																// $location.path('/account/purchased');
 															} else {
-																Cart
-																		.add(
+																Cart.add(
 																				{},
 																				{
 																					score_id : $scope.score.id
@@ -147,7 +146,7 @@ rapidScoreControllers.controller('ScoreAdminCtrl', [ '$scope', 'ScoreAdminAPI',
 
 			// remove
 			$scope.removeScore = function(value, sid, name) {
-				if (value) {
+				if (value == true) {
 					var r = confirm('Deleting ' + name);
 				} else {
 					var r = confirm('Re adding ' + name);
@@ -156,7 +155,7 @@ rapidScoreControllers.controller('ScoreAdminCtrl', [ '$scope', 'ScoreAdminAPI',
 					Score.remove({
 						scoreid : sid
 					}, function(res) {
-						if (value)
+						if (value == true)
 							console.log(res + ' deleted : ' + sid);
 						else
 							console.log(res + ' re added : ' + sid);
@@ -199,10 +198,8 @@ rapidScoreControllers
 				[
 						'$scope',
 						'ScoreAdminAPI',
-						'ScoreTypeAPI',
-						'TypeAdminAPI',
 						'$location',
-						function($scope, Score, ScoreType, Type, $location) {
+						function($scope, Score, $location) {
 
 							// Add Score
 							$scope.scoreInfo = {};
@@ -248,8 +245,7 @@ rapidScoreControllers
 
 									scoreData.title = $scope.scoreInfo.title;
 									scoreData.shortname = $scope.scoreInfo.title
-											.replace('-', ' ')
-											.replace('\'', '').split(/\s{2,}/g)
+											.replace('-', ' ').replace('\'', '').replace(/ +/g, ' ').split(' ')
 											.join('-').toLowerCase();
 
 									if ($scope.scoreInfo.slider) {
@@ -297,8 +293,7 @@ rapidScoreControllers
 
 									console.log(scoreData);
 
-									Score
-											.add(
+									Score.add(
 													{},
 													scoreData,
 													function(res) {
@@ -320,10 +315,8 @@ rapidScoreControllers.controller('ScoreEditCtrl', [
 		'$scope',
 		'$routeParams',
 		'ScoreAdminAPI',
-		'ScoreTypeAPI',
-		'TypeAdminAPI',
 		'$location',
-		function($scope, $routeParams, Score, ScoreType, Type, $location) {
+		function($scope, $routeParams, Score, $location) {
 
 			/*
 			 * $scope.getInstruments = Instrument.getAll(); $scope.getComposers =
@@ -358,9 +351,9 @@ rapidScoreControllers.controller('ScoreEditCtrl', [
 					var scoreData = new Object();
 
 					scoreData.title = $scope.scoreInfo.title;
-					scoreData.shortname = $scope.scoreInfo.title.replace('-',
-							' ').replace('\'', '').split(/\s{2,}/g).join('-')
-							.toLowerCase();
+					scoreData.shortname = $scope.scoreInfo.title
+                        .replace('-', ' ').replace('\'', '').replace(/ +/g, ' ').split(' ')
+                        .join('-').toLowerCase();
 
 					/*
 					 * if($scope.scoreInfo.instruments.length){ for(var i=0; i<$scope.scoreInfo.instruments.length;
@@ -437,6 +430,46 @@ rapidScoreControllers.controller('ScoreEditCtrl', [
 			};
 		} ]);
 
+rapidScoreControllers.controller('ScoreTypeCtrl', ['$scope', '$routeParams', 'ScoreAdminAPI', 'ScoreTypeAPI', 'TypeAdminAPI',
+    function($scope, $routeParams, Score, ScoreType, Type){
+        console.log('editing tags');
+
+        $scope.types = Type.getAll();
+        $scope.score = Score.getOne({
+            scoreid : $routeParams.scoreId
+        }, function(res){
+            $scope.selected = res.types;
+        });
+
+        $scope.addscoretype = function(typeid, typename){
+            var r = confirm('Adding ' + typeid + ' ' + typename);
+            if(r == true){
+                //check if already added
+
+                ScoreType.add({}, {
+                    scoreid: $routeParams.scoreId,
+                    typeid: typeid
+                }, function(res){
+                    $scope.selected = res;
+                });
+            }
+        }
+
+        $scope.removescoretype = function(typeid, typename){
+            var r = confirm('Deleting ' + typeid + ' ' + typename);
+            if(r == true){
+                alert($routeParams.scoreId);
+                alert(typeid);
+                ScoreType.remove({
+                    scoreid: $routeParams.scoreId,
+                    typeid: typeid
+                }, function(res){
+                    $scope.selected = res;
+                });
+            }
+        }
+    }]);
+
 rapidScoreControllers.controller('TypeAdminCtrl', [ '$scope', '$rootScope', 'TypeAdminAPI',
 		'SubTypeAdminAPI', 'TypeAPI',
 		function($scope, $rootScope, Type, SubType, MenuType) {
@@ -448,9 +481,9 @@ rapidScoreControllers.controller('TypeAdminCtrl', [ '$scope', '$rootScope', 'Typ
 			$scope.addptype = function(){
 				var result = prompt("Adding main type");
 				if(result){
-					var shortname = result.replace('-', ' ')
-					.replace('\'', '').split(/\s{2,}/g)
-					.join('-').toLowerCase();
+					var shortname = result
+                        .replace('-', ' ').replace('\'', '').replace(/ +/g, ' ').split(' ')
+                        .join('-').toLowerCase();
 					Type.add({},{
 						name: result,
 						shortname: shortname
@@ -463,9 +496,9 @@ rapidScoreControllers.controller('TypeAdminCtrl', [ '$scope', '$rootScope', 'Typ
 			$scope.addsubtype = function(pid, pname) {
 				var result = prompt("Adding type to : " + pname);
 				if(result){
-					var shortname = result.replace('-', ' ')
-					.replace('\'', '').split(/\s{2,}/g)
-					.join('-').toLowerCase();
+					var shortname = result
+                        .replace('-', ' ').replace('\'', '').replace(/ +/g, ' ').split(' ')
+                        .join('-').toLowerCase();
 					SubType.add({typeid:pid},{
 						name: result,
 						shortname: shortname
@@ -478,9 +511,9 @@ rapidScoreControllers.controller('TypeAdminCtrl', [ '$scope', '$rootScope', 'Typ
 			$scope.updatetype = function(pid, pname) {
 				var result = prompt("Updating type : " + pname);
 				if(result){
-					var shortname = result.replace('-', ' ')
-					.replace('\'', '').split(/\s{2,}/g)
-					.join('-').toLowerCase();
+					var shortname = result
+                        .replace('-', ' ').replace('\'', '').replace(/ +/g, ' ').split(' ')
+					    .join('-').toLowerCase();
 					SubType.save({typeid:pid},{
 						name: result,
 						shortname: shortname
@@ -491,20 +524,25 @@ rapidScoreControllers.controller('TypeAdminCtrl', [ '$scope', '$rootScope', 'Typ
 				}
 			};
 			//either parent or sub
-			$scope.removetype = function(subid, pname, subname) {
-				var r = confirm('Deleting ' + pname + ' - ' + subname);
-				// deleting score category records before deleting this category
-				if (r == true) {
-					SubType.remove({
-						typeid : subid
-					}, function(res) {
-						console.log(' deleted : ' +res.name);
-						$scope.types = Type.getAll();
-						$rootScope.parent_types = MenuType.getAll();
-					});
-				} else {
+			$scope.removetype = function(subid, pname, subname, subcount) {
+                if(subcount > 0){
+                    alert('Type ' + subname + ' has more than 1 sub types. Delete sub types first');
+                } else{
+                    var r = confirm('Deleting ' + pname + ' - ' + subname);
+                    // deleting score category records before deleting this category
+                    if (r == true) {
+                        SubType.remove({
+                            typeid : subid
+                        }, function(res) {
+                            console.log(' deleted : ' +res.name);
+                            $scope.types = Type.getAll();
+                            $rootScope.parent_types = MenuType.getAll();
+                        });
+                    } else {
 
-				}
+                    }
+                }
+
 
 			};
 		} ]);
@@ -629,14 +667,14 @@ rapidScoreControllers.controller('UserCtrl', [
 					}
 				});
 			}
-			
+
 			$scope.showscore = function(file) {
 				if(!file){
 					alert('File url not available');
 				} else{
 					//open pdf file in a new page/or send email to user
 					var win = window.open(file, '_blank');
-  					win.focus();	
+  					win.focus();
 				}
 			}
 		} ]);
@@ -654,11 +692,11 @@ rapidScoreControllers.controller('sessionService',
 						breadcrumbs, Type) {
 					console.log($location.path());
 					$scope.breadcrumbs = breadcrumbs;
-					
+
 					$rootScope.parent_types = Type.getAll(function(res){
 						//console.log(res);
 					});
-					
+
 
 					if (!$window.localStorage.getItem('token')) {
 						$rootScope.logged = false;

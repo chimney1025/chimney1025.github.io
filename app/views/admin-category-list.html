@@ -7,7 +7,7 @@
             <li><a href="#/admin">Settings</a></li>
             <li><a href="#/admin/users">User List</a></li>
             <li><a href="#/admin/sheetmusic">Sheet Music</a></li>
-            <li><a href="#/admin/categories" class="active">Categories</a></li>
+            <li><a href="#/admin/categories" class="active">Categories (Tags)</a></li>
         </ul>
     </div>
 
@@ -16,17 +16,17 @@
         <div ng-repeat="ptype in types" ng-if="!ptype.obsolete">
         <h2>Manage<span ng-bind="ptype.name | titlelize"></span>
         <span><a ng-click="updatetype(ptype.id, ptype.name)"><span class="glyphicon glyphicon-pencil"></span></a>
-        <a ng-click="removetype(ptype.id, '', ptype.name)" ><span class="glyphicon glyphicon-remove"></span></a></span>
+        <a ng-click="removetype(ptype.id, '', ptype.name, ptype.subtypes.length)" ><span class="glyphicon glyphicon-remove"></span></a></span>
             
         </h2>
         
         <ul class="">
             <li>
-                <button type="button" class="btn btn-default btn-inline btn-category" ng-repeat="subtype in ptype.subtypes" ng-if="!subtype.obsolete">
+                <span type="button" class="btn btn-default btn-inline btn-category" ng-repeat="subtype in ptype.subtypes" ng-if="!subtype.obsolete">
                     {{subtype.name}}
                     <a ng-click="updatetype(subtype.id, subtype.name)"><span class="glyphicon glyphicon-pencil"></span></a>
-                    <a ng-click="removetype(subtype.id, ptype.name, subtype.name)" ><span class="glyphicon glyphicon-remove"></span></a>
-                </button>
+                    <a ng-click="removetype(subtype.id, ptype.name, subtype.name, 0)" ><span class="glyphicon glyphicon-remove"></span></a>
+                </span>
                 <a type="button" class="btn btn-warning btn-inline" ng-click="addsubtype(ptype.id, ptype.name)">ADD</a>
             </li>
         </ul>

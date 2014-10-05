@@ -7,7 +7,7 @@
             <li><a href="#/admin">Settings</a></li>
             <li><a href="#/admin/users">User List</a></li>
             <li><a href="#/admin/sheetmusic" class="active">Sheet Music</a></li>
-            <li><a href="#/admin/categories">Categories</a></li>
+            <li><a href="#/admin/categories">Categories (Tags)</a></li>
         </ul>
     </div>
 
@@ -28,7 +28,8 @@
                 <span class="admin-action list-action">
                     <a type="button" ng-if="item.slider && !item.obsolete" ng-click="addSlider(false, item.id)" class="btn btn-default btn-xs">Remove from Slider</a>
                     <a type="button" ng-if="!item.slider && !item.obsolete" ng-click="addSlider(true, item.id)" class="btn btn-primary btn-xs">Add to Slider</a>
-                    <a type="button" class="btn btn-warning btn-xs">TAGS</a>
+                    <a type="button" ng-if="!item.obsolete" href="#/admin/sheetmusic-type/{{item.id}}" class="btn btn-warning btn-xs">TAGS</a>
+                    <a type="button" ng-if="item.obsolete" ng-click="removeScore(false, item.id, item.title)" class="btn btn-primary btn-xs">Re-add</a>
                 </span>
             </li>
         </ul>

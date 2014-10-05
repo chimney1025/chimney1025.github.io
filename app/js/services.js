@@ -3,7 +3,7 @@
 /* Services */
 
 var rapidScoreServices = angular.module('rapidScoreServices', [ 'ngResource' ]);
-// var hostname = 'http://localhost:5000/api';
+//var hostname = 'http://localhost:5000/api';
 var hostname = 'http://lazyscore.herokuapp.com/api';
 
 // Protected URL
@@ -276,7 +276,7 @@ rapidScoreServices.factory('ScoreTypeAPI', [
 		'$resource',
 		'$window',
 		function($resource, $window) {
-			return $resource(hostname + '/admin/score-type/',
+			return $resource(hostname + '/admin/score-type/:scoreid/:typeid',
 			//
 			{}, {
 				add : {

@@ -151,7 +151,14 @@ rapidScoreApp.config([ '$routeProvider', function($routeProvider) {
 		access : {
 			requiredLogin : true
 		}
-	}).when('/admin/categories', {
+	}).when('/admin/sheetmusic-type/:scoreId', {
+        templateUrl : 'views/admin-score-type.html',
+        label : 'Edit Tags',
+        controller : 'ScoreTypeCtrl',
+        access : {
+            requiredLogin : true
+        }
+    }).when('/admin/categories', {
 		templateUrl : 'views/admin-category-list.html',
 		label : 'Types',
 		controller : 'TypeAdminCtrl',
