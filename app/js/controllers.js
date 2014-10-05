@@ -442,24 +442,33 @@ rapidScoreControllers.controller('ScoreTypeCtrl', ['$scope', '$routeParams', 'Sc
         });
 
         $scope.addscoretype = function(typeid, typename){
-            var r = confirm('Adding ' + typeid + ' ' + typename);
-            if(r == true){
-                //check if already added
+            //check if already added
+            console.log($scope.selected);
+            var flag = 0;
+            for(var i=0; i<$scope.selected.length; i++){
+                if($scope.selected[i].id == typeid){
+                    alert(typename + ' already added');
+                    flag = 1;
+                    break;
+                }
+            }
 
-                ScoreType.add({}, {
-                    scoreid: $routeParams.scoreId,
-                    typeid: typeid
-                }, function(res){
-                    $scope.selected = res;
-                });
+            if(flag == 0){
+                var r = confirm('Adding ' + typename);
+                if(r == true){
+                    ScoreType.add({}, {
+                        scoreid: $routeParams.scoreId,
+                        typeid: typeid
+                    }, function(res){
+                        $scope.selected = res;
+                    });
+                }
             }
         }
 
         $scope.removescoretype = function(typeid, typename){
-            var r = confirm('Deleting ' + typeid + ' ' + typename);
+            var r = confirm('Deleting ' + typename);
             if(r == true){
-                alert($routeParams.scoreId);
-                alert(typeid);
                 ScoreType.remove({
                     scoreid: $routeParams.scoreId,
                     typeid: typeid
