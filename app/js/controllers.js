@@ -49,9 +49,7 @@ rapidScoreControllers
 						'$sce',
 						function($scope, $rootScope, $routeParams, Score, Cart,
 								CheckOrder, $location, $window, $sce) {
-							$scope.score = Score.getOne({
-								scoreid : $routeParams.scoreId
-							});
+							$scope.score = Score.getOne({scoreid : $routeParams.scoreId});
 							console.log($scope.score);
 							console.log($window.localStorage.getItem('uid'));
 
@@ -83,56 +81,39 @@ rapidScoreControllers
 									}
 
 									if (flag == 0) {
-										CheckOrder
-												.get(
-														{
-															scoreid : $scope.score.id
-														},
-														function(res) {
-															console
-																	.log('checking order');
-															console.log(res);
-															// alert(res.hasOrdered);
-															if (res
-																	&& res.hasOrdered) {
-																alert('Already in Purchased');
-																// $location.path('/account/purchased');
-															} else {
-																Cart.add(
-																				{},
-																				{
-																					score_id : $scope.score.id
-																				},
-																				function(
-																						res) {
-																					console
-																							.log('res:');
-																					console
-																							.log(res);
-																					if (res) {
-																						alert('added');
-																						$rootScope.added_score_name = $scope.score.name;
-																						$rootScope.added_score_shortname = $scope.score.shortname;
-																						$rootScope.logged_cart = Cart
-																								.getAll(function(
-																										res) {
-																									$rootScope.cartcount = res.length;
-																								});
-																						// $rootScope.action
-																						// =
-																						// "Already
-																						// In
-																						// Cart";
-																						// $rootScope.action_class
-																						// =
-																						// 'btn-danger';
-																						// $window.location.reload();
-																						// $location.path('/account/shopping-cart');
+										CheckOrder.get({scoreid : $scope.score.id},function(res) {
+											console.log('checking order');
+											console.log(res);
+											// alert(res.hasOrdered);
+											if (res && res.hasOrdered) {
+												alert('Already in Purchased');
+												// $location.path('/account/purchased');
+											} else {
+												Cart.add({},{score_id : $scope.score.id},function(res) {
+													console.log('res:');
+													console.log(res);
+													if (res) {
+														alert('added');
+														$rootScope.added_score_name = $scope.score.name;
+														$rootScope.added_score_shortname = $scope.score.shortname;
+														$rootScope.logged_cart = Cart.getAll(
+															function(res){$rootScope.cartcount = res.length;}
+															);
+															// $rootScope.action
+															// =
+															// "Already
+															// In
+															// Cart";
+															// $rootScope.action_class
+															// =
+															// 'btn-danger';
+															// $window.location.reload();
+															// $location.path('/account/shopping-cart');
 
-																					}
-																				});
-															}
-														});
+													}
+												});
+											}
+										});
 									}
 								}
 							};
