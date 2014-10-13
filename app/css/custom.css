@@ -898,7 +898,8 @@ span.form-check {
 }
 
 .form-signin .need-help {
-	margin: 10px 0 12px 0;
+	margin: 10px 0 0 0;
+    display: block;
 }
 
 .form-signin .checkbox {
