@@ -10,8 +10,14 @@ html,body {
 }
 
 body {
-	padding: 0;
-	background-color: #222;
+	padding: 50px 0;
+
+
+    background: #f8f9fa;
+
+    background-image: -moz-radial-gradient(center 45deg,circle cover, #f8f9fa, #fff);
+    background-image: radial-gradient(center 45deg,circle cover, #f8f9fa, #fff);
+    background-image: -webkit-gradient(radial, 50% 50%, 0, 50% 50%,800, from(#f8f9fa), to(#fff));
 	/*background-color: #f8f9fa;*/
 }
 
@@ -108,11 +114,12 @@ a {
 
 /*View Container*/
 .view-container {
-	padding-bottom: 60px;
+	/*padding-bottom: 60px;*/
 
     background: #f8f9fa;
 
     background-image: -moz-radial-gradient(center 45deg,circle cover, #f8f9fa, #fff);
+    background-image: radial-gradient(center 45deg,circle cover, #f8f9fa, #fff);
     background-image: -webkit-gradient(radial, 50% 50%, 0, 50% 50%,800, from(#f8f9fa), to(#fff));
     /*
     background: -webkit-linear-gradient(top, #333 , #f8f9fa);
@@ -146,15 +153,13 @@ a {
 /*Footer*/
 #footer {
 	padding: 0;
+    height: 50px;
     /*
 	background-color: #f8f9fa;
 	color: #333;
 	*/
-    background-color: #333;
+    background-color: #222;
 	color: #87a5a5;
-
-	position: absolute;
-	bottom: 0;
 	width: 100%;
 }
 
@@ -169,7 +174,7 @@ a {
 
 #footer .container {
     margin: 0 auto;
-    padding: 20px 0;
+    padding: 10px 0;
     /*
     border-top: 1px solid #e5e5e5;
     */
@@ -179,7 +184,7 @@ a {
 	Navbar
 -----------------------------------*/
 .navbar {
-	padding: 15px;
+	padding: 3px;
 	border-radius: 0;
 	margin: 0;
 }
@@ -269,10 +274,9 @@ a {
 	max-width: 320px;
 
 	border: 1px solid #e5e5e5;
-
-    -moz-box-shadow: 0 0 10px #e5e5e5;
-    -webkit-box-shadow: 0 0 10px #e5e5e5;
-    box-shadow: 0 0 10px #e5e5e5;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
 
 }
 
@@ -282,6 +286,7 @@ a {
 	margin: 0 auto;
 	color: #333;
 	display: none;
+
 }
 
 #pagination {
@@ -931,6 +936,9 @@ span.form-check {
 
 /* Tablet size */
 @media ( max-width : 992px) {
+    body{
+        padding: 100px 0;
+    }
 	.container.text-center {
 		padding: 0 15px;
 	}
@@ -996,6 +1004,10 @@ span.form-check {
 
 /* Mobile device size */
 @media ( max-width : 767px) {
+
+    body{
+        padding: 50px 0;
+    }
 	.navbar {
 		padding: 10px 0;
 	}

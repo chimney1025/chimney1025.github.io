@@ -6,16 +6,23 @@
         <img class="biglogo" src="images/logo-wendy-big.png">
     </div>
     <div class="col-md-6 col-sm-6 col-xs-12 text-center">
-        <h2>Log In</h2>
 
-        <a class="pull-center need-help" href="#/register">Not Registered? Click to Sign Up </a><span class="clearfix"></span>
-        <form name="LoginForm" class="form-signin" role="form" ng-submit="login()">
-            <input type="text" class="form-control" placeholder="Username" ng-model="loginInfo.username" required autofocus>
-            <input type="password" class="form-control" placeholder="Password" ng-model="loginInfo.password" required>
-            <span class="form-check" ng-show="loginCheck" ng-bind="loginCheck"></span>
-            <button class="btn btn-sm btn-primary" type="submit">Sign in</button>
-            <a>Forgotten Password?</a>
-            <span class="clearfix"></span>
+        <form name="LoginForm" class="form-signin form-horizontal" role="form" ng-submit="login()">
+            <fieldset>
+                <legend>Login</legend>
+                <input type="text" class="form-control" placeholder="Username" ng-model="loginInfo.username" required autofocus>
+                <input type="password" class="form-control" placeholder="Password" ng-model="loginInfo.password" required>
+                <span class="form-check" ng-show="loginCheck" ng-bind="loginCheck"></span>
+
+                <a class="pull-center need-help" href="#/register">Not Registered? Click to Sign Up </a><span class="clearfix"></span>
+                <div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-1">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+                <a>Forgotten Password?</a>
+                <span class="clearfix"></span>
+            </fieldset>
         </form>
         <!--
         <div class="fb-login-button" data-max-rows="1" data-size="large" data-show-faces="false" data-auto-logout-link="false"></div>
