@@ -23,6 +23,12 @@
                 <li ng-if="score.desc">
                     <p class="well" ng-bind="score.desc"></p>
                 </li>
+                <li><div class="fb-like" data-share="true" data-width="450" data-show-faces="true"></div></li>
+                <li><a class="twitter-share-button" href="https://twitter.com/share">Tweet</a>
+                    <script type="text/javascript">
+                        window.twttr=(function(d,s,id){var t,js,fjs=d.getElementsByTagName(s)[0];if(d.getElementById(id)){return}js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);return window.twttr||(t={_e:[],ready:function(f){t._e.push(f)}})}(document,"script","twitter-wjs"));
+                    </script>
+                </li>
             </div>
         </ul>
         <!-- 4:3 aspect ratio -->

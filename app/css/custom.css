@@ -11,8 +11,8 @@ html,body {
 
 body {
 	padding: 0;
-	background-color: #f8f9fa;
-	/*background-color: #edf4f0;*/
+	background-color: #222;
+	/*background-color: #f8f9fa;*/
 }
 
 ul {
@@ -109,6 +109,17 @@ a {
 /*View Container*/
 .view-container {
 	padding-bottom: 60px;
+
+    background: #f8f9fa;
+
+    background-image: -moz-radial-gradient(center 45deg,circle cover, #f8f9fa, #fff);
+    background-image: -webkit-gradient(radial, 50% 50%, 0, 50% 50%,800, from(#f8f9fa), to(#fff));
+    /*
+    background: -webkit-linear-gradient(top, #333 , #f8f9fa);
+    background: -o-linear-gradient(bottom, #333 , #f8f9fa);
+    background: -moz-linear-gradient(bottom, #333 0%, #333 50%, #f8f9fa 50%, #f8f9fa 100%);
+    background: linear-gradient(to bottom, #333 0%, #333 33% , #f8f9fa 33%, #f8f9fa 100%);
+    */
 }
 
 #main-container {
@@ -135,11 +146,16 @@ a {
 /*Footer*/
 #footer {
 	padding: 0;
-	background-color: #222;
+    /*
+	background-color: #f8f9fa;
+	color: #333;
+	*/
+    background-color: #333;
+	color: #87a5a5;
+
 	position: absolute;
 	bottom: 0;
 	width: 100%;
-	color: #87a5a5;
 }
 
 #footer img {
@@ -152,8 +168,11 @@ a {
 }
 
 #footer .container {
-	padding-top: 20px;
-	padding-bottom: 20px;
+    margin: 0 auto;
+    padding: 20px 0;
+    /*
+    border-top: 1px solid #e5e5e5;
+    */
 }
 
 /*-----------------------------------
@@ -239,16 +258,22 @@ a {
 }
 
 .slider,.slide {
-	min-height: 585px;
+	min-height: 525px;
 }
 
 .slide img {
 	float: right;
-	margin-right: 20px;
+	margin-right: 40px;
 	width: 40%;
 	min-width: 240px;
-	max-width: 385px;
+	max-width: 320px;
+
 	border: 1px solid #e5e5e5;
+
+    -moz-box-shadow: 0 0 10px #e5e5e5;
+    -webkit-box-shadow: 0 0 10px #e5e5e5;
+    box-shadow: 0 0 10px #e5e5e5;
+
 }
 
 .slide-index {
@@ -296,17 +321,17 @@ a {
 	float: left;
 	margin-left: 20px; 
 	padding : 3px 5px;
-	padding: 3px 5px;
+    text-align: left;
 }
 
 .slide-name a {
-	color: #333;
+	color: #666;
 	font-size: 32px;
 }
 
 .slide-name p {
-	margin-top: 60px;
-	height: 140px;
+	margin-top: 30px;
+	min-height: 140px;
 	font-style: italic;
 	color: #aaa;
 }
@@ -924,7 +949,7 @@ span.form-check {
   }
   .slide-name p{
     margin-top:30px;
-    height: 120px;
+    min-height: 120px;
   }
 	/*
     .breadcrumb{
