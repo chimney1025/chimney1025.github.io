@@ -496,6 +496,7 @@ a {
 	float: right;
 	font-size: 0.95em;
 	background-color: #fafafa;
+	border: 1px solid #e8e8e8;
 	min-height: 200px;
 	/*
     max-width: 320px;
@@ -642,7 +643,8 @@ audio {
 	text-align: left;
 	max-width: 200px;
 	min-width: 180px;
-	background-color:#f1f1f1;
+	background-color:#fafafa;
+	border: 1px solid #e8e8e8;
 }
 
 .account-menu li {
