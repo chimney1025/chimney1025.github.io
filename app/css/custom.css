@@ -153,7 +153,7 @@ a {
 /*Footer*/
 #footer {
 	padding: 0;
-    height: 50px;
+    min-height: 50px;
     /*
 	background-color: #f8f9fa;
 	color: #333;
@@ -1009,6 +1009,9 @@ span.form-check {
     body{
         padding: 50px 0;
     }
+    #footer{
+        padding: 0;
+    }
 	.navbar {
 		padding: 10px 0;
 	}
@@ -1115,9 +1118,6 @@ span.form-check {
 	.popover.bottom {
 		margin-top: 7px;
 		margin-left: -40px;
-	}
-	#footer {
-		padding: 0;
 	}
 }
 
