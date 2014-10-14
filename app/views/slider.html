@@ -4,16 +4,16 @@
 		ng-show="image.visible">
 		<div class="slide-name">
 			<a href="#/sheetmusic/{{image.shortname}}" ng-bind="image.title"></a>
-			<p class="well">lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes</p>
-			<div class="slide-index">
-				<span ng-bind="(currentIndex+1)"></span>/<span
-					ng-bind="images.length"></span>
-			</div>
-			<ol id="pagination">
-    				<li ng-repeat="image in images"><a>1</a></li>
-			</ol>
-		</div>
+			<p class="well" ng-if="image.desc" ng-bind="image.desc"></p>
+        </div>
 		<img ng-src="{{image.imageurl}}" />
+        <div class="slide-index">
+            <span ng-bind="(currentIndex+1)"></span>/<span
+                ng-bind="images.length"></span>
+        </div>
+        <ol id="pagination">
+            <li ng-repeat="image in images"><a>1</a></li>
+        </ol>
 	</div>
 
 	<!-- Slide Previews 
