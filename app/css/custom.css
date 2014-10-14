@@ -15,9 +15,9 @@ body {
 
     background: #f8f9fa;
 
-    background-image: -moz-radial-gradient(center 45deg,circle cover, #f8f9fa, #fff);
-    background-image: radial-gradient(center 45deg,circle cover, #f8f9fa, #fff);
-    background-image: -webkit-gradient(radial, 50% 50%, 0, 50% 50%,800, from(#f8f9fa), to(#fff));
+    background-image: -moz-radial-gradient(center 45deg,circle cover, #f1f2f3, #fff);
+    background-image: radial-gradient(center 45deg,circle cover, #f1f2f3, #fff);
+    background-image: -webkit-gradient(radial, 50% 50%, 0, 50% 50%,800, from(#f1f2f3), to(#fff));
 	/*background-color: #f8f9fa;*/
 }
 
@@ -118,9 +118,9 @@ a {
 
     background: #f8f9fa;
 
-    background-image: -moz-radial-gradient(center 45deg,circle cover, #f8f9fa, #fff);
-    background-image: radial-gradient(center 45deg,circle cover, #f8f9fa, #fff);
-    background-image: -webkit-gradient(radial, 50% 50%, 0, 50% 50%,800, from(#f8f9fa), to(#fff));
+    background-image: -moz-radial-gradient(center 45deg,circle cover, #f1f2f3, #fff);
+    background-image: radial-gradient(center 45deg,circle cover, #f1f2f3, #fff);
+    background-image: -webkit-gradient(radial, 50% 50%, 0, 50% 50%,800, from(#f1f2f3), to(#fff));
     /*
     background: -webkit-linear-gradient(top, #333 , #f8f9fa);
     background: -o-linear-gradient(bottom, #333 , #f8f9fa);
