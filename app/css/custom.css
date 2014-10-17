@@ -13,11 +13,11 @@ body {
 	padding: 50px 0;
 
     background-color: #f8f9fa;
-
+/*
     background-image: -moz-radial-gradient(center 45deg,circle cover, #e1e2e3, #fff);
     background-image: radial-gradient(center 45deg,circle cover, #e1e2e3, #fff);
     background-image: -webkit-gradient(radial, 50% 50%, 0, 50% 50%,800, from(#e1e2e3), to(#fff));
-	/*background-color: #f8f9fa;*/
+	background-color: #f8f9fa;*/
 }
 
 ul {
