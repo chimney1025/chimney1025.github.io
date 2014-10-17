@@ -224,8 +224,8 @@ rapidScoreControllers
 									// create json to be posted
 									var scoreData = new Object();
 
-									scoreData.title = $scope.scoreInfo.title;
-									scoreData.shortname = $scope.scoreInfo.title
+									scoreData.title = $scope.scoreInfo.title.trim();
+									scoreData.shortname = $scope.scoreInfo.title.trim()
 											.replace('-', ' ').replace('\'', '').replace(/ +/g, ' ').split(' ')
 											.join('-').toLowerCase();
 
@@ -236,38 +236,38 @@ rapidScoreControllers
 									}
 
 									if ($scope.scoreInfo.price) {
-										scoreData.price = $scope.scoreInfo.price;
+										scoreData.price = $scope.scoreInfo.price.trim();
 									} else {
 										scoreData.price = 0;
 									}
 									if ($scope.scoreInfo.page) {
-										scoreData.page = $scope.scoreInfo.page;
+										scoreData.page = $scope.scoreInfo.page.trim();
 									} else {
 										scoreData.page = 0;
 									}
 
 									if ($scope.scoreInfo.desc) {
-										scoreData.desc = $scope.scoreInfo.desc;
+										scoreData.desc = $scope.scoreInfo.desc.trim();
 									} else {
 										scoreData.desc = '';
 									}
 									if ($scope.scoreInfo.audiourl) {
-										scoreData.audiourl = $scope.scoreInfo.audiourl;
+										scoreData.audiourl = $scope.scoreInfo.audiourl.trim();
 									} else {
 										scoreData.audiourl = '';
 									}
 									if ($scope.scoreInfo.videourl) {
-										scoreData.videourl = $scope.scoreInfo.videourl;
+										scoreData.videourl = $scope.scoreInfo.videourl.trim();
 									} else {
 										scoreData.videourl = '';
 									}
 									if ($scope.scoreInfo.imageurl) {
-										scoreData.imageurl = $scope.scoreInfo.imageurl;
+										scoreData.imageurl = $scope.scoreInfo.imageurl.trim();
 									} else {
 										scoreData.imageurl = '';
 									}
 									if ($scope.scoreInfo.fileurl) {
-										scoreData.fileurl = $scope.scoreInfo.fileurl;
+										scoreData.fileurl = $scope.scoreInfo.fileurl.trim();
 									} else {
 										scoreData.fileurl = '';
 									}
@@ -331,8 +331,8 @@ rapidScoreControllers.controller('ScoreEditCtrl', [
 					// create json to be posted
 					var scoreData = new Object();
 
-					scoreData.title = $scope.scoreInfo.title;
-					scoreData.shortname = $scope.scoreInfo.title
+					scoreData.title = $scope.scoreInfo.title.trim();
+					scoreData.shortname = $scope.scoreInfo.title.trim()
                         .replace('-', ' ').replace('\'', '').replace(/ +/g, ' ').split(' ')
                         .join('-').toLowerCase();
 
@@ -355,37 +355,37 @@ rapidScoreControllers.controller('ScoreEditCtrl', [
 					}
 
 					if ($scope.scoreInfo.price) {
-						scoreData.price = $scope.scoreInfo.price;
+						scoreData.price = $scope.scoreInfo.price.trim();
 					} else {
 						scoreData.price = 0;
 					}
 					if ($scope.scoreInfo.page) {
-						scoreData.page = $scope.scoreInfo.page;
+						scoreData.page = $scope.scoreInfo.page.trim();
 					} else {
 						scoreData.page = 0;
 					}
 					if ($scope.scoreInfo.desc) {
-						scoreData.desc = $scope.scoreInfo.desc;
+						scoreData.desc = $scope.scoreInfo.desc.trim();
 					} else {
 						scoreData.desc = '';
 					}
 					if ($scope.scoreInfo.audiourl) {
-						scoreData.audiourl = $scope.scoreInfo.audiourl;
+						scoreData.audiourl = $scope.scoreInfo.audiourl.trim();
 					} else {
 						scoreData.audiourl = '';
 					}
 					if ($scope.scoreInfo.videourl) {
-						scoreData.videourl = $scope.scoreInfo.videourl;
+						scoreData.videourl = $scope.scoreInfo.videourl.trim();
 					} else {
 						scoreData.videourl = '';
 					}
 					if ($scope.scoreInfo.imageurl) {
-						scoreData.imageurl = $scope.scoreInfo.imageurl;
+						scoreData.imageurl = $scope.scoreInfo.imageurl.trim();
 					} else {
 						scoreData.imageurl = '';
 					}
 					if ($scope.scoreInfo.fileurl) {
-						scoreData.fileurl = $scope.scoreInfo.fileurl;
+						scoreData.fileurl = $scope.scoreInfo.fileurl.trim();
 					} else {
 						scoreData.fileurl = '';
 					}
@@ -470,12 +470,12 @@ rapidScoreControllers.controller('TypeAdminCtrl', [ '$scope', '$rootScope', 'Typ
 			// add
 			$scope.addptype = function(){
 				var result = prompt("Adding main type");
-				if(result){
-					var shortname = result
+				if(result.trim()){
+					var shortname = result.trim()
                         .replace('-', ' ').replace('\'', '').replace(/ +/g, ' ').split(' ')
                         .join('-').toLowerCase();
 					Type.add({},{
-						name: result,
+						name: result.trim(),
 						shortname: shortname
 					},function(res){
 						$scope.types = Type.getAll();
@@ -485,12 +485,12 @@ rapidScoreControllers.controller('TypeAdminCtrl', [ '$scope', '$rootScope', 'Typ
 			}
 			$scope.addsubtype = function(pid, pname) {
 				var result = prompt("Adding type to : " + pname);
-				if(result){
-					var shortname = result
+				if(result.trim()){
+					var shortname = result.trim()
                         .replace('-', ' ').replace('\'', '').replace(/ +/g, ' ').split(' ')
                         .join('-').toLowerCase();
 					SubType.add({typeid:pid},{
-						name: result,
+						name: result.trim(),
 						shortname: shortname
 					},function(res){
 						$scope.types = Type.getAll();
@@ -500,12 +500,12 @@ rapidScoreControllers.controller('TypeAdminCtrl', [ '$scope', '$rootScope', 'Typ
 			//either parent or sub
 			$scope.updatetype = function(pid, pname) {
 				var result = prompt("Updating type : " + pname);
-				if(result){
-					var shortname = result
+				if(result.trim()){
+					var shortname = result.trim()
                         .replace('-', ' ').replace('\'', '').replace(/ +/g, ' ').split(' ')
 					    .join('-').toLowerCase();
 					SubType.save({typeid:pid},{
-						name: result,
+						name: result.trim(),
 						shortname: shortname
 					},function(res){
 						$scope.types = Type.getAll();
@@ -878,7 +878,7 @@ rapidScoreControllers
 									CheckUsername
 											.getOne(
 													{
-														username : $scope.regInfo.username
+														username : $scope.regInfo.username.trim()
 													},
 													function(res2) {
 														console
@@ -896,8 +896,8 @@ rapidScoreControllers
 															// posted
 
 															var regData = new Object();
-															regData.username = $scope.regInfo.username;
-															regData.password = $scope.regInfo.pass1;
+															regData.username = $scope.regInfo.username.trim();
+															regData.password = $scope.regInfo.pass1.trim();
 															console
 																	.log(regData);
 															User
