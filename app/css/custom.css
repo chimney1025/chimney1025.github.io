@@ -113,7 +113,7 @@ a {
 
 /*View Container*/
 .view-container {
-	/*padding-bottom: 60px;*/
+	padding-bottom: 60px;
     /*
         background: #f8f9fa;
 
@@ -1032,7 +1032,7 @@ span.form-check {
 		margin: 0 auto;
 	}
 	.view-container {
-		padding-bottom: 120px;
+		padding-bottom: 0px;
 	}
 
 	.input-search {
@@ -1049,7 +1049,8 @@ span.form-check {
 		padding: 10px;
 	}
 	.list-score,.score-main,.act-list,.list-category {
-		padding: 0 15px 0 5px;
+		padding: 0;
+		width:80%;
 		margin-bottom: 72px;
 	}
 	.act-list li {
