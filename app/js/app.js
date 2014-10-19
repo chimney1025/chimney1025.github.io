@@ -186,6 +186,15 @@ rapidScoreApp.run(function($rootScope, $location, $window, $http) {
 						&& !$window.localStorage.getItem('token')) {
 					$location.path("/login");
 				}
+
+                var n = $location.path().split('/').length;
+                console.log($location.path().split('/')[n-1]);
+
+                $rootScope.setActive = function(name){
+                    if(name == $location.path().split('/')[n-1]){
+                        return 'active';
+                    }
+                }
 			});
 	$rootScope.$on('$routeChangeSuccess', function(e, current, pre) {
 		if ($location.path() == "/home" || $location.path() == "/login"

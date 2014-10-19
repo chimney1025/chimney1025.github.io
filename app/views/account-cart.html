@@ -48,27 +48,15 @@
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="score in logged_cart | orderBy:orderProp">
+            <tr ng-repeat="score in cart | orderBy:orderProp">
                 <td><a href="#/sheetmusic/{{score.shortname}}" ng-bind="score.title"></a></td>
                 <td>{{score.price | currency:'£'}}</td>
                 <td><a type="button" ng-click="removecart(score.title, score.id)" class="btn btn-danger btn-xs">Remove</a></td>
-                <br>
-                <!--
-                <table class="table table-striped table-hover" ng-show="order.showdetail">
-                    <tr class="info" ng-repeat="score in orderdetails">
-                        <td><a ng-click="showscore(score.fileurl)" ng-bind="score.title"></a></td>
-                        <td>score.price | currency:'£'</td>
-                        <td><a type="button" ng-click="showscore(score.fileurl)" class="btn btn-primary btn-xs">Request</a></td>
-                    </tr>
-                </table>
-                -->
-                <ul class="list-detail" ng-show="order.showdetail">
-                    <li class="row" ng-repeat="score in orderdetails">
-                        <span class="list-item"><a ng-click="showscore(score.fileurl)" ng-bind="score.title"></a></span>
-                        <span class="price" ng-bind="score.price | currency:'£'"></span>
-                        <span class="list-action"><a type="button" ng-click="showscore(score.fileurl)" class="btn btn-primary btn-xs">Request</a></span>
-                    </li>
-                </ul>
+            </tr>
+            <tr>
+                <td>Total:</td>
+                <td>{{total | currency: '£'}}</td>
+                <td><a type="button" class="btn btn-primary btn-sm" ng-click="order()">Order</a><img class="paypal" src="images/paypal.png"></td>
             </tr>
             </tbody>
         </table>

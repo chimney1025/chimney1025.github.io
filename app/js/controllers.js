@@ -17,10 +17,6 @@ rapidScoreControllers.controller('ScoreListCtrl', [ '$scope', '$rootScope',
             }
         });
         //console.log($scope.scores);
-        /*
-         * $scope.getInstruments = Instrument.getAll(); $scope.getComposers =
-         * Composer.getAll(); $scope.getGenres = Genre.getAll();
-         */
     } ]);
 
 rapidScoreControllers.controller('TypeCtrl', [ '$scope', '$rootScope',
@@ -200,22 +196,6 @@ rapidScoreControllers
                 alert('To add same instrument multiple times, choose -- back then choose the same instrument again');
             }
 
-            /*
-             $scope.addcomposer = function(value) {
-             if (value) {
-             $scope.scoreInfo.composers.push(value);
-             var i = $scope.getComposers.indexOf(value);
-             console.log(i);
-             $scope.getComposers.splice(i, 1);
-             }
-             };
-             $scope.removecomposer = function(value, i) {
-             console.log(i);
-             $scope.scoreInfo.composers.splice(i, 1);
-             $scope.getComposers.push(value);
-             };
-             */
-
             $scope.scoreAdd = function() {
 
                 $scope.scoreCheck = '';
@@ -307,23 +287,10 @@ rapidScoreControllers.controller('ScoreEditCtrl', [
     '$location',
     function($scope, $routeParams, Score, $location) {
 
-        /*
-         * $scope.getInstruments = Instrument.getAll(); $scope.getComposers =
-         * Composer.getAll(); $scope.getGenres = Genre.getAll();
-         */
-
         $scope.scoreInfo = Score.getOne({
             scoreid : $routeParams.scoreId
         });
         $scope.scoreCheck = '';
-
-        /*
-         * $scope.addinstrument = function(value){
-         * $scope.scoreInfo.instruments.push(value); }; $scope.addcomposer =
-         * function(value){ $scope.scoreInfo.composers.push(value); };
-         * $scope.addgenre = function(value){
-         * $scope.scoreInfo.genres.push(value); };
-         */
 
         $scope.scoreSave = function() {
             $scope.scoreCheck = '';
@@ -343,18 +310,6 @@ rapidScoreControllers.controller('ScoreEditCtrl', [
                 scoreData.shortname = $scope.scoreInfo.title.trim()
                     .replace('-', ' ').replace('\'', '').replace(/ +/g, ' ').split(' ')
                     .join('-').toLowerCase();
-
-                /*
-                 * if($scope.scoreInfo.instruments.length){ for(var i=0; i<$scope.scoreInfo.instruments.length;
-                 * i++){
-                 * scoreData.category.push($scope.scoreInfo.instruments[i].c_number); } }
-                 * if($scope.scoreInfo.composers.length){ for(var i=0; i<$scope.scoreInfo.composers.length;
-                 * i++){
-                 * scoreData.category.push($scope.scoreInfo.composers[i].c_number); } }
-                 * if($scope.scoreInfo.genres.length){ for(var i=0; i<$scope.scoreInfo.genres.length;
-                 * i++){
-                 * scoreData.category.push($scope.scoreInfo.genres[i].c_number); } }
-                 */
 
                 if ($scope.scoreInfo.slider) {
                     scoreData.slider = $scope.scoreInfo.slider;
@@ -590,12 +545,21 @@ rapidScoreControllers.controller('UserCtrl', [
         if ($rootScope.logged_admin) {
             // $location.path("/admin");
         }
+        $scope.total = 0;
 
-        $scope.cart = Cart.getAll();
-        $scope.purchased = Order.getAll();
-        for (var i = 0; i < $scope.purchased.length; i++) {
-            $scope.purchased[i].showdetail = false;
-        }
+        $scope.cart = Cart.getAll(function(res){
+            console.log(res.length);
+            for(var i=0; i<res.length; i++){
+                $scope.total += res[i].price;
+            }
+        });
+
+        $scope.purchased = Order.getAll(function(res){
+            for (var i = 0; i < $scope.purchased.length; i++) {
+                $scope.purchased[i].showdetail = false;
+            }
+        });
+
         // get scores of each order
 
         $scope.showorder = function(orderid) {
@@ -819,9 +783,9 @@ rapidScoreControllers
 
                                 // refresh
                                 $rootScope.loginCheck = "Login Successful. Redirecting...";
-                                // $location.path("/account");
-                                $window.location
-                                    .reload();
+                                $rootScope.setCheck = "form-success";
+                                //$location.path("/account");
+                                $window.location.reload();
 
                             } else {
                                 $window.localStorage

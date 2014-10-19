@@ -12,7 +12,7 @@
                 <legend>Login</legend>
                 <input type="text" class="form-control" placeholder="Username" ng-model="loginInfo.username" required autofocus>
                 <input type="password" class="form-control" placeholder="Password" ng-model="loginInfo.password" required>
-                <span class="form-check" ng-show="loginCheck" ng-bind="loginCheck"></span>
+                <span class="form-check" ng-show="loginCheck" ng-bind="loginCheck" ng-class="setCheck"></span>
 
                 <a class="pull-center need-help" href="#/register">Not Registered? Click to Sign Up </a><span class="clearfix"></span>
                 <div class="form-group">

@@ -121,6 +121,15 @@ a:hover,a.active, .list-group-item.active, .list-group-item.active:hover, .list-
     background-color: #468595;
 }
 
+span.form-check {
+    padding: 0;
+    color: #f08573;
+    margin-top: 20px;
+}
+
+span.form-success {
+    color: #468595 !important;
+}
 
 .well {
 	-webkit-box-shadow: none;
@@ -855,7 +864,7 @@ textarea{
 	cursor: pointer;
 }
 
-.totals .paypal {
+.paypal {
 	clear: both;
 	float: right;
 	margin: 0 36px 0 0;
@@ -908,12 +917,6 @@ textarea{
 	padding: 15px;
 	margin: 0 auto;
 	font-size: 0.95em;
-}
-
-span.form-check {
-	padding: 0;
-	color: #f08573;
-	margin-top: 20px;
 }
 
 .form-signin .form-signin-heading,.form-signin .checkbox {
