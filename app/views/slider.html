@@ -3,7 +3,7 @@
 	<div class="slide" ng-repeat="image in images | orderBy:orderProp"
 		ng-show="image.visible">
 		<div class="slide-name">
-			<a href="#/sheetmusic/{{image.shortname}}" ng-bind="image.title"></a>
+			<h1><a href="#/sheetmusic/{{image.shortname}}" ng-bind="image.title"></a></h1>
 			<p class="well" ng-if="image.desc" ng-bind="image.desc"></p>
         </div>
 		<img ng-src="{{image.imageurl}}" />

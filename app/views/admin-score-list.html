@@ -2,19 +2,18 @@
 <div class="container text-center">
 
     <div class="col-md-3 col-sm-3 col-xs-3 text-left account-menu">
-        <ul class="">
-            <li><h4>Welcome Admin</h4></li>
-            <li><a href="#/admin">Settings</a></li>
-            <li><a href="#/admin/users">User List</a></li>
-            <li><a href="#/admin/sheetmusic" class="active">Sheet Music</a></li>
-            <li><a href="#/admin/categories">Categories (Tags)</a></li>
-        </ul>
+        <div class="list-group">
+            <a href="#/admin/users" class="list-group-item">User List</a>
+            <a href="#/admin/sheetmusic" class="list-group-item active">Sheet Music</a>
+            <a href="#/admin/categories" class="list-group-item">Categories (Tags)</a>
+        </div>
     </div>
 
     <div class="col-md-9 col-sm-9 col-xs-9 text-left act-list">
         <h2>Manage Sheet Music ({{scores.length}})
             <span><a type="button" href="#/admin/add-sheetmusic" class="btn btn-warning">ADD</a></span>
         </h2>
+        <!--
         <ul class="">
             <li class="row" ng-repeat="item in scores | filter:query | orderBy:orderProp">
                 <span class="list-item">
@@ -32,6 +31,44 @@
                     <a type="button" ng-if="item.obsolete" ng-click="removeScore(false, item.id, item.title)" class="btn btn-primary btn-xs">Re-add</a>
                 </span>
             </li>
+        </ul>
+        -->
+        <table class="table table-striped table-hover ">
+            <thead>
+            <tr>
+                <th>Title</th>
+                <th>Edit</th>
+                <th>Tags</th>
+                <th>Remove</th>
+                <th>Slider</th>
+                <th>Added</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="item in scores | filter:query | orderBy:orderProp">
+                <td>
+                    <a href="#/sheetmusic/{{item.shortname}}" ng-if="item.obsolete"><strike>{{item.title}}</strike></a>
+                    <a href="#/sheetmusic/{{item.shortname}}" ng-if="!item.obsolete">{{item.title}}</a>
+                </td>
+                <td><a href="#/admin/sheetmusic/{{item.id}}" ng-if="!item.obsolete" ><span class="glyphicon glyphicon-pencil"></span></a></td>
+                <td><a href="#/admin/sheetmusic-type/{{item.id}}" ng-if="!item.obsolete" ><span class="glyphicon glyphicon-pencil"></span></a></td>
+                <td><a ng-click="removeScore(true, item.id, item.title)" ng-if="!item.obsolete" ><span class="glyphicon glyphicon-remove"></span></a></td>
+                <td>
+                    <a type="button" ng-if="item.slider && !item.obsolete" ng-click="addSlider(false, item.id)" class="btn btn-default btn-xs">Remove</a>
+                    <a type="button" ng-if="!item.slider && !item.obsolete" ng-click="addSlider(true, item.id)" class="btn btn-primary btn-xs">Add</a>
+                </td>
+                <td>{{item.createdAt | date : 'yyyy-MM-dd'}}</td>
+            </tr>
+            </tbody>
+        </table>
+        <ul class="pagination">
+            <li class="disabled"><a href="#">«</a></li>
+            <li class="active"><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+            <li><a href="#">»</a></li>
         </ul>
     </div>
 

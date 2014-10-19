@@ -2,13 +2,11 @@
 <div class="container text-center">
 
     <div class="col-md-3 col-sm-3 col-xs-3 text-left account-menu">
-        <ul class="">
-            <li><h4>Welcome Admin</h4></li>
-            <li><a href="#/admin">Settings</a></li>
-            <li><a href="#/admin/users">User List</a></li>
-            <li><a href="#/admin/sheetmusic" class="active">Sheet Music</a></li>
-            <li><a href="#/admin/categories">Categories (Tags)</a></li>
-        </ul>
+        <div class="list-group">
+            <a href="#/admin/users" class="list-group-item">User List</a>
+            <a href="#/admin/sheetmusic" class="list-group-item active">Sheet Music</a>
+            <a href="#/admin/categories" class="list-group-item">Categories (Tags)</a>
+        </div>
     </div>
 
     <div class="col-md-9 col-sm-9 col-xs-9 text-left act-list">
@@ -55,16 +53,14 @@
                 </li>
                 <li class="row">
                     <span class="act-label">DESCRIPTION</span>
-                    <textarea class="act-content form-control" placeholder="Description" ng-model="scoreInfo.desc" ng-trim="true"></textarea>
+                    <textarea class="act-content form-control" rows="3" id="textArea" placeholder="Description" ng-model="scoreInfo.desc" ng-trim="true"></textarea>
 
                 </li>
-                <!--
                 <li class="row">
                     <span class="act-label">SLIDER</span>
                     <input type="checkbox" value="true" name="" class="" placeholder="Add to Slider" ng-model="scoreInfo.slider" ng-checked="scoreInfo.slider" ng-trim="true">
 
                 </li>
-                -->
                 <li>
                     <span class="form-check" ng-show="scoreCheck" ng-bind="scoreCheck"></span>
 

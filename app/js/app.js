@@ -111,12 +111,11 @@ rapidScoreApp.config([ '$routeProvider', function($routeProvider) {
 			requiredLogin : false
 		}
 	}).when('/admin', {
-		templateUrl : 'views/admin-settings.html',
-		label : 'Admin',
-		controller : 'AdminCtrl',
-		access : {
-			requiredLogin : true
-		}
+        redirectTo : '/admin/users',
+        label : 'Admin',
+        access : {
+            requiredLogin : true
+        }
 	}).when('/admin/users', {
 		templateUrl : 'views/admin-user-list.html',
 		label : 'Users',

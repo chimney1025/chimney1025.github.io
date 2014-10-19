@@ -2,31 +2,36 @@
 <div class="container text-center">
 
     <div class="col-md-3 col-sm-3 col-xs-3 text-left account-menu">
-        <ul class="">
-            <li><h4>Welcome Admin</h4></li>
-            <li><a href="#/admin">Settings</a></li>
-            <li><a href="#/admin/users" class="active">User List</a></li>
-            <li><a href="#/admin/sheetmusic">Sheet Music</a></li>
-            <li><a href="#/admin/categories">Categories (Tags)</a></li>
-        </ul>
+        <div class="list-group">
+            <a href="#/admin/users" class="list-group-item active">User List</a>
+            <a href="#/admin/sheetmusic" class="list-group-item">Sheet Music</a>
+            <a href="#/admin/categories" class="list-group-item">Categories (Tags)</a>
+        </div>
     </div>
 
     <div class="col-md-9 col-sm-9 col-xs-9 text-left act-list">
-
-        <h2>Account Detail</h2>
-        <ul class="">
-            <li class="row">
-                <span class="act-label">USERNAME</span>
-                <span class="act-content">{{user.username}}</span>
-            </li>
-            <li class="row">
-                <span class="act-label">REGISTERED</span>
-                <span class="act-content">{{user.createdAt | date : 'yyyy-MM-dd'}}</span>
-            </li>
-        </ul>
-        
-        <h2>Shopping Cart</h2>
+        <h2>Account Details
+            <span><a type="button" href="#/admin/users" class="btn btn-default">BACK</a></span>
+        </h2>
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                Email
+            </div>
+            <div class="panel-body">
+                {{user.username}}
+            </div>
+        </div>
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                Registered At
+            </div>
+            <div class="panel-body">
+                {{user.createdAt | date : 'yyyy-MM-dd'}}
+            </div>
+        </div>
         <!--
+        <h2>Shopping Cart</h2>
+
         <ul class="">
             <div ng-if="user.carts.length">
                 <li class="row" ng-repeat="score in user.carts">
@@ -35,9 +40,9 @@
                 </li>
             </div>
         </ul>
-        -->
+        --><!--
         <h2>Orders</h2>
-        <!--
+
         <ul class="">
             <div ng-if="user.purchased.length">
                 <li class="row" ng-repeat="score in user.purchased">
