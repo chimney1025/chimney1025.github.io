@@ -899,3 +899,20 @@ rapidScoreControllers
                 }
             };
         } ]);
+
+rapidScoreControllers
+    .controller(
+    'ActivateCtrl',
+    [
+        '$scope',
+        'ActivateAPI',
+        '$routeParams',
+        function($scope, Activate, $routeParams) {
+            // Sign Up
+            $scope.res = Activate.get({link: $routeParams.link}, function(r){
+                console.log(r);
+            });
+
+            console.log($scope.res);
+        }
+    ]);

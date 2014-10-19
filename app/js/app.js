@@ -92,11 +92,18 @@ rapidScoreApp.config([ '$routeProvider', function($routeProvider) {
 		}
 	}).when('/register', {
 		templateUrl : 'views/signup.html',
-		label : 'Register',
+		label : 'Registration',
 		controller : 'SignUpCtrl',
 		access : {
 			requiredLogin : false
 		}
+    }).when('/activate/:link', {
+        templateUrl : 'views/activate.html',
+        label : 'Registration',
+        controller : 'ActivateCtrl',
+        access : {
+            requiredLogin : false
+        }
 	}).when('/login', {
 		templateUrl : 'views/login.html',
 		label : 'Login',

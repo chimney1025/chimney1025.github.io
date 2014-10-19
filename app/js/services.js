@@ -385,6 +385,13 @@ rapidScoreServices.factory('CheckUsernameAPI', [ '$resource',
 /* post, put, delete by id */
 
 // options.api.base_url
+rapidScoreServices.factory('ActivateAPI', [ '$resource', function($resource) {
+    return $resource(hostname + '/activate/:link', {}, {
+        get : {
+            method : 'GET'
+        }
+    });
+} ]);
 // user login
 rapidScoreServices.factory('LoginAPI', function($http) {
 	return {
