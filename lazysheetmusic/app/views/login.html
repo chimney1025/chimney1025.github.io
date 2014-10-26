@@ -1,10 +1,4 @@
 
-<div class="container breadcrumbBox">
-    <ol class="breadcrumb">
-        <li><a href="#/home"><span class="glyphicon glyphicon-home"></span></a></li>
-        <li><a href="#/users">Sign Up</a></li>
-    </ol>
-</div>
 <!-- Content -->
 <div class="container text-center centered">
 
@@ -12,19 +6,32 @@
         <img class="biglogo" src="images/logo-wendy-big.png">
     </div>
     <div class="col-md-6 col-sm-6 col-xs-12 text-center">
-        <h2>Log In</h2>
 
-        <a class="pull-center need-help" href="#/register">Not Registered? Click to Sign Up </a><span class="clearfix"></span>
-        <form name="LoginForm" class="form-signin" role="form" ng-submit="login(loginInfo)">
-            <input type="email" class="form-control" placeholder="Email" ng-model="loginInfo.email" required autofocus>
-            <input type="password" class="form-control" placeholder="Password" ng-model="loginInfo.pass" required>
-            <span class="form-check" ng-show="loginCheck">{{loginCheck}}</span>
-            <button class="btn btn-primary btn-block" type="submit">
-            Sign in
-            </button>
-            <a href="#" class="pull-right need-help">Forgotten password? </a><span class="clearfix"></span>
+        <form name="LoginForm" class="form-signin form-horizontal" role="form" ng-submit="login()">
+            <fieldset>
+                <legend>Login</legend>
+                <input type="text" class="form-control" placeholder="Username" ng-model="loginInfo.username" required autofocus>
+                <input type="password" class="form-control" placeholder="Password" ng-model="loginInfo.password" required>
+                <span class="form-check" ng-show="loginCheck" ng-bind="loginCheck" ng-class="setCheck"></span>
+
+                <a class="pull-center need-help" href="#/register">Not Registered? Click to Sign Up </a><span class="clearfix"></span>
+                <div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-1">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+                <a>Forgotten Password?</a>
+                <span class="clearfix"></span>
+            </fieldset>
         </form>
-
-        For Testing : <a href="#/admin/users">Admin</a>
+        <!--
+        <div class="fb-login-button" data-max-rows="1" data-size="large" data-show-faces="false" data-auto-logout-link="false"></div>
+        <span id="signinButton">
+            <span class="g-signin" data-callback="signinCallback" data-clientid="780208245582-ndsnsn3tl9nikfk21ukpr3amgmnalme6.apps.googleusercontent.com" data-cookiepolicy="single_host_origin"
+            data-requestvisibleactions="http://schema.org/AddAction"
+            data-scope="https://www.googleapis.com/auth/plus.login">
+            </span>
+        </span>
+        -->
     </div>
 </div>

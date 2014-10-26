@@ -2,518 +2,966 @@
 
 /* Controllers */
 
-var rapidScoreControllers = angular.module('rapidScoreControllers', ['ui.bootstrap','dialogs']);
+var rapidScoreControllers = angular.module('rapidScoreControllers',
+    [ 'ui.bootstrap' ]);
 
-rapidScoreControllers.controller('ScoreListCtrl', ['$scope', 'ScoreAPI', 'InstrumentAPI', 'ComposerAPI', 'GenreAPI',
-    function($scope, Score, Instrument, Composer, Genre) {
-        $scope.scores = Score.getAll();
-        $scope.getInstruments = Instrument.getAll();
-        $scope.getComposers = Composer.getAll();
-        $scope.getGenres = Genre.getAll();
-    }]);
+rapidScoreControllers.controller('ScoreListCtrl', [ '$scope', '$rootScope',
+    'ScoreAPI', function($scope, $rootScope, Score) {
+        $scope.pageSize = 15;
+        $scope.currentPage = 0;
 
-rapidScoreControllers.controller('ScoreCtrl', ['$scope', '$routeParams', 'ScoreAPI', 'CartAPI', '$location', '$window',
-    function($scope, $routeParams, Score, AddCart, $location, $window, Instrument, Composer, Genre) {
-        $scope.score = Score.getOne({scoreId: $routeParams.scoreId});
-        console.log($scope.score);
-        console.log($window.sessionStorage.getItem('uid'));
+        $scope.scores = Score.getAll(function(res){
+            $scope.numberOfPages = function(){
+                return Math.ceil(res.length/$scope.pageSize);
+            }
+        });
+    } ]);
 
-        $scope.action = 'Add to Cart';
+rapidScoreControllers.controller('TypeCtrl', [ '$scope', '$rootScope',
+    '$routeParams', 'TypeAPI',
+    function($scope, $rootScope, $routeParams, Type) {
+        $scope.result = Type.getOne({
+            typename : $routeParams.typename
+        });
+    } ]);
 
-        $scope.link = function(){
-            console.log('sid:');
-            console.log($scope.score.sid);
+rapidScoreControllers.controller('SubTypeCtrl', [ '$scope', '$rootScope',
+    '$routeParams', 'SubTypeAPI',
+    function($scope, $rootScope, $routeParams, SubType) {
+        $scope.result = SubType.getAll({
+            pname : $routeParams.pname,
+            subname : $routeParams.subname
+        });
+        console.log($scope.result);
+    } ]);
 
-            if(!$window.sessionStorage.getItem('uid')){
-                $location.path('/login');
+rapidScoreControllers
+    .controller(
+    'ScoreCtrl',
+    [
+        '$scope',
+        '$rootScope',
+        '$routeParams',
+        'ScoreAPI',
+        'UserCartAPI',
+        'CheckOrderAPI',
+        '$location',
+        '$window',
+        '$sce',
+        function($scope, $rootScope, $routeParams, Score, Cart,
+                 CheckOrder, $location, $window, $sce) {
+            $scope.score = Score.getOne({scoreid : $routeParams.scoreId});
+            console.log($scope.score);
+            console.log($window.localStorage.getItem('uid'));
+
+            $rootScope.action = 'Add to Cart';
+            $rootScope.action_class = 'btn-warning';
+
+            $scope.trustSrc = function(src) {
+                return $sce.trustAsResourceUrl(src);
             }
 
-            else{
-                var flag = 0;
-                for(var i=0; i<$scope.logged_cart.length; i++){
-                    if($scope.logged_cart[i].sid == $scope.score.sid){
-                        flag = 1;
-                        alert('Already in Cart');
-                        break;
-                    }
+            $scope.link = function() {
+                console.log('score id:');
+                console.log($scope.score.id);
+
+                if (!$window.localStorage.getItem('uid')) {
+                    $location.path('/login');
                 }
 
-                if(flag==0){
-
-                    for(var i=0; i<$scope.logged_purchased.length; i++){
-                        if($scope.logged_purchased[i].sid == $scope.score.sid){
+                else {
+                    var flag = 0;
+                    for (var i = 0; i < $scope.logged_cart.length; i++) {
+                        if ($scope.logged_cart[i].id == $scope.score.id) {
                             flag = 1;
-                            alert('Already in Purchased');
+                            alert('Already in Cart');
+                            // redirect to cart
+                            // $location.path('/account/shopping-cart');
                             break;
                         }
                     }
-                }
 
-                if(flag == 0){
-                    AddCart.add({'uid':$window.sessionStorage.getItem('uid')}, {'sid':$scope.score.sid}, function(res){
-                        console.log('res:');
-                        console.log(res);
-                        if(res){
-                            alert('added');
-                            $window.location.reload();
-                            //$location.path('/users/'+$window.sessionStorage.getItem('username')+'/shopping-cart');
+                    if (flag == 0) {
+                        CheckOrder.get({scoreid : $scope.score.id},function(res) {
+                            console.log('checking order');
+                            console.log(res);
+                            // alert(res.hasOrdered);
+                            if (res && res.hasOrdered) {
+                                alert('Already in Purchased');
+                                // $location.path('/account/purchased');
+                            } else {
+                                Cart.add({},{score_id : $scope.score.id},function(res) {
+                                    console.log('res:');
+                                    console.log(res);
+                                    if (res) {
+                                        alert('added');
+                                        $rootScope.added_score_name = $scope.score.name;
+                                        $rootScope.added_score_shortname = $scope.score.shortname;
+                                        $rootScope.logged_cart = Cart.getAll(
+                                            function(res){$rootScope.cartcount = res.length;}
+                                        );
+                                        // $rootScope.action
+                                        // =
+                                        // "Already
+                                        // In
+                                        // Cart";
+                                        // $rootScope.action_class
+                                        // =
+                                        // 'btn-danger';
+                                        // $window.location.reload();
+                                        // $location.path('/account/shopping-cart');
 
-                        }
-                    });
-                }
-            }
-        };
-    }]);
-
-rapidScoreControllers.controller('ScoreAdminCtrl', ['$scope', 'ScoreAdminAPI', 'EditScoreAPI', 'RemoveScoreCategoryAPI',
-    function($scope, Score, EditScore, RemoveScoreCategory) {
-        $scope.scores = Score.getAll();
-
-        //remove
-        $scope.removeScore = function(sid, name){
-            alert('Deleting ' + name);
-            EditScore.remove({scoreId:sid}, function (res) {
-                console.log(res + ' deleted : ' + sid);
-                //$location.path('/admin/sheetmusic');
-                $scope.scores = Score.getAll();
-            });
-        };
-
-        //edit
-
-        //add
-    }]);
-    
-rapidScoreControllers.controller('ScoreAddCtrl', ['$scope', 'AddScoreAPI', 'AddScoreCategoryAPI', 'AddCategoryAPI', '$location',
-    function($scope, AddScore, AddScoreCategory, AddCategory, $location){
-        
-        //Add Score
-        $scope.scoreInfo = {};
-        $scope.scoreCheck = '';
-
-        $scope.scoreSave = function() {
-            $scope.scoreCheck = '';
-            console.log($scope.scoreInfo);
-
-            if(!$scope.scoreInfo.name) {
-                $scope.scoreCheck = 'Invalid title';
-                return;
-            }
-            //submit data
-            else{
-                console.log('posting data...');
-                //create json to be posted
-                var scoreData = new Object();
-                scoreData.category = [];
-                
-                scoreData.name = $scope.scoreInfo.name;
-                scoreData.shortname = $scope.scoreInfo.name.split(' ').join('-').toLowerCase();
-
-                if($scope.scoreInfo.price){
-                    scoreData.price = $scope.scoreInfo.price;
-                }
-                else {
-                    scoreData.price = 0;
-                }
-                if($scope.scoreInfo.page){
-                    scoreData.page = $scope.scoreInfo.page;
-                }
-                else {
-                    scoreData.page = 0;
-                }
-
-                if($scope.scoreInfo.snippet){
-                    scoreData.snippet = $scope.scoreInfo.snippet;
-                } else{
-                    scoreData.snippet = '';
-                }
-                if($scope.scoreInfo.audioUrl){
-                    scoreData.audioUrl = $scope.scoreInfo.audiourl;
-                } else{
-                    scoreData.audioUrl = '';
-                }
-                if($scope.scoreInfo.videoUrl){
-                    scoreData.videoUrl = $scope.scoreInfo.videourl;
-                } else{
-                    scoreData.videoUrl = '';
-                }
-                if($scope.scoreInfo.imageUrl){
-                    scoreData.imageUrl = $scope.scoreInfo.imageurl;
-                } else{
-                    scoreData.imageUrl = '';
-                }
-                if($scope.scoreInfo.fileUrl){
-                    scoreData.fileUrl = $scope.scoreInfo.fileurl;
-                } else{
-                    scoreData.fileUrl = '';
-                }
-                //category
-                /*
-                for(var i=0; i<$scope.scoreInfo.category.length; i++){
-                    scoreData.category.push($scope.scoreInfo.category[i]);
-                }
-                */
-                console.log(scoreData);
-
-                //convert to json
-                AddScore.save({}, scoreData, function(res){
-                    console.log('res:' + res);
-                    if(res){
-                        alert('added ' + scoreData.shortname);
-                        $location.path('/admin/sheetmusic');
+                                    }
+                                });
+                            }
+                        });
                     }
+                }
+            };
+        } ]);
+
+rapidScoreControllers.controller('ScoreAdminCtrl', [ '$scope', 'ScoreAdminAPI',
+    'SliderAdminAPI', function($scope, Score, Slider) {
+        $scope.scores = Score.getAll();
+        console.log($scope.scores);
+
+        // remove
+        $scope.removeScore = function(value, sid, name) {
+            if (value == true) {
+                var r = confirm('Deleting ' + name);
+            } else {
+                var r = confirm('Re adding ' + name);
+            }
+            if (r == true) {
+                Score.remove({
+                    scoreid : sid
+                }, function(res) {
+                    if (value == true)
+                        console.log(res + ' deleted : ' + sid);
+                    else
+                        console.log(res + ' re added : ' + sid);
+                    // $location.path('/admin/scores');
+                    $scope.scores = Score.getAll();
                 });
+            } else {
+
             }
         };
-    }]);
 
-rapidScoreControllers.controller('ScoreEditCtrl', ['$scope', '$routeParams', 'ScoreAPI', 'EditScoreAPI', 'AddScoreCategoryAPI', 'AddCategoryAPI', 'RemoveScoreCategoryAPI', '$location',
-    function($scope, $routeParams, Score, EditScore, AddScoreCategory, AddCategory, RemoveScoreCategory, $location){
+        $scope.addSlider = function(value, sid) {
+            // convert to json
+            var scoreData = new Object();
+            scoreData.slider = value;
+            console.log(scoreData);
 
-        $scope.scoreInfo = Score.getOne({scoreId: $routeParams.scoreId});
+            Slider.save({
+                scoreid : sid
+            }, scoreData, function(res) {
+                if (res) {
+                    if (value == true) {
+                        //alert('Added to slider');
+                        $scope.scores = Score.getAll();
+                    } else {
+                        //alert('Removed from slider');
+                        $scope.scores = Score.getAll();
+                    }
+
+                    // $location.path('/admin/scores');
+                }
+            });
+
+        };
+    } ]);
+
+rapidScoreControllers
+    .controller(
+    'ScoreAddCtrl',
+    [
+        '$scope',
+        'ScoreAdminAPI',
+        '$location',
+        function($scope, Score, $location) {
+
+            // Add Score
+            $scope.scoreInfo = {};
+            $scope.scoreCheck = '';
+
+            $scope.info = function() {
+                alert('To add same instrument multiple times, choose -- back then choose the same instrument again');
+            };
+
+            $scope.scoreAdd = function() {
+
+                $scope.scoreCheck = '';
+                // console.log($scope.scoreInfo);
+
+                if (!$scope.scoreInfo.title) {
+                    $scope.scoreCheck = 'Invalid title';
+                    console.log($scope.scoreCheck);
+                    return;
+                }
+                // submit data
+                else {
+                    console.log('posting data...');
+                    // create json to be posted
+                    var scoreData = new Object();
+
+                    scoreData.title = $scope.scoreInfo.title.trim();
+                    scoreData.shortname = $scope.scoreInfo.title.trim()
+                        .replace('-', ' ').replace('\'', '').replace(/ +/g, ' ').split(' ')
+                        .join('-').toLowerCase();
+
+                    if ($scope.scoreInfo.slider) {
+                        scoreData.slider = $scope.scoreInfo.slider;
+                    } else {
+                        scoreData.slider = false;
+                    }
+
+                    if ($scope.scoreInfo.price) {
+                        scoreData.price = $scope.scoreInfo.price;
+                    } else {
+                        scoreData.price = 0;
+                    }
+                    if ($scope.scoreInfo.page) {
+                        scoreData.page = $scope.scoreInfo.page;
+                    } else {
+                        scoreData.page = 0;
+                    }
+
+                    if ($scope.scoreInfo.desc) {
+                        scoreData.desc = $scope.scoreInfo.desc.trim();
+                    } else {
+                        scoreData.desc = '';
+                    }
+                    if ($scope.scoreInfo.audiourl) {
+                        scoreData.audiourl = $scope.scoreInfo.audiourl.trim();
+                    } else {
+                        scoreData.audiourl = '';
+                    }
+                    if ($scope.scoreInfo.videourl) {
+                        scoreData.videourl = $scope.scoreInfo.videourl.trim();
+                    } else {
+                        scoreData.videourl = '';
+                    }
+                    if ($scope.scoreInfo.imageurl) {
+                        scoreData.imageurl = $scope.scoreInfo.imageurl.trim();
+                    } else {
+                        scoreData.imageurl = '';
+                    }
+                    if ($scope.scoreInfo.fileurl) {
+                        scoreData.fileurl = $scope.scoreInfo.fileurl.trim();
+                    } else {
+                        scoreData.fileurl = '';
+                    }
+
+                    console.log(scoreData);
+
+                    Score.add(
+                        {},
+                        scoreData,
+                        function(res) {
+                            console.log('res:'
+                                + res);
+                            if (res) {
+                                alert('added '
+                                    + scoreData.shortname);
+                                $location
+                                    .path('/admin/scores');
+                            }
+                        });
+
+                }
+            };
+        } ]);
+
+rapidScoreControllers.controller('ScoreEditCtrl', [
+    '$scope',
+    '$routeParams',
+    'ScoreAdminAPI',
+    '$location',
+    function($scope, $routeParams, Score, $location) {
+
+        $scope.scoreInfo = Score.getOne({
+            scoreid : $routeParams.scoreId
+        });
         $scope.scoreCheck = '';
 
         $scope.scoreSave = function() {
             $scope.scoreCheck = '';
             console.log($scope.scoreInfo);
 
-            if(!$scope.scoreInfo.name) {
+            if (!$scope.scoreInfo.title) {
                 $scope.scoreCheck = 'Invalid title';
                 return;
             }
-            //submit data
-            else{
+            // submit data
+            else {
                 console.log('posting data...');
-                //create json to be posted
+                // create json to be posted
                 var scoreData = new Object();
-                scoreData.category = [];
 
-                scoreData.name = $scope.scoreInfo.name;
-                scoreData.shortname = $scope.scoreInfo.name.split(' ').join('-').toLowerCase();
+                scoreData.title = $scope.scoreInfo.title.trim();
+                scoreData.shortname = $scope.scoreInfo.title.trim()
+                    .replace('-', ' ').replace('\'', '').replace(/ +/g, ' ').split(' ')
+                    .join('-').toLowerCase();
 
-                if($scope.scoreInfo.price){
-                    scoreData.price = $scope.scoreInfo.price;
+                if ($scope.scoreInfo.slider) {
+                    scoreData.slider = $scope.scoreInfo.slider;
+                } else {
+                    scoreData.slider = false;
                 }
-                else {
+
+                if ($scope.scoreInfo.price) {
+                    scoreData.price = $scope.scoreInfo.price;
+                } else {
                     scoreData.price = 0;
                 }
-                if($scope.scoreInfo.page){
+                if ($scope.scoreInfo.page) {
                     scoreData.page = $scope.scoreInfo.page;
-                }
-                else {
+                } else {
                     scoreData.page = 0;
                 }
-                if($scope.scoreInfo.snippet){
-                    scoreData.snippet = $scope.scoreInfo.snippet;
-                } else{
-                    scoreData.snippet = '';
+                if ($scope.scoreInfo.desc) {
+                    scoreData.desc = $scope.scoreInfo.desc.trim();
+                } else {
+                    scoreData.desc = '';
                 }
-                if($scope.scoreInfo.audioUrl){
-                    scoreData.audioUrl = $scope.scoreInfo.audiourl;
-                } else{
-                    scoreData.audioUrl = '';
+                if ($scope.scoreInfo.audiourl) {
+                    scoreData.audiourl = $scope.scoreInfo.audiourl.trim();
+                } else {
+                    scoreData.audiourl = '';
                 }
-                if($scope.scoreInfo.videoUrl){
-                    scoreData.videoUrl = $scope.scoreInfo.videourl;
-                } else{
-                    scoreData.videoUrl = '';
+                if ($scope.scoreInfo.videourl) {
+                    scoreData.videourl = $scope.scoreInfo.videourl.trim();
+                } else {
+                    scoreData.videourl = '';
                 }
-                if($scope.scoreInfo.imageUrl){
-                    scoreData.imageUrl = $scope.scoreInfo.imageurl;
-                } else{
-                    scoreData.imageUrl = '';
+                if ($scope.scoreInfo.imageurl) {
+                    scoreData.imageurl = $scope.scoreInfo.imageurl.trim();
+                } else {
+                    scoreData.imageurl = '';
                 }
-                if($scope.scoreInfo.fileUrl){
-                    scoreData.fileUrl = $scope.scoreInfo.fileurl;
-                } else{
-                    scoreData.fileUrl = '';
+                if ($scope.scoreInfo.fileurl) {
+                    scoreData.fileurl = $scope.scoreInfo.fileurl.trim();
+                } else {
+                    scoreData.fileurl = '';
                 }
-                //category
+                // category
                 /*
-                 for(var i=0; i<$scope.scoreInfo.category.length; i++){
-                 scoreData.category.push($scope.scoreInfo.category[i]);
-                 }
+                 * for(var i=0; i<$scope.scoreInfo.category.length; i++){
+                 * scoreData.category.push($scope.scoreInfo.category[i]); }
                  */
                 console.log(scoreData);
 
-                //convert to json
-                EditScore.save({scoreId:$scope.scoreInfo.sid}, scoreData, function(res){
-                    if(res){
+                // convert to json
+                Score.save({
+                    scoreid : $routeParams.scoreId
+                }, scoreData, function(res) {
+                    if (res) {
                         alert('edited ' + scoreData.shortname);
-                        $location.path('/admin/sheetmusic');
+                        // $scope.scoreInfo = Score.getOne({scoreid:
+                        // $routeParams.scoreId});
+                        $location.path('/admin/scores');
                     }
                 });
             }
         };
-    }]);
+    } ]);
 
-rapidScoreControllers.controller('CategoryAdminCtrl', ['$scope', 'CategoryAdminAPI', 'InstrumentAPI', 'ComposerAPI', 'GenreAPI', 'AddCategoryAPI', 'EditCategoryAPI',
-    function($scope, Category, Instrument, Composer, Genre, AddCategory, EditCategory) {
-        $scope.categories = Category.getAll();
-        $scope.getInstruments = Instrument.getAll();
-        $scope.getComposers = Composer.getAll();
-        $scope.getGenres = Genre.getAll();
+rapidScoreControllers.controller('ScoreTypeCtrl', ['$scope', '$routeParams', 'ScoreAdminAPI', 'ScoreTypeAPI', 'TypeAdminAPI',
+    function($scope, $routeParams, Score, ScoreType, Type){
+        console.log('editing tags');
 
-        //remove
-        //edit
-        //add
-        $scope.cInfo = {};
-        $scope.cCheck = '';
-        $scope.addCategory = function(){
-            if(!$scope.cInfo.cname){
-                $scope.cCheck = 'Invalid category name';
-                return;
+        $scope.types = Type.getAll();
+        $scope.score = Score.getOne({
+            scoreid : $routeParams.scoreId
+        }, function(res){
+            $scope.selected = res.types;
+        });
+
+        $scope.addscoretype = function(typeid, typename){
+            //check if already added
+            console.log($scope.selected);
+            var flag = 0;
+            for(var i=0; i<$scope.selected.length; i++){
+                if($scope.selected[i].id == typeid){
+                    alert(typename + ' already added');
+                    flag = 1;
+                    break;
+                }
             }
-            else if(!$scope.cInfo.cshortname){
-                $scope.cCheck = 'Invalid category short name';
-                return;
-            }
-            else{
-                var cData = new Object();
-                cData.cname = $scope.cInfo.cname;
-                cData.cshortname = $scope.cInfo.cshortname;
-                cData.ctnumber = $scope.cInfo.ctnumber;
-                AddCategory.save({}, cData, function(res){
-                    console.log(res + ' added : ' + cname);
 
+            if(flag == 0){
+                var r = confirm('Adding ' + typename);
+                if(r == true){
+                    ScoreType.add({}, {
+                        scoreid: $routeParams.scoreId,
+                        typeid: typeid
+                    }, function(res){
+                        $scope.selected = res;
+                    });
+                }
+            }
+        }
+
+        $scope.removescoretype = function(typeid, typename){
+            var r = confirm('Deleting ' + typename);
+            if(r == true){
+                ScoreType.remove({
+                    scoreid: $routeParams.scoreId,
+                    typeid: typeid
+                }, function(res){
+                    $scope.selected = res;
                 });
             }
         }
     }]);
 
-rapidScoreControllers.controller('UserAdminListCtrl', ['$scope', 'UserAdminAPI',
-    function($scope, User) {
+rapidScoreControllers.controller('TypeAdminCtrl', [ '$scope', '$rootScope', 'TypeAdminAPI',
+    'SubTypeAdminAPI', 'TypeAPI',
+    function($scope, $rootScope, Type, SubType, MenuType) {
+        $scope.types = Type.getAll();
+
+        // remove
+        // edit
+        // add
+        $scope.addptype = function(){
+            var result = prompt("Adding main type");
+            if(result.trim()){
+                var shortname = result.trim()
+                    .replace('-', ' ').replace('\'', '').replace(/ +/g, ' ').split(' ')
+                    .join('-').toLowerCase();
+                Type.add({},{
+                    name: result.trim(),
+                    shortname: shortname
+                },function(res){
+                    $scope.types = Type.getAll();
+                    $rootScope.parent_types = MenuType.getAll();
+                })
+            }
+        }
+        $scope.addsubtype = function(pid, pname) {
+            var result = prompt("Adding type to : " + pname);
+            if(result.trim()){
+                var shortname = result.trim()
+                    .replace('-', ' ').replace('\'', '').replace(/ +/g, ' ').split(' ')
+                    .join('-').toLowerCase();
+                SubType.add({typeid:pid},{
+                    name: result.trim(),
+                    shortname: shortname
+                },function(res){
+                    $scope.types = Type.getAll();
+                })
+            }
+        };
+        //either parent or sub
+        $scope.updatetype = function(pid, pname) {
+            var result = prompt("Renaming type : " + pname);
+            if(result.trim()){
+                var shortname = result.trim()
+                    .replace('-', ' ').replace('\'', '').replace(/ +/g, ' ').split(' ')
+                    .join('-').toLowerCase();
+                SubType.save({typeid:pid},{
+                    name: result.trim(),
+                    shortname: shortname
+                },function(res){
+                    $scope.types = Type.getAll();
+                    $rootScope.parent_types = MenuType.getAll();
+                })
+            }
+        };
+        //either parent or sub
+        $scope.removetype = function(subid, pname, subname, subcount) {
+            if(subcount > 0){
+                alert('Type ' + subname + ' has more than 1 sub types. Delete sub types first');
+            } else{
+                var r = confirm('Deleting ' + pname + ' - ' + subname);
+                // deleting score category records before deleting this category
+                if (r == true) {
+                    SubType.remove({
+                        typeid : subid
+                    }, function(res) {
+                        console.log(' deleted : ' +res.name);
+                        $scope.types = Type.getAll();
+                        $rootScope.parent_types = MenuType.getAll();
+                    });
+                } else {
+
+                }
+            }
+
+
+        };
+    } ]);
+
+rapidScoreControllers.controller('UserAdminListCtrl', [ '$scope',
+    'UserAdminAPI', function($scope, User) {
         $scope.users = User.getAll();
-    }]);
+    } ]);
 
-rapidScoreControllers.controller('UserAdminCtrl', ['$scope', '$routeParams', 'UserAdminAPI',
-    function($scope, $routeParams, User) {
-        $scope.user = User.getOne({username: $routeParams.username});
+rapidScoreControllers.controller('AdminCtrl', [ '$rootScope', '$scope',
+    '$routeParams', 'UserAPI',
+    function($rootScope, $scope, $routeParams, User) {
+        $scope.user = User.getOne();
+        if ($rootScope.logged_admin) {
+            // correct
+        } else {
+            $location.path("/account");
+        }
+    } ]);
+
+rapidScoreControllers.controller('UserAdminCtrl', [ '$scope', '$routeParams',
+    'UserAdminAPI', function($scope, $routeParams, User) {
+        $scope.user = User.getOne({
+            username : $routeParams.username
+        });
         $scope.total = 0;
-    }]);
+    } ]);
 
-rapidScoreControllers.controller('UserCtrl', ['$window', '$location', '$scope', '$routeParams', 'UserAPI', 'UserCartAPI', 'UserOrderAPI', 'RemoveCartAPI', 'PlaceOrderAPI',
-    function($window, $location, $scope, $routeParams, User, Cart, Purchased, RemoveCart, PlaceOrder) {
+rapidScoreControllers.controller('UserCtrl', [
+    '$window',
+    '$location',
+    '$scope',
+    '$rootScope',
+    '$routeParams',
+    'UserAPI',
+    'UserPassAPI',
+    'UserCartAPI',
+    'UserOrderAPI',
+    'UserOrderDetailAPI',
+    function($window, $location, $scope, $rootScope, $routeParams,
+             User, UserPass, Cart, Order, OrderDetail) {
 
-        if($routeParams.username != $window.sessionStorage.getItem('username')){
-            $location.path($scope.logged_userlink);
+        $scope.user = User.getOne();
+        console.log($scope.user);
+
+        console.log('if admin: ');
+        console.log($rootScope.logged_admin);
+        if ($rootScope.logged_admin) {
+            // $location.path("/admin");
         }
 
-        $scope.user = User.getOne({username: $routeParams.username});
-        //$scope.cart = Cart.getAll({username: $routeParams.username});
-        //$scope.purchased = Purchased.getAll({username: $routeParams.username});
+        $scope.total = 0;
 
-        $scope.removecart = function(name, sid){
-            RemoveCart.remove({'uid': $window.sessionStorage.getItem('uid'), 'sid':sid}, function(res){
-                if(res){
+        $scope.cart = Cart.getAll(function(res){
+            console.log(res.length);
+            for(var i=0; i<res.length; i++){
+                $scope.total += res[i].price;
+            }
+        });
+
+        $scope.purchased = Order.getAll(function(res){
+            for(var i=0; i<$scope.purchased.length; i++){
+                $scope.purchased[i].showdetail = false;
+            }
+        });
+        // get scores of each order
+
+        $scope.updateuser = function(firstname, surname){
+            var result = prompt("Updating Account Detail");
+            if(result.trim()){
+                if(firstname == 1){
+                    User.save({},{
+                        firstname:result.trim()
+                    },function(res){
+                        $scope.user = User.getOne();
+                    });
+                } else if (surname == 1){
+                    User.save({},{
+                        surname:result.trim()
+                    },function(res){
+                        $scope.user = User.getOne();
+                    });
+                }
+            }
+        }
+
+        $scope.updatepassword = function(oldpass, newpass){
+        }
+
+        $scope.showorder = function(orderid) {
+            for (var i = 0; i < $scope.purchased.length; i++) {
+                if ($scope.purchased[i].id == orderid) {
+                    var index = i;
+                    console.log($scope.purchased[i].id);
+                    if ($scope.purchased[i].showdetail) {
+                        $scope.purchased[i].showdetail = false;
+                        break;
+                    }
+                    OrderDetail.getScores({
+                        orderid : orderid
+                    }, function(scores) {
+                        if (scores.length > 0) {
+                            console.log(scores);
+                            console.log(index);
+                            $scope.purchased[index].showdetail = true;
+                            $scope.orderdetails = scores;
+                        } else {
+
+                        }
+                    })
+                } else {
+                    $scope.purchased[i].showdetail = false;
+                }
+            }
+        }
+
+        $scope.removecart = function(name, sid) {
+            Cart.remove({
+                scoreid : sid
+            }, function(res) {
+                if (res) {
                     alert('Removed ' + name);
-                    $window.location.reload();
-                }
-                else{
+                    $rootScope.added_score_name = "";
+                    $rootScope.added_score_shortname = "";
+                    // $rootScope.logged_cart = res;
+                    $rootScope.logged_cart = Cart.getAll(function(res) {
+                        $rootScope.cartcount = res.length;
+                    });
+                    $scope.cart = Cart.getAll();
+
+                    // $window.location.reload();
+                } else {
                     console.log(res);
                 }
             });
         }
 
-        $scope.order = function(){
-            PlaceOrder.order({'uid': $window.sessionStorage.getItem('uid')}, function(res){
-                if(res){
-                    alert('Placing Order - ' + $scope.logged_cart.length + ' items');
-                    $window.location.reload();
-                }
-                else{
+        $scope.order = function() {
+            Order.order({}, function(res) {
+                if (res) {
+                    console.log(res);
+                    alert('Placing Order - ' + $scope.logged_cart.length
+                        + ' items');
+                    $rootScope.logged_cart = Cart.getAll(function(res) {
+                        $rootScope.cartcount = res.length;
+                    });
+                    $scope.cart = Cart.getAll();
+                    $scope.purchased = Order.getAll();
+
+                    // $window.location.reload();
+                    $location.path('/account/purchased');
+                } else {
                     console.log(res);
                 }
             });
         }
-    }]);
 
-rapidScoreControllers.controller('sessionService', ['$scope', '$window', '$location', 'UserCartAPI', 'UserOrderAPI',
-    function($scope, $window, $location, Cart, Order){
-
-        if(!$window.sessionStorage.getItem('token')){
-            $scope.logged = false;
-            $window.sessionStorage.removeItem('token');
-            $window.sessionStorage.removeItem('username');
-            $window.sessionStorage.removeItem('uid');
-            $window.sessionStorage.removeItem('info');
+        $scope.showscore = function(file) {
+            if(!file){
+                alert('File url not available');
+            } else{
+                //open pdf file in a new page/or send email to user
+                var win = window.open(file, '_blank');
+                win.focus();
+            }
         }
-        else{
-            $scope.logged = true;
-            $scope.logged_usercartlink = '/users/'+$window.sessionStorage.getItem('username')+'/shopping-cart';
-            $scope.logged_userlink = '/users/'+$window.sessionStorage.getItem('username');
-            $scope.logged_username = $window.sessionStorage.getItem('username');
-            $scope.logged_user = $window.sessionStorage.getItem('info');
-            $scope.logged_cart = Cart.getAll({username: $window.sessionStorage.getItem('username')});
-            $scope.logged_purchased = Order.getAll({username: $window.sessionStorage.getItem('username')});
-        }
+    } ]);
 
-        $scope.logout = function logout(){
-            console.log('logging out');
-            $scope.logged = false;
-            $window.sessionStorage.removeItem('token');
-            $window.sessionStorage.removeItem('username');
-            $window.sessionStorage.removeItem('uid');
-            $window.sessionStorage.removeItem('info');
-            $location.path("/login");
-        }
-}]);
+rapidScoreControllers.controller('sessionService',
+    [
+        '$scope',
+        '$rootScope',
+        '$window',
+        '$location',
+        'UserCartAPI',
+        'breadcrumbs',
+        'TypeAPI',
+        function($scope, $rootScope, $window, $location, Cart,
+                 breadcrumbs, Type) {
+            console.log($location.path());
+            $scope.breadcrumbs = breadcrumbs;
 
-rapidScoreControllers.controller('LoginCtrl', ['$scope', '$location', '$window', 'LoginAPI',
-    function($scope, $location, $window, LoginService){
+            $rootScope.parent_types = Type.getAll(function(res){
+                //console.log(res);
+            });
 
-        //if logged in, go to user page
-        if($window.sessionStorage.getItem('token')){
-            $location.path("/users/"+$window.sessionStorage.getItem('username'));
-        }
+            $rootScope.table = 1;
 
-        //Login
-        $scope.loginInfo = {};
-        $scope.loginCheck = '';
-
-        $scope.login = function login(loginInfo) {
-            $scope.loginCheck = '';
-            console.log(loginInfo);
-
-            if(!$scope.loginInfo.email) {
-                $scope.loginCheck = 'Invalid Email';
-                return;
+            $rootScope.setTable = function(p){
+                console.log(p);
+                if(p == 1){
+                    $rootScope.table = 0;
+                    //$window.location.reload();
+                } else{
+                    $rootScope.table = 1;
+                    //$window.location.reload();
+                }
             }
 
-            else if(!$scope.loginInfo.pass) {
-                $scope.loginCheck = 'Please enter your Password';
-                return;
-            }
-            else if($scope.loginInfo.pass.length < 6 || $scope.loginInfo.pass.length > 20){
-                $scope.loginCheck = 'Password length should be 6 to 20 characters long';
-                return;
+            $rootScope.orderProp = 'title';
+
+            $rootScope.setOrder = function(name){
+                $scope.orderProp = name;
             }
 
-            else {
-                LoginService.login(loginInfo.email, loginInfo.pass).success(function(data){
-                    console.log(data);
-                    if(Object.keys(data).length){
-                        $window.sessionStorage.setItem('token', data.token);
-                        $window.sessionStorage.setItem('username', data.username);
-                        $window.sessionStorage.setItem('uid', data.uid);
-                        $window.sessionStorage.setItem('info', data.info);
+            if (!$window.localStorage.getItem('token')) {
+                $rootScope.logged = false;
+                $window.localStorage.removeItem('token');
+                $window.localStorage.removeItem('username');
+                $window.localStorage.removeItem('uid');
+                $window.localStorage.removeItem('admin');
+            } else {
+                $rootScope.logged = true;
+                console.log('session:');
+                $rootScope.logged_username = $window.localStorage
+                    .getItem('username');
+                console.log($window.localStorage.getItem('username'));
+                $rootScope.logged_admin = $window.localStorage
+                    .getItem('admin');
+                console.log($window.localStorage.getItem('admin'));
+                $rootScope.logged_cart = Cart.getAll(function(res) {
+                    $rootScope.cartcount = res.length;
+                });
+                console.log($rootScope.logged_cart);
+            }
 
-                        //refresh
+            $scope.logout = function logout() {
+                console.log('logging out');
+                $rootScope.logged = false;
+                $window.localStorage.removeItem('token');
+                $window.localStorage.removeItem('username');
+                $window.localStorage.removeItem('uid');
+                $window.localStorage.removeItem('admin');
+                $location.path("/login");
+            }
+        } ]);
 
-                        $window.location.reload(function(){
-                            $location.path("/users/"+data.username);
+rapidScoreControllers
+    .controller(
+    'LoginCtrl',
+    [
+        '$scope',
+        '$rootScope',
+        '$location',
+        '$window',
+        'LoginAPI',
+        'UserAPI',
+        function($scope, $rootScope, $location, $window,
+                 LoginService, User) {
 
+            // if logged in, go to user page
+            if ($rootScope.logged) {
+                console.log('token ');
+                console.log($window.localStorage
+                    .getItem('token'));
+
+                if ($rootScope.logged_admin) {
+                    // $location.path("/admin");
+                    $location.path("/account");
+                } else {
+                    $location.path("/account");
+                }
+            }
+
+            // Login
+            $scope.loginInfo = {};
+            $rootScope.loginCheck = '';
+
+            $scope.login = function() {
+                $rootScope.loginCheck = '';
+                console.log($scope.loginInfo);
+
+                if (!$scope.loginInfo.username) {
+                    $rootScope.loginCheck = 'Invalid Username';
+                    return;
+                }
+
+                else if (!$scope.loginInfo.password) {
+                    $rootScope.loginCheck = 'Please enter your Password';
+                    return;
+                }
+                /*
+                 * else if($scope.loginInfo.password.length < 6 ||
+                 * $scope.loginInfo.password.length > 20){
+                 * $scope.loginCheck = 'Password length should
+                 * be 6 to 20 characters long'; return; }
+                 */
+
+                else {
+                    LoginService
+                        .login($scope.loginInfo.username,
+                        $scope.loginInfo.password)
+                        .success(
+                        function(data) {
+                            console
+                                .log(data.header);
+                            if (data && data.token) {
+                                $window.localStorage
+                                    .setItem(
+                                    'token',
+                                    data.token);
+                                $window.localStorage
+                                    .setItem(
+                                    'username',
+                                    data.username);
+                                $window.localStorage
+                                    .setItem(
+                                    'uid',
+                                    data.id);
+                                $window.localStorage
+                                    .setItem(
+                                    'admin',
+                                    data.admin);
+                                console
+                                    .log($window.localStorage);
+
+                                // set global
+                                // variables
+                                // too quick, a
+                                // refresh of the
+                                // page gives better
+                                // user experience
+                                // $rootScope.user =
+                                // User.getOne({username:
+                                // data.username});
+
+                                // refresh
+                                $rootScope.loginCheck = "Login Successful. Redirecting...";
+                                $rootScope.setCheck = "form-success";
+                                // $location.path("/account");
+                                $window.location.reload();
+
+                            } else {
+                                $window.localStorage
+                                    .removeItem('token');
+                                console
+                                    .log(data.status);
+                                $rootScope.loginCheck = "Invalid Login";
+                            }
+                        })
+                        .error(
+                        function(err) {
+                            console.log(err);
+                            $rootScope.loginCheck = "Login Failed";
                         });
-                    }
-                    else{
-                        $window.sessionStorage.removeItem('token');
-                        console.log(status);
-                        $scope.loginCheck = "Login Failed";
-                    }
-                });
-            }
-        };
-    }]);
+                }
+            };
+        } ]);
 
-rapidScoreControllers.controller('SignUpCtrl', ['$scope', 'RegisterAPI', 'CheckUsernameAPI', 'CheckEmailAPI', '$location',
-    function($scope, User, CheckUsername, CheckEmail, $location) {
-        //Sign Up
-        $scope.regInfo = {};
-        $scope.regCheck = '';
-
-        $scope.regSave = function() {
+rapidScoreControllers
+    .controller(
+    'ActivateCtrl',
+    [
+        '$scope',
+        'ActivateAPI',
+        '$routeParams',
+        function($scope, Activate, $routeParams) {
+            $scope.res = Activate.get({link: $routeParams.link}, function(r){
+                console.log(r);
+                if(r.css == 0){
+                    $scope.setCheck = "form-success";
+                }
+            })
+            console.log($scope.res);
+        }
+    ]
+)
+rapidScoreControllers
+    .controller(
+    'SignUpCtrl',
+    [
+        '$scope',
+        'RegisterAPI',
+        'CheckUsernameAPI',
+        '$location',
+        function($scope, User, CheckUsername, $location) {
+            // Sign Up
+            $scope.regInfo = {};
             $scope.regCheck = '';
-            console.log($scope.regInfo);
 
-            if(!$scope.regInfo.email) {
-                $scope.regCheck = 'Invalid Email';
-                return;
-            }
-            else if(!$scope.regInfo.username) {
-                $scope.regCheck = 'Please enter your Username';
-                return;
-            }
-            else if($scope.regInfo.username.length < 4 || $scope.regInfo.username.length > 20){
-                $scope.regCheck = 'Username length should be 4 to 20 characters long';
-                return;
-            }
-            else if(!$scope.regInfo.pass1) {
-                $scope.regCheck = 'Please enter your Password';
-                return;
-            }
-            else if($scope.regInfo.pass1.length < 6 || $scope.regInfo.pass1.length > 20){
-                $scope.regCheck = 'Password length should be 6 to 20 characters long';
-                return;
-            }
-            else if(!$scope.regInfo.pass2) {
-                $scope.regCheck = 'Please enter your Password';
-                return;
-            }
-            else if($scope.regInfo.pass1 != $scope.regInfo.pass2) {
-                $scope.regCheck = 'Two Passwords do not match';
-                return;
-            }
-            /*
-            still need to check username and email existence
-            */
-            //submit data
-            else{
-                console.log('posting data...');
-                //create json to be posted
-                var regData = new Object();
-                regData.username = $scope.regInfo.username;
-                regData.email = $scope.regInfo.email;
-                regData.password = $scope.regInfo.pass1;
-                console.log(regData);
+            $scope.regSave = function() {
+                $scope.regCheck = '';
+                console.log($scope.regInfo);
 
-                //convert to json
-                User.save({}, regData, function(res){
-                    if(res){
-                        $location.path('/login');
-                    }
-                });
-            }
-        };
-    }]);
+                if (!$scope.regInfo.username) {
+                    $scope.regCheck = 'Invalid Email';
+                    return;
+                } else if (!$scope.regInfo.firstname) {
+                    $scope.regCheck = 'Please enter your Firstname';
+                    return;
+                } else if (!$scope.regInfo.surname) {
+                    $scope.regCheck = 'Please enter your Surname';
+                    return;
+                } else if (!$scope.regInfo.pass1) {
+                    $scope.regCheck = 'Please enter your Password';
+                    return;
+                } else if ($scope.regInfo.pass1.length < 6
+                    || $scope.regInfo.pass1.length > 20) {
+                    $scope.regCheck = 'Password length should be 6 to 20 characters long';
+                    return;
+                } else if (!$scope.regInfo.pass2) {
+                    $scope.regCheck = 'Please enter your Password';
+                    return;
+                } else if ($scope.regInfo.pass1 != $scope.regInfo.pass2) {
+                    $scope.regCheck = 'Two Passwords do not match';
+                    return;
+                }
+                /*
+                 * still need to check username and email
+                 * existence
+                 */
+                // submit data
+                else {
+                    console.log('posting data...');
+                    
+                    $scope.regCheck = 'We are signing you up...';
+                    $scope.setCheck = "form-success";
+                    // check username before submit
+                    CheckUsername
+                        .getOne(
+                        {
+                            username : $scope.regInfo.username.trim()
+                        },
+                        function(res2) {
+                            console
+                                .log("check username ");
+                            console
+                                .log(res2.result);
 
-rapidScoreControllers.controller('InstrumentListCtrl', ['$scope', 'InstrumentAPI',
-    function($scope, Instrument) {
-        $scope.typename = "Instruments";
-        $scope.shortname = "instruments";
-        $scope.categories = Instrument.getAll();
-    }]);
+                            if (res2.result) {
+                                $scope.regCheck = 'Username exists. Try another one.';
+                            } else {
 
-rapidScoreControllers.controller('InstrumentCtrl', ['$scope', '$routeParams', 'InstrumentAPI',
-    function($scope, $routeParams, Instrument) {
-        $scope.typename = "Instruments";
-        $scope.shortname = "instruments";
-        $scope.category = Instrument.getOne({cname: $routeParams.instrumentId});
-    }]);
+                                console
+                                    .log($scope.regInfo);
+                                // create json to be
+                                // posted
 
-rapidScoreControllers.controller('ComposerListCtrl', ['$scope', 'ComposerAPI',
-    function($scope, Composer) {
-        $scope.typename = "Composers";
-        $scope.shortname = "composers";
-        $scope.categories = Composer.getAll();
-    }]);
+                                var regData = new Object();
+                                regData.username = $scope.regInfo.username.trim();
+                                regData.firstname = $scope.regInfo.firstname.trim();
+                                regData.surname = $scope.regInfo.surname.trim();
+                                regData.password = $scope.regInfo.pass1.trim();
+                                console
+                                    .log(regData);
+                                User
+                                    .save(
+                                    regData.username,
+                                    regData.password,
+                                    regData.firstname,
+                                    regData.surname)
+                                    .success(
+                                    function(
+                                        res) {
+                                        console
+                                            .log("validation success");
+                                        console
+                                            .log(regData);
+                                        if (res) {
+                                            $scope.regCheck = 'Registration Successful';
+                                            $scope.setCheck = "form-success";
+                                            alert('Registration Successful!');
+                                            $location
+                                                .path('/login');
+                                        } else {
+                                            console
+                                                .log('registration failed: ');
+                                        }
+                                    });
+                            }
 
-rapidScoreControllers.controller('ComposerCtrl', ['$scope', '$routeParams', 'ComposerAPI',
-    function($scope, $routeParams, Composer) {
-        $scope.typename = "Composers";
-        $scope.shortname = "composers";
-        $scope.category = Composer.getOne({cname: $routeParams.composerId});
-    }]);
-
-rapidScoreControllers.controller('GenreListCtrl', ['$scope', 'GenreAPI',
-    function($scope, Genre) {
-        $scope.typename = "Genres";
-        $scope.shortname = "genres";
-        $scope.categories = Genre.getAll();
-    }]);
-
-rapidScoreControllers.controller('GenreCtrl', ['$scope', '$routeParams', 'GenreAPI',
-    function($scope, $routeParams, Genre) {
-        $scope.typename = "Genres";
-        $scope.shortname = "genres";
-        $scope.category = Genre.getOne({cname: $routeParams.genreId});
-    }]);
+                        })
+                }
+            };
+        } ]);

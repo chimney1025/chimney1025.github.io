@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="images/favicon.png">
@@ -12,62 +12,81 @@
 
     <!-- Bootstrap core CSS -->
     <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/slider.css" rel="stylesheet">
     <link href="css/custom.css" rel="stylesheet">
 
 </head>
 <body ng-controller="sessionService">
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&appId=314515402069170&version=v2.0";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
 <!-- NAVBAR
 ================================================== -->
 <div id="main-container">
-<div class="navbar navbar-default" role="navigation">
+<div class="navbar navbar-default navbar-fixed-top cusnav" role="navigation">
     <div class="container">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="#/home">
+                <span class="logo"></span>
                 Lazy Score
             </a>
         </div><!-- End navbar-header -->
 
-        <div class="navbar-collapse collapse">
+        <div class="navbar-collapse collapse navbar-responsive-collapse">
             <ul class="nav navbar-nav navbar-left">
-                <li><a href="#/home">Home</a></li>
-                <li><a href="#/sheetmusic">Sheet Music</a></li>
-                <li><a href="#/composers">Composers</a></li>
-                <li><a href="#/genres">Genres</a></li>
+                <!--
+                <li ng-repeat="p_type in parent_types"><a href="#/types/{{p_type.shortname}}" ng-bind="p_type.name | titlelize"></a></li>
+
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown">Instruments <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href="#/instruments">All Instruments</a></li>
+                        <li><a href="#/types/instruments">All Instruments</a></li>
                         <li class="divider"></li>
                         <li class="dropdown-header">Strings</li>
-                        <li><a href="#/instruments/cello">Cello</a></li>
-                        <li><a href="#/instruments/violin">Violin</a></li>
-                        <li><a href="#/instruments/viola">Viola</a></li>
-                        <li class="divider"></li>
-                        <li class="dropdown-header">Keyboard</li>
-                        <li><a href="#/instruments/piano">Piano</a></li>
+                        <li><a href="#/sheetmusic-type/instruments/cello">Cello</a></li>
+                        <li><a href="#/sheetmusic-type/instruments/violin">Violin</a></li>
                     </ul>
-                </li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
+                </li> -->
             </ul>
+            <!--
+            <form class="navbar-form navbar-left input-search">
+                <input class="form-control col-lg-8" type="text" ng-model="query" placeholder="Search for Sheet music">
+            </form>
+            -->
 
             <ul class="nav navbar-nav navbar-right">
-                <li ng-if="logged"><a href="#{{logged_usercartlink}}">
-                    <span class="badge pull-right">{{logged_cart.length}}</span>
+                <!-- 
+                <li ng-class="setActive('home')"><a href="#/home">Home</a></li> 
+                -->
+                <li ng-class="setActive('sheetmusic')"><a href="#/sheetmusic">Sheet Music</a></li>
+                <li ng-class="setActive('instruments')"><a href="#/types/instruments">Instruments</a></li>
+                <li ng-class="setActive('composers')"><a href="#/types/composers">Composers</a></li>
+                <li ng-class="setActive('genres')"><a href="#/types/genres">Genres</a></li>
+                <!--
+                <li ng-if="0"><a ng-click="setTable(1)">Table</a></li>
+                <li ng-if="0"><a ng-click="setTable(0)">List</a></li>
+                -->
+                <li ng-class="setActive('shopping-cart')" ng-if="logged"><a href="#/account/shopping-cart">
+                    <span class="badge pull-right" ng-bind="cartcount"></span>
                     <span class="glyphicon glyphicon-shopping-cart"></span>
                 </a></li>
 
-                <li ng-if="logged" class="dropdown" >
+                <li ng-class="setActive('account')" ng-if="logged" class="dropdown" >
                     <a class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"></span></a>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href="#{{logged_userlink}}">My Account - {{logged_username}}</a></li>
+                        <li ng-if="logged_admin"><a href="#/admin">Admin</a></li>
+                        <li><a href="#/account">My Account</a></li>
                         <li><a ng-click="logout()">Log Out</a></li>
                     </ul>
                 </li>
@@ -76,9 +95,10 @@
                     <a class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         <li><a href="#/login">Log In</a></li>
-                        <li><a href="#/register">New Account</a></li>
+                        <li><a href="#/register">Create Account</a></li>
                     </ul>
                 </li>
+                <li ng-class="setActive('contact')"><a href="#/contact"><span class="glyphicon glyphicon-envelope"></span></a></li>
 
             </ul>
 
@@ -87,26 +107,58 @@
 </div><!-- End navbar -->
 
 <div class="view-container">
+    <!--
+        <div class="container breadcrumbBox">
+            <ol class="breadcrumb col-md-8 col-sm-8 col-xs-12 text-left" ng-if="!noBreadcrumb">
+                <li><a href="#"><span class="glyphicon glyphicon-home"></span></a></li>
+                <li ng-repeat="breadcrumb in breadcrumbs.breadcrumbs track by breadcrumb.path"
+                    ng-class="{ active: $last }">
+                    <a href="#{{ breadcrumb.path }}" ng-if="!$last" ng-bind="breadcrumb.label" ></a>
+                    <span ng-if="$last" ng-bind="breadcrumb.label"></span>
+                </li>
+            </ol>
+             search -->
+        <!--
+        <div class="input-search col-md-4 col-sm-4 col-xs-12 pull-right text-right" ng-if="!noBreadcrumb">
+            <div class="input-group input-group-sm">
+                <input type="text" class="form-control" ng-model="query" placeholder="Search sheet music">
+                    <span class="input-group-btn">
+                    <button class="btn btn-default" type="button" ng-click="search">
+                        <span class="glyphicon glyphicon-search"></span>
+                    </button>
+                    </span>
+            </div>
+        </div>
+        -->
+    </div>
 
     <div ng-view></div>
 </div>
 
 <!-- FOOTER -->
-<footer id="footer" class="col-md-12 navbar" role="navigation">
+<footer id="footer" class="col-md-12 navbar navbar-fixed-bottom" role="navigation">
     <div class="container text-center">
         <p>&copy; 2014 Company, Inc. &middot;
             <a href="#">Privacy</a> &middot;
             <a href="#">Terms</a> &middot;
-            <a href="#"><img src="images/icon-facebook.png"></a>
-            <a href="#"><img src="images/icon-googleplus.png"></a>
-            <a href="#"><img src="images/icon-twitter.png"></a>
-            <a href="#"><img src="images/icon-youtube2.png"></a>
-            <a href="#"><img src="images/icon-weibo2.png"></a>
-            <a href="#"><img src="images/paypal.png"></a>
+            <img src="images/icon-facebook.png">
+            <img src="images/icon-googleplus.png">
+            <img src="images/icon-twitter.png">
+            <img src="images/icon-youtube2.png">
+            <img src="images/icon-weibo2.png">
+            <img src="images/paypal.png">
         </p>
     </div>
 </footer>
 </div>
+<!-- Place this asynchronous JavaScript just before your </body> tag -->
+<script type="text/javascript">
+    (function() {
+        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+        po.src = 'https://apis.google.com/js/client:plusone.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+    })();
+</script>
 </body>
 
 
@@ -118,13 +170,13 @@
 <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
 <!-- AngularJS -->
-<script src="bower_components/jquery/jquery.js"></script>
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
 <script src="bower_components/angular/angular.js"></script>
 <script src="bower_components/angular-animate/angular-animate.js"></script>
 <script src="bower_components/angular-route/angular-route.js"></script>
 <script src="bower_components/angular-resource/angular-resource.js"></script>
-<script src="http://m-e-conroy.github.io/angular-dialog-service/javascripts/dialogs.min.js" type="text/javascript"></script>
-<script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.6.0.js" type="text/javascript"></script>
+<script src="bower_components/ng-breadcrumbs/dist/ng-breadcrumbs.min.js"></script>
+<script src="js/ui-bootstrap-tpls-0.6.0.js" type="text/javascript"></script>
 <script src="js/app.js"></script>
 <script src="js/controllers.js"></script>
 <script src="js/animations.js"></script>

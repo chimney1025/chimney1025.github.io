@@ -1,0 +1,49 @@
+
+
+<!-- Content -->
+<div class="container text-center fade" ng-class="{in:score}">
+
+    <div class="col-md-4 col-sm-4 col-xs-4 text-left score-detail">
+        <ul class="">
+            <li><h1><span ng-bind="score.title"></span></h1></li>
+            <span ng-show=0 ng-model="sid" ng-bind="score.id"></span>
+            <li ng-if="!score.obsolete"><a type="button" class="btn {{action_class}}" ng-click="link()" ng-bind="action"></a></li>
+            <!--
+            <li><a class="btn btn-default btn-block" ng-model="collapsed" ng-click="collapsed=!collapsed">More Detail</a></li>
+            -->
+            <div ng-show="!collapsed">
+                <li>Price: <span ng-bind="score.price | currency:'£'"></span></li>
+                <li>Page: <span ng-bind="score.page"></span></li>
+                <li>Tags: <a type="button" class="btn-detail btn btn-default" href="#" ng-repeat="type in score.types" ng-if="!type.obsolete" ng-bind="type.name"> </a></li>
+                <li ng-if="score.audiourl || score.videourl">
+                    Links:
+                    <button type="button" class="btn-detail btn btn-default"  ng-if="score.audiourl" href="{{score.audiourl}}" target="_blank" class="" title="Download Audio">Audio</button>
+                    <button type="button" class="btn-detail btn btn-default"  ng-if="score.videourl" href="{{score.videourl}}" target="_blank" class="" title="Video Preview">Video</button>
+                </li>
+                <li ng-if="score.desc">
+                    <p class="well" ng-bind="score.desc"></p>
+                </li>
+                <li><div class="fb-like" data-share="true" data-width="450" data-show-faces="true"></div></li>
+                <li><a class="twitter-share-button" href="https://twitter.com/share">Tweet</a>
+                    <script type="text/javascript">
+                        window.twttr=(function(d,s,id){var t,js,fjs=d.getElementsByTagName(s)[0];if(d.getElementById(id)){return}js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);return window.twttr||(t={_e:[],ready:function(f){t._e.push(f)}})}(document,"script","twitter-wjs"));
+                    </script>
+                </li>
+            </div>
+        </ul>
+        <!-- 4:3 aspect ratio -->
+        <div ng-if="score.videourl" class="col-md-12 embed-responsive embed-responsive-16by9">
+            <iframe type="text/html" class="col-md-12 embed-responsive-item" ng-src="{{trustSrc(score.videourl)}}"></iframe>
+        </div>
+    </div>
+
+    <div class="col-md-8 col-sm-8 col-xs-8 text-left score-main">
+        <div ng-if="score.audiourl" class="main-media">
+            <audio class="" ng-src="{{trustSrc(score.audiourl)}}" controls="controls" preload="auto" >
+                Your browser does not support the HTML5 Audio element.
+            </audio>
+        </div>
+
+        <img class="main-image" ng-src="{{score.imageurl}}">
+    </div>
+</div>

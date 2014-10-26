@@ -1,95 +1,71 @@
 
-
-<div class="container breadcrumbBox">
-    <ol class="breadcrumb">
-        <li><a href="#/home"><span class="glyphicon glyphicon-home"></span></a></li>
-        <li><a href="#/sheetmusic">Sheet Music</a></li>
-    </ol>
-</div>
 <!-- Content -->
-<div class="container text-center">
-
+<div class="container text-center fade" ng-class="{in:scores.length}">
+    <!--
     <div class="col-md-4 col-sm-4 col-xs-4 text-left list-filter">
-        <div class="dropdown-title">
-            <a type="button" class="btn btn-block btn-primary"
-               ng-model="collapsed" ng-click="collapsed=!collapsed">Sort & Filters
-                <span ng-show="!collapsed" class="glyphicon glyphicon-chevron-up"></span>
-                <span ng-show="collapsed" class="glyphicon glyphicon-chevron-down"></span>
-            </a>
-        </div>
-
         <div id="sortnfilter" ng-show="!collapsed">
             <span class="dropdown-label">Order By</span>
             <div class="dropdown-order">
                 <select class="form-control" ng-model="orderProp">
                     <option value="">--</option>
-                    <option value="name">Name</option>
-                    <option value="-added">Newest</option>
-                    <option value="added">Oldest</option>
+                    <option value="title">Name</option>
+                    <option value="-updatedAt">Latest</option>
+                    <option value="updatedAt">Oldest</option>
                 </select>
             </div>
-
-            <span class="dropdown-label">Number of Instruments</span>
-            <div class="dropdown-number">
-                <select class="form-control" ng-model="numberInstrument">
-                    <option value="">--</option>
-                    <option value=1 >1</option>
-                    <option value=2 >2</option>
-                    <option value=3 >3</option>
-                    <option value=4 >4</option>
-                </select>
-            </div>
-
-            <div ng-repeat="n in [] | range:numberInstrument">
-                <span class="dropdown-label-sub "> - Instrument {{n}}</span>
-                <div class="dropdown-category">
-                    <select
-                            ng-model="instrumentList"
-                            ng-options="value.c_shortname as value.c_name group by value.type for value in getInstruments" class="form-control">
-                        <option value="">--</option>
-                    </select>
-                </div>
-            </div>
-
-            <span class="dropdown-label">Composers</span>
-            <div class="dropdown-category">
-                <select
-                        ng-model="composerList"
-                        ng-options="value.c_shortname as value.c_name for value in getComposers" class="form-control">
-                    <option value="">--</option>
-                </select>
-            </div>
-
-            <span class="dropdown-label">Genres</span>
-            <div class="dropdown-category">
-                <select
-                        ng-model="genreList"
-                        ng-options="value.c_shortname as value.c_name for value in getGenres" class="form-control">
-                    <option value="">--</option>
-                </select>
-            </div>
-
-        </div><!-- End Sort and Filter -->
+        </div>
 
     </div><!-- End Filters-->
 
-    <div class="col-md-8 col-sm-8 col-xs-8 list-score">
-        <div class="input-search">
+    <div class="col-md-12 col-sm-12 col-xs-12 list-full">
+
+        <div class="input-search col-md-12">
             <div class="input-group">
-                <input type="text" class="form-control" ng-model="query">
+                <input type="text" class="form-control" ng-model="query" placeholder="Search for Sheet music">
                     <span class="input-group-btn">
-                    <button class="btn btn-default" type="button">Search</button>
+                    <button class="btn btn-default" type="button" ng-click="search">
+                        <span class="glyphicon glyphicon-search"></span>
+                    </button>
                     </span>
-            </div><!-- /input-group -->
+            </div>
         </div>
-        <ul class="score-list">
-            <li class="row" ng-repeat="item in scores | filter:query | orderBy:orderProp">
-                <span class="list-item"><a href="#/sheetmusic/{{item.shortname}}">{{item.name}}</a></span>
-                <span class="list-added">{{item.added | date : 'yyyy-MM-dd'}}</span>
-                <span ng-if="item.audiourl" class="list-icon glyphicon glyphicon-music" title="Audio Preview"></span>
-                <span ng-if="item.videourl" class="list-icon glyphicon glyphicon-film" title="Video Preview"></span>
-            </li>
+
+
+        <h4 ng-if="fields.query" >Search result:</h4>
+
+        <table class="table table-striped table-hover" ng-if="table">
+            <thead>
+            <tr>
+                <th class="col-lg-6 col-md-6 col-sm-6 col-xs-6">Title
+                    <a ng-click="setOrder('title')" ng-if="orderProp!='title'"><span class="glyphicon glyphicon-sort-by-alphabet"></span></a>
+                    <a ng-click="setOrder('-title')" ng-if="orderProp!='-title'"><span class="glyphicon glyphicon-sort-by-alphabet-alt"></span></a>
+                </th>
+                <th class="col-lg-3 col-md-3 col-sm-3 col-xs-3">Preview</th>
+                <th class="col-lg-3 col-md-3 col-sm-3 col-xs-3">Date
+                    <a ng-click="setOrder('updatedAt')" ng-if="orderProp!='updatedAt'"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                    <a ng-click="setOrder('-updatedAt')" ng-if="orderProp!='-updatedAt'"><span class="glyphicon glyphicon-arrow-down"></span></a>
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="item in scores | orderBy:orderProp | filter:query">
+                <td><a href="#/sheetmusic/{{item.shortname}}" ng-bind="item.title"></a></td>
+                <td>
+                    <span ng-if="item.imageurl" class="glyphicon glyphicon-picture" title="Audio Preview"></span>
+                    <span ng-if="item.audiourl" class="glyphicon glyphicon-music" title="Audio Preview"></span>
+                    <span ng-if="item.videourl" class="glyphicon glyphicon-film" title="Video Preview"></span>
+                </td>
+                <td><small>{{item.updatedAt | date : 'yyyy-MM-dd'}}</small></td>
+            </tr>
+            </tbody>
+        </table>
+
+        <ul class="pagination">
+            <li class="disabled"><a href="#">«</a></li>
+            <li class="active"><a href="#">1</a></li>
+            <li class="disabled"><a href="#">»</a></li>
         </ul>
+
     </div>
 
 </div>

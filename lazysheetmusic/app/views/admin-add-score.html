@@ -1,0 +1,77 @@
+<div class="container text-center">
+
+    <div class="col-md-3 col-sm-3 col-xs-3 text-left account-menu">
+        <ul class="">
+            <li><h4>Welcome Admin</h4></li>
+            <li><a href="#/admin">Settings</a></li>
+            <li><a href="#/admin/users">User List</a></li>
+            <li><a href="#/admin/scores" class="active">Sheet Music</a></li>
+            <li><a href="#/admin/categories">Categories (Tags)</a></li>
+        </ul>
+    </div>
+
+    <div class="col-md-9 col-sm-9 col-xs-9 text-left act-list">
+    
+            <h2>Add New Sheet Music
+                <span><a type="button" href="#/admin/scores" class="btn btn-default">BACK</a></span>
+            </h2>
+        <form name="ScoreForm" class="form-score" role="form">
+        <ul class="">
+            <li class="row">
+                <span class="act-label">TITLE</span>
+                <input type="text" maxlength="40" class="act-content form-control" placeholder="Enter title" ng-model="scoreInfo.title" required ng-trim="true">
+                
+            </li>
+            <li class="row">
+                <span class="act-label">PRICE</span>
+                <input type="text" class="act-content form-control" placeholder="Enter price" ng-model="scoreInfo.price" required ng-trim="true">
+                
+            </li>
+            <li class="row">
+                <span class="act-label">PAGE</span>
+                <input type="text" class="act-content form-control" placeholder="Enter total page number" ng-model="scoreInfo.page" required ng-trim="true">
+                
+            </li>
+            <li class="row">
+                <span class="act-label">AUDIO</span>
+                <input type="text" class="act-content form-control" placeholder="Audio URL" ng-model="scoreInfo.audiourl" ng-trim="true">
+                
+            </li>
+            <li class="row">
+                <span class="act-label">VIDEO</span>
+                <input type="text" class="act-content form-control" placeholder="Video URL" ng-model="scoreInfo.videourl" ng-trim="true">
+                
+            </li>
+            <li class="row">
+                <span class="act-label">IMAGE</span>
+                <input type="text" class="act-content form-control" placeholder="Image URL" ng-model="scoreInfo.imageurl" ng-trim="true">
+                
+            </li>
+            <li class="row">
+                <span class="act-label">FILE</span>
+                <input type="text" class="act-content form-control" placeholder="Sheet Music URL" ng-model="scoreInfo.fileurl" ng-trim="true">
+                
+            </li>
+            <li class="row">
+                <span class="act-label">DESCRIPTION</span>
+                <textarea class="act-content form-control" placeholder="Description" ng-model="scoreInfo.desc" ng-trim="true"></textarea>
+
+            </li>
+            <!--
+            <li class="row">
+                <span class="act-label">SLIDER</span>
+                <input type="checkbox" value="true" name="" class="" placeholder="Add to Slider" ng-model="scoreInfo.slider" ng-trim="true">
+
+            </li>
+            -->
+            <li>
+                <span class="form-check" ng-show="scoreCheck" ng-bind="scoreCheck"></span>
+            </li>
+            <li>
+                <a type="button" ng-click="scoreAdd()" class="btn btn-primary btn-sm">Save</a>
+            </li>
+        </ul>
+        </form>
+    </div>
+
+</div>

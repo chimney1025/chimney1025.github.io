@@ -1,19 +1,13 @@
-<div class="container breadcrumbBox">
-    <ol class="breadcrumb">
-        <li><a href="#/home"><span class="glyphicon glyphicon-home"></span></a></li>
-        <li><a href="#/admin">Admin</a></li>
-        <li><a href="#/admin/sheetmusic">Manage SheetMusic</a></li>
-    </ol>
-</div>
 
 <div class="container text-center">
 
     <div class="col-md-3 col-sm-3 col-xs-3 text-left account-menu">
         <ul class="">
-            <h4>Welcome Admin</h4>
+            <li><h4>Welcome Admin</h4></li>
+            <li><a href="#/admin">Settings</a></li>
             <li><a href="#/admin/users">User List</a></li>
-            <li><a href="#/admin/sheetmusic" class="active">Sheet Music</a></li>
-            <li><a href="#/admin/categories">Categories</a></li>
+            <li><a href="#/admin/scores" class="active">Sheet Music</a></li>
+            <li><a href="#/admin/categories">Categories (Tags)</a></li>
         </ul>
     </div>
 
@@ -21,20 +15,40 @@
         <h2>Manage Sheet Music ({{scores.length}})
             <span><a type="button" href="#/admin/add-sheetmusic" class="btn btn-warning">ADD</a></span>
         </h2>
-        <ul class="">
-            <li class="row" ng-repeat="item in scores | filter:query | orderBy:orderProp">
-                <span class="list-item"><a href="#/sheetmusic/{{item.shortname}}">{{item.name}}</a>
-                    <a href="#/admin/sheetmusic/{{item.shortname}}" ><span class="glyphicon glyphicon-pencil"></span></a>
-                    <a ng-click="removeScore(item.sid, item.name)" ><span class="glyphicon glyphicon-remove"></span></a>
-                </span>
-                <span class="list-added">{{item.added | date : 'yyyy-MM-dd'}}</span>
-                <span class="admin-action list-action">
-                    <a type="button" ng-if="item.slider" ng-click="launch('confirm')" class="btn btn-default btn-xs">In Slider</a>
-                    <a type="button" ng-if="!item.slider" ng-click="launch('confirm')" class="btn btn-primary btn-xs">Add to Slider</a>
-                </span>
-
-            </li>
-        </ul>
+        <table class="table table-striped table-hover ">
+            <thead>
+            <tr>
+                <th class="col-md-6">Title
+                    <a ng-click="setOrder('title')" ng-if="orderProp!='title'"><span class="glyphicon glyphicon-sort-by-alphabet"></span></a>
+                    <a ng-click="setOrder('-title')" ng-if="orderProp!='-title'"><span class="glyphicon glyphicon-sort-by-alphabet-alt"></span></a>
+                </th>
+                <th class="col-md-1">Edit</th>
+                <th class="col-md-1">Tags</th>
+                <th class="col-md-1"></th>
+                <th class="col-md-1">Slider</th>
+                <th class="col-md-2">Date
+                    <a ng-click="setOrder('createdAt')" ng-if="orderProp!='createdAt'"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                    <a ng-click="setOrder('-createdAt')" ng-if="orderProp!='-createdAt'"><span class="glyphicon glyphicon-arrow-down"></span></a>
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="item in scores | orderBy:orderProp">
+                <td>
+                    <a href="#/sheetmusic/{{item.shortname}}" ng-if="item.obsolete"><strike>{{item.title}}</strike></a>
+                    <a href="#/sheetmusic/{{item.shortname}}" ng-if="!item.obsolete">{{item.title}}</a>
+                </td>
+                <td><a href="#/admin/sheetmusic/{{item.id}}" ng-if="!item.obsolete" ><span class="glyphicon glyphicon-pencil"></span></a></td>
+                <td><a href="#/admin/sheetmusic-type/{{item.id}}" ng-if="!item.obsolete" ><span class="glyphicon glyphicon-pencil"></span></a></td>
+                <td><a ng-click="removeScore(true, item.id, item.title)" ng-if="!item.obsolete" ><span class="glyphicon glyphicon-remove"></span></a></td>
+                <td>
+                    <a type="button" ng-if="item.slider && !item.obsolete" ng-click="addSlider(false, item.id)" class="btn btn-default btn-xs">Remove</a>
+                    <a type="button" ng-if="!item.slider && !item.obsolete" ng-click="addSlider(true, item.id)" class="btn btn-primary btn-xs">Add</a>
+                </td>
+                <td><small>{{item.createdAt | date : 'yyyy-MM-dd'}}</small></td>
+            </tr>
+            </tbody>
+        </table>
     </div>
 
 </div>

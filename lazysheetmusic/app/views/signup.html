@@ -1,10 +1,4 @@
 
-<div class="container breadcrumbBox">
-    <ol class="breadcrumb">
-        <li><a href="#/home"><span class="glyphicon glyphicon-home"></span></a></li>
-        <li><a href="#/users">Sign Up</a></li>
-    </ol>
-</div>
 <!-- Content -->
 <div class="container text-center">
 
@@ -13,18 +7,25 @@
     </div>
 
     <div class="col-md-6 col-sm-6 col-xs-12 text-center">
+        <form name="RegForm" class="form-signin form-horizontal" role="form">
+            <fieldset>
+                <legend>Sign Up</legend>
+                <input type="text" class="form-control" placeholder="Firstname" ng-model="regInfo.firstname" required>
+                <input type="text" class="form-control" placeholder="Surname" ng-model="regInfo.surname" required>
+                <input type="email" class="form-control" placeholder="Email" ng-model="regInfo.username" required>
+                <input type="password" maxlength="20" minlength="6" class="form-control" placeholder="Password (6-20 characters)" ng-model="regInfo.pass1" required>
+                <input type="password" maxlength="20" minlength="6" class="form-control" placeholder="Re-enter Password" ng-model="regInfo.pass2" required>
+                <span class="form-check" ng-show="regCheck" ng-class="setCheck">{{regCheck}}</span>
 
-        <h2>Sign Up</h2>
-        <a class="pull-center need-help" ng-model="regform" href="#/login">Registered? Click to Login </a><span class="clearfix"></span>
-        <form name="RegForm" class="form-signin" role="form">
-            <input type="email" class="form-control" placeholder="Email" ng-model="regInfo.email" required>
-            <input type="text" maxlength="20" minlength="4" class="form-control" placeholder="Username (4-20 characters)" ng-model="regInfo.username" required ng-trim="true">
-            <input type="password" maxlength="20" minlength="6" class="form-control" placeholder="Password (6-20 characters)" ng-model="regInfo.pass1" required>
-            <input type="password" maxlength="20" minlength="6" class="form-control" placeholder="Re-enter Password" ng-model="regInfo.pass2" required>
-            <span class="form-check" ng-show="regCheck">{{regCheck}}</span>
-            <button class="btn btn-primary btn-block" type="submit" ng-click="regSave()">
-                Register
-            </button>
+
+                <a class="pull-center need-help" ng-model="regform" href="#/login">Registered? Click to Login </a><span class="clearfix"></span>
+                <div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-1">
+                        <button type="submit" class="btn btn-primary" ng-click="regSave()">Submit</button>
+                    </div>
+                </div>
+            </fieldset>
+
         </form>
     </div>
 </div>
