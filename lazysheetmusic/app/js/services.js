@@ -4,7 +4,7 @@
 
 var rapidScoreServices = angular.module('rapidScoreServices', [ 'ngResource' ]);
 //var hostname = 'http://localhost:5000/api';
-var hostname = 'http://lazyscore.herokuapp.com/api';
+var hostname = 'https://lazyscore.herokuapp.com/api';
 
 // Protected URL
 // user account get, edit
