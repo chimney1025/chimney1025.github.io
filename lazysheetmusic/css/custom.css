@@ -354,7 +354,7 @@ a {
 
 .slide img {
     float: left;
-    padding:0 30px;
+    padding:10px 30px;
     width: 100%;
     min-width: 240px;
     z-index:0;
