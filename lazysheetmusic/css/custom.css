@@ -350,7 +350,7 @@ a {
     height: 500px;
     z-index:0;
     
-    overflow-y:hidden;
+    overflow:hidden;
     white-space: pre-line;
 }
 
@@ -386,7 +386,7 @@ a {
     height: 500px;
     z-index:0;
     
-    overflow-y:hidden;
+    overflow:hidden;
     white-space: pre-line;
     background-color:#e5e5e5;
 }
