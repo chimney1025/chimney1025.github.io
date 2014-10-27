@@ -406,13 +406,13 @@ a {
     width:80%;
     height: 120px;
     overflow:hidden;
-    border:1px solid #ccc;
 }
 
 .slide-prev-single img{
     width:100%;
     opacity:0.5;
     cursor:pointer;
+    border:1px solid #ccc;
 }
 .slide-prev-single img:hover{
     opacity: 1;
