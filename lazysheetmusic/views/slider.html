@@ -21,7 +21,8 @@
                     <p class="well" ng-if="image.desc" ng-bind="image.desc"></p>
                     <br>
         </div>
-                    --> <img ng-src="{{image.imageurl}}" ng-href="#/sheetmusic/{{image.shortname}}" /> </perfect-scrollbar>
+                    --> <a href="#/sheetmusic/{{image.shortname}}"><img ng-src="{{image.imageurl}}" /></a>
+    </perfect-scrollbar>
 	<ul class="slide-index">
 	   <!-- 
 		<li><a ng-click="prev()" class="left-arrow"></a></li>
