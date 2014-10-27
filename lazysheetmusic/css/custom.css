@@ -438,7 +438,7 @@ a {
 }
 
 .slide-name a, .slide-index a{
-	font-size:14px;
+	font-size:18px;
 	color:#333;
 }
 
@@ -457,7 +457,7 @@ ul.slide-index{
     position:absolute;
     top:220px;
     margin:0;
-    left: 0;
+    left: 30%;
     width:70%;
     opacity:0.9;
     /*
