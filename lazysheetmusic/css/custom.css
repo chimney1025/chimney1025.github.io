@@ -392,21 +392,25 @@ a {
     
     overflow:hidden;
     white-space: pre-line;
+    /*
     background: url("../images/container-bg.jpg") repeat scroll 50% 0 #363739;
+    */
+    background-color:#e5e5e5
 }
 
 .slide-prev-single{
     list-style:none;
     margin: 0 0 20px auto;
     display: inline;
-    float:left;
-    width:100%;
+    
+    width:80%;
     height: 120px;
     overflow:hidden;
+    border:1px solid #ccc;
 }
 
 .slide-prev-single img{
-    width:80%;
+    width:100%;
     opacity:0.5;
     cursor:pointer;
 }
