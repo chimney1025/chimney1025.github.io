@@ -31,6 +31,8 @@ rapidScoreAnimations.directive('slider', function($timeout, $q){
                         return 'active';
                     }
                 }
+                
+                scope.shorturl = scope.images[scope.currentIndex].shortname;
 
                 scope.next=function(){
                     scope.currentIndex<scope.images.length-1?scope.currentIndex++:scope.currentIndex=0;

@@ -416,6 +416,12 @@ a {
     cursor:pointer;
 }
 
+.slide-name{
+	position: absolute;
+	bottom:0;
+	right:0;
+}
+
 ul.slide-index{
     height:30px;
     text-align:center;
@@ -1122,11 +1128,7 @@ span.form-success{
         margin-right: 40px;
     }
     .slide-name a{
-        font-size:24px;
-    }
-    .slide-name p{
-        margin-top:30px;
-        min-height: 120px;
+        font-size:18px;
     }
     ul.slide-index {
         top:200px;
@@ -1341,9 +1343,6 @@ span.form-success{
         float: none;
         padding: 0;
     }
-    .slide-name p {
-        display: none;
-    }
     .slide-prev, ul.slide-index{
         display: none;
     }
@@ -1363,7 +1362,7 @@ span.form-success{
     }
 
     .slide-name a{
-        font-size:18px;
+        font-size:14px;
     }
     .slide img{
         width:100%;

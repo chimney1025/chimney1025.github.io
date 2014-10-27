@@ -2,10 +2,10 @@
 	<!-- Slide Show-->
 	<perfect-scrollbar wheel-propagation="true" wheel-speed="10"
 		refresh-on-change="someArray" class="slide-prev">
-	<div class="slide-prev-single" ng-repeat="image in images | limitTo:8">
+	   <div class="slide-prev-single" ng-repeat="image in images | limitTo:8">
 		<img ng-click="jump($index)" ng-src="{{image.imageurl}}"
 			ng-class="setSliderActive($index)" />
-	</div>
+	   </div>
 	</perfect-scrollbar>
 	<perfect-scrollbar wheel-propagation="true" wheel-speed="10"
 		refresh-on-change="someArray" class="slide"
@@ -29,7 +29,5 @@
 		<!-- <li><span ng-bind="(currentIndex+1)"></span>/<span ng-bind="images.length"></span></li> -->
 		<li><a ng-click="next()" class="right-arrow"></a></li>
 	</ul>
-
-
-
+	<div class="slide-name"><a type="button" class="btn btn-primary" ng-href="#/sheetmusic/{{shorturl}}">Read More</a></div>
 </div>
