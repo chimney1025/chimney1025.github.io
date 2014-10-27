@@ -326,13 +326,17 @@ a {
 -----------------------------------*/
 .slider {
     position: relative;
-    padding: 0;
     width: 100%;
     margin: auto;
     background-color:#fff;
     border:1px solid #eee;
     height: 500px;
     overflow: hidden;
+    
+    background: url("../images/container-bg.jpg") repeat scroll 50% 0 #363739;
+    box-shadow: 0 3px 10px -4px #000 inset, 0 -3px 10px -4px #000 inset;
+    padding: 45px 0;
+    
     /*
   background-color: #333;
     -webkit-box-shadow: 0px 0px 15px #999;
