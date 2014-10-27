@@ -1,18 +1,16 @@
 <div class="slider fade" ng-class="{in:images.length}">
 	<!-- Slide Show-->
-    <perfect-scrollbar wheel-propagation="true" wheel-speed="10" refresh-on-change="someArray" class="slide-prev">
-    <ul>
-
-        <li ng-repeat="image in images | limitTo:8">
-            <img ng-click="jump($index)"
-                 ng-src="{{image.imageurl}}" ng-class="setSliderActive($index)" />
-        </li>
-
-    </ul>
-    </perfect-scrollbar>
-	<perfect-scrollbar wheel-propagation="true" wheel-speed="10" refresh-on-change="someArray" class="slide"  ng-repeat="image in images | orderBy:orderProp"
-		ng-show="image.visible">
-        <!--
+	<perfect-scrollbar wheel-propagation="true" wheel-speed="10"
+		refresh-on-change="someArray" class="slide-prev">
+	<div class="slide-prev-single" ng-repeat="image in images | limitTo:8">
+		<img ng-click="jump($index)" ng-src="{{image.imageurl}}"
+			ng-class="setSliderActive($index)" />
+	</div>
+	</perfect-scrollbar>
+	<perfect-scrollbar wheel-propagation="true" wheel-speed="10"
+		refresh-on-change="someArray" class="slide"
+		ng-repeat="image in images | orderBy:orderProp"
+		ng-show="image.visible"> <!--
                 <div class="slide-name">
 
                     <ul class="slide-index">
@@ -25,14 +23,12 @@
                     <p class="well" ng-if="image.desc" ng-bind="image.desc"></p>
                     <br>
         </div>
-                    -->
-		<img ng-src="{{image.imageurl}}" />
-	</perfect-scrollbar>
-    <ul class="slide-index">
-        <li><a ng-click="prev()" class="left-arrow"></a></li>
-        <!-- <li><span ng-bind="(currentIndex+1)"></span>/<span ng-bind="images.length"></span></li> -->
-        <li><a ng-click="next()" class="right-arrow"></a></li>
-    </ul>
+                    --> <img ng-src="{{image.imageurl}}" /> </perfect-scrollbar>
+	<ul class="slide-index">
+		<li><a ng-click="prev()" class="left-arrow"></a></li>
+		<!-- <li><span ng-bind="(currentIndex+1)"></span>/<span ng-bind="images.length"></span></li> -->
+		<li><a ng-click="next()" class="right-arrow"></a></li>
+	</ul>
 
 
 
