@@ -392,7 +392,7 @@ a {
     
     overflow:hidden;
     white-space: pre-line;
-    background-color:rgba(51,51,51,0.8);
+    background: url("../images/container-bg.jpg") repeat scroll 50% 0 #363739;
 }
 
 .slide-prev-single{
@@ -426,7 +426,7 @@ a {
 	left:30%;
 	width:70%;
 	height:30px;
-	background-color:rgba(51,51,51,0.8);
+	background: url("../images/container-bg.jpg") repeat scroll 50% 0 #363739;
 }
 
 .slide-name a, .slide-index a{
