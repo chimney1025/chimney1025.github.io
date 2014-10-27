@@ -359,7 +359,7 @@ a {
 
 .slide img {
     float: left;
-    padding:10px 30px;
+    padding:0;
     width: 100%;
     min-width: 240px;
     z-index:0;
