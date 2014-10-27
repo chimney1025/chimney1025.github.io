@@ -439,13 +439,13 @@ a {
 
 .slide-name a, .slide-index a{
 	font-size:18px;
-	color:#333;
+	color:rgba(51,51,51,0.8);
 }
 
 .slide-name a:hover, .slide-index a:hover{
 	background:none;
 	text-decoration:underline;
-	color:#333;
+	color:rgba(51,51,51,1);
 }
 
 ul.slide-index{
