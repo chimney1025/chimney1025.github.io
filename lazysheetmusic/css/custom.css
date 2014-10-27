@@ -388,7 +388,7 @@ a {
     
     overflow:hidden;
     white-space: pre-line;
-    background-color:#e5e5e5;
+    background-color:rgba(51,51,51,0.8);
 }
 
 .slide-prev-single{
@@ -422,11 +422,18 @@ a {
 	left:30%;
 	width:70%;
 	height:30px;
-	background-color:rgba(51,51,51,0.6);
+	background-color:rgba(51,51,51,0.8);
 }
 
 .slide-name a{
-	font-size:18px;
+	font-size:14px;
+	color:#fff;
+}
+
+.slide-name a:hover{
+	background:none;
+	text-decoration:underline;
+	color:#fff;
 }
 
 ul.slide-index{
@@ -1135,7 +1142,6 @@ span.form-success{
         margin-right: 40px;
     }
     .slide-name a{
-        font-size:18px;
     }
     ul.slide-index {
         top:200px;
