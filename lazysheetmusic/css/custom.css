@@ -423,7 +423,6 @@ a {
 	width:70%;
 	height:30px;
 	background-color:rgba(51,51,51,0.8);
-	display:none;
 }
 
 .slide-name a, .slide-index a{
@@ -444,7 +443,8 @@ ul.slide-index{
     z-index:1000;
     position:absolute;
     bottom:0;
-    right: 0;
+    margin:0;
+    left: 30%;
     width:70%;
     background-color:rgba(51,51,51,0.8);
 }
@@ -1146,7 +1146,7 @@ span.form-success{
     .slide-name a{
     }
     ul.slide-index {
-        top:200px;
+        
     }
     /*
     .breadcrumb{
@@ -1358,13 +1358,13 @@ span.form-success{
         float: none;
         padding: 0;
     }
-    .slide-prev, ul.slide-index{
+    .slide-prev{
         display: none;
     }
     .slide a{
         font-size:14px;
     }
-    .slide-name{
+    .slide-name, ul.slide-index{
         width:100%;
         left:0;
     }
