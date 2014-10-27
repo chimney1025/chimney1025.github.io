@@ -152,6 +152,7 @@ a {
 #main-container {
     min-height: 100%;
     position: relative;
+    margin-bottom: 30px;
     /*background-color:whitesmoke;*/
 }
 
