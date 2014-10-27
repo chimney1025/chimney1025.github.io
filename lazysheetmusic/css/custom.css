@@ -351,7 +351,7 @@ a {
     position: absolute;
     top: 0;
     left: 30%;
-    width: 68%;
+    width: 70%;
     height: 500px;
     z-index:0;
     
@@ -371,6 +371,10 @@ a {
     -moz-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
     -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
 */
+}
+
+.slide a{
+    padding: 0;
 }
 
 .slide-prev li a{
