@@ -4,7 +4,7 @@
 
 var rapidScoreApp = angular.module('rapidScoreApp', [ 'rapidScoreControllers',
 		'rapidScoreServices', 'rapidScoreAnimations', 'rapidScoreFilters',
-		'ngRoute', 'ng-breadcrumbs' ]);
+		'ngRoute', 'ng-breadcrumbs', 'perfect_scrollbar' ]);
 
 rapidScoreApp.config(function($httpProvider) {
 	$httpProvider.interceptors.push('TokenInterceptor');

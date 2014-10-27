@@ -9,7 +9,7 @@
         </li>
 
     </ul>
-	<div class="slide" ng-repeat="image in images | orderBy:orderProp"
+	<perfect-scrollbar wheel-propagation="true" wheel-speed="50" refresh-on-change="someArray" class="slide"  ng-repeat="image in images | orderBy:orderProp"
 		ng-show="image.visible">
         <!--
                 <div class="slide-name">
@@ -26,7 +26,7 @@
         </div>
                     -->
 		<img ng-src="{{image.imageurl}}" />
-	</div>
+	</perfect-scrollbar>
     <ul class="slide-index">
         <li><a ng-click="prev()" class="left-arrow"></a></li>
         <!-- <li><span ng-bind="(currentIndex+1)"></span>/<span ng-bind="images.length"></span></li> -->
