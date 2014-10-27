@@ -951,7 +951,7 @@ rapidScoreControllers
                                         if (res) {
                                             $scope.regCheck = 'Registration Successful';
                                             $scope.setCheck = "form-success";
-                                            alert('Registration Successful!');
+                                            alert('Registration successful. Please check your email inbox to activate your account.');
                                             $location
                                                 .path('/login');
                                         } else {
