@@ -437,7 +437,8 @@ a {
 }
 
 ul.slide-index{
-    height:30px;
+    height:40px;
+    line-height:40px;
     text-align:center;
     padding: 0;
     z-index:1000;
