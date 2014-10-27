@@ -373,13 +373,13 @@ a {
 */
 }
 
-.slide a, .slide-prev li a{
+.slide-prev li a{
     float:left;
-    border-radius:5px;
 }
 
 .slide a:hover{
     opacity:1;
+    background-color:#fff;
 }
 
 .slide-prev {
