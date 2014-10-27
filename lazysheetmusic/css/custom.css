@@ -1368,21 +1368,10 @@ span.form-success{
     }
 }
 
-/*Small mobile device size
+Small mobile device size
 @media ( max-width : 560px) {
-    .slider{
-        width:300px;
+    .slider, .slide{
         min-height:450px;
-    }
-    .slide{
-        min-height:450px;
-    }
-
-    .slide-name a{
-        font-size:14px;
-    }
-    .slide img{
-        width:100%;
     }
 }
-*/
+
