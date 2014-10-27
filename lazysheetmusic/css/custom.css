@@ -423,6 +423,10 @@ a {
 	opacity:0.8;
 }
 
+.slide-name a{
+	font-size:24px;
+}
+
 ul.slide-index{
     height:30px;
     text-align:center;
