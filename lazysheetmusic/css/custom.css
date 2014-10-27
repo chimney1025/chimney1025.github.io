@@ -452,7 +452,8 @@ ul.slide-index{
     bottom:20px;
     margin:0;
     left: 50%;
-    width:50%;
+    width:35%;
+    opacity:0.9;
     background: url("../images/container-bg.jpg") repeat scroll 50% 0 #363739;
 }
 
