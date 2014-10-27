@@ -1371,7 +1371,7 @@ span.form-success{
 Small mobile device size
 @media ( max-width : 560px) {
     .slider, .slide{
-        min-height:450px;
+        min-height:350px;
     }
 }
 
