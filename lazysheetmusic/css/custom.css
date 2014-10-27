@@ -1238,10 +1238,8 @@ span.form-success{
         padding: 0;
         position:relative;
         clear:both;
-        background-color:#f8f9fa;
     }
     #footer .container{
-        border-top: 1px solid #eee;
         margin: 20px auto 0;
     }
     .navbar {
