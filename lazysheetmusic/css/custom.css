@@ -439,13 +439,13 @@ a {
 
 .slide-name a, .slide-index a{
 	font-size:14px;
-	color:#fff;
+	color:#333;
 }
 
 .slide-name a:hover, .slide-index a:hover{
 	background:none;
 	text-decoration:underline;
-	color:#fff;
+	color:#333;
 }
 
 ul.slide-index{
@@ -455,12 +455,14 @@ ul.slide-index{
     padding: 0;
     z-index:1000;
     position:absolute;
-    bottom:20px;
+    top:220px;
     margin:0;
-    left: 50%;
-    width:35%;
+    left: 0;
+    width:70%;
     opacity:0.9;
+    /*
     background: url("../images/container-bg.jpg") repeat scroll 50% 0 #363739;
+    */
 }
 
 ul.slide-index li{
