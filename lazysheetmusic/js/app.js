@@ -38,7 +38,14 @@ rapidScoreApp.config(function($httpProvider) {
 });
 
 rapidScoreApp.config([ '$routeProvider', function($routeProvider) {
-	$routeProvider.when('/home', {
+	
+	$routeProvider.when('/', {
+		templateUrl : 'views/home.html',
+		label : 'Home',
+		access : {
+			requiredLogin : false
+		}
+	}).when('/home', {
 		templateUrl : 'views/home.html',
 		label : 'Home',
 		access : {
