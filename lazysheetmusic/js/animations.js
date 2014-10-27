@@ -25,25 +25,27 @@ rapidScoreAnimations.directive('slider', function($timeout, $q){
                 console.log(elem.children());
                 
                 scope.currentIndex=0;
+                scope.shorturl = scope.images[scope.currentIndex].shortname;
 
                 scope.setSliderActive=function(i){
                     if(scope.currentIndex == i){
                         return 'active';
                     }
                 }
-                
-                scope.shorturl = scope.images[scope.currentIndex].shortname;
 
                 scope.next=function(){
                     scope.currentIndex<scope.images.length-1?scope.currentIndex++:scope.currentIndex=0;
+                    scope.shorturl = scope.images[scope.currentIndex].shortname;
                 };
 
                 scope.prev=function(){
                     scope.currentIndex>0?scope.currentIndex--:scope.currentIndex=scope.images.length-1;
+                    scope.shorturl = scope.images[scope.currentIndex].shortname;
                 };
 
                 scope.jump=function(i){
                     scope.currentIndex=i;
+                    scope.shorturl = scope.images[scope.currentIndex].shortname;
                 }
             
                 scope.$watch('currentIndex',function(){
@@ -52,6 +54,8 @@ rapidScoreAnimations.directive('slider', function($timeout, $q){
                     });
                     
                     scope.images[scope.currentIndex].visible=true;
+
+                    scope.shorturl = scope.images[scope.currentIndex].shortname;
                 });
             
             
