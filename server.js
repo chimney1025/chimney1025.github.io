@@ -6,7 +6,7 @@ var express = require("express"),
     port = parseInt(process.env.PORT, 10) || 4567;
 
 app.get("/", function (req, res) {
-  res.redirect("/app/index.html");
+  //res.redirect("/index.html");
 });
 
 app.use(methodOverride());
