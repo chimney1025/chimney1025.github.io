@@ -1101,7 +1101,7 @@ span.form-success{
     body{
     }
     .container.text-center {
-        padding: 0 15px;
+        padding: 0 15px 100px;
     }
     .view-container {
         padding-bottom: 30px;
@@ -1114,7 +1114,7 @@ span.form-success{
         margin-top: 20px;
     }
 
-    .slider, .slide{
+    .slider, .slide, .slide-prev{
         height:440px;
     }
 
