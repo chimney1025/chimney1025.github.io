@@ -1244,6 +1244,11 @@ span.form-success{
         padding:0;
     }
 
+    .navbar-nav .active:after{
+        border-width:0;
+        margin-width:0;
+    }
+
     #footer{
         padding: 0;
         position:relative;
@@ -1270,7 +1275,7 @@ span.form-success{
         margin: 0 auto;
     }
     .view-container {
-        padding-bottom: 0;
+        padding-bottom: 20px;
     }
     .container.text-center{
         padding:0 15px 0 10px;
