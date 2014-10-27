@@ -1,14 +1,12 @@
 <div class="slider fade" ng-class="{in:images.length}">
 	<!-- Slide Show-->
-	<perfect-scrollbar wheel-propagation="true" wheel-speed="10"
-		refresh-on-change="someArray" class="slide-prev">
+	<perfect-scrollbar wheel-propagation="true" wheel-speed="3" class="slide-prev">
 	   <div class="slide-prev-single" ng-repeat="image in images | limitTo:8">
 		<img ng-click="jump($index)" ng-src="{{image.imageurl}}"
 			ng-class="setSliderActive($index)" />
 	   </div>
 	</perfect-scrollbar>
-	<perfect-scrollbar wheel-propagation="true" wheel-speed="10"
-		refresh-on-change="someArray" class="slide"
+	<perfect-scrollbar wheel-propagation="true" wheel-speed="3" class="slide"
 		ng-repeat="image in images | orderBy:orderProp"
 		ng-show="image.visible"> <!--
                 <div class="slide-name">
