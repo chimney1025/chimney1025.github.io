@@ -449,10 +449,10 @@ ul.slide-index{
     padding: 0;
     z-index:1000;
     position:absolute;
-    bottom:0;
+    bottom:20px;
     margin:0;
-    left: 30%;
-    width:70%;
+    left: 50%;
+    width:50%;
     background: url("../images/container-bg.jpg") repeat scroll 50% 0 #363739;
 }
 
