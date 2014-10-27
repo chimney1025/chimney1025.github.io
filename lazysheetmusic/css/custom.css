@@ -348,9 +348,9 @@ a {
     left: 30%;
     width: 70%;
     height: 500px;
-    overflow-y:hidden;
     z-index:0;
     
+    overflow-y:hidden;
     white-space: pre-line;
 }
 
@@ -368,49 +368,30 @@ a {
 */
 }
 
-#pagination {
-    clear:both;
-    width:75px;
-    margin:0 auto;
-    padding:0;
-}
-
-#pagination li {
-    list-style:none;
+.slide a, .slide-prev li a{
     float:left;
-    margin:10px 2px;
-    display: inline;
+    border-radius:5px;
 }
 
-#pagination li a {
-    display:block;
-    width:10px;
-    height:10px;
-    text-indent:-10000px;
-    background: #999;
-    border-radius: 10px;
-    -moz-border-radius: 10px;
-    -webkit-border-radius: 10px;
-    box-shadow: inset 1px 1px 1px rgba(0, 0 ,0, 0.4);
+.slide a:hover{
+    opacity:1;
 }
 
-#pagination li a.active {
-    background: #668CFF;
-}
-
-.slide-name, .slide-prev {
+.slide-prev {
+    padding: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 30%;
-    float: left;
-    padding : 15px 5px 10px 5px;
-    text-align: center;
-    overflow-y: hidden;
+    height: 500px;
+    z-index:0;
+    
+    overflow-y:hidden;
     white-space: pre-line;
-    height:500px;
-    background-color:#464646;
+    background-color:#e5e5e5;
 }
 
 .slide-prev ul{
-	height: auto;
 }
 .slide-prev ul li{
     list-style:none;
@@ -435,19 +416,6 @@ a {
 .slide-prev ul li img.active{
     opacity: 1;
     cursor:pointer;
-}
-
-.slide-name li a{
-    font-size:14px;
-}
-
-.slide a, .slide-prev li a{
-    float:left;
-    border-radius:5px;
-}
-
-.slide a:hover{
-    opacity:1;
 }
 
 ul.slide-index{
