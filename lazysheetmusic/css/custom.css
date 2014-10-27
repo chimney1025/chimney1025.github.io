@@ -423,14 +423,15 @@ a {
 	width:70%;
 	height:30px;
 	background-color:rgba(51,51,51,0.8);
+	display:none;
 }
 
-.slide-name a{
+.slide-name a, .slide-index a{
 	font-size:14px;
 	color:#fff;
 }
 
-.slide-name a:hover{
+.slide-name a:hover, .slide-index a:hover{
 	background:none;
 	text-decoration:underline;
 	color:#fff;
@@ -442,9 +443,10 @@ ul.slide-index{
     padding: 0;
     z-index:1000;
     position:absolute;
-    top:220px;
+    bottom:0;
     right: 0;
     width:70%;
+    background-color:rgba(51,51,51,0.8);
 }
 
 ul.slide-index li{
