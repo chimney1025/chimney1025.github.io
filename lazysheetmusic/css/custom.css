@@ -1286,9 +1286,8 @@ span.form-success{
     .list-full{
         min-height:400px;
     }
-    .list-full h2{
+    .list-full h2, .list-full h1{
         margin:10px;
-    
     }
     .act-list, .contact-main {
         padding:0 20px;
