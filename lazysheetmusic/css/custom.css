@@ -1151,6 +1151,9 @@ span.form-success{
 @media ( max-width : 992px) {
     body{
     }
+    #footer{
+        background-color:#f8f9fa;
+    }
     .container.text-center {
         padding: 0 15px;
     }
@@ -1166,7 +1169,7 @@ span.form-success{
     }
 
     .slider, .slide, .slide-prev{
-        height:440px;
+        height:400px;
     }
 
     .slide img {
