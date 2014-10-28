@@ -2,7 +2,7 @@
 	<!-- Slide Show-->
 	<perfect-scrollbar wheel-propagation="true" wheel-speed="3" class="slide-prev">
 	   <div class="slide-prev-single" ng-repeat="image in images | limitTo:8">
-		<img ng-click="jump($index)" ng-src="{{image.imageurl}}"
+		<img ng-click="jump($index)" ng-src="{{image.thumburl}}"
 			ng-class="setSliderActive($index)" />
 	   </div>
 	</perfect-scrollbar>

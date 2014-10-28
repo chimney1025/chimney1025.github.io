@@ -248,6 +248,11 @@ rapidScoreControllers
                     } else {
                         scoreData.imageurl = '';
                     }
+                    if ($scope.scoreInfo.thumburl) {
+                        scoreData.thumburl = $scope.scoreInfo.thumburl.trim();
+                    } else {
+                        scoreData.thumburl = '';
+                    }
                     if ($scope.scoreInfo.fileurl) {
                         scoreData.fileurl = $scope.scoreInfo.fileurl.trim();
                     } else {
@@ -340,6 +345,11 @@ rapidScoreControllers.controller('ScoreEditCtrl', [
                     scoreData.imageurl = $scope.scoreInfo.imageurl.trim();
                 } else {
                     scoreData.imageurl = '';
+                }
+                if ($scope.scoreInfo.thumburl) {
+                    scoreData.thumburl = $scope.scoreInfo.thumburl.trim();
+                } else {
+                    scoreData.thumburl = '';
                 }
                 if ($scope.scoreInfo.fileurl) {
                     scoreData.fileurl = $scope.scoreInfo.fileurl.trim();
