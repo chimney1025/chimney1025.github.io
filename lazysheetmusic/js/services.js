@@ -385,6 +385,14 @@ rapidScoreServices.factory('SubTypeAPI', [ '$resource', function($resource) {
 	});
 } ]);
 
+rapidScoreServices.factory('SubTypeIdAPI', [ '$resource', function($resource) {
+    return $resource(hostname + '/subtypes/:subtype_id', {}, {
+        getAll : {
+            method : 'GET'
+        }
+    });
+} ]);
+
 
 rapidScoreServices.factory('SliderAPI', [ '$resource', function($resource) {
 	return $resource(hostname + '/slider', {}, {

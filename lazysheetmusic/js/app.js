@@ -76,7 +76,13 @@ rapidScoreApp.config([ '$routeProvider', function($routeProvider) {
 		access : {
 			requiredLogin : false
 		}
-	}).when('/account/shopping-cart', {
+	}).when('/subtypes/:id', {
+        templateUrl : 'views/category-detail.html',
+        controller : 'SubTypeIdCtrl',
+        access : {
+            requiredLogin : false
+        }
+    }).when('/account/shopping-cart', {
 		templateUrl : 'views/account-cart.html',
 		label : 'Shopping Cart',
 		controller : 'UserCtrl',

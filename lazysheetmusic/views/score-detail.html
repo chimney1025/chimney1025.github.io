@@ -14,7 +14,7 @@
             <div ng-show="!collapsed">
                 <li>Price: <span ng-bind="score.price | currency:'£'"></span></li>
                 <li>Page: <span ng-bind="score.page"></span></li>
-                <li>Tags: <a type="button" class="btn-detail btn btn-default" href="#" ng-repeat="type in score.types" ng-if="!type.obsolete" ng-bind="type.name"> </a></li>
+                <li>Tags: <a type="button" class="btn-detail btn btn-default" href="#/subtypes/{{type.id}}" ng-repeat="type in score.types" ng-if="!type.obsolete" ng-bind="type.name"> </a></li>
                 <li ng-if="score.audiourl || score.videourl">
                     Links:
                     <button type="button" class="btn-detail btn btn-default"  ng-if="score.audiourl" href="{{score.audiourl}}" target="_blank" class="" title="Download Audio">Audio</button>

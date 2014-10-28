@@ -35,6 +35,15 @@ rapidScoreControllers.controller('SubTypeCtrl', [ '$scope', '$rootScope',
         console.log($scope.result);
     } ]);
 
+rapidScoreControllers.controller('SubTypeIdCtrl', [ '$scope', '$rootScope',
+    '$routeParams', 'SubTypeIdAPI',
+    function($scope, $rootScope, $routeParams, SubTypeId) {
+        $scope.result = SubTypeId.getAll({
+            subtype_id : $routeParams.id
+        });
+        console.log($scope.result);
+    } ]);
+
 rapidScoreControllers
     .controller(
     'ScoreCtrl',
