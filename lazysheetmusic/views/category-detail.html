@@ -41,11 +41,15 @@
             </tr>
             </tbody>
         </table>
-        <ul class="pagination">
+        <ul class="pagination" ng-if="result.scores.length">
             <li class="disabled"><a href="#">«</a></li>
             <li class="active"><a href="#">1</a></li>
             <li class="disabled"><a href="#">»</a></li>
         </ul>
+        <h2 ng-if="result.scores.length == 0">No Sheet Music Found Here</h2>
+        <h4 ng-if="result.scores.length == 0">
+            <a href="#/sheetmusic">View All Sheet Music</a> | <a href="#/types/{{result.pshortname}}">View Other {{result.pshortname | titlelize}}</a>
+        </h4>
     </div>
 
 </div>

@@ -883,7 +883,7 @@ audio {
     line-height: 10px;
 }
 
-.act-list h1, .act-list h2{
+.act-list h1, .act-list h2, .list-score h2{
     margin-bottom:20px;
 }
 
