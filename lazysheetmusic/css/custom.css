@@ -1179,7 +1179,7 @@ span.form-success{
 
     /*score-detail*/
     .list-filter,.score-detail {
-        padding: 10px;
+        padding: 20px;
         border-top:1px solid #eee;
         border-left: 0;
     }

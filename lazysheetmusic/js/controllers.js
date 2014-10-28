@@ -726,6 +726,11 @@ rapidScoreControllers.controller('sessionService',
                 $location.path("/login");
             }
         } ]);
+rapidScoreControllers
+	.controller(
+			'ContactCtrl',[function(){
+				console.log('contact control');
+			}]);
 
 rapidScoreControllers
     .controller(
