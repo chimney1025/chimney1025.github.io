@@ -152,7 +152,8 @@ a {
 #main-container {
     min-height: 100%;
     position: relative;
-    margin-bottom: 30px;
+    margin: 0;
+    padding-bottom: 30px;
     /*background-color:whitesmoke;*/
 }
 
@@ -332,12 +333,14 @@ a {
 /*-----------------------------------
 	Slider
 -----------------------------------*/
+.slider, .slide, .slide-prev{
+    height: 480px;
+}
 .slider {
     position: relative;
     width: 100%;
     margin: auto;
     border:1px solid #eee;
-    height: 500px;
     overflow: hidden;
     background-color:#fff;
     
@@ -359,7 +362,6 @@ a {
     top: 0;
     left: 30%;
     width: 70%;
-    height: 500px;
     z-index:0;
     
     overflow:hidden;
@@ -399,7 +401,6 @@ a {
     top: 0;
     left: 0;
     width: 30%;
-    height: 500px;
     z-index:0;
     
     overflow:hidden;
@@ -642,7 +643,7 @@ table td{
 .list-score, .score-main {
     min-width: 300px;
     max-width: 628px;
-    min-height: 450px;
+    min-height: 480px;
     margin-right: 10px;
     padding:10px 20px 40px 20px;
     background-color:#fff;
@@ -657,7 +658,7 @@ table td{
     border:1px solid #e5e5e5;
     background-color:#fff;
     padding:10px 30px;
-    min-height:450px;
+    min-height:480px;
 }
 
 .list-filter,.score-detail {
@@ -854,7 +855,7 @@ audio {
     text-align: left;
     max-width: 708px;
     min-width: 300px;
-    min-height: 450px;
+    min-height: 480px;
     margin: 0 0 30px 10px;
     padding:0 25px 25px;
 
