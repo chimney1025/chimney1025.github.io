@@ -1200,7 +1200,7 @@ span.form-success{
         font-size: 1.8em;
     }
     .btn-inline {
-        margin: 0 10px 10px 0;
+        margin: 10px 10px 10px 0;
     }
     .btn.btn-detail {
         padding: 4px 6px;
@@ -1275,8 +1275,11 @@ span.form-success{
     }
 
     .input-search {
-        margin: 5px 0 10px 0;
+        margin: 20px 10px;
         padding: 0;
+    }
+    .btn-inline{
+        margin-left:10px;
     }
     .list-filter,.score-detail,.list-score,.score-main,.account-menu,.act-list,.list-full, .contact-left, .contact-main
     {
