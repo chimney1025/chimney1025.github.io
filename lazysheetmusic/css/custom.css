@@ -2,17 +2,16 @@
 	General Styles
 -----------------------------------*/
 html,body {
+    padding: 0;
+    margin: 0;
     height: 100%;
     color: #325050;
     /*color: #727578;*/
-    font-size: 100%;
     font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
     overflow-x:hidden;
 }
 
 body {
-    padding: 50px 0;
-
     background-color: #f8f9fa;
     /*
         background-image: -moz-radial-gradient(center 45deg,circle cover, #e1e2e3, #fff);
@@ -175,9 +174,9 @@ a {
 /*Footer*/
 #footer {
     padding: 0;
-    min-height: 50px;
+    height: 30%;
 
-	background-color: #f8f9fa;
+	background-color: #e5e5e5;
 	color: #333;
 
     border-top:1px solid #e5e5e5;
@@ -187,7 +186,7 @@ a {
 
 #footer img {
     height: 30px;
-    margin: 0 2px;
+    margin: 10px;
 }
 
 #footer a:hover {
@@ -196,7 +195,7 @@ a {
 
 #footer .container {
     margin: 0 auto;
-    padding: 10px 0;
+    padding: 20px 0;
     /*
     border-top: 1px solid #e5e5e5;
     */
@@ -206,10 +205,10 @@ a {
 	Navbar
 -----------------------------------*/
 .cusnav{
-    border-bottom: 4px solid #468595;
+    /*border-bottom: 4px solid #468595;*/
 }
 .navbar {
-    padding: 3px 3px 0;
+    padding: 10px 0;
     border-radius: 0;
     margin: 0;
     /*box-shadow: 0 1px 3px rgba(0,0,0,0.25);*/
@@ -262,10 +261,17 @@ a {
     position: absolute;
     pointer-events: none;
 
+    /*
     border-color: #468595 rgba(70, 133, 149, 0) rgba(70, 133, 149, 0);
     border-top-color: #468595;
     border-width: 12px;
     margin-left: -12px;
+
+    border-color: #222 rgba(46, 46, 46, 0) rgba(46,46,46, 0);
+    border-top-color: #333;
+    border-width: 20px;
+    margin-left: -20px;
+    */
 }
 
 /*
