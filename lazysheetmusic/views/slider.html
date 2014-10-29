@@ -6,7 +6,7 @@
 			ng-class="setSliderActive($index)" />
 	   </div>
 	</perfect-scrollbar>
-	<perfect-scrollbar wheel-propagation="true" wheel-speed="3" class="slide"
+	<div wheel-propagation="true" wheel-speed="3" class="slide"
 		ng-repeat="image in images | orderBy:orderProp"
 		ng-show="image.visible"> <!--
                 <div class="slide-name">
@@ -22,7 +22,7 @@
                     <br>
         </div>
                     --> <a href="#/sheetmusic/{{image.shortname}}"><img ng-src="{{image.imageurl}}" /></a>
-    </perfect-scrollbar>
+    </div>
 	<ul class="slide-index">
 	   <!-- 
 		<li><a ng-click="prev()" class="left-arrow"></a></li>
