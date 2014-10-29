@@ -175,7 +175,7 @@ a {
 /*Footer*/
 #footer {
     padding: 0;
-    height: 80%;
+    min-height: 80%;
 
 	background-color: #333;
 	color: #e5e5e5;
@@ -1160,8 +1160,6 @@ span.form-success{
     body{
     }
     #footer{
-        background-color:#f8f9fa;
-        color:#333;
     }
     .container.text-center {
         padding: 0 15px;
