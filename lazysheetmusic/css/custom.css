@@ -149,7 +149,7 @@ a {
 }
 
 #main-container {
-    min-height: 100%;
+    min-height: 98%;
     position: relative;
     margin: 0;
     padding-bottom: 50px;
@@ -174,7 +174,7 @@ a {
 /*Footer*/
 #footer {
     padding: 0;
-    min-height: 80%;
+    min-height: 90%;
 
 	background-color: #333;
 	color: #e5e5e5;
