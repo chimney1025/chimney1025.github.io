@@ -175,14 +175,15 @@ a {
 /*Footer*/
 #footer {
     padding: 0;
-    height: 30%;
+    height: 80%;
 
-	background-color: #e5e5e5;
-	color: #333;
+	background-color: #333;
+	color: #e5e5e5;
 
     border-top:1px solid #e5e5e5;
 
     width: 100%;
+    font-size:14px;
 }
 
 #footer img {
@@ -196,7 +197,7 @@ a {
 
 #footer .container {
     margin: 0 auto;
-    padding: 20px 0;
+    padding: 40px 0;
     /*
     border-top: 1px solid #e5e5e5;
     */
