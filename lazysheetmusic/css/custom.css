@@ -207,7 +207,7 @@ a {
 #footer .container p{
 	height:50%;
 	line-height:50%;
-	
+	padding:60px 0;
 }
 
 /*-----------------------------------
@@ -1161,6 +1161,7 @@ span.form-success{
     }
     #footer{
         background-color:#f8f9fa;
+        color:#333;
     }
     .container.text-center {
         padding: 0 15px;
