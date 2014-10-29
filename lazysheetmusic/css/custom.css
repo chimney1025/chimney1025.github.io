@@ -651,7 +651,6 @@ table td{
 .list-score, .score-main {
     min-width: 300px;
     max-width: 628px;
-    min-height: 480px;
     margin-right: 10px;
     padding:10px 20px 40px 20px;
     background-color:#fff;
@@ -659,6 +658,7 @@ table td{
     border-right:1px solid #eee;
     border-top:1px solid #eee;
     display:table;
+    height: 480px;
 }
 
 .list-full {
@@ -667,8 +667,8 @@ table td{
     border:1px solid #e5e5e5;
     background-color:#fff;
     padding:10px 30px;
-    min-height:480px;
     display:table;
+    height:480px;
 }
 
 .list-filter,.score-detail {
@@ -865,7 +865,6 @@ audio {
     text-align: left;
     max-width: 708px;
     min-width: 300px;
-    min-height: 480px;
     margin: 0 0 30px 10px;
     padding:0 25px 25px;
 
@@ -875,6 +874,7 @@ audio {
     border-top:1px solid #eee;
     
     display:table;
+    height: 480px;
 }
 
 .contact-main{
