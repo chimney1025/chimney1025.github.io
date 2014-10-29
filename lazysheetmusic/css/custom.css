@@ -8,7 +8,6 @@ html,body {
     color: #325050;
     /*color: #727578;*/
     font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    overflow-x:hidden;
 }
 
 body {
@@ -619,6 +618,7 @@ table td{
 .btn-inline {
     float: left;
     margin: 0 20px 20px 0;
+    display:table-row;
 }
 
 .dropdown-title {
@@ -658,6 +658,7 @@ table td{
     border-left:1px solid #eee;
     border-right:1px solid #eee;
     border-top:1px solid #eee;
+    display:table;
 }
 
 .list-full {
@@ -667,6 +668,7 @@ table td{
     background-color:#fff;
     padding:10px 30px;
     min-height:480px;
+    display:table;
 }
 
 .list-filter,.score-detail {
@@ -871,6 +873,8 @@ audio {
     border-left:1px solid #eee;
     border-right:1px solid #eee;
     border-top:1px solid #eee;
+    
+    display:table;
 }
 
 .contact-main{
@@ -1306,7 +1310,7 @@ span.form-success{
     .list-full{
         min-height:400px;
     }
-    .list-full h2, .list-full h1{
+    .list-full h2, .list-full h1, .list-score h1{
         margin:10px;
     }
     .act-list, .contact-main {
