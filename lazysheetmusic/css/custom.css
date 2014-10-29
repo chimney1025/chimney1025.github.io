@@ -435,15 +435,10 @@ a {
     cursor:pointer;
     border:3px solid #fff;
 }
-.slide-prev-single img:hover{
+.slide-prev-single img:hover, .slide-prev-single img.active{
     opacity: 1;
     cursor:pointer;
     border-color:#ccc;
-}
-
-.slide-prev-single img.active{
-    opacity: 1;
-    cursor:pointer;
 }
 
 .slide-name{
