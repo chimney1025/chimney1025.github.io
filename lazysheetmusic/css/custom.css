@@ -338,6 +338,22 @@ a {
     /*border-bottom: 1px solid #e5e5e5;*/
 }
 
+/* Modal */
+.modal{
+    display:block;
+}
+
+.modal-content{
+    margin-top:100px;
+    width:300px;
+    min-height:150px;
+}
+
+.modal-dialog{
+    width:300px;
+    min-height:150px;
+}
+
 /*-----------------------------------
 	Slider
 -----------------------------------*/
@@ -840,7 +856,7 @@ audio {
 
 .btn-back{
     position:fixed;
-    top:95px;
+    top:100px;
     left:0;
     z-index:1001;
 }

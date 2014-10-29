@@ -61,11 +61,6 @@
                     </ul>
                 </li> -->
             </ul>
-            <!--
-            <form class="navbar-form navbar-left input-search">
-                <input class="form-control col-lg-8" type="text" ng-model="query" placeholder="Search for Sheet music">
-            </form>
-            -->
 
             <ul class="nav navbar-nav navbar-right">
                 <!-- 
@@ -135,6 +130,19 @@
     </div>
 
     <div ng-view></div>
+
+    <div class="modal" ng-if="modalcheck">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <p>{{modalcheck}}</p>
+                </div>
+                <div class="modal-footer" ng-if="modaloption" >
+                    <a type="button" class="btn btn-sm btn-default" ng-click="closemodal()">OK</a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <!-- FOOTER -->
