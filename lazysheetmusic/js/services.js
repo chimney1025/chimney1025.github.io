@@ -418,6 +418,18 @@ rapidScoreServices.factory('CheckUsernameAPI', [ '$resource',
 /* post, put, delete by id */
 
 // options.api.base_url
+rapidScoreServices.factory('ContactAPI', [ '$resource', function($resource) {
+    return $resource(hostname + '/contact', {}, {
+        add : {
+            method : 'POST',
+            headers : {
+                'Content-Type' : 'application/json'
+            }
+        }
+    });
+} ]);
+
+// options.api.base_url
 rapidScoreServices.factory('ActivateAPI', [ '$resource', function($resource) {
     return $resource(hostname + '/activate/:link', {}, {
         get : {

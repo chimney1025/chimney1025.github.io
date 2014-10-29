@@ -773,11 +773,61 @@ rapidScoreControllers.controller('sessionService',
                 $location.path("/login");
             }
         } ]);
+
 rapidScoreControllers
 	.controller(
-			'ContactCtrl',[function(){
+			'ContactCtrl',['$scope', '$rootScope', '$window', 'ContactAPI', function($scope, $rootScope, $window, Contact){
 				console.log('contact control');
-			}]);
+
+        // Add Score
+        $scope.contactInfo = {};
+        $scope.contactCheck = '';
+
+        $scope.sendMsg = function() {
+
+            $scope.contactCheck = '';
+            // console.log($scope.scoreInfo);
+
+            if (!$scope.contactInfo.name) {
+                $scope.contactCheck = 'Invalid Name';
+                return;
+            }
+
+            if (!$scope.contactInfo.email) {
+                $scope.contactCheck = 'Invalid Email';
+                return;
+            }
+            // submit data
+            else {
+                console.log('posting data...');
+                $rootScope.modalcheck="Sending message ...";
+                $rootScope.modaloption = false;
+                // create json to be posted
+                var contactData = new Object();
+
+                contactData.name = $scope.contactInfo.name.trim();
+                contactData.email = $scope.contactInfo.email.trim();
+                contactData.message = $scope.contactInfo.message.trim();
+
+                Contact.add(
+                    {},
+                    contactData,
+                    function(res) {
+                        console.log('res:' + res);
+                        if (res) {
+                            $rootScope.modalcheck="Message sent!";
+                            $rootScope.modaloption = true;
+
+                            $rootScope.closemodal=function(){
+                                $rootScope.modalcheck = "";
+                                $window.location.reload();
+                            }
+                        }
+                    });
+
+            }
+        };
+	}]);
 
 rapidScoreControllers
     .controller(
@@ -793,6 +843,8 @@ rapidScoreControllers
                  LoginService, User) {
 
             // if logged in, go to user page
+
+            $rootScope.modalcheck="";
             if ($rootScope.logged) {
                 console.log('token ');
                 console.log($window.localStorage
@@ -808,6 +860,7 @@ rapidScoreControllers
 
             $rootScope.closemodal = function(){
                 $rootScope.modalcheck = "";
+                $window.location.reload();
             }
 
             // Login
@@ -880,9 +933,7 @@ rapidScoreControllers
                                 $rootScope.loginCheck = "Login Successful. Redirecting...";
                                 $rootScope.setCheck = "form-success";
                                 // $location.path("/account");
-                                $window.location.reload(function(){
-                                    $rootScope.modalcheck="";
-                                });
+                                $window.location.reload();
 
 
                             } else {
@@ -890,10 +941,9 @@ rapidScoreControllers
                                     .removeItem('token');
                                 console
                                     .log(data.status);
-                                //$rootScope.loginCheck = "Invalid Login";
-                                $rootScope.modalcheck="Login failed. Please try again.";
-                                $rootScope.modaloption = true;
-
+                                $rootScope.loginCheck = "Invalid Login";
+                                //$rootScope.modalcheck="Login failed. Please try again.";
+                                //$rootScope.modaloption = true;
                             }
                         })
                         .error(
