@@ -48,7 +48,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="item in scores | orderBy:orderProp | filter:query">
+            <tr ng-repeat="item in scores | orderBy:orderProp | filter:query" ng-if="item.fileurl">
                 <td><a href="#/sheetmusic/{{item.shortname}}" ng-bind="item.title"></a></td>
                 <td>
                     <span ng-if="item.imageurl" class="glyphicon glyphicon-picture" title="Audio Preview"></span>

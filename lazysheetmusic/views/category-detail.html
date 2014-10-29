@@ -32,7 +32,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="score in result.scores | orderBy:orderProp | filter:cquery">
+            <tr ng-repeat="score in result.scores | orderBy:orderProp | filter:cquery" ng-if="score.fileurl">
                 <td><a href="#/sheetmusic/{{score.shortname}}" ng-bind="score.title"></a></td>
                 <td>
                     <span ng-if="score.audiourl" class="glyphicon glyphicon-music" title="Audio Preview"></span>
