@@ -13,7 +13,7 @@
     <div class="col-md-8 col-sm-8 col-xs-8 list-score fade" ng-class="{in:result.scores.length}"  ng-if="result.scores.length">
         <div class="input-search col-md-12" >
             <div class="input-group input-group-lg">
-                <input type="text" class="form-control" ng-model="cquery" placeholder="Search sheet music">
+                <input type="text" class="form-control" ng-model="cquery" placeholder="Search for sheet music">
                     <span class="input-group-btn">
                     <button class="btn btn-default" type="button" ng-click="search">
                         <span class="glyphicon glyphicon-search"></span>
@@ -32,7 +32,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="score in result.scores | orderBy:orderProp | filter:cquery" ng-if="score.fileurl">
+            <tr ng-repeat="score in result.scores | orderBy:orderProp | filter:cquery">
                 <td><a href="#/sheetmusic/{{score.shortname}}" ng-bind="score.title"></a></td>
                 <td>
                     <span ng-if="score.audiourl" class="glyphicon glyphicon-music" title="Audio Preview"></span>

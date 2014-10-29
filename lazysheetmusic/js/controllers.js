@@ -73,9 +73,13 @@ rapidScoreControllers
             $scope.link = function() {
                 console.log('score id:');
                 console.log($scope.score.id);
-
                 if (!$window.localStorage.getItem('uid')) {
                     $location.path('/login');
+                }
+
+                else if(!$scope.score.fileurl){
+                    $rootScope.modalcheck="This sheet music does not have a pdf file to download at the moment.";
+                    $rootScope.modaloption = true;
                 }
 
                 else {
