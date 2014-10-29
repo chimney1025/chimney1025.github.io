@@ -175,7 +175,7 @@ a {
 /*Footer*/
 #footer {
     padding: 0;
-    min-height: 90%;
+    min-height: 40%;
 
 	background-color: #333;
 	color: #e5e5e5;
@@ -197,7 +197,7 @@ a {
 
 #footer .container {
     margin: 0 auto;
-    padding: 40px 0;
+    padding: 20px 0;
     height:100%;
     /*
     border-top: 1px solid #e5e5e5;
@@ -207,7 +207,7 @@ a {
 #footer .container p{
 	height:50%;
 	line-height: 40px;
-	padding:60px 0;
+	padding:30px 0;
 }
 
 /*-----------------------------------
