@@ -403,7 +403,7 @@ a {
 }
 
 .slide-prev {
-    padding: 0;
+    padding: 20px 0;
     position: absolute;
     top: 0;
     left: 0;
@@ -411,11 +411,12 @@ a {
     z-index:0;
     
     overflow:hidden;
-    white-space: pre-line;
     /*
+    white-space: pre-line;
+    
     background: url("../images/container-bg.jpg") repeat scroll 50% 0 #363739;
     */
-    background-color:#e5e5e5
+    background-color:#f5f5f5;
 }
 
 .slide-prev-single{
@@ -432,11 +433,12 @@ a {
     width:80%;
     opacity:0.5;
     cursor:pointer;
-    border:1px solid #ccc;
+    border:3px solid #fff;
 }
 .slide-prev-single img:hover{
     opacity: 1;
     cursor:pointer;
+    border-color:#ccc;
 }
 
 .slide-prev-single img.active{
