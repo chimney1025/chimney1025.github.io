@@ -1165,6 +1165,12 @@ span.form-success{
     }
     #footer{
     }
+    
+
+    #footer .container p{
+      padding:30px 0;
+    }
+
     .container.text-center {
         padding: 0 15px;
     }
@@ -1256,12 +1262,14 @@ span.form-success{
     }
 
     #footer{
-        padding: 0;
         position:relative;
         clear:both;
     }
     #footer .container{
         margin: 20px auto 0;
+    }
+    #footer .container p{
+      padding:10px;
     }
     .navbar {
         padding: 10px 0;
