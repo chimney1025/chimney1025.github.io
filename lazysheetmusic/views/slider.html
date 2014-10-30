@@ -1,12 +1,12 @@
 <div class="slider fade" ng-class="{in:images.length}">
 	<!-- Slide Show-->
-	<perfect-scrollbar wheel-propagation="true" wheel-speed="3" class="slide-prev">
+	<perfect-scrollbar class="slide-prev">
 	   <div class="slide-prev-single" ng-repeat="image in images | limitTo:8">
 		<img ng-click="jump($index)" ng-src="{{image.thumburl}}"
 			ng-class="setSliderActive($index)" />
 	   </div>
 	</perfect-scrollbar>
-	<div wheel-propagation="true" wheel-speed="3" class="slide"
+	<div class="slide"
 		ng-repeat="image in images | orderBy:orderProp"
 		ng-show="image.visible"> <!--
                 <div class="slide-name">
@@ -23,17 +23,13 @@
         </div>
                     --> <a href="#/sheetmusic/{{image.shortname}}"><img ng-src="{{image.imageurl}}" /></a>
     </div>
-	<ul class="slide-index">
+	<div class="slide-index-left"><a ng-click="prev()"><span class="glyphicon glyphicon-chevron-left" ></span></a></div>
+    <div class="slide-index-right"><a ng-click="next()"><span class="glyphicon glyphicon-chevron-right" ></span></a></div>
 	   <!-- 
 		<li><a ng-click="prev()" class="left-arrow"></a></li>
 		<li><span ng-bind="(currentIndex+1)"></span>/<span ng-bind="images.length"></span></li>
     <li><a ng-click="next()" class="right-arrow"></a></li>
      -->
-     
-    <li><a ng-click="prev()"><span class="glyphicon glyphicon-chevron-left" ></span></a></li>
-		<!--<li><a ng-href="#/sheetmusic/{{shorturl}}">Read More</a></li>-->
-		<li><a ng-click="next()"><span class="glyphicon glyphicon-chevron-right" ></span></a></li>
-	</ul>
 	<!-- 
 	<div class="slide-name"><a ng-href="#/sheetmusic/{{shorturl}}">Read More</a></div>
 	 -->
