@@ -1280,6 +1280,11 @@ span.form-success{
     body{
         padding: 0;
     }
+    
+    .navbar{
+        background: none;
+        background-color: #333;
+    }
 
     .navbar-fixed-top{
         position:relative;
