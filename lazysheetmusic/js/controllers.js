@@ -732,6 +732,7 @@ rapidScoreControllers.controller('sessionService',
                 }
             }
 
+            $rootScope.modalcheck = "";
             $rootScope.closemodal = function(){
                 $rootScope.modalcheck = "";
             }
