@@ -858,7 +858,7 @@ audio {
 }
 
 /* User Account Page */
-.account-menu , .contact-left{
+.account-menu , .contact-side{
     margin: 0 0 30px 0;
     padding: 0 20px;
     font-size: 0.95em;
@@ -871,11 +871,11 @@ audio {
     border-top:1px solid #eee;
 }
 
-.contact-left{
+.contact-side{
     width:240px;
 }
 
-.account-menu li, .contact-left li {
+.account-menu li, .contact-side li {
     margin: 0 0 20px 0;
 }
 
@@ -900,7 +900,7 @@ audio {
     /*max-width:630px;*/
 }
 
-.act-list ul,.account-menu ul, .contact-main ul, .contact-left ul {
+.act-list ul,.account-menu ul, .contact-main ul, .contact-side ul {
     padding: 0;
 }
 
@@ -1335,7 +1335,7 @@ span.form-success{
     .btn-inline{
         margin-left:10px;
     }
-    .list-filter,.score-detail,.list-score,.score-main,.account-menu,.act-list,.list-full, .contact-left, .contact-main
+    .list-filter,.score-detail,.list-score,.score-main,.account-menu,.act-list,.list-full, .contact-side, .contact-main
     {
         float: none;
         margin: 0 auto;
@@ -1347,7 +1347,7 @@ span.form-success{
     .list-filter, .score-detail{
         border-left:1px solid #eee;
     }
-    .list-score,.score-main,.account-menu,.list-full,.contact-left {
+    .list-score,.score-main,.account-menu,.list-full,.contact-side {
         padding: 10px;
         padding-bottom:30px;
         width:80%;
@@ -1379,7 +1379,7 @@ span.form-success{
     .score-detail h1 {
         font-size: 1.8em;
     }
-    .account-menu, .contact-left {
+    .account-menu, .contact-side {
         text-align: center;
         width: 90%;
         margin-bottom: 15px;
