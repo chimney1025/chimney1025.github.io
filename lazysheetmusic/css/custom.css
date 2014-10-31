@@ -891,7 +891,7 @@ audio {
 .act-list, .contact-main {
     font-size: 1em;
     text-align: left;
-    max-width: 708px;
+    max-width: 808px;
     min-width: 300px;
     margin: 0 0 30px 10px;
     padding:0 25px 25px;
@@ -1193,6 +1193,9 @@ span.form-success{
     }
     .score-main, .list-score{
         max-width:628px;
+    }
+    .act-list, .contact-main{
+        max-width:708px;
     }
 }
 
