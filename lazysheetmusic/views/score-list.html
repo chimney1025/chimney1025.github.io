@@ -1,21 +1,6 @@
 
 <!-- Content -->
 <div class="container text-center fade" ng-class="{in:scores.length}">
-    <!--
-    <div class="col-md-4 col-sm-4 col-xs-4 text-left list-filter">
-        <div id="sortnfilter" ng-show="!collapsed">
-            <span class="dropdown-label">Order By</span>
-            <div class="dropdown-order">
-                <select class="form-control" ng-model="orderProp">
-                    <option value="">--</option>
-                    <option value="title">Name</option>
-                    <option value="-updatedAt">Latest</option>
-                    <option value="updatedAt">Oldest</option>
-                </select>
-            </div>
-        </div>
-
-    </div><!-- End Filters-->
 
     <div class="col-md-12 col-sm-12 col-xs-12 list-full">
         <h1 class="text-left">Sheet Music</h1>
@@ -42,8 +27,8 @@
                 </th>
                 <th class="col-lg-3 col-md-3 col-sm-3 col-xs-3">Preview</th>
                 <th class="col-lg-3 col-md-3 col-sm-3 col-xs-3">Added Date
-                    <a ng-click="setOrder('updatedAt')" ng-if="orderProp!='updatedAt'"><span class="glyphicon glyphicon-arrow-up"></span></a>
-                    <a ng-click="setOrder('-updatedAt')" ng-if="orderProp!='-updatedAt'"><span class="glyphicon glyphicon-arrow-down"></span></a>
+                    <a ng-click="setOrder('createdAt')" ng-if="orderProp!='createdAt'"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                    <a ng-click="setOrder('-createdAt')" ng-if="orderProp!='-createdAt'"><span class="glyphicon glyphicon-arrow-down"></span></a>
                 </th>
             </tr>
             </thead>
@@ -55,7 +40,7 @@
                     <span ng-if="item.audiourl" class="glyphicon glyphicon-music" title="Audio Preview"></span>
                     <span ng-if="item.videourl" class="glyphicon glyphicon-film" title="Video Preview"></span>
                 </td>
-                <td><small>{{item.updatedAt | date : 'yyyy-MM-dd'}}</small></td>
+                <td><small>{{item.createdAt | date : 'yyyy-MM-dd'}}</small></td>
             </tr>
             </tbody>
         </table>
