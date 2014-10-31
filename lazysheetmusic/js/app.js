@@ -39,7 +39,7 @@ rapidScoreApp.config(function($httpProvider) {
 
 rapidScoreApp.config([ '$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
 	
-	//$locationProvider.html5Mode(true);
+	$locationProvider.html5Mode(true);
 	
 	$routeProvider.when('/', {
 		templateUrl : 'views/home.html',
