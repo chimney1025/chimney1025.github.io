@@ -568,8 +568,8 @@ rapidScoreControllers.controller('UserCtrl', [
     function($window, $location, $scope, $rootScope, $routeParams,
              User, UserPass, Cart, Order, OrderDetail) {
 
-        $scope.user = User.getOne();
-        console.log($scope.user);
+        $rootScope.user = User.getOne();
+        console.log($rootScope.user);
 
         console.log('if admin: ');
         console.log($rootScope.logged_admin);
@@ -600,13 +600,13 @@ rapidScoreControllers.controller('UserCtrl', [
                     User.save({},{
                         firstname:result.trim()
                     },function(res){
-                        $scope.user = User.getOne();
+                        $rootScope.user = User.getOne();
                     });
                 } else if (surname == 1){
                     User.save({},{
                         surname:result.trim()
                     },function(res){
-                        $scope.user = User.getOne();
+                        $rootScope.user = User.getOne();
                     });
                 }
             }
@@ -791,6 +791,11 @@ rapidScoreControllers
         // Add Score
         $scope.contactInfo = {};
         $scope.contactCheck = '';
+        
+        if($rootScope.user){
+        	$scope.contactInfo.name = $rootScope.user.firstname + ' ' + $rootScope.user.surname; 
+        	$scope.contactInfo.email = $rootScope.user.username; 
+        }
 
         $scope.sendMsg = function() {
 
