@@ -42,7 +42,7 @@ rapidScoreApp.config([ '$routeProvider', '$locationProvider', function($routePro
 	$locationProvider.html5Mode(true);
 	
 	$routeProvider.when('/', {
-		templateUrl : 'views/home.html',
+		templateUrl : '/views/home.html',
 		label : 'Home',
 		access : {
 			requiredLogin : false
