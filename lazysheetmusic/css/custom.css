@@ -1286,7 +1286,9 @@ span.form-success{
     body{
         padding: 0;
     }
-    
+    .btn-back{
+        display:none;
+    }
     .navbar{
         background: none;
         background-color: #333;
