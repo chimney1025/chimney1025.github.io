@@ -43,7 +43,7 @@
                 <td><a ng-click="removeScore(true, item.id, item.title)" ng-if="!item.obsolete" ><span class="glyphicon glyphicon-remove"></span></a></td>
                 <td>
                     <a type="button" ng-if="item.slider && !item.obsolete" ng-click="addSlider(false, item.id)" class="btn btn-default btn-xs">Remove</a>
-                    <a type="button" ng-if="!item.slider && !item.obsolete" ng-click="addSlider(true, item.id)" class="btn btn-primary btn-xs">Add</a>
+                    <a type="button" ng-if="!item.slider && !item.obsolete && item.thumburl" ng-click="addSlider(true, item.id)" class="btn btn-primary btn-xs">Add</a>
                 </td>
                 <td><small>{{item.createdAt | date : 'yyyy-MM-dd'}}</small></td>
             </tr>
