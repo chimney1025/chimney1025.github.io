@@ -44,6 +44,7 @@
                 <td>
                     <a type="button" ng-if="item.slider && !item.obsolete" ng-click="addSlider(false, item.id)" class="btn btn-default btn-xs">Remove</a>
                     <a type="button" ng-if="!item.slider && !item.obsolete && item.thumburl" ng-click="addSlider(true, item.id)" class="btn btn-primary btn-xs">Add</a>
+                    <span ng-if="!item.thumburl">No thumb</span>
                 </td>
                 <td><small>{{item.createdAt | date : 'yyyy-MM-dd'}}</small></td>
             </tr>
