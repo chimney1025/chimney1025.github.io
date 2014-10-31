@@ -342,7 +342,7 @@ a {
 
 /* Modal */
 .modal{
-    display:block;
+    display:block !important;
 }
 .nomodal{
 	   display:none;
