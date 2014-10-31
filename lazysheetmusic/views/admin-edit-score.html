@@ -63,7 +63,7 @@
                     <textarea class="act-content form-control" placeholder="Description" ng-model="scoreInfo.desc" ng-trim="true"></textarea>
 
                 </li>
-                <li class="row">
+                <li class="row" ng-if="scoreInfo.thumburl"> 
                     <span class="act-label">SLIDER</span>
                     <input type="checkbox" value="true" name="" class="" placeholder="Add to Slider" ng-model="scoreInfo.slider" ng-checked="scoreInfo.slider" ng-trim="true">
 
