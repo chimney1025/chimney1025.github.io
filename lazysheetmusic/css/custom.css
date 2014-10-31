@@ -1355,7 +1355,7 @@ span.form-success{
     .list-full{
         min-height:400px;
     }
-    .list-full h2, .list-full h1, .list-score h1, .score-main h1{
+    .list-full h2, .list-full h1, .list-full h4, .list-score h1, .score-main h1{
         margin:10px;
     }
     .act-list, .contact-main {
