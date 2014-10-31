@@ -80,6 +80,7 @@ rapidScoreControllers
                 else if(!$scope.score.fileurl){
                     $rootScope.modalcheck="This sheet music does not have a pdf file to download at the moment.";
                     $rootScope.modaloption = true;
+                    $rootScope.setModal = "modal";
                 }
 
                 else {
@@ -89,6 +90,7 @@ rapidScoreControllers
                             flag = 1;
                             $rootScope.modalcheck="Already in Cart";
                             $rootScope.modaloption = true;
+                            $rootScope.setModal = "modal";
                             //alert('Already in Cart');
                             // redirect to cart
                             // $location.path('/account/shopping-cart');
@@ -99,6 +101,7 @@ rapidScoreControllers
                     if (flag == 0) {
                         $rootScope.modalcheck="Adding to Cart ...";
                         $rootScope.modaloption = false;
+                        $rootScope.setModal = "modal";
                         CheckOrder.get({scoreid : $scope.score.id},function(res) {
                             console.log('checking order');
                             console.log(res);
@@ -106,6 +109,7 @@ rapidScoreControllers
                             if (res && res.hasOrdered) {
                                 $rootScope.modalcheck="Already purchased";
                                 $rootScope.modaloption = true;
+                                $rootScope.setModal = "modal";
                                 // $location.path('/account/purchased');
                             } else {
                                 //$rootScope.modalcheck="Adding to Cart ...";
@@ -115,6 +119,7 @@ rapidScoreControllers
                                     if (res) {
                                         $rootScope.modalcheck="Added to Cart !";
                                         $rootScope.modaloption = true;
+                                        $rootScope.setModal = "modal";
                                         //alert('added');
                                         $rootScope.added_score_name = $scope.score.name;
                                         $rootScope.added_score_shortname = $scope.score.shortname;
@@ -662,6 +667,7 @@ rapidScoreControllers.controller('UserCtrl', [
 
             $rootScope.modalcheck="Placing Order ... (" + $scope.logged_cart.length + " items)";
             $rootScope.modaloption= false;
+            $rootScope.setModal = "modal";
 
             Order.order({}, function(res) {
                 if (res) {
@@ -671,6 +677,7 @@ rapidScoreControllers.controller('UserCtrl', [
 
                     $rootScope.modalcheck="Order placed! Please check your Email Inbox to download the sheet music.";
                     $rootScope.modaloption= true;
+                    $rootScope.setModal = "modal";
 
                     //alert('Placing Order - ' + $scope.logged_cart.length  + ' items');
                     $rootScope.logged_cart = Cart.getAll(function(res) {
@@ -735,6 +742,7 @@ rapidScoreControllers.controller('sessionService',
             $rootScope.modalcheck = "";
             $rootScope.closemodal = function(){
                 $rootScope.modalcheck = "";
+                $rootScope.setModal = "";
             }
 
             $rootScope.orderProp = 'title';
@@ -803,6 +811,7 @@ rapidScoreControllers
                 console.log('posting data...');
                 $rootScope.modalcheck="Sending message ...";
                 $rootScope.modaloption = false;
+                $rootScope.setModal = "modal";
                 // create json to be posted
                 var contactData = new Object();
 
@@ -818,9 +827,11 @@ rapidScoreControllers
                         if (res) {
                             $rootScope.modalcheck="Message sent!";
                             $rootScope.modaloption = true;
+                            $rootScope.setModal = "modal";
 
                             $rootScope.closemodal=function(){
                                 $rootScope.modalcheck = "";
+                                $rootScope.setModal = "";
                                 $window.location.reload();
                             }
                         }
@@ -846,6 +857,7 @@ rapidScoreControllers
             // if logged in, go to user page
 
             $rootScope.modalcheck="";
+            $rootScope.setModal = "";
             if ($rootScope.logged) {
                 console.log('token ');
                 console.log($window.localStorage
@@ -861,6 +873,7 @@ rapidScoreControllers
 
             $rootScope.closemodal = function(){
                 $rootScope.modalcheck = "";
+                $rootScope.setModal = "";
                 $window.location.reload();
             }
 
@@ -952,6 +965,7 @@ rapidScoreControllers
                             console.log(err);
                             $rootScope.modalcheck="Login failed. Please try again.";
                             $rootScope.modaloption = true;
+                            $rootScope.setModal = "modal";
                             //$rootScope.loginCheck = "Login Failed";
                         });
                 }
@@ -990,6 +1004,7 @@ rapidScoreControllers
 
             $rootScope.closemodal = function(){
                 $rootScope.modalcheck = "";
+                $rootScope.setModal = "";
             }
 
             // Sign Up
@@ -1034,6 +1049,7 @@ rapidScoreControllers
 
                     $rootScope.modalcheck="Signing up ...";
                     $rootScope.modaloption = false;
+                    $rootScope.setModal = "modal";
                     
                     //$scope.regCheck = 'We are signing you up...';
                     //$scope.setCheck = "form-success";
@@ -1052,6 +1068,7 @@ rapidScoreControllers
                             if (res2.result) {
                                 $rootScope.modalcheck="Username exists. Try another one.";
                                 $rootScope.modaloption = true;
+                                $rootScope.setModal = "modal";
                                 //$scope.regCheck = 'Username exists. Try another one.';
                             } else {
 
@@ -1081,6 +1098,7 @@ rapidScoreControllers
 
                                             $rootScope.modalcheck="Your registration is successful. Please check your Inbox to verify your email address.";
                                             $rootScope.modaloption = true;
+                                            $rootScope.setModal = "modal";
                                             //$scope.regCheck = 'Registration Successful';
                                             //$scope.setCheck = "form-success";
                                             //alert('Registration successful. Please check your email inbox to activate your account.');
@@ -1090,6 +1108,7 @@ rapidScoreControllers
                                         } else {
                                             $rootScope.modalcheck="Somthing wrong happened. Please try again";
                                             $rootScope.modaloption = true;
+                                            $rootScope.setModal = "modal";
                                             console.log('registration failed: ');
                                         }
                                     });

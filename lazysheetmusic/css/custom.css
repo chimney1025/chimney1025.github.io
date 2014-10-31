@@ -344,6 +344,9 @@ a {
 .modal{
     display:block;
 }
+.nomodal{
+	   display:none;
+}
 
 .modal-content{
     margin-top:100px;
