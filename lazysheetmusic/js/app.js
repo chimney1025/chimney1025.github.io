@@ -37,7 +37,9 @@ rapidScoreApp.config(function($httpProvider) {
 	});
 });
 
-rapidScoreApp.config([ '$routeProvider', function($routeProvider) {
+rapidScoreApp.config([ '$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
+	
+	$locationProvider.html5Mode(true);
 	
 	$routeProvider.when('/', {
 		templateUrl : 'views/home.html',
