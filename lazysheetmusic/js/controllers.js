@@ -793,6 +793,7 @@ rapidScoreControllers
         $scope.contactCheck = '';
         
         if($rootScope.user){
+        	console.log($rootScope.user.username);
         	$scope.contactInfo.name = $rootScope.user.firstname + ' ' + $rootScope.user.surname; 
         	$scope.contactInfo.email = $rootScope.user.username; 
         }
