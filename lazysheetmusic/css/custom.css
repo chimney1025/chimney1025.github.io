@@ -675,6 +675,10 @@ table td{
     height:480px;
 }
 
+.list-full h4{
+    margin-top:30px;
+}
+
 .list-full ul{
     text-align:left;
 }
