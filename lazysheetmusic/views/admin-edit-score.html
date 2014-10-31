@@ -72,7 +72,7 @@
                     <span class="form-check" ng-show="scoreCheck" ng-bind="scoreCheck"></span>
 
                 </li>
-                <li>
+                <li ng-if="scoreInfo.title">
                     <button class="btn btn-primary" type="submit" ng-click="scoreSave()">
                         Save
                     </button>
