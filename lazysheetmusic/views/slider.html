@@ -1,11 +1,11 @@
 <div class="slider fade" ng-class="{in:images.length}">
 	<!-- Slide Show-->
-	<perfect-scrollbar class="slide-prev">
+	<div class="slide-prev">
 	   <div class="slide-prev-single" ng-repeat="image in images | limitTo:8">
 		<img ng-click="jump($index)" ng-src="{{image.thumburl}}"
 			ng-class="setSliderActive($index)" />
 	   </div>
-	</perfect-scrollbar>
+	</div>
 	<div class="slide"
 		ng-repeat="image in images | orderBy:orderProp"
 		ng-show="image.visible"> <!--

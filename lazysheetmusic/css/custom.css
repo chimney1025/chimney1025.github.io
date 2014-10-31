@@ -427,9 +427,9 @@ a {
     left: 0;
     width: 30%;
     z-index:0;
-    
-    overflow:hidden;
     /*
+    overflow:hidden;
+    
     white-space: pre-line;
     background: url("../images/container-bg.jpg") repeat scroll 50% 0 #363739;
     */
