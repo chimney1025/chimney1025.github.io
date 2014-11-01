@@ -133,6 +133,12 @@ rapidScoreApp.config([ '$routeProvider', '$locationProvider', function($routePro
         access : {
             requiredLogin : false
         }
+    }).when('/about', {
+        templateUrl : 'views/about.html',
+        label : 'About',
+        access : {
+            requiredLogin : false
+        }
     }).when('/redirecting', {
 		templateUrl : 'views/redirect.html',
 		controller : 'RedirectCtrl',

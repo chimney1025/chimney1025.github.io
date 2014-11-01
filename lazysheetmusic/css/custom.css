@@ -192,7 +192,7 @@ a {
 }
 
 #footer a:hover {
-
+    background:none;
 }
 
 #footer .container {
@@ -680,12 +680,20 @@ table td{
     height:480px;
 }
 
+.list-full h1, .list-full h2, .list-full h4{
+    padding: 0;
+}
+
 .list-full h4{
     margin-top:30px;
 }
 
 .list-full ul{
     text-align:left;
+}
+
+.list-full p{
+    line-height:30px;
 }
 
 .list-filter,.score-detail {
@@ -709,6 +717,7 @@ table td{
     min-height:50px;
     margin:30px 0 0 0;
     line-height:50px;
+    padding: 0;
 }
 
 .form-group input{
@@ -1343,7 +1352,7 @@ span.form-success{
     }
 
     .input-search {
-        margin: 20px 10px;
+        margin: 20px auto;
         padding: 0;
     }
     .btn-inline{
@@ -1362,15 +1371,14 @@ span.form-success{
         border-left:1px solid #eee;
     }
     .list-score,.score-main,.account-menu,.list-full,.contact-side {
-        padding: 10px;
-        padding-bottom:30px;
+        padding: 10px 20px 30px;
         width:80%;
     }
     .list-full{
         min-height:400px;
     }
     .list-full h2, .list-full h1, .list-full h4, .list-score h1, .score-main h1{
-        margin:10px;
+        margin:10px auto;
     }
     .act-list, .contact-main {
         padding:0 20px;
@@ -1463,7 +1471,7 @@ span.form-success{
         margin: 0 auto;
         float: none;
         padding: 0;
-        min-width:300px;
+        min-width:240px;
     }
     .slide-prev{
         display: none;

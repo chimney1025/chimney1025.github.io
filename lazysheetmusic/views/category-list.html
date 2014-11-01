@@ -13,8 +13,8 @@
                     </span>
             </div>
         </div>
-
-        <a type="button" href="#/types/{{result.pshortname}}/{{item.shortname}}" class="btn btn-default btn-inline btn-category" ng-repeat="item in result.subtypes | filter:cname" ng-if="!item.obsolete" ng-bind="item.name"></a>
+        <div><a type="button" href="#/types/{{result.pshortname}}/{{item.shortname}}" class="btn btn-default btn-inline btn-category" ng-repeat="item in result.subtypes | filter:cname" ng-if="!item.obsolete" ng-bind="item.name"></a>
+        </div>
     </div>
 
 </div>
