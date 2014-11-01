@@ -680,11 +680,11 @@ table td{
     height:480px;
 }
 
-.list-full h1, .list-full h2, .list-full h4{
+.list-full h1, .list-full h2, .list-full h4, .score-main h1, .score-main h2, .score-main h4, .list-score h1, .list-score h2, .list-score h4{
     padding: 0;
 }
 
-.list-full h4{
+.list-full h4, .score-main h4, .list-score h4{
     margin-top:30px;
 }
 
@@ -1254,8 +1254,11 @@ span.form-success{
 
     /*score-detail*/
 
-    .list-score, .score-main, .act-list, .contact-main{
+    .list-score, .score-main, .contact-main{
         max-width:490px;
+    }
+    .act-list{
+        max-width:550px;
     }
     .list-filter,.score-detail {
         padding: 20px;
@@ -1276,11 +1279,13 @@ span.form-success{
         margin: 2px 5px;
         text-transform: uppercase;
     }
-    .list-score,.score-main,.act-list,.list-full,.contact-main {
+    .list-score,.score-main,.list-full,.contact-main {
         /*padding: 0 15px 0 5px;*/
-        margin-bottom: 72px;
-        margin-right: 0;
-        margin-left: 0;
+        margin: 0 0 72px;
+    }
+    .act-list{
+        
+        margin-left:10px;
     }
     .list-action {
         padding: 6px 0 0 0 !important;
@@ -1365,37 +1370,39 @@ span.form-success{
         clear: both;
         min-height: 56px;
         min-width:300px;
-        max-width:80%;
+        max-width:960px;
+        /*max-width:80%;*/
     }
     .list-filter, .score-detail{
         border-left:1px solid #eee;
     }
     .list-score,.score-main,.account-menu,.list-full,.contact-side {
         padding: 10px 20px 30px;
-        width:80%;
+        margin-bottom:15px;
+        /*width:80%;*/
     }
     .list-full{
         min-height:400px;
     }
-    .list-full h2, .list-full h1, .list-full h4, .list-score h1, .score-main h1{
+    .list-full h2, .list-full h1, .list-full h4, .list-score h1, .list-score h2, .list-score h4, .score-main h1, .score-main h2, .score-main h4{
         margin:10px auto;
     }
     .act-list, .contact-main {
         padding:0 20px;
+        width:100%;
     }
     .act-list li, .contact-main li {
         padding: 3px 0;
         font-size: 0.95em;
     }
-    .list-filter {
-        width: 80%;
+    .list-filter, .score-detail {
+        /*width:80%;*/
     }
     .list-filter .btn {
         padding: 10px 15px;
     }
     .score-detail {
         text-align: center;
-        width: 80%;
         margin-bottom: 15px;
     }
     .score-detail h1 {
@@ -1403,7 +1410,7 @@ span.form-success{
     }
     .account-menu, .contact-side {
         text-align: center;
-        width: 90%;
+        width: 100%;
         margin-bottom: 15px;
     }
     .act-label,.act-content {

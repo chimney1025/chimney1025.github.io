@@ -1,7 +1,7 @@
 <!-- Content -->
 <div class="container text-center">
 
-    <div class="col-md-4 col-sm-4 col-xs-4 text-left score-detail">
+    <div class="col-md-4 col-sm-4 col-xs-12 text-left score-detail">
         <ul class="">
             <li><h1 ng-bind="result.subname"></h1></li>
             <li><h4><span ng-bind="result.pname | titlelize"></span> | <a href="#/types/{{result.pshortname}}">View All</a> </h4></li>
@@ -10,7 +10,7 @@
     </div>
 
 
-    <div class="col-md-8 col-sm-8 col-xs-8 list-score fade" ng-class="{in:result.scores.length}"  ng-if="result.scores.length">
+    <div class="col-md-8 col-sm-8 col-xs-12 list-score fade" ng-class="{in:result.scores.length}"  ng-if="result.scores.length">
         <div class="input-search col-md-12" >
             <div class="input-group input-group-lg">
                 <input type="text" class="form-control" ng-model="cquery" placeholder="Search for sheet music">
@@ -50,7 +50,7 @@
             <a href="#/sheetmusic">View All Sheet Music</a> | <a href="#/types/{{result.pshortname}}">View Other {{result.pshortname | titlelize}}</a>
         </h4>
     </div>
-    <div class="col-md-8 col-sm-8 col-xs-8 list-score" ng-if="result.scores.length == 0">
+    <div class="col-md-8 col-sm-8 col-xs-12 list-score" ng-if="result.scores.length == 0">
         <h2>No Sheet Music Found Here</h2>
         <h4>
             <a href="#/sheetmusic">View All Sheet Music</a> | <a href="#/types/{{result.pshortname}}">View Other {{result.pshortname | titlelize}}</a>
