@@ -56,9 +56,6 @@ rapidScoreAnimations.directive('slider',
                     scope.jump=function(i){
                         scope.currentIndex=i;
                         scope.shorturl = scope.images[scope.currentIndex].shortname;
-
-                        console.log('anchor ' + i);
-                        scope.gotoAnchor(i);
                     };
 
                     scope.$watch('currentIndex',function(){
