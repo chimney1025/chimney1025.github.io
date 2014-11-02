@@ -30,6 +30,11 @@ rapidScoreApp.config(function($httpProvider) {
 					$rootScope.loginCheck = "Invalid User Credentials";
 					//$location.url('/login');
 				}
+                if (response.status === 404) {
+                    console.log('404 returned');
+
+                    $location.url('/404');
+                }
 				//
 				return $q.reject(response);
 			});
@@ -139,6 +144,12 @@ rapidScoreApp.config([ '$routeProvider', '$locationProvider', function($routePro
         access : {
             requiredLogin : false
         }
+    }).when('/terms', {
+        templateUrl : 'views/terms.html',
+        label : 'Terms & Conditions',
+        access : {
+            requiredLogin : false
+        }
     }).when('/redirecting', {
 		templateUrl : 'views/redirect.html',
 		controller : 'RedirectCtrl',
@@ -206,13 +217,18 @@ rapidScoreApp.config([ '$routeProvider', '$locationProvider', function($routePro
 		access : {
 			requiredLogin : true
 		}
-	})
-        /*.otherwise({
-		redirectTo : '/home',
+	}).when('/404', {
+        templateUrl : 'views/404.html',
+        label : '404',
+        access : {
+            requiredLogin : false
+        }
+    }).otherwise({
+		redirectTo : '/404',
 		access : {
 			requiredLogin : false
 		}
-	})*/
+	})
 } ]);
 
 rapidScoreApp.run(function($rootScope, $location, $window, $http) {

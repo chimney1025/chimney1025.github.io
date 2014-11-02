@@ -59,8 +59,17 @@ rapidScoreControllers
         '$sce',
         function($scope, $rootScope, $routeParams, Score, Cart,
                  CheckOrder, $location, $window, $sce) {
-            $scope.score = Score.getOne({scoreid : $routeParams.scoreId});
-            console.log($scope.score);
+            $scope.score = Score.getOne({scoreid : $routeParams.scoreId}, function(res){
+
+                console.log('result:');
+                console.log(res);
+
+                if(!res){
+                    console.log('result:');
+                    console.log(res);
+                    $location.path('/404');
+                }
+            });
             console.log($window.localStorage.getItem('uid'));
 
             $rootScope.action = 'Add to Cart';
