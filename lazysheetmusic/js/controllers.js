@@ -740,6 +740,7 @@ rapidScoreControllers.controller('sessionService',
             }
 
             $rootScope.modalcheck = "";
+
             $rootScope.closemodal = function(){
                 $rootScope.modalcheck = "";
                 $rootScope.setModal = "";
@@ -1007,12 +1008,6 @@ rapidScoreControllers
         '$location',
         function($scope, $rootScope, User, CheckUsername, $location) {
 
-
-            $rootScope.closemodal = function(){
-                $rootScope.modalcheck = "";
-                $rootScope.setModal = "";
-            }
-
             // Sign Up
             $scope.regInfo = {};
             $scope.regCheck = '';
@@ -1101,6 +1096,11 @@ rapidScoreControllers
                                         console.log("validation success");
                                         console.log(regData);
                                         if (res) {
+                                            $rootScope.closemodal=function(){
+                                                $rootScope.modalcheck = "";
+                                                $rootScope.setModal = "";
+                                                $window.location.reload();
+                                            }
 
                                             $rootScope.modalcheck="Your registration is successful. Please check your Inbox to verify your email address.";
                                             $rootScope.modaloption = true;
