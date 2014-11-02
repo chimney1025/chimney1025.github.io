@@ -29,6 +29,18 @@ body {
     scrollbar-dark-shadow-color: #C0C0C0;
 }
 
+.nopadding{
+    padding:0;
+}
+
+.noleftpadding{
+    padding-left:0;
+}
+
+.norightpadding{
+    padding-right:0;
+}
+
 ul {
     list-style-type: none;
 }
@@ -510,44 +522,6 @@ a {
 
 .slide-index-right{
     right: 0;
-}
-
-.left-arrow,.left-arrow:hover {
-    text-align: left;
-    display: block;
-    /*
-    width: 36px;
-    height: 71px;
-    background-image: url(../images/paddle_prev_fff.png);
-    opacity: 0.4;
-    */
-
-    width: 25px;
-    height: 25px;
-    background-image:url(../images/arrows.png);
-    background-position:0 0;
-
-    background-repeat: no-repeat;
-    cursor: pointer;
-}
-
-.right-arrow,.right-arrow:hover {
-    display: block;
-
-    width: 25px;
-    height: 25px;
-    background-image:url(../images/arrows.png);
-    background-position:-25px 0;
-
-    /*
-    width: 36px;
-    height: 71px;
-    background-image: url(../images/paddle_next_fff.png);
-    opacity: 0.4;
-    */
-
-    background-repeat: no-repeat;
-    cursor: pointer;
 }
 
 .left-arrow:hover {
@@ -1284,7 +1258,7 @@ span.form-success{
         margin: 0 0 72px;
     }
     .act-list{
-        
+
         margin-left:10px;
     }
     .list-action {

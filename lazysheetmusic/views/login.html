@@ -1,37 +1,55 @@
 
 <!-- Content -->
-<div class="container text-center centered">
+<div class="container text-center">
+    <div class="col-md-12 col-sm-12 col-xs-12 text-center list-full">
 
-    <div class="col-md-6 col-sm-6 col-xs-12 text-center">
-        <img class="biglogo" src="images/logo-wendy-big.png">
-    </div>
-    <div class="col-md-6 col-sm-6 col-xs-12 text-center">
-
-        <form name="LoginForm" class="form-signin form-horizontal" role="form" ng-submit="login()">
+        <div class="col-md-8 col-sm-8 col-xs-12 pull-left text-left nopadding">
             <fieldset>
-                <legend>Login</legend>
-                <input type="text" class="form-control" placeholder="Email" ng-model="loginInfo.username" required autofocus>
-                <input type="password" class="form-control" placeholder="Password" ng-model="loginInfo.password" required>
-                <span class="form-check" ng-show="loginCheck" ng-bind="loginCheck" ng-class="setCheck"></span>
+                <h1 class="col-md-6 col-sm-12 col-xs-12 pull-left">Login</h1>
 
-                <a class="pull-center need-help" href="#/register">Not Registered? Click to Sign Up </a><span class="clearfix"></span>
-                <div class="form-group">
-                    <div class="col-lg-10 col-lg-offset-1">
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                <h4 class="col-md-6 col-sm-12 col-xs-12 pull-right text-right">
+                    <a class="pull-center need-help" href="#/register">Not Registered? Click to Sign Up </a><span class="clearfix"></span>
+                </h4>
+
+                <div class="form-group col-md-10 col-sm-12 col-xs-12 pull-left">
+                    <label for="inputEmail" class="col-lg-12 control-label noleftpadding">Email<span class="text-danger">*</span></label>
+                    <div class="col-lg-12 noleftpadding">
+                        <input id="inputEmail" type="email" placeholder="Email" class="form-control" ng-model="loginInfo.username" required>
                     </div>
                 </div>
-                <a>Forgotten Password?</a>
-                <span class="clearfix"></span>
+                <div class="form-group col-md-10 col-sm-12 col-xs-12 pull-left">
+                    <label for="pass1" class="col-lg-12 control-label nopadding">Password<span class="text-danger">*</span></label>
+                    <div class="col-lg-12 noleftpadding">
+                        <input id="pass1" type="password" maxlength="20" minlength="6" placeholder="Password"  class="form-control" ng-model="loginInfo.password" required>
+                    </div>
+                </div>
+
+                <div class="form-group col-md-12">
+                    <div class="col-lg-6 nopadding">
+                        <button type="submit" class="btn btn-primary" ng-click="login()">Submit</button>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <span class="form-check" ng-show="loginCheck" ng-class="setCheck" ng-bind="loginCheck"></span>
+                    </div>
+                </div>
             </fieldset>
-        </form>
-        <!--
-        <div class="fb-login-button" data-max-rows="1" data-size="large" data-show-faces="false" data-auto-logout-link="false"></div>
-        <span id="signinButton">
-            <span class="g-signin" data-callback="signinCallback" data-clientid="780208245582-ndsnsn3tl9nikfk21ukpr3amgmnalme6.apps.googleusercontent.com" data-cookiepolicy="single_host_origin"
-            data-requestvisibleactions="http://schema.org/AddAction"
-            data-scope="https://www.googleapis.com/auth/plus.login">
-            </span>
-        </span>
-        -->
+        </div>
+
+        <div class="col-md-3 col-sm-3 col-xs-12 pull-right text-left">
+            <h4>Follow Us</h4>
+            <h5>
+                <p>
+                    <img src="images/icon-youtube2.png"><a target="_blank" href="https://www.youtube.com/channel/UCVwUUu_AQdcpV4Vzv_9D2AA">Youtube</a>
+                </p><p>
+                <img src="images/icon-facebook.png"><a href="#">Facebook</a>
+            </p><p>
+                <img src="images/icon-googleplus.png"><a href="#">Google+</a>
+            </p><p>
+                <img src="images/icon-linkedin.png"><a href="#">Linkedin</a>
+            </p>
+            </h5>
+        </div>
     </div>
+
 </div>

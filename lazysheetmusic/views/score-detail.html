@@ -11,16 +11,18 @@
                 <a type="button" class="btn {{action_class}}" ng-click="link()" ng-bind="action"></a>
             </li>
             <div ng-show="!collapsed">
-                <li>Price: <span ng-bind="score.price | currency:'£'"></span></li>
-                <li>Page: <span ng-bind="score.page"></span></li>
-                <li>Tags: <a type="button" class="btn-detail btn btn-default" href="#/subtypes/{{type.id}}" ng-repeat="type in score.types" ng-if="!type.obsolete" ng-bind="type.name"> </a></li>
+                <li><h4>Price: <span ng-bind="score.price | currency:'£'"></span></h4></li>
+                <li><h4>Page: <span ng-bind="score.page"></span></h4></li>
+                <li><h4>Tags: <a type="button" class="btn-detail btn btn-default" href="#/subtypes/{{type.id}}" ng-repeat="type in score.types" ng-if="!type.obsolete" ng-bind="type.name"> </a></h4></li>
                 <li ng-if="score.audiourl || score.videourl">
+                    <h4>
                     Links:
                     <button type="button" class="btn-detail btn btn-default"  ng-if="score.audiourl" href="{{score.audiourl}}" target="_blank" class="" title="Download Audio">Audio</button>
                     <button type="button" class="btn-detail btn btn-default"  ng-if="score.videourl" href="{{score.videourl}}" target="_blank" class="" title="Video Preview">Video</button>
+                    </h4>
                 </li>
                 <li ng-if="score.desc">
-                    <p class="well" ng-bind="score.desc"></p>
+                    <h4><p class="well" ng-bind="score.desc"></p></h4>
                 </li>
                 <li><div class="fb-like" data-share="true" data-width="450" data-show-faces="true"></div></li>
                 <li><a class="twitter-share-button" href="https://twitter.com/share">Tweet</a>
