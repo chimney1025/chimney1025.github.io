@@ -382,7 +382,7 @@ a {
     position: relative;
     width: 100%;
     margin: auto;
-    border:1px solid #eee;
+    border:1px solid #d8d9da;
     overflow: hidden;
     background-color:#fff;
     padding: 0;
@@ -490,9 +490,10 @@ a {
 }
 
 .slide-name a, .slide-index-left a, .slide-index-right a{
-	font-size:18px;
+	font-size:25px;
+    border-radius:5px;
 	color:#fff;
-    background-color:#666;
+    background-color:#d8d9da;
 }
 
 .slide-name a:hover, .slide-index-left a:hover, .slide-index-right a:hover{
