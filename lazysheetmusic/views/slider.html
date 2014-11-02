@@ -1,29 +1,17 @@
 <div class="slider fade" ng-class="{in:images.length}">
 	<!-- Slide Show-->
 	<div class="slide-prev">
-	   <div class="slide-prev-single" ng-repeat="image in images | limitTo:8">
-           <img id="slide{{$index}}" ng-click="jump($index)" ng-src="{{image.thumburl}}" ng-class="setSliderActive($index)" />
-           <div></div>
+	   <div class="slide-prev-single" ng-class="setSliderActive($index)"  ng-repeat="image in images | limitTo:8">
+           <img id="slide{{$index}}" ng-click="jump($index)" ng-src="{{image.thumburl}}"/>
+           <div class="slide-name text-center"><a href="#/sheetmusic/{{image.shortname}}">{{image.title}}</a></div>
 
 	   </div>
 	</div>
 
 	<div class="slide"
 		ng-repeat="image in images | orderBy:orderProp"
-		ng-show="image.visible"> <!--
-                <div class="slide-name">
-
-                    <ul class="slide-index">
-                        <li><a ng-click="prev()"><span class="glyphicon glyphicon-chevron-left" ></span></a></li>
-                        <li><span ng-bind="(currentIndex+1)"></span>/<span ng-bind="images.length"></span></li>
-                        <li><a ng-click="next()"><span class="glyphicon glyphicon-chevron-right" ></span></a></li>
-                    </ul>
-
-                    <a href="#/sheetmusic/{{image.shortname}}" ng-bind="image.title"></a>
-                    <p class="well" ng-if="image.desc" ng-bind="image.desc"></p>
-                    <br>
-        </div>
-                    --> <a href="#/sheetmusic/{{image.shortname}}"><img ng-src="{{image.imageurl}}" /></a>
+		ng-show="image.visible">
+        <a href="#/sheetmusic/{{image.shortname}}"><img ng-src="{{image.imageurl}}" /></a>
     </div>
 	<div class="slide-index-left"><a ng-click="prev()"><span class="glyphicon glyphicon-chevron-left" ></span></a></div>
     <div class="slide-index-right"><a ng-click="next()"><span class="glyphicon glyphicon-chevron-right" ></span></a></div>
