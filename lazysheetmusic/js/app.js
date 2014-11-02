@@ -206,12 +206,13 @@ rapidScoreApp.config([ '$routeProvider', '$locationProvider', function($routePro
 		access : {
 			requiredLogin : true
 		}
-	}).otherwise({
+	})
+        /*.otherwise({
 		redirectTo : '/home',
 		access : {
 			requiredLogin : false
 		}
-	})
+	})*/
 } ]);
 
 rapidScoreApp.run(function($rootScope, $location, $window, $http) {
