@@ -522,7 +522,7 @@ ul.navbar-nav {
 }
 
 .slide-prev-single img{
-    width:80%;
+    width:90%;
     opacity:0.6;
     cursor:pointer;
     border:1px solid #fff;
@@ -1512,10 +1512,11 @@ span.form-success{
 
     .slider{
         margin-top: 20px;
-        width:90%;
+        width:280px;
         padding: 0 20px;
-        min-height:150px;
-        max-height:480px;
+        min-height:360px;
+        max-height:360px;
+        height:360px;
     }
     .slide{
         width:100%;
@@ -1544,18 +1545,8 @@ span.form-success{
     .slide-index-left{
         left:0;
     }
-}
-
-@media ( max-width : 560px) {
-    .slider, .slide{
-        height:360px;
-        min-height:360px;
-    }
-    .slide img{
-        padding: 0;
-    }
     .slide-index-left, .slide-index-right{
-        top:170px;
+        top:150px;
     }
 }
 
