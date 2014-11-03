@@ -767,6 +767,10 @@ rapidScoreControllers.controller('sessionService',
                 $window.localStorage.removeItem('username');
                 $window.localStorage.removeItem('uid');
                 $window.localStorage.removeItem('admin');
+
+            	$rootScope.contactInfo.name = ''; 
+            	$rootScope.contactInfo.email = ''; 
+                $rootScope.contactCheck = '';
             } else {
                 $rootScope.logged = true;
                 console.log('session:');
@@ -780,6 +784,10 @@ rapidScoreControllers.controller('sessionService',
                     $rootScope.cartcount = res.length;
                 });
                 console.log($rootScope.logged_cart);
+                
+            	console.log($rootScope.user.username);
+            	$rootScope.contactInfo.name = $rootScope.user.firstname + ' ' + $rootScope.user.surname; 
+            	$rootScope.contactInfo.email = $rootScope.user.username; 
             }
 
             $scope.logout = function logout() {
