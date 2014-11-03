@@ -1,7 +1,7 @@
 <div class="slider fade" ng-class="{in:images.length}">
 	<!-- Slide Show-->
 	<div class="slide-prev">
-	   <div class="slide-prev-single" ng-class="setSliderActive($index)"  ng-repeat="image in images | limitTo:8">
+	   <div class="slide-prev-single" ng-class="setSliderActive($index)"  ng-repeat="image in images">
            <img id="slide{{$index}}" ng-click="jump($index)" ng-src="{{image.thumburl}}"/>
            <div class="slide-name text-center"><a href="#/sheetmusic/{{image.shortname}}">{{image.title}}</a></div>
 
