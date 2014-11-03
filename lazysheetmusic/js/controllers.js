@@ -789,6 +789,11 @@ rapidScoreControllers.controller('sessionService',
                 $window.localStorage.removeItem('username');
                 $window.localStorage.removeItem('uid');
                 $window.localStorage.removeItem('admin');
+
+            	$rootScope.contactInfo.name = ''; 
+            	$rootScope.contactInfo.email = ''; 
+                $rootScope.contactCheck = '';
+                
                 $location.path("/login");
             }
         } ]);
@@ -807,10 +812,6 @@ rapidScoreControllers
         	console.log($rootScope.user.username);
         	$rootScope.contactInfo.name = $rootScope.user.firstname + ' ' + $rootScope.user.surname; 
         	$rootScope.contactInfo.email = $rootScope.user.username; 
-        } else{
-        	$rootScope.contactInfo.name = ''; 
-        	$rootScope.contactInfo.email = ''; 
-            $rootScope.contactCheck = '';
         }
 
         $scope.sendMsg = function() {
