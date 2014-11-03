@@ -33,8 +33,8 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="#/home">
-                    <span class="logo"><img src="images/logo.png"></span>
-                    LazySheetMusic
+                    <span class="logotext"><span class="">Lazy</span> Sheet Music</span>
+                    <span class="logo"><img src="images/logo2.png"></span>
                 </a>
             </div><!-- End navbar-header -->
 
@@ -54,21 +54,7 @@
                         </ul>
                     </li> -->
                 </ul>
-
                 <ul class="nav navbar-nav navbar-right">
-                    <!--
-                    <li ng-class="setActive('home')"><a href="#/home">Home</a></li>
-                    -->
-                    <li ng-class="setActive('sheetmusic')"><a href="#/sheetmusic">Sheet Music</a></li>
-                    <li ng-class="setActive('instruments')"><a href="#/types/instruments">Instruments</a></li>
-                    <li ng-class="setActive('composers')"><a href="#/types/composers">Composers</a></li>
-                    <li ng-class="setActive('genres')"><a href="#/types/genres">Genres</a></li>
-                    <li ng-class="setActive('contact')"><a href="#/contact">Contact</a></li>
-                    <li ng-class="setActive('about')"><a href="#/about">About</a></li>
-                    <!--
-                    <li ng-if="0"><a ng-click="setTable(1)">Table</a></li>
-                    <li ng-if="0"><a ng-click="setTable(0)">List</a></li>
-                    -->
                     <li ng-class="setActive('shopping-cart')" ng-if="logged"><a href="#/account/shopping-cart">
                         <span class="badge pull-right" ng-bind="cartcount"></span>
                         <span class="glyphicon glyphicon-shopping-cart"></span>
@@ -90,7 +76,16 @@
                             <li><a href="#/register">Create Account</a></li>
                         </ul>
                     </li>
+                </ul>
 
+                <ul class="nav navbar-nav navbar-right">
+                    <!--
+                    <li ng-class="setActive('home')"><a href="#/home">Home</a></li>
+                    -->
+                    <li ng-class="setActive('sheetmusic')"><a href="#/sheetmusic">Sheet Music</a></li>
+                    <li ng-class="setActive('instruments')"><a href="#/types/instruments">Instruments</a></li>
+                    <li ng-class="setActive('composers')"><a href="#/types/composers">Composers</a></li>
+                    <li ng-class="setActive('genres')"><a href="#/types/genres">Genres</a></li>
                 </ul>
 
             </div><!--/.nav-collapse -->

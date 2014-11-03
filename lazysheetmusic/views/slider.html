@@ -11,8 +11,8 @@
 	<div class="slide"
 		ng-repeat="image in images | orderBy:orderProp"
 		ng-show="image.visible">
-        <img ng-src="{{image.imageurl}}" />
-        <div class="slidebtn"><a href="#/sheetmusic/{{image.shortname}}">Read More</a></div>
+        <a href="#/sheetmusic/{{image.shortname}}"><img ng-src="{{image.imageurl}}" /></a>
+        <div class="slidebtn"><a href="#/sheetmusic/{{image.shortname}}"><h4>Read More</h4></a></div>
     </div>
 	<div class="slide-index-left"><a ng-click="prev()"><span class="glyphicon glyphicon-chevron-left" ></span></a></div>
     <div class="slide-index-right"><a ng-click="next()"><span class="glyphicon glyphicon-chevron-right" ></span></a></div>

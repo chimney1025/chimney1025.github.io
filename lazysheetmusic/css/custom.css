@@ -146,7 +146,7 @@ a {
 
 /*View Container*/
 .view-container {
-    padding-bottom: 30px;
+    padding-bottom: 40px;
     /*
         background: #f8f9fa;
 
@@ -229,7 +229,7 @@ a {
     /*border-bottom: 4px solid #468595;*/
 }
 .navbar {
-    padding: 10px 0;
+    padding: 14px 0;
     border-radius: 0;
     margin: 0;
         background: url("../images/container-bg.jpg") repeat scroll 1% 0 #363739;
@@ -240,19 +240,36 @@ a {
 
 .navbar-brand {
     margin-right: 30px;
+    position:relative;
+    width:200px;
 }
 
 .logo{
-    background-color:#fff;
+    z-index:1001;
+    position:absolute;
+    right:0;
+    top:0;
     /*
     background-image:url(../images/logo.png);
     */
 }
 
+.big{
+    font-size:30px;
+}
+
+.logotext{
+    width:100%;
+    left:5px;
+    bottom:-10px;
+    color:#fff;
+    position:absolute;
+}
+
 .logo img{
-	display:none;
-	width:160px;
-	margin-top:-15px;
+	width:100px;
+	margin-top:-10px;
+    z-index:1001;
 }
 
 .navbar-brand:hover {
@@ -262,8 +279,8 @@ a {
 .navbar-right {
 }
 
-.navbar-nav {
-
+ul.navbar-nav {
+    margin-left:10px;
 }
 
 .nav-pills {
@@ -387,7 +404,7 @@ a {
 }
 .slider {
     position: relative;
-    width: 100%;
+    width: 90%;
     margin: auto;
     border:1px solid #d8d9da;
     overflow: hidden;
@@ -413,7 +430,6 @@ a {
     z-index:0;
     
     overflow:hidden;
-    white-space: pre-line;
 }
 
 .slidebtn{
@@ -424,23 +440,21 @@ a {
     left:0;
     z-index:1;
     background-color:rgba(0,0,0,0);
-}
-
-.slidebtn a{
     display:none;
 }
 
+.slidebtn a{
+}
+
 .slidebtn:hover{
-    background-color:rgba(0,0,0,0.2);
 }
 
 .slidebtn:hover a{
-    display:block;
     position:absolute;
     left:35%;
     width:30%;
     bottom:10%;
-    background-color:#333;
+    background-color:rgba(0,0,0,0.8);
     color:#fff;
     padding:5px 10px;
     border-radius:5px;
@@ -448,7 +462,7 @@ a {
 
 .slidebtn:hover a:hover{
     text-decoration:underline;
-    background-color:#333;
+    background-color:rgba(0,0,0,0.8);
     color:#fff;
 }
 
@@ -480,7 +494,7 @@ a {
 }
 
 .slide-prev {
-    padding: 10px 0;
+    padding: 10px 10px;
     position: absolute;
     top: 0;
     left: 0;
@@ -490,8 +504,6 @@ a {
     
     /*
     overflow:hidden;
-    
-    white-space: pre-line;
     background: url("../images/container-bg.jpg") repeat scroll 50% 0 #363739;
     */
 
@@ -538,7 +550,7 @@ a {
     background-color:#a8a9aa;
     color:#fff;
     display:none;
-    width:60%;
+    width:100%;
 }
 
 .slide-name a:hover{
@@ -1358,11 +1370,6 @@ span.form-success{
         background-color: #333;
     }
 
-    .navbar-fixed-top{
-        position:relative;
-        padding:0;
-    }
-
     .navbar-nav .active:after{
         border-width:0;
         margin-width:0;
@@ -1379,7 +1386,6 @@ span.form-success{
       padding:10px;
     }
     .navbar {
-        padding: 10px 0;
     }
     .navbar-brand {
         /* padding-left: 0; */
@@ -1394,7 +1400,7 @@ span.form-success{
         margin: 0 auto;
     }
     .view-container {
-        padding-bottom: 20px;
+        padding-bottom: 25px;
     }
     .container.text-center{
         padding:0 15px 0 10px;
