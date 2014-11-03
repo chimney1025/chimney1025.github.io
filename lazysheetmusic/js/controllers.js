@@ -800,17 +800,17 @@ rapidScoreControllers
 				console.log('contact control');
 
         // Add Score
-        $scope.contactInfo = {};
-        $scope.contactCheck = '';
+        $rootScope.contactInfo = {};
+        $rootScope.contactCheck = '';
         
         if($rootScope.user){
         	console.log($rootScope.user.username);
-        	$scope.contactInfo.name = $rootScope.user.firstname + ' ' + $rootScope.user.surname; 
-        	$scope.contactInfo.email = $rootScope.user.username; 
+        	$rootScope.contactInfo.name = $rootScope.user.firstname + ' ' + $rootScope.user.surname; 
+        	$rootScope.contactInfo.email = $rootScope.user.username; 
         } else{
-        	$scope.contactInfo.name = ''; 
-        	$scope.contactInfo.email = ''; 
-            $scope.contactCheck = '';
+        	$rootScope.contactInfo.name = ''; 
+        	$rootScope.contactInfo.email = ''; 
+            $rootScope.contactCheck = '';
         }
 
         $scope.sendMsg = function() {
@@ -818,12 +818,12 @@ rapidScoreControllers
             $scope.contactCheck = '';
             // console.log($scope.scoreInfo);
 
-            if (!$scope.contactInfo.name) {
+            if (!$rootScope.contactInfo.name) {
                 $scope.contactCheck = 'Invalid Name';
                 return;
             }
 
-            if (!$scope.contactInfo.email) {
+            if (!$rootScope.contactInfo.email) {
                 $scope.contactCheck = 'Invalid Email';
                 return;
             }
@@ -836,9 +836,9 @@ rapidScoreControllers
                 // create json to be posted
                 var contactData = new Object();
 
-                contactData.name = $scope.contactInfo.name.trim();
-                contactData.email = $scope.contactInfo.email.trim();
-                contactData.message = $scope.contactInfo.message.trim();
+                contactData.name = $rootScope.contactInfo.name.trim();
+                contactData.email = $rootScope.contactInfo.email.trim();
+                contactData.message = $rootScope.contactInfo.message.trim();
 
                 Contact.add(
                     {},
