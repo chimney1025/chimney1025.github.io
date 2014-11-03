@@ -676,7 +676,7 @@ table td{
     padding: 0;
 }
 
-.list-full h4, .score-main h4, .list-score h4{
+.list-full h4, .list-full h2, .score-main h4, .list-score h4{
     margin-top:30px;
 }
 
