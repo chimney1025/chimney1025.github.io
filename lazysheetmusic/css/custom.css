@@ -680,12 +680,12 @@ table td{
     margin-top:30px;
 }
 
-.list-full heading{
+.list-full .heading{
 	font-weight:bold;
 	text-decoration: underline;
 }
 
-.list-full heading2{
+.list-full .heading2{
 	font-weight:bold;
 }
 
