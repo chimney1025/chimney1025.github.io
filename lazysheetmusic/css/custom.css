@@ -680,6 +680,15 @@ table td{
     margin-top:30px;
 }
 
+.list-full heading{
+	font-weight:bold;
+	text-decoration: underline;
+}
+
+.list-full heading2{
+	font-weight:bold;
+}
+
 .list-full ul{
     text-align:left;
 }
