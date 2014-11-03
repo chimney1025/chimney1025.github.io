@@ -767,10 +767,6 @@ rapidScoreControllers.controller('sessionService',
                 $window.localStorage.removeItem('username');
                 $window.localStorage.removeItem('uid');
                 $window.localStorage.removeItem('admin');
-
-            	$rootScope.contactInfo.name = ''; 
-            	$rootScope.contactInfo.email = ''; 
-                $rootScope.contactCheck = '';
             } else {
                 $rootScope.logged = true;
                 console.log('session:');
@@ -793,10 +789,6 @@ rapidScoreControllers.controller('sessionService',
                 $window.localStorage.removeItem('username');
                 $window.localStorage.removeItem('uid');
                 $window.localStorage.removeItem('admin');
-
-            	$rootScope.contactInfo.name = ''; 
-            	$rootScope.contactInfo.email = ''; 
-                $rootScope.contactCheck = '';
                 
                 //
                 $location.path("/login");
