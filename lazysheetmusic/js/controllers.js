@@ -795,9 +795,7 @@ rapidScoreControllers.controller('sessionService',
                 $rootScope.contactCheck = '';
                 
                 //
-                $location.path("/login", function(){
-                	$window.location.reload();
-                });
+                $location.path("/login");
             }
         } ]);
 
@@ -807,7 +805,7 @@ rapidScoreControllers
 			               function($scope, $rootScope, $window, Contact){
 				console.log('contact control');
 
-        // Add Score
+        // Contact
         $rootScope.contactInfo = {};
         $rootScope.contactCheck = '';
         
@@ -820,7 +818,6 @@ rapidScoreControllers
         $scope.sendMsg = function() {
 
             $scope.contactCheck = '';
-            // console.log($scope.scoreInfo);
 
             if (!$rootScope.contactInfo.name) {
                 $scope.contactCheck = 'Invalid Name';
