@@ -794,7 +794,8 @@ rapidScoreControllers.controller('sessionService',
             	$rootScope.contactInfo.email = ''; 
                 $rootScope.contactCheck = '';
                 
-                $location.path("/login");
+                //$location.path("/login");
+                $window.location.reload();
             }
         } ]);
 
