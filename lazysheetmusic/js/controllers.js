@@ -795,7 +795,8 @@ rapidScoreControllers.controller('sessionService',
 
 rapidScoreControllers
 	.controller(
-			'ContactCtrl',['$scope', '$rootScope', '$window', 'ContactAPI', function($scope, $rootScope, $window, Contact){
+			'ContactCtrl',['$scope', '$rootScope', '$window', 'ContactAPI', 
+			               function($scope, $rootScope, $window, Contact){
 				console.log('contact control');
 
         // Add Score
@@ -806,6 +807,10 @@ rapidScoreControllers
         	console.log($rootScope.user.username);
         	$scope.contactInfo.name = $rootScope.user.firstname + ' ' + $rootScope.user.surname; 
         	$scope.contactInfo.email = $rootScope.user.username; 
+        } else{
+        	$scope.contactInfo.name = ''; 
+        	$scope.contactInfo.email = ''; 
+            $scope.contactCheck = '';
         }
 
         $scope.sendMsg = function() {

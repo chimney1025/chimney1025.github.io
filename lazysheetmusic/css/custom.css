@@ -251,7 +251,8 @@ a {
 
 .logo img{
 	display:none;
-	width:200px;
+	width:160px;
+	margin-top:-15px;
 }
 
 .navbar-brand:hover {
