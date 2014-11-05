@@ -39,21 +39,22 @@
             </div><!-- End navbar-header -->
 
             <div class="navbar-collapse collapse navbar-responsive-collapse">
-                <ul class="nav navbar-nav navbar-left">
-                    <!--
-                    <li ng-repeat="p_type in parent_types"><a href="#/types/{{p_type.shortname}}" ng-bind="p_type.name | titlelize"></a></li>
+                <!--
+            <ul class="nav navbar-nav navbar-left">
+                <li ng-repeat="p_type in parent_types"><a href="#/types/{{p_type.shortname}}" ng-bind="p_type.name | titlelize"></a></li>
 
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown">Instruments <span class="caret"></span></a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="#/types/instruments">All Instruments</a></li>
-                            <li class="divider"></li>
-                            <li class="dropdown-header">Strings</li>
-                            <li><a href="#/sheetmusic-type/instruments/cello">Cello</a></li>
-                            <li><a href="#/sheetmusic-type/instruments/violin">Violin</a></li>
-                        </ul>
-                    </li> -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown">Instruments <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#/types/instruments">All Instruments</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">Strings</li>
+                        <li><a href="#/sheetmusic-type/instruments/cello">Cello</a></li>
+                        <li><a href="#/sheetmusic-type/instruments/violin">Violin</a></li>
+                    </ul>
+                </li>
                 </ul>
+                -->
                 <ul class="nav navbar-nav navbar-right">
                     <li ng-class="setActive('sheetmusic')"><a href="#/sheetmusic">Sheet Music</a></li>
                     <li ng-class="setActive('instruments')"><a href="#/types/instruments">Instruments</a></li>
@@ -112,7 +113,7 @@
         -->
     </div>
 
-    <div ng-view></div>
+    <div ng-view autoscroll="false"></div>
 
     <div class="nomodal" ng-class="setModal" ng-cloak ng-if="modalcheck">
         <div class="modal-dialog">
@@ -180,7 +181,8 @@
 <script src="js/directives.js"></script>
 <script src="js/services.js"></script>
 <!--
-<script src="bower_components/perfect-scrollbar/min/perfect-scrollbar.min.js"></script> -->
+<script src="bower_components/perfect-scrollbar/min/perfect-scrollbar.min.js"></script>
+-->
 
 
 </html>

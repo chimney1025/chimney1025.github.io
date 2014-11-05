@@ -269,7 +269,6 @@ a {
 .logo img{
 	width:100px;
 	margin-top:-12px;
-    z-index:1001;
 }
 
 .navbar-brand:hover {
@@ -558,6 +557,17 @@ ul.navbar-nav {
 }
 
 .slide-prev-single.active .slide-name a:after{
+}
+
+.slide-index{
+    margin:10px;
+    position:absolute;
+    top:0;
+    left:30%;
+}
+
+.slide-index h4{
+    margin: 0;
 }
 
 .slide-index-left a, .slide-index-right a{
@@ -1368,11 +1378,38 @@ span.form-success{
     .navbar{
         background: none;
         background-color: #333;
+        padding: 10px 0;
+        /*
+        background-color: -moz-repeating-linear-gradient(to bottom, #333 0%, #333 25%, #f8f9fa 25%, #f8f9fa 100%);
+        */
+    }
+
+    .logotext{
+        left:40px;
+        bottom: -7px;
+        font-size:18px;
     }
 
     .navbar-nav .active:after{
         border-width:0;
         margin-width:0;
+    }
+
+    .logo img {
+        margin-top: -8px;
+        width: 88px;
+    }
+
+    /*
+    .collapse.in{
+        background-color: #333;
+        position: absolute;
+        right: 0;
+        z-index: 1;
+    }
+    */
+    .navbar-nav .open .dropdown-menu > li > a {
+        line-height: 30px;
     }
 
     #footer{
@@ -1542,7 +1579,12 @@ span.form-success{
         left:0;
     }
 
-    .slide-index-left{
+    .slide-index{
+        margin:5px;
+        z-index:1002;
+    }
+
+    .slide-index-left, .slide-index{
         left:0;
     }
     .slide-index-left, .slide-index-right{

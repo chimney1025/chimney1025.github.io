@@ -729,6 +729,7 @@ rapidScoreControllers.controller('sessionService',
         function($scope, $rootScope, $window, $location, Cart,
                  breadcrumbs, Type) {
             console.log($location.path());
+
             $scope.breadcrumbs = breadcrumbs;
 
             $rootScope.parent_types = Type.getAll(function(res){
