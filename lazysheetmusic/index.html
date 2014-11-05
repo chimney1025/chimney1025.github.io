@@ -55,6 +55,10 @@
                     </li> -->
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
+                    <li ng-class="setActive('sheetmusic')"><a href="#/sheetmusic">Sheet Music</a></li>
+                    <li ng-class="setActive('instruments')"><a href="#/types/instruments">Instruments</a></li>
+                    <li ng-class="setActive('composers')"><a href="#/types/composers">Composers</a></li>
+                    <li ng-class="setActive('genres')"><a href="#/types/genres">Genres</a></li>
                     <li ng-class="setActive('shopping-cart')" ng-if="logged"><a href="#/account/shopping-cart">
                         <span class="badge pull-right" ng-bind="cartcount"></span>
                         <span class="glyphicon glyphicon-shopping-cart"></span>
@@ -76,16 +80,6 @@
                             <li><a href="#/register">Create Account</a></li>
                         </ul>
                     </li>
-                </ul>
-
-                <ul class="nav navbar-nav navbar-right">
-                    <!--
-                    <li ng-class="setActive('home')"><a href="#/home">Home</a></li>
-                    -->
-                    <li ng-class="setActive('sheetmusic')"><a href="#/sheetmusic">Sheet Music</a></li>
-                    <li ng-class="setActive('instruments')"><a href="#/types/instruments">Instruments</a></li>
-                    <li ng-class="setActive('composers')"><a href="#/types/composers">Composers</a></li>
-                    <li ng-class="setActive('genres')"><a href="#/types/genres">Genres</a></li>
                 </ul>
 
             </div><!--/.nav-collapse -->
