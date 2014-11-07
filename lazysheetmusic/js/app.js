@@ -144,7 +144,7 @@ rapidScoreApp.config([ '$routeProvider', '$locationProvider', function($routePro
         access : {
             requiredLogin : false
         }
-    }).when('/terms', {
+    }).when('/terms-and-policies', {
         templateUrl : 'views/terms.html',
         label : 'Terms & Conditions',
         access : {
