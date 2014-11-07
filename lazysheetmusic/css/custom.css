@@ -273,7 +273,7 @@ a {
 
 .navbar-right li a{
 	height:45px;
-	line-height:45px;
+	line-height:15px;
 }
 .navbar-brand:hover {
     color: #fff;
