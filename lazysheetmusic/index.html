@@ -1,45 +1,48 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="rapidScoreApp">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="images/favicon.ico">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, user-scalable=no">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="icon" href="images/favicon.ico">
 
-    <title>LazySheetMusic</title>
+<title>LazySheetMusic</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/custom.css" rel="stylesheet">
+<!-- Bootstrap core CSS -->
+<link href="bower_components/bootstrap/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+<link href="css/custom.css" rel="stylesheet">
 
-    <!-- Perfect Scrollbar
+<!-- Perfect Scrollbar
     <link href="bower_components/perfect-scrollbar/min/perfect-scrollbar.min.css" rel="stylesheet">
 -->
 </head>
 <body ng-controller="sessionService">
 
-<!-- NAVBAR
+	<!-- NAVBAR
 ================================================== -->
-<div id="main-container">
-    <div class="navbar navbar-default cusnav" role="navigation">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#/home">
-                    <span class="logotext"><span class="">Lazy</span> Sheet Music</span>
-                    <span class="logo"><img src="images/logo4.png"></span>
-                </a>
-            </div><!-- End navbar-header -->
+	<div id="main-container">
+		<div class="navbar navbar-default cusnav" role="navigation">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse"
+						data-target=".navbar-responsive-collapse">
+						<span class="sr-only">Toggle navigation</span> <span
+							class="icon-bar"></span> <span class="icon-bar"></span> <span
+							class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="#/home"> <span class="logotext"><span
+							class="">Lazy</span> Sheet Music</span> <span class="logo"><img
+							src="images/logo4.png"></span>
+					</a>
+				</div>
+				<!-- End navbar-header -->
 
-            <div class="navbar-collapse collapse navbar-responsive-collapse">
-                <!--
+				<div class="navbar-collapse collapse navbar-responsive-collapse">
+					<!--
             <ul class="nav navbar-nav navbar-left">
                 <li ng-repeat="p_type in parent_types"><a href="#/types/{{p_type.shortname}}" ng-bind="p_type.name | titlelize"></a></li>
 
@@ -55,40 +58,47 @@
                 </li>
                 </ul>
                 -->
-                <ul class="nav navbar-nav navbar-right">
-                    <li ng-class="setActive('sheetmusic')"><a href="#/sheetmusic">Sheet Music</a></li>
-                    <li ng-class="setActive('instruments')"><a href="#/types/instruments">Instruments</a></li>
-                    <li ng-class="setActive('composers')"><a href="#/types/composers">Composers</a></li>
-                    <li ng-class="setActive('genres')"><a href="#/types/genres">Genres</a></li>
-                    <li ng-class="setActive('shopping-cart')" ng-if="logged"><a href="#/account/shopping-cart">
-                        <span class="badge pull-right" ng-bind="cartcount"></span>
-                        <span class="glyphicon glyphicon-shopping-cart"></span>
-                    </a></li>
+					<ul class="nav navbar-nav navbar-right">
+						<li ng-class="setActive('sheetmusic')"><a href="#/sheetmusic">Sheet
+								Music</a></li>
+						<li ng-class="setActive('instruments')"><a
+							href="#/types/instruments">Instruments</a></li>
+						<li ng-class="setActive('composers')"><a
+							href="#/types/composers">Composers</a></li>
+						<li ng-class="setActive('genres')"><a href="#/types/genres">Genres</a></li>
+						<li ng-class="setActive('shopping-cart')" ng-if="logged"><a
+							href="#/account/shopping-cart"> <span
+								class="badge pull-right" ng-bind="cartcount"></span> <span
+								class="glyphicon glyphicon-shopping-cart"></span>
+						</a></li>
 
-                    <li ng-class="setActive('account')" ng-if="logged" class="dropdown" >
-                        <a class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"></span></a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li ng-if="logged_admin"><a href="#/admin">Admin</a></li>
-                            <li><a href="#/account">My Account</a></li>
-                            <li><a ng-click="logout()">Log Out</a></li>
-                        </ul>
-                    </li>
+						<li ng-class="setActive('account')" ng-if="logged"
+							class="dropdown"><a class="dropdown-toggle"
+							data-toggle="dropdown"><span class="glyphicon glyphicon-cog"></span></a>
+							<ul class="dropdown-menu" role="menu">
+								<li ng-if="logged_admin"><a href="#/admin">Admin</a></li>
+								<li><a href="#/account">My Account</a></li>
+								<li><a ng-click="logout()">Log Out</a></li>
+							</ul></li>
 
-                    <li ng-if="!logged" class="dropdown" >
-                        <a class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span></a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="#/login">Log In</a></li>
-                            <li><a href="#/register">Create Account</a></li>
-                        </ul>
-                    </li>
-                </ul>
+						<li ng-if="!logged" class="dropdown"><a
+							class="dropdown-toggle" data-toggle="dropdown"><span
+								class="glyphicon glyphicon-user"></span></a>
+							<ul class="dropdown-menu" role="menu">
+								<li><a href="#/login">Log In</a></li>
+								<li><a href="#/register">Create Account</a></li>
+							</ul></li>
+					</ul>
 
-            </div><!--/.nav-collapse -->
-        </div><!-- End container -->
-    </div><!-- End navbar -->
+				</div>
+				<!--/.nav-collapse -->
+			</div>
+			<!-- End container -->
+		</div>
+		<!-- End navbar -->
 
-    <div class="view-container">
-        <!--
+		<div class="view-container">
+			<!--
             <div class="container breadcrumbBox">
                 <ol class="breadcrumb col-md-8 col-sm-8 col-xs-12 text-left" ng-if="!noBreadcrumb">
                     <li><a href="#"><span class="glyphicon glyphicon-home"></span></a></li>
@@ -99,7 +109,7 @@
                     </li>
                 </ol>
                  search -->
-        <!--
+			<!--
         <div class="input-search col-md-4 col-sm-4 col-xs-12 pull-right text-right" ng-if="!noBreadcrumb">
             <div class="input-group input-group-sm">
                 <input type="text" class="form-control" ng-model="query" placeholder="Search sheet music">
@@ -111,43 +121,43 @@
             </div>
         </div>
         -->
-    </div>
+		</div>
 
-    <div ng-view autoscroll="false"></div>
+		<div ng-view autoscroll="false"></div>
 
-    <div class="nomodal" ng-class="setModal" ng-cloak ng-if="modalcheck">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <p ng-bind="modalcheck"></p>
-                </div>
-                <div class="modal-footer" ng-if="modaloption" >
-                    <a type="button" class="btn btn-sm btn-default" ng-click="closemodal()">OK</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+		<div class="nomodal" ng-class="setModal" ng-cloak ng-if="modalcheck">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-body">
+						<p ng-bind="modalcheck"></p>
+					</div>
+					<div class="modal-footer" ng-if="modaloption">
+						<a type="button" class="btn btn-sm btn-default"
+							ng-click="closemodal()">OK</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
-<!-- FOOTER -->
-<footer id="footer" class="col-md-12 navbar" role="navigation">
-    <div class="container text-center">
-        <p>
-            <img src="images/icon-facebook.png">
-            <img src="images/icon-googleplus.png">
-            <img src="images/icon-linkedin.png">
-            <a target="_blank" href="https://www.youtube.com/channel/UCVwUUu_AQdcpV4Vzv_9D2AA"><img src="images/icon-youtube2.png"></a>
-            <img src="images/paypal.png">
-        </p>
-        <p>
-            <a href="#/terms-and-policies">Terms & Policies </a>
-            <a href="#/about">About </a>
-            <a href="#/contact">Contact</a>
-        </p>
-        <p>&copy; 2014 LazySheetMusic</p>
-    </div>
-</footer>
-</div>
+	<!-- FOOTER -->
+	<footer id="footer" class="col-md-12 navbar" role="navigation">
+		<div class="container text-center">
+			<p>
+				<img src="images/icon-facebook.png"> <img
+					src="images/icon-googleplus.png"> <img
+					src="images/icon-linkedin.png"> <a target="_blank"
+					href="https://www.youtube.com/channel/UCVwUUu_AQdcpV4Vzv_9D2AA"><img
+					src="images/icon-youtube2.png"></a> <img src="images/paypal.png">
+			</p>
+			<p>
+				<a href="#/terms-and-policies">Terms & Policies </a> <a
+					href="#/about">About </a> <a href="#/contact">Contact</a>
+			</p>
+			<p>&copy; 2014 LazySheetMusic</p>
+		</div>
+	</footer>
+	</div>
 </body>
 
 
