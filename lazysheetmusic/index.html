@@ -67,11 +67,12 @@
 							href="#/types/composers">Composers</a></li>
 						<li ng-class="setActive('genres')"><a href="#/types/genres">Genres</a></li>
 						<!-- If Logged -->
-						<li ng-class="setActive('shopping-cart')" ng-if="logged"><a
-							href="#/account/shopping-cart"> <span
-								class="badge pull-right" ng-bind="cartcount"></span> <span
-								class="glyphicon glyphicon-shopping-cart pull-left"></span>
-						</a></li>
+						<li ng-class="setActive('shopping-cart')" ng-if="logged">
+						  <a href="#/account/shopping-cart"> 
+						    <span class="badge pull-right" ng-bind="cartcount"></span> 
+								<span class="glyphicon glyphicon-shopping-cart pull-left"></span>
+						  </a>
+						</li>
 
 						<li ng-class="setActive('account')" ng-if="logged"
 							class="dropdown"><a class="dropdown-toggle"
