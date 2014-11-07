@@ -66,24 +66,27 @@
 						<li ng-class="setActive('composers')"><a
 							href="#/types/composers">Composers</a></li>
 						<li ng-class="setActive('genres')"><a href="#/types/genres">Genres</a></li>
+						<!-- If Logged -->
 						<li ng-class="setActive('shopping-cart')" ng-if="logged"><a
 							href="#/account/shopping-cart"> <span
 								class="badge pull-right" ng-bind="cartcount"></span> <span
-								class="glyphicon glyphicon-shopping-cart"></span>
+								class="glyphicon glyphicon-shopping-cart pull-left"></span>
 						</a></li>
 
 						<li ng-class="setActive('account')" ng-if="logged"
 							class="dropdown"><a class="dropdown-toggle"
-							data-toggle="dropdown"><span class="glyphicon glyphicon-cog"></span></a>
+							data-toggle="dropdown"><span class="glyphicon glyphicon-cog pull-left"></span></a>
 							<ul class="dropdown-menu" role="menu">
 								<li ng-if="logged_admin"><a href="#/admin">Admin</a></li>
 								<li><a href="#/account">My Account</a></li>
 								<li><a ng-click="logout()">Log Out</a></li>
-							</ul></li>
-
+							</ul>
+					  </li>
+							
+            <!-- If Not Logged -->
 						<li ng-if="!logged" class="dropdown"><a
 							class="dropdown-toggle" data-toggle="dropdown"><span
-								class="glyphicon glyphicon-user"></span></a>
+								class="glyphicon glyphicon-user pull-left"></span></a>
 							<ul class="dropdown-menu" role="menu">
 								<li><a href="#/login">Log In</a></li>
 								<li><a href="#/register">Create Account</a></li>
