@@ -15,8 +15,11 @@
 
         <div ng-repeat="ptype in types" ng-if="!ptype.obsolete">
             <h2>Manage<span ng-bind="ptype.name | titlelize"></span>
-                <span><a ng-click="updatetype(ptype.id, ptype.name)"><span class="glyphicon glyphicon-pencil"></span></a>
-                <a ng-click="removetype(ptype.id, '', ptype.name, ptype.subtypes.length)" ><span class="glyphicon glyphicon-remove"></span></a></span>
+                <span>
+                <a ng-click="updatetype(ptype.id, ptype.name)"><span class="glyphicon glyphicon-pencil"></span></a>
+                <a ng-click="removetype(ptype.id, '', ptype.name, ptype.subtypes.length)" ><span class="glyphicon glyphicon-remove"></span></a>
+                <a ng-click="addsubtype(ptype.id, ptype.name)" ><span class="glyphicon glyphicon-plus"></span></a>
+                </span>
 
             </h2>
             <table class="table table-striped table-hover " ng-if="table">
