@@ -764,6 +764,7 @@ table td{
 
 .list-full p, .list-full h4 span{
     line-height:30px;
+    display:block;
 }
 
 .list-filter,.score-detail {

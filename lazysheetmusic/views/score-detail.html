@@ -6,11 +6,11 @@
     <div class="col-md-4 col-sm-4 col-xs-12 text-left score-detail">
         <ul class="">
             <li><h1><span ng-bind="score.title"></span></h1></li>
-            <span ng-show=0 ng-model="sid" ng-bind="score.id"></span>
             <li ng-if="!score.obsolete">
                 <a type="button" class="btn {{action_class}}" ng-click="link()" ng-bind="action"></a>
             </li>
-            <div ng-show="!collapsed">
+            <li>
+            <ul ng-show="!collapsed">
                 <li><h4>Price: <span ng-bind="score.price | currency:'£'"></span></h4></li>
                 <li><h4>Page: <span ng-bind="score.page"></span></h4></li>
                 <li><h4>Tags: <a type="button" class="btn-detail btn btn-default" href="#/subtypes/{{type.id}}" ng-repeat="type in score.types" ng-if="!type.obsolete" ng-bind="type.name"> </a></h4></li>
@@ -22,20 +22,19 @@
                     </h4>
                 </li>
                 <li ng-if="score.desc">
-                    <h4><p class="well" ng-bind="score.desc"></p></h4>
+                    <h4><span class="well" ng-bind="score.desc"></span></h4>
                 </li>
-            </div>
+            </ul>
+            </li>
         </ul>
     </div>
 
     <div class="col-md-8 col-sm-8 col-xs-12 text-left score-main">
         <div name="audio" ng-if="score.audiourl" class="main-media">
-            <audio class="" ng-src="{{trustSrc(score.audiourl)}}" controls="controls" preload="auto" >
-                Your browser does not support the HTML5 Audio element.
-            </audio>
+            <audio class="" ng-src="{{trustSrc(score.audiourl)}}" controls="controls" preload="auto" >Your browser does not support the HTML5 Audio element.</audio>
         </div>
 
-        <img class="main-image" ng-src="{{score.imageurl}}">
+        <img class="main-image" ng-src="{{score.imageurl}}" alt="Cannot display the preview image">
 
 
         <!-- 4:3 aspect ratio -->
