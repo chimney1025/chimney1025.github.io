@@ -942,7 +942,7 @@ audio {
 .btn-detail {
     padding: 4px 8px;
     font-size: 0.8em;
-    margin: 2px 5px;
+    margin: 5px;
     text-transform: uppercase;
 }
 
@@ -1347,7 +1347,7 @@ span.form-success{
     .btn.btn-detail {
         padding: 4px 6px;
         font-size: 0.7em;
-        margin: 2px 5px;
+        margin: 5px;
         text-transform: uppercase;
     }
     .list-score,.score-main,.list-full,.contact-main {
