@@ -20,14 +20,15 @@
 		<div class="col-md-6 col-sm-6 col-xs-12 text-left">
 			<h4>Unselected Tags</h4>
 			<ul>
-				<li ng-repeat="type in types" ng-if="!type.obsolete" class="pull-left text-left col-md-12">
-				<ul>
-					<li><b ng-bind="type.name"></b></li>
-					<li><a type="button" class="btn-detail btn btn-default"
-						ng-repeat="subtype in type.subtypes" ng-if="!subtype.obsolete"
-						ng-click="addscoretype(subtype.id, subtype.name)">
-							{{subtype.name}} </a></li>
-				</ul>
+				<li ng-repeat="type in types" ng-if="!type.obsolete"
+					class="pull-left text-left col-md-12">
+					<ul>
+						<li><b ng-bind="type.name"></b></li>
+						<li><a type="button" class="btn-detail btn btn-default"
+							ng-repeat="subtype in type.subtypes" ng-if="!subtype.obsolete"
+							ng-click="addscoretype(subtype.id, subtype.name)">
+								{{subtype.name}} </a></li>
+					</ul>
 				</li>
 			</ul>
 		</div>
