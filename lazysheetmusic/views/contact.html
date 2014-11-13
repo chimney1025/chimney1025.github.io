@@ -1,58 +1,70 @@
 <!-- Content -->
 <div class="container text-center">
 
-    <div class="col-md-12 col-sm-12 col-xs-12 text-left list-full">
-        <div class="col-md-8 col-sm-8 col-xs-12 pull-left nopadding">
-            <fieldset>
-                <h1>Contact Us</h1>
-                <h4>
-                    <span>If you have any enquiry, please fill in the Contact from. We will get back to you as soon as possible.</span>
-                </h4>
-                <div class="form-group col-md-4 col-sm-12 col-xs-12 pull-left">
-                    <label for="inputName" class="col-lg-2 control-label nopadding">Name<span class="text-danger">*</span></label>
-                    <div class="col-lg-12 nopadding">
-                        <input class="form-control" id="inputName" placeholder="Name" type="text" ng-model="contactInfo.name" required>
-                    </div>
-                </div>
-                <div class="form-group col-md-7 col-sm-12 col-xs-12 pull-right">
-                    <label for="inputEmail" class="col-lg-2 control-label nopadding">Email<span class="text-danger">*</span></label>
-                    <div class="col-lg-12 nopadding">
-                        <input class="form-control" id="inputEmail" placeholder="Email" type="email" ng-model="contactInfo.email" required>
-                    </div>
-                </div>
-                <div class="form-group col-md-12 col-sm-12 col-xs-12">
-                    <label for="textArea" class="col-lg-2 control-label nopadding">Message<span class="text-danger">*</span></label>
-                    <div class="col-lg-12 nopadding">
-                        <textarea class="form-control" rows="3" id="textArea" ng-model="contactInfo.message" required></textarea>
-                        <span class="help-block"></span>
-                    </div>
-                </div>
-                <div class="form-group col-md-12 col-sm-12 col-xs-12">
-                    <div class="col-lg-6 nopadding">
-                        <button class="btn btn-default">Cancel</button>
-                        <button type="submit" ng-click="sendMsg()" class="btn btn-primary">Submit</button>
-                    </div>
+	<div class="col-md-12 col-sm-12 col-xs-12 text-left list-full">
+		<div class="col-md-8 col-sm-8 col-xs-12 pull-left nopadding">
+			<fieldset>
+				<h1>Contact Us</h1>
+				<h4>
+					<span>If you have any enquiry, please fill in the Contact
+						from. We will get back to you as soon as possible.</span>
+				</h4>
+				<div class="form-group col-md-4 col-sm-12 col-xs-12 pull-left">
+					<label for="inputName" class="col-lg-2 control-label nopadding">Name<span
+						class="text-danger">*</span></label>
+					<div class="col-lg-12 nopadding">
+						<input class="form-control" id="inputName" placeholder="Name"
+							type="text" ng-model="contactInfo.name" required>
+					</div>
+				</div>
+				<div class="form-group col-md-7 col-sm-12 col-xs-12 pull-right">
+					<label for="inputEmail" class="col-lg-2 control-label nopadding">Email<span
+						class="text-danger">*</span></label>
+					<div class="col-lg-12 nopadding">
+						<input class="form-control" id="inputEmail" placeholder="Email"
+							type="email" ng-model="contactInfo.email" required>
+					</div>
+				</div>
+				<div class="form-group col-md-12 col-sm-12 col-xs-12">
+					<label for="textArea" class="col-lg-2 control-label nopadding">Message<span
+						class="text-danger">*</span></label>
+					<div class="col-lg-12 nopadding">
+						<textarea class="form-control" rows="3" id="textArea"
+							ng-model="contactInfo.message" required></textarea>
+						<span class="help-block"></span>
+					</div>
+				</div>
+				<div class="form-group col-md-12 col-sm-12 col-xs-12">
+					<div class="col-lg-6 nopadding">
+						<button class="btn btn-default">Cancel</button>
+						<button type="submit" ng-click="sendMsg()" class="btn btn-primary">Submit</button>
+					</div>
 
-                    <div class="col-lg-6">
-                        <span class="form-check" ng-show="contactCheck" ng-bind="contactCheck"></span>
-                    </div>
-                </div>
-            </fieldset>
-        </div>
+					<div class="col-lg-6">
+						<span class="form-check" ng-show="contactCheck"
+							ng-bind="contactCheck"></span>
+					</div>
+				</div>
+			</fieldset>
+		</div>
 
-        <div class="col-md-3 col-sm-3 col-xs-12 pull-right">
-            <h4>Follow Us</h4>
-            <h5>
-                <p>
-                    <img src="images/icon-youtube2.png"><a target="_blank" href="https://www.youtube.com/channel/UCVwUUu_AQdcpV4Vzv_9D2AA">Youtube</a>
-                </p><p>
-                <img src="images/icon-facebook.png"><a href="#">Facebook</a>
-            </p><p>
-                <img src="images/icon-googleplus.png"><a target="_blank" href="https://plus.google.com/u/1/105837570496075065861/posts">Google+</a>
-            </p><p>
-                <img src="images/icon-linkedin.png"><a target="_blank" href="https://www.linkedin.com/in/shihwendy">Linkedin</a>
-            </p>
-            </h5>
-        </div>
-    </div>
+		<div class="col-md-3 col-sm-3 col-xs-12 pull-right">
+			<h4>Follow Us</h4>
+      <h5>
+        <img alt="" src="images/icon-youtube2.png"><a target="_blank"
+          href="https://www.youtube.com/channel/UCVwUUu_AQdcpV4Vzv_9D2AA">Youtube</a>
+      </h5>
+      <h5>
+        <img alt="" src="images/icon-facebook.png"><a href="#">Facebook</a>
+      </h5>
+      <h5>
+        <img alt="" src="images/icon-googleplus.png"><a target="_blank"
+          href="https://plus.google.com/u/1/105837570496075065861/posts">Google+</a>
+      </h5>
+      <h5>
+        <img alt="" src="images/icon-linkedin.png"><a target="_blank"
+          href="https://www.linkedin.com/in/shihwendy">Linkedin</a>
+      </h5>
+		</div>
+	</div>
 </div>
