@@ -762,7 +762,7 @@ table td{
     text-align:left;
 }
 
-.list-full p, h4 span{
+.list-full p, .list-full h4 span, span.well{
     line-height:30px;
     display:block;
 }
