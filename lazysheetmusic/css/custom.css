@@ -1388,6 +1388,11 @@ span.form-success{
         background-color: -moz-repeating-linear-gradient(to bottom, #333 0%, #333 25%, #f8f9fa 25%, #f8f9fa 100%);
         */
     }
+    
+
+    ul.navbar-nav {
+      margin-right:10px;
+    }
 
     .logotext{
         left:40px;
