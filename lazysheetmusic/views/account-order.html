@@ -16,14 +16,12 @@
         <table class="table table-striped table-hover fade" ng-class="{in:purchased.length}" ng-if="table">
             <thead>
             <tr>
-                <th class="col-md-3">Price
-                    <a ng-click="setOrder('total')" ng-if="orderProp!='total'"><span class="glyphicon glyphicon-arrow-up"></span></a>
-                    <a ng-click="setOrder('-total')" ng-if="orderProp!='-total'"><span class="glyphicon glyphicon-arrow-down"></span></a>
+                <th class="col-md-3">
+                    <a ng-click="setOrder('total')">Price</a>
                 </th>
                 <th class="col-md-3">Detail</th>
-                <th class="col-md-3">Date
-                    <a ng-click="setOrder('updatedAt')" ng-if="orderProp!='updatedAt'"><span class="glyphicon glyphicon-arrow-up"></span></a>
-                    <a ng-click="setOrder('-updatedAt')" ng-if="orderProp!='-updatedAt'"><span class="glyphicon glyphicon-arrow-down"></span></a>
+                <th class="col-md-3">
+                    <a ng-click="setOrder('updatedAt')">Date</a>
                 </th>
                 <th class="col-md-3">Actions</th>
             </tr>

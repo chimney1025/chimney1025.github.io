@@ -82,19 +82,20 @@ h4 {
     border-color: #468595;
 }
 
-.btn-danger,.btn-danger.active {
-    background-color: #f08573;
-    border-color: #f08573;
+.text-danger{
 }
 
-.text-danger{
-    color: #f08573;
+/*
+.btn-danger,.btn-danger.active {
+background-color: #f08573;
+border-color: #f08573;
 }
 
 .btn-danger:hover {
     background-color: #f06953;
     border-color: #f08573;
 }
+*/
 
 .btn-primary,.btn-primary.active {
     background-color: #468595;

@@ -486,19 +486,16 @@ rapidScoreServices.factory('TokenInterceptor', function($q, $window) {
 	return {
 		request : function(config) {
 			config.headers = config.headers || {};
-			console.log('token interceptor');
 
 			if ($window.localStorage.getItem('token')) {
 				config.headers.Authorization = 'Bearer '
 						+ $window.localStorage.getItem('token');
-				console.log(config.headers);
 			}
 			return config || $q.when(config);
 		},
 
 		response : function(response) {
 			if (response.status === 401) {
-				console.log(response.status);
 			}
 			return response || $q.when(response);
 		}

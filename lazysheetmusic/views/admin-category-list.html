@@ -17,8 +17,8 @@
             <h2>Manage<span ng-bind="ptype.name | titlelize"></span>
                 <span>
                 <a ng-click="updatetype(ptype.id, ptype.name)"><span class="glyphicon glyphicon-pencil"></span></a>
-                <a ng-click="removetype(ptype.id, '', ptype.name, ptype.subtypes.length)" ><span class="glyphicon glyphicon-remove"></span></a>
-                <a ng-click="addsubtype(ptype.id, ptype.name)" ><span class="glyphicon glyphicon-plus"></span></a>
+                <a ng-click="removetype(ptype.id, '', ptype.name, ptype.subtypes.length)" ><span class="text-danger glyphicon glyphicon-remove"></span></a>
+                <a ng-click="addsubtype(ptype.id, ptype.name)" ><span class="text-warning glyphicon glyphicon-plus"></span></a>
                 </span>
 
             </h2>
@@ -37,7 +37,7 @@
                 <tr ng-repeat="subtype in ptype.subtypes | orderBy:orderProp" ng-if="!subtype.obsolete">
                     <td>{{subtype.name}}</td>
                     <td><a ng-click="updatetype(subtype.id, subtype.name)"><span class="glyphicon glyphicon-pencil"></span></a></td>
-                    <td><a ng-click="removetype(subtype.id, ptype.name, subtype.name, 0)" ><span class="glyphicon glyphicon-remove"></span></a></td>
+                    <td><a ng-click="removetype(subtype.id, ptype.name, subtype.name, 0)" ><span class="text-danger glyphicon glyphicon-remove"></span></a></td>
                 </tr>
                 </tbody>
             </table>

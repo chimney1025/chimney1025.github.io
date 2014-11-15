@@ -20,8 +20,6 @@ rapidScoreApp.config(function($httpProvider) {
 			// Error: check the error status to get only the 401
 			function(response) {
 				if (response.status === 401) {
-					console.log('401 returned');
-					console.log($window.localStorage.getItem('username'));
 					$rootScope.logged = false;
 					$window.localStorage.removeItem('token');
 					$window.localStorage.removeItem('username');
@@ -31,7 +29,6 @@ rapidScoreApp.config(function($httpProvider) {
 					//$location.url('/login');
 				}
                 if (response.status === 404) {
-                    console.log('404 returned');
 
                     $location.url('/404');
                 }
@@ -241,7 +238,6 @@ rapidScoreApp.run(function($rootScope, $location, $window, $http) {
 				}
 
                 var n = $location.path().split('/').length;
-                console.log($location.path().split('/')[n-1]);
 
                 $rootScope.setActive = function(name){
                     if(name == $location.path().split('/')[n-1]){

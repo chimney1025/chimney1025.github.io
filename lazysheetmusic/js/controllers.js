@@ -32,7 +32,6 @@ rapidScoreControllers.controller('SubTypeCtrl', [ '$scope', '$rootScope',
             pname : $routeParams.pname,
             subname : $routeParams.subname
         });
-        console.log($scope.result);
     } ]);
 
 rapidScoreControllers.controller('SubTypeIdCtrl', [ '$scope', '$rootScope',
@@ -41,7 +40,6 @@ rapidScoreControllers.controller('SubTypeIdCtrl', [ '$scope', '$rootScope',
         $scope.result = SubTypeId.getAll({
             subtype_id : $routeParams.id
         });
-        console.log($scope.result);
     } ]);
 
 rapidScoreControllers
@@ -61,16 +59,11 @@ rapidScoreControllers
                  CheckOrder, $location, $window, $sce) {
             $scope.score = Score.getOne({scoreid : $routeParams.scoreId}, function(res){
 
-                console.log('result:');
-                console.log(res);
 
                 if(!res){
-                    console.log('result:');
-                    console.log(res);
                     $location.path('/404');
                 }
             });
-            console.log($window.localStorage.getItem('uid'));
 
             $rootScope.action = 'Add to Cart';
             $rootScope.action_class = 'btn-warning';
@@ -79,9 +72,7 @@ rapidScoreControllers
                 return $sce.trustAsResourceUrl(src);
             }
 
-            $scope.link = function() {
-                console.log('score id:');
-                console.log($scope.score.id);
+            $scope.addcart = function() {
                 if (!$window.localStorage.getItem('uid')) {
                     $location.path('/login');
                 }
@@ -112,8 +103,6 @@ rapidScoreControllers
                         $rootScope.modaloption = false;
                         $rootScope.setModal = "modal";
                         CheckOrder.get({scoreid : $scope.score.id},function(res) {
-                            console.log('checking order');
-                            console.log(res);
                             // alert(res.hasOrdered);
                             if (res && res.hasOrdered) {
                                 $rootScope.modalcheck="Already purchased";
@@ -123,8 +112,6 @@ rapidScoreControllers
                             } else {
                                 //$rootScope.modalcheck="Adding to Cart ...";
                                 Cart.add({},{score_id : $scope.score.id},function(res) {
-                                    console.log('res:');
-                                    console.log(res);
                                     if (res) {
                                         $rootScope.modalcheck="Added to Cart !";
                                         $rootScope.modaloption = true;
@@ -158,7 +145,6 @@ rapidScoreControllers
 rapidScoreControllers.controller('ScoreAdminCtrl', [ '$scope', 'ScoreAdminAPI',
     'SliderAdminAPI', function($scope, Score, Slider) {
         $scope.scores = Score.getAll();
-        console.log($scope.scores);
 
         // remove
         $scope.removeScore = function(value, sid, name) {
@@ -171,10 +157,8 @@ rapidScoreControllers.controller('ScoreAdminCtrl', [ '$scope', 'ScoreAdminAPI',
                 Score.remove({
                     scoreid : sid
                 }, function(res) {
-                    if (value == true)
-                        console.log(res + ' deleted : ' + sid);
-                    else
-                        console.log(res + ' re added : ' + sid);
+                    if (value == true) {}
+                    else {}
                     // $location.path('/admin/scores');
                     $scope.scores = Score.getAll();
                 });
@@ -187,7 +171,6 @@ rapidScoreControllers.controller('ScoreAdminCtrl', [ '$scope', 'ScoreAdminAPI',
             // convert to json
             var scoreData = new Object();
             scoreData.slider = value;
-            console.log(scoreData);
 
             Slider.save({
                 scoreid : sid
@@ -228,16 +211,13 @@ rapidScoreControllers
             $scope.scoreAdd = function() {
 
                 $scope.scoreCheck = '';
-                // console.log($scope.scoreInfo);
 
                 if (!$scope.scoreInfo.title) {
                     $scope.scoreCheck = 'Invalid title';
-                    console.log($scope.scoreCheck);
                     return;
                 }
                 // submit data
                 else {
-                    console.log('posting data...');
                     // create json to be posted
                     var scoreData = new Object();
 
@@ -294,14 +274,10 @@ rapidScoreControllers
                         scoreData.fileurl = '';
                     }
 
-                    console.log(scoreData);
-
                     Score.add(
                         {},
                         scoreData,
                         function(res) {
-                            console.log('res:'
-                                + res);
                             if (res) {
                                 alert('added '
                                     + scoreData.shortname);
@@ -328,7 +304,6 @@ rapidScoreControllers.controller('ScoreEditCtrl', [
 
         $scope.scoreSave = function() {
             $scope.scoreCheck = '';
-            console.log($scope.scoreInfo);
 
             if (!$scope.scoreInfo.title) {
                 $scope.scoreCheck = 'Invalid title';
@@ -336,7 +311,6 @@ rapidScoreControllers.controller('ScoreEditCtrl', [
             }
             // submit data
             else {
-                console.log('posting data...');
                 // create json to be posted
                 var scoreData = new Object();
 
@@ -396,7 +370,6 @@ rapidScoreControllers.controller('ScoreEditCtrl', [
                  * for(var i=0; i<$scope.scoreInfo.category.length; i++){
                  * scoreData.category.push($scope.scoreInfo.category[i]); }
                  */
-                console.log(scoreData);
 
                 // convert to json
                 Score.save({
@@ -415,7 +388,6 @@ rapidScoreControllers.controller('ScoreEditCtrl', [
 
 rapidScoreControllers.controller('ScoreTypeCtrl', ['$scope', '$routeParams', 'ScoreAdminAPI', 'ScoreTypeAPI', 'TypeAdminAPI',
     function($scope, $routeParams, Score, ScoreType, Type){
-        console.log('editing tags');
 
         $scope.types = Type.getAll();
         $scope.score = Score.getOne({
@@ -426,7 +398,6 @@ rapidScoreControllers.controller('ScoreTypeCtrl', ['$scope', '$routeParams', 'Sc
 
         $scope.addscoretype = function(typeid, typename){
             //check if already added
-            console.log($scope.selected);
             var flag = 0;
             for(var i=0; i<$scope.selected.length; i++){
                 if($scope.selected[i].id == typeid){
@@ -526,7 +497,6 @@ rapidScoreControllers.controller('TypeAdminCtrl', [ '$scope', '$rootScope', 'Typ
                     SubType.remove({
                         typeid : subid
                     }, function(res) {
-                        console.log(' deleted : ' +res.name);
                         $scope.types = Type.getAll();
                         $rootScope.parent_types = MenuType.getAll();
                     });
@@ -578,10 +548,7 @@ rapidScoreControllers.controller('UserCtrl', [
              User, UserPass, Cart, Order, OrderDetail) {
 
         $rootScope.user = User.getOne();
-        console.log($rootScope.user);
 
-        console.log('if admin: ');
-        console.log($rootScope.logged_admin);
         if ($rootScope.logged_admin) {
             // $location.path("/admin");
         }
@@ -589,7 +556,6 @@ rapidScoreControllers.controller('UserCtrl', [
         $scope.total = 0;
 
         $scope.cart = Cart.getAll(function(res){
-            console.log(res.length);
             for(var i=0; i<res.length; i++){
                 $scope.total += res[i].price;
             }
@@ -600,6 +566,19 @@ rapidScoreControllers.controller('UserCtrl', [
                 $scope.purchased[i].showdetail = false;
             }
         });
+
+
+        $scope.flag = 0;
+
+        $scope.setOrder = function(name){
+            if($scope.flag == 0){
+                $scope.flag = 1;
+                $scope.orderProp = name;
+            } else{
+                $scope.flag = 0;
+                $scope.orderProp = -name;
+            }
+        }
         // get scores of each order
 
         $scope.updateuser = function(firstname, surname){
@@ -628,7 +607,6 @@ rapidScoreControllers.controller('UserCtrl', [
             for (var i = 0; i < $scope.purchased.length; i++) {
                 if ($scope.purchased[i].id == orderid) {
                     var index = i;
-                    console.log($scope.purchased[i].id);
                     if ($scope.purchased[i].showdetail) {
                         $scope.purchased[i].showdetail = false;
                         break;
@@ -637,8 +615,6 @@ rapidScoreControllers.controller('UserCtrl', [
                         orderid : orderid
                     }, function(scores) {
                         if (scores.length > 0) {
-                            console.log(scores);
-                            console.log(index);
                             $scope.purchased[index].showdetail = true;
                             $scope.orderdetails = scores;
                         } else {
@@ -667,7 +643,6 @@ rapidScoreControllers.controller('UserCtrl', [
 
                     // $window.location.reload();
                 } else {
-                    console.log(res);
                 }
             });
         }
@@ -680,7 +655,6 @@ rapidScoreControllers.controller('UserCtrl', [
 
             Order.order({}, function(res) {
                 if (res) {
-                    console.log(res);
 
                     //$rootScope.modalcheck="";
 
@@ -701,7 +675,6 @@ rapidScoreControllers.controller('UserCtrl', [
                     }
 
                 } else {
-                    console.log(res);
                 }
             });
         }
@@ -728,18 +701,15 @@ rapidScoreControllers.controller('sessionService',
         'TypeAPI',
         function($scope, $rootScope, $window, $location, Cart,
                  breadcrumbs, Type) {
-            console.log($location.path());
 
             $scope.breadcrumbs = breadcrumbs;
 
             $rootScope.parent_types = Type.getAll(function(res){
-                //console.log(res);
             });
 
             $rootScope.table = 1;
 
             $rootScope.setTable = function(p){
-                console.log(p);
                 if(p == 1){
                     $rootScope.table = 0;
                     //$window.location.reload();
@@ -756,10 +726,16 @@ rapidScoreControllers.controller('sessionService',
                 $rootScope.setModal = "";
             }
 
-            $rootScope.orderProp = 'title';
+            $scope.flag = 0;
 
-            $rootScope.setOrder = function(name){
-                $scope.orderProp = name;
+            $scope.setListOrder = function(name){
+                if($scope.flag == 0){
+                    $scope.flag = 1;
+                    $scope.orderProp = name;
+                } else{
+                    $scope.flag = 0;
+                    $scope.orderProp = -name;
+                }
             }
 
             if (!$window.localStorage.getItem('token')) {
@@ -770,21 +746,16 @@ rapidScoreControllers.controller('sessionService',
                 $window.localStorage.removeItem('admin');
             } else {
                 $rootScope.logged = true;
-                console.log('session:');
                 $rootScope.logged_username = $window.localStorage
                     .getItem('username');
-                console.log($window.localStorage.getItem('username'));
                 $rootScope.logged_admin = $window.localStorage
                     .getItem('admin');
-                console.log($window.localStorage.getItem('admin'));
                 $rootScope.logged_cart = Cart.getAll(function(res) {
                     $rootScope.cartcount = res.length;
                 });
-                console.log($rootScope.logged_cart);
             }
 
             $scope.logout = function logout() {
-                console.log('logging out');
                 $rootScope.logged = false;
                 $window.localStorage.removeItem('token');
                 $window.localStorage.removeItem('username');
@@ -800,14 +771,12 @@ rapidScoreControllers
 	.controller(
 			'ContactCtrl',['$scope', '$rootScope', '$window', 'ContactAPI', 
 			               function($scope, $rootScope, $window, Contact){
-				console.log('contact control');
 
         // Contact
         $rootScope.contactInfo = {};
         $rootScope.contactCheck = '';
         
         if($rootScope.user){
-        	console.log($rootScope.user.username);
         	$rootScope.contactInfo.name = $rootScope.user.firstname + ' ' + $rootScope.user.surname; 
         	$rootScope.contactInfo.email = $rootScope.user.username; 
         }
@@ -827,7 +796,6 @@ rapidScoreControllers
             }
             // submit data
             else {
-                console.log('posting data...');
                 $rootScope.modalcheck="Sending message ...";
                 $rootScope.modaloption = false;
                 $rootScope.setModal = "modal";
@@ -842,7 +810,6 @@ rapidScoreControllers
                     {},
                     contactData,
                     function(res) {
-                        console.log('res:' + res);
                         if (res) {
                             $rootScope.modalcheck="Message sent!";
                             $rootScope.modaloption = true;
@@ -878,9 +845,6 @@ rapidScoreControllers
             $rootScope.modalcheck="";
             $rootScope.setModal = "";
             if ($rootScope.logged) {
-                console.log('token ');
-                console.log($window.localStorage
-                    .getItem('token'));
 
                 if ($rootScope.logged_admin) {
                     // $location.path("/admin");
@@ -902,7 +866,6 @@ rapidScoreControllers
 
             $scope.login = function() {
                 $rootScope.loginCheck = '';
-                console.log($scope.loginInfo);
 
                 if (!$scope.loginInfo.username) {
                     $rootScope.loginCheck = 'Invalid Username';
@@ -981,7 +944,6 @@ rapidScoreControllers
                         })
                         .error(
                         function(err) {
-                            console.log(err);
                             $rootScope.modalcheck="Login failed. Please try again.";
                             $rootScope.modaloption = true;
                             $rootScope.setModal = "modal";
@@ -1000,12 +962,10 @@ rapidScoreControllers
         '$routeParams',
         function($scope, Activate, $routeParams) {
             $scope.res = Activate.get({link: $routeParams.link}, function(r){
-                console.log(r);
                 if(r.css == 0){
                     $scope.setCheck = "form-success";
                 }
             })
-            console.log($scope.res);
         }
     ]
 )
@@ -1026,7 +986,6 @@ rapidScoreControllers
 
             $scope.regSave = function() {
                 $scope.regCheck = '';
-                console.log($scope.regInfo);
 
                 if (!$scope.regInfo.username) {
                     $scope.regCheck = 'Invalid Email';
@@ -1057,9 +1016,6 @@ rapidScoreControllers
                  */
                 // submit data
                 else {
-                    console.log('posting data...');
-
-
                     $rootScope.modalcheck="Signing up ...";
                     $rootScope.modaloption = false;
                     $rootScope.setModal = "modal";
@@ -1084,8 +1040,6 @@ rapidScoreControllers
                                 $rootScope.setModal = "modal";
                                 //$scope.regCheck = 'Username exists. Try another one.';
                             } else {
-
-                                console.log($scope.regInfo);
                                 // create json to be
                                 // posted
 
@@ -1102,11 +1056,7 @@ rapidScoreControllers
                                     regData.password,
                                     regData.firstname,
                                     regData.surname)
-                                    .success(
-                                    function(
-                                        res) {
-                                        console.log("validation success");
-                                        console.log(regData);
+                                    .success(function(res) {
                                         if (res) {
                                             $rootScope.closemodal=function(){
                                                 $rootScope.modalcheck = "";
@@ -1127,7 +1077,6 @@ rapidScoreControllers
                                             $rootScope.modalcheck="Somthing wrong happened. Please try again";
                                             $rootScope.modaloption = true;
                                             $rootScope.setModal = "modal";
-                                            console.log('registration failed: ');
                                         }
                                     });
                             }
