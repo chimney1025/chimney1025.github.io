@@ -410,12 +410,12 @@ ul.navbar-nav {
     position: relative;
     width: 90%;
     margin: auto;
-    border:1px solid #d8d9da;
     overflow: hidden;
-    background-color:#fff;
     padding: 0;
     
     /*
+    border:1px solid #d8d9da;
+    background-color:#fff;
     background: url("../images/container-bg.jpg") repeat scroll 50% 0 #363739;
     box-shadow: 0 3px 10px -4px #000 inset, 0 -3px 10px -4px #000 inset;
   background-color: #333;
@@ -426,7 +426,7 @@ ul.navbar-nav {
 }
 
 .slide{
-    padding: 0;
+    padding: 10px 80px;
     position: absolute;
     top: 0;
     left: 30%;
@@ -472,10 +472,12 @@ ul.navbar-nav {
 
 .slide img {
     float: left;
-    padding: 10px 80px;
+    padding: 0;
     width: 100%;
     min-width: 240px;
     z-index:0;
+
+    border:1px solid #d8d9da;
 
     /*border: 1px solid #e5e5e5;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
@@ -510,8 +512,6 @@ ul.navbar-nav {
     overflow:hidden;
     background: url("../images/container-bg.jpg") repeat scroll 50% 0 #363739;
     */
-
-    background-color:rgba(0,0,0,0.2);
 }
 
 .slide-prev-single{
@@ -526,10 +526,10 @@ ul.navbar-nav {
 }
 
 .slide-prev-single img{
-    width:90%;
+    width:100%;
     opacity:0.6;
     cursor:pointer;
-    border:1px solid #fff;
+    border:1px solid #d8d9da;
 }
 .slide-prev-single img:hover, .slide-prev-single.active img{
     opacity: 1;

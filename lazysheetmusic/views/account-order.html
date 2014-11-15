@@ -17,16 +17,16 @@
             <thead>
             <tr>
                 <th class="col-md-3">
-                    <a ng-click="setOrder('total')">Price</a>
+                    <a ng-click="orderProp = 'total'; reverse=!reverse">Price</a>
                 </th>
                 <th class="col-md-3">Detail</th>
                 <th class="col-md-3">
-                    <a ng-click="setOrder('updatedAt')">Date</a>
+                    <a  ng-click="orderProp = 'updatedAt'; reverse=!reverse">Date</a>
                 </th>
                 <th class="col-md-3">Actions</th>
             </tr>
             </thead>
-            <tbody ng-repeat="order in purchased | orderBy:orderProp">
+            <tbody ng-repeat="order in purchased | orderBy:orderProp:reverse">
             <tr>
                 <td>{{order.total | currency:'£'}}</td>
                 <td>Order</td>

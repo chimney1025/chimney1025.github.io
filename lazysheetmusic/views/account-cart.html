@@ -17,13 +17,13 @@
         <table class="table table-striped table-hover fade" ng-class="{in:cart.length}" ng-if="table">
             <thead>
             <tr>
-                <th>Title</th>
-                <th>Price</th>
+                <th><a ng-click="orderProp = 'title'; reverse=!reverse">Title</a></th>
+                <th><a ng-click="orderProp = 'price'; reverse=!reverse">Price</a></th>
                 <th>Actions</th>
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="score in cart | orderBy:orderProp">
+            <tr ng-repeat="score in cart | orderBy:orderProp:reverse">
                 <td><a href="#/sheetmusic/{{score.shortname}}" ng-bind="score.title"></a></td>
                 <td>{{score.price | currency:'£'}}</td>
                 <td><a type="button" ng-click="removecart(score.title, score.id)" class="btn btn-danger btn-xs">Remove</a></td>

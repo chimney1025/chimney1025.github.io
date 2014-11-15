@@ -22,19 +22,19 @@
             <thead>
             <tr>
                 <th class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                    <a ng-click="setListOrder('title')">Title</a>
+                    <a ng-click="orderProp = 'title'; reverse=!reverse">Title</a>
                 </th>
                 <th class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                    <a ng-click="setListOrder('price')">Price</a>
+                    <a ng-click="orderProp = 'price'; reverse=!reverse">Price</a>
                 </th>
                 <th class="col-lg-2 col-md-2 col-sm-2 col-xs-2">Preview</th>
                 <th class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                    <a ng-click="setListOrder('createdAt')">Added Date</a>
+                    <a ng-click="orderProp = 'createdAt'; reverse=!reverse">Added Date</a>
                 </th>
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="item in scores | orderBy:orderProp | filter:query">
+            <tr ng-repeat="item in scores | orderBy:orderProp:reverse | filter:query">
                 <td><a href="#/sheetmusic/{{item.shortname}}" ng-bind="item.title"></a></td>
                 <td><small>{{item.price | currency:'£'}}</small></td>
                 <td>

@@ -17,19 +17,17 @@
         <table class="table table-striped table-hover " ng-if="table">
             <thead>
             <tr>
-                <th class="col-md-5">Email
-                    <a ng-click="setOrder('username')" ng-if="orderProp!='username'"><span class="glyphicon glyphicon-sort-by-alphabet"></span></a>
-                    <a ng-click="setOrder('-username')" ng-if="orderProp!='-username'"><span class="glyphicon glyphicon-sort-by-alphabet-alt"></span></a>
+                <th class="col-md-5">
+                    <a ng-click="orderProp = 'username'; reverse=!reverse">User Email</a>
                 </th>
                 <th class="col-md-4">Actions</th>
-                <th class="col-md-3">Registered
-                    <a ng-click="setOrder('createdAt')" ng-if="orderProp!='createdAt'"><span class="glyphicon glyphicon-arrow-up"></span></a>
-                    <a ng-click="setOrder('-createdAt')" ng-if="orderProp!='-createdAt'"><span class="glyphicon glyphicon-arrow-down"></span></a>
+                <th class="col-md-3">
+                    <a ng-click="orderProp = 'createdAt'; reverse=!reverse">Registered Date</a>
                 </th>
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="item in users | orderBy:orderProp">
+            <tr ng-repeat="item in users | orderBy:orderProp:reverse">
                 <td><a href="#/admin/users/{{item.id}}">{{item.username}}</a><span ng-if="item.admin" class="glyphicon glyphicon-user"></span></td>
                 <td>
                     <a type="button" class="btn btn-primary btn-xs">Send Message</a>

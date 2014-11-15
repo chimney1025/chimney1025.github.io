@@ -566,19 +566,6 @@ rapidScoreControllers.controller('UserCtrl', [
                 $scope.purchased[i].showdetail = false;
             }
         });
-
-
-        $scope.flag = 0;
-
-        $scope.setOrder = function(name){
-            if($scope.flag == 0){
-                $scope.flag = 1;
-                $scope.orderProp = name;
-            } else{
-                $scope.flag = 0;
-                $scope.orderProp = -name;
-            }
-        }
         // get scores of each order
 
         $scope.updateuser = function(firstname, surname){
@@ -724,18 +711,6 @@ rapidScoreControllers.controller('sessionService',
             $rootScope.closemodal = function(){
                 $rootScope.modalcheck = "";
                 $rootScope.setModal = "";
-            }
-
-            $scope.flag = 0;
-
-            $scope.setListOrder = function(name){
-                if($scope.flag == 0){
-                    $scope.flag = 1;
-                    $scope.orderProp = name;
-                } else{
-                    $scope.flag = 0;
-                    $scope.orderProp = -name;
-                }
             }
 
             if (!$window.localStorage.getItem('token')) {
