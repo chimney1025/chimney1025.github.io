@@ -527,7 +527,7 @@ ul.navbar-nav {
 
 .slide-prev-single img{
     width:100%;
-    opacity:0.6;
+    opacity:0.4;
     cursor:pointer;
     border:1px solid #d8d9da;
 }
@@ -605,7 +605,7 @@ ul.navbar-nav {
 }
 
 .slide-index-left{
-    left: 30%;
+    left: 31%;
 }
 
 .slide-index-right{
