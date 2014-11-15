@@ -626,7 +626,14 @@ rapidScoreControllers.controller('UserCtrl', [
                     $rootScope.logged_cart = Cart.getAll(function(res) {
                         $rootScope.cartcount = res.length;
                     });
-                    $scope.cart = Cart.getAll();
+                    $scope.cart = Cart.getAll(function(res){
+
+                        $scope.total = 0;
+                        
+                        for(var i=0; i<res.length; i++){
+                            $scope.total += res[i].price;
+                        }
+                    });
 
                     // $window.location.reload();
                 } else {

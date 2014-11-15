@@ -24,15 +24,14 @@
         <table class="table table-striped table-hover fade" ng-class="{in:result.scores.length}"  ng-if="result.scores.length">
             <thead>
             <tr>
-                <th>Title
-                    <a ng-click="setOrder('title')" ng-if="orderProp!='title'"><span class="glyphicon glyphicon-sort-by-alphabet"></span></a>
-                    <a ng-click="setOrder('-title')" ng-if="orderProp!='-title'"><span class="glyphicon glyphicon-sort-by-alphabet-alt"></span></a>
+                <th>
+                    <a ng-click="orderProp = 'title'; reverse=!reverse">Title</a>
                 </th>
                 <th>Preview</th>
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="score in result.scores | orderBy:orderProp | filter:cquery">
+            <tr ng-repeat="score in result.scores | orderBy:orderProp:reverse | filter:cquery">
                 <td><a href="#/sheetmusic/{{score.shortname}}" ng-bind="score.title"></a></td>
                 <td>
                     <span ng-if="score.audiourl" class="glyphicon glyphicon-music" title="Audio Preview"></span>
