@@ -13,11 +13,6 @@ html,body {
 
 body {
     background-color: #f8f9fa;
-    /*
-        background-image: -moz-radial-gradient(center 45deg,circle cover, #e1e2e3, #fff);
-        background-image: radial-gradient(center 45deg,circle cover, #e1e2e3, #fff);
-        background-image: -webkit-gradient(radial, 50% 50%, 0, 50% 50%,800, from(#e1e2e3), to(#fff));
-        background-color: #f8f9fa;*/
 
     scrollbar-base-color: #C0C0C0;
     scrollbar-base-color: #C0C0C0;
@@ -147,27 +142,25 @@ a {
 
 /*View Container*/
 .view-container {
-    padding-bottom: 40px;
-    /*
-        background: #f8f9fa;
+    padding-bottom:40px;
+    background: #f8f9fa;
 
-                background-image: -moz-radial-gradient(center 45deg,circle cover, #e1e2e3, #fff);
-                background-image: radial-gradient(center 45deg,circle cover, #e1e2e3, #fff);
-                background-image: -webkit-gradient(radial, 50% 50%, 0, 50% 50%,800, from(#e1e2e3), to(#fff));
-
-                    background: -webkit-linear-gradient(top, #333 , #f8f9fa);
-                    background: -o-linear-gradient(bottom, #333 , #f8f9fa);
-                    background: -moz-linear-gradient(bottom, #333 0%, #333 50%, #f8f9fa 50%, #f8f9fa 100%);
-                    background: linear-gradient(to bottom, #333 0%, #333 33% , #f8f9fa 33%, #f8f9fa 100%);
-                    */
 }
 
 #main-container {
+
     min-height: 98%;
     position: relative;
     margin: 0;
     padding-bottom: 50px;
-    /*background-color:whitesmoke;*/
+    /*
+    background-color:whitesmoke;
+
+    background: -webkit-linear-gradient(top, #333 , #f8f9fa);
+    background: -o-linear-gradient(bottom, #333 , #f8f9fa);
+    background: -moz-linear-gradient(bottom, #333 0%, #333 50%, #f8f9fa 50%, #f8f9fa 100%);
+    background: linear-gradient(to bottom, #333 0%, #333 33% , #f8f9fa 33%, #f8f9fa 100%);
+    */
 }
 
 #logo {
@@ -233,8 +226,9 @@ a {
     padding: 15px 0;
     border-radius: 0;
     margin: 0;
-        background: url("../images/container-bg.jpg") repeat scroll 1% 0 #363739;
+    background-color:#333;
     /*
+        background: url("../images/container-bg.jpg") repeat scroll 1% 0 #363739;
         box-shadow: 0 1px 3px rgba(0,0,0,0.25);
         */
 }
