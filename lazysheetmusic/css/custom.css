@@ -428,8 +428,8 @@ ul.navbar-nav {
 .slide{
     position: absolute;
     top: 0;
-    left: 30%;
-    width: 70%;
+    left: 25%;
+    width: 75%;
     z-index:0;
     background-color:#fff;
 
@@ -440,7 +440,7 @@ ul.navbar-nav {
 
 .slide img {
     float: left;
-    padding: 10px 40px;
+    padding: 0 120px;
     width: 100%;
     min-width: 240px;
     z-index:0;
@@ -470,7 +470,7 @@ ul.navbar-nav {
     position: absolute;
     top: 0;
     left: 0;
-    width: 30%;
+    width: 25%;
     z-index:3;
     overflow-y: auto;
     
@@ -486,7 +486,7 @@ ul.navbar-nav {
     display: inline;
     float:left;
     width:100%;
-    min-height: 120px;
+    min-height: 80px;
     overflow:hidden;
     position:relative;
     border:1px solid #d8d9da;
@@ -494,7 +494,18 @@ ul.navbar-nav {
 }
 
 .slide-prev-single.active:after{
-    left: 100%; top: 50%; border: solid transparent; content: " "; height: 0; width: 0; position: absolute; pointer-events: none; border-color: rgba(255, 255, 255, 0); border-left-color: #fff; border-width: 20px; margin-top: -20px;
+    left: 100%;
+    top: 50%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-color: #d8d9da;
+    border-left-color: #fff;
+    border-width: 20px;
+    margin-top: -20px;
 }
 
 .slide-prev-single img{
@@ -575,11 +586,11 @@ ul.navbar-nav {
 }
 
 .slide-index-left{
-    left: 31%;
+    left: 26%;
 }
 
 .slide-index-right{
-    right: 0;
+    right: 1%;
 }
 
 .left-arrow:hover {
