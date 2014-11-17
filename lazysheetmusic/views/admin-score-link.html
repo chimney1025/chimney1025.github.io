@@ -1,0 +1,31 @@
+<div class="container text-center">
+
+    <div class="col-md-3 col-sm-3 col-xs-3 text-left account-menu">
+        <ul class="">
+            <li><h4>Welcome Admin</h4></li>
+            <li><a href="#/admin">Settings</a></li>
+            <li><a href="#/admin/users">User List</a></li>
+            <li><a href="#/admin/scores" class="active">Sheet Music</a></li>
+            <li><a href="#/admin/categories">Categories (Tags)</a></li>
+        </ul>
+    </div>
+
+    <div class="col-md-9 col-sm-9 col-xs-9 text-left act-list">
+
+        <h2>Editing File Links for<span ng-bind="score.title"></span> <span><a
+                type="button" href="#/admin/scores" class="btn btn-default">BACK</a></span>
+        </h2>
+        <form name="ScoreForm" class="form-score" role="form">
+            <ul class="">
+                <li class="row" ng-repeat="link in score.links">
+                    <span class="act-label" ng-bind="link.desc"></span>
+                    <input type="text" maxlength="40" class="act-content form-control" placeholder="Enter title" ng-model="link.url" required ng-trim="true">
+                </li>
+                <li class="row">
+                    <span><a type="button" ng-click="addlink()" class="btn btn-warning">ADD</a></span>
+                </li>
+            </ul>
+        </form>
+    </div>
+
+</div>

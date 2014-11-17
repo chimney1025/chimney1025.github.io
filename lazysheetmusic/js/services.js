@@ -297,6 +297,35 @@ rapidScoreServices.factory('SubTypeAdminAPI', [
 		} ]);
 
 // admin add score type
+rapidScoreServices.factory('ScoreLinkAPI', [
+    '$resource',
+    '$window',
+    function($resource, $window) {
+        return $resource(hostname + '/admin/score-link/:scoreid',
+            //
+            {}, {
+                add : {
+                    method : 'POST',
+                    isArray: true,
+                    headers : {
+                        'Content-Type' : 'application/json',
+                        'Authorization' : 'Bearer '
+                            + $window.localStorage.getItem('token')
+                    }
+                },
+                remove : {
+                    method : 'DELETE',
+                    isArray: true,
+                    headers : {
+                        'Content-Type' : 'application/json',
+                        'Authorization' : 'Bearer '
+                            + $window.localStorage.getItem('token')
+                    }
+                }
+            });
+    } ]);
+
+// admin add score type
 rapidScoreServices.factory('ScoreTypeAPI', [
 		'$resource',
 		'$window',

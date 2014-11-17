@@ -18,10 +18,11 @@
         <table class="table table-striped table-hover ">
             <thead>
             <tr>
-                <th class="col-md-6">
+                <th class="col-md-5">
                     <a ng-click="orderProp = 'title'; reverse=!reverse">Title</a>
                 </th>
                 <th class="col-md-1">Edit</th>
+                <th class="col-md-1">Links</th>
                 <th class="col-md-1">Tags</th>
                 <th class="col-md-1">Delete</th>
                 <th class="col-md-1">Slider</th>
@@ -37,6 +38,7 @@
                     <a href="#/sheetmusic/{{item.shortname}}" ng-if="!item.obsolete">{{item.title}}</a>
                 </td>
                 <td><a href="#/admin/sheetmusic/{{item.id}}" ng-if="!item.obsolete" ><span class="glyphicon glyphicon-pencil"></span></a></td>
+                <td><a href="#/admin/sheetmusic-link/{{item.id}}" ng-if="!item.obsolete" ><span class="glyphicon glyphicon-pencil"></span></a></td>
                 <td><a href="#/admin/sheetmusic-type/{{item.id}}" ng-if="!item.obsolete" ><span class="glyphicon glyphicon-pencil"></span></a></td>
                 <td><a ng-click="removeScore(true, item.id, item.title)" ng-if="!item.obsolete" ><span class="text-danger glyphicon glyphicon-remove"></span></a></td>
                 <td>

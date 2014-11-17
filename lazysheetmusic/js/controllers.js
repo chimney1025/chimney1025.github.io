@@ -386,6 +386,20 @@ rapidScoreControllers.controller('ScoreEditCtrl', [
         };
     } ]);
 
+rapidScoreControllers.controller('ScoreLinkCtrl', ['$scope', '$routeParams', 'ScoreAdminAPI', 'ScoreLinkAPI',
+    function($scope, $routeParams, Score, ScoreLink){
+        $scope.score = Score.getOne({scoreid: $routeParams.scoreId});
+
+        $scope.addlink = function(){
+
+        }
+
+        $scope.removelink = function(){
+
+        }
+    }
+])
+
 rapidScoreControllers.controller('ScoreTypeCtrl', ['$scope', '$routeParams', 'ScoreAdminAPI', 'ScoreTypeAPI', 'TypeAdminAPI',
     function($scope, $routeParams, Score, ScoreType, Type){
 

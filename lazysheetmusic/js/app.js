@@ -194,7 +194,14 @@ rapidScoreApp.config([ '$routeProvider', '$locationProvider', function($routePro
 		access : {
 			requiredLogin : true
 		}
-	}).when('/admin/sheetmusic-type/:scoreId', {
+	}).when('/admin/sheetmusic-link/:scoreId', {
+        templateUrl : 'views/admin-score-link.html',
+        label : 'Edit Links',
+        controller : 'ScoreLinkCtrl',
+        access : {
+            requiredLogin : true
+        }
+    }).when('/admin/sheetmusic-type/:scoreId', {
         templateUrl : 'views/admin-score-type.html',
         label : 'Edit Tags',
         controller : 'ScoreTypeCtrl',
