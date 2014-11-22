@@ -48,31 +48,27 @@
                 
             </li>
             <li class="row">
-                <span class="act-label">THUMBNAIL
-                <span class="text-warning glyphicon glyphicon-info-sign"></span></span>
-                <input type="text" class="act-content form-control" placeholder="Slider Thumbnail URL" ng-model="scoreInfo.thumburl" ng-trim="true">
-
-            </li>
-            <li class="row info">
-                <span class="act-content text-warning"><small>This is for the Slider on the home page. </small></span>
-            </li>
-            <li class="row">
                 <span class="act-label">FILE
                 <span class="text-warning glyphicon glyphicon-info-sign"></span>
                 </span>
-                <input type="text" class="act-content form-control" placeholder="For Single File" ng-model="scoreInfo.fileurl" ng-trim="true">
-            </li>
-            <li class="row info">
-                <span class="act-content text-warning"><small>To upload Multiple files, Please use 'Links' in the previous page. </small></span>
+                <span class="act-content text-warning"><small>To upload one or multiple files, Please use 'Links' in the previous page. </small></span>
             </li>
             <li class="row">
                 <span class="act-label">DESCRIPTION</span>
                 <textarea class="act-content form-control" placeholder="Description" ng-model="scoreInfo.desc" ng-trim="true"></textarea>
 
             </li>
-            <li class="row" ng-if="scoreInfo.thumburl">
-                <span class="act-label">SLIDER</span>
-                <input type="checkbox" value="true" name="" class="" placeholder="Add to Slider" ng-model="scoreInfo.slider" ng-trim="true">
+            <li class="row">
+                <span class="act-label">THUMBNAIL</span>
+                <input type="text" class="act-content form-control" placeholder="Slider Thumbnail URL" ng-model="scoreInfo.thumburl" ng-trim="true">
+
+            </li>
+            <li class="row">
+                <span class="act-label">SLIDER
+                <span class="text-warning glyphicon glyphicon-info-sign"></span></span>
+                <input ng-if="scoreInfo.thumburl" type="checkbox" value="true" name="" class="" placeholder="Add to Slider" ng-model="scoreInfo.slider" ng-trim="true">
+
+                <span ng-if="!scoreInfo.thumburl" class="act-content text-warning"><small>Please enter Thumbnail URL above to Enable Slider</small></span>
 
             </li>
             <li>
@@ -80,6 +76,7 @@
             </li>
             <li ng-if="scoreInfo.title">
                 <a type="button" ng-click="scoreAdd()" class="btn btn-primary">Save</a>
+                <span><a type="button" href="#/admin/scores" class="btn btn-default">BACK</a></span>
             </li>
         </ul>
         </form>
