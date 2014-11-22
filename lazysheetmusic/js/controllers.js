@@ -403,9 +403,9 @@ rapidScoreControllers.controller('ScoreLinkCtrl', ['$scope', '$routeParams', 'Sc
         $scope.score = Score.getOne({scoreid: $routeParams.scoreId});
 
         $scope.addlink = function(){
-            var desc = prompt("Adding new link").trim();
+            var desc = prompt("Enter Name for this link").trim();
             if(desc != ""){
-                var url = prompt("Adding URL for " + desc).trim();
+                var url = prompt("Enter URL for " + desc).trim();
                 if(url != ""){
                     ScoreLink.add({scoreid: $routeParams.scoreId}, {
                         desc: desc,
@@ -413,7 +413,7 @@ rapidScoreControllers.controller('ScoreLinkCtrl', ['$scope', '$routeParams', 'Sc
                         type: 1
                     }, function(res){
                         if(res){
-                            alert("Added");
+                            //alert("Added");
                             $scope.score = Score.getOne({scoreid: $routeParams.scoreId});
                         }
 
@@ -427,14 +427,14 @@ rapidScoreControllers.controller('ScoreLinkCtrl', ['$scope', '$routeParams', 'Sc
         }
 
         $scope.removelink = function(id){
-            var r = confirm("Delete this link? " + id);
+            var r = confirm("Delete this link? ");
             if(r){
                 ScoreLink.remove({
                     scoreid: $routeParams.scoreId,
                     linkid: id
                 }, function(res){
                     if(res){
-                        alert("Deleted");
+                        //alert("Deleted");
                         $scope.score = Score.getOne({scoreid: $routeParams.scoreId});
                     }
                 });
@@ -500,13 +500,11 @@ rapidScoreControllers.controller('TypeAdminCtrl', [ '$scope', '$rootScope', 'Typ
         // edit
         // add
         $scope.addptype = function(){
-            var result = prompt("Adding main type");
-            if(result.trim()){
-                var shortname = result.trim()
-                    .replace('-', ' ').replace('\'', '').replace(/ +/g, ' ').split(' ')
-                    .join('-').toLowerCase();
+            var result = prompt("Adding main type").trim();
+            if(result){
+                var shortname = result.replace('-', ' ').replace('\'', '').replace(/ +/g, ' ').split(' ').join('-').toLowerCase();
                 Type.add({},{
-                    name: result.trim(),
+                    name: result,
                     shortname: shortname
                 },function(res){
                     $scope.types = Type.getAll();
@@ -515,13 +513,11 @@ rapidScoreControllers.controller('TypeAdminCtrl', [ '$scope', '$rootScope', 'Typ
             }
         }
         $scope.addsubtype = function(pid, pname) {
-            var result = prompt("Adding type to : " + pname);
-            if(result.trim()){
-                var shortname = result.trim()
-                    .replace('-', ' ').replace('\'', '').replace(/ +/g, ' ').split(' ')
-                    .join('-').toLowerCase();
+            var result = prompt("Adding type to : " + pname).trim();
+            if(result){
+                var shortname = result.replace('-', ' ').replace('\'', '').replace(/ +/g, ' ').split(' ').join('-').toLowerCase();
                 SubType.add({typeid:pid},{
-                    name: result.trim(),
+                    name: result,
                     shortname: shortname
                 },function(res){
                     $scope.types = Type.getAll();
@@ -530,13 +526,11 @@ rapidScoreControllers.controller('TypeAdminCtrl', [ '$scope', '$rootScope', 'Typ
         };
         //either parent or sub
         $scope.updatetype = function(pid, pname) {
-            var result = prompt("Renaming type : " + pname);
-            if(result.trim()){
-                var shortname = result.trim()
-                    .replace('-', ' ').replace('\'', '').replace(/ +/g, ' ').split(' ')
-                    .join('-').toLowerCase();
+            var result = prompt("Renaming type : " + pname).trim();
+            if(result){
+                var shortname = result.replace('-', ' ').replace('\'', '').replace(/ +/g, ' ').split(' ').join('-').toLowerCase();
                 SubType.save({typeid:pid},{
-                    name: result.trim(),
+                    name: result,
                     shortname: shortname
                 },function(res){
                     $scope.types = Type.getAll();
@@ -628,17 +622,17 @@ rapidScoreControllers.controller('UserCtrl', [
         // get scores of each order
 
         $scope.updateuser = function(firstname, surname){
-            var result = prompt("Updating Account Detail");
-            if(result.trim()){
+            var result = prompt("Updating Account Detail").trim();
+            if(result){
                 if(firstname == 1){
                     User.save({},{
-                        firstname:result.trim()
+                        firstname:result
                     },function(res){
                         $rootScope.user = User.getOne();
                     });
                 } else if (surname == 1){
                     User.save({},{
-                        surname:result.trim()
+                        surname:result
                     },function(res){
                         $rootScope.user = User.getOne();
                     });

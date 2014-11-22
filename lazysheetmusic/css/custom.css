@@ -873,18 +873,27 @@ table td{
 
 }
 
-.row {
+.row{
     border-bottom: 1px solid #e1e5e8;
     margin: 5px 0 11px 0;
     clear: both;
 }
 
-form .row {
+form .row{
     border-bottom: none;
 }
 
 .row span {
     padding: 15px 0 6px 0;
+}
+
+.info {
+    margin-top: 0;
+    padding: 0 !important;
+}
+
+.info span{
+    padding: 0;
 }
 
 .row span span {

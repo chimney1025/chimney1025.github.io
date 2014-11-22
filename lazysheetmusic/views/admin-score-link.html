@@ -12,22 +12,28 @@
 
     <div class="col-md-9 col-sm-9 col-xs-9 text-left act-list">
 
-        <h2>Editing File Links for<span ng-bind="score.title"></span> <span><a
-                type="button" href="#/admin/scores" class="btn btn-default">BACK</a></span>
+        <h2>Editing File Links for<span ng-bind="score.title"></span>
+            <span><a type="button" ng-click="addlink()" class="btn btn-warning">ADD</a></span>
+            <span><a type="button" href="#/admin/scores" class="btn btn-default">BACK</a></span>
         </h2>
-        <form name="ScoreForm" class="form-score" role="form">
-            <ul class="">
-                <li class="row" ng-repeat="link in score.links">
-                    <span class="act-label" ng-bind="link.desc"></span>
-                    <span class="act-content">
-                        {{link.url}} <a ng-click="removelink(link.id)"><span class="text-danger glyphicon glyphicon-remove"></span></a>
-                    </span>
-                </li>
-                <li class="row">
-                    <span><a type="button" ng-click="addlink()" class="btn btn-warning">ADD</a></span>
-                </li>
-            </ul>
-        </form>
+        <table class="table table-striped table-hover ">
+            <thead>
+                <tr>
+                    <th class="col-md-2">
+                        <a ng-click="orderProp = 'title'; reverse=!reverse">Name</a>
+                    </th>
+                    <th class="col-md-6">URL</th>
+                    <th class="col-md-1">Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="link in score.links">
+                    <td ng-bind="link.desc"></td>
+                    <td><a href="{{link.url}}" target="_blank" ng-bind="link.url"></a></td>
+                    <td><a ng-click="removelink(link.id)"><span class="text-danger glyphicon glyphicon-remove"></span></a></td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 
 </div>

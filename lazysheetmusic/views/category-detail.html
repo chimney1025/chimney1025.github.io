@@ -4,7 +4,7 @@
     <div class="col-md-4 col-sm-4 col-xs-12 text-left score-detail">
         <ul class="">
             <li><h1 ng-bind="result.subname"></h1></li>
-            <li><h4><span ng-bind="result.pname | titlelize"></span> | <a href="#/types/{{result.pshortname}}">View All</a> </h4></li>
+            <li><h4><span ng-bind="result.pname"></span> | <a href="#/types/{{result.pshortname}}">View All</a> </h4></li>
             <li><h4>Sheet Music Count  : {{result.scores.length}}</h4></li>
         </ul>
     </div>
@@ -46,13 +46,13 @@
             <li class="disabled"><a href="#">»</a></li>
         </ul>
         <h4>
-            <a href="#/sheetmusic">View All Sheet Music</a> | <a href="#/types/{{result.pshortname}}">View Other {{result.pshortname | titlelize}}</a>
+            <a href="#/sheetmusic">View All Sheet Music</a> | <a href="#/types/{{result.pshortname}}">View Other {{result.pshortname}}</a>
         </h4>
     </div>
     <div class="col-md-8 col-sm-8 col-xs-12 list-score" ng-if="result.scores.length == 0">
         <h2>No Sheet Music Found Here</h2>
         <h4>
-            <a href="#/sheetmusic">View All Sheet Music</a> | <a href="#/types/{{result.pshortname}}">View Other {{result.pshortname | titlelize}}</a>
+            <a href="#/sheetmusic">View All Sheet Music</a> | <a href="#/types/{{result.pshortname}}">View Other {{result.pshortname}}</a>
         </h4>
     </div>
 

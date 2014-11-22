@@ -18,7 +18,7 @@
         <form name="ScoreForm" class="form-score" role="form">
         <ul class="">
             <li class="row">
-                <span class="act-label">TITLE</span>
+                <span class="act-label">TITLE <span class="text-danger">*</span></span>
                 <input type="text" maxlength="40" class="act-content form-control" placeholder="Enter title" ng-model="scoreInfo.title" required ng-trim="true">
                 
             </li>
@@ -34,28 +34,37 @@
             </li>
             <li class="row">
                 <span class="act-label">AUDIO</span>
-                <input type="text" class="act-content form-control" placeholder="Audio URL" ng-model="scoreInfo.audiourl" ng-trim="true">
+                <input type="text" class="act-content form-control" placeholder="Preview Audio URL" ng-model="scoreInfo.audiourl" ng-trim="true">
                 
             </li>
             <li class="row">
                 <span class="act-label">VIDEO</span>
-                <input type="text" class="act-content form-control" placeholder="Video URL" ng-model="scoreInfo.videourl" ng-trim="true">
+                <input type="text" class="act-content form-control" placeholder="Preview Video URL" ng-model="scoreInfo.videourl" ng-trim="true">
                 
             </li>
             <li class="row">
                 <span class="act-label">IMAGE</span>
-                <input type="text" class="act-content form-control" placeholder="Image URL" ng-model="scoreInfo.imageurl" ng-trim="true">
+                <input type="text" class="act-content form-control" placeholder="Preview Image URL" ng-model="scoreInfo.imageurl" ng-trim="true">
                 
             </li>
             <li class="row">
                 <span class="act-label">THUMBNAIL</span>
-                <input type="text" class="act-content form-control" placeholder="Thumbnail URL" ng-model="scoreInfo.thumburl" ng-trim="true">
+                <input type="text" class="act-content form-control" placeholder="Slider Thumbnail URL" ng-model="scoreInfo.thumburl" ng-trim="true">
 
+            </li>
+            <li class="row info">
+                <span class="act-content text-warning">
+                <span class="glyphicon glyphicon-info-sign"></span>
+                    <small>This is for the Slider on the home page. </small></span>
             </li>
             <li class="row">
                 <span class="act-label">FILE</span>
-                <input type="text" class="act-content form-control" placeholder="Sheet Music URL" ng-model="scoreInfo.fileurl" ng-trim="true">
-                
+                <input type="text" class="act-content form-control" placeholder="For Single File" ng-model="scoreInfo.fileurl" ng-trim="true">
+            </li>
+            <li class="row info">
+                <span class="act-content text-warning">
+                <span class="glyphicon glyphicon-info-sign"></span>
+                    <small>To upload Multiple files, Please use 'Links' in the previous page. </small></span>
             </li>
             <li class="row">
                 <span class="act-label">DESCRIPTION</span>
