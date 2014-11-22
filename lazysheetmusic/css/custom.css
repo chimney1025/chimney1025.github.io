@@ -44,11 +44,22 @@ a {
     padding: 3px 5px;
 }
 
+th a{
+    padding: 0;
+}
+
 a:hover,a.active {
     text-decoration: none;
     cursor: pointer;
     background-color: #468595;
     color: #fff;
+}
+
+th a:hover{
+    text-decoration: underline;
+    cursor: pointer;
+    background-color: #fff;
+    color: #468595;
 }
 
 h1 {
