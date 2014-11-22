@@ -36,6 +36,10 @@ body {
     padding-right:0;
 }
 
+.pointer{
+    cursor: pointer;
+}
+
 ul {
     list-style-type: none;
 }

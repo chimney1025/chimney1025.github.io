@@ -24,10 +24,10 @@
         <table class="table table-striped table-hover fade" ng-class="{in:result.scores.length}"  ng-if="result.scores.length">
             <thead>
             <tr>
-                <th>
+                <th class="col-md-10 col-sm-10 col-xs-10">
                     <a ng-click="orderProp = 'title'; reverse=!reverse">Title</a>
                 </th>
-                <th>Preview</th>
+                <th class="col-md-2 col-sm-2 col-xs-2">Preview</th>
             </tr>
             </thead>
             <tbody>
@@ -46,13 +46,13 @@
             <li class="disabled"><a href="#">»</a></li>
         </ul>
         <h4>
-            <a href="#/sheetmusic">View All Sheet Music</a> | <a href="#/types/{{result.pshortname}}">View Other {{result.pshortname}}</a>
+            <a href="#/sheetmusic">View All Sheet Music</a> | <a href="#/types/{{result.pshortname}}">View Other {{result.pname}}</a>
         </h4>
     </div>
     <div class="col-md-8 col-sm-8 col-xs-12 list-score" ng-if="result.scores.length == 0">
         <h2>No Sheet Music Found Here</h2>
         <h4>
-            <a href="#/sheetmusic">View All Sheet Music</a> | <a href="#/types/{{result.pshortname}}">View Other {{result.pshortname}}</a>
+            <a href="#/sheetmusic">View All Sheet Music</a> | <a href="#/types/{{result.pshortname}}">View Other {{result.pname}}</a>
         </h4>
     </div>
 
