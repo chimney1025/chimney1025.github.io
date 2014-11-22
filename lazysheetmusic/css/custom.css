@@ -808,7 +808,7 @@ table td{
     */
 }
 
-.form-group{
+.form-group, .form-recaptcha{
     min-height:50px;
     margin:30px 0 0 0;
     line-height:50px;
