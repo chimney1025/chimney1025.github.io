@@ -996,10 +996,11 @@ audio {
 }
 
 .btn-nolink{
-
+    cursor: default;
 }
 
 .btn-nolink:hover{
+    cursor: default;
 }
 
 /* User Account Page */
