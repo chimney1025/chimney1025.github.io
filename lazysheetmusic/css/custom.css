@@ -389,6 +389,10 @@ ul.navbar-nav {
     min-height:150px;
 }
 
+.modal-body span{
+    white-space: pre-line;
+}
+
 .modal-dialog{
     width:300px;
     min-height:150px;
@@ -965,6 +969,13 @@ audio {
     font-size: 0.8em;
     margin: 5px;
     text-transform: uppercase;
+}
+
+.btn-nolink{
+
+}
+
+.btn-nolink:hover{
 }
 
 /* User Account Page */

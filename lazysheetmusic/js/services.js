@@ -301,12 +301,12 @@ rapidScoreServices.factory('ScoreLinkAPI', [
     '$resource',
     '$window',
     function($resource, $window) {
-        return $resource(hostname + '/admin/score-link/:scoreid',
+        return $resource(hostname + '/admin/score-link/:scoreid/:linkid',
             //
             {}, {
                 add : {
                     method : 'POST',
-                    isArray: true,
+                    isArray: false,
                     headers : {
                         'Content-Type' : 'application/json',
                         'Authorization' : 'Bearer '
@@ -315,7 +315,7 @@ rapidScoreServices.factory('ScoreLinkAPI', [
                 },
                 remove : {
                     method : 'DELETE',
-                    isArray: true,
+                    isArray: false,
                     headers : {
                         'Content-Type' : 'application/json',
                         'Authorization' : 'Bearer '

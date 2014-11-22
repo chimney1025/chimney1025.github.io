@@ -19,7 +19,9 @@
             <ul class="">
                 <li class="row" ng-repeat="link in score.links">
                     <span class="act-label" ng-bind="link.desc"></span>
-                    <input type="text" maxlength="40" class="act-content form-control" placeholder="Enter title" ng-model="link.url" required ng-trim="true">
+                    <span class="act-content">
+                        {{link.url}} <a ng-click="removelink(link.id)"><span class="text-danger glyphicon glyphicon-remove"></span></a>
+                    </span>
                 </li>
                 <li class="row">
                     <span><a type="button" ng-click="addlink()" class="btn btn-warning">ADD</a></span>

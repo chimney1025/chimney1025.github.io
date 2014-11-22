@@ -77,7 +77,7 @@ rapidScoreControllers
                     $location.path('/login');
                 }
 
-                else if(!$scope.score.fileurl){
+                else if(!$scope.score.fileurl && $scope.score.links.length == 0){
                     $rootScope.modalcheck="This sheet music does not have a pdf file to download at the moment.";
                     $rootScope.modaloption = true;
                     $rootScope.setModal = "modal";
@@ -113,10 +113,21 @@ rapidScoreControllers
                                 //$rootScope.modalcheck="Adding to Cart ...";
                                 Cart.add({},{score_id : $scope.score.id},function(res) {
                                     if (res) {
-                                        $rootScope.modalcheck="Added to Cart !";
+                                        $rootScope.modalcheck="Added to Cart !\n";
+                                         if($scope.score.links.length){
+
+                                             $rootScope.modalcheck+="\nYou will receive the following files: \n ";
+
+                                             for(var i=0; i<$scope.score.links.length; i++){
+                                                 $rootScope.modalcheck += "\n" + $scope.score.links[i].desc + "\n";
+                                             }
+                                         }
+
+
                                         $rootScope.modaloption = true;
                                         $rootScope.setModal = "modal";
                                         //alert('added');
+
                                         $rootScope.added_score_name = $scope.score.name;
                                         $rootScope.added_score_shortname = $scope.score.shortname;
                                         $rootScope.logged_cart = Cart.getAll(
@@ -359,6 +370,7 @@ rapidScoreControllers.controller('ScoreEditCtrl', [
                     scoreData.thumburl = $scope.scoreInfo.thumburl.trim();
                 } else {
                     scoreData.thumburl = '';
+                    scoreData.slider = false;
                 }
                 if ($scope.scoreInfo.fileurl) {
                     scoreData.fileurl = $scope.scoreInfo.fileurl.trim();
@@ -391,10 +403,42 @@ rapidScoreControllers.controller('ScoreLinkCtrl', ['$scope', '$routeParams', 'Sc
         $scope.score = Score.getOne({scoreid: $routeParams.scoreId});
 
         $scope.addlink = function(){
+            var desc = prompt("Adding new link").trim();
+            if(desc != ""){
+                var url = prompt("Adding URL for " + desc).trim();
+                if(url != ""){
+                    ScoreLink.add({scoreid: $routeParams.scoreId}, {
+                        desc: desc,
+                        url: url,
+                        type: 1
+                    }, function(res){
+                        if(res){
+                            alert("Added");
+                            $scope.score = Score.getOne({scoreid: $routeParams.scoreId});
+                        }
 
+                    });
+                } else{
+                    //alert("no url");
+                }
+            } else{
+                //alert("no data");
+            }
         }
 
-        $scope.removelink = function(){
+        $scope.removelink = function(id){
+            var r = confirm("Delete this link? " + id);
+            if(r){
+                ScoreLink.remove({
+                    scoreid: $routeParams.scoreId,
+                    linkid: id
+                }, function(res){
+                    if(res){
+                        alert("Deleted");
+                        $scope.score = Score.getOne({scoreid: $routeParams.scoreId});
+                    }
+                });
+            }
 
         }
     }
@@ -570,6 +614,7 @@ rapidScoreControllers.controller('UserCtrl', [
         $scope.total = 0;
 
         $scope.cart = Cart.getAll(function(res){
+            console.log(res);
             for(var i=0; i<res.length; i++){
                 $scope.total += res[i].price;
             }
@@ -883,32 +928,15 @@ rapidScoreControllers
                     //$rootScope.modalcheck="Signing in ...";
                     $rootScope.loginCheck = 'Signing in ...';
                     $rootScope.setCheck = "form-success";
-                    LoginService
-                        .login($scope.loginInfo.username,
-                        $scope.loginInfo.password)
-                        .success(
+                    LoginService.login($scope.loginInfo.username,$scope.loginInfo.password).success(
                         function(data) {
-                            console
-                                .log(data.header);
+                            console.log(data.header);
                             if (data && data.token) {
-                                $window.localStorage
-                                    .setItem(
-                                    'token',
-                                    data.token);
-                                $window.localStorage
-                                    .setItem(
-                                    'username',
-                                    data.username);
-                                $window.localStorage
-                                    .setItem(
-                                    'uid',
-                                    data.id);
-                                $window.localStorage
-                                    .setItem(
-                                    'admin',
-                                    data.admin);
-                                console
-                                    .log($window.localStorage);
+                                $window.localStorage.setItem('token',data.token);
+                                $window.localStorage.setItem('username',data.username);
+                                $window.localStorage.setItem('uid',data.id);
+                                $window.localStorage.setItem('admin',data.admin);
+                                console.log($window.localStorage);
 
                                 // set global
                                 // variables
