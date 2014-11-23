@@ -1044,9 +1044,12 @@ rapidScoreControllers
         '$window',
         '$location',
         function($scope, Download, $routeParams, $window, $location){
+
+            $scope.loading = true;
             $scope.res = Download.get({link:$routeParams.link}, function(r){
                 //window.open(r.url, '_self');
                 //alert(r.url);
+                $scope.loading = false;
                 window.location.assign(r.url);
             })
         }
