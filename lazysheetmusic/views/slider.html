@@ -1,5 +1,6 @@
-<div class="slider fade" ng-class="{in:images.length}">
-
+<div class="slider">
+    <p class="loader" ng-show="loading"></p>
+    <div class="fade" ng-class="{in:!loading}">
     <div class="slide-index"><h4>{{currentIndex}} / {{images.length}}</h4></div>
 	<!-- Slide Show-->
 	<div class="slide-prev">
@@ -20,4 +21,5 @@
 	<!-- 
 	<div class="slide-name"><a ng-href="#/sheetmusic/{{shorturl}}">Read More</a></div>
 	 -->
+    </div>
 </div>
