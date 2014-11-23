@@ -11,16 +11,27 @@
             </h4>
 
             <div class="form-group col-md-12 col-sm-12 col-xs-12">
-                <div class="well text-center">
+                <div class="well text-left">
                     <span ng-show="loading" class="loader"></span>
-                    <h2 ng-if="res.title" ng-bind="res.title"></h2>
 
-                    <a class="btn-warning btn-lg" ng-if="res.url" target="_self" ng-href="{{res.url}}" download><span class="glyphicon glyphicon-download"></span> Click to Download PDF</a>
+                    <div class="col-md-6 col-sm-6 col-xs-12" ng-if="res.url && loading == false">
+                        <h2 ng-if="res.title" ng-bind="res.title"></h2>
+                        <h4 ng-if="res.name" ng-bind="res.name"></h4>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-12 text-center" ng-if="res.url">
+                        <a class="btn btn-lg" ng-class="downloadclass" target="_blank" ng-href="{{res.url}}" download><span class="glyphicon glyphicon-download"></span> {{downloadtext}}</a>
 
-                    <span class="clearfix"></span>
-                    <span class="text-danger" ng-if="res.url && loading == false">You have {{3-res.time}} more attempts left</span>
-                    <span class="clearfix"></span>
-                    <span class="text-danger" ng-bind="res.message" ng-if="res.message"></span>
+                        <div class="alert">
+                            <span ng-if="res.url && loading == false">Do Not refresh the page. Download will be opened in a new window.</span>
+                        </div>
+                    </div>
+
+                    <h4 ng-if="res.url && loading == false">
+                        <span class="text-danger">If the download didn't start automatically, please use the button above. <br>
+                        You have <b>{{3-res.time}}</b> more attempts to visit the current page (the link sent to your Email Inbox), but you can click on the button above to download the file as long as you do <b>NOT</b> refresh the page.</span>
+                    </h4>
+
+                    <h4 class="text-danger" ng-bind="res.message" ng-if="res.message"></h4>
                 </div>
             </div>
             <h4 class="col-md-12 col-sm-12 col-xs-12">

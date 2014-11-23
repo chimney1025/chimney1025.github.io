@@ -1042,13 +1042,38 @@ rapidScoreControllers
         'DownloadAPI',
         '$routeParams',
         '$window',
-        function($scope, Download, $routeParams, $window) {
+        '$timeout',
+        function($scope, Download, $routeParams, $window, $timeout) {
             $scope.loading = true;
+            $scope.downloadtext = "Preparing...";
 
             $scope.res = Download.get({link: $routeParams.link}, function(r){
                 $scope.loading = false;
                 if(r.url){
                     console.log(r.url);
+                    $scope.downloadclass = "btn-default btn-nolink";
+
+                    $scope.timeInMs = 5000;
+                    //set timeout
+
+                    var countDown = function(){
+                        $scope.timeInMs -= 1000;
+
+                        if($scope.timeInMs == 0){
+
+                            $scope.downloadtext = "Click to Download File";
+                            $scope.downloadclass = "btn-warning";
+                            window.open(r.url, '_blank');
+
+                        } else{
+                            $timeout(countDown, 1000);
+                            $scope.downloadtext = "Download will start in " + $scope.timeInMs/1000 + " seconds.";
+
+                        }
+                    }
+
+                    $timeout(countDown, 1000);
+
                 }
             })
         }

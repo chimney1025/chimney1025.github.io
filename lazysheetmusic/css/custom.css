@@ -159,7 +159,7 @@ a {
     box-shadow: none;
 }
 
-.list-full .well h2{
+.list-full .well h2, .list-full .well h4{
     margin-top:10px;
     margin-bottom:40px;
 }
