@@ -1077,7 +1077,7 @@ rapidScoreControllers
                     $scope.downloadfile = function(){
                         //$location.path('/account/download/' + r.token);
                         var baseurl = 'http://localhost:63342/heroku/lazyscorefs/lazysheetmusic/#';
-                        $window.open('/account/download/'+ r.token, '_blank');
+                        $window.open('/#/account/download/'+ r.token, '_blank');
                         if(r.time <3){
                             r.time ++;
                         }
