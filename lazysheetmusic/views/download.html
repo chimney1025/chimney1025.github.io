@@ -3,49 +3,32 @@
 <div class="container text-center">
     <div class="col-md-12 col-sm-12 col-xs-12 text-center list-full">
 
-        <div class="col-md-8 col-sm-8 col-xs-12 pull-left text-left nopadding">
+        <div class="col-md-12 col-sm-12 col-xs-12 pull-left text-left nopadding">
             <h1 class="col-md-8 col-sm-8 col-xs-12 pull-left">Download Your Purchase</h1>
 
             <h4 class="col-md-4 col-sm-4 col-xs-12 pull-right text-right">
                 <a class="pull-center need-help" href="#/sheetmusic">Continue Shopping</a>
             </h4>
 
-            <span class="clearfix"></span>
             <div class="form-group col-md-12 col-sm-12 col-xs-12">
-                <p class="well" ng-if="!res.message">
+                <p class="well">
                     <span ng-show="loading" class="loader"></span>
-                    <span class="text-danger" ng-if="loading == false">You have {{3-res.time}} attempts Left</span><br>
-                    <span class="text-success" ng-class="setCheck" ng-if="res.name" ng-bind="res.name"></span><br>
-                    <span class="text-success" ng-class="setCheck" ng-bind="res.url"></span>
-                </p>
-                <p class="well" ng-if="res.message">
-                    <span ng-show="loading" class="loader"></span>
-                    <span class="text-danger" ng-bind="res.message"></span>
+                    <span class="text-danger" ng-if="res.url && loading == false">You have {{3-res.time}} more attempts left
+                        <a class="btn-warning pull-right" ng-if="res.url" target="_self" ng-href="{{res.url}}" download><span class="glyphicon glyphicon-download"></span> Click to Download PDF</a>
+
+                    </span>
+                    <span class="clearfix"></span>
+
+                    <object ng-if="res.url" data="{{res.url}}" type="application/pdf">
+                        <embed src="{{res.url}}" type="application/pdf" />
+                    </object>
+                    <span class="clearfix"></span>
+                    <span class="text-danger" ng-bind="res.message" ng-if="res.message"></span>
                 </p>
             </div>
             <h4 class="col-md-12 col-sm-12 col-xs-12">
                 Need help? Click to<a href="#/contact">Contact Us</a>
             </h4>
-        </div>
-
-        <div class="col-md-3 col-sm-3 col-xs-12 pull-right text-left">
-            <h4>Follow Us</h4>
-            <h5>
-                <img alt="" src="images/icon-youtube2.png"><a target="_blank"
-                                                              href="https://www.youtube.com/channel/UCVwUUu_AQdcpV4Vzv_9D2AA">Youtube</a>
-            </h5>
-            <h5>
-                <img alt="" src="images/icon-facebook.png"><a href="#">Facebook</a>
-            </h5>
-            <h5>
-                <img alt="" src="images/icon-googleplus.png"><a
-                    target="_blank"
-                    href="https://plus.google.com/+LazySheetMusic/posts">Google+</a>
-            </h5>
-            <h5>
-                <img alt="" src="images/icon-linkedin.png"><a target="_blank"
-                                                              href="https://www.linkedin.com/in/shihwendy">Linkedin</a>
-            </h5>
         </div>
     </div>
 

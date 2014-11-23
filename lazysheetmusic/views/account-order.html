@@ -38,10 +38,11 @@
             </tr>
             <tr class="info" ng-repeat="score in orderdetails" ng-if="order.showdetail">
                 <td>{{score.price | currency:'£'}}</td>
-                <td colspan="3"><a href="#/sheetmusic/{{score.shortname}}" ng-bind="score.title"></a></td>
+                <td colspan="2"><a href="#/sheetmusic/{{score.shortname}}" ng-bind="score.title"></a></td>
                 <!--
                 <td><a type="button" ng-click="showscore(score.fileurl)" class="btn btn-warning btn-xs">Request</a></td>
                 -->
+                <td><a class="btn-default btn btn-xs btn-nolink">Email Sent</a></td>
             </tr>
             </tbody>
         </table>

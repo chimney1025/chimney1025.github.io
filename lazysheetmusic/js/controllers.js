@@ -1038,13 +1038,14 @@ rapidScoreControllers
         '$scope',
         'DownloadAPI',
         '$routeParams',
-        function($scope, Download, $routeParams) {
+        '$window',
+        function($scope, Download, $routeParams, $window) {
             $scope.loading = true;
 
             $scope.res = Download.get({link: $routeParams.link}, function(r){
                 $scope.loading = false;
-                if(r){
-                    console.log(r);
+                if(r.url){
+                    console.log(r.url);
                 }
             })
         }
