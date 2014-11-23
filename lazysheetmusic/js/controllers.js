@@ -1042,30 +1042,55 @@ rapidScoreControllers
         'DownloadAPI',
         '$routeParams',
         '$window',
+        '$location',
+        function($scope, Download, $routeParams, $window, $location){
+            $scope.res = Download.get({link:$routeParams.link}, function(r){
+                //window.open(r.url, '_self');
+                //alert(r.url);
+                window.location.assign(r.url);
+            })
+        }
+    ]
+)
+
+rapidScoreControllers
+    .controller(
+    'ViewOrderCtrl',
+    [
+        '$scope',
+        'ViewAPI',
+        '$routeParams',
+        '$window',
+        '$location',
         '$timeout',
-        function($scope, Download, $routeParams, $window, $timeout) {
+        function($scope, ViewOrder, $routeParams, $window, $location, $timeout) {
             $scope.loading = true;
             $scope.downloadtext = "Preparing...";
             $scope.times = " ";
+            $scope.downloadurl = "#";
 
-            $scope.res = Download.get({link: $routeParams.link}, function(r){
+            $scope.res = ViewOrder.get({linkid: $routeParams.linkid, scoreid: $routeParams.scoreid}, function(r){
                 $scope.loading = false;
-                if(r.url){
-                    if(r.time == 1){
-                        $scope.times = "1st";
-                    }
-                    if(r.time == 2){
-                        $scope.times = "2nd";
-                    }
-                    if(r.time == 3){
-                        $scope.times = "3rd and LAST";
-                    }
-                    console.log(r.url);
-                    $scope.downloadclass = "btn-default btn-nolink";
+                console.log(r);
 
-                    $scope.timeInMs = 5000;
+                if(r.token){
+                    $scope.downloadfile = function(){
+                        //$location.path('/account/download/' + r.token);
+                        var baseurl = 'http://localhost:63342/heroku/lazyscorefs/lazysheetmusic/#';
+                        $window.open('/account/download/'+ r.token, '_blank');
+                        if(r.time <3){
+                            r.time ++;
+                        }
+                    }
+                    //$scope.downloadurl = "/account/download/" + r.token;
+
+                    $scope.downloadtext = "Click to Download File";
+                    $scope.downloadclass = "btn-warning";
                     //set timeout
 
+                    $scope.timeInMs = 5000;
+
+                    /*
                     var countDown = function(){
                         $scope.timeInMs -= 1000;
 
@@ -1083,6 +1108,7 @@ rapidScoreControllers
                     }
 
                     $timeout(countDown, 1000);
+                    */
 
                 }
             })

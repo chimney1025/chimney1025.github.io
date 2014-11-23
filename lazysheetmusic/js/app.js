@@ -30,7 +30,7 @@ rapidScoreApp.config(function($httpProvider) {
 				}
                 if (response.status === 404) {
 
-                    $location.url('/404');
+                    //$location.url('/404');
                 }
 				//
 				return $q.reject(response);
@@ -100,7 +100,14 @@ rapidScoreApp.config([ '$routeProvider', '$locationProvider', function($routePro
 		access : {
 			requiredLogin : true
 		}
-	}).when('/account/download/:link', {
+	}).when('/account/view-order/:scoreid/:linkid', {
+        templateUrl : 'views/download.html',
+        label : 'Download',
+        controller : 'ViewOrderCtrl',
+        access : {
+            requiredLogin : true
+        }
+    }).when('/account/download/:link', {
         templateUrl : 'views/download.html',
         label : 'Download',
         controller : 'DownloadCtrl',

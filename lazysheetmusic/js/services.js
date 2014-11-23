@@ -476,6 +476,15 @@ rapidScoreServices.factory('DownloadAPI', [ '$resource', function($resource) {
     });
 } ]);
 
+// options.api.base_url
+rapidScoreServices.factory('ViewAPI', [ '$resource', function($resource) {
+    return $resource(hostname + '/account/view-order/:scoreid/:linkid', {}, {
+        get : {
+            method : 'GET'
+        }
+    });
+} ]);
+
 // user login
 rapidScoreServices.factory('LoginAPI', function($http) {
 	return {
