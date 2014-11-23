@@ -1046,10 +1046,20 @@ rapidScoreControllers
         function($scope, Download, $routeParams, $window, $timeout) {
             $scope.loading = true;
             $scope.downloadtext = "Preparing...";
+            $scope.times = " ";
 
             $scope.res = Download.get({link: $routeParams.link}, function(r){
                 $scope.loading = false;
                 if(r.url){
+                    if(r.time == 1){
+                        $scope.times = "1st";
+                    }
+                    if(r.time == 2){
+                        $scope.times = "2nd";
+                    }
+                    if(r.time == 3){
+                        $scope.times = "3rd and LAST";
+                    }
                     console.log(r.url);
                     $scope.downloadclass = "btn-default btn-nolink";
 

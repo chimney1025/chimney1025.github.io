@@ -26,7 +26,7 @@ rapidScoreApp.config(function($httpProvider) {
 					$window.localStorage.removeItem('uid');
 					$window.localStorage.removeItem('admin');
 					//$rootScope.loginCheck = "Invalid User Credentials";
-					//$location.url('/login');
+					$location.url('/login');
 				}
                 if (response.status === 404) {
 

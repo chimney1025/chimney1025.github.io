@@ -38,8 +38,7 @@
             <audio class="" ng-src="{{trustSrc(score.audiourl)}}" controls="controls" preload="auto" >Your browser does not support the HTML5 Audio element.</audio>
         </div>
 
-        <img class="main-image" ng-if="score.imageurl" ng-src="{{score.imageurl}}" alt="Preview Image">
-
+        <img class="main-image" ng-if="score.imageurl && loading == false" ng-src="{{score.imageurl}}" alt="Loading Preview Image">
 
         <!-- 4:3 aspect ratio -->
         <div name="video" ng-if="score.videourl" class="col-md-12 embed-responsive embed-responsive-16by9">
