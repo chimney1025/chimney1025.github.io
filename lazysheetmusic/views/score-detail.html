@@ -32,11 +32,13 @@
     </div>
 
     <div class="col-md-8 col-sm-8 col-xs-12 text-left score-main">
+
+        <p class="loader" ng-show="loading"></p>
         <div name="audio" ng-if="score.audiourl" class="main-media">
             <audio class="" ng-src="{{trustSrc(score.audiourl)}}" controls="controls" preload="auto" >Your browser does not support the HTML5 Audio element.</audio>
         </div>
 
-        <img class="main-image" ng-src="{{score.imageurl}}" alt="Cannot display the preview image">
+        <img class="main-image" ng-if="score.imageurl" ng-src="{{score.imageurl}}" alt="Preview Image">
 
 
         <!-- 4:3 aspect ratio -->

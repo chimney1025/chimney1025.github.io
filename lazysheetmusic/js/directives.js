@@ -2,6 +2,20 @@
 
 /* Directives */
 
+angular.module('rapidScoreDirectives', [])
+    .directive('loading', function(){
+        return {
+            restrict: 'A',
+            replace: true,
+            transclude: true,
+            template: '<img class="loader" src="images/ajax-loader.gif" />',
+            link: function(scope, element, attrs){
+
+            }
+        }
+    }
+)
+
 angular.module('perfect_scrollbar', []).directive(
 		'perfectScrollbar',
 		[
@@ -63,4 +77,6 @@ angular.module('perfect_scrollbar', []).directive(
 							});
 						}
 					};
-				} ]);
+				}
+        ]
+);

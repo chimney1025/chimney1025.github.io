@@ -15,7 +15,8 @@
 			<div class="form-group col-md-12 col-sm-12 col-xs-12">
 
 				<p class="well">
-					<span class="form-check" ng-class="setCheck">{{res.message}}</span>
+                    <span ng-show="loading" class="loader"></span>
+					<span class="form-check" ng-class="setCheck" ng-bind="res.message"></span>
 				</p>
 			</div>
 			<h4 class="col-md-12 col-sm-12 col-xs-12">

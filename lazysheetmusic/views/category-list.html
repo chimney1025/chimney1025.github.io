@@ -1,6 +1,7 @@
 
 <!-- Content -->
 <div class="container text-center">
+    <p class="loader" ng-show="loading"></p>
     <div class="col-md-12 col-sm-12 col-xs-12 text-center list-full fade" ng-class="{in:result.subtypes.length}">
         <h1 class="text-left" ng-bind="result.pname"></h1>
         <div class="input-search col-md-12 col-sm-12 col-xs-12">
@@ -15,6 +16,11 @@
         </div>
         <div><a type="button" href="#/types/{{result.pshortname}}/{{item.shortname}}" class="btn btn-default btn-inline btn-category" ng-repeat="item in result.subtypes | filter:cname" ng-if="!item.obsolete" ng-bind="item.name"></a>
         </div>
+    </div>
+
+    <div class="col-md-12 col-sm-12 col-xs-12 text center list-full" ng-if="result.subtypes.length == 0 && loading == false">
+        <h2>No {{result.pname}} Found Here</h2>
+        <h4><a href="#/sheetmusic">View All Sheet Music</a></h4>
     </div>
 
 </div>

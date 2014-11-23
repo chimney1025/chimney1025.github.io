@@ -15,19 +15,23 @@
             <h1>Account Settings</h1>
             <li class="row">
                 <span class="act-label">FIRSTNAME</span>
-                <span class="act-content">{{user.firstname}} <a ng-click="updateuser(1,0)"><span class="glyphicon glyphicon-pencil"></span></a></span>
+                <span class="act-content loader" ng-show="loading"></span>
+                <span class="act-content" ng-if="loading == false">{{user.firstname}} <a ng-click="updateuser(1,0)"><span class="glyphicon glyphicon-pencil"></span></a></span>
             </li>
             <li class="row">
                 <span class="act-label">SURNAME</span>
-                <span class="act-content">{{user.surname}} <a ng-click="updateuser(0,1)"><span class="glyphicon glyphicon-pencil"></span></a></span>
+                <span class="act-content loader" ng-show="loading"></span>
+                <span class="act-content" ng-if="loading == false">{{user.surname}} <a ng-click="updateuser(0,1)"><span class="glyphicon glyphicon-pencil"></span></a></span>
             </li>
             <li class="row">
                 <span class="act-label">EMAIL</span>
-                <span class="act-content" ng-bind="user.username"></span>
+                <span class="act-content loader" ng-show="loading"></span>
+                <span class="act-content" ng-if="loading == false" ng-bind="user.username"></span>
             </li>
             <li class="row">
                 <span class="act-label">REGISTERED</span>
-                <span class="act-content" ng-bind="user.createdAt | date : 'yyyy-MM-dd'"></span>
+                <span class="act-content loader" ng-show="loading"></span>
+                <span class="act-content" ng-if="loading == false" ng-bind="user.createdAt | date : 'yyyy-MM-dd'"></span>
             </li>
             <li class="row">
                 <span class="act-label">PASSWORD</span>

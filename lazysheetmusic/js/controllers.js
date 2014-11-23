@@ -9,8 +9,9 @@ rapidScoreControllers.controller('ScoreListCtrl', [ '$scope', '$rootScope',
     'ScoreAPI', function($scope, $rootScope, Score) {
         $scope.pageSize = 15;
         $scope.currentPage = 0;
-
+        $scope.loading = true;
         $scope.scores = Score.getAll(function(res){
+            $scope.loading = false;
             $scope.numberOfPages = function(){
                 return Math.ceil(res.length/$scope.pageSize);
             }
@@ -20,25 +21,38 @@ rapidScoreControllers.controller('ScoreListCtrl', [ '$scope', '$rootScope',
 rapidScoreControllers.controller('TypeCtrl', [ '$scope', '$rootScope',
     '$routeParams', 'TypeAPI',
     function($scope, $rootScope, $routeParams, Type) {
+        $scope.loading = true;
         $scope.result = Type.getOne({
             typename : $routeParams.typename
+        }, function(res){
+            $scope.loading = false;
         });
     } ]);
 
 rapidScoreControllers.controller('SubTypeCtrl', [ '$scope', '$rootScope',
     '$routeParams', 'SubTypeAPI',
     function($scope, $rootScope, $routeParams, SubType) {
+
+        $scope.loading = true;
+
         $scope.result = SubType.getAll({
             pname : $routeParams.pname,
             subname : $routeParams.subname
+        }, function(res){
+
+            $scope.loading = false;
         });
     } ]);
 
 rapidScoreControllers.controller('SubTypeIdCtrl', [ '$scope', '$rootScope',
     '$routeParams', 'SubTypeIdAPI',
     function($scope, $rootScope, $routeParams, SubTypeId) {
+        $scope.loading = true;
         $scope.result = SubTypeId.getAll({
             subtype_id : $routeParams.id
+        }, function(res){
+
+            $scope.loading = false;
         });
     } ]);
 
@@ -57,9 +71,9 @@ rapidScoreControllers
         '$sce',
         function($scope, $rootScope, $routeParams, Score, Cart,
                  CheckOrder, $location, $window, $sce) {
+            $scope.loading = true;
             $scope.score = Score.getOne({scoreid : $routeParams.scoreId}, function(res){
-
-
+                $scope.loading = false;
                 if(!res){
                     $location.path('/404');
                 }
@@ -599,7 +613,10 @@ rapidScoreControllers.controller('UserCtrl', [
     function($window, $location, $scope, $rootScope, $routeParams,
              User, UserPass, Cart, Order, OrderDetail) {
 
-        $rootScope.user = User.getOne();
+        $scope.loading = true;
+        $rootScope.user = User.getOne(function(res){
+            $scope.loading = false;
+        });
 
         if ($rootScope.logged_admin) {
             // $location.path("/admin");
@@ -607,14 +624,16 @@ rapidScoreControllers.controller('UserCtrl', [
 
         $scope.total = 0;
 
+        $scope.loading = true;
         $scope.cart = Cart.getAll(function(res){
-            console.log(res);
+            $scope.loading = false;
             for(var i=0; i<res.length; i++){
                 $scope.total += res[i].price;
             }
         });
 
         $scope.purchased = Order.getAll(function(res){
+            $scope.loading = false;
             for(var i=0; i<$scope.purchased.length; i++){
                 $scope.purchased[i].showdetail = false;
             }
@@ -979,7 +998,9 @@ rapidScoreControllers
         'ActivateAPI',
         '$routeParams',
         function($scope, Activate, $routeParams) {
+            $scope.loading = true;
             $scope.res = Activate.get({link: $routeParams.link}, function(r){
+                $scope.loading = false;
                 if(r.css == 0){
                     $scope.setCheck = "form-success";
                 }
@@ -987,6 +1008,27 @@ rapidScoreControllers
         }
     ]
 )
+
+rapidScoreControllers
+    .controller(
+    'DownloadCtrl',
+    [
+        '$scope',
+        'DownloadAPI',
+        '$routeParams',
+        function($scope, Download, $routeParams) {
+            $scope.loading = true;
+
+            $scope.res = Download.get({link: $routeParams.link}, function(r){
+                $scope.loading = false;
+                if(r){
+                    console.log(r);
+                }
+            })
+        }
+    ]
+)
+
 rapidScoreControllers
     .controller(
     'SignUpCtrl',

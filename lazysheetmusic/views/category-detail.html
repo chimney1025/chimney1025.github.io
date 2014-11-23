@@ -9,8 +9,8 @@
         </ul>
     </div>
 
-
-    <div class="col-md-8 col-sm-8 col-xs-12 list-score fade" ng-class="{in:result.scores.length}"  ng-if="result.scores.length">
+    <p class="loader" ng-show="loading"></p>
+    <div class="col-md-8 col-sm-8 col-xs-12 list-score fade" ng-class="{in:result.scores.length}"  ng-show="result.scores.length">
         <div class="input-search col-md-12" >
             <div class="input-group input-group-lg">
                 <input type="text" class="form-control" ng-model="cquery" placeholder="Search for sheet music">
@@ -49,7 +49,7 @@
             <a href="#/sheetmusic">View All Sheet Music</a> | <a href="#/types/{{result.pshortname}}">View Other {{result.pname}}</a>
         </h4>
     </div>
-    <div class="col-md-8 col-sm-8 col-xs-12 list-score" ng-if="result.scores.length == 0">
+    <div class="col-md-8 col-sm-8 col-xs-12 list-score" ng-show="result.scores.length == 0 && loading == false">
         <h2>No Sheet Music Found Here</h2>
         <h4>
             <a href="#/sheetmusic">View All Sheet Music</a> | <a href="#/types/{{result.pshortname}}">View Other {{result.pname}}</a>

@@ -465,6 +465,14 @@ ul.navbar-nav {
 */
 }
 
+.loader {
+    padding: 20px !important;
+    background: url(../images/ajax-loader.gif) no-repeat 0 0;
+
+    width: 32px !important;
+    height: 32px !important;
+}
+
 .slide a{
     padding: 0;
 }
@@ -780,6 +788,10 @@ table td{
     height:480px;
 }
 
+.fade{
+    transition: opacity 1s ease;
+}
+
 .list-full h1, .list-full h2, .list-full h4, .score-main h1, .score-main h2, .score-main h4, .list-score h1, .list-score h2, .list-score h4{
     padding: 0;
 }
@@ -851,6 +863,13 @@ table td{
     background-color: #f8f9fa;
     box-shadow: none;
     font-size:14px;
+}
+
+.input-search .input-group{
+    width:100%;
+}
+.input-search .input-group-btn{
+    display:none;
 }
 
 .score-list {
@@ -1095,7 +1114,7 @@ audio {
     float: left;
 }
 
-input.act-content,textarea {
+input.act-content, textarea {
     border: none;
     border: 1px solid #ccc;
     -webkit-box-shadow: none;
@@ -1103,6 +1122,10 @@ input.act-content,textarea {
     box-shadow: none;
     height: 40px;
     resize: none;
+}
+
+textarea.form-control{
+    height: 100px;
 }
 
 .act-btn {

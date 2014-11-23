@@ -3,7 +3,7 @@
 /* App Module */
 
 var rapidScoreApp = angular.module('rapidScoreApp', [ 'rapidScoreControllers',
-		'rapidScoreServices', 'rapidScoreAnimations', 'rapidScoreFilters',
+		'rapidScoreServices', 'rapidScoreAnimations', 'rapidScoreFilters', 'rapidScoreDirectives',
 		'ngRoute', 'ng-breadcrumbs', 'perfect_scrollbar', 'vcRecaptcha' ]);
 
 rapidScoreApp.config(function($httpProvider) {
@@ -25,7 +25,7 @@ rapidScoreApp.config(function($httpProvider) {
 					$window.localStorage.removeItem('username');
 					$window.localStorage.removeItem('uid');
 					$window.localStorage.removeItem('admin');
-					$rootScope.loginCheck = "Invalid User Credentials";
+					//$rootScope.loginCheck = "Invalid User Credentials";
 					//$location.url('/login');
 				}
                 if (response.status === 404) {
@@ -100,7 +100,14 @@ rapidScoreApp.config([ '$routeProvider', '$locationProvider', function($routePro
 		access : {
 			requiredLogin : true
 		}
-	}).when('/account', {
+	}).when('/account/download/:link', {
+        templateUrl : 'views/download.html',
+        label : 'Download',
+        controller : 'DownloadCtrl',
+        access : {
+            requiredLogin : true
+        }
+    }).when('/account', {
 		templateUrl : 'views/account-detail.html',
 		label : 'Account Settings',
 		controller : 'UserCtrl',

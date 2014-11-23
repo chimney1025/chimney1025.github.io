@@ -467,6 +467,15 @@ rapidScoreServices.factory('ActivateAPI', [ '$resource', function($resource) {
     });
 } ]);
 
+// options.api.base_url
+rapidScoreServices.factory('DownloadAPI', [ '$resource', function($resource) {
+    return $resource(hostname + '/account/download/:link', {}, {
+        get : {
+            method : 'GET'
+        }
+    });
+} ]);
+
 // user login
 rapidScoreServices.factory('LoginAPI', function($http) {
 	return {
