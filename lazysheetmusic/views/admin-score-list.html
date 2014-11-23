@@ -15,7 +15,8 @@
         <h2>Manage Sheet Music ({{scores.length}})
             <span><a type="button" href="#/admin/add-sheetmusic" class="btn btn-warning">ADD</a></span>
         </h2>
-        <table class="table table-striped table-hover ">
+        <p class="loader" ng-show="loading"></p>
+        <table class="table table-striped table-hover fade" ng-class="{in:!loading}">
             <thead>
             <tr>
                 <th class="col-md-5">

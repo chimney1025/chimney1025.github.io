@@ -169,7 +169,10 @@ rapidScoreControllers
 
 rapidScoreControllers.controller('ScoreAdminCtrl', [ '$scope', 'ScoreAdminAPI',
     'SliderAdminAPI', function($scope, Score, Slider) {
-        $scope.scores = Score.getAll();
+        $scope.loading = true;
+        $scope.scores = Score.getAll(function(res){
+            $scope.loading = false;
+        });
 
         // remove
         $scope.removeScore = function(value, sid, name) {
@@ -322,8 +325,11 @@ rapidScoreControllers.controller('ScoreEditCtrl', [
     '$location',
     function($scope, $routeParams, Score, $location) {
 
+        $scope.loading = true;
         $scope.scoreInfo = Score.getOne({
             scoreid : $routeParams.scoreId
+        }, function(res){
+            $scope.loading = false;
         });
         $scope.scoreCheck = '';
 
@@ -414,7 +420,13 @@ rapidScoreControllers.controller('ScoreEditCtrl', [
 
 rapidScoreControllers.controller('ScoreLinkCtrl', ['$scope', '$routeParams', 'ScoreAdminAPI', 'ScoreLinkAPI',
     function($scope, $routeParams, Score, ScoreLink){
-        $scope.score = Score.getOne({scoreid: $routeParams.scoreId});
+
+
+        $scope.loading = true;
+        $scope.score = Score.getOne({scoreid: $routeParams.scoreId}, function(res){
+
+            $scope.loading = false;
+        });
 
         $scope.addlink = function(){
             var desc = prompt("Enter Name for this link").trim();
@@ -461,11 +473,15 @@ rapidScoreControllers.controller('ScoreLinkCtrl', ['$scope', '$routeParams', 'Sc
 rapidScoreControllers.controller('ScoreTypeCtrl', ['$scope', '$routeParams', 'ScoreAdminAPI', 'ScoreTypeAPI', 'TypeAdminAPI',
     function($scope, $routeParams, Score, ScoreType, Type){
 
+        $scope.loading = true;
         $scope.types = Type.getAll();
         $scope.score = Score.getOne({
             scoreid : $routeParams.scoreId
         }, function(res){
+            $scope.loading = false;
+
             $scope.selected = res.types;
+
         });
 
         $scope.addscoretype = function(typeid, typename){
@@ -508,13 +524,16 @@ rapidScoreControllers.controller('ScoreTypeCtrl', ['$scope', '$routeParams', 'Sc
 rapidScoreControllers.controller('TypeAdminCtrl', [ '$scope', '$rootScope', 'TypeAdminAPI',
     'SubTypeAdminAPI', 'TypeAPI',
     function($scope, $rootScope, Type, SubType, MenuType) {
-        $scope.types = Type.getAll();
+        $scope.loading = true;
+        $scope.types = Type.getAll(function(res){
+            $scope.loading = false;
+        });
 
         // remove
         // edit
         // add
         $scope.addptype = function(){
-            var result = prompt("Adding main type").trim();
+            var result = prompt("Adding Category").trim();
             if(result){
                 var shortname = result.replace('-', ' ').replace('\'', '').replace(/ +/g, ' ').split(' ').join('-').toLowerCase();
                 Type.add({},{
@@ -577,7 +596,10 @@ rapidScoreControllers.controller('TypeAdminCtrl', [ '$scope', '$rootScope', 'Typ
 
 rapidScoreControllers.controller('UserAdminListCtrl', [ '$scope',
     'UserAdminAPI', function($scope, User) {
-        $scope.users = User.getAll();
+        $scope.loading = true;
+        $scope.users = User.getAll(function(res){
+            $scope.loading = false;
+        });
     } ]);
 
 rapidScoreControllers.controller('AdminCtrl', [ '$rootScope', '$scope',

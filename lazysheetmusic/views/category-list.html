@@ -1,9 +1,9 @@
 
 <!-- Content -->
 <div class="container text-center">
-    <p class="loader" ng-show="loading"></p>
-    <div class="col-md-12 col-sm-12 col-xs-12 text-center list-full fade" ng-class="{in:result.subtypes.length}">
-        <h1 class="text-left" ng-bind="result.pname"></h1>
+    <div class="col-md-12 col-sm-12 col-xs-12 text-center list-full">
+
+        <h1 class="text-left fdae" ng-class="{in:!loading}" ng-bind="result.pname"></h1>
         <div class="input-search col-md-12 col-sm-12 col-xs-12">
             <div class="input-group input-group-lg">
                 <input type="text" class="form-control" ng-model="cname" placeholder="Search for {{result.pshortname}}">
@@ -14,7 +14,11 @@
                     </span>
             </div>
         </div>
-        <div><a type="button" href="#/types/{{result.pshortname}}/{{item.shortname}}" class="btn btn-default btn-inline btn-category" ng-repeat="item in result.subtypes | filter:cname" ng-if="!item.obsolete" ng-bind="item.name"></a>
+
+        <span class="loader" ng-show="loading"></span>
+
+        <div class="fade" ng-class="{in:!loading}">
+            <a type="button" href="#/types/{{result.pshortname}}/{{item.shortname}}" class="btn btn-default btn-inline btn-category" ng-repeat="item in result.subtypes | filter:cname" ng-if="!item.obsolete" ng-bind="item.name"></a>
         </div>
     </div>
 

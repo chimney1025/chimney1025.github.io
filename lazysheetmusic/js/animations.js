@@ -7,7 +7,9 @@ rapidScoreAnimations.directive('slider',
             replace: true,
             controller: ['$scope', 'SliderAPI', '$anchorScroll', '$location',
                 function($scope, Top, $anchorScroll, $location) {
+                    $scope.loading = true;
                     $scope.images = Top.getAll(function(res){
+                        $scope.loading = false;
                         $scope.$broadcast("Data_Ready");
                     });
                     $scope.orderProp = 'added';

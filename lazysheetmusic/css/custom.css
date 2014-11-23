@@ -95,6 +95,10 @@ h4 {
 .text-danger{
 }
 
+.text-default{
+    color: #f8f9fa;
+}
+
 /*
 .btn-danger,.btn-danger.active {
 background-color: #f08573;
@@ -471,6 +475,9 @@ ul.navbar-nav {
 
     width: 32px !important;
     height: 32px !important;
+    margin: 0 auto !important;
+    clear: both;
+    display: block;
 }
 
 .slide a{
@@ -941,6 +948,11 @@ form .row{
     text-align: justify;
 }
 
+/* Admin Type*/
+.subtype{
+    padding: 10px 0;
+}
+
 /*-----------------------------------
     Score Detail
 ------------------------------------*/
@@ -1085,7 +1097,7 @@ audio {
 
 .act-list h2 span {
     padding: 0;
-    margin: 0 0 0 15px;
+    margin: 0 7px;
 }
 
 .act-list h2 span span{

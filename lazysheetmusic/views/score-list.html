@@ -2,8 +2,7 @@
 <!-- Content -->
 <div class="container text-center">
 
-    <p class="loader" ng-show="loading"></p>
-    <div class="col-md-12 col-sm-12 col-xs-12 list-full fade" ng-class="{in:scores.length}">
+    <div class="col-md-12 col-sm-12 col-xs-12 list-full">
         <h1 class="text-left">Sheet Music</h1>
         <div class="input-search col-md-12">
             <div class="input-group input-group-lg">
@@ -16,10 +15,10 @@
             </div>
         </div>
 
-
         <h4 ng-if="fields.query" >Search result:</h4>
+        <span class="loader" ng-show="loading"></span>
 
-        <table class="table table-striped table-hover" ng-if="table">
+        <table class="table table-striped table-hover fade"  ng-class="{in:!loading}">
             <thead>
             <tr>
                 <th class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
