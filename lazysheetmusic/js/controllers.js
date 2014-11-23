@@ -988,6 +988,9 @@ rapidScoreControllers
                                 $rootScope.loginCheck = "Login Successful. Redirecting...";
                                 $rootScope.setCheck = "form-success";
                                 // $location.path("/account");
+                                if($rootScope.beforelogin){
+                                    $location.path($rootScope.beforelogin.redirectTo);
+                                }
                                 $window.location.reload();
 
 

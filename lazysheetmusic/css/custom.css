@@ -159,6 +159,11 @@ a {
     box-shadow: none;
 }
 
+.list-full .well h2{
+    margin-top:10px;
+    margin-bottom:40px;
+}
+
 /*View Container*/
 .view-container {
     padding-bottom:40px;

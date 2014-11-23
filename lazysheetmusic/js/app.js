@@ -246,8 +246,11 @@ rapidScoreApp.run(function($rootScope, $location, $window, $http) {
 	$rootScope.$on("$routeChangeStart",
 			function(event, nextRoute, currentRoute) {
 
-				if (nextRoute.access && nextRoute.access.requiredLogin
-						&& !$window.localStorage.getItem('token')) {
+				if (nextRoute.access && nextRoute.access.requiredLogin && !$window.localStorage.getItem('token')) {
+                    // remember current url
+                    $rootScope.beforelogin = currentRoute;
+                    console.log('not logged in');
+                    console.log(currentRoute);
 					$location.path("/login");
 				}
 

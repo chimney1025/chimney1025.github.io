@@ -11,20 +11,17 @@
             </h4>
 
             <div class="form-group col-md-12 col-sm-12 col-xs-12">
-                <p class="well">
+                <div class="well text-center">
                     <span ng-show="loading" class="loader"></span>
-                    <span class="text-danger" ng-if="res.url && loading == false">You have {{3-res.time}} more attempts left
-                        <a class="btn-warning pull-right" ng-if="res.url" target="_self" ng-href="{{res.url}}" download><span class="glyphicon glyphicon-download"></span> Click to Download PDF</a>
+                    <h2 ng-if="res.title" ng-bind="res.title"></h2>
 
-                    </span>
+                    <a class="btn-warning btn-lg" ng-if="res.url" target="_self" ng-href="{{res.url}}" download><span class="glyphicon glyphicon-download"></span> Click to Download PDF</a>
+
                     <span class="clearfix"></span>
-
-                    <object ng-if="res.url" data="{{res.url}}" type="application/pdf">
-                        <embed src="{{res.url}}" type="application/pdf" />
-                    </object>
+                    <span class="text-danger" ng-if="res.url && loading == false">You have {{3-res.time}} more attempts left</span>
                     <span class="clearfix"></span>
                     <span class="text-danger" ng-bind="res.message" ng-if="res.message"></span>
-                </p>
+                </div>
             </div>
             <h4 class="col-md-12 col-sm-12 col-xs-12">
                 Need help? Click to<a href="#/contact">Contact Us</a>
