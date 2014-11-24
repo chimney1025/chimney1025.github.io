@@ -1437,6 +1437,9 @@ span.form-success{
     .btn-back{
         display:none;
     }
+    .btn{
+        white-space: normal;
+    }
     .navbar{
         background: none;
         background-color: #333;
