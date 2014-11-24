@@ -6,7 +6,6 @@ html,body {
     margin: 0;
     height: 100%;
     color: #325050;
-    overflow-x:hidden;
     /*color: #727578;*/
     font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
@@ -79,7 +78,7 @@ h4 {
 }
 
 .container {
-    max-width: 1060px;
+    max-width: 1170px;
 }
 /* colors */
 .btn-default {
@@ -247,6 +246,7 @@ a {
     /*border-bottom: 4px solid #468595;*/
 }
 .navbar {
+    font-size: 14px;
     padding: 15px 0;
     border-radius: 0;
     margin: 0;
@@ -426,7 +426,7 @@ ul.navbar-nav {
 	Slider
 -----------------------------------*/
 .slider, .slide, .slide-prev{
-    height: 480px;
+    height: 620px;
 }
 .slider {
     position: relative;
@@ -798,7 +798,7 @@ table td{
 
 .list-full {
     min-width: 300px;
-    max-width: 1060px;
+    max-width: 1170px;
     border:1px solid #e5e5e5;
     background-color:#fff;
     padding:10px 30px 30px;
@@ -1311,6 +1311,9 @@ span.form-success{
     .container{
         max-width: 960px;
     }
+    .slider{
+        height:480px;
+    }
     .score-main, .list-score{
         max-width:628px;
     }
@@ -1325,6 +1328,16 @@ span.form-success{
 /* Tablet size */
 @media ( max-width : 992px) {
     body{
+        min-width:960px;
+    }
+
+    .navbar{
+        font-size:13px;
+    }
+
+    .navbar .container{
+        padding-right: 16px;
+        width: 800px;
     }
     #footer{
     }
@@ -1419,6 +1432,7 @@ span.form-success{
 
     body{
         padding: 0;
+        min-width:320px;
     }
     .btn-back{
         display:none;
@@ -1427,9 +1441,14 @@ span.form-success{
         background: none;
         background-color: #333;
         padding: 10px 0;
+        font-size:13px;
         /*
         background-color: -moz-repeating-linear-gradient(to bottom, #333 0%, #333 25%, #f8f9fa 25%, #f8f9fa 100%);
         */
+    }
+
+    .navbar .container{
+        width: auto !important;
     }
     
 
