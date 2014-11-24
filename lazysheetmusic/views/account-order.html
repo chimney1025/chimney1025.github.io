@@ -43,9 +43,9 @@
                 <td><a type="button" ng-click="showscore(score.fileurl)" class="btn btn-warning btn-xs">Request</a></td>
                 -->
                 
-                <td><a class="btn-default btn btn-xs" ng-click="showlinks(score.id)">Links</a></td>
+                <td><a class="btn-default btn btn-xs btn-nolink" ng-click="">Email Sent</a></td>
             </tr>
-            <tr class="warning" ng-repeat="link in orderlinks">
+            <tr class="warning" ng-repeat="link in orderlinks" ng-show="0">
                 <td></td>
                 <td colspan="2">{{link.desc}}</td>
                 <!--
