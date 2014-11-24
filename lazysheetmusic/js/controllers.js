@@ -1081,7 +1081,7 @@ rapidScoreControllers
 
                 if(r.token){
                     $scope.downloadfile = function(){
-                    	if($scope.download == 0){
+                    	if($scope.downloaded == 0){
                     		console.log(r.token);
                     		//$location.path('/account/download/' + r.token);
                             var baseurl = 'http://localhost:63342/heroku/lazyscorefs/lazysheetmusic/#';
@@ -1092,7 +1092,7 @@ rapidScoreControllers
 
                             $scope.downloadtext = "File opened in new window";
                             $scope.downloadclass = "btn-default btn-nolink";
-                            $scope.download = 1;
+                            $scope.downloaded = 1;
                     	}
                     }
                     //$scope.downloadurl = "/account/download/" + r.token;
