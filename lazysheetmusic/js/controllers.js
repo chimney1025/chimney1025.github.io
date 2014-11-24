@@ -1094,7 +1094,7 @@ rapidScoreControllers
                                 r.time ++;
                             }
 
-                            $scope.downloadtext = "File opened in new window";
+                            $scope.downloadtext = "File Opened in New Window";
                             $scope.downloadclass = "btn-default btn-nolink";
                             $scope.downloaded = 1;
                     	}
