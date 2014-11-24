@@ -18,7 +18,7 @@
                         <h4 ng-if="res.name" ng-bind="res.name"></h4>
                         <a class="btn btn-lg" ng-class="downloadclass" target="_blank" ng-click="downloadfile()" ><span class="glyphicon glyphicon-download"></span> {{downloadtext}}</a>
 
-                        <h4 class="text-danger">You have {{3-res.time}} chances to download the file. <span ng-if="res.time<3">Refresh the page to request a new download.</span></h4>
+                        <h4 class="text-danger">You have {{3-res.time}} chances to download the file. <span ng-if="res.time<3 && downloaded">Refresh the page to request a new download.</span></h4>
                     </div>
                     <span class="clearfix"></span>
 

@@ -1077,11 +1077,11 @@ rapidScoreControllers
             $scope.res = ViewOrder.get({linkid: $routeParams.linkid, scoreid: $routeParams.scoreid}, function(r){
                 $scope.loading = false;
                 console.log(r);
-            	var downloaded = 0;
+            	$scope.downloaded = 0;
 
                 if(r.token){
                     $scope.downloadfile = function(){
-                    	if(download == 0){
+                    	if($scope.download == 0){
                     		console.log(r.token);
                     		//$location.path('/account/download/' + r.token);
                             var baseurl = 'http://localhost:63342/heroku/lazyscorefs/lazysheetmusic/#';
@@ -1092,7 +1092,7 @@ rapidScoreControllers
 
                             $scope.downloadtext = "File opened in new window";
                             $scope.downloadclass = "btn-default btn-nolink";
-                            download = 1;
+                            $scope.download = 1;
                     	}
                     }
                     //$scope.downloadurl = "/account/download/" + r.token;
