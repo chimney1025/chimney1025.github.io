@@ -63,7 +63,7 @@ th a:hover{
     text-decoration: underline;
     cursor: pointer;
     background-color: #fff;
-    color: #468595;
+    color: #287A95;
 }
 
 h1 {
@@ -132,7 +132,7 @@ border-color: #f08573;
 }
 
 .btn-category {
-    color: #468595;
+    color: #287A95;
 }
 
 .btn-category:hover {
@@ -150,7 +150,7 @@ border-color: #f08573;
 }
 
 a {
-    color: #468595;
+    color: #287A95;
 }
 
 .well {
@@ -1262,7 +1262,7 @@ span.form-check {
 }
 
 span.form-success{
-    color: #468595 !important;
+    color: #287A95 !important;
 }
 
 .form-signin .form-signin-heading,.form-signin .checkbox {
