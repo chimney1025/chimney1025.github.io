@@ -1051,7 +1051,9 @@ rapidScoreControllers
                 //window.open(r.url, 'download');
                 //alert(r.url);
             	//open download page
-                window.location.assign(r.url);
+            	if(r.url){
+                    window.location.assign(r.url);
+            	}
             })
         }
     ]
