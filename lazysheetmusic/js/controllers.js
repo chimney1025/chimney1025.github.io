@@ -1039,11 +1039,12 @@ rapidScoreControllers
     'DownloadCtrl',
     [
         '$scope',
+        '$rootScope',
         'DownloadAPI',
         '$routeParams',
         '$window',
         '$location',
-        function($scope, Download, $routeParams, $window, $location){
+        function($scope, $rootScope, Download, $routeParams, $window, $location){
 
             $scope.loading = true;
             $scope.res = Download.get({link:$routeParams.link}, function(r){
@@ -1061,12 +1062,13 @@ rapidScoreControllers
     'ViewOrderCtrl',
     [
         '$scope',
+        '$rootScope',
         'ViewAPI',
         '$routeParams',
         '$window',
         '$location',
         '$timeout',
-        function($scope, ViewOrder, $routeParams, $window, $location, $timeout) {
+        function($scope, $rootScope, ViewOrder, $routeParams, $window, $location, $timeout) {
             $scope.loading = true;
             $scope.downloadtext = "Preparing...";
             $scope.times = " ";
@@ -1075,15 +1077,23 @@ rapidScoreControllers
             $scope.res = ViewOrder.get({linkid: $routeParams.linkid, scoreid: $routeParams.scoreid}, function(r){
                 $scope.loading = false;
                 console.log(r);
+            	var downloaded = 0;
 
                 if(r.token){
                     $scope.downloadfile = function(){
-                        //$location.path('/account/download/' + r.token);
-                        var baseurl = 'http://localhost:63342/heroku/lazyscorefs/lazysheetmusic/#';
-                        $window.open('/#/account/download/'+ r.token, '_blank');
-                        if(r.time <3){
-                            r.time ++;
-                        }
+                    	if(download == 0){
+                    		console.log(r.token);
+                    		//$location.path('/account/download/' + r.token);
+                            var baseurl = 'http://localhost:63342/heroku/lazyscorefs/lazysheetmusic/#';
+                            $window.open('/#/account/download/'+ r.token, '_blank');
+                            if(r.time <3){
+                                r.time ++;
+                            }
+
+                            $scope.downloadtext = "File opened in new window";
+                            $scope.downloadclass = "btn-default btn-nolink";
+                            download = 1;
+                    	}
                     }
                     //$scope.downloadurl = "/account/download/" + r.token;
 
