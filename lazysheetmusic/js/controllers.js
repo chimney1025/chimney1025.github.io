@@ -170,6 +170,7 @@ rapidScoreControllers
 rapidScoreControllers.controller('ScoreAdminCtrl', [ '$scope', 'ScoreAdminAPI',
     'SliderAdminAPI', function($scope, Score, Slider) {
         $scope.loading = true;
+        $scope.orderProp = 'title';
         $scope.scores = Score.getAll(function(res){
             $scope.loading = false;
         });
