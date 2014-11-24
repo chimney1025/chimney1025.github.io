@@ -633,8 +633,9 @@ rapidScoreControllers.controller('UserCtrl', [
     'UserCartAPI',
     'UserOrderAPI',
     'UserOrderDetailAPI',
+    'LinkAPI',
     function($window, $location, $scope, $rootScope, $routeParams,
-             User, UserPass, Cart, Order, OrderDetail) {
+             User, UserPass, Cart, Order, OrderDetail, Link) {
 
         $scope.loading = true;
         $rootScope.user = User.getOne(function(res){
@@ -683,6 +684,15 @@ rapidScoreControllers.controller('UserCtrl', [
         }
 
         $scope.updatepassword = function(oldpass, newpass){
+        }
+        
+        $scope.showlinks = function(scoreid) {
+        	Link.getAll({
+        		scoreid: scoreid
+        	}, function(links){
+        		$scope.orderlinks = links;
+        		console.log(links);
+        	})
         }
 
         $scope.showorder = function(orderid) {

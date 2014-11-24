@@ -296,7 +296,7 @@ rapidScoreServices.factory('SubTypeAdminAPI', [
 			})
 		} ]);
 
-// admin add score type
+// admin add score link
 rapidScoreServices.factory('ScoreLinkAPI', [
     '$resource',
     '$window',
@@ -390,6 +390,15 @@ rapidScoreServices.factory('ScoreAPI', [ '$resource', function($resource) {
 		getAll : {
 			method : 'GET',
 			isArray : true
+		}
+	});
+} ]);
+
+rapidScoreServices.factory('LinkAPI', [ '$resource', function($resource) {
+	return $resource(hostname + '/links/:scoreid', {}, {
+		getAll : {
+			method : 'GET',
+			isArray: true
 		}
 	});
 } ]);
