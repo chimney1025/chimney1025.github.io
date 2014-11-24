@@ -1053,6 +1053,8 @@ rapidScoreControllers
             	//open download page
             	if(r.url){
                     window.location.assign(r.url);
+            	} else if(r.message){
+            		$scope.loading = false;
             	}
             })
         }
