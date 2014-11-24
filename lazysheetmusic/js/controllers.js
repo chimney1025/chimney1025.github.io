@@ -710,16 +710,6 @@ rapidScoreControllers.controller('UserCtrl', [
                             $scope.purchased[index].showdetail = true;
                             $scope.orderdetails = scores;
                             
-                            for(var j=0; j<scores.length; j++){
-                            	Link.getAll({
-                            		scoreid: scores[j].id
-                            	}, function(links){
-                            		scores[j].orderlinks = links;
-                            		console.log(links);
-                            	})
-                            	
-                            }
-                            
                         } else {
 
                         }
