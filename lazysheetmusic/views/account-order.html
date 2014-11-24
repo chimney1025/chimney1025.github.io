@@ -45,7 +45,7 @@
                 <td><a class="btn-default btn btn-xs btn-nolink" ng-click="showlinks(score.id)">Email Sent</a></td>
                 -->
             </tr>
-            <tr class="warning" ng-repeat="link in orderlinks" ng-if="order.showdetail">
+            <tr class="warning" ng-repeat="link in score.orderlinks" ng-if="order.showdetail">
                 <td></td>
                 <td colspan="2">{{link.desc}}</td>
                 <!--

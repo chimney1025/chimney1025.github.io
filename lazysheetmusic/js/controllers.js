@@ -694,10 +694,6 @@ rapidScoreControllers.controller('UserCtrl', [
         		console.log(links);
         	})
         }
-        
-        $scope.vieworder = function(scoreid, linkid){
-        	
-        }
 
         $scope.showorder = function(orderid) {
             for (var i = 0; i < $scope.purchased.length; i++) {
@@ -713,6 +709,17 @@ rapidScoreControllers.controller('UserCtrl', [
                         if (scores.length > 0) {
                             $scope.purchased[index].showdetail = true;
                             $scope.orderdetails = scores;
+                            
+                            for(var j=0; j<scores.length; j++){
+                            	Link.getAll({
+                            		scoreid: scores[j].id
+                            	}, function(links){
+                            		scores[j].orderlinks = links;
+                            		console.log(links);
+                            	})
+                            	
+                            }
+                            
                         } else {
 
                         }
