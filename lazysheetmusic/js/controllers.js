@@ -691,7 +691,7 @@ rapidScoreControllers.controller('UserCtrl', [
         		scoreid: scoreid
         	}, function(links){
         		$scope.orderlinks = links;
-        		$scope.showlinks = true;
+        		//$scope.showlinks = true;
         		console.log(links);
         	})
         }
@@ -710,7 +710,7 @@ rapidScoreControllers.controller('UserCtrl', [
                         if (scores.length > 0) {
                             $scope.purchased[index].showdetail = true;
                             $scope.orderdetails = scores;
-                            $scope.showlinks = false;
+                            //$scope.showlinks = false;
                             
                         } else {
 
