@@ -1047,10 +1047,10 @@ rapidScoreControllers
 
             $scope.loading = true;
             $scope.res = Download.get({link:$routeParams.link}, function(r){
-                window.open(r.url, 'download');
+                //window.open(r.url, 'download');
                 //alert(r.url);
             	//open download page
-                //window.location.assign(r.url);
+                window.location.assign(r.url);
             })
         }
     ]
