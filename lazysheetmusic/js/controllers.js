@@ -954,15 +954,15 @@ rapidScoreControllers
             $scope.loginInfo = {};
             $rootScope.loginCheck = '';
 
-            $scope.login = function() {
+            $scope.login = function(loginInfo) {
                 $rootScope.loginCheck = '';
 
-                if (!$scope.loginInfo.username) {
+                if (!loginInfo.username) {
                     $rootScope.loginCheck = 'Invalid Username';
                     return;
                 }
 
-                else if (!$scope.loginInfo.password) {
+                else if (!loginInfo.password) {
                     $rootScope.loginCheck = 'Please enter your Password';
                     return;
                 }
@@ -977,7 +977,7 @@ rapidScoreControllers
                     //$rootScope.modalcheck="Signing in ...";
                     $rootScope.loginCheck = 'Signing in ...';
                     $rootScope.setCheck = "form-success";
-                    LoginService.login($scope.loginInfo.username,$scope.loginInfo.password).success(
+                    LoginService.login(loginInfo.username,loginInfo.password).success(
                         function(data) {
                             console.log(data.header);
                             if (data && data.token) {
@@ -1162,29 +1162,29 @@ rapidScoreControllers
             $scope.regInfo = {};
             $scope.regCheck = '';
 
-            $scope.regSave = function() {
+            $scope.regSave = function(regInfo) {
                 $scope.regCheck = '';
 
-                if (!$scope.regInfo.username) {
+                if (!regInfo.username) {
                     $scope.regCheck = 'Invalid Email';
                     return;
-                } else if (!$scope.regInfo.firstname) {
+                } else if (!regInfo.firstname) {
                     $scope.regCheck = 'Please enter your Firstname';
                     return;
-                } else if (!$scope.regInfo.surname) {
+                } else if (!regInfo.surname) {
                     $scope.regCheck = 'Please enter your Surname';
                     return;
-                } else if (!$scope.regInfo.pass1) {
+                } else if (!regInfo.pass1) {
                     $scope.regCheck = 'Please enter your Password';
                     return;
-                } else if ($scope.regInfo.pass1.length < 6
-                    || $scope.regInfo.pass1.length > 20) {
+                } else if (regInfo.pass1.length < 6
+                    || regInfo.pass1.length > 20) {
                     $scope.regCheck = 'Password length should be 6 to 20 characters long';
                     return;
-                } else if (!$scope.regInfo.pass2) {
+                } else if (!regInfo.pass2) {
                     $scope.regCheck = 'Please enter your Password';
                     return;
-                } else if ($scope.regInfo.pass1 != $scope.regInfo.pass2) {
+                } else if (regInfo.pass1 != regInfo.pass2) {
                     $scope.regCheck = 'Two Passwords do not match';
                     return;
                 }
@@ -1204,7 +1204,7 @@ rapidScoreControllers
                     CheckUsername
                         .getOne(
                         {
-                            username : $scope.regInfo.username.trim()
+                            username : regInfo.username.trim()
                         },
                         function(res2) {
                             console
@@ -1222,10 +1222,10 @@ rapidScoreControllers
                                 // posted
 
                                 var regData = new Object();
-                                regData.username = $scope.regInfo.username.trim();
-                                regData.firstname = $scope.regInfo.firstname.trim();
-                                regData.surname = $scope.regInfo.surname.trim();
-                                regData.password = $scope.regInfo.pass1.trim();
+                                regData.username = regInfo.username.trim();
+                                regData.firstname = regInfo.firstname.trim();
+                                regData.surname = regInfo.surname.trim();
+                                regData.password = regInfo.pass1.trim();
                                 console
                                     .log(regData);
                                 User

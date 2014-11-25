@@ -11,6 +11,7 @@
 					Registered? Click to Sign Up </a>
 			</h4>
 			<span class="clearfix"></span>
+            <form ng-submit="login(loginInfo)">
 			<div class="form-group col-md-10 col-sm-12 col-xs-12 pull-left">
 				<label for="inputEmail"
 					class="col-lg-12 control-label noleftpadding">Email<span
@@ -32,7 +33,7 @@
 
 			<div class="form-group col-md-12 col-sm-12 col-xs-12">
 				<div class="col-lg-6 nopadding">
-					<button type="submit" class="btn btn-primary" ng-click="login()">Submit</button>
+					<button type="submit" class="btn btn-primary">Submit</button>
 				</div>
 
 				<div class="col-lg-6">
@@ -40,7 +41,7 @@
 						ng-bind="loginCheck"></span>
 				</div>
 			</div>
-
+            </form>
 			<h4 class="col-md-12 col-sm-12 col-xs-12">
 				Need help? Click to<a href="#/contact">Contact Us</a>
 			</h4>
