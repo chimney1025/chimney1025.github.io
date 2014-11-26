@@ -551,6 +551,7 @@ rapidScoreServices.factory('LoginAPI', function($http, Session) {
     };
 
     authService.isAuthenticated = function () {
+        console.log(!!Session.userId);
         return !!Session.userId;
     };
 

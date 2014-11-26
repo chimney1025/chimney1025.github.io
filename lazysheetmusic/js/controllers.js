@@ -812,16 +812,6 @@ rapidScoreControllers.controller('sessionService',
 
             $rootScope.table = 1;
 
-            $rootScope.setTable = function(p){
-                if(p == 1){
-                    $rootScope.table = 0;
-                    //$window.location.reload();
-                } else{
-                    $rootScope.table = 1;
-                    //$window.location.reload();
-                }
-            }
-
             $rootScope.modalcheck = "";
 
             $rootScope.closemodal = function(){
