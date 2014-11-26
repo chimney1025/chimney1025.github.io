@@ -531,7 +531,7 @@ rapidScoreServices.service('Session', function ($window) {
 })
 
 // user login
-rapidScoreServices.factory('LoginAPI', function($http, Session) {
+rapidScoreServices.factory('AuthService', function($http, Session) {
     var authService = {};
 
     authService.login = function (username, password) {

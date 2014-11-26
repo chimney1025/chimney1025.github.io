@@ -792,64 +792,178 @@ rapidScoreControllers.controller('UserCtrl', [
         }
     } ]);
 
-rapidScoreControllers.controller('sessionService',
-    [
-        '$scope',
-        '$rootScope',
-        '$window',
-        '$location',
-        'UserCartAPI',
-        'breadcrumbs',
-        'TypeAPI',
-        'Session',
-        function($scope, $rootScope, $window, $location, Cart,
-                 breadcrumbs, Type, Session) {
+rapidScoreControllers
+.controller(
+'ContactCtrl',['$scope', '$rootScope', '$window', 'ContactAPI',
+    function($scope, $rootScope, $window, Contact){
 
-            $scope.breadcrumbs = breadcrumbs;
+        // Contact
+        $scope.contactInfo = {};
+        $scope.contactCheck = '';
 
-            $rootScope.parent_types = Type.getAll(function(res){
-            });
+        $scope.sendMsg = function(contactInfo) {
 
-            $rootScope.table = 1;
+            $scope.contactCheck = '';
 
-            $rootScope.modalcheck = "";
-
-            $rootScope.closemodal = function(){
-                $rootScope.modalcheck = "";
-                $rootScope.setModal = "";
+            if (!contactInfo.name) {
+                $scope.contactCheck = 'Invalid Name';
+                return;
             }
 
-            if (!$window.localStorage.getItem('token')) {
-                $rootScope.logged = false;
-                $window.localStorage.removeItem('token');
-                $window.localStorage.removeItem('username');
-                $window.localStorage.removeItem('uid');
-                $window.localStorage.removeItem('admin');
-            } else {
-                $rootScope.logged = true;
-                $rootScope.logged_username = $window.localStorage
-                    .getItem('username');
-                $rootScope.logged_admin = $window.localStorage
-                    .getItem('admin');
-                $rootScope.logged_cart = Cart.getAll(function(res) {
-                    $rootScope.cartcount = res.length;
-                });
+            if (!contactInfo.email) {
+                $scope.contactCheck = 'Invalid Email';
+                return;
             }
+            // submit data
+            else {
+                $rootScope.modalcheck="Sending message ...";
+                $rootScope.modaloption = false;
+                $rootScope.setModal = "modal";
+                // create json to be posted
+                var contactData = new Object();
 
-            $scope.logout = function logout() {
-                $rootScope.logged = false;
-                Session.destroy();
+                contactData.name = contactInfo.name.trim();
+                contactData.email = contactInfo.email.trim();
+                contactData.message = contactInfo.message.trim();
+
+                Contact.add(
+                    {},
+                    contactData,
+                    function(res) {
+                        if (res) {
+                            $rootScope.modalcheck="Message sent!";
+                            $rootScope.modaloption = true;
+                            $rootScope.setModal = "modal";
+
+                            $rootScope.closemodal=function(){
+                                $rootScope.modalcheck = "";
+                                $rootScope.setModal = "";
+                                $window.location.reload();
+                            }
+                        }
+                    });
+
+            }
+        };
+    }]);
+
+rapidScoreControllers
+.controller(
+'ActivateCtrl',
+[
+    '$scope',
+    'ActivateAPI',
+    '$routeParams',
+    function($scope, Activate, $routeParams) {
+        $scope.loading = true;
+        $scope.res = Activate.get({link: $routeParams.link}, function(r){
+            $scope.loading = false;
+            if(r.css == 0){
+                $scope.setCheck = "form-success";
+            }
+        })
+    }
+]
+)
+
+rapidScoreControllers
+.controller(
+'DownloadCtrl',
+[
+    '$scope',
+    '$rootScope',
+    'DownloadAPI',
+    '$routeParams',
+    '$window',
+    '$location',
+    function($scope, $rootScope, Download, $routeParams, $window, $location){
+
+        $scope.loading = true;
+        $scope.res = Download.get({link:$routeParams.link}, function(r){
+            //window.open(r.url, 'download');
+            //alert(r.url);
+            //open download page
+            if(r.url){
+                window.location.assign(r.url);
+            } else if(r.message){
+                $scope.loading = false;
+            }
+        })
+    }
+]
+)
+
+rapidScoreControllers
+.controller(
+'ViewOrderCtrl',
+[
+    '$scope',
+    '$rootScope',
+    'ViewAPI',
+    '$routeParams',
+    '$window',
+    '$location',
+    '$timeout',
+    function($scope, $rootScope, ViewOrder, $routeParams, $window, $location, $timeout) {
+        $scope.loading = true;
+        $scope.downloadtext = "Preparing...";
+        $scope.times = " ";
+        $scope.downloadurl = "#";
+
+        $scope.res = ViewOrder.get({linkid: $routeParams.linkid, scoreid: $routeParams.scoreid}, function(r){
+            $scope.loading = false;
+            console.log(r);
+            $scope.downloaded = 0;
+
+            if(r.token){
+                $scope.downloadfile = function(){
+                    if($scope.downloaded == 0){
+                        console.log(r.token);
+                        //$location.path('/account/download/' + r.token);
+                        var baseurl = 'http://localhost:63342/heroku/lazyscorefs/lazysheetmusic/#';
+                        $window.open('/#/account/download/'+ r.token, '_blank');
+                        if(r.time <3){
+                            r.time ++;
+                        }
+
+                        $scope.downloadtext = "File Opened in New Window";
+                        $scope.downloadclass = "btn-default btn-nolink";
+                        $scope.downloaded = 1;
+                    }
+                }
+                //$scope.downloadurl = "/account/download/" + r.token;
+
+                $scope.downloadtext = "Click to Download File";
+                $scope.downloadclass = "btn-warning";
+                //set timeout
+
+                $scope.timeInMs = 5000;
+
                 /*
-                $window.localStorage.removeItem('token');
-                $window.localStorage.removeItem('username');
-                $window.localStorage.removeItem('uid');
-                $window.localStorage.removeItem('admin');
+                 var countDown = function(){
+                 $scope.timeInMs -= 1000;
+
+                 if($scope.timeInMs == 0){
+
+                 $scope.downloadtext = "Click to Download File";
+                 $scope.downloadclass = "btn-warning";
+                 window.open(r.url, '_blank');
+
+                 } else{
+                 $timeout(countDown, 1000);
+                 $scope.downloadtext = "Download will start in " + $scope.timeInMs/1000 + " seconds.";
+
+                 }
+                 }
+
+                 $timeout(countDown, 1000);
                  */
 
-                //
-                $location.path("/login");
             }
-        } ]);
+        })
+    }
+]
+)
 
 rapidScoreControllers
     .constant('AUTH_EVENTS', {
@@ -874,10 +988,10 @@ rapidScoreControllers
         '$rootScope',
         '$location',
         '$window',
-        'LoginAPI',
+        'AuthService',
         'UserAPI',
         function($scope, $rootScope, $location, $window,
-                 LoginService, User) {
+                 AuthService, User) {
 
             // if logged in, go to user page
 
@@ -921,7 +1035,7 @@ rapidScoreControllers
                     $scope.loginCheck = 'Signing in ...';
                     $scope.setCheck = "form-success";
 
-                    LoginService.login(loginInfo.username.trim(),loginInfo.password.trim()).success(
+                    AuthService.login(loginInfo.username.trim(),loginInfo.password.trim()).success(
                         function(data) {
                             //$rootScope.$broadcast(AUTH_EVENTS.loginSuccess);
                             //$scope.setCurrentUser(user);
@@ -1080,177 +1194,72 @@ rapidScoreControllers
             };
         } ]);
 
+rapidScoreControllers.controller('sessionService',
+	    [
+	        '$scope',
+	        '$rootScope',
+	        '$window',
+	        '$location',
+	        'UserCartAPI',
+	        'breadcrumbs',
+	        'TypeAPI',
+	        'Session',
+	        function($scope, $rootScope, $window, $location, Cart,
+	                 breadcrumbs, Type, Session) {
+	        	/*
+	        	$scope.currentUser = null;
+	        	$scope.userRoles = USER_ROLES;
+	        	$scope.isAuthorized = AuthService.isAuthorized;
+	        	
+	        	$scope.setCurrentUser = function (user) {
+	        		$scope.currentUser = user;
+	        	};
+	        	*/
+
+	            $scope.breadcrumbs = breadcrumbs;
+
+	            $rootScope.parent_types = Type.getAll(function(res){
+	            });
+
+	            $rootScope.table = 1;
+
+	            $rootScope.modalcheck = "";
+
+	            $rootScope.closemodal = function(){
+	                $rootScope.modalcheck = "";
+	                $rootScope.setModal = "";
+	            }
+
+	            if (!$window.localStorage.getItem('token')) {
+	                $rootScope.logged = false;
+	                $window.localStorage.removeItem('token');
+	                $window.localStorage.removeItem('username');
+	                $window.localStorage.removeItem('uid');
+	                $window.localStorage.removeItem('admin');
+	            } else {
+	                $rootScope.logged = true;
+	                $rootScope.logged_username = $window.localStorage
+	                    .getItem('username');
+	                $rootScope.logged_admin = $window.localStorage
+	                    .getItem('admin');
+	                $rootScope.logged_cart = Cart.getAll(function(res) {
+	                    $rootScope.cartcount = res.length;
+	                });
+	            }
+
+	            $scope.logout = function logout() {
+	                $rootScope.logged = false;
+	                Session.destroy();
+	                /*
+	                $window.localStorage.removeItem('token');
+	                $window.localStorage.removeItem('username');
+	                $window.localStorage.removeItem('uid');
+	                $window.localStorage.removeItem('admin');
+	                 */
+
+	                //
+	                $location.path("/login");
+	            }
+	        } ]);
 
 
-rapidScoreControllers
-    .controller(
-    'ContactCtrl',['$scope', '$rootScope', '$window', 'ContactAPI',
-        function($scope, $rootScope, $window, Contact){
-
-            // Contact
-            $scope.contactInfo = {};
-            $scope.contactCheck = '';
-
-            $scope.sendMsg = function(contactInfo) {
-
-                $scope.contactCheck = '';
-
-                if (!contactInfo.name) {
-                    $scope.contactCheck = 'Invalid Name';
-                    return;
-                }
-
-                if (!contactInfo.email) {
-                    $scope.contactCheck = 'Invalid Email';
-                    return;
-                }
-                // submit data
-                else {
-                    $rootScope.modalcheck="Sending message ...";
-                    $rootScope.modaloption = false;
-                    $rootScope.setModal = "modal";
-                    // create json to be posted
-                    var contactData = new Object();
-
-                    contactData.name = contactInfo.name.trim();
-                    contactData.email = contactInfo.email.trim();
-                    contactData.message = contactInfo.message.trim();
-
-                    Contact.add(
-                        {},
-                        contactData,
-                        function(res) {
-                            if (res) {
-                                $rootScope.modalcheck="Message sent!";
-                                $rootScope.modaloption = true;
-                                $rootScope.setModal = "modal";
-
-                                $rootScope.closemodal=function(){
-                                    $rootScope.modalcheck = "";
-                                    $rootScope.setModal = "";
-                                    $window.location.reload();
-                                }
-                            }
-                        });
-
-                }
-            };
-        }]);
-
-rapidScoreControllers
-    .controller(
-    'ActivateCtrl',
-    [
-        '$scope',
-        'ActivateAPI',
-        '$routeParams',
-        function($scope, Activate, $routeParams) {
-            $scope.loading = true;
-            $scope.res = Activate.get({link: $routeParams.link}, function(r){
-                $scope.loading = false;
-                if(r.css == 0){
-                    $scope.setCheck = "form-success";
-                }
-            })
-        }
-    ]
-)
-
-rapidScoreControllers
-    .controller(
-    'DownloadCtrl',
-    [
-        '$scope',
-        '$rootScope',
-        'DownloadAPI',
-        '$routeParams',
-        '$window',
-        '$location',
-        function($scope, $rootScope, Download, $routeParams, $window, $location){
-
-            $scope.loading = true;
-            $scope.res = Download.get({link:$routeParams.link}, function(r){
-                //window.open(r.url, 'download');
-                //alert(r.url);
-                //open download page
-                if(r.url){
-                    window.location.assign(r.url);
-                } else if(r.message){
-                    $scope.loading = false;
-                }
-            })
-        }
-    ]
-)
-
-rapidScoreControllers
-    .controller(
-    'ViewOrderCtrl',
-    [
-        '$scope',
-        '$rootScope',
-        'ViewAPI',
-        '$routeParams',
-        '$window',
-        '$location',
-        '$timeout',
-        function($scope, $rootScope, ViewOrder, $routeParams, $window, $location, $timeout) {
-            $scope.loading = true;
-            $scope.downloadtext = "Preparing...";
-            $scope.times = " ";
-            $scope.downloadurl = "#";
-
-            $scope.res = ViewOrder.get({linkid: $routeParams.linkid, scoreid: $routeParams.scoreid}, function(r){
-                $scope.loading = false;
-                console.log(r);
-                $scope.downloaded = 0;
-
-                if(r.token){
-                    $scope.downloadfile = function(){
-                        if($scope.downloaded == 0){
-                            console.log(r.token);
-                            //$location.path('/account/download/' + r.token);
-                            var baseurl = 'http://localhost:63342/heroku/lazyscorefs/lazysheetmusic/#';
-                            $window.open('/#/account/download/'+ r.token, '_blank');
-                            if(r.time <3){
-                                r.time ++;
-                            }
-
-                            $scope.downloadtext = "File Opened in New Window";
-                            $scope.downloadclass = "btn-default btn-nolink";
-                            $scope.downloaded = 1;
-                        }
-                    }
-                    //$scope.downloadurl = "/account/download/" + r.token;
-
-                    $scope.downloadtext = "Click to Download File";
-                    $scope.downloadclass = "btn-warning";
-                    //set timeout
-
-                    $scope.timeInMs = 5000;
-
-                    /*
-                     var countDown = function(){
-                     $scope.timeInMs -= 1000;
-
-                     if($scope.timeInMs == 0){
-
-                     $scope.downloadtext = "Click to Download File";
-                     $scope.downloadclass = "btn-warning";
-                     window.open(r.url, '_blank');
-
-                     } else{
-                     $timeout(countDown, 1000);
-                     $scope.downloadtext = "Download will start in " + $scope.timeInMs/1000 + " seconds.";
-
-                     }
-                     }
-
-                     $timeout(countDown, 1000);
-                     */
-
-                }
-            })
-        }
-    ]
-)
