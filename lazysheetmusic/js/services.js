@@ -9,29 +9,29 @@ var hostname = 'https://lazyscore.herokuapp.com/api';
 // Protected URL
 // user account get, edit
 rapidScoreServices.factory('UserAPI', [
-		'$resource',
-		'$window',
-		function($resource, $window) {
-			return $resource(hostname + '/account', {}, {
-				getOne : {
-					method : 'GET',
-					headers : {
-						'Content-Type' : 'application/json',
-						'Authorization' : 'Bearer '
-								+ $window.localStorage.getItem('token')
-					}
-				},
-                save : {
-                    method : 'PUT',
-                    headers : {
-                        'Content-Type' : 'application/json',
-                        'Authorization' : 'Bearer '
-                            + $window.localStorage.getItem('token')
-                    }
+    '$resource',
+    '$window',
+    function($resource, $window) {
+        return $resource(hostname + '/account', {}, {
+            getOne : {
+                method : 'GET',
+                headers : {
+                    'Content-Type' : 'application/json',
+                    'Authorization' : 'Bearer '
+                        + $window.localStorage.getItem('token')
                 }
+            },
+            save : {
+                method : 'PUT',
+                headers : {
+                    'Content-Type' : 'application/json',
+                    'Authorization' : 'Bearer '
+                        + $window.localStorage.getItem('token')
+                }
+            }
 
-			});
-		} ]);
+        });
+    } ]);
 
 rapidScoreServices.factory('UserPassAPI', [
     '$resource',
@@ -51,250 +51,250 @@ rapidScoreServices.factory('UserPassAPI', [
     } ]);
 
 rapidScoreServices.factory('CheckOrderAPI', [
-		'$resource',
-		'$window',
-		function($resource, $window) {
-			return $resource(hostname + '/account/check-order/:scoreid', {}, {
-				get : {
-					method : 'GET',
-					headers : {
-						'Content-Type' : 'application/json',
-						'Authorization' : 'Bearer '
-								+ $window.localStorage.getItem('token')
-					}
-				}
-			});
-		} ]);
+    '$resource',
+    '$window',
+    function($resource, $window) {
+        return $resource(hostname + '/account/check-order/:scoreid', {}, {
+            get : {
+                method : 'GET',
+                headers : {
+                    'Content-Type' : 'application/json',
+                    'Authorization' : 'Bearer '
+                        + $window.localStorage.getItem('token')
+                }
+            }
+        });
+    } ]);
 
 // user purchased add, getall
 rapidScoreServices.factory('UserOrderAPI', [
-		'$resource',
-		'$window',
-		function($resource, $window) {
-			return $resource(hostname + '/account/orders', {}, {
-				getAll : {
-					method : 'GET',
-					isArray : true,
-					headers : {
-						'Content-Type' : 'application/json',
-						'Authorization' : 'Bearer '
-								+ $window.localStorage.getItem('token')
-					}
-				},
-				order : {
-					method : 'POST',
-					headers : {
-						'Content-Type' : 'application/json',
-						'Authorization' : 'Bearer '
-								+ $window.localStorage.getItem('token')
-					}
-				}
-			});
-		} ]);
+    '$resource',
+    '$window',
+    function($resource, $window) {
+        return $resource(hostname + '/account/orders', {}, {
+            getAll : {
+                method : 'GET',
+                isArray : true,
+                headers : {
+                    'Content-Type' : 'application/json',
+                    'Authorization' : 'Bearer '
+                        + $window.localStorage.getItem('token')
+                }
+            },
+            order : {
+                method : 'POST',
+                headers : {
+                    'Content-Type' : 'application/json',
+                    'Authorization' : 'Bearer '
+                        + $window.localStorage.getItem('token')
+                }
+            }
+        });
+    } ]);
 
 // user purchased add, getall
 rapidScoreServices.factory('UserOrderDetailAPI', [
-		'$resource',
-		'$window',
-		function($resource, $window) {
-			return $resource(hostname + '/account/order-detail/:orderid', {}, {
-				getScores : {
-					method : 'GET',
-					isArray : true,
-					headers : {
-						'Content-Type' : 'application/json',
-						'Authorization' : 'Bearer '
-								+ $window.localStorage.getItem('token')
-					}
-				}
-			});
-		} ]);
+    '$resource',
+    '$window',
+    function($resource, $window) {
+        return $resource(hostname + '/account/order-detail/:orderid', {}, {
+            getScores : {
+                method : 'GET',
+                isArray : true,
+                headers : {
+                    'Content-Type' : 'application/json',
+                    'Authorization' : 'Bearer '
+                        + $window.localStorage.getItem('token')
+                }
+            }
+        });
+    } ]);
 
 // user cart get, add, remove
 rapidScoreServices.factory('UserCartAPI', [
-		'$resource',
-		'$window',
-		function($resource, $window) {
-			return $resource(hostname + '/account/shopping-cart/:scoreid',
-			// sid
-			{}, {
-				getAll : {
-					method : 'GET',
-					isArray : true,
-					headers : {
-						'Content-Type' : 'application/json',
-						'Authorization' : 'Bearer '
-								+ $window.localStorage.getItem('token')
-					}
-				},
-				add : {
-					method : 'POST',
-					isArray : true,
-					headers : {
-						'Content-Type' : 'application/json',
-						'Authorization' : 'Bearer '
-								+ $window.localStorage.getItem('token')
-					}
-				},
-				clear : {
-					method : 'DELETE',
-					isArray : true,
-					headers : {
-						'Content-Type' : 'application/json',
-						'Authorization' : 'Bearer '
-								+ $window.localStorage.getItem('token')
-					}
-				},
-				remove : {
-					method : 'DELETE',
-					isArray : true,
-					headers : {
-						'Content-Type' : 'application/json',
-						'Authorization' : 'Bearer '
-								+ $window.localStorage.getItem('token')
-					}
-				}
-			});
-		} ]);
+    '$resource',
+    '$window',
+    function($resource, $window) {
+        return $resource(hostname + '/account/shopping-cart/:scoreid',
+            // sid
+            {}, {
+                getAll : {
+                    method : 'GET',
+                    isArray : true,
+                    headers : {
+                        'Content-Type' : 'application/json',
+                        'Authorization' : 'Bearer '
+                            + $window.localStorage.getItem('token')
+                    }
+                },
+                add : {
+                    method : 'POST',
+                    isArray : true,
+                    headers : {
+                        'Content-Type' : 'application/json',
+                        'Authorization' : 'Bearer '
+                            + $window.localStorage.getItem('token')
+                    }
+                },
+                clear : {
+                    method : 'DELETE',
+                    isArray : true,
+                    headers : {
+                        'Content-Type' : 'application/json',
+                        'Authorization' : 'Bearer '
+                            + $window.localStorage.getItem('token')
+                    }
+                },
+                remove : {
+                    method : 'DELETE',
+                    isArray : true,
+                    headers : {
+                        'Content-Type' : 'application/json',
+                        'Authorization' : 'Bearer '
+                            + $window.localStorage.getItem('token')
+                    }
+                }
+            });
+    } ]);
 
 // admin slider add
 rapidScoreServices.factory('SliderAdminAPI', [
-		'$resource',
-		'$window',
-		function($resource, $window) {
-			return $resource(hostname + '/admin/slider/:scoreid',
-			// scoreData
-			{}, {
-				save : {
-					method : 'PUT',
-					headers : {
-						'Content-Type' : 'application/json',
-						'Authorization' : 'Bearer '
-								+ $window.localStorage.getItem('token')
-					}
-				}
-			});
-		} ]);
+    '$resource',
+    '$window',
+    function($resource, $window) {
+        return $resource(hostname + '/admin/slider/:scoreid',
+            // scoreData
+            {}, {
+                save : {
+                    method : 'PUT',
+                    headers : {
+                        'Content-Type' : 'application/json',
+                        'Authorization' : 'Bearer '
+                            + $window.localStorage.getItem('token')
+                    }
+                }
+            });
+    } ]);
 
 // admin score get, get all, add, edit, remove
 rapidScoreServices.factory('ScoreAdminAPI', [
-		'$resource',
-		'$window',
-		function($resource, $window) {
-			return $resource(hostname + '/admin/sheetmusic/:scoreid', {}, {
-				getOne : {
-					method : 'GET',
-					headers : {
-						'Content-Type' : 'application/json',
-						'Authorization' : 'Bearer '
-								+ $window.localStorage.getItem('token')
-					}
-				},
-				getAll : {
-					method : 'GET',
-					isArray : true,
-					headers : {
-						'Content-Type' : 'application/json',
-						'Authorization' : 'Bearer '
-								+ $window.localStorage.getItem('token')
-					}
-				},
-				add : {
-					method : 'POST',
-					headers : {
-						'Content-Type' : 'application/json',
-						'Authorization' : 'Bearer '
-								+ $window.localStorage.getItem('token')
-					}
-				},
-				save : {
-					method : 'PUT',
-					headers : {
-						'Content-Type' : 'application/json',
-						'Authorization' : 'Bearer '
-								+ $window.localStorage.getItem('token')
-					}
-				},
-				remove : {
-					method : 'DELETE',
-					isArray: true,
-					headers : {
-						'Content-Type' : 'application/json',
-						'Authorization' : 'Bearer '
-								+ $window.localStorage.getItem('token')
-					}
-				}
-			});
-		} ]);
+    '$resource',
+    '$window',
+    function($resource, $window) {
+        return $resource(hostname + '/admin/sheetmusic/:scoreid', {}, {
+            getOne : {
+                method : 'GET',
+                headers : {
+                    'Content-Type' : 'application/json',
+                    'Authorization' : 'Bearer '
+                        + $window.localStorage.getItem('token')
+                }
+            },
+            getAll : {
+                method : 'GET',
+                isArray : true,
+                headers : {
+                    'Content-Type' : 'application/json',
+                    'Authorization' : 'Bearer '
+                        + $window.localStorage.getItem('token')
+                }
+            },
+            add : {
+                method : 'POST',
+                headers : {
+                    'Content-Type' : 'application/json',
+                    'Authorization' : 'Bearer '
+                        + $window.localStorage.getItem('token')
+                }
+            },
+            save : {
+                method : 'PUT',
+                headers : {
+                    'Content-Type' : 'application/json',
+                    'Authorization' : 'Bearer '
+                        + $window.localStorage.getItem('token')
+                }
+            },
+            remove : {
+                method : 'DELETE',
+                isArray: true,
+                headers : {
+                    'Content-Type' : 'application/json',
+                    'Authorization' : 'Bearer '
+                        + $window.localStorage.getItem('token')
+                }
+            }
+        });
+    } ]);
 
 // admin category type get, get all, add
 rapidScoreServices.factory('TypeAdminAPI', [
-		'$resource',
-		'$window',
-		function($resource, $window) {
-			return $resource(hostname + '/admin/types', {}, {
-				getAll : {
-					method : 'GET',
-					isArray : true,
-					headers : {
-						'Content-Type' : 'application/json',
-						'Authorization' : 'Bearer '
-								+ $window.localStorage.getItem('token')
-					}
-				},
-				add : {
-					method : 'POST',
-					headers : {
-						'Content-Type' : 'application/json',
-						'Authorization' : 'Bearer '
-								+ $window.localStorage.getItem('token')
-					}
-				}
-			});
-		} ]);
+    '$resource',
+    '$window',
+    function($resource, $window) {
+        return $resource(hostname + '/admin/types', {}, {
+            getAll : {
+                method : 'GET',
+                isArray : true,
+                headers : {
+                    'Content-Type' : 'application/json',
+                    'Authorization' : 'Bearer '
+                        + $window.localStorage.getItem('token')
+                }
+            },
+            add : {
+                method : 'POST',
+                headers : {
+                    'Content-Type' : 'application/json',
+                    'Authorization' : 'Bearer '
+                        + $window.localStorage.getItem('token')
+                }
+            }
+        });
+    } ]);
 
 // get sub type list of given type; add sub type; edit type(p/s) name, remove
 // type
 rapidScoreServices.factory('SubTypeAdminAPI', [
-		'$resource',
-		'$window',
-		function($resource, $window) {
-			return $resource(hostname + '/admin/types/:typeid', {}, {
-				getSub : {
-					method : 'GET',
-					isArray: true,
-					headers : {
-						'Content-Type' : 'application/json',
-						'Authorization' : 'Bearer '
-								+ $window.localStorage.getItem('token')
-					}
-				},
-				add : {
-					method : 'POST',
-					headers : {
-						'Content-Type' : 'application/json',
-						'Authorization' : 'Bearer '
-								+ $window.localStorage.getItem('token')
-					}
-				},
-				save : {
-					method : 'PUT',
-					headers : {
-						'Content-Type' : 'application/json',
-						'Authorization' : 'Bearer '
-								+ $window.localStorage.getItem('token')
-					}
-				},
-				remove : {
-					method : 'DELETE',
-					headers : {
-						'Content-Type' : 'application/json',
-						'Authorization' : 'Bearer '
-								+ $window.localStorage.getItem('token')
-					}
-				}
-			})
-		} ]);
+    '$resource',
+    '$window',
+    function($resource, $window) {
+        return $resource(hostname + '/admin/types/:typeid', {}, {
+            getSub : {
+                method : 'GET',
+                isArray: true,
+                headers : {
+                    'Content-Type' : 'application/json',
+                    'Authorization' : 'Bearer '
+                        + $window.localStorage.getItem('token')
+                }
+            },
+            add : {
+                method : 'POST',
+                headers : {
+                    'Content-Type' : 'application/json',
+                    'Authorization' : 'Bearer '
+                        + $window.localStorage.getItem('token')
+                }
+            },
+            save : {
+                method : 'PUT',
+                headers : {
+                    'Content-Type' : 'application/json',
+                    'Authorization' : 'Bearer '
+                        + $window.localStorage.getItem('token')
+                }
+            },
+            remove : {
+                method : 'DELETE',
+                headers : {
+                    'Content-Type' : 'application/json',
+                    'Authorization' : 'Bearer '
+                        + $window.localStorage.getItem('token')
+                }
+            }
+        })
+    } ]);
 
 // admin add score link
 rapidScoreServices.factory('ScoreLinkAPI', [
@@ -327,100 +327,100 @@ rapidScoreServices.factory('ScoreLinkAPI', [
 
 // admin add score type
 rapidScoreServices.factory('ScoreTypeAPI', [
-		'$resource',
-		'$window',
-		function($resource, $window) {
-			return $resource(hostname + '/admin/score-type/:scoreid/:typeid',
-			//
-			{}, {
-				add : {
-					method : 'POST',
-					isArray: true,
-					headers : {
-						'Content-Type' : 'application/json',
-						'Authorization' : 'Bearer '
-								+ $window.localStorage.getItem('token')
-					}
-				},
-				remove : {
-					method : 'DELETE',
-					isArray: true,
-					headers : {
-						'Content-Type' : 'application/json',
-						'Authorization' : 'Bearer '
-								+ $window.localStorage.getItem('token')
-					}
-				}
-			});
-		} ]);
+    '$resource',
+    '$window',
+    function($resource, $window) {
+        return $resource(hostname + '/admin/score-type/:scoreid/:typeid',
+            //
+            {}, {
+                add : {
+                    method : 'POST',
+                    isArray: true,
+                    headers : {
+                        'Content-Type' : 'application/json',
+                        'Authorization' : 'Bearer '
+                            + $window.localStorage.getItem('token')
+                    }
+                },
+                remove : {
+                    method : 'DELETE',
+                    isArray: true,
+                    headers : {
+                        'Content-Type' : 'application/json',
+                        'Authorization' : 'Bearer '
+                            + $window.localStorage.getItem('token')
+                    }
+                }
+            });
+    } ]);
 
 // users admin get all, get one
 rapidScoreServices.factory('UserAdminAPI', [
-		'$resource',
-		'$window',
-		function($resource, $window) {
-			return $resource(hostname + '/admin/users/:username', {}, {
-				getOne : {
-					method : 'GET',
-					headers : {
-						'Content-Type' : 'application/json',
-						'Authorization' : 'Bearer '
-								+ $window.localStorage.getItem('token')
-					}
-				},
-				getAll : {
-					method : 'GET',
-					isArray : true,
-					headers : {
-						'Content-Type' : 'application/json',
-						'Authorization' : 'Bearer '
-								+ $window.localStorage.getItem('token')
-					}
-				}
-			});
-		} ]);
+    '$resource',
+    '$window',
+    function($resource, $window) {
+        return $resource(hostname + '/admin/users/:username', {}, {
+            getOne : {
+                method : 'GET',
+                headers : {
+                    'Content-Type' : 'application/json',
+                    'Authorization' : 'Bearer '
+                        + $window.localStorage.getItem('token')
+                }
+            },
+            getAll : {
+                method : 'GET',
+                isArray : true,
+                headers : {
+                    'Content-Type' : 'application/json',
+                    'Authorization' : 'Bearer '
+                        + $window.localStorage.getItem('token')
+                }
+            }
+        });
+    } ]);
 
 // Unprotected URI
 
 rapidScoreServices.factory('ScoreAPI', [ '$resource', function($resource) {
-	return $resource(hostname + '/sheetmusic/:scoreid', {}, {
-		getOne : {
-			method : 'GET'
-		},
-		getAll : {
-			method : 'GET',
-			isArray : true
-		}
-	});
+    return $resource(hostname + '/sheetmusic/:scoreid', {}, {
+        getOne : {
+            method : 'GET'
+        },
+        getAll : {
+            method : 'GET',
+            isArray : true
+        }
+    });
 } ]);
 
 rapidScoreServices.factory('LinkAPI', [ '$resource', function($resource) {
-	return $resource(hostname + '/links/:scoreid', {}, {
-		getAll : {
-			method : 'GET',
-			isArray: true
-		}
-	});
+    return $resource(hostname + '/links/:scoreid', {}, {
+        getAll : {
+            method : 'GET',
+            isArray: true
+        }
+    });
 } ]);
 
 rapidScoreServices.factory('TypeAPI', [ '$resource', function($resource) {
-	return $resource(hostname + '/types/:typename', {}, {
-		getAll : {
-			method : 'GET',
-			isArray: true
-		},
-		getOne : {
-			method : 'GET'
-		}
-	});
+    return $resource(hostname + '/types/:typename', {}, {
+        getAll : {
+            method : 'GET',
+            isArray: true
+        },
+        getOne : {
+            method : 'GET'
+        }
+    });
 } ]);
 
 rapidScoreServices.factory('SubTypeAPI', [ '$resource', function($resource) {
-	return $resource(hostname + '/sheetmusic-types/:pname/:subname', {}, {
-		getAll : {
-			method : 'GET'
-		}
-	});
+    return $resource(hostname + '/sheetmusic-types/:pname/:subname', {}, {
+        getAll : {
+            method : 'GET'
+        }
+    });
 } ]);
 
 rapidScoreServices.factory('SubTypeIdAPI', [ '$resource', function($resource) {
@@ -433,25 +433,25 @@ rapidScoreServices.factory('SubTypeIdAPI', [ '$resource', function($resource) {
 
 
 rapidScoreServices.factory('SliderAPI', [ '$resource', function($resource) {
-	return $resource(hostname + '/slider', {}, {
-		getAll : {
-			method : 'GET',
-			isArray : true
-		}
-	});
+    return $resource(hostname + '/slider', {}, {
+        getAll : {
+            method : 'GET',
+            isArray : true
+        }
+    });
 } ]);
 
 rapidScoreServices.factory('CheckUsernameAPI', [ '$resource',
-		function($resource) {
-			return $resource(hostname + '/check-username/:username', {}, {
-				getOne : {
-					method : 'GET',
-					headers : {
-						'Content-Type' : 'application/json'
-					}
-				}
-			});
-		} ]);
+    function($resource) {
+        return $resource(hostname + '/check-username/:username', {}, {
+            getOne : {
+                method : 'GET',
+                headers : {
+                    'Content-Type' : 'application/json'
+                }
+            }
+        });
+    } ]);
 
 /* post, put, delete by id */
 
@@ -494,66 +494,114 @@ rapidScoreServices.factory('ViewAPI', [ '$resource', function($resource) {
     });
 } ]);
 
+// Session service
+rapidScoreServices.service('Session', function ($window) {
+    this.create = function (data) {
+
+        $window.localStorage.setItem('token',data.token);
+        $window.localStorage.setItem('username',data.username);
+        $window.localStorage.setItem('uid',data.id);
+        $window.localStorage.setItem('admin',data.admin);
+        console.log($window.localStorage);
+
+        this.token = data.token;
+        this.userName = data.username;
+        this.userId = data.id;
+        this.userRole = data.admin;
+
+        console.log('created');
+        console.log(this);
+    };
+    this.destroy = function () {
+        $window.localStorage.removeItem('token');
+        $window.localStorage.removeItem('username');
+        $window.localStorage.removeItem('uid');
+        $window.localStorage.removeItem('admin');
+        console.log($window.localStorage);
+
+        this.token = null;
+        this.userName = null;
+        this.userId = null;
+        this.userRole = null;
+
+        console.log('destroyed');
+        console.log(this);
+    };
+    return this;
+})
+
 // user login
-rapidScoreServices.factory('LoginAPI', function($http) {
-	return {
-		login : function(username, password) {
-			return $http({
-				method : 'POST',
-				url : hostname + '/login',
-				data : {
-					username : username,
-					password : password
-				},
-				headers : {
-					'Content-Type' : 'application/json'
-				}
-			});
-		},
+rapidScoreServices.factory('LoginAPI', function($http, Session) {
+    var authService = {};
 
-		logout : function() {
+    authService.login = function (username, password) {
+        return $http({
+            method : 'POST',
+            url : hostname + '/login',
+            data : {
+                username : username,
+                password : password
+            },
+            headers : {
+                'Content-Type' : 'application/json'
+            }
+        }).success(function(res){
+            Session.create(res);
+        });
+    };
 
-		}
-	}
+    authService.isAuthenticated = function () {
+        return !!Session.userId;
+    };
+
+    authService.isAuthorized = function (authorizedRoles) {
+        if (!angular.isArray(authorizedRoles)) {
+            authorizedRoles = [authorizedRoles];
+        }
+        return (authService.isAuthenticated() &&
+            authorizedRoles.indexOf(Session.userRole) !== -1);
+    };
+
+    return authService;
 });
 
 // user register
 rapidScoreServices.factory('RegisterAPI', function($http) {
-	return {
-		save : function(username, password, firstname, surname) {
-			return $http({
-				method : 'POST',
-				url : hostname + '/users',
-				data : {
-					username : username,
-					password : password,
+    return {
+        save : function(username, password, firstname, surname) {
+            return $http({
+                method : 'POST',
+                url : hostname + '/users',
+                data : {
+                    username : username,
+                    password : password,
                     firstname : firstname,
                     surname : surname
-				},
-				headers : {
-					'Content-Type' : 'application/json'
-				}
-			});
-		}
-	}
+                },
+                headers : {
+                    'Content-Type' : 'application/json'
+                }
+            });
+        }
+    }
 });
 
 rapidScoreServices.factory('TokenInterceptor', function($q, $window) {
-	return {
-		request : function(config) {
-			config.headers = config.headers || {};
+    return {
+        request : function(config) {
+            config.headers = config.headers || {};
 
-			if ($window.localStorage.getItem('token')) {
-				config.headers.Authorization = 'Bearer '
-						+ $window.localStorage.getItem('token');
-			}
-			return config || $q.when(config);
-		},
+            if ($window.localStorage.getItem('token')) {
+                config.headers.Authorization = 'Bearer '
+                    + $window.localStorage.getItem('token');
+            }
+            return config || $q.when(config);
+        },
 
-		response : function(response) {
-			if (response.status === 401) {
-			}
-			return response || $q.when(response);
-		}
-	};
+        response : function(response) {
+            if (response.status === 401) {
+            }
+            return response || $q.when(response);
+        }
+    };
 });

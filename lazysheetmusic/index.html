@@ -74,7 +74,13 @@
 						<li ng-class="setActive('composers')"><a
 							href="#/types/composers">Composers</a></li>
 						<li ng-class="setActive('genres')"><a href="#/types/genres">Genres</a></li>
-                        <li ng-class="setActive('about')"><a href="#/about">About</a></li>
+                        <li ng-class="setActive('about')" class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown">About</a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="#/about">About</a></li>
+                                <li><a href="#/contact">Contact Us</a></li>
+                            </ul>
+                        </li>
 						<!-- If Logged -->
 						<li ng-class="setActive('shopping-cart')" ng-if="logged">
 						  <a href="#/account/shopping-cart"> 
@@ -91,16 +97,18 @@
 								<li><a href="#/account">My Account</a></li>
 								<li><a ng-click="logout()">Log Out</a></li>
 							</ul>
-					  </li>
+					    </li>
 							
             <!-- If Not Logged -->
-						<li ng-if="!logged" class="dropdown"><a
-							class="dropdown-toggle" data-toggle="dropdown"><span
-								class="glyphicon glyphicon-user pull-left"></span></a>
+						<li ng-if="!logged" class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown">
+                                <span class="glyphicon glyphicon-user pull-left"></span>
+                            </a>
 							<ul class="dropdown-menu" role="menu">
 								<li><a href="#/login">Log In</a></li>
 								<li><a href="#/register">Create Account</a></li>
-							</ul></li>
+							</ul>
+                        </li>
 					</ul>
 
 				</div>

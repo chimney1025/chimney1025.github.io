@@ -128,14 +128,14 @@ rapidScoreControllers
                                 Cart.add({},{score_id : $scope.score.id},function(res) {
                                     if (res) {
                                         $rootScope.modalcheck="Added to Cart !\n";
-                                         if($scope.score.links.length){
+                                        if($scope.score.links.length){
 
-                                             $rootScope.modalcheck+="\nYou will receive the following files: \n ";
+                                            $rootScope.modalcheck+="\nYou will receive the following files: \n ";
 
-                                             for(var i=0; i<$scope.score.links.length; i++){
-                                                 $rootScope.modalcheck += "\n" + $scope.score.links[i].desc + "\n";
-                                             }
-                                         }
+                                            for(var i=0; i<$scope.score.links.length; i++){
+                                                $rootScope.modalcheck += "\n" + $scope.score.links[i].desc + "\n";
+                                            }
+                                        }
 
 
                                         $rootScope.modaloption = true;
@@ -685,15 +685,15 @@ rapidScoreControllers.controller('UserCtrl', [
 
         $scope.updatepassword = function(oldpass, newpass){
         }
-        
+
         $scope.showlinks = function(scoreid) {
-        	Link.getAll({
-        		scoreid: scoreid
-        	}, function(links){
-        		$scope.orderlinks = links;
-        		//$scope.showlinks = true;
-        		console.log(links);
-        	})
+            Link.getAll({
+                scoreid: scoreid
+            }, function(links){
+                $scope.orderlinks = links;
+                //$scope.showlinks = true;
+                console.log(links);
+            })
         }
 
         $scope.showorder = function(orderid) {
@@ -711,7 +711,7 @@ rapidScoreControllers.controller('UserCtrl', [
                             $scope.purchased[index].showdetail = true;
                             $scope.orderdetails = scores;
                             //$scope.showlinks = false;
-                            
+
                         } else {
 
                         }
@@ -737,7 +737,7 @@ rapidScoreControllers.controller('UserCtrl', [
                     $scope.cart = Cart.getAll(function(res){
 
                         $scope.total = 0;
-                        
+
                         for(var i=0; i<res.length; i++){
                             $scope.total += res[i].price;
                         }
@@ -801,8 +801,9 @@ rapidScoreControllers.controller('sessionService',
         'UserCartAPI',
         'breadcrumbs',
         'TypeAPI',
+        'Session',
         function($scope, $rootScope, $window, $location, Cart,
-                 breadcrumbs, Type) {
+                 breadcrumbs, Type, Session) {
 
             $scope.breadcrumbs = breadcrumbs;
 
@@ -847,75 +848,33 @@ rapidScoreControllers.controller('sessionService',
 
             $scope.logout = function logout() {
                 $rootScope.logged = false;
+                Session.destroy();
+                /*
                 $window.localStorage.removeItem('token');
                 $window.localStorage.removeItem('username');
                 $window.localStorage.removeItem('uid');
                 $window.localStorage.removeItem('admin');
-                
+                 */
+
                 //
                 $location.path("/login");
             }
         } ]);
 
 rapidScoreControllers
-	.controller(
-			'ContactCtrl',['$scope', '$rootScope', '$window', 'ContactAPI', 
-			               function($scope, $rootScope, $window, Contact){
-
-        // Contact
-        $rootScope.contactInfo = {};
-        $rootScope.contactCheck = '';
-        
-        if($rootScope.user){
-        	$rootScope.contactInfo.name = $rootScope.user.firstname + ' ' + $rootScope.user.surname; 
-        	$rootScope.contactInfo.email = $rootScope.user.username; 
-        }
-
-        $scope.sendMsg = function() {
-
-            $scope.contactCheck = '';
-
-            if (!$rootScope.contactInfo.name) {
-                $scope.contactCheck = 'Invalid Name';
-                return;
-            }
-
-            if (!$rootScope.contactInfo.email) {
-                $scope.contactCheck = 'Invalid Email';
-                return;
-            }
-            // submit data
-            else {
-                $rootScope.modalcheck="Sending message ...";
-                $rootScope.modaloption = false;
-                $rootScope.setModal = "modal";
-                // create json to be posted
-                var contactData = new Object();
-
-                contactData.name = $rootScope.contactInfo.name.trim();
-                contactData.email = $rootScope.contactInfo.email.trim();
-                contactData.message = $rootScope.contactInfo.message.trim();
-
-                Contact.add(
-                    {},
-                    contactData,
-                    function(res) {
-                        if (res) {
-                            $rootScope.modalcheck="Message sent!";
-                            $rootScope.modaloption = true;
-                            $rootScope.setModal = "modal";
-
-                            $rootScope.closemodal=function(){
-                                $rootScope.modalcheck = "";
-                                $rootScope.setModal = "";
-                                $window.location.reload();
-                            }
-                        }
-                    });
-
-            }
-        };
-	}]);
+    .constant('AUTH_EVENTS', {
+        loginSuccess: 'auth-login-success',
+        loginFailed: 'auth-login-failed',
+        logoutSuccess: 'auth-logout-success',
+        sessionTimeout: 'auth-session-timeout',
+        notAuthenticated: 'auth-not-authenticated',
+        notAuthorized: 'auth-not-authorized'
+    }).constant('USER_ROLES', {
+        all: '*',
+        admin: 'admin',
+        editor: 'editor',
+        guest: 'guest'
+    });
 
 rapidScoreControllers
     .controller(
@@ -952,59 +911,38 @@ rapidScoreControllers
 
             // Login
             $scope.loginInfo = {};
-            $rootScope.loginCheck = '';
+            $scope.loginCheck = '';
 
             $scope.login = function(loginInfo) {
-                $rootScope.loginCheck = '';
+                $scope.loginCheck = '';
 
                 if (!loginInfo.username) {
-                    $rootScope.loginCheck = 'Invalid Username';
+                    $scope.loginCheck = 'Invalid Username';
                     return;
                 }
 
                 else if (!loginInfo.password) {
-                    $rootScope.loginCheck = 'Please enter your Password';
+                    $scope.loginCheck = 'Please enter your Password';
                     return;
                 }
-                /*
-                 * else if($scope.loginInfo.password.length < 6 ||
-                 * $scope.loginInfo.password.length > 20){
-                 * $scope.loginCheck = 'Password length should
-                 * be 6 to 20 characters long'; return; }
-                 */
 
                 else {
                     //$rootScope.modalcheck="Signing in ...";
-                    $rootScope.loginCheck = 'Signing in ...';
-                    $rootScope.setCheck = "form-success";
-                    LoginService.login(loginInfo.username,loginInfo.password).success(
-                        function(data) {
-                            console.log(data.header);
-                            if (data && data.token) {
-                                $window.localStorage.setItem('token',data.token);
-                                $window.localStorage.setItem('username',data.username);
-                                $window.localStorage.setItem('uid',data.id);
-                                $window.localStorage.setItem('admin',data.admin);
-                                console.log($window.localStorage);
+                    $scope.loginCheck = 'Signing in ...';
+                    $scope.setCheck = "form-success";
 
-                                // set global
-                                // variables
-                                // too quick, a
-                                // refresh of the
-                                // page gives better
-                                // user experience
-                                // $rootScope.user =
-                                // User.getOne({username:
-                                // data.username});
+                    LoginService.login(loginInfo.username.trim(),loginInfo.password.trim()).success(
+                        function(data) {
+                            //$rootScope.$broadcast(AUTH_EVENTS.loginSuccess);
+                            //$scope.setCurrentUser(user);
+
+                            if (data && data.token) {
 
                                 // refresh
                                 //$rootScope.modalcheck="Login Successful.";
-                                $rootScope.loginCheck = "Login Successful. Redirecting...";
-                                $rootScope.setCheck = "form-success";
+                                $scope.loginCheck = "Login Successful. Redirecting...";
+                                $scope.setCheck = "form-success";
                                 // $location.path("/account");
-                                if($rootScope.beforelogin){
-                                    $location.path($rootScope.beforelogin.redirectTo);
-                                }
                                 $window.location.reload();
 
 
@@ -1013,13 +951,14 @@ rapidScoreControllers
                                     .removeItem('token');
                                 console
                                     .log(data.status);
-                                $rootScope.loginCheck = "Invalid Login";
+                                $scope.loginCheck = "Invalid Login";
                                 //$rootScope.modalcheck="Login failed. Please try again.";
                                 //$rootScope.modaloption = true;
                             }
-                        })
-                        .error(
+                        }).error(
                         function(err) {
+                            //$rootScope.$broadcast(AUTH_EVENTS.loginFailed);
+
                             $rootScope.modalcheck="Login failed. Please try again.";
                             $rootScope.modaloption = true;
                             $rootScope.setModal = "modal";
@@ -1029,123 +968,7 @@ rapidScoreControllers
             };
         } ]);
 
-rapidScoreControllers
-    .controller(
-    'ActivateCtrl',
-    [
-        '$scope',
-        'ActivateAPI',
-        '$routeParams',
-        function($scope, Activate, $routeParams) {
-            $scope.loading = true;
-            $scope.res = Activate.get({link: $routeParams.link}, function(r){
-                $scope.loading = false;
-                if(r.css == 0){
-                    $scope.setCheck = "form-success";
-                }
-            })
-        }
-    ]
-)
 
-rapidScoreControllers
-    .controller(
-    'DownloadCtrl',
-    [
-        '$scope',
-        '$rootScope',
-        'DownloadAPI',
-        '$routeParams',
-        '$window',
-        '$location',
-        function($scope, $rootScope, Download, $routeParams, $window, $location){
-
-            $scope.loading = true;
-            $scope.res = Download.get({link:$routeParams.link}, function(r){
-                //window.open(r.url, 'download');
-                //alert(r.url);
-            	//open download page
-            	if(r.url){
-                    window.location.assign(r.url);
-            	} else if(r.message){
-            		$scope.loading = false;
-            	}
-            })
-        }
-    ]
-)
-
-rapidScoreControllers
-    .controller(
-    'ViewOrderCtrl',
-    [
-        '$scope',
-        '$rootScope',
-        'ViewAPI',
-        '$routeParams',
-        '$window',
-        '$location',
-        '$timeout',
-        function($scope, $rootScope, ViewOrder, $routeParams, $window, $location, $timeout) {
-            $scope.loading = true;
-            $scope.downloadtext = "Preparing...";
-            $scope.times = " ";
-            $scope.downloadurl = "#";
-
-            $scope.res = ViewOrder.get({linkid: $routeParams.linkid, scoreid: $routeParams.scoreid}, function(r){
-                $scope.loading = false;
-                console.log(r);
-            	$scope.downloaded = 0;
-
-                if(r.token){
-                    $scope.downloadfile = function(){
-                    	if($scope.downloaded == 0){
-                    		console.log(r.token);
-                    		//$location.path('/account/download/' + r.token);
-                            var baseurl = 'http://localhost:63342/heroku/lazyscorefs/lazysheetmusic/#';
-                            $window.open('/#/account/download/'+ r.token, '_blank');
-                            if(r.time <3){
-                                r.time ++;
-                            }
-
-                            $scope.downloadtext = "File Opened in New Window";
-                            $scope.downloadclass = "btn-default btn-nolink";
-                            $scope.downloaded = 1;
-                    	}
-                    }
-                    //$scope.downloadurl = "/account/download/" + r.token;
-
-                    $scope.downloadtext = "Click to Download File";
-                    $scope.downloadclass = "btn-warning";
-                    //set timeout
-
-                    $scope.timeInMs = 5000;
-
-                    /*
-                    var countDown = function(){
-                        $scope.timeInMs -= 1000;
-
-                        if($scope.timeInMs == 0){
-
-                            $scope.downloadtext = "Click to Download File";
-                            $scope.downloadclass = "btn-warning";
-                            window.open(r.url, '_blank');
-
-                        } else{
-                            $timeout(countDown, 1000);
-                            $scope.downloadtext = "Download will start in " + $scope.timeInMs/1000 + " seconds.";
-
-                        }
-                    }
-
-                    $timeout(countDown, 1000);
-                    */
-
-                }
-            })
-        }
-    ]
-)
 
 rapidScoreControllers
     .controller(
@@ -1156,11 +979,19 @@ rapidScoreControllers
         'RegisterAPI',
         'CheckUsernameAPI',
         '$location',
-        function($scope, $rootScope, User, CheckUsername, $location) {
+        '$window',
+        function($scope, $rootScope, User, CheckUsername, $location, $window) {
 
             // Sign Up
             $scope.regInfo = {};
             $scope.regCheck = '';
+
+            $scope.closemodal = function(){
+                $rootScope.modalcheck = "";
+                $rootScope.setModal = "";
+                //$window.location.reload();
+                $location.path('/account');
+            }
 
             $scope.regSave = function(regInfo) {
                 $scope.regCheck = '';
@@ -1197,20 +1028,17 @@ rapidScoreControllers
                     $rootScope.modalcheck="Signing up ...";
                     $rootScope.modaloption = false;
                     $rootScope.setModal = "modal";
-                    
+
                     //$scope.regCheck = 'We are signing you up...';
                     //$scope.setCheck = "form-success";
                     // check username before submit
-                    CheckUsername
-                        .getOne(
+                    CheckUsername.getOne(
                         {
                             username : regInfo.username.trim()
                         },
                         function(res2) {
-                            console
-                                .log("check username ");
-                            console
-                                .log(res2.result);
+                            console.log("check username ");
+                            console.log(res2.result);
 
                             if (res2.result) {
                                 $rootScope.modalcheck="Username exists. Try another one.";
@@ -1226,15 +1054,13 @@ rapidScoreControllers
                                 regData.firstname = regInfo.firstname.trim();
                                 regData.surname = regInfo.surname.trim();
                                 regData.password = regInfo.pass1.trim();
-                                console
-                                    .log(regData);
-                                User
-                                    .save(
+                                console.log(regData);
+
+                                User.save(
                                     regData.username,
                                     regData.password,
                                     regData.firstname,
-                                    regData.surname)
-                                    .success(function(res) {
+                                    regData.surname).success(function(res) {
                                         if (res) {
                                             $rootScope.closemodal=function(){
                                                 $rootScope.modalcheck = "";
@@ -1263,3 +1089,178 @@ rapidScoreControllers
                 }
             };
         } ]);
+
+
+
+rapidScoreControllers
+    .controller(
+    'ContactCtrl',['$scope', '$rootScope', '$window', 'ContactAPI',
+        function($scope, $rootScope, $window, Contact){
+
+            // Contact
+            $scope.contactInfo = {};
+            $scope.contactCheck = '';
+
+            $scope.sendMsg = function(contactInfo) {
+
+                $scope.contactCheck = '';
+
+                if (!contactInfo.name) {
+                    $scope.contactCheck = 'Invalid Name';
+                    return;
+                }
+
+                if (!contactInfo.email) {
+                    $scope.contactCheck = 'Invalid Email';
+                    return;
+                }
+                // submit data
+                else {
+                    $rootScope.modalcheck="Sending message ...";
+                    $rootScope.modaloption = false;
+                    $rootScope.setModal = "modal";
+                    // create json to be posted
+                    var contactData = new Object();
+
+                    contactData.name = contactInfo.name.trim();
+                    contactData.email = contactInfo.email.trim();
+                    contactData.message = contactInfo.message.trim();
+
+                    Contact.add(
+                        {},
+                        contactData,
+                        function(res) {
+                            if (res) {
+                                $rootScope.modalcheck="Message sent!";
+                                $rootScope.modaloption = true;
+                                $rootScope.setModal = "modal";
+
+                                $rootScope.closemodal=function(){
+                                    $rootScope.modalcheck = "";
+                                    $rootScope.setModal = "";
+                                    $window.location.reload();
+                                }
+                            }
+                        });
+
+                }
+            };
+        }]);
+
+rapidScoreControllers
+    .controller(
+    'ActivateCtrl',
+    [
+        '$scope',
+        'ActivateAPI',
+        '$routeParams',
+        function($scope, Activate, $routeParams) {
+            $scope.loading = true;
+            $scope.res = Activate.get({link: $routeParams.link}, function(r){
+                $scope.loading = false;
+                if(r.css == 0){
+                    $scope.setCheck = "form-success";
+                }
+            })
+        }
+    ]
+)
+
+rapidScoreControllers
+    .controller(
+    'DownloadCtrl',
+    [
+        '$scope',
+        '$rootScope',
+        'DownloadAPI',
+        '$routeParams',
+        '$window',
+        '$location',
+        function($scope, $rootScope, Download, $routeParams, $window, $location){
+
+            $scope.loading = true;
+            $scope.res = Download.get({link:$routeParams.link}, function(r){
+                //window.open(r.url, 'download');
+                //alert(r.url);
+                //open download page
+                if(r.url){
+                    window.location.assign(r.url);
+                } else if(r.message){
+                    $scope.loading = false;
+                }
+            })
+        }
+    ]
+)
+
+rapidScoreControllers
+    .controller(
+    'ViewOrderCtrl',
+    [
+        '$scope',
+        '$rootScope',
+        'ViewAPI',
+        '$routeParams',
+        '$window',
+        '$location',
+        '$timeout',
+        function($scope, $rootScope, ViewOrder, $routeParams, $window, $location, $timeout) {
+            $scope.loading = true;
+            $scope.downloadtext = "Preparing...";
+            $scope.times = " ";
+            $scope.downloadurl = "#";
+
+            $scope.res = ViewOrder.get({linkid: $routeParams.linkid, scoreid: $routeParams.scoreid}, function(r){
+                $scope.loading = false;
+                console.log(r);
+                $scope.downloaded = 0;
+
+                if(r.token){
+                    $scope.downloadfile = function(){
+                        if($scope.downloaded == 0){
+                            console.log(r.token);
+                            //$location.path('/account/download/' + r.token);
+                            var baseurl = 'http://localhost:63342/heroku/lazyscorefs/lazysheetmusic/#';
+                            $window.open('/#/account/download/'+ r.token, '_blank');
+                            if(r.time <3){
+                                r.time ++;
+                            }
+
+                            $scope.downloadtext = "File Opened in New Window";
+                            $scope.downloadclass = "btn-default btn-nolink";
+                            $scope.downloaded = 1;
+                        }
+                    }
+                    //$scope.downloadurl = "/account/download/" + r.token;
+
+                    $scope.downloadtext = "Click to Download File";
+                    $scope.downloadclass = "btn-warning";
+                    //set timeout
+
+                    $scope.timeInMs = 5000;
+
+                    /*
+                     var countDown = function(){
+                     $scope.timeInMs -= 1000;
+
+                     if($scope.timeInMs == 0){
+
+                     $scope.downloadtext = "Click to Download File";
+                     $scope.downloadclass = "btn-warning";
+                     window.open(r.url, '_blank');
+
+                     } else{
+                     $timeout(countDown, 1000);
+                     $scope.downloadtext = "Download will start in " + $scope.timeInMs/1000 + " seconds.";
+
+                     }
+                     }
+
+                     $timeout(countDown, 1000);
+                     */
+
+                }
+            })
+        }
+    ]
+)
