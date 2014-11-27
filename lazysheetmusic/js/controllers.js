@@ -792,9 +792,7 @@ rapidScoreControllers.controller('UserCtrl', [
         }
     } ]);
 
-rapidScoreControllers
-.controller(
-'ContactCtrl',['$scope', '$rootScope', '$window', 'ContactAPI',
+rapidScoreControllers.controller('ContactCtrl',['$scope', '$rootScope', '$window', 'ContactAPI',
     function($scope, $rootScope, $window, Contact){
 
         // Contact
@@ -847,10 +845,7 @@ rapidScoreControllers
         };
     }]);
 
-rapidScoreControllers
-.controller(
-'ActivateCtrl',
-[
+rapidScoreControllers.controller('ActivateCtrl',[
     '$scope',
     'ActivateAPI',
     '$routeParams',
@@ -866,10 +861,7 @@ rapidScoreControllers
 ]
 )
 
-rapidScoreControllers
-.controller(
-'DownloadCtrl',
-[
+rapidScoreControllers.controller('DownloadCtrl',[
     '$scope',
     '$rootScope',
     'DownloadAPI',
@@ -893,10 +885,7 @@ rapidScoreControllers
 ]
 )
 
-rapidScoreControllers
-.controller(
-'ViewOrderCtrl',
-[
+rapidScoreControllers.controller('ViewOrderCtrl',[
     '$scope',
     '$rootScope',
     'ViewAPI',
@@ -980,28 +969,26 @@ rapidScoreControllers
         guest: 'guest'
     });
 
-rapidScoreControllers
-    .controller(
-    'LoginCtrl',
-    [
+rapidScoreControllers.controller('LoginCtrl',[
         '$scope',
         '$rootScope',
         '$location',
         '$window',
         'AuthService',
         'UserAPI',
+        'AUTH_EVENTS',
         function($scope, $rootScope, $location, $window,
-                 AuthService, User) {
+                 AuthService, User, AUTH_EVENTS) {
 
             // if logged in, go to user page
 
             $rootScope.modalcheck="";
             $rootScope.setModal = "";
-            if ($rootScope.logged) {
+            if (AuthService.isAuthenticated()) {
 
-                if ($rootScope.logged_admin) {
+                if (AuthService.isAdmin()) {
                     // $location.path("/admin");
-                    $location.path("/account");
+                    $location.path("/admin");
                 } else {
                     $location.path("/account");
                 }
@@ -1037,10 +1024,10 @@ rapidScoreControllers
 
                     AuthService.login(loginInfo.username.trim(),loginInfo.password.trim()).success(
                         function(data) {
-                            //$rootScope.$broadcast(AUTH_EVENTS.loginSuccess);
-                            //$scope.setCurrentUser(user);
 
                             if (data && data.token) {
+                                $rootScope.$broadcast(AUTH_EVENTS.loginSuccess);
+                                $scope.setCurrentUser(data);
 
                                 // refresh
                                 //$rootScope.modalcheck="Login Successful.";
@@ -1051,10 +1038,9 @@ rapidScoreControllers
 
 
                             } else {
-                                $window.localStorage
-                                    .removeItem('token');
-                                console
-                                    .log(data.status);
+                                $rootScope.$broadcast(AUTH_EVENTS.loginFailed);
+                                $scope.setCurrentUser(null);
+                                AuthService.logout();
                                 $scope.loginCheck = "Invalid Login";
                                 //$rootScope.modalcheck="Login failed. Please try again.";
                                 //$rootScope.modaloption = true;
@@ -1074,10 +1060,7 @@ rapidScoreControllers
 
 
 
-rapidScoreControllers
-    .controller(
-    'SignUpCtrl',
-    [
+rapidScoreControllers.controller('SignUpCtrl',[
         '$scope',
         '$rootScope',
         'RegisterAPI',
@@ -1203,23 +1186,37 @@ rapidScoreControllers.controller('sessionService',
 	        'UserCartAPI',
 	        'breadcrumbs',
 	        'TypeAPI',
-	        'Session',
+            'USER_ROLES',
+            'AuthService',
 	        function($scope, $rootScope, $window, $location, Cart,
-	                 breadcrumbs, Type, Session) {
-	        	/*
+	                 breadcrumbs, Type, USER_ROLES, AuthService) {
+
 	        	$scope.currentUser = null;
 	        	$scope.userRoles = USER_ROLES;
 	        	$scope.isAuthorized = AuthService.isAuthorized;
 	        	
 	        	$scope.setCurrentUser = function (user) {
 	        		$scope.currentUser = user;
-	        	};
-	        	*/
+                    $rootScope.logged = true;
+	        	}
+
+                $scope.logout = function logout() {
+                    AuthService.logout();
+                    $rootScope.logged = false;
+                    $scope.currentUser = null;
+                    /*
+                     $window.localStorage.removeItem('token');
+                     $window.localStorage.removeItem('username');
+                     $window.localStorage.removeItem('uid');
+                     $window.localStorage.removeItem('admin');
+                    */
+
+                    $location.path("/login");
+                }
 
 	            $scope.breadcrumbs = breadcrumbs;
 
-	            $rootScope.parent_types = Type.getAll(function(res){
-	            });
+	            $rootScope.parent_types = Type.getAll();
 
 	            $rootScope.table = 1;
 
@@ -1230,35 +1227,21 @@ rapidScoreControllers.controller('sessionService',
 	                $rootScope.setModal = "";
 	            }
 
-	            if (!$window.localStorage.getItem('token')) {
+	            if (!AuthService.isAuthenticated()) {
 	                $rootScope.logged = false;
-	                $window.localStorage.removeItem('token');
-	                $window.localStorage.removeItem('username');
-	                $window.localStorage.removeItem('uid');
-	                $window.localStorage.removeItem('admin');
+                    AuthService.logout();
 	            } else {
 	                $rootScope.logged = true;
-	                $rootScope.logged_username = $window.localStorage
-	                    .getItem('username');
-	                $rootScope.logged_admin = $window.localStorage
-	                    .getItem('admin');
+                    /*
+	                $rootScope.logged_username = $window.localStorage.getItem('username');
+	                $rootScope.logged_admin = $window.localStorage.getItem('admin');
+	                */
+
+                    $rootScope.logged_admin = AuthService.isAdmin();
+
 	                $rootScope.logged_cart = Cart.getAll(function(res) {
 	                    $rootScope.cartcount = res.length;
 	                });
-	            }
-
-	            $scope.logout = function logout() {
-	                $rootScope.logged = false;
-	                Session.destroy();
-	                /*
-	                $window.localStorage.removeItem('token');
-	                $window.localStorage.removeItem('username');
-	                $window.localStorage.removeItem('uid');
-	                $window.localStorage.removeItem('admin');
-	                 */
-
-	                //
-	                $location.path("/login");
 	            }
 	        } ]);
 

@@ -502,36 +502,28 @@ rapidScoreServices.service('Session', function ($window) {
         $window.localStorage.setItem('username',data.username);
         $window.localStorage.setItem('uid',data.id);
         $window.localStorage.setItem('admin',data.admin);
-        console.log($window.localStorage);
 
         this.token = data.token;
         this.userName = data.username;
         this.userId = data.id;
         this.userRole = data.admin;
-
-        console.log('created');
-        console.log(this);
     };
     this.destroy = function () {
         $window.localStorage.removeItem('token');
         $window.localStorage.removeItem('username');
         $window.localStorage.removeItem('uid');
         $window.localStorage.removeItem('admin');
-        console.log($window.localStorage);
 
         this.token = null;
         this.userName = null;
         this.userId = null;
         this.userRole = null;
-
-        console.log('destroyed');
-        console.log(this);
     };
     return this;
 })
 
 // user login
-rapidScoreServices.factory('AuthService', function($http, Session) {
+rapidScoreServices.factory('AuthService', function($http, Session, $window) {
     var authService = {};
 
     authService.login = function (username, password) {
@@ -550,17 +542,35 @@ rapidScoreServices.factory('AuthService', function($http, Session) {
         });
     };
 
+    authService.logout = function(){
+        return Session.destroy();
+    }
+
     authService.isAuthenticated = function () {
+        if($window.localStorage.getItem('username')){
+            return true;
+        } else{
+            return false;
+        }
+        /*
         console.log(!!Session.userId);
         return !!Session.userId;
+        */
     };
 
-    authService.isAuthorized = function (authorizedRoles) {
+    authService.isAdmin = function () {
+        if(!$window.localStorage.getItem('admin') || $window.localStorage.getItem('admin') == "false"){
+            return false;
+        } else{
+            return true;
+        }
+        /*
         if (!angular.isArray(authorizedRoles)) {
             authorizedRoles = [authorizedRoles];
         }
         return (authService.isAuthenticated() &&
             authorizedRoles.indexOf(Session.userRole) !== -1);
+            */
     };
 
     return authService;
