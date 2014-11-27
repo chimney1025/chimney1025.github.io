@@ -67,10 +67,10 @@ rapidScoreControllers
         'UserCartAPI',
         'CheckOrderAPI',
         '$location',
-        '$window',
+        'AuthService',
         '$sce',
         function($scope, $rootScope, $routeParams, Score, Cart,
-                 CheckOrder, $location, $window, $sce) {
+                 CheckOrder, $location, AuthService, $sce) {
             $scope.loading = true;
             $scope.score = Score.getOne({scoreid : $routeParams.scoreId}, function(res){
                 $scope.loading = false;
@@ -87,7 +87,7 @@ rapidScoreControllers
             }
 
             $scope.addcart = function() {
-                if (!$window.localStorage.getItem('uid')) {
+                if (!AuthService.isAuthenticated()) {
                     $location.path('/login');
                 }
 
