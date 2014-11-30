@@ -417,6 +417,10 @@ ul.navbar-nav {
     white-space: pre-line;
 }
 
+.modal-body .form-group{
+    margin: 0;
+}
+
 .modal-dialog{
     width:300px;
     min-height:150px;
@@ -1307,6 +1311,12 @@ span.form-success{
 	Media Queries
 ----------------------------------- */
 /* Large */
+@media (max-width: 1440px){
+    .container{
+        max-width: 1060px;
+    }
+}
+
 @media ( max-width: 1200px){
     .container{
         max-width: 960px;
