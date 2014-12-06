@@ -1007,6 +1007,7 @@ rapidScoreControllers.controller('ScoreListCtrl', [ '$scope', 'ScoreAPI', functi
             $scope.showlogin = function(){
                 if($location.path() != "/login"){
                     $scope.needlogin = true;
+                    $scope.setlogin = "modal";
                 }
             }
 
@@ -1017,6 +1018,7 @@ rapidScoreControllers.controller('ScoreListCtrl', [ '$scope', 'ScoreAPI', functi
             $scope.openModal = function(content, option){
                 $scope.modalcheck = content;
                 $scope.modaloption = option;
+                $scope.setmodal = "modal";
             }
 
             $scope.closemodal = function(){
