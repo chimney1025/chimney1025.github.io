@@ -17,9 +17,9 @@
                 <li><h4>Tags: <a type="button" class="btn-detail btn btn-default" href="#/subtypes/{{type.id}}" ng-repeat="type in score.types" ng-if="!type.obsolete" ng-bind="type.name"> </a></h4></li>
                 <li ng-if="score.audiourl || score.videourl">
                     <h4>
-                    Links:
-                    <a type="button" class="btn-detail btn btn-default"  ng-if="score.audiourl" href="" >Audio</a>
-                    <a type="button" class="btn-detail btn btn-default"  ng-if="score.videourl" href="" >Video</a>
+                    Preview:
+                    <a type="button" class="btn-detail btn btn-default btn-nolink"  ng-if="score.audiourl" href="" >Audio</a>
+                    <a type="button" class="btn-detail btn btn-default btn-nolink"  ng-if="score.videourl" href="" >Video</a>
                     </h4>
                 </li>
                 <li ng-if="score.desc">
@@ -40,7 +40,7 @@
         <img class="main-image" ng-if="score.imageurl && loading == false" ng-src="{{score.imageurl}}" alt="Loading Preview Image">
 
         <!-- 4:3 aspect ratio -->
-        <div name="video" ng-if="score.videourl" class="col-md-12 embed-responsive embed-responsive-16by9">
+        <div id="video" name="video" ng-if="score.videourl" class="col-md-12 embed-responsive embed-responsive-16by9">
             <iframe type="text/html" class="col-md-12 embed-responsive-item" ng-src="{{trustSrc(score.videourl)}}"></iframe>
         </div>
     </div>

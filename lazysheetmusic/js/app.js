@@ -20,12 +20,6 @@ rapidScoreApp.config(function($httpProvider) {
                 // Error: check the error status to get only the 401
                 function(response) {
                     if (response.status === 401) {
-                        $rootScope.logged = false;
-                        $window.localStorage.removeItem('token');
-                        $window.localStorage.removeItem('username');
-                        $window.localStorage.removeItem('uid');
-                        $window.localStorage.removeItem('admin');
-                        //$rootScope.loginCheck = "Invalid User Credentials";
                         $location.url('/login');
                     }
                     if (response.status === 404) {
