@@ -855,16 +855,15 @@ rapidScoreControllers.controller('ScoreListCtrl', [ '$scope', 'ScoreAPI', functi
                                 if($location.path() == "/login"){
                                     $location.path("/account");
                                 }
-
-
                             } else {
                                 //$scope.$emit(AUTH_EVENTS.loginFailed);
-                                $scope.setCurrentUser(null);
+                                $scope.closelogin();
+                                $scope.logout();
                                 $scope.loginCheck = "Invalid Login";
                             }
                         }).error(function(err) {
                             $scope.closelogin();
-                            $scope.setCurrentUser(null);
+                            $scope.logout();
                             $scope.loginCheck = "";
                             $scope.openModal("Login failed. Please try again.", true);
                         });
@@ -959,19 +958,26 @@ rapidScoreControllers.controller('ScoreListCtrl', [ '$scope', 'ScoreAPI', functi
         } ]).controller('sessionService',
     [
         '$scope',
+        '$rootScope',
         '$location',
         'UserCartAPI',
         'breadcrumbs',
         'TypeAPI',
         'USER_ROLES',
         'AuthService',
-        function($scope, $location, Cart,
-                 breadcrumbs, Type, USER_ROLES, AuthService) {
+        'AUTH_EVENTS',
+        function($scope, $rootScope, $location, Cart,
+                 breadcrumbs, Type, USER_ROLES, AuthService, AUTH_EVENTS) {
 
             $scope.needlogin = false;
             $scope.currentUser = null;
             $scope.userRoles = USER_ROLES;
             $scope.isAuthorized = AuthService.isAuthorized;
+
+            $rootScope.$on(AUTH_EVENTS.notAuthenticated, function(){
+                console.log('receiving not logged or expired');
+                AuthService.logout();
+            });
 
             $scope.setCurrentUser = function (user) {
                 $scope.currentUser = user;
@@ -988,6 +994,7 @@ rapidScoreControllers.controller('ScoreListCtrl', [ '$scope', 'ScoreAPI', functi
             //$scope.$on(AUTH_EVENTS.loginSuccess, function(){});
 
             $scope.logout = function logout() {
+                console.log('logging out');
                 AuthService.logout();
                 $scope.setCurrentUser(null);
 

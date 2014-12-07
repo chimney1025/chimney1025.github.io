@@ -9,8 +9,7 @@ var rapidScoreApp = angular.module('rapidScoreApp', [ 'rapidScoreControllers',
 rapidScoreApp.config(function($httpProvider) {
     $httpProvider.interceptors.push('TokenInterceptor');
 
-    $httpProvider.responseInterceptors.push(function($q, $location, $window,
-                                                     $rootScope) {
+    $httpProvider.responseInterceptors.push(function($q, $location, $rootScope, AUTH_EVENTS) {
         return function(promise) {
             return promise.then(
                 // Success: just return the response
@@ -20,6 +19,8 @@ rapidScoreApp.config(function($httpProvider) {
                 // Error: check the error status to get only the 401
                 function(response) {
                     if (response.status === 401) {
+                        console.log('broadcast not auth');
+                        $rootScope.$broadcast(AUTH_EVENTS.notAuthenticated);
                         $location.url('/login');
                     }
                     if (response.status === 404) {
