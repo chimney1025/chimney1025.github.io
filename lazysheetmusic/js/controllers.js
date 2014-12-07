@@ -970,6 +970,7 @@ rapidScoreControllers.controller('ScoreListCtrl', [ '$scope', 'ScoreAPI', functi
                  breadcrumbs, Type, USER_ROLES, AuthService, AUTH_EVENTS) {
 
             $scope.needlogin = false;
+            $scope.logged = false;
             $scope.currentUser = null;
             $scope.userRoles = USER_ROLES;
             $scope.isAuthorized = AuthService.isAuthorized;
