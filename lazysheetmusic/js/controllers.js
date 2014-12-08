@@ -376,7 +376,7 @@ rapidScoreControllers.controller('ScoreListCtrl', [ '$scope', 'ScoreAPI', functi
             });
 
             $scope.addlink = function(){
-                var desc = prompt("Enter Name for this link").trim();
+                var desc = prompt("Enter NAME for this link").trim();
                 if(desc != ""){
                     var url = prompt("Enter URL for " + desc).trim();
                     if(url != ""){
@@ -401,7 +401,7 @@ rapidScoreControllers.controller('ScoreListCtrl', [ '$scope', 'ScoreAPI', functi
 
             $scope.removelink = function(id){
                 var r = confirm("If you delete this link, users who already bought this sheet music will not be able to access the file. " +
-                    "\n If possible please update the link by clicking on the url. " +
+                    "\n If possible please update the link." +
                     "\n\n Do you still want to delete this link? " +
                     "\n\n Choose YES to DELETE, CANCEL to not delete.");
                 if(r){
@@ -420,7 +420,7 @@ rapidScoreControllers.controller('ScoreListCtrl', [ '$scope', 'ScoreAPI', functi
 
             //either parent or sub
             $scope.updatelink = function(id) {
-                var desc = prompt("Updating Name for this link").trim();
+                var desc = prompt("Updating NAME for this link").trim();
                 if(desc != ""){
                     var url = prompt("Updating URL for " + desc).trim();
                     if(url != ""){

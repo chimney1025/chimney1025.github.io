@@ -24,20 +24,22 @@
                     <th class="col-md-2">
                         <a ng-click="orderProp = 'title'; reverse=!reverse">Name</a>
                     </th>
-                    <th class="col-md-6">URL</th>
+                    <th class="col-md-5">URL</th>
+                    <th class="col-md-1">Update</th>
                     <th class="col-md-1">Delete</th>
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="link in score.links">
                     <td ng-bind="link.desc"></td>
-                    <td><a ng-click="updatelink(link.id)"  ng-bind="link.url"></a></td>
+                    <td><a href="link.url" target="_blank" ng-bind="link.url"></a></td>
+                    <td><a ng-click="updatelink(link.id)"><span class="glyphicon glyphicon-pencil"></span></a></td>
                     <td><a ng-click="removelink(link.id)"><span class="text-danger glyphicon glyphicon-remove"></span></a></td>
                 </tr>
                 <tr>
-                    <td colspan="3" class="text-warning"><i>First enter Link Name, then enter Link URL.
+                    <td colspan="4" class="text-warning"><i>First enter Link Name, then enter Link URL.
                         <br>Link Names will be displayed on the Score Detail page. Link URLs will be sent to the user via Email.
-                        <br>Click on the "url" to UPDATE - First enter the new Link Name, then enter the new Link URL.</i></td>
+                        <br>UPDATE - First enter the new Link Name, then enter the new Link URL.</i></td>
                 </tr>
             </tbody>
         </table>
