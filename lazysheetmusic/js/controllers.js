@@ -392,15 +392,18 @@ rapidScoreControllers.controller('ScoreListCtrl', [ '$scope', 'ScoreAPI', functi
 
                         });
                     } else{
-                        //alert("no url");
+                        console.log('no url, not updated');
                     }
                 } else{
-                    //alert("no data");
+                    console.log('no desc, not updated');
                 }
             }
 
             $scope.removelink = function(id){
-                var r = confirm("Delete this link? ");
+                var r = confirm("If you delete this link, users who already bought this sheet music will not be able to access the file. " +
+                    "\n If possible please update the link by clicking on the url. " +
+                    "\n\n Do you still want to delete this link? " +
+                    "\n\n Choose YES to DELETE, CANCEL to not delete.");
                 if(r){
                     ScoreLink.remove({
                         scoreid: $routeParams.scoreId,
@@ -414,6 +417,34 @@ rapidScoreControllers.controller('ScoreListCtrl', [ '$scope', 'ScoreAPI', functi
                 }
 
             }
+
+            //either parent or sub
+            $scope.updatelink = function(id) {
+                var desc = prompt("Updating Name for this link").trim();
+                if(desc != ""){
+                    var url = prompt("Updating URL for " + desc).trim();
+                    if(url != ""){
+                        ScoreLink.update({
+                            scoreid: $routeParams.scoreId,
+                            linkid: id
+                        }, {
+                            desc: desc,
+                            url: url,
+                            type: 1
+                        }, function(res){
+                            if(res){
+                                //alert("Added");
+                                $scope.score = Score.getOne({scoreid: $routeParams.scoreId});
+                            }
+
+                        });
+                    } else{
+                        console.log('no url, not updated');
+                    }
+                } else{
+                    console.log('no desc, not updated');
+                }
+            };
         }
     ]).controller('ScoreTypeCtrl', ['$scope', '$routeParams', 'ScoreAdminAPI', 'ScoreTypeAPI', 'TypeAdminAPI',
         function($scope, $routeParams, Score, ScoreType, Type){

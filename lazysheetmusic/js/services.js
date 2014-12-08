@@ -321,6 +321,15 @@ rapidScoreServices.factory('ScoreLinkAPI', [
                         'Authorization' : 'Bearer '
                             + $window.localStorage.getItem('token')
                     }
+                },
+                update: {
+                    method : 'PUT',
+                    isArray: false,
+                    headers : {
+                        'Content-Type' : 'application/json',
+                        'Authorization' : 'Bearer '
+                            + $window.localStorage.getItem('token')
+                    }
                 }
             });
     } ]);
