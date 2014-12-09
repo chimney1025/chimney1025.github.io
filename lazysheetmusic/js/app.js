@@ -251,6 +251,7 @@ rapidScoreApp.run(function($rootScope, $location, $window, $http, AUTH_EVENTS, A
             if (nextRoute.access && nextRoute.access.requiredLogin && !$window.localStorage.getItem('token')) {
                 // remember current url
                 console.log('not logged in');
+                $rootScope.$broadcast(AUTH_EVENTS.notAuthenticated);
                 $location.path("/login");
             }
 
