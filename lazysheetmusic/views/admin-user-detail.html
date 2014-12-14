@@ -35,28 +35,50 @@
             </li>
         </ul>
         
-        <h2>Shopping Cart</h2>
-        <!--
-        <ul class="">
-            <div ng-if="user.carts.length">
-                <li class="row" ng-repeat="score in user.carts">
-                    <span class="list-item"><a href="#/sheetmusic/{{score.shortname}}">{{score.name}}</a></span>
-                    <span class="price">{{score.price | currency:'£'}}</span>
-                </li>
-            </div>
-        </ul>
-        -->
-        <h2>Orders</h2>
-        <!--
-        <ul class="">
-            <div ng-if="user.purchased.length">
-                <li class="row" ng-repeat="score in user.purchased">
-                    <span class="list-item"><a href="#/sheetmusic/{{score.shortname}}">{{score.name}}</a></span>
-                    <span class="price">{{score.price | currency:'£'}}</span>
-                </li>
-            </div>
-        </ul>
-        -->
+        <!--<h2>Shopping Cart</h2>-->
+        <h2>Orders :<span ng-if="purchased.length" ng-bind="purchased.length">0</span></h2>
+
+        <p class="loader" ng-show="loading"></p>
+
+        <table class="table table-striped table-hover fade" ng-class="{in:purchased.length}">
+            <thead>
+            <tr>
+                <th class="col-md-2">
+                    <a ng-click="orderProp = 'total'; reverse=!reverse">Price</a>
+                </th>
+                <th class="col-md-6">
+                    <a  ng-click="orderProp = 'updatedAt'; reverse=!reverse">Order Time</a>
+                </th>
+                <th class="col-md-4">Actions</th>
+            </tr>
+            </thead>
+            <tbody ng-repeat="order in purchased | orderBy:orderProp:reverse">
+            <tr>
+                <td>{{order.total | currency:'£'}}</td>
+                <td><small>{{order.updatedAt | date : 'yyyy-MM-dd hh:mm:ss'}}</small></td>
+                <td><a ng-class="order.showdetail ? 'active' : ''" type="button" ng-click="showorder(user.id, order.id)" class="btn btn-primary btn-xs">Details</a></td>
+            </tr>
+            <tr class="info" ng-repeat="score in orderdetails" ng-if="order.showdetail">
+                <td>{{score.price | currency:'£'}}</td>
+                <td><a href="#/sheetmusic/{{score.shortname}}" ng-bind="score.title"></a></td>
+                <!--
+                <td><a type="button" ng-click="showscore(score.fileurl)" class="btn btn-warning btn-xs">Request</a></td>
+                -->
+
+                <td><a class="btn-default btn btn-xs btn-nolink" ng-click="">Email Sent</a></td>
+            </tr>
+            <tr class="warning" ng-repeat="link in orderlinks" ng-show="0">
+                <td></td>
+                <td colspan="2">{{link.desc}}</td>
+                <!--
+                <td><a type="button" ng-click="showscore(score.fileurl)" class="btn btn-warning btn-xs">Request</a></td>
+                -->
+                <td><a class="btn-warning btn btn-xs" href="#/view-order/{{score.id}}/{{link.id}}" target="_blank">View Order</a></td>
+            </tr>
+            </tbody>
+        </table>
+
+        <h2 ng-if="purchased.length == 0 && loading == false">User Orders is Empty</h2>
     </div>
 
 </div>

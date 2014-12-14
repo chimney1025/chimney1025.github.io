@@ -580,11 +580,46 @@ rapidScoreControllers.controller('ScoreListCtrl', [ '$scope', 'ScoreAPI', functi
                 $location.path("/account");
             }
         } ]).controller('UserAdminCtrl', [ '$scope', '$routeParams',
-        'UserAdminAPI', function($scope, $routeParams, User) {
+        'UserAdminAPI', 'UserAdminOrderAPI', 'UserAdminOrderDetailAPI',
+        function($scope, $routeParams, User, Order, OrderDetail) {
             $scope.user = User.getOne({
-                username : $routeParams.username
+                userid : $routeParams.userid
             });
-            $scope.total = 0;
+            $scope.purchased = Order.getAll({
+                userid : $routeParams.userid
+            }, function(res){
+                $scope.loading = false;
+                for(var i=0; i<$scope.purchased.length; i++){
+                    $scope.purchased[i].showdetail = false;
+                }
+            });
+            $scope.showorder = function(userid, orderid) {
+                for (var i = 0; i < $scope.purchased.length; i++) {
+                    if ($scope.purchased[i].id == orderid) {
+                        var index = i;
+                        if ($scope.purchased[i].showdetail) {
+                            $scope.purchased[i].showdetail = false;
+                            break;
+                        }
+                        OrderDetail.getScores({
+                            userid : userid,
+                            orderid : orderid
+                        }, function(scores) {
+                            if (scores.length > 0) {
+                                $scope.purchased[index].showdetail = true;
+                                $scope.orderdetails = scores;
+                                //$scope.showlinks = false;
+
+                            } else {
+
+                            }
+                        })
+                    } else {
+                        $scope.purchased[i].showdetail = false;
+                    }
+                }
+            }
+
         } ]).controller('UserCtrl', [
         '$location',
         '$scope',

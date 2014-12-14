@@ -176,7 +176,7 @@ rapidScoreApp.config([ '$routeProvider', '$locationProvider', function($routePro
         access : {
             requiredLogin : true
         }
-    }).when('/admin/users/:username', {
+    }).when('/admin/users/:userid', {
         templateUrl : 'views/admin-user-detail.html',
         controller : 'UserAdminCtrl',
         access : {

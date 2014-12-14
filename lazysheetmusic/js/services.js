@@ -368,7 +368,7 @@ rapidScoreServices.factory('UserAdminAPI', [
     '$resource',
     '$window',
     function($resource, $window) {
-        return $resource(hostname + '/admin/users/:username', {}, {
+        return $resource(hostname + '/admin/users/:userid', {}, {
             getOne : {
                 method : 'GET',
                 headers : {
@@ -378,6 +378,42 @@ rapidScoreServices.factory('UserAdminAPI', [
                 }
             },
             getAll : {
+                method : 'GET',
+                isArray : true,
+                headers : {
+                    'Content-Type' : 'application/json',
+                    'Authorization' : 'Bearer '
+                        + $window.localStorage.getItem('token')
+                }
+            }
+        });
+    } ]);
+
+//get user orders
+rapidScoreServices.factory('UserAdminOrderAPI', [
+    '$resource',
+    '$window',
+    function($resource, $window) {
+        return $resource(hostname + '/admin/users/:userid/orders', {}, {
+            getAll : {
+                method : 'GET',
+                isArray : true,
+                headers : {
+                    'Content-Type' : 'application/json',
+                    'Authorization' : 'Bearer '
+                        + $window.localStorage.getItem('token')
+                }
+            }
+        });
+    } ]);
+
+
+rapidScoreServices.factory('UserAdminOrderDetailAPI', [
+    '$resource',
+    '$window',
+    function($resource, $window) {
+        return $resource(hostname + '/admin/users/:userid/order-detail/:orderid', {}, {
+            getScores : {
                 method : 'GET',
                 isArray : true,
                 headers : {
