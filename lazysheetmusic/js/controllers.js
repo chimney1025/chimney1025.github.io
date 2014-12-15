@@ -627,12 +627,8 @@ rapidScoreControllers.controller('ScoreListCtrl', [ '$scope', 'ScoreAPI', functi
         '$routeParams',
         'UserAPI',
         'UserPassAPI',
-        'UserCartAPI',
-        'UserOrderAPI',
-        'UserOrderDetailAPI',
-        'LinkAPI',
         function($location, $scope, $rootScope, $routeParams,
-                 User, UserPass, Cart, Order, OrderDetail, Link) {
+                 User, UserPass) {
 
             $scope.loading = true;
             $rootScope.user = User.getOne(function(res){
@@ -642,24 +638,6 @@ rapidScoreControllers.controller('ScoreListCtrl', [ '$scope', 'ScoreAPI', functi
             if ($scope.logged_admin) {
                 // $location.path("/admin");
             }
-
-            $scope.total = 0;
-
-            $scope.loading = true;
-            $scope.cart = Cart.getAll(function(res){
-                $scope.loading = false;
-                for(var i=0; i<res.length; i++){
-                    $scope.total += res[i].price;
-                }
-            });
-
-            $scope.purchased = Order.getAll(function(res){
-                $scope.loading = false;
-                for(var i=0; i<$scope.purchased.length; i++){
-                    $scope.purchased[i].showdetail = false;
-                }
-            });
-            // get scores of each order
 
             $scope.updateuser = function(firstname, surname){
                 var result = prompt("Updating Account Detail").trim();
@@ -682,6 +660,81 @@ rapidScoreControllers.controller('ScoreListCtrl', [ '$scope', 'ScoreAPI', functi
 
             $scope.updatepassword = function(oldpass, newpass){
             }
+        } ]).controller('UserCartCtrl', [
+        '$location',
+        '$scope',
+        '$rootScope',
+        '$routeParams',
+        'UserAPI',
+        'UserCartAPI',
+        'UserOrderAPI',
+        function($location, $scope, $rootScope, $routeParams,
+                 User, Cart, Order) {
+
+            $scope.total = 0;
+
+            $scope.loading = true;
+            $scope.cart = Cart.getAll(function(res){
+                $scope.loading = false;
+                for(var i=0; i<res.length; i++){
+                    $scope.total += res[i].price;
+                }
+            });
+
+            $scope.removecart = function(name, sid) {
+                Cart.remove({
+                    scoreid : sid
+                }, function(res) {
+                    if (res) {
+                        $scope.cart = res;
+                        $scope.total = 0;
+                        for(var i=0; i<res.length; i++){
+                            $scope.total += res[i].price;
+                        }
+                        $scope.updatecart();
+                    } else {
+                    }
+                });
+            }
+
+            $scope.order = function() {
+
+                $scope.openModal("Placing Order ... (" + $scope.logged_cart.length + " items)", false);
+
+                Order.order({}, function(res) {
+                    if (res) {
+
+                        $scope.openModal("Order placed! Please check your Email Inbox to download the sheet music.", true);
+                        $scope.total = 0;
+
+                        $scope.updatecart();
+                        $scope.cart = Cart.getAll();
+                        //$scope.purchased = Order.getAll();
+
+                    } else {
+                    }
+                });
+            }
+        } ]).controller('UserOrderCtrl', [
+        '$location',
+        '$scope',
+        '$rootScope',
+        '$routeParams',
+        'UserAPI',
+        'UserOrderAPI',
+        'UserOrderDetailAPI',
+        'LinkAPI',
+        function($location, $scope, $rootScope, $routeParams,
+                 User, Order, OrderDetail, Link) {
+
+            $scope.loading = true;
+
+            $scope.purchased = Order.getAll(function(res){
+                $scope.loading = false;
+                for(var i=0; i<$scope.purchased.length; i++){
+                    $scope.purchased[i].showdetail = false;
+                }
+            });
 
             $scope.showlinks = function(scoreid) {
                 Link.getAll({
@@ -717,41 +770,6 @@ rapidScoreControllers.controller('ScoreListCtrl', [ '$scope', 'ScoreAPI', functi
                         $scope.purchased[i].showdetail = false;
                     }
                 }
-            }
-
-            $scope.removecart = function(name, sid) {
-                Cart.remove({
-                    scoreid : sid
-                }, function(res) {
-                    if (res) {
-                        $scope.cart = res;
-                        $scope.total = 0;
-                        for(var i=0; i<res.length; i++){
-                            $scope.total += res[i].price;
-                        }
-                        $scope.updatecart();
-                    } else {
-                    }
-                });
-            }
-
-            $scope.order = function() {
-
-                $scope.openModal("Placing Order ... (" + $scope.logged_cart.length + " items)", false);
-
-                Order.order({}, function(res) {
-                    if (res) {
-
-                        $scope.openModal("Order placed! Please check your Email Inbox to download the sheet music.", true);
-                        $scope.total = 0;
-
-                        $scope.updatecart();
-                        $scope.cart = Cart.getAll();
-                        $scope.purchased = Order.getAll();
-
-                    } else {
-                    }
-                });
             }
         } ]).controller('ContactCtrl',['$scope', 'ContactAPI', function($scope, Contact){
 
@@ -1044,6 +1062,7 @@ rapidScoreControllers.controller('ScoreListCtrl', [ '$scope', 'ScoreAPI', functi
             $rootScope.$on(AUTH_EVENTS.notAuthenticated, function(){
                 console.log('receiving not logged or expired');
                 AuthService.logout();
+                $scope.setCurrentUser(null);
             });
 
             $scope.setCurrentUser = function (user) {

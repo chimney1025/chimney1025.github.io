@@ -84,14 +84,14 @@ rapidScoreApp.config([ '$routeProvider', '$locationProvider', function($routePro
     }).when('/account/shopping-cart', {
         templateUrl : 'views/account-cart.html',
         label : 'Shopping Cart',
-        controller : 'UserCtrl',
+        controller : 'UserCartCtrl',
         access : {
             requiredLogin : true
         }
     }).when('/account/purchased', {
         templateUrl : 'views/account-order.html',
         label : 'Orders',
-        controller : 'UserCtrl',
+        controller : 'UserOrderCtrl',
         access : {
             requiredLogin : true
         }
