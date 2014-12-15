@@ -1,15 +1,7 @@
 
 <div class="container text-center">
 
-
-    <div class="col-md-3 col-sm-3 col-xs-3 text-left account-menu">
-        <ul class="">
-            <li><h2>Welcome</h2></li>
-            <li><h4><a href="#/account" ng-class="setActive('account')">Account Settings</a></h4></li>
-            <li><h4><a href="#/account/shopping-cart" ng-class="setActive('shopping-cart')">My Shopping Cart</a></h4></li>
-            <li><h4><a href="#/account/purchased" ng-class="setActive('purchased')">My Orders</a></h4></li>
-        </ul>
-    </div>
+    <ng-include src="'views/include/account-menu.html'"></ng-include>
 
     <div class="col-md-9 col-sm-9 col-xs-9 text-left act-list">
         <h1>Shopping Cart :<span ng-bind="cartcount">0</span></h1>
@@ -32,7 +24,9 @@
             <tr>
                 <td>Total:</td>
                 <td>{{total | currency: '£'}}</td>
-                <td><a type="button" class="btn btn-primary btn-sm" ng-click="order()">Order</a><img class="paypal" src="images/paypal.png"></td>
+                <td><a type="button" class="btn btn-primary btn-sm" ng-click="order()">Order</a>
+                    <!--<img class="paypal" src="images/bg-trans.gif">-->
+                </td>
             </tr>
             </tbody>
         </table>

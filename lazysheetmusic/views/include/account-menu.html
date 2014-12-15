@@ -1,7 +1,9 @@
 
-<ul class="">
-    <li><h2>Welcome</h2></li>
-    <li><h4><a href="#/account">Account Settings</a></h4></li>
-    <li><h4><a href="#/account/shopping-cart" class="active">My Shopping Cart</a></h4></li>
-    <li><h4><a href="#/account/purchased">My Orders</a></h4></li>
-</ul>
+<div class="col-md-3 col-sm-3 col-xs-3 text-left account-menu">
+    <ul class="">
+        <li><h2>Welcome</h2></li>
+        <li><h4><a href="#/account" ng-class="setActive('account')">Account Settings</a></h4></li>
+        <li><h4><a href="#/account/shopping-cart" ng-class="setActive('shopping-cart')">My Shopping Cart</a></h4></li>
+        <li><h4><a href="#/account/purchased" ng-class="setActive('purchased')">My Orders</a></h4></li>
+    </ul>
+</div>

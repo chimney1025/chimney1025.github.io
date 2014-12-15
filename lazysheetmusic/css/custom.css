@@ -231,6 +231,45 @@ a {
 	padding:30px 0;
 }
 
+/*----
+Social
+----*/
+.icon-facebook, .icon-googleplus, .icon-linkedin, .icon-youtube, .paypal, .logo{
+    background: url(../images/icon-social.png) no-repeat;
+}
+
+.icon-facebook{
+    background-position: 0 0;
+    width: 30px;
+    height: 30px;
+}
+
+.icon-googleplus{
+    background-position: -31px 0;
+    width: 30px;
+    height: 30px;
+}
+
+.icon-linkedin{
+    background-position: 0 -31px ;
+    width: 30px;
+    height: 30px;
+}
+
+.icon-youtube{
+    background-position: -31px -31px ;
+    width: 30px;
+    height: 30px;
+}
+.paypal{
+    background-position: -62px 0;
+    width: 30px;
+    height: 30px;
+}
+
+
+
+
 /*-----------------------------------
 	Navbar
 -----------------------------------*/
@@ -256,13 +295,16 @@ a {
 }
 
 .logo{
+
+    background-position: 0 -62px;
+    width: 100px;
+    height: 96px;
+
     z-index:1001;
     position:absolute;
     right:0;
     top:0;
-    /*
-    background-image:url(../images/logo.png);
-    */
+    margin-top: -12px;
 }
 
 .big{
@@ -275,11 +317,6 @@ a {
     bottom:-11px;
     color:#fff;
     position:absolute;
-}
-
-.logo img{
-	width:100px;
-	margin-top:-12px;
 }
 
 .navbar-right li a{
@@ -1204,36 +1241,6 @@ textarea.form-control{
     float: right;
 }
 
-/* Totals */
-.totals span {
-    padding: 40px 15px 0 0;
-}
-
-.totals .total {
-    float: left;
-    padding-left: 5px;
-}
-
-.totals .list-item {
-    margin-top: 1px;
-}
-
-.totals .order {
-    float: right;
-    padding: 0;
-    margin-top: 40px;
-    padding-left: 5px;
-    cursor: pointer;
-}
-
-.totals .paypal {
-    clear: both;
-    float: right;
-    margin: 0 36px 0 0;
-    width: 78px;
-    padding: 10px 0;
-}
-
 .order a {
     background-color: #f08573;
     color: #fbfffa;
@@ -1445,7 +1452,6 @@ span.form-success{
     .navbar{
         background: none;
         background-color: #333;
-        padding: 10px 0;
         font-size:13px;
     }
 

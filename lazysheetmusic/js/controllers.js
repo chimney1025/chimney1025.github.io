@@ -960,6 +960,19 @@ rapidScoreControllers.controller('ScoreListCtrl', [ '$scope', 'ScoreAPI', functi
         function($scope, User, CheckUsername) {
 
             // Sign Up
+            $scope.load_script = function() {
+                var s = document.createElement('script'); // use global document since Angular's $document is weak
+                s.src = 'js/recaptcha_ajax.js';
+                document.body.appendChild(s);
+
+
+                var s2 = document.createElement('script'); // use global document since Angular's $document is weak
+                s2.src = 'js/angular-recaptcha.min.js';
+                document.body.appendChild(s2);
+
+                console.log('recaptcha loaded');
+            }
+
             $scope.regInfo = {};
             $scope.regCheck = '';
 

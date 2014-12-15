@@ -14,10 +14,6 @@
 <!-- Bootstrap core CSS -->
 <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="css/custom.css" rel="stylesheet">
-
-<!-- Perfect Scrollbar
-    <link href="bower_components/perfect-scrollbar/min/perfect-scrollbar.min.css" rel="stylesheet">
--->
 </head>
 <body ng-controller="sessionService">
 
@@ -35,7 +31,7 @@
 					</button>
 					<a class="navbar-brand" href="#/home"> 
 					<span class="logotext"><span class="">Lazy</span> Sheet Music</span>
-					<span class="logo"><img src="images/logo4.png" alt=""></span>
+					<span><img src="images/bg-trans.gif" class="logo" alt=""></span>
 					</a>
 				</div>
 				<!-- End navbar-header -->
@@ -137,19 +133,24 @@
 
 		<div ng-view autoscroll="false"></div>
 
-		<div class="nomodal" ng-class="setmodal" ng-cloak ng-if="modalcheck">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-body">
-						<h4><span ng-bind="modalcheck"></span></h4>
-					</div>
-					<div class="modal-footer" ng-if="modaloption">
-						<a type="button" class="btn btn-sm btn-default" ng-click="closemodal()">OK</a>
-					</div>
-				</div>
-			</div>
-		</div>
+        <!-- <ng-include src="'views/include/modal-view.html'"></ng-include> -->
 
+        <!-- Modal -->
+        <div class="nomodal" ng-class="setmodal" ng-cloak ng-if="modalcheck">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <h4><span ng-bind="modalcheck"></span></h4>
+                    </div>
+                    <div class="modal-footer" ng-if="modaloption">
+                        <a type="button" class="btn btn-sm btn-default" ng-click="closemodal()">OK</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Login -->
         <div class="nomodal" ng-class="setlogin"  ng-cloak ng-if="needlogin">
             <div class="modal-dialog" draggable="true">
                 <div class="modal-content">
@@ -201,11 +202,11 @@
 	<footer id="footer" class="col-md-12 navbar" role="navigation">
 		<div class="container text-center">
 			<p>
-				<img alt="Facebook" src="images/icon-facebook.png"> 
-				<a target="_blank" href="https://plus.google.com/+LazySheetMusic/posts"><img alt="Google+" src="images/icon-googleplus.png"></a>
-				<a target="_blank" href="https://www.linkedin.com/in/shihwendy"><img alt="LinkedIn" src="images/icon-linkedin.png"></a>
-				<a target="_blank" href="https://www.youtube.com/channel/UCVwUUu_AQdcpV4Vzv_9D2AA"><img alt="Youtube" src="images/icon-youtube2.png"></a>
-				<img alt="PayPal" src="images/paypal.png">
+				<a><img alt="Facebook" src="images/bg-trans.gif" class="icon-facebook"></a>
+				<a target="_blank" href="https://plus.google.com/+LazySheetMusic/posts"><img alt="Google+" src="images/bg-trans.gif" class="icon-googleplus"></a>
+				<a target="_blank" href="https://www.linkedin.com/in/shihwendy"><img alt="LinkedIn" src="images/bg-trans.gif" class="icon-linkedin"></a>
+				<a target="_blank" href="https://www.youtube.com/channel/UCVwUUu_AQdcpV4Vzv_9D2AA"><img alt="Youtube" src="images/bg-trans.gif" class="icon-youtube"></a>
+				<a target="_blank" href="https://www.paypal.com"><img alt="PayPal" src="images/bg-trans.gif" class="paypal"></a>
 			</p>
 			<p>
 				<a href="#/terms-and-policies">Terms & Policies </a>
@@ -226,7 +227,6 @@
 <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
 <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- AngularJS -->
-<script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
 <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
 <script type="text/javascript" src="bower_components/angular-animate/angular-animate.min.js"></script>
 <script type="text/javascript" src="bower_components/angular-route/angular-route.min.js"></script>
