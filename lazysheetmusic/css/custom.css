@@ -85,6 +85,16 @@ h4 {
     font-size: 1.1em;
 }
 
+h4 span a{
+    font-weight: bold;
+}
+
+h4 span a:hover, h5 a:hover{
+    text-decoration: underline;
+    background: none;
+    color: #2c7080;
+}
+
 .container {
     max-width: 1170px;
 }
