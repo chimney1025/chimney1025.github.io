@@ -479,6 +479,14 @@ ul.navbar-nav {
     display:block !important;
     background-color:rgba(0,0,0,0.4);
 }
+
+.modal-header{
+    background-color: #468695;
+    color: #fff;
+}
+.modal .close{
+    color: #fff;
+}
 .nomodal{
 	   display:none;
 }
@@ -500,6 +508,12 @@ ul.navbar-nav {
 .modal-dialog{
     width:300px;
     min-height:150px;
+}
+
+.modal a:hover{
+    text-decoration: underline;
+    background: none;
+    color: #2c7080;
 }
 
 /*-----------------------------------

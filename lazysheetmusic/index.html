@@ -154,7 +154,10 @@
         <div class="nomodal" ng-class="setlogin"  ng-cloak ng-if="needlogin">
             <div class="modal-dialog" draggable="true">
                 <div class="modal-content">
-
+                    <div class="modal-header">
+                        <button ng-click="closelogin()"  type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title">Login</h4>
+                    </div>
                     <form name="loginModalForm"
                           ng-submit="login(loginInfo)"
                           ng-controller="LoginCtrl"
@@ -181,9 +184,8 @@
 
                         </div>
                         <div class="modal-footer">
-                            <button type="submit" class="btn btn-sm btn-primary">Submit</button>
-                            <a ng-click="closelogin()" class="btn btn-sm btn-default" >Close</a>
-                            <a ng-click="closelogin()" href="#/register" class="btn btn-sm btn-warning">Register</a>
+                            <a ng-click="closelogin()" href="#/register">Click to Register</a>
+                            <button type="submit" class="btn btn-sm btn-primary">Log In</button>
                             <span class="clearfix"></span>
 
 					<span class="form-check" ng-show="loginCheck" ng-class="setCheck"
