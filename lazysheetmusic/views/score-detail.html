@@ -9,6 +9,9 @@
             <li ng-if="!score.obsolete">
                 <a type="button" class="btn {{action_class}}" ng-click="addcart()" ng-bind="action"></a>
             </li>
+            <li ng-if="score.obsolete">
+                <a type="button" class="btn btn-default">Out of Stock</a>
+            </li>
             <li ng-if="score.links.length"><h4><a type="button" class="btn-detail btn-nolink btn btn-primary" ng-repeat="link in score.links">{{link.desc}}</a></h4></li>
             <li>
             <ul ng-show="!collapsed">
