@@ -15,8 +15,8 @@ var Slider = (function() {
 	next = (index+1<images.length)?(index+1):(0);
 	
     images[last].className = "slide";
-    images[next].className = "slide active";
-    images[index].className = "slide";
+    images[next].className = "slide";
+    images[index].className = "slide active";
   }
   
   return {
