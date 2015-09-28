@@ -1,9 +1,34 @@
 /**/
-header.index-page {
-	content: ' ';
-	background-image: url('../img/cover-2.jpg');
-	background-position: center;
-	z-index: 1;
+.index-page {
+	background-image: url('https://images.unsplash.com/photo-1429277005502-eed8e872fe52?q=80&fm=jpg&s=ed7d2402ce6b1a9171d454360da07c58');
+}
+.contact-page {
+    background-image: url('../img/contact-bg.jpg');
+}
+.about-page {
+    background-image: url('https://images.unsplash.com/photo-1438216983993-cdcd7dea84ce?q=80&fm=jpg&s=4141165d8e8eed56b8d9012740c4b503');
+}
+.post-page {
+    background-image: url('https://images.unsplash.com/photo-1437915015400-137312b61975?q=80&fm=jpg&s=404211ca7568f20b30685a7413f5f30c');
+}
+.list-page {
+    background-image: url('https://images.unsplash.com/photo-1429734160945-4f85244d6a5a?q=80&fm=jpg&s=1e4502a7439b5792e5b7b0a25811baba');
+}
+
+/**/
+body, h1, h2 {
+    font-family: 'Bookshelf Symbol 7';
+}
+h1 {
+    font-size: 30px;
+}
+h2 {
+    font-size: 24px;
+}
+.intro-header {
+    min-height: 450px;
+    background-position: center;
+    z-index: 1;
 }
 .dark {
 	background-color: #f9f6f3;
