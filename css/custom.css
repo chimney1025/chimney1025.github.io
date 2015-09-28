@@ -1,0 +1,64 @@
+/**/
+header.index-page {
+	content: ' ';
+	background-image: url('../img/cover-2.jpg');
+	background-position: center;
+	z-index: 1;
+}
+.dark {
+	background-color: #f9f6f3;
+}
+section {
+	padding: 50px 0;
+}
+/*Sections*/
+.index-heading {
+	text-align: center;
+}
+.actions {
+	margin: 50px 0;
+}
+/*Sliders*/
+.sliders {
+-webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 100%;
+  padding: 10px;
+  text-align: center;
+  margin: 50px 0;
+}
+
+.slide {
+  width: 480px;
+  height: 280px;
+  overflow: hidden;
+  display: none;
+}
+
+.slide.active {
+	display: inline-block;
+}
+
+.control {
+	position: absolute;
+}
+
+.control#prev {
+	top: 50%;
+	left: 0;
+}
+
+.control#next {
+	top: 50%;
+	right: 0;
+}
+
+img {
+	width: 100%;
+	transition: all 0.3s;
+}
+
+img:hover {
+	transform: scale(1.1);
+}

@@ -1,5 +1,0 @@
-
-Post format for angularjs $resource:
-    User.save({}, regData, function(res){//do something with the result});
-
-Error: Failed to read the 'sessionStorage' property from 'Window': Access is denied for this document.
