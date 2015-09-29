@@ -97,26 +97,24 @@
 				<div class="index-heading">
 					<h2>Lorem ipsum</h2>
 				</div>
-				<div id="index-slider" class="sliders">
-					<div class="holder">
-						  <div class="slide" style="background-image:url('img/item-1.jpg')">
-							<span>1</span>
-						  </div>
-						  <div class="slide" style="background-image:url('img/item-2.jpg')">
-							<span>2</span>
-						  </div>
-						  <div class="slide" style="background-image:url('img/item-3.jpg')">
-							<span>3</span>
-						  </div>
-						  <div class="slide" style="background-image:url('img/item-4.jpg')">
-							<span>4</span>
-						  </div>
-						  <div class="slide" style="background-image:url('img/item-5.jpg')">
-							<span>5</span>
-						  </div>
-					</div>
-				    <a class="control btn btn-default prev" >Prev</a>
-				    <a class="control btn btn-default next" >Next</a>
+				<div class="sliders">
+				  <div class="slide">
+					<img class="img-responsive" src="img/item-1.jpg">
+				  </div>
+				  <div class="slide">
+					<img class="img-responsive" src="img/item-2.jpg">
+				  </div>
+				  <div class="slide">
+					<img class="img-responsive" src="img/item-3.jpg">
+				  </div>
+				  <div class="slide">
+					<img class="img-responsive" src="img/item-4.jpg">
+				  </div>
+				  <div class="slide active">
+					<img class="img-responsive" src="img/item-5.jpg">
+				  </div>
+				  <a class="control btn btn-default" id="prev">Prev</a>
+				  <a class="control btn btn-default" id="next">Next</a>
 				</div>
 			</div>
 		</div>
@@ -190,7 +188,7 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="js/clean-blog.min.js"></script>
-	<script src="js/slider.js"></script>
+	<script src="js/custom.js"></script>
 	<script>
 	   (function(){
 			var resize = function(){
@@ -203,9 +201,13 @@
 			window.onresize = function(){
 			   resize();
 			};
-			
-			var slider = new Slider('index-slider');
-			slider.start();
+		
+			document.getElementById('prev').addEventListener('click', function(){
+				Slider.prev();
+			}, false);
+			document.getElementById('next').addEventListener('click', function(){
+				Slider.next();
+			}, false);
 		 
 		})();
 		
