@@ -79,8 +79,7 @@
     <section class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-xs-10 col-xs-offset-1">
-
-                <h2>Book a trip now</h2>
+                <h1>Book a trip now</h1>
                 <p>Want to get in touch with us? Fill out the form below to send us a message and we will try to get back to you within 24 hours!</p>
                 <!-- Contact Form - Enter your email address on line 19 of the mail/contact_me.php file to make this form work. -->
                 <!-- WARNING: Some web hosts do not allow emails to be sent through forms to common mail hosts like Gmail or Yahoo. It's recommended that you use a private domain email address! -->
@@ -90,30 +89,58 @@
                         <div class="form-group col-xs-12 floating-label-form-group controls">
                             <label>Preference</label>
                             <input type="text" class="form-control" placeholder="Personal Preference"
+                                   data-select="preference-selection"
                                    id="preference" data-validation-required-message="Please enter your name.">
                             <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
+                    <div class="row control-group selection" id="preference-selection">
+                        <div class="well">
+                            <span class="btn btn-info">Easy</span>
+                            <span class="btn btn-info">Medium</span>
+                            <span class="btn btn-info">Hard</span>
                         </div>
                     </div>
                     <div class="row control-group">
                         <div class="form-group col-xs-12 floating-label-form-group controls">
                             <label>Highlights</label>
-                            <input type="text" class="form-control" placeholder="What do you want to experience in your trip"
+                            <input type="text" class="form-control" placeholder="Trip Highlights"
+                                   data-select="highlight-selection"
                                    id="highlights" data-validation-required-message="Please enter your name.">
                             <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
+                    <div class="row control-group selection" id="highlight-selection">
+                        <div class="well">
+                            <span class="btn btn-primary">Royal</span>
+                            <span class="btn btn-primary">Music</span>
+                            <span class="btn btn-primary">Movie</span>
+                            <span class="btn btn-primary">Sports</span>
+                            <span class="btn btn-primary">Food</span>
                         </div>
                     </div>
                     <div class="row control-group">
                         <div class="form-group col-xs-12 floating-label-form-group controls">
                             <label>Places</label>
-                            <input type="text" class="form-control" placeholder="Where do you want to go"
+                            <input type="text" class="form-control" placeholder="Places to visit"
+                                   data-select="city-selection"
                                    id="cities" data-validation-required-message="Please enter your name.">
                             <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
+                    <div class="row control-group selection" id="city-selection">
+                        <div class="well">
+                            <span class="btn btn-warning">London</span>
+                            <span class="btn btn-warning">Edinburgh</span>
+                            <span class="btn btn-warning">Cambridge</span>
+                            <span class="btn btn-warning">Lake District</span>
+                            <span class="btn btn-warning">Brighton</span>
                         </div>
                     </div>
                     <div class="row control-group">
                         <div class="form-group col-xs-12 floating-label-form-group controls">
                             <label>Budget</label>
-                            <input type="number" class="form-control" placeholder="How much do you want to pay for a day"
+                            <input type="number" class="form-control" placeholder="Daily Budget"
                                    id="budget" data-validation-required-message="Please enter your name.">
                             <p class="help-block text-danger"></p>
                         </div>
@@ -121,7 +148,7 @@
                     <div class="row control-group">
                         <div class="form-group col-xs-12 floating-label-form-group controls">
                             <label>Start date</label>
-                            <input type="date" class="form-control" placeholder="When will you arrive in the UK"
+                            <input type="date" class="form-control" placeholder="Arrival Date"
                                    id="start-date" data-validation-required-message="Please enter your name.">
                             <p class="help-block text-danger"></p>
                         </div>
@@ -129,7 +156,7 @@
                     <div class="row control-group">
                         <div class="form-group col-xs-12 floating-label-form-group controls">
                             <label>End dates</label>
-                            <input type="date" class="form-control" placeholder="When will you leave the UK"
+                            <input type="date" class="form-control" placeholder="Departure Date"
                                    id="end-date" data-validation-required-message="Please enter your name.">
                             <p class="help-block text-danger"></p>
                         </div>
@@ -217,6 +244,7 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="js/clean-blog.min.js"></script>
+    <script src="js/custom.js"></script>
 
 </body>
 
