@@ -3,13 +3,14 @@
     background-image: url('http://shifangcn.com/wp-content/uploads/2015/06/jinze.jpg');
 }
 .contact-page {
-    background-image: url('../img/contact-bg.jpg');
+    min-height: 0 !important;
+	margin-top: 0 !important;
 }
 .about-page {
     background-image: url('https://images.unsplash.com/photo-1438216983993-cdcd7dea84ce?q=80&fm=jpg&s=4141165d8e8eed56b8d9012740c4b503');
 }
 .post-page {
-    background-image: url('http://shifangcn.com/wp-content/uploads/2015/06/nanmei.jpg');
+    background-image: url('../img/contact-bg.jpg');
 }
 .list-page {
     background-image: url('https://images.unsplash.com/photo-1429734160945-4f85244d6a5a?q=80&fm=jpg&s=1e4502a7439b5792e5b7b0a25811baba');
@@ -17,7 +18,7 @@
 
 /**/
 body, h1, h2 {
-    font-family: 'Bookshelf Symbol 7';
+    font-family: 'Microsoft YaHei', 'Bookshelf Symbol 7';
 }
 h1 {
     font-size: 30px;
@@ -55,6 +56,7 @@ section {
 }
 .actions {
     margin: 50px 0;
+	overflow: hidden;
 }
 
 .action {
@@ -131,9 +133,17 @@ img {
 	z-index: 2;
 }
 
-.selection span {
+.selection span, .selected-items span {
     margin-top: 5px;
     margin-bottom: 5px;
+	margin-left: 3px;
+	margin-right: 3px;
+	display: inline-block;
+}
+
+.selected-items span {
+	margin-left: 3px;
+	margin-right: 3px;
 }
 
 .selection span.active {

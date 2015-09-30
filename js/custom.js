@@ -9,14 +9,29 @@ var FormSelect = (function(){
 
     var toggleSelection = function(event) {
         var button = event.target;
-
-        button.classList.contains('active')
-            ? button.classList.remove('active')
-            : button.classList.add('active');
+		var group = button.getAttribute('data-group');
+		var parent = button.parentNode;
+		var parentGroup = parent.getAttribute('data-group');
+		var selectList = document.getElementById(parentGroup);
+		
+		if(parentGroup) {
+			if(selectList.style.display == "none") {
+				selectList.style.display = "block";
+			}
+			
+			document.querySelector('#' + parentGroup + ' .well').appendChild(button);
+		} else {
+			if(parent.children.length == 1) {
+				document.getElementById(group).appendChild(button);
+				parent.parentNode.style.display = "none"
+			} else {
+				document.getElementById(group).appendChild(button);
+			}
+		}
+		
     };
 	
 	var hideOverlay = function(event, modals) {
-		console.log(event.target);
 	}
 
     return {
