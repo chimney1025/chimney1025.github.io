@@ -27,7 +27,7 @@ h2 {
 }
 .intro-header {
     min-height: 450px;
-	margin-top: 50px;
+	margin-top: 60px;
     background-position: center;
     z-index: 1;
 }
@@ -126,7 +126,9 @@ img {
 
 .selection {
     display: none;
-    margin-top: 10px;
+	position: absolute;
+	width: 100%;
+	z-index: 2;
 }
 
 .selection span {
