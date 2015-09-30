@@ -30,15 +30,17 @@ var FormSelect = (function(){
 		}
 		
     };
-	
-	var hideOverlay = function(event, modals) {
-	}
+
+    var closeSelection = function(event) {
+        event.target.parentNode.style.display = "none";
+    };
 
     return {
         init: function() {
             var items = document.querySelectorAll('input');
 			var modals = document.querySelectorAll('.selection');
             var spans = document.querySelectorAll('.selection span');
+            var closes = document.querySelectorAll('.selection .close');
 
             for(var i=0; i<items.length; i++) {
                 if(items[i].getAttribute('data-select')) {
@@ -49,10 +51,10 @@ var FormSelect = (function(){
             for(var i=0; i<spans.length; i++) {
                 spans[i].addEventListener('click', toggleSelection);
             }
-			
-			document.addEventListener('click', function(e){
-				hideOverlay(e, modals);
-			});
+
+            for(var i=0; i<closes.length; i++) {
+                closes[i].addEventListener('click', closeSelection);
+            }
         }
     }
 

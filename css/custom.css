@@ -10,7 +10,10 @@
     background-image: url('https://images.unsplash.com/photo-1438216983993-cdcd7dea84ce?q=80&fm=jpg&s=4141165d8e8eed56b8d9012740c4b503');
 }
 .post-page {
-    background-image: url('../img/contact-bg.jpg');
+    background-image: url('http://shifangcn.com/wp-content/uploads/2015/08/DSC_7247.jpg');
+}
+.next-post-page {
+    background-image: url(http://shifangcn.com/wp-content/uploads/2014/07/4294111937_6d1b6265c2_o.jpg);
 }
 .list-page {
     background-image: url('https://images.unsplash.com/photo-1429734160945-4f85244d6a5a?q=80&fm=jpg&s=1e4502a7439b5792e5b7b0a25811baba');
@@ -20,17 +23,19 @@
 body, h1, h2 {
     font-family: 'Microsoft YaHei', 'Bookshelf Symbol 7';
 }
-h1 {
-    font-size: 30px;
-}
-h2 {
-    font-size: 24px;
-}
 .intro-header {
     min-height: 450px;
 	margin-top: 60px;
     background-position: center;
     z-index: 1;
+}
+
+.post-heading h1 {
+    font-size: 28px;
+}
+
+.post-heading h2.subheading {
+    font-size: 20px;
 }
 
 @media only screen and (min-width: 6640px) {
@@ -114,6 +119,18 @@ section {
     body {
         font-size: 18px;
     }
+
+    .post-heading h1 {
+        font-size: 24px;
+    }
+
+    .post-heading h2.subheading {
+        font-size: 18px;
+    }
+
+    p {
+        font-size: 16px;
+    }
 }
 
 img {
@@ -139,6 +156,13 @@ img {
 	margin-left: 3px;
 	margin-right: 3px;
 	display: inline-block;
+}
+
+.selection .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 17px;
 }
 
 .selected-items span {

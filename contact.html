@@ -83,7 +83,8 @@
                     <h2>立即预订</h2>
                 </div>
                 <div class="col-lg-8 col-lg-offset-2 col-xs-10 col-xs-offset-1">
-                    <p>Want to get in touch with us? Fill out the form below to send us a message and we will try to get back to you within 24 hours!</p>
+                    <p>请通过以下表格告知我们您的需求，我们会为您提供大致的费用预算，并会在提交请求后48小时之内联系您，进行下一步的计划。</p>
+                    <p>如果有任何问题，请给我们发送邮件 example@email.com</p>
                 </div>
             </div>
         </div>
@@ -99,94 +100,81 @@
                 <form name="sentMessage" id="contactForm" novalidate>
                     <div class="row control-group">
                         <div class="form-group col-xs-12 floating-label-form-group controls">
-                            <label>Preference</label>
-                            <input type="text" class="form-control" placeholder="Personal Preference" data-select="preference-selection" id="preference" data-validation-required-message="Please enter your name.">
-                            <div id="selected-preference" data-group="preference-selection" class="selected-items"></div>
-							<p class="help-block text-danger"></p>
-                        </div>
-                    </div>
-                    <div class="row control-group selection" id="preference-selection">
-                        <div class="well">
-                            <span data-group="selected-preference" class="btn btn-info">Easy</span>
-                            <span data-group="selected-preference" class="btn btn-info">Medium</span>
-                            <span data-group="selected-preference" class="btn btn-info">Hard</span>
-                        </div>
-                    </div>
-                    <div class="row control-group">
-                        <div class="form-group col-xs-12 floating-label-form-group controls">
-                            <label>Highlights</label>
-                            <input type="text" class="form-control" placeholder="Trip Highlights" data-select="highlight-selection" id="highlights" data-validation-required-message="Please enter your name.">
-                            <div id="selected-highlights" data-group="hightlight-selection" class="selected-items"></div>
+                            <label>个性主题</label>
+                            <input type="text" class="form-control" placeholder="个性主题" data-select="highlight-selection" id="highlights" data-validation-required-message="Please enter your name.">
+                            <div id="selected-highlights" data-group="highlight-selection" class="selected-items"></div>
 							<p class="help-block text-danger"></p>
                         </div>
                     </div>
                     <div class="row control-group selection" id="highlight-selection">
                         <div class="well">
-							<select>
-								<option>Royal</option>
-								<option>Royal</option>
-								<option>Royal</option>
-								<option>Royal</option>
-								<option>Royal</option>
-							</select>
+                            <span data-group="selected-highlights" class="btn btn-primary">历史</span>
+                            <span data-group="selected-highlights" class="btn btn-primary">文化</span>
+                            <span data-group="selected-highlights" class="btn btn-primary">艺术</span>
+                            <span data-group="selected-highlights" class="btn btn-primary">电影</span>
+                            <span data-group="selected-highlights" class="btn btn-primary">足球</span>
+                            <span data-group="selected-highlights" class="btn btn-primary">苏格兰</span>
+                            <span data-group="selected-highlights" class="btn btn-primary">世界遗产</span>
+                            <span data-group="selected-highlights" class="btn btn-primary">风景</span>
+                            <span data-group="selected-highlights" class="btn btn-primary">徒步</span>
+                            <span data-group="selected-highlights" class="btn btn-primary">露营</span>
+                            <span data-group="selected-highlights" class="btn btn-primary">皇室</span>
+                            <span data-group="selected-highlights" class="btn btn-primary">下午茶</span>
                         </div>
+                        <div class="close">关闭</div>
                     </div>
                     <div class="row control-group">
                         <div class="form-group col-xs-12 floating-label-form-group controls">
-                            <label>Places</label>
-                            <input type="text" class="form-control" placeholder="Places to visit" data-select="city-selection" id="cities" data-validation-required-message="Please enter your name.">
+                            <label>旅行地选择</label>
+                            <input type="text" class="form-control" placeholder="旅行地选择"
+                                   data-select="city-selection" id="cities" autocomplete="off"
+                                   data-validation-required-message="Please enter your name.">
                             <div id="selected-cities" data-group="city-selection" class="selected-items"></div>
 							<p class="help-block text-danger"></p>
                         </div>
                     </div>
                     <div class="row control-group selection" id="city-selection">
                         <div class="well">
-                            <span data-group="selected-cities" class="btn btn-warning">London</span>
-                            <span data-group="selected-cities" class="btn btn-warning">Edinburgh</span>
-                            <span data-group="selected-cities" class="btn btn-warning">Cambridge</span>
-                            <span data-group="selected-cities" class="btn btn-warning">Lake District</span>
-                            <span data-group="selected-cities" class="btn btn-warning">Brighton</span>
+                            <span data-group="selected-cities" class="btn btn-info">London</span>
+                            <span data-group="selected-cities" class="btn btn-info">Edinburgh</span>
+                            <span data-group="selected-cities" class="btn btn-info">Cambridge</span>
+                            <span data-group="selected-cities" class="btn btn-info">Lake District</span>
+                            <span data-group="selected-cities" class="btn btn-info">Brighton</span>
                         </div>
+                        <div class="close">关闭</div>
                     </div>
                     <div class="row control-group">
                         <div class="form-group col-xs-12 floating-label-form-group controls">
-                            <label>Budget</label>
-                            <input type="number" class="form-control" placeholder="Daily Budget" id="budget" data-validation-required-message="Please enter your name.">
+                            <label>预算</label>
+                            <input type="number" class="form-control" placeholder="每日预算" id="budget" data-validation-required-message="Please enter your name.">
                             <p class="help-block text-danger"></p>
                         </div>
                     </div>
                     <div class="row control-group">
                         <div class="form-group col-xs-12 floating-label-form-group controls">
-                            <label>Start date</label>
-                            <input type="date" class="form-control" placeholder="Arrival Date" id="start-date" data-validation-required-message="Please enter your name.">
+                            <label>旅行日期</label>
+                            <input type="date" class="form-control" placeholder="旅行日期" id="start-date" data-validation-required-message="Please enter your name.">
                             <p class="help-block text-danger"></p>
                         </div>
                     </div>
                     <div class="row control-group">
                         <div class="form-group col-xs-12 floating-label-form-group controls">
-                            <label>End dates</label>
-                            <input type="date" class="form-control" placeholder="Departure Date" id="end-date" data-validation-required-message="Please enter your name.">
+                            <label>如何称呼</label>
+                            <input type="text" class="form-control" placeholder="如何称呼" id="name" required data-validation-required-message="Please enter your name.">
                             <p class="help-block text-danger"></p>
                         </div>
                     </div>
                     <div class="row control-group">
                         <div class="form-group col-xs-12 floating-label-form-group controls">
-                            <label>Name</label>
-                            <input type="text" class="form-control" placeholder="Name" id="name" required data-validation-required-message="Please enter your name.">
+                            <label>邮箱地址</label>
+                            <input type="email" class="form-control" placeholder="邮箱地址" id="email" required data-validation-required-message="Please enter your email address.">
                             <p class="help-block text-danger"></p>
                         </div>
                     </div>
                     <div class="row control-group">
                         <div class="form-group col-xs-12 floating-label-form-group controls">
-                            <label>Email Address</label>
-                            <input type="email" class="form-control" placeholder="Email Address" id="email" required data-validation-required-message="Please enter your email address.">
-                            <p class="help-block text-danger"></p>
-                        </div>
-                    </div>
-                    <div class="row control-group">
-                        <div class="form-group col-xs-12 floating-label-form-group controls">
-                            <label>Message</label>
-                            <textarea rows="5" class="form-control" placeholder="Message" id="message" required data-validation-required-message="Please enter a message."></textarea>
+                            <label>备注信息</label>
+                            <textarea rows="5" class="form-control" placeholder="备注信息" id="message" required data-validation-required-message="Please enter a message."></textarea>
                             <p class="help-block text-danger"></p>
                         </div>
                     </div>
@@ -194,7 +182,7 @@
                     <div id="success"></div>
                     <div class="row">
                         <div class="form-group col-xs-12">
-                            <button type="submit" class="btn btn-default">Send</button>
+                            <button type="submit" class="btn btn-default">发送</button>
                         </div>
                     </div>
                 </form>

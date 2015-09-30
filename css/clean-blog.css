@@ -210,10 +210,10 @@ hr.small {
 .post-preview > a:hover,
 .post-preview > a:focus {
   text-decoration: none;
-  color: #e7746f;
+  color: #5dcfca;
 }
 .post-preview > a > .post-title {
-  font-size: 24px;
+  font-size: 18px;
   margin-top: 30px;
   margin-bottom: 10px;
 }
@@ -234,12 +234,12 @@ hr.small {
 }
 .post-preview > .post-meta > a:hover,
 .post-preview > .post-meta > a:focus {
-  color: #e7746f;
+  color: #5dcfca;
   text-decoration: underline;
 }
 @media only screen and (min-width: 768px) {
   .post-preview > a > .post-title {
-    font-size: 30px;
+    font-size: 24px;
   }
 }
 .section-heading {
@@ -339,9 +339,9 @@ form .row:first-child .floating-label-form-group {
   color: white;
 }
 .btn-primary {
-  background-color: #e7746f;
+  background-color: white;
   border: 1px solid #e7746f;
-  color: white;
+  color: #e7746f;
 }
 .btn-primary:hover,
 .btn-primary:focus {
@@ -352,6 +352,21 @@ form .row:first-child .floating-label-form-group {
 .btn-primary.active {
   background-color: #e25953;
   border: 1px solid #e7746f;
+}
+.btn-info {
+  background-color: white;
+  border: 1px solid #5dcfca;
+  color: #5dcfca;
+}
+.btn-info:hover,
+.btn-info:focus {
+  background-color: #43c7c2;
+  border: 1px solid #5dcfca;
+  color: white;
+}
+.btn-info.active {
+  background-color: #43c7c2;
+  border: 1px solid #5dcfca;
 }
 .pager {
   margin: 20px 0 0;
