@@ -5,7 +5,7 @@
 
 body {
 	.serif;
-	font-size: 20px;
+	font-size: 18px;
 	color: @gray-dark;
 }
 
@@ -72,31 +72,31 @@ hr.small {
 		li {
 			a {
 				text-transform: uppercase;
-				font-size: 12px;
+				font-size: 16px;
 				font-weight: 800;
 				letter-spacing: 1px;
 			}
 		}
 	}
 	@media only screen and (min-width: 768px) {
-		background: transparent;
+		background: white;
 		border-bottom: 1px solid transparent;
 		.navbar-brand {
-			color: white;
+			color: #404040;
 			padding: 20px;
 			&:hover,
 			&:focus {
-				color: @white-faded;
+				color: @primary-faded;
 			}
 		}
 		.nav {
 			li {
 				a {
-					color: white;
+					color: #404040;
 					padding: 20px;
 					&:hover,
 					&:focus {
-						color: @white-faded;
+						color: @primary-faded;
 					}
 				}
 			}
@@ -211,7 +211,7 @@ hr.small {
 			.serif;
 			font-style: italic;
 			font-weight: 300;
-			font-size: 20px;
+			font-size: 18px;
 			a {
 				color: white;
 			}
@@ -235,10 +235,10 @@ hr.small {
 		&:hover,
 		&:focus {
 			text-decoration: none;
-			color: @brand-primary;
+			color: @brand-info;
 		}
 		> .post-title {
-			font-size: 24px;
+			font-size: 18px;
 			margin-top: 30px;
 			margin-bottom: 10px;
 		}
@@ -258,7 +258,7 @@ hr.small {
 			color: @gray-dark;
 			&:hover,
 			&:focus {
-				color: @brand-primary;
+				color: @brand-info;
 				text-decoration: underline;
 			}
 		}
@@ -266,7 +266,7 @@ hr.small {
 	@media only screen and (min-width: 768px) {
 		> a {
 			> .post-title {
-				font-size: 30px;
+				font-size: 24px;
 			}
 		}
 	}
@@ -391,9 +391,9 @@ form .row:first-child .floating-label-form-group {
 }
 
 .btn-primary {
-	background-color: @brand-primary;
+	background-color: white;
 	border: 1px solid @brand-primary;
-	color: white;
+	color: @brand-primary;
 	
 	&:hover,
 	&:focus {
@@ -401,6 +401,27 @@ form .row:first-child .floating-label-form-group {
 		border: 1px solid @brand-primary;
 		color: white;
 	}
+    &.active {
+      background-color: darken(@brand-primary, 6.5%);
+      border: 1px solid @brand-primary;
+    }
+}
+
+.btn-info {
+  background-color: white;
+  border: 1px solid @brand-info;
+  color: @brand-info;
+
+  &:hover,
+  &:focus {
+    background-color: darken(@brand-info, 6.5%);
+    border: 1px solid @brand-info;
+    color: white;
+  }
+  &.active {
+    background-color: darken(@brand-info, 6.5%);
+    border: 1px solid @brand-info;
+  }
 }
 
 // Pager Styling

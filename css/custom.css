@@ -1,15 +1,19 @@
 /**/
 .index-page {
-	background-image: url('https://images.unsplash.com/photo-1429277005502-eed8e872fe52?q=80&fm=jpg&s=ed7d2402ce6b1a9171d454360da07c58');
+    background-image: url('http://shifangcn.com/wp-content/uploads/2015/06/jinze.jpg');
 }
 .contact-page {
-    background-image: url('../img/contact-bg.jpg');
+    min-height: 0 !important;
+	margin-top: 0 !important;
 }
 .about-page {
     background-image: url('https://images.unsplash.com/photo-1438216983993-cdcd7dea84ce?q=80&fm=jpg&s=4141165d8e8eed56b8d9012740c4b503');
 }
 .post-page {
-    background-image: url('https://images.unsplash.com/photo-1437915015400-137312b61975?q=80&fm=jpg&s=404211ca7568f20b30685a7413f5f30c');
+    background-image: url('http://shifangcn.com/wp-content/uploads/2015/08/DSC_7247.jpg');
+}
+.next-post-page {
+    background-image: url(http://shifangcn.com/wp-content/uploads/2014/07/4294111937_6d1b6265c2_o.jpg);
 }
 .list-page {
     background-image: url('https://images.unsplash.com/photo-1429734160945-4f85244d6a5a?q=80&fm=jpg&s=1e4502a7439b5792e5b7b0a25811baba');
@@ -17,98 +21,156 @@
 
 /**/
 body, h1, h2 {
-    font-family: 'Bookshelf Symbol 7';
-}
-h1 {
-    font-size: 30px;
-}
-h2 {
-    font-size: 24px;
+    font-family: 'Microsoft YaHei', 'Bookshelf Symbol 7';
 }
 .intro-header {
     min-height: 450px;
+	margin-top: 60px;
     background-position: center;
     z-index: 1;
 }
+
+.post-heading h1 {
+    font-size: 28px;
+}
+
+.post-heading h2.subheading {
+    font-size: 20px;
+}
+
+@media only screen and (min-width: 6640px) {
+    .intro-header:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 60px;
+        background: linear-gradient(#666, transparent);
+    }
+}
 .dark {
-	background-color: #f9f6f3;
+    background-color: #f9f6f3;
 }
 section {
-	padding: 50px 0;
+    padding: 50px 0;
 }
 /*Sections*/
 .index-heading {
-	text-align: center;
+    text-align: center;
 }
 .actions {
-	margin: 50px 0;
+    margin: 50px 0;
+	overflow: hidden;
 }
 
 .action {
-	margin: 10px 0;
-	display: inline-block;
+    margin: 10px 0;
+    display: inline-block;
 }
 /*Sliders*/
 .sliders {
--webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-          box-sizing: border-box;
-  width: 100%;
-  padding: 10px;
-  text-align: center;
-  margin: 50px 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 100%;
+    position: relative;
+    margin: 50px 0;
+    overflow: hidden;
 }
 
 .slide {
-  max-width: 480px;
-  height: 280px;
-  overflow: hidden;
-  display: none;
+    overflow: hidden;
+    background: #eee no-repeat;
+    background-position: center;
+    background-size: 100%;
+    display: block;
+    float: left;
+    padding: 0;
+    border: 1px solid #fff;
 }
 
-.slide.active {
-	display: inline-block;
+.slide span {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    padding: 10px;
 }
 
 .control {
-	position: absolute;
+    position: absolute;
+    z-index: 1;
 }
 
-.control#prev {
-	top: 50%;
-	left: 0;
+.control.prev {
+    top: 50%;
+    left: 0;
 }
 
-.control#next {
-	top: 50%;
-	right: 0;
+.control.next {
+    top: 50%;
+    right: 0;
 }
 
 @media only screen and (max-width: 640px) {
-	.slide {
-		height: auto;
-		width: 100%;
-	}
-	.control {
-		position: relative;
-	}
-	
-	.btn.control {
-		padding: 12px 22px;
-	}
 }
 
 @media only screen and (max-width: 480px) {
-	body {
-		font-size: 18px;
-	}
+    body {
+        font-size: 18px;
+    }
+
+    .post-heading h1 {
+        font-size: 24px;
+    }
+
+    .post-heading h2.subheading {
+        font-size: 18px;
+    }
+
+    p {
+        font-size: 16px;
+    }
 }
 
 img {
-	width: 100%;
-	transition: all 0.3s;
+    width: 100%;
+    transition: all 0.3s;
 }
 
 .slide img:hover {
-	transform: scale(1.1);
+    transform: scale(1.05);
+    transition: all 0.3s;
+}
+
+.selection {
+    display: none;
+	position: absolute;
+	width: 100%;
+	z-index: 2;
+}
+
+.selection span, .selected-items span {
+    margin-top: 5px;
+    margin-bottom: 5px;
+	margin-left: 3px;
+	margin-right: 3px;
+	display: inline-block;
+}
+
+.selection .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 17px;
+}
+
+.selected-items span {
+	margin-left: 3px;
+	margin-right: 3px;
+}
+
+.selection span.active {
+    background-color: #aaa;
+    border: 1px solid #aaa;
 }

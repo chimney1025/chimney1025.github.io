@@ -1,42 +1,63 @@
-var Slider = (function() {
-  var index = 0;
-  var images = document.querySelectorAll(".slide");
-  
-  var slide = function() {
-    var last, next;
-  
-    if(index < 0) {
-	  index = images.length-1;
-	} else if(index >= images.length) {
-	  index = 0;
-	}
-  
-	last = (index-1>=0)?(index-1):(images.length-1);
-	next = (index+1<images.length)?(index+1):(0);
-	
-    images[last].className = "slide";
-    images[next].className = "slide";
-    images[index].className = "slide active";
-  }
-  
-  return {
-    start: function() {
-		clearInterval(this.timer);
-		this.timer = setInterval(function(){
-			slide();
-			index++;
-		}, 2000);
-	},
-	prev: function() {
-		slide();
-	    index--;
-	},
-	next: function() {
-		slide();
-	    index++;
-	},
-	stop: function() {
-		clearInterval(this.timer);
-	}
-  }
+var FormSelect = (function(){
+
+    var toggleShowHide = function(event) {
+        var selection = event.target.getAttribute('data-select');
+        (document.getElementById(selection).style.display == "block")
+        ? (document.getElementById(selection).style.display = "none")
+        : (document.getElementById(selection).style.display = "block");
+    };
+
+    var toggleSelection = function(event) {
+        var button = event.target;
+		var group = button.getAttribute('data-group');
+		var parent = button.parentNode;
+		var parentGroup = parent.getAttribute('data-group');
+		var selectList = document.getElementById(parentGroup);
+		
+		if(parentGroup) {
+			if(selectList.style.display == "none") {
+				selectList.style.display = "block";
+			}
+			
+			document.querySelector('#' + parentGroup + ' .well').appendChild(button);
+		} else {
+			if(parent.children.length == 1) {
+				document.getElementById(group).appendChild(button);
+				parent.parentNode.style.display = "none"
+			} else {
+				document.getElementById(group).appendChild(button);
+			}
+		}
+		
+    };
+
+    var closeSelection = function(event) {
+        event.target.parentNode.style.display = "none";
+    };
+
+    return {
+        init: function() {
+            var items = document.querySelectorAll('input');
+			var modals = document.querySelectorAll('.selection');
+            var spans = document.querySelectorAll('.selection span');
+            var closes = document.querySelectorAll('.selection .close');
+
+            for(var i=0; i<items.length; i++) {
+                if(items[i].getAttribute('data-select')) {
+                    items[i].addEventListener('click', toggleShowHide);
+                }
+            }
+
+            for(var i=0; i<spans.length; i++) {
+                spans[i].addEventListener('click', toggleSelection);
+            }
+
+            for(var i=0; i<closes.length; i++) {
+                closes[i].addEventListener('click', closeSelection);
+            }
+        }
+    }
+
 })();
+
+FormSelect.init();
