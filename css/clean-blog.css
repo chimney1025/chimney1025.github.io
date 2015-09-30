@@ -1,5 +1,5 @@
 body {
-  font-family: 'Bookshelf Symbol 7', 'Lora', 'Times New Roman', serif;
+  font-family: 'Microsoft YaHei', 'Bookshelf Symbol 7', 'Lora', 'Times New Roman', serif;
   font-size: 18px;
   color: #404040;
 }
@@ -16,7 +16,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Bookshelf Symbol 7', 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Microsoft YaHei', 'Bookshelf Symbol 7', 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: 800;
 }
 a {
@@ -46,37 +46,37 @@ hr.small {
   left: 0;
   width: 100%;
   z-index: 3;
-  font-family: 'Bookshelf Symbol 7', 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Microsoft YaHei', 'Bookshelf Symbol 7', 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 .navbar-custom .navbar-brand {
   font-weight: 800;
 }
 .navbar-custom .nav li a {
   text-transform: uppercase;
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 800;
   letter-spacing: 1px;
 }
 @media only screen and (min-width: 768px) {
   .navbar-custom {
-    background: transparent;
+    background: white;
     border-bottom: 1px solid transparent;
   }
   .navbar-custom .navbar-brand {
-    color: white;
+    color: #404040;
     padding: 20px;
   }
   .navbar-custom .navbar-brand:hover,
   .navbar-custom .navbar-brand:focus {
-    color: rgba(255, 255, 255, 0.8);
+    color: rgba(231, 116, 111, 0.8);
   }
   .navbar-custom .nav li a {
-    color: white;
+    color: #404040;
     padding: 20px;
   }
   .navbar-custom .nav li a:hover,
   .navbar-custom .nav li a:focus {
-    color: rgba(255, 255, 255, 0.8);
+    color: rgba(231, 116, 111, 0.8);
   }
 }
 @media only screen and (min-width: 1170px) {
@@ -163,7 +163,7 @@ hr.small {
   font-size: 24px;
   line-height: 1.1;
   display: block;
-  font-family: 'Bookshelf Symbol 7', 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Microsoft YaHei', 'Bookshelf Symbol 7', 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: 300;
   margin: 10px 0 0;
 }
@@ -182,13 +182,13 @@ hr.small {
   display: block;
 }
 .intro-header .post-heading .subheading {
-  font-family: 'Bookshelf Symbol 7', 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Microsoft YaHei', 'Bookshelf Symbol 7', 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 24px;
   margin: 10px 0 30px;
   font-weight: 600;
 }
 .intro-header .post-heading .meta {
-  font-family: 'Bookshelf Symbol 7', 'Lora', 'Times New Roman', serif;
+  font-family: 'Microsoft YaHei', 'Bookshelf Symbol 7', 'Lora', 'Times New Roman', serif;
   font-style: italic;
   font-weight: 300;
   font-size: 18px;
@@ -320,7 +320,7 @@ form .row:first-child .floating-label-form-group {
   border-top: 1px solid #eeeeee;
 }
 .btn {
-  font-family: 'Bookshelf Symbol 7', 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Microsoft YaHei', 'Bookshelf Symbol 7', 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   text-transform: uppercase;
   font-size: 14px;
   font-weight: 800;
@@ -358,7 +358,7 @@ form .row:first-child .floating-label-form-group {
 }
 .pager li > a,
 .pager li > span {
-  font-family: 'Bookshelf Symbol 7', 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Microsoft YaHei', 'Bookshelf Symbol 7', 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   text-transform: uppercase;
   font-size: 14px;
   font-weight: 800;
