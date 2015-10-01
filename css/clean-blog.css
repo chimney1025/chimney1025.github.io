@@ -371,7 +371,6 @@ form .row:first-child .floating-label-form-group {
 }
 .btn-primary:hover,
 .btn-primary:focus,
-.btn-primary:visited,
 .btn-primary:active,
 .btn-primary.active,
 .btn-primary.selected {
@@ -386,7 +385,6 @@ form .row:first-child .floating-label-form-group {
 }
 .btn-info:hover,
 .btn-info:focus,
-.btn-info:visited,
 .btn-info:active,
 .btn-info.active,
 .btn-info.selected {
