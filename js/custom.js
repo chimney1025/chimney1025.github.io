@@ -19,7 +19,7 @@ var SiteEffect = (function(){
 				selectList.style.display = "block";
 			}
 			
-			document.querySelector('#' + parentGroup + ' .well').appendChild(button);
+			document.querySelector('#' + parentGroup + ' .wrapper').appendChild(button);
 		} else {
 			if(parent.children.length == 1) {
 				document.getElementById(group).appendChild(button);

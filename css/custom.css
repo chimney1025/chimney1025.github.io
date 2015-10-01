@@ -168,12 +168,6 @@ img {
     padding: 29px;
 }
 
-.selection .well {
-	background: none;
-	border: none;
-	box-shadow: none;
-}
-
 .selection span, .selected-items span {
     margin-top: 5px;
     margin-bottom: 5px;
