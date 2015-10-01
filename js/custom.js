@@ -1,4 +1,4 @@
-var FormSelect = (function(){
+var SiteEffect = (function(){
 
     var toggleClickToSelect = function(event) {
         var selection = event.target.getAttribute('data-toggle');
@@ -50,6 +50,7 @@ var FormSelect = (function(){
 
     return {
         init: function() {
+			/*Event listener for contact page*/
             var items = document.querySelectorAll('span.click-to-select');
             var spans = document.querySelectorAll('.selection span');
             var closes = document.querySelectorAll('.selection .close');
@@ -70,9 +71,14 @@ var FormSelect = (function(){
 			for(var i=0; i<contactMethods.length; i++) {
 				contactMethods[i].addEventListener('click', toggleMethod);
 			}
+			
+			/*Scroll to top*/
+			document.querySelector('.scroll-up').addEventListener('click', function(){
+				window.scrollTo(0,0);
+			});
         }
     }
 
 })();
 
-FormSelect.init();
+SiteEffect.init();

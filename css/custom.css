@@ -189,8 +189,8 @@ img {
     font-size: 17px;
 }
 
-.selection .map {
-	background-image: url('../img/map.png');
+.selection .map iframe {
+	width: 100%;
 }
 
 .selected-items span {
@@ -206,4 +206,34 @@ img {
 .method {
 	display: none;
 	clear: right;
+}
+
+
+/* ---------------------------------------------- /*
+ * Scroll to top
+/* ---------------------------------------------- */
+
+.scroll-up {
+	position: fixed;
+	z-index: 999;
+	bottom: 2em;
+	right: 2em;
+	cursor: pointer;
+}
+
+.scroll-up span {
+	background-color: rgba(135, 135, 135, 0.5);
+	display: block;
+	width: 35px;
+	height: 35px;
+	text-align: center;
+	color: #fff;
+	font-size: 15px;
+	line-height: 30px;
+}
+
+.scroll-up span:hover,
+.scroll-up span:active {
+	background-color: rgba(235, 235, 235, .8);
+	color: #333;
 }

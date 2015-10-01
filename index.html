@@ -195,6 +195,10 @@
     </div>
 </footer>
 
+        <div class="scroll-up">
+            <span><i class="fa fa-angle-up"></i></span>
+        </div>
+
 <!-- jQuery -->
 <script src="js/jquery.js"></script>
 
@@ -203,6 +207,7 @@
 
 <!-- Custom Theme JavaScript -->
 <script src="js/clean-blog.min.js"></script>
+<script src="js/custom.js"></script>
 <script>
     (function(){
         var resize = function(){
@@ -210,10 +215,9 @@
         };
 
         resize();
-        window.scrollTo(0,0);
 
         window.onresize = function(){
-            resize();
+            //resize();
         };
 
     })();
