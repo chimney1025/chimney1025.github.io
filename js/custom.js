@@ -34,13 +34,27 @@ var FormSelect = (function(){
     var closeSelection = function(event) {
         event.target.parentNode.style.display = "none";
     };
+	
+	var toggleMethod = function(event) {
+		var method = event.target.getAttribute('data-method');
+		
+		if(document.getElementById(method).style.display == "block") {
+			document.getElementById(method).style.display = "none";
+			event.target.classList.remove("selected");
+		} else {
+			document.getElementById(method).style.display = "block";
+			event.target.classList.add("selected");
+		}
+		
+	};
 
     return {
         init: function() {
             var items = document.querySelectorAll('input');
-			var modals = document.querySelectorAll('.selection');
             var spans = document.querySelectorAll('.selection span');
+			var dropdowns = document.querySelectorAll('form select option span');
             var closes = document.querySelectorAll('.selection .close');
+			var contactMethods = document.querySelectorAll('#contact-method span');
 
             for(var i=0; i<items.length; i++) {
                 if(items[i].getAttribute('data-select')) {
@@ -52,9 +66,17 @@ var FormSelect = (function(){
                 spans[i].addEventListener('click', toggleSelection);
             }
 
+            for(var i=0; i<dropdowns.length; i++) {
+                dropdowns[i].addEventListener('click', toggleSelection);
+            }
+
             for(var i=0; i<closes.length; i++) {
                 closes[i].addEventListener('click', closeSelection);
             }
+			
+			for(var i=0; i<contactMethods.length; i++) {
+				contactMethods[i].addEventListener('click', toggleMethod);
+			}
         }
     }
 

@@ -269,6 +269,32 @@ footer .copyright {
   text-align: center;
   margin-bottom: 0;
 }
+.form-group {
+  font-size: 14px;
+  position: relative;
+  margin-bottom: 0;
+  padding-bottom: 0.5em;
+}
+.form-group input,
+.form-group textarea {
+  z-index: 1;
+  position: relative;
+  padding-right: 0;
+  padding-left: 0;
+  border: none;
+  border-radius: 0;
+  font-size: 1.2em;
+  background: none;
+  box-shadow: none !important;
+  resize: none;
+}
+.form-group label {
+  color: #e7746f;
+}
+.form-group::not(:first-child) {
+  padding-left: 14px;
+  border-left: 1px solid #eeeeee;
+}
 .floating-label-form-group {
   font-size: 14px;
   position: relative;
@@ -339,34 +365,34 @@ form .row:first-child .floating-label-form-group {
   color: white;
 }
 .btn-primary {
-  background-color: white;
+  background-color: transparent;
   border: 1px solid #e7746f;
   color: #e7746f;
 }
 .btn-primary:hover,
-.btn-primary:focus {
+.btn-primary:focus,
+.btn-primary:visited,
+.btn-primary:active,
+.btn-primary.active,
+.btn-primary.selected {
   background-color: #e25953;
   border: 1px solid #e7746f;
   color: white;
 }
-.btn-primary.active {
-  background-color: #e25953;
-  border: 1px solid #e7746f;
-}
 .btn-info {
-  background-color: white;
+  background-color: transparent;
   border: 1px solid #5dcfca;
   color: #5dcfca;
 }
 .btn-info:hover,
-.btn-info:focus {
+.btn-info:focus,
+.btn-info:visited,
+.btn-info:active,
+.btn-info.active,
+.btn-info.selected {
   background-color: #43c7c2;
   border: 1px solid #5dcfca;
   color: white;
-}
-.btn-info.active {
-  background-color: #43c7c2;
-  border: 1px solid #5dcfca;
 }
 .pager {
   margin: 20px 0 0;
