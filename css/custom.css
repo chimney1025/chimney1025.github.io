@@ -24,8 +24,11 @@
     margin-top: 0 !important;
 }
 .bg-section {
-    background: url('../img/cover-list.jpg') no-repeat center center fixed;
-    background-size: 100%;
+    background-image: url('../img/cover-list.jpg');
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 .bg-content {
