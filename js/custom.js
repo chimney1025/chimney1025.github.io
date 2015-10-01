@@ -50,7 +50,7 @@ var FormSelect = (function(){
 
     return {
         init: function() {
-            var items = document.querySelectorAll('input');
+            var items = document.querySelectorAll('span.click-to-select');
             var spans = document.querySelectorAll('.selection span');
 			var dropdowns = document.querySelectorAll('form select option span');
             var closes = document.querySelectorAll('.selection .close');

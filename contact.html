@@ -101,12 +101,13 @@
                     <div class="row control-group">
                         <div class="form-group col-xs-12 controls">
                             <label>个性主题</label>
-                            <input type="text" class="form-control" placeholder="点击选择" data-select="highlight-selection" id="highlights" data-validation-required-message="Please enter your name.">
-                            <div id="selected-highlights" data-group="highlight-selection" class="selected-items"></div>
+                            <span class="click-to-select" data-select="highlight-selection" id="highlights">点击选择</span>
+							<div id="selected-highlights" data-group="highlight-selection" class="selected-items"></div>
 							<p class="help-block text-danger"></p>
                         </div>
                     </div>
                     <div class="row control-group selection" id="highlight-selection">
+						<input type="text" class="form-control" placeholder="搜索" >
                         <div class="well">
                             <span data-group="selected-highlights" class="btn btn-primary">历史</span>
                             <span data-group="selected-highlights" class="btn btn-primary">文化</span>
@@ -126,12 +127,13 @@
                     <div class="row control-group">
                         <div class="form-group col-xs-12 controls">
                             <label>目的地</label>
-                            <input type="text" class="form-control" placeholder="点击选择" data-select="city-selection" id="cities" data-validation-required-message="Please enter your name.">
+                            <span class="click-to-select" data-select="city-selection" id="cities">点击选择</span>
                             <div id="selected-cities" data-group="city-selection" class="selected-items"></div>
 							<p class="help-block text-danger"></p>
                         </div>
                     </div>
                     <div class="row control-group selection" id="city-selection">
+						<input type="text" class="form-control" placeholder="搜索" >
 						<div class="well">
 							<div class="map">MAP</div>
 						</div>
