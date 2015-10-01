@@ -293,6 +293,9 @@ footer .copyright {
   resize: none;
 }
 .form-group label {
+  color: #808080;
+}
+.form-group label.required {
   color: #e7746f;
 }
 .form-group::not(:first-child) {

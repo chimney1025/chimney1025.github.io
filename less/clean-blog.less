@@ -331,7 +331,10 @@ footer {
 		resize: none;
 	}
 	label {
-		color: @brand-primary;
+		color: @gray;
+		&.required {
+			color: @brand-primary;
+		}
 	}
 	&::not(:first-child) {
 		padding-left: 14px;

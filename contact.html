@@ -103,7 +103,6 @@
                             <label>个性主题</label>
                             <span class="click-to-select" data-toggle="highlight-selection" id="highlights">点击选择</span>
 							<div id="selected-highlights" data-group="highlight-selection" class="selected-items"></div>
-							<p class="help-block text-danger"></p>
                         </div>
                     </div>
                     <div class="row control-group selection" id="highlight-selection">
@@ -131,7 +130,6 @@
                             <label>目的地</label>
                             <span class="click-to-select" data-toggle="city-selection" id="cities">点击选择</span>
                             <div id="selected-cities" data-group="city-selection" class="selected-items"></div>
-							<p class="help-block text-danger"></p>
                         </div>
                     </div>
                     <div class="row control-group selection" id="city-selection">
@@ -163,10 +161,10 @@
                     </div>
                     <div class="row control-group">
                         <div class="form-group col-xs-12 controls">
-                            <label>邮箱 *</label>
+                            <label class="required">邮箱 *</label>
                             <input type="text" class="form-control" id="email" required 
 							autocomplete="off"
-							data-validation-required-message="Please enter your email.">
+							data-validation-required-message="我们需要通过邮箱简单直接的与您取得联系">
                             <p class="help-block text-danger"></p>
                         </div>
                     </div>
@@ -215,17 +213,17 @@
 					-->
                     <div class="row control-group">
                         <div class="form-group col-xs-12 controls">
-                            <label>如何称呼 *</label>
+                            <label class="required">如何称呼 *</label>
                             <input type="text" class="form-control" id="name" required 
 							autocomplete="off"
-							data-validation-required-message="Please enter your name.">
+							data-validation-required-message="希望我们怎样称呼您？">
                             <p class="help-block text-danger"></p>
                         </div>
                     </div>
                     <div class="row control-group">
                         <div class="form-group col-xs-12 controls">
-                            <label>备注信息</label>
-                            <textarea rows="5" class="form-control" placeholder="有什么其他要求？" id="message" 
+                            <label>其他要求</label>
+                            <textarea rows="5" class="form-control" id="message" 
 							autocomplete="off"></textarea>
                             <p class="help-block text-danger"></p>
                         </div>

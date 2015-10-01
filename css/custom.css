@@ -154,6 +154,8 @@ img {
 	font-size: 1.2em;
 	color: #999;
 	height: 34px;
+	font-size: 14px !important;
+	margin-bottom: 10px;
 }
 
 .selection {
@@ -166,6 +168,12 @@ img {
     margin-bottom: 20px;
     min-height: 20px;
     padding: 29px;
+	margin-top: -10px;
+}
+
+.selected-items {
+	margin-top: -20px;
+	margin-bottom: 30px;
 }
 
 .selection span, .selected-items span {
