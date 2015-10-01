@@ -26,10 +26,6 @@
 .bg-section {
     background: url('../img/cover-list.jpg') no-repeat center center fixed;
     background-size: 100%;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
 }
 
 .bg-content {
