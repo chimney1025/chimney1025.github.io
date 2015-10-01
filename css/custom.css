@@ -7,6 +7,13 @@
     -o-background-size: cover;
     background-size: cover;
 }
+
+@media only screen and (max-width: 768px) {
+    .index-page {
+        background-attachment: scroll;
+    }
+}
+
 .about-page {
     background-image: url('../img/cover-about.jpg');
 }
