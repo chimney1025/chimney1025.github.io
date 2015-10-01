@@ -1,7 +1,7 @@
 var FormSelect = (function(){
 
-    var toggleShowHide = function(event) {
-        var selection = event.target.getAttribute('data-select');
+    var toggleClickToSelect = function(event) {
+        var selection = event.target.getAttribute('data-toggle');
         (document.getElementById(selection).style.display == "block")
         ? (document.getElementById(selection).style.display = "none")
         : (document.getElementById(selection).style.display = "block");
@@ -36,7 +36,7 @@ var FormSelect = (function(){
     };
 	
 	var toggleMethod = function(event) {
-		var method = event.target.getAttribute('data-method');
+		var method = event.target.getAttribute('data-toggle');
 		
 		if(document.getElementById(method).style.display == "block") {
 			document.getElementById(method).style.display = "none";
@@ -52,22 +52,15 @@ var FormSelect = (function(){
         init: function() {
             var items = document.querySelectorAll('span.click-to-select');
             var spans = document.querySelectorAll('.selection span');
-			var dropdowns = document.querySelectorAll('form select option span');
             var closes = document.querySelectorAll('.selection .close');
 			var contactMethods = document.querySelectorAll('#contact-method span');
 
             for(var i=0; i<items.length; i++) {
-                if(items[i].getAttribute('data-select')) {
-                    items[i].addEventListener('click', toggleShowHide);
-                }
+                items[i].addEventListener('click', toggleClickToSelect);
             }
 
             for(var i=0; i<spans.length; i++) {
                 spans[i].addEventListener('click', toggleSelection);
-            }
-
-            for(var i=0; i<dropdowns.length; i++) {
-                dropdowns[i].addEventListener('click', toggleSelection);
             }
 
             for(var i=0; i<closes.length; i++) {

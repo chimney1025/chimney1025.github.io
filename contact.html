@@ -101,13 +101,15 @@
                     <div class="row control-group">
                         <div class="form-group col-xs-12 controls">
                             <label>个性主题</label>
-                            <span class="click-to-select" data-select="highlight-selection" id="highlights">点击选择</span>
+                            <span class="click-to-select" data-toggle="highlight-selection" id="highlights">点击选择</span>
 							<div id="selected-highlights" data-group="highlight-selection" class="selected-items"></div>
 							<p class="help-block text-danger"></p>
                         </div>
                     </div>
                     <div class="row control-group selection" id="highlight-selection">
-						<input type="text" class="form-control" placeholder="搜索" >
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="搜索" >
+						</div>
                         <div class="well">
                             <span data-group="selected-highlights" class="btn btn-primary">历史</span>
                             <span data-group="selected-highlights" class="btn btn-primary">文化</span>
@@ -127,13 +129,15 @@
                     <div class="row control-group">
                         <div class="form-group col-xs-12 controls">
                             <label>目的地</label>
-                            <span class="click-to-select" data-select="city-selection" id="cities">点击选择</span>
+                            <span class="click-to-select" data-toggle="city-selection" id="cities">点击选择</span>
                             <div id="selected-cities" data-group="city-selection" class="selected-items"></div>
 							<p class="help-block text-danger"></p>
                         </div>
                     </div>
                     <div class="row control-group selection" id="city-selection">
-						<input type="text" class="form-control" placeholder="搜索" >
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="搜索" >
+						</div>
 						<div class="well">
 							<div class="map">MAP</div>
 						</div>
@@ -142,59 +146,85 @@
                     <div class="row control-group">
                         <div class="form-group col-xs-12 controls">
                             <label>预算</label>
-                            <input type="text" class="form-control" placeholder="输入一个范围" id="budget" data-validation-required-message="Please enter your name.">
+                            <input type="text" class="form-control" id="budget" 
+							autocomplete="off">
                             <p class="help-block text-danger"></p>
                         </div>
                     </div>
                     <div class="row control-group">
                         <div class="form-group col-xs-12 controls">
                             <label>旅行日期</label>
-                            <input type="text" class="form-control" placeholder="点击选择" id="start-date" data-validation-required-message="Please enter your name.">
+                            <input type="text" class="form-control" id="start-date" 
+							autocomplete="off">
                             <p class="help-block text-danger"></p>
                         </div>
                     </div>
                     <div class="row control-group">
                         <div class="form-group col-xs-12 controls">
-                            <label>如何称呼</label>
-                            <input type="text" class="form-control" placeholder="" id="name" required data-validation-required-message="Please enter your name.">
+                            <label>邮箱 *</label>
+                            <input type="text" class="form-control" id="email" required 
+							autocomplete="off"
+							data-validation-required-message="Please enter your email.">
                             <p class="help-block text-danger"></p>
                         </div>
                     </div>
+                    <div class="row control-group">
+                        <div class="form-group col-xs-12 controls">
+                            <label>电话</label>
+                            <input type="text" class="form-control" id="phone" 
+							autocomplete="off">
+                            <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
+                    <div class="row control-group">
+                        <div class="form-group col-xs-12 controls">
+                            <label>其他方式</label>
+                            <input type="text" class="form-control" id="other-method" 
+							autocomplete="off">
+                            <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
+					<!--
                     <div class="row control-group">
                         <div class="form-group col-xs-12 controls">
                             <label>联系方式</label>
                             <div id="contact-method" class="selected-items">
-								<span data-method="email-method" class="btn btn-info">邮箱</span>
-								<span data-method="phone-method" class="btn btn-info">电话</span>
-								<span data-method="wechat-method" class="btn btn-info">微信</span>
+								<span data-toggle="email-method" class="btn btn-info">邮箱</span>
+								<div class="method" id="email-method">
+									<input type="email" class="form-control" id="email" required 
+									autocomplete="off"
+									data-validation-required-message="Please enter your email address.">
+								</div>
+								<span data-toggle="phone-method" class="btn btn-info">电话</span>
+								<div class="method" id="phone-method">
+									<input type="number" class="form-control" id="phone" required 
+									autocomplete="off"
+									data-validation-required-message="Please enter your phone address.">
+								</div>
+								<span data-toggle="wechat-method" class="btn btn-info">微信</span>
+								<div class="method" id="wechat-method">
+									<input type="text" class="form-control" id="wechat" required 
+									autocomplete="off"
+									data-validation-required-message="Please enter your wechat address.">
+								</div>
 							</div>
                         </div>
                     </div>
-                    <div class="row control-group method" id="email-method">
+					-->
+                    <div class="row control-group">
                         <div class="form-group col-xs-12 controls">
-                            <label>邮箱地址</label>
-                            <input type="email" class="form-control" placeholder="请输入邮箱" id="email" required data-validation-required-message="Please enter your email address.">
-                            <p class="help-block text-danger"></p>
-                        </div>
-                    </div>
-                    <div class="row control-group method" id="phone-method">
-                        <div class="form-group col-xs-12 controls">
-                            <label>电话</label>
-                            <input type="number" class="form-control" placeholder="请输入电话" id="phone" required data-validation-required-message="Please enter your email address.">
-                            <p class="help-block text-danger"></p>
-                        </div>
-                    </div>
-                    <div class="row control-group method" id="wechat-method">
-                        <div class="form-group col-xs-12 controls">
-                            <label>微信</label>
-                            <input type="text" class="form-control" placeholder="请输入微信号" id="wechat" required data-validation-required-message="Please enter your email address.">
+                            <label>如何称呼 *</label>
+                            <input type="text" class="form-control" id="name" required 
+							autocomplete="off"
+							data-validation-required-message="Please enter your name.">
                             <p class="help-block text-danger"></p>
                         </div>
                     </div>
                     <div class="row control-group">
                         <div class="form-group col-xs-12 controls">
                             <label>备注信息</label>
-                            <textarea rows="5" class="form-control" placeholder="有什么其他要求？" id="message" required data-validation-required-message="Please enter a message."></textarea>
+                            <textarea rows="5" class="form-control" placeholder="有什么其他要求？" id="message" 
+							autocomplete="off"></textarea>
                             <p class="help-block text-danger"></p>
                         </div>
                     </div>
