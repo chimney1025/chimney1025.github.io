@@ -305,6 +305,32 @@ footer {
 }
 
 // Contact Form Styles
+.form-group {
+	font-size: 14px;
+	position: relative;
+	margin-bottom: 0;
+	padding-bottom: 0.5em;
+	input,
+	textarea {
+		z-index: 1;
+		position: relative;
+		padding-right: 0;
+		padding-left: 0;
+		border: none;
+		border-radius: 0;
+		font-size: 1.2em;
+		background: none;
+		box-shadow: none !important;
+		resize: none;
+	}
+	label {
+		color: @brand-primary;
+	}
+	&::not(:first-child) {
+		padding-left: 14px;
+		border-left: 1px solid @gray-light;
+	}
+}
 
 .floating-label-form-group {
 	font-size: 14px;
@@ -391,36 +417,36 @@ form .row:first-child .floating-label-form-group {
 }
 
 .btn-primary {
-	background-color: white;
+	background-color: transparent;
 	border: 1px solid @brand-primary;
 	color: @brand-primary;
 	
 	&:hover,
-	&:focus {
+	&:focus,
+	&:visited,
+	&:active,
+	&.active,
+	&.selected {
 		background-color: darken(@brand-primary, 6.5%);
 		border: 1px solid @brand-primary;
 		color: white;
 	}
-    &.active {
-      background-color: darken(@brand-primary, 6.5%);
-      border: 1px solid @brand-primary;
-    }
 }
 
 .btn-info {
-  background-color: white;
+  background-color: transparent;
   border: 1px solid @brand-info;
   color: @brand-info;
 
   &:hover,
-  &:focus {
+  &:focus,
+  &:visited,
+  &:active,
+  &.active,
+  &.selected  {
     background-color: darken(@brand-info, 6.5%);
     border: 1px solid @brand-info;
     color: white;
-  }
-  &.active {
-    background-color: darken(@brand-info, 6.5%);
-    border: 1px solid @brand-info;
   }
 }
 
