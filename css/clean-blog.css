@@ -369,10 +369,26 @@ form .row:first-child .floating-label-form-group {
   border: 1px solid #e7746f;
   color: #e7746f;
 }
-.btn-primary:hover,
-.btn-primary:focus,
-.btn-primary:active,
-.btn-primary.active,
+.btn-primary:hover {
+  background-color: red;
+  border: 1px solid #e7746f;
+  color: white;
+}
+.btn-primary:focus {
+  background-color: blue;
+  border: 1px solid #e7746f;
+  color: white;
+}
+.btn-primary:active {
+  background-color: green;
+  border: 1px solid #e7746f;
+  color: white;
+}
+.btn-primary.active {
+  background-color: black;
+  border: 1px solid #e7746f;
+  color: white;
+}
 .btn-primary.selected {
   background-color: #e25953;
   border: 1px solid #e7746f;
