@@ -1,10 +1,11 @@
 /**/
 .index-page {
-    background-image: url('../img/cover-index.jpg');
-}
-.contact-page {
-    min-height: 0 !important;
-	margin-top: 0 !important;
+    background: url('../img/cover-2.jpg') no-repeat center center fixed;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 .about-page {
     background-image: url('../img/cover-about.jpg');
@@ -16,7 +17,27 @@
     background-image: url('../img/cover-next-post.jpg');
 }
 .list-page {
-    background-image: url('../img/cover-list.jpg');
+    background-image: url('../img/contact-bg.jpg');
+}
+.contact-page {
+    min-height: 0 !important;
+    margin-top: 0 !important;
+}
+.bg-section {
+    background: url('../img/cover-list.jpg') no-repeat center center fixed;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.bg-content {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding-left: 30px;
+    padding-right: 30px;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
 /**/
@@ -89,7 +110,7 @@ section {
     overflow: hidden;
     background: #eee no-repeat;
     background-position: center;
-    background-size: 100%;
+    background-size: cover;
     display: block;
     float: left;
     padding: 0;

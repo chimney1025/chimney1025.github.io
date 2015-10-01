@@ -292,6 +292,18 @@ footer .copyright {
   box-shadow: none !important;
   resize: none;
 }
+@media only screen and (max-width: 768px) {
+  .form-group input,
+  .form-group textarea {
+    font-size: 1.1em;
+  }
+}
+@media only screen and (max-width: 640px) {
+  .form-group input,
+  .form-group textarea {
+    font-size: 1.0em;
+  }
+}
 .form-group label {
   color: #808080;
 }
@@ -360,6 +372,16 @@ form .row:first-child .floating-label-form-group {
   letter-spacing: 1px;
   border-radius: 0;
   padding: 15px 25px;
+}
+@media only screen and (max-width: 768px) {
+  .btn {
+    padding: 10px 20px;
+  }
+}
+@media only screen and (max-width: 640px) {
+  .btn {
+    font-size: 12px;
+  }
 }
 .btn-lg {
   font-size: 16px;
