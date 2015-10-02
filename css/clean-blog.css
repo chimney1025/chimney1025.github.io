@@ -488,6 +488,8 @@ form .row:first-child .floating-label-form-group {
   font-style: normal;
 }
 .card .caption h3 {
+  padding: 0;
+  margin: 0;
   font-size: 20px;
 }
 @media only screen and (max-width: 640px) {
