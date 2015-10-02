@@ -496,7 +496,7 @@ form .row:first-child .floating-label-form-group {
   }
 }
 .card .caption {
-  height: 100px;
+  height: 50px;
   overflow: hidden;
 }
 .card a:hover,
