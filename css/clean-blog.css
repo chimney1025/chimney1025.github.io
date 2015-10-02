@@ -280,7 +280,8 @@ footer .copyright {
 }
 .form-group input,
 .form-group textarea,
-.form-group select {
+.form-group select,
+.form-group input[readonly] {
   z-index: 1;
   position: relative;
   padding-right: 0;
@@ -296,14 +297,16 @@ footer .copyright {
 @media only screen and (max-width: 768px) {
   .form-group input,
   .form-group textarea,
-  .form-group select {
+  .form-group select,
+  .form-group input[readonly] {
     font-size: 1.1em;
   }
 }
 @media only screen and (max-width: 640px) {
   .form-group input,
   .form-group textarea,
-  .form-group select {
+  .form-group select,
+  .form-group input[readonly] {
     font-size: 1.0em;
   }
 }
@@ -322,6 +325,10 @@ footer .copyright {
 .form-group select {
   width: 100%;
   height: 34px;
+}
+.form-group input[type="text"],
+.form-group input[type="submit"] {
+  -webkit-appearance: none;
 }
 .form-group::not(:first-child) {
   padding-left: 14px;
