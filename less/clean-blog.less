@@ -449,9 +449,7 @@ form .row:first-child .floating-label-form-group {
   border: 1px solid @brand-primary;
   color: @brand-primary;
 
-  &:hover,
-  &:focus,
-  &:active {
+  &:hover {
     background-color: darken(@brand-primary, 6.5%);
     border: 1px solid @brand-primary;
     color: white;
@@ -463,6 +461,8 @@ form .row:first-child .floating-label-form-group {
     }
   }
 
+  &:focus,
+  &:active,
   &.selected,
   &.active {
     background-color: darken(@brand-primary, 6.5%);
@@ -476,9 +476,7 @@ form .row:first-child .floating-label-form-group {
   border: 1px solid @brand-info;
   color: @brand-info;
 
-  &:hover,
-  &:focus,
-  &:active  {
+  &:hover  {
     background-color: darken(@brand-info, 6.5%);
     border: 1px solid @brand-info;
     color: white;
@@ -491,6 +489,8 @@ form .row:first-child .floating-label-form-group {
   }
 
   &.active,
+  &:focus,
+  &:active,
   &.selected {
     background-color: darken(@brand-info, 6.5%);
     border: 1px solid @brand-info;
