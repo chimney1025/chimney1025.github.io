@@ -1,4 +1,19 @@
 var SiteEffect = (function(){
+	function _add(element, eventName, listener) {
+        if (element.attachEvent) {
+            element.attachEvent("on" + eventName, listener);
+        } else if (element.addEventListener) {
+            element.addEventListener(eventName, listener, false);
+        }
+    }
+	
+	function _keyDownListener(event) {
+		var code = event.keyCode || event.which;
+		if (code == 13) { 
+			event.preventDefault();
+			return false;
+		}
+    }
 
     var toggleClickToSelect = function(event) {
         var selection = event.target.getAttribute('data-toggle');
@@ -76,6 +91,9 @@ var SiteEffect = (function(){
 			document.querySelector('.scroll-up').addEventListener('click', function(){
 				window.scrollTo(0,0);
 			});
+			
+			/*Disable enter key submit*/
+			_add(window, "keydown", _keyDownListener);
         }
     }
 
