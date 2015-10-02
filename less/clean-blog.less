@@ -325,7 +325,7 @@ footer {
     padding-right: 30px;
     padding-left: 10px;
     border: none;
-    border: 1px solid @gray-light;
+    border: 1px solid @gray;
     border-radius: 0;
     font-size: 1.2em;
     background: none;
@@ -537,24 +537,21 @@ form .row:first-child .floating-label-form-group {
 		padding: 0;
 		
 		img {
-			height: 150px;
+			height: 200px;
 		}
 	}
 	
 	.caption {
 		font-style: normal;
+                height: 100px;
+                overflow: hidden;
 		
 		h3 {
 			font-size: 20px;
 			@media only screen and (max-width: 640px) {
 				font-size: 18px;
-			}
-		}
-		
-		p {
-			height: 50px;
-			text-overflow: ellipsis;
-		}
+                        }
+                }
 	}
 	
 	a {
