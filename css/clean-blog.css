@@ -327,7 +327,8 @@ footer .copyright {
   height: 34px;
 }
 .form-group input[type="text"],
-.form-group input[type="submit"] {
+.form-group input[type="submit"],
+.form-group textarea {
   -webkit-appearance: none;
 }
 .form-group::not(:first-child) {
