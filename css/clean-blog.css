@@ -474,6 +474,48 @@ form .row:first-child .floating-label-form-group {
   border: 1px solid #5dcfca;
   color: white;
 }
+/**/
+.card {
+  margin-top: 20px;
+}
+.card .thumbnail {
+  padding: 0;
+}
+.card .thumbnail img {
+  height: 150px;
+}
+.card .caption {
+  font-style: normal;
+}
+.card .caption h3 {
+  font-size: 20px;
+}
+@media only screen and (max-width: 640px) {
+  .card .caption h3 {
+    font-size: 18px;
+  }
+}
+.card .caption p {
+  height: 50px;
+  text-overflow: ellipsis;
+}
+.card a:hover,
+.card a:focus,
+.card a:active,
+.card a.active {
+  text-decoration: none;
+  color: #e7746f;
+}
+.card a:hover h3,
+.card a:focus h3,
+.card a:active h3,
+.card a.active h3,
+.card a:hover p,
+.card a:focus p,
+.card a:active p,
+.card a.active p {
+  color: #e7746f;
+}
 .pager {
   margin: 20px 0 0;
 }
