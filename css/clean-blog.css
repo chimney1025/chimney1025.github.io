@@ -284,8 +284,8 @@ footer .copyright {
 .form-group input[readonly] {
   z-index: 1;
   position: relative;
-  padding-right: 0;
-  padding-left: 0;
+  padding-right: 30px;
+  padding-left: 10px;
   border: none;
   border: 1px solid #eeeeee;
   border-radius: 0;
