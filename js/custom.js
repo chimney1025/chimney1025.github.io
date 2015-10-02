@@ -53,7 +53,7 @@ var SiteEffect = (function(){
 			/*Event listener for contact page*/
             var items = document.querySelectorAll('span.click-to-select');
             var spans = document.querySelectorAll('.selection span');
-            var closes = document.querySelectorAll('.selection .close');
+            var closes = document.querySelectorAll('.selection i');
 			var contactMethods = document.querySelectorAll('#contact-method span');
 
             for(var i=0; i<items.length; i++) {
