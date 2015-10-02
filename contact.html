@@ -108,7 +108,7 @@
                 <form name="sentMessage" id="contactForm" novalidate>
                     <div class="row control-group">
                         <div class="form-group col-xs-12 controls">
-							<i class="icon-star-empty"></i>
+							<i class="icon-tags"></i>
                             <label>个性主题</label>
                             <span class="click-to-select" data-toggle="highlight-selection" id="highlights">点击选择</span>
 							<div id="selected-highlights" data-group="highlight-selection" class="selected-items"></div>
@@ -176,9 +176,18 @@
                     <div class="row control-group">
                         <div class="form-group col-xs-12 controls">
 							<i class="icon-calendar"></i>
-                            <label>旅行日期</label>
+                            <label>开始日期</label>
                             <input type="text" class="form-control" id="start-date" readonly
 							value="" name="start-date" autocomplete="off">
+                            <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
+                    <div class="row control-group">
+                        <div class="form-group col-xs-12 controls">
+							<i class="icon-globe"></i>
+                            <label>旅行天数</label>
+                            <input type="number" class="form-control" id="duration"
+							value="" name="duration" autocomplete="off">
                             <p class="help-block text-danger"></p>
                         </div>
                     </div>
