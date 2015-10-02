@@ -398,6 +398,11 @@ form .row:first-child .floating-label-form-group {
   border: 1px solid #e7746f;
   color: #e7746f;
 }
+.btn-primary.selected {
+  background-color: #e7746f;
+  border: 1px solid #e7746f;
+  color: white;
+}
 .btn-primary:hover {
   background-color: #e25953;
   border: 1px solid #e7746f;
@@ -412,7 +417,6 @@ form .row:first-child .floating-label-form-group {
 }
 .btn-primary:focus,
 .btn-primary:active,
-.btn-primary.selected,
 .btn-primary.active {
   background-color: #e25953;
   border: 1px solid #e7746f;
@@ -422,6 +426,11 @@ form .row:first-child .floating-label-form-group {
   background-color: transparent;
   border: 1px solid #5dcfca;
   color: #5dcfca;
+}
+.btn-info.selected {
+  background-color: #5dcfca;
+  border: 1px solid #5dcfca;
+  color: white;
 }
 .btn-info:hover {
   background-color: #43c7c2;
@@ -437,8 +446,7 @@ form .row:first-child .floating-label-form-group {
 }
 .btn-info.active,
 .btn-info:focus,
-.btn-info:active,
-.btn-info.selected {
+.btn-info:active {
   background-color: #43c7c2;
   border: 1px solid #5dcfca;
   color: white;

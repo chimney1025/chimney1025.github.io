@@ -16,7 +16,7 @@ var SiteEffect = (function(){
 		
 		if(parentGroup) {
 			if(selectList.style.display == "none") {
-				selectList.style.display = "block";
+				//selectList.style.display = "block";
 			}
 			
 			document.querySelector('#' + parentGroup + ' .wrapper').appendChild(button);

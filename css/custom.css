@@ -1,5 +1,5 @@
 /**/
-.index-page {
+.intro-header.index-page {
     background: url('../img/cover-2.jpg') no-repeat center center fixed;
     background-size: cover;
     -webkit-background-size: cover;
@@ -9,29 +9,30 @@
 }
 
 @media only screen and (max-width: 768px) {
-    .index-page {
+    .intro-header.index-page {
         background-attachment: scroll;
     }
 }
 
-.about-page {
+.intro-header.about-page {
     background-image: url('../img/cover-about.jpg');
 }
-.post-page {
+.intro-header.post-page {
     background-image: url('../img/cover-post.jpg');
 }
-.next-post-page {
+.intro-header.next-post-page {
     background-image: url('../img/cover-next-post.jpg');
 }
-.list-page {
-    background-image: url('../img/contact-bg.jpg');
-}
-.contact-page {
+.intro-header.list-page {
     min-height: 0 !important;
     margin-top: 0 !important;
 }
+.intro-header.contact-page {
+    min-height: 0 !important;
+    margin-top: 0 !important;
+}
+
 .bg-section {
-    background-image: url('../img/cover-list.jpg');
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -44,6 +45,14 @@
     padding-right: 30px;
     margin-top: 30px;
     margin-bottom: 30px;
+}
+
+.bg-section.contact-page {
+    background-image: url('../img/cover-list.jpg');
+}
+
+.bg-section.list-page {
+    background-image: url('../img/contact-bg.jpg');
 }
 
 /**/
@@ -203,19 +212,25 @@ img {
 	margin-bottom: 30px;
 }
 
+.wrapper span i {
+	display: none;
+}
+
+.selected-items i, .selection i {
+	display: inline;
+	position: absolute;
+	top: 0.2em;
+	right: 0.2em;
+	font-size: 12px;
+}
+
 .selection span, .selected-items span {
     margin-top: 5px;
     margin-bottom: 5px;
 	margin-left: 3px;
 	margin-right: 3px;
 	display: inline-block;
-}
-
-.selection .close {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 17px;
+	position: relative;
 }
 
 .selection .map iframe {
@@ -235,6 +250,15 @@ img {
 .method {
 	display: none;
 	clear: right;
+}
+
+/**/
+.fixed-book {
+	position: fixed;
+	z-index: 999;
+	bottom: 2em;
+	left: 50%;
+	transform: translateX(-50%);
 }
 
 
