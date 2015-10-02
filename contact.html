@@ -17,6 +17,9 @@
     <!-- Custom CSS -->
     <link href="css/clean-blog.css" rel="stylesheet">
     <link href="css/custom.css" rel="stylesheet">
+	
+	<!-- Datepicker -->
+    <link href="datepicker/daterangepicker.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -175,7 +178,7 @@
 							<i class="icon-calendar"></i>
                             <label>旅行日期</label>
                             <input type="text" class="form-control" id="start-date" 
-							autocomplete="off">
+							value="" name="start-date" autocomplete="off">
                             <p class="help-block text-danger"></p>
                         </div>
                     </div>
@@ -296,6 +299,20 @@
 <!-- Custom Theme JavaScript -->
 <script src="js/clean-blog.min.js"></script>
 <script src="js/custom.js"></script>
+<script src="datepicker/moment.js"></script>
+<script src="datepicker/daterangepicker.js"></script>
+<script>
+$(function() {
+    $('input[name="start-date"]').daterangepicker({
+        singleDatePicker: true,
+        showDropdowns: true
+    }, 
+    function(start, end, label) {
+        var years = moment().diff(start, 'years');
+        //alert("You are " + years + " years old.");
+    });
+});
+</script>
 </body>
 
 </html>
