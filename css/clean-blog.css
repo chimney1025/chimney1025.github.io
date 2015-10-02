@@ -495,9 +495,8 @@ form .row:first-child .floating-label-form-group {
     font-size: 18px;
   }
 }
-.card .caption p {
-  height: 50px;
-  text-overflow: ellipsis;
+.card .caption {
+  height: 100px;
   overflow: hidden;
 }
 .card a:hover,
