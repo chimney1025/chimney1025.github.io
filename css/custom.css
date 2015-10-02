@@ -212,22 +212,22 @@ img {
 	margin-bottom: 30px;
 }
 
-.wrapper span i {
-	display: none;
+.wrapper span:after {
+	content: '';
 }
 
-.selected-items i, .selection i {
-	display: inline;
-	position: absolute;
-	top: 0.2em;
-	right: 0.2em;
-	font-size: 12px;
-	cursor: pointer;
+.selected-items span:after {
+	content: '\e801';
+	font-family:'Fontello';
 }
 
 .selection i {
+	display: inline;
+	position: absolute;
 	top: 10px;
 	right: 10px;
+	font-size: 12px;
+	cursor: pointer;
 }
 
 .selection span, .selected-items span {

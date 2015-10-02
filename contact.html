@@ -22,6 +22,9 @@
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+	
+	<!-- Fontello Fonts -->
+	<link href='css/fontello.css' rel='stylesheet'>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -102,41 +105,45 @@
                 <form name="sentMessage" id="contactForm" novalidate>
                     <div class="row control-group">
                         <div class="form-group col-xs-12 controls">
+							<i class="icon-star-empty"></i>
                             <label>个性主题</label>
                             <span class="click-to-select" data-toggle="highlight-selection" id="highlights">点击选择</span>
 							<div id="selected-highlights" data-group="highlight-selection" class="selected-items"></div>
                         </div>
                     </div>
                     <div class="row control-group selection" id="highlight-selection">
-						<i class="glyphicon glyphicon-remove"></i>
+						<i class="icon-cancel"></i>
 						<div class="form-group">
+							<i class="icon-search"></i>
 							<input type="text" class="form-control" placeholder="搜索" >
 						</div>
                         <div class="wrapper">
-                            <span data-group="selected-highlights" class="btn btn-primary">历史<i class="glyphicon glyphicon-remove"></i></span>
-                            <span data-group="selected-highlights" class="btn btn-primary">文化<i class="glyphicon glyphicon-remove"></i></span>
-                            <span data-group="selected-highlights" class="btn btn-primary">艺术<i class="glyphicon glyphicon-remove"></i></span>
-                            <span data-group="selected-highlights" class="btn btn-primary">电影<i class="glyphicon glyphicon-remove"></i></span>
-                            <span data-group="selected-highlights" class="btn btn-primary">足球<i class="glyphicon glyphicon-remove"></i></span>
-                            <span data-group="selected-highlights" class="btn btn-primary">苏格兰<i class="glyphicon glyphicon-remove"></i></span>
-                            <span data-group="selected-highlights" class="btn btn-primary">世界遗产<i class="glyphicon glyphicon-remove"></i></span>
-                            <span data-group="selected-highlights" class="btn btn-primary">风景<i class="glyphicon glyphicon-remove"></i></span>
-                            <span data-group="selected-highlights" class="btn btn-primary">徒步<i class="glyphicon glyphicon-remove"></i></span>
-                            <span data-group="selected-highlights" class="btn btn-primary">露营<i class="glyphicon glyphicon-remove"></i></span>
-                            <span data-group="selected-highlights" class="btn btn-primary">皇室<i class="glyphicon glyphicon-remove"></i></span>
-                            <span data-group="selected-highlights" class="btn btn-primary">下午茶<i class="glyphicon glyphicon-remove"></i></span>
+                            <span data-group="selected-highlights" class="btn btn-primary">历史</span>
+                            <span data-group="selected-highlights" class="btn btn-primary">文化</span>
+                            <span data-group="selected-highlights" class="btn btn-primary">艺术</span>
+                            <span data-group="selected-highlights" class="btn btn-primary">电影</span>
+                            <span data-group="selected-highlights" class="btn btn-primary">足球</span>
+                            <span data-group="selected-highlights" class="btn btn-primary">苏格兰</span>
+                            <span data-group="selected-highlights" class="btn btn-primary">世界遗产</span>
+                            <span data-group="selected-highlights" class="btn btn-primary">风景</span>
+                            <span data-group="selected-highlights" class="btn btn-primary">徒步</span>
+                            <span data-group="selected-highlights" class="btn btn-primary">露营</span>
+                            <span data-group="selected-highlights" class="btn btn-primary">皇室</span>
+                            <span data-group="selected-highlights" class="btn btn-primary">下午茶</span>
                         </div>
                     </div>
                     <div class="row control-group">
                         <div class="form-group col-xs-12 controls">
+							<i class="icon-map"></i>
                             <label>目的地</label>
                             <span class="click-to-select" data-toggle="city-selection" id="cities">点击选择</span>
                             <div id="selected-cities" data-group="city-selection" class="selected-items"></div>
                         </div>
                     </div>
                     <div class="row control-group selection" id="city-selection">
-						<i class="glyphicon glyphicon-remove"></i>
+						<i class="icon-cancel"></i>
 						<div class="form-group">
+							<i class="icon-search"></i>
 							<input type="text" class="form-control" placeholder="搜索" >
 						</div>
 						<div class="wrapper">
@@ -147,14 +154,25 @@
                     </div>
                     <div class="row control-group">
                         <div class="form-group col-xs-12 controls">
+							<i class="icon-pound"></i>
                             <label>预算</label>
-                            <input type="text" class="form-control" id="budget" 
-							autocomplete="off">
+							<select>
+								<option selected> </option>
+								<option>Up to &pound;50/day</option>
+								<option>Up to &pound;100/day</option>
+								<option>Up to &pound;150/day</option>
+								<option>Up to &pound;200/day</option>
+								<option>Up to &pound;250/day</option>
+								<option>Up to &pound;300/day</option>
+								<option>Up to &pound;350/day</option>
+								<option>Up to &pound;400/day</option>
+							</select>
                             <p class="help-block text-danger"></p>
                         </div>
                     </div>
                     <div class="row control-group">
                         <div class="form-group col-xs-12 controls">
+							<i class="icon-calendar"></i>
                             <label>旅行日期</label>
                             <input type="text" class="form-control" id="start-date" 
 							autocomplete="off">
@@ -163,6 +181,17 @@
                     </div>
                     <div class="row control-group">
                         <div class="form-group col-xs-12 controls">
+							<i class="icon-user-outline"></i>
+                            <label class="required">如何称呼 *</label>
+                            <input type="text" class="form-control" id="name" required 
+							autocomplete="off"
+							data-validation-required-message="希望我们怎样称呼您？">
+                            <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
+                    <div class="row control-group">
+                        <div class="form-group col-xs-12 controls">
+							<i class="demo-icon icon-mail"></i>
                             <label class="required">邮箱 *</label>
                             <input type="text" class="form-control" id="email" required 
 							autocomplete="off"
@@ -172,17 +201,10 @@
                     </div>
                     <div class="row control-group">
                         <div class="form-group col-xs-12 controls">
-                            <label>电话</label>
-                            <input type="text" class="form-control" id="phone" 
-							autocomplete="off">
-                            <p class="help-block text-danger"></p>
-                        </div>
-                    </div>
-                    <div class="row control-group">
-                        <div class="form-group col-xs-12 controls">
-                            <label>其他方式</label>
-                            <input type="text" class="form-control" id="other-method" 
-							autocomplete="off">
+							<i class="icon-comment-empty"></i>
+                            <label class="required">简单介绍</label>
+                            <textarea rows="5" class="form-control" id="message" required
+							autocomplete="off" data-validation-required-message="让我们更了解一下你吧！"></textarea>
                             <p class="help-block text-danger"></p>
                         </div>
                     </div>
@@ -213,23 +235,6 @@
                         </div>
                     </div>
 					-->
-                    <div class="row control-group">
-                        <div class="form-group col-xs-12 controls">
-                            <label class="required">如何称呼 *</label>
-                            <input type="text" class="form-control" id="name" required 
-							autocomplete="off"
-							data-validation-required-message="希望我们怎样称呼您？">
-                            <p class="help-block text-danger"></p>
-                        </div>
-                    </div>
-                    <div class="row control-group">
-                        <div class="form-group col-xs-12 controls">
-                            <label>其他要求</label>
-                            <textarea rows="5" class="form-control" id="message" 
-							autocomplete="off"></textarea>
-                            <p class="help-block text-danger"></p>
-                        </div>
-                    </div>
                     <br>
                     <div id="success"></div>
                     <div class="row">
