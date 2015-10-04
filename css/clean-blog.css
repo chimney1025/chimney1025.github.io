@@ -1,5 +1,5 @@
 body {
-  font-family: 'Microsoft YaHei', 'Bookshelf Symbol 7', 'Lora', 'Times New Roman', serif;
+  font-family: 'Helvetica Neue', 'Lora', 'Times New Roman', serif;
   font-size: 18px;
   color: #404040;
 }
@@ -16,7 +16,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Microsoft YaHei', 'Bookshelf Symbol 7', 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Helvetica Neue', 'Open Sans', Helvetica, Arial, sans-serif;
   font-weight: 800;
 }
 a {
@@ -46,7 +46,7 @@ hr.small {
   left: 0;
   width: 100%;
   z-index: 3;
-  font-family: 'Microsoft YaHei', 'Bookshelf Symbol 7', 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Helvetica Neue', 'Open Sans', Helvetica, Arial, sans-serif;
 }
 .navbar-custom .navbar-brand {
   font-weight: 800;
@@ -163,7 +163,7 @@ hr.small {
   font-size: 24px;
   line-height: 1.1;
   display: block;
-  font-family: 'Microsoft YaHei', 'Bookshelf Symbol 7', 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Helvetica Neue', 'Open Sans', Helvetica, Arial, sans-serif;
   font-weight: 300;
   margin: 10px 0 0;
 }
@@ -182,13 +182,13 @@ hr.small {
   display: block;
 }
 .intro-header .post-heading .subheading {
-  font-family: 'Microsoft YaHei', 'Bookshelf Symbol 7', 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Helvetica Neue', 'Open Sans', Helvetica, Arial, sans-serif;
   font-size: 24px;
   margin: 10px 0 30px;
   font-weight: 600;
 }
 .intro-header .post-heading .meta {
-  font-family: 'Microsoft YaHei', 'Bookshelf Symbol 7', 'Lora', 'Times New Roman', serif;
+  font-family: 'Helvetica Neue', 'Lora', 'Times New Roman', serif;
   font-style: italic;
   font-weight: 300;
   font-size: 18px;
@@ -269,6 +269,16 @@ footer .copyright {
   text-align: center;
   margin-bottom: 0;
 }
+.post-tags {
+  color: #5dcfca;
+  padding: 10px;
+}
+.post-tags span {
+  display: inline-block;
+  padding: 6px 18px;
+  font-size: 12px;
+  margin-bottom: 5px;
+}
 .form-control:focus {
   border-color: #e7746f;
 }
@@ -287,7 +297,7 @@ footer .copyright {
   padding-right: 30px;
   padding-left: 10px;
   border: none;
-  border: 1px solid #aaaaaa;
+  border: 1px solid #d8d8d8;
   border-radius: 0;
   font-size: 1.2em;
   background: none;
@@ -388,7 +398,7 @@ form .row:first-child .floating-label-form-group {
   border-top: 1px solid #eeeeee;
 }
 .btn {
-  font-family: 'Microsoft YaHei', 'Bookshelf Symbol 7', 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Helvetica Neue', 'Open Sans', Helvetica, Arial, sans-serif;
   text-transform: uppercase;
   font-size: 14px;
   font-weight: 800;
@@ -486,21 +496,29 @@ form .row:first-child .floating-label-form-group {
 }
 .card .caption {
   font-style: normal;
+  min-height: 100px;
+  overflow: hidden;
+  text-align: left;
+  font-size: 14px;
+  padding: 25px 15px;
 }
 .card .caption h3 {
-  padding: 0;
+  font-size: 18px;
   margin: 0;
-  font-size: 20px;
+  padding: 0;
 }
 @media only screen and (max-width: 640px) {
   .card .caption h3 {
-    font-size: 18px;
+    font-size: 16px;
   }
 }
-.card .caption {
-  height: 50px;
-  linr-height: 50px;
-  overflow: hidden;
+.card .caption p {
+  margin: 15px 0 0 0;
+}
+@media only screen and (max-width: 640px) {
+  .card .caption p {
+    font-size: 14px;
+  }
 }
 .card a:hover,
 .card a:focus,
@@ -512,11 +530,7 @@ form .row:first-child .floating-label-form-group {
 .card a:hover h3,
 .card a:focus h3,
 .card a:active h3,
-.card a.active h3,
-.card a:hover p,
-.card a:focus p,
-.card a:active p,
-.card a.active p {
+.card a.active h3 {
   color: #e7746f;
 }
 .pager {
@@ -524,7 +538,7 @@ form .row:first-child .floating-label-form-group {
 }
 .pager li > a,
 .pager li > span {
-  font-family: 'Microsoft YaHei', 'Bookshelf Symbol 7', 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Helvetica Neue', 'Open Sans', Helvetica, Arial, sans-serif;
   text-transform: uppercase;
   font-size: 14px;
   font-weight: 800;

@@ -24,8 +24,7 @@
     background-image: url('../img/cover-next-post.jpg');
 }
 .intro-header.list-page {
-    min-height: 0 !important;
-    margin-top: 0 !important;
+    background-image: url('../img/cover-3.jpg');
 }
 .intro-header.contact-page {
     min-height: 0 !important;
@@ -52,13 +51,10 @@
 }
 
 .bg-section.list-page {
-    background-image: url('../img/contact-bg.jpg');
+    background-image: url('../img/cover-3.jpg');
 }
 
 /**/
-body, h1, h2 {
-    font-family: 'Microsoft YaHei', 'Bookshelf Symbol 7';
-}
 .intro-header {
     min-height: 450px;
 	margin-top: 60px;
@@ -173,13 +169,20 @@ section {
 }
 
 img {
-    width: 100%;
     transition: all 0.3s;
+    margin: 0 auto;
 }
 
 .slide img:hover {
+    -webkit-transform: scale(1.05);
     transform: scale(1.05);
     transition: all 0.3s;
+}
+/**/
+
+.post-tags:before {
+    content: '\e816';
+    font-family:'Fontello';
 }
 
 /**/
@@ -265,6 +268,7 @@ img {
 	bottom: 2em;
 	left: 50%;
 	transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
 }
 
 

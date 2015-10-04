@@ -1,4 +1,31 @@
-var SiteEffect = (function(){
+var Sticky = function(id){
+    this.element = document.getElementById(id);
+};
+
+Sticky.prototype.init = function(option) {
+    var self = this;
+    var didScroll = false;
+
+    window.onscroll = function(){
+        didScroll = true;
+    };
+
+    setInterval(function() {
+        if(didScroll) {
+            didScroll = false;
+            if(window.scrollY >= option.space) {
+                self.element.classList.remove('selected');
+                self.element.classList.remove(option.style);
+            } else {
+                self.element.classList.add('selected');
+                self.element.classList.add(option.style);
+            }
+        }
+    });
+};
+
+
+var FormEffect = function(){
 	function _add(element, eventName, listener) {
         if (element.attachEvent) {
             element.attachEvent("on" + eventName, listener);
@@ -96,7 +123,4 @@ var SiteEffect = (function(){
 			_add(window, "keydown", _keyDownListener);
         }
     }
-
-})();
-
-SiteEffect.init();
+};

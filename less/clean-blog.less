@@ -304,6 +304,19 @@ footer {
   }
 }
 
+// Post tags
+.post-tags {
+  color: @brand-info;
+  padding: 10px;
+
+  span {
+    display: inline-block;
+    padding: 6px 18px;
+    font-size: 12px;
+    margin-bottom: 5px;
+  }
+}
+
 // Contact Form Styles
 .form-control {
   &:focus {
@@ -325,7 +338,7 @@ footer {
     padding-right: 30px;
     padding-left: 10px;
     border: none;
-    border: 1px solid @gray;
+    border: 1px solid darken(@gray-light, 8.5%);
     border-radius: 0;
     font-size: 1.2em;
     background: none;
@@ -345,21 +358,21 @@ footer {
     &.required {
       color: @brand-primary;
     }
-	font-size: 14px;
-	@media only screen and (min-width: 768px) {
-	  font-size: 16px;
-	}
+    font-size: 14px;
+    @media only screen and (min-width: 768px) {
+      font-size: 16px;
+    }
   }
   select {
-	width: 100%;
-	height: 34px;
+    width: 100%;
+    height: 34px;
   }
   input[type="text"],
   input[type="submit"],
   input[type="tel"],
   input[type="search"],
   textarea {
-	-webkit-appearance: none;
+    -webkit-appearance: none;
   }
   &::not(:first-child) {
     padding-left: 14px;
@@ -465,10 +478,10 @@ form .row:first-child .floating-label-form-group {
   background-color: transparent;
   border: 1px solid @brand-primary;
   color: @brand-primary;
-  
-  
+
+
   &.selected {
-	background-color: @brand-primary;
+    background-color: @brand-primary;
     border: 1px solid @brand-primary;
     color: white;
   }
@@ -498,7 +511,7 @@ form .row:first-child .floating-label-form-group {
   background-color: transparent;
   border: 1px solid @brand-info;
   color: @brand-info;
-  
+
   &.selected {
     background-color: @brand-info;
     border: 1px solid @brand-info;
@@ -531,47 +544,56 @@ form .row:first-child .floating-label-form-group {
 
 /**/
 .card {
-	margin-top: 20px;
-	
-	.thumbnail {
-		padding: 0;
-		
-		img {
-			height: 200px;
-		}
-	}
-	
-	.caption {
-		font-style: normal;
-                height: 100px;
-                overflow: hidden;
-		
-		h3 {
-			font-size: 20px;
-			@media only screen and (max-width: 640px) {
-				font-size: 18px;
-                        }
-                }
-	}
-	
-	a {
-		&:hover,
-		&:focus,
-		&:active,
-		&.active {
-			text-decoration: none;
-			color: @brand-primary;
-			
-			h3,
-			p {
-				color: @brand-primary;
-			}
-		}
-	}
+  margin-top: 20px;
+
+  .thumbnail {
+    padding: 0;
+
+    img {
+      height: 200px;
+    }
+  }
+
+  .caption {
+    font-style: normal;
+    min-height: 100px;
+    overflow: hidden;
+    text-align: left;
+    font-size: 14px;
+    padding: 25px 15px;
+
+    h3 {
+      font-size: 18px;
+      margin: 0;
+      padding: 0;
+      @media only screen and (max-width: 640px) {
+        font-size: 16px;
+      }
+    }
+
+    p {
+      margin: 15px 0 0 0;
+      @media only screen and (max-width: 640px) {
+        font-size: 14px;
+      }
+    }
+  }
+
+  a {
+    &:hover,
+    &:focus,
+    &:active,
+    &.active {
+      text-decoration: none;
+      color: @brand-primary;
+      h3 {
+        color: @brand-primary;
+      }
+    }
+  }
 }
 
 // Pager Styling
-
 .pager {
 
   margin: 20px 0 0;
