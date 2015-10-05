@@ -23,6 +23,9 @@
     <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
 
+    <!-- Fontello Fonts -->
+    <link href='css/fontello.css' rel='stylesheet'>
+	
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -79,28 +82,6 @@
 <section class="container">
     <div class="row">
         <div class="index-heading">
-            <h2>浪</h2>
-        </div>
-        <div class="col-lg-8 col-lg-offset-2 col-xs-10 col-xs-offset-1">
-            <p>艺术应该是一种讽刺文学，对我们麻木了的情感、死气沉沉的思想，和不自然的生活下的一种警告。它教我们在矫饰的世界里保持着朴实真挚。</p>
-        </div>
-    </div>
-</section>
-<section class="dark">
-    <div class="container">
-        <div class="row">
-            <div class="index-heading">
-                <h2>客</h2>
-            </div>
-            <div class="col-lg-8 col-lg-offset-2 col-xs-10 col-xs-offset-1">
-                <p>享受悠闲生活当然比享受奢侈生活便宜得多。要享受悠闲的生活只要一种艺术家的性情，在一种全然悠闲的情绪中，去消遣一个闲暇无事的下午。</p>
-            </div>
-        </div>
-    </div>
-</section>
-<section class="container">
-    <div class="row">
-        <div class="index-heading">
             <h2>旅行</h2>
         </div>
         <div class="col-lg-8 col-lg-offset-2 col-xs-10 col-xs-offset-1">
@@ -110,30 +91,45 @@
 </section>
 
 <!-- Themes slider -->
+
 <section class="dark">
-    <div class="container-fluid">
+    <div class="container">
         <div class="row">
-            <div class="col-xs-10 col-xs-offset-1">
+			
                 <div class="index-heading">
-                    <h2>Lorem ipsum</h2>
+                    <h2>主题路线</h2>
                 </div>
-                <div id="index-slider" class="sliders">
-                    <div class="slide col-sm-6 col-md-3">
-                        <img class="img-responsive" src="img/item-2.jpg" >
-                    </div>
-                    <div class="slide col-sm-6 col-md-3">
-                        <img class="img-responsive" src="img/item-3.jpg" >
-                    </div>
-                    <div class="slide col-sm-6 col-md-3">
-                        <img class="img-responsive" src="img/item-4.jpg" >
-                    </div>
-                    <div class="slide col-sm-6 col-md-3">
-                        <img class="img-responsive" src="img/item-5.jpg" >
-                    </div>
-                </div>
+            <div class="col-xs-10 col-xs-offset-1">
+				<div class="sliders" id="index-slider">
+					<span class="prev"></span>
+					<span class="next"></span>
+					
+					<div class="slide card" style="display: block">
+						<a href="post.html">
+							<div class="thumbnail">
+								<img src="img/home-bg.jpg" alt="...">
+								<div class="caption">
+									<h3>日本原点 北陆金泽自由行</h3>
+									<p>艺术应该是一种讽刺文学，对我们麻木了的情感、死气沉沉的思想，和不自然的生活下的一种警告。</p>
+								</div>
+							</div>
+						</a>
+					</div>
+					<div class="slide card">
+						<a href="post.html">
+							<div class="thumbnail">
+								<img src="img/cover-1.jpg" alt="...">
+								<div class="caption">
+									<h3>体验佛国的宁静与幸福</h3>
+									<p>艺术应该是一种讽刺文学，对我们麻木了的情感、死气沉沉的思想，和不自然的生活下的一种警告。</p>
+								</div>
+							</div>
+						</a>
+					</div>
+				</div>
             </div>
         </div>
-    </div>
+	</div>
 </section>
 
 <!-- Actions -->
@@ -208,6 +204,7 @@
 <!-- Custom Theme JavaScript -->
 <script src="js/clean-blog.min.js"></script>
 <script src="js/custom.js"></script>
+<script src="js/slider.js"></script>
 <script>
     (function(){
         var resize = function(){
@@ -227,6 +224,9 @@
 			console.log(window.innerHeight);
 			console.log(window.innerWidth);
 		};
+		
+		var slider = new Slider('index-slider');
+		slider.init();
 
     })();
 

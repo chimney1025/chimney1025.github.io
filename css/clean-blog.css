@@ -543,6 +543,54 @@ form .row:first-child .floating-label-form-group {
 .card a.active h3 {
   color: #5dcfca;
 }
+.sliders {
+  position: relative;
+}
+.sliders .slide {
+  display: none;
+}
+@media only screen and (min-width: 640px) {
+  .sliders .slide.card .thumbnail {
+    overflow: hidden;
+    height: 220px;
+  }
+  .sliders .slide.card .thumbnail img {
+    width: 65%;
+    height: 100%;
+    float: left;
+  }
+  .sliders .slide.card .caption {
+    height: auto;
+    padding: 25px;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .sliders .slide.card .thumbnail {
+    height: 300px;
+  }
+}
+.sliders .prev,
+.sliders .next {
+  position: absolute;
+  cursor: pointer;
+  top: 50%;
+  transform: translate(0, -50%);
+  -webkit-transform: translate(0, -50%);
+}
+.sliders .prev:hover,
+.sliders .next:hover,
+.sliders .prev:focus,
+.sliders .next:focus,
+.sliders .prev:active,
+.sliders .next:active {
+  color: #e7746f;
+}
+.sliders .prev {
+  left: -30px;
+}
+.sliders .next {
+  right: -30px;
+}
 .pager {
   margin: 20px 0 0;
 }

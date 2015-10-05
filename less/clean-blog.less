@@ -605,6 +605,68 @@ form .row:first-child .floating-label-form-group {
   }
 }
 
+// Slider Styling
+
+.sliders {
+	position: relative;
+	.slide {
+		display: none;
+		
+		@media only screen and (min-width: 640px) {
+			&.card {
+				.thumbnail {
+					overflow: hidden;
+					height: 220px;
+					
+					img {
+						width: 65%;
+						height: 100%;
+						float: left;
+					}
+				}
+				
+				.caption {
+					height: auto;
+					padding: 25px;
+				}
+			}
+		}
+		
+		@media only screen and (min-width: 768px) {
+			&.card {
+				.thumbnail {
+					height: 300px;
+				}
+			}
+		}
+		
+		
+	}
+	
+	.prev,
+	.next {
+		position: absolute;
+		cursor: pointer;
+		top: 50%;
+		transform: translate(0, -50%);
+		-webkit-transform: translate(0, -50%);
+		
+		&:hover,
+		&:focus,
+		&:active {
+			color: @brand-primary;
+		}
+	}
+	
+	.prev {
+		left: -30px;
+	}
+	
+	.next {
+		right: -30px;
+	}
+}
+
 // Pager Styling
 .pager {
 
