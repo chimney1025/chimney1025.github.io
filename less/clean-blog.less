@@ -489,6 +489,12 @@ form .row:first-child .floating-label-form-group {
 	  background-color: darken(@brand-primary, 6.5%);
       border: 1px solid @brand-primary;
       color: white;
+	  
+	  @media only screen and (max-width: 640px) {
+		background-color: @brand-primary;
+		border: 1px solid @brand-primary;
+		color: white;
+	  }
 	}
   }
 

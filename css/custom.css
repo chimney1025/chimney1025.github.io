@@ -1,6 +1,6 @@
 /**/
 .intro-header.index-page {
-    background: url('../img/cover-2.jpg') no-repeat center center fixed;
+    background: url('../img/cover-about.jpg') no-repeat center center fixed;
     background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -15,7 +15,7 @@
 }
 
 .intro-header.about-page {
-    background-image: url('../img/cover-about.jpg');
+    background-image: url('../img/about-bg.jpg');
 }
 .intro-header.post-page {
     background-image: url('../img/cover-post.jpg');
@@ -70,26 +70,38 @@
 	transform: translateX(-50%);
 }
 
+.search-button {
+	position: relative;
+}
+
 .search-box {
 	position: absolute;
+	text-align: center;
+	font-size: 20px;
+	width: 45%;
+	color: #fff;
+	font-weight: 800;
+}
+
+.list-page .search-box {
+	top: 30%;
+	left: 50%;
+	-webkit-transform: translate(-50%, -30%);
+	transform: translate(-50%, -30%);
+}
+
+.index-page .search-box {
 	top: 50%;
 	left: 50%;
 	-webkit-transform: translate(-50%, -50%);
 	transform: translate(-50%, -50%);
-	text-align: center;
-	font-size: 20px;
-	width: 45%;
 }
 
 .search-box input {
 	padding: 15px;
 	height: 50px;
 	width: 100%;
-}
-
-.search-box p {
-	color: #fff;
-	font-weight: 800;
+	margin: 20px 0;
 }
 
 .search-box span:before {
@@ -137,6 +149,11 @@ section {
 .index-heading {
     text-align: center;
 }
+
+.index-heading hr {
+	width: 50%;
+}
+
 .actions {
     margin: 50px 0;
 	overflow: hidden;

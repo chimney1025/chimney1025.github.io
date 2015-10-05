@@ -441,6 +441,13 @@ form .row:first-child .floating-label-form-group {
   border: 1px solid #e7746f;
   color: white;
 }
+@media only screen and (max-width: 640px) {
+  .btn-primary.selected:hover {
+    background-color: #e7746f;
+    border: 1px solid #e7746f;
+    color: white;
+  }
+}
 .btn-primary:hover {
   background-color: #e25953;
   border: 1px solid #e7746f;
