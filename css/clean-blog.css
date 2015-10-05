@@ -535,13 +535,13 @@ form .row:first-child .floating-label-form-group {
 .card a:active,
 .card a.active {
   text-decoration: none;
-  color: #e7746f;
+  color: #5dcfca;
 }
 .card a:hover h3,
 .card a:focus h3,
 .card a:active h3,
 .card a.active h3 {
-  color: #e7746f;
+  color: #5dcfca;
 }
 .pager {
   margin: 20px 0 0;

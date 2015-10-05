@@ -1,3 +1,4 @@
+/*Switch between Sticky button and normal button when scroll to a certain point*/
 var Sticky = function(id){
     this.element = document.getElementById(id);
 	this.button = document.querySelector('#' + id + ' a');
@@ -25,8 +26,9 @@ Sticky.prototype.init = function(option) {
     });
 };
 
-
+/*Clicking effects on the contact form*/
 var FormEffect = function(){
+			
 	function _add(element, eventName, listener) {
         if (element.attachEvent) {
             element.attachEvent("on" + eventName, listener);
@@ -43,14 +45,29 @@ var FormEffect = function(){
 		}
     }
 
-    var toggleClickToSelect = function(event) {
-        var selection = event.target.getAttribute('data-toggle');
-        (document.getElementById(selection).style.display == "block")
-        ? (document.getElementById(selection).style.display = "none")
-        : (document.getElementById(selection).style.display = "block");
-    };
+    function closeAllSelection(event) {
+		var popups = document.querySelectorAll('.selection');
+		
+		//console.log(event.target);
+		
+        for(var i=0; i<popups.length; i++) {
+			if(!event.target.classList.contains('selection')) {
+				popups[i].style.display = "none";
+			}
+			
+		}
+    }
 
-    var toggleSelection = function(event) {
+    function toggleClickToSelect(event) {
+        var selection = event.target.getAttribute('data-toggle');
+		closeAllSelection(event);
+		
+		if(document.getElementById(selection).style.display == "none") {
+			document.getElementById(selection).style.display = "block"
+		}
+    }
+
+    function toggleSelection(event) {
         var button = event.target;
 		var group = button.getAttribute('data-group');
 		var parent = button.parentNode;
@@ -72,32 +89,18 @@ var FormEffect = function(){
 			}
 		}
 		
-    };
+    }
 
-    var closeSelection = function(event) {
+    function closeSelection(event) {
         event.target.parentNode.style.display = "none";
-    };
-	
-	var toggleMethod = function(event) {
-		var method = event.target.getAttribute('data-toggle');
-		
-		if(document.getElementById(method).style.display == "block") {
-			document.getElementById(method).style.display = "none";
-			event.target.classList.remove("selected");
-		} else {
-			document.getElementById(method).style.display = "block";
-			event.target.classList.add("selected");
-		}
-		
-	};
+    }
 
     return {
         init: function() {
 			/*Event listener for contact page*/
-            var items = document.querySelectorAll('span.click-to-select');
+			var items = document.querySelectorAll('span.click-to-select');
             var spans = document.querySelectorAll('.selection span');
             var closes = document.querySelectorAll('.selection i');
-			var contactMethods = document.querySelectorAll('#contact-method span');
 
             for(var i=0; i<items.length; i++) {
                 items[i].addEventListener('click', toggleClickToSelect);
@@ -111,17 +114,15 @@ var FormEffect = function(){
                 closes[i].addEventListener('click', closeSelection);
             }
 			
-			for(var i=0; i<contactMethods.length; i++) {
-				contactMethods[i].addEventListener('click', toggleMethod);
-			}
+			//_add(window, "click", closeAllSelection);
+			
+			/*Disable enter key submit*/
+			_add(window, "keydown", _keyDownListener);
 			
 			/*Scroll to top*/
 			document.querySelector('.scroll-up').addEventListener('click', function(){
 				window.scrollTo(0,0);
 			});
-			
-			/*Disable enter key submit*/
-			_add(window, "keydown", _keyDownListener);
         }
     }
 };

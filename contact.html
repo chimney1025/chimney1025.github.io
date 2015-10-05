@@ -40,187 +40,180 @@
 
 <body>
 
-<!-- Navigation -->
-<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
-    <div class="container">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header page-scroll">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="index.html">浪客旅行</a>
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">浪客旅行</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="themes.html">个性推荐</a>
+                    </li>
+                    <li>
+                        <a href="post.html">随便看看</a>
+                    </li>
+                    <li>
+                        <a href="about.html">关于我们</a>
+                    </li>
+                    <li>
+                        <a class="active" href="contact.html">立即预订</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
         </div>
+        <!-- /.container -->
+    </nav>
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <a href="themes.html">个性推荐</a>
-                </li>
-                <li>
-                    <a href="post.html">随便看看</a>
-                </li>
-                <li>
-                    <a href="about.html">关于我们</a>
-                </li>
-                <li>
-                    <a class="active" href="contact.html">立即预订</a>
-                </li>
-            </ul>
-        </div>
-        <!-- /.navbar-collapse -->
-    </div>
-    <!-- /.container -->
-</nav>
-
-<!-- Page Header -->
-<!-- Set your background image for this header on the line below. -->
-<header class="intro-header contact-page">
-</header>
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header class="intro-header contact-page">
+    </header>
 
 
-<section class="bg-section contact-page">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-xs-10 col-xs-offset-1 bg-content">
-                <div class="index-heading">
-                    <h2>立即预订</h2>
-                </div>
-                <div>
-                    <p>请通过以下表格告知我们您的需求，我们会为您提供大致的费用预算，并会在提交请求后48小时之内联系您，进行下一步的计划。</p>
-                    <p>如果有任何问题，请给我们发送邮件 example@email.com</p>
+    <section class="bg-section contact-page">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-xs-10 col-xs-offset-1 bg-content">
+                    <div class="index-heading">
+                        <h2>立即预订</h2>
+                    </div>
+                    <div>
+                        <p>请通过以下表格告知我们您的需求，我们会为您提供大致的费用预算，并会在提交请求后48小时之内联系您，进行下一步的计划。</p>
+                        <p>如果有任何问题，请给我们发送邮件 example@email.com</p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- Main Content -->
-<section class="container">
-    <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 col-xs-10 col-xs-offset-1">
-            <!-- Contact Form - Enter your email address on line 19 of the mail/contact_me.php file to make this form work. -->
-            <!-- WARNING: Some web hosts do not allow emails to be sent through forms to common mail hosts like Gmail or Yahoo. It's recommended that you use a private domain email address! -->
-            <!-- NOTE: To use the contact form, your site must be on a live web host with PHP! The form will not work locally! -->
-            <form name="sentMessage" id="contactForm" novalidate>
-                <div class="row control-group">
-                    <div class="form-group col-xs-12 controls">
-                        <i class="icon-tags"></i>
-                        <label>个性主题</label>
-                        <span class="click-to-select" data-toggle="highlight-selection" id="highlights">点击选择</span>
-                        <div id="selected-highlights" data-group="highlight-selection" class="selected-items"></div>
-                    </div>
-                </div>
-                <div class="row control-group selection" id="highlight-selection">
-                    <i class="icon-cancel"></i>
-                    <div class="form-group">
-                        <i class="icon-search"></i>
-                        <input type="search" class="form-control" placeholder="搜索" >
-                    </div>
-                    <div class="wrapper">
-                        <span data-group="selected-highlights" class="btn btn-primary">历史</span>
-                        <span data-group="selected-highlights" class="btn btn-primary">文化</span>
-                        <span data-group="selected-highlights" class="btn btn-primary">艺术</span>
-                        <span data-group="selected-highlights" class="btn btn-primary">电影</span>
-                        <span data-group="selected-highlights" class="btn btn-primary">足球</span>
-                        <span data-group="selected-highlights" class="btn btn-primary">苏格兰</span>
-                        <span data-group="selected-highlights" class="btn btn-primary">世界遗产</span>
-                        <span data-group="selected-highlights" class="btn btn-primary">风景</span>
-                        <span data-group="selected-highlights" class="btn btn-primary">徒步</span>
-                        <span data-group="selected-highlights" class="btn btn-primary">露营</span>
-                        <span data-group="selected-highlights" class="btn btn-primary">皇室</span>
-                        <span data-group="selected-highlights" class="btn btn-primary">下午茶</span>
-                    </div>
-                </div>
-                <div class="row control-group">
-                    <div class="form-group col-xs-12 controls">
-                        <i class="icon-map"></i>
-                        <label>目的地</label>
-                        <span class="click-to-select" data-toggle="city-selection" id="cities">点击选择</span>
-                        <div id="selected-cities" data-group="city-selection" class="selected-items"></div>
-                    </div>
-                </div>
-                <div class="row control-group selection" id="city-selection">
-                    <i class="icon-cancel"></i>
-                    <div class="form-group">
-                        <i class="icon-search"></i>
-                        <input type="search" class="form-control" placeholder="搜索" >
-                    </div>
-                    <div class="wrapper">
-                        <div class="map">
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4680588.326348828!2d-3.7694422232931926!3d55.05296581332173!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x25a3b1142c791a9%3A0xc4f8a0433288257a!2sUnited+Kingdom!5e0!3m2!1sen!2suk!4v1443716121052" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+    <!-- Main Content -->
+    <section class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-xs-10 col-xs-offset-1">
+                <!-- Contact Form - Enter your email address on line 19 of the mail/contact_me.php file to make this form work. -->
+                <!-- WARNING: Some web hosts do not allow emails to be sent through forms to common mail hosts like Gmail or Yahoo. It's recommended that you use a private domain email address! -->
+                <!-- NOTE: To use the contact form, your site must be on a live web host with PHP! The form will not work locally! -->
+                <form name="sentMessage" id="contactForm" novalidate>
+                    <div class="row control-group">
+                        <div class="form-group col-xs-12 controls">
+                            <i class="icon-tags"></i>
+                            <label>个性主题</label>
+                            <span class="click-to-select" data-toggle="highlight-selection" id="highlights">点击选择</span>
+                            <div id="selected-highlights" data-group="highlight-selection" class="selected-items"></div>
                         </div>
                     </div>
-                </div>
-                <div class="row control-group">
-                    <div class="form-group col-xs-12 controls">
-                        <i class="icon-pound"></i>
-                        <label>预算</label>
-                        <select>
-                            <option selected> </option>
-                            <option>Up to &pound;50/day</option>
-                            <option>Up to &pound;100/day</option>
-                            <option>Up to &pound;150/day</option>
-                            <option>Up to &pound;200/day</option>
-                            <option>Up to &pound;250/day</option>
-                            <option>Up to &pound;300/day</option>
-                            <option>Up to &pound;350/day</option>
-                            <option>Up to &pound;400/day</option>
-                        </select>
-                        <p class="help-block text-danger"></p>
+                    <div class="row control-group selection" id="highlight-selection">
+                        <i class="icon-cancel"></i>
+                        <div class="form-group">
+                            <i class="icon-search"></i>
+                            <input data-group="selected-highlights" type="search" class="form-control" placeholder="搜索">
+                        </div>
+                        <div class="wrapper">
+                            <span data-group="selected-highlights" class="btn btn-primary">历史</span>
+                            <span data-group="selected-highlights" class="btn btn-primary">文化</span>
+                            <span data-group="selected-highlights" class="btn btn-primary">艺术</span>
+                            <span data-group="selected-highlights" class="btn btn-primary">电影</span>
+                            <span data-group="selected-highlights" class="btn btn-primary">足球</span>
+                            <span data-group="selected-highlights" class="btn btn-primary">苏格兰</span>
+                            <span data-group="selected-highlights" class="btn btn-primary">世界遗产</span>
+                            <span data-group="selected-highlights" class="btn btn-primary">风景</span>
+                            <span data-group="selected-highlights" class="btn btn-primary">徒步</span>
+                            <span data-group="selected-highlights" class="btn btn-primary">露营</span>
+                            <span data-group="selected-highlights" class="btn btn-primary">皇室</span>
+                            <span data-group="selected-highlights" class="btn btn-primary">下午茶</span>
+                        </div>
                     </div>
-                </div>
-                <div class="row control-group">
-                    <div class="form-group col-xs-12 controls">
-                        <i class="icon-calendar"></i>
-                        <label>开始日期</label>
-                        <input type="text" class="form-control" id="start-date" readonly
-                               value="" name="start-date" autocomplete="off">
-                        <p class="help-block text-danger"></p>
+                    <div class="row control-group">
+                        <div class="form-group col-xs-12 controls">
+                            <i class="icon-map"></i>
+                            <label>目的地</label>
+                            <span class="click-to-select" data-toggle="city-selection" id="cities">点击选择</span>
+                            <div id="selected-cities" data-group="city-selection" class="selected-items"></div>
+                        </div>
                     </div>
-                </div>
-                <div class="row control-group">
-                    <div class="form-group col-xs-12 controls">
-                        <i class="icon-globe"></i>
-                        <label>旅行天数</label>
-                        <input type="tel" class="form-control" id="duration"
-                               value="" name="duration" autocomplete="off">
-                        <p class="help-block text-danger"></p>
+                    <div class="row control-group selection" id="city-selection">
+                        <i class="icon-cancel"></i>
+                        <div class="form-group">
+                            <i class="icon-search"></i>
+                            <input type="search" class="form-control" placeholder="搜索">
+                        </div>
+                        <div class="wrapper">
+                            <div class="map">
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4680588.326348828!2d-3.7694422232931926!3d55.05296581332173!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x25a3b1142c791a9%3A0xc4f8a0433288257a!2sUnited+Kingdom!5e0!3m2!1sen!2suk!4v1443716121052" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="row control-group">
-                    <div class="form-group col-xs-12 controls">
-                        <i class="icon-user-outline"></i>
-                        <label class="required">如何称呼 *</label>
-                        <input type="text" class="form-control" id="name" required
-                               autocomplete="off"
-                               data-validation-required-message="希望我们怎样称呼您？">
-                        <p class="help-block text-danger"></p>
+                    <div class="row control-group">
+                        <div class="form-group col-xs-12 controls">
+                            <i class="icon-pound"></i>
+                            <label>预算</label>
+                            <select>
+                                <option selected> </option>
+                                <option>Up to &pound;50/day</option>
+                                <option>Up to &pound;100/day</option>
+                                <option>Up to &pound;150/day</option>
+                                <option>Up to &pound;200/day</option>
+                                <option>Up to &pound;250/day</option>
+                                <option>Up to &pound;300/day</option>
+                                <option>Up to &pound;350/day</option>
+                                <option>Up to &pound;400/day</option>
+                            </select>
+                            <p class="help-block text-danger"></p>
+                        </div>
                     </div>
-                </div>
-                <div class="row control-group">
-                    <div class="form-group col-xs-12 controls">
-                        <i class="demo-icon icon-mail"></i>
-                        <label class="required">邮箱 *</label>
-                        <input type="text" class="form-control" id="email" required
-                               autocomplete="off"
-                               data-validation-required-message="我们需要通过邮箱简单直接的与您取得联系">
-                        <p class="help-block text-danger"></p>
+                    <div class="row control-group">
+                        <div class="form-group col-xs-12 controls">
+                            <i class="icon-calendar"></i>
+                            <label>开始日期</label>
+                            <input type="text" class="form-control" id="start-date" readonly value="" name="start-date" autocomplete="off">
+                            <p class="help-block text-danger"></p>
+                        </div>
                     </div>
-                </div>
-                <div class="row control-group">
-                    <div class="form-group col-xs-12 controls">
-                        <i class="icon-comment-empty"></i>
-                        <label class="required">简单介绍</label>
-                        <textarea rows="5" class="form-control" id="message" required
-                                  autocomplete="off" data-validation-required-message="让我们更了解一下你吧！"></textarea>
-                        <p class="help-block text-danger"></p>
+                    <div class="row control-group">
+                        <div class="form-group col-xs-12 controls">
+                            <i class="icon-globe"></i>
+                            <label>旅行天数</label>
+                            <input type="tel" class="form-control" id="duration" value="" name="duration" autocomplete="off">
+                            <p class="help-block text-danger"></p>
+                        </div>
                     </div>
-                </div>
-                <!--
+                    <div class="row control-group">
+                        <div class="form-group col-xs-12 controls">
+                            <i class="icon-user-outline"></i>
+                            <label class="required">如何称呼 *</label>
+                            <input type="text" class="form-control" id="name" required autocomplete="off" data-validation-required-message="希望我们怎样称呼您？">
+                            <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
+                    <div class="row control-group">
+                        <div class="form-group col-xs-12 controls">
+                            <i class="demo-icon icon-mail"></i>
+                            <label class="required">邮箱 *</label>
+                            <input type="text" class="form-control" id="email" required autocomplete="off" data-validation-required-message="我们需要通过邮箱简单直接的与您取得联系">
+                            <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
+                    <div class="row control-group">
+                        <div class="form-group col-xs-12 controls">
+                            <i class="icon-comment-empty"></i>
+                            <label class="required">简单介绍</label>
+                            <textarea rows="5" class="form-control" id="message" required autocomplete="off" data-validation-required-message="让我们更了解一下你吧！"></textarea>
+                            <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
+                    <!--
                 <div class="row control-group">
                     <div class="form-group col-xs-12 controls">
                         <label>联系方式</label>
@@ -247,74 +240,76 @@
                     </div>
                 </div>
                 -->
-                <br>
-                <div id="success"></div>
-                <div class="row">
-                    <div class="form-group col-xs-12">
-                        <button type="submit" class="btn btn-default">发送</button>
+                    <br>
+                    <div id="success"></div>
+                    <div class="row">
+                        <div class="form-group col-xs-12 text-center">
+                            <button type="submit" class="btn btn-default">发送</button>
+                        </div>
                     </div>
-                </div>
-            </form>
+
+                </form>
+            </div>
         </div>
-    </div>
-</section>
-<!-- Footer -->
-<footer class="dark">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-xs-10 col-xs-offset-1">
-                <ul class="list-inline text-center">
-                    <li>
-                        <a href="#">
+    </section>
+    <!-- Footer -->
+    <footer class="dark">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-xs-10 col-xs-offset-1">
+                    <ul class="list-inline text-center">
+                        <li>
+                            <a href="#">
                                 <span class="fa-stack fa-lg">
                                     <i class="fa fa-circle fa-stack-2x"></i>
                                     <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
                                 </span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
                                 <span class="fa-stack fa-lg">
                                     <i class="fa fa-circle fa-stack-2x"></i>
                                     <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
                                 </span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
                                 <span class="fa-stack fa-lg">
                                     <i class="fa fa-circle fa-stack-2x"></i>
                                     <i class="fa fa-github fa-stack-1x fa-inverse"></i>
                                 </span>
-                        </a>
-                    </li>
-                </ul>
-                <p class="copyright text-muted">Copyright &copy; Your Website 2014</p>
+                            </a>
+                        </li>
+                    </ul>
+                    <p class="copyright text-muted">Copyright &copy; Your Website 2014</p>
+                </div>
             </div>
         </div>
+    </footer>
+
+    <div class="scroll-up">
+        <span><i class="fa fa-angle-up"></i></span>
     </div>
-</footer>
 
-<div class="scroll-up">
-    <span><i class="fa fa-angle-up"></i></span>
-</div>
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
 
-<!-- jQuery -->
-<script src="js/jquery.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
 
-<!-- Bootstrap Core JavaScript -->
-<script src="js/bootstrap.min.js"></script>
+    <!-- Custom Theme JavaScript -->
+    <script src="js/clean-blog.min.js"></script>
+    <script src="js/custom.js"></script>
+    <script src="js/moment.js"></script>
+    <script src="js/daterangepicker.js"></script>
+    <script>
+        var effect = new FormEffect();
+        effect.init();
 
-<!-- Custom Theme JavaScript -->
-<script src="js/clean-blog.min.js"></script>
-<script src="js/custom.js"></script>
-<script src="js/moment.js"></script>
-<script src="js/daterangepicker.js"></script>
-<script>
-    var effect = new FormEffect();
-    effect.init();
-    $(function() {
-        $('input[name="start-date"]').daterangepicker({
+        $(function() {
+            $('input[name="start-date"]').daterangepicker({
                     singleDatePicker: true,
                     showDropdowns: true
                 },
@@ -322,8 +317,8 @@
                     var years = moment().diff(start, 'years');
                     //alert("You are " + years + " years old.");
                 });
-    });
-</script>
+        });
+    </script>
 </body>
 
 </html>
