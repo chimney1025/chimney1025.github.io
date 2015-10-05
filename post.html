@@ -110,16 +110,9 @@
                 <p>凛冽的自然和温暖的人情，应该就是日本的真实模样吧。</p>
             </div>
         </div>
-
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-xs-10 col-xs-offset-1">
                 <div class="actions text-center">
-                    <div class="col-xs-6 action pull-left">
-                        <a href="next-post.html" class="btn btn btn-info">上一篇</a>
-                    </div>
-                    <div class="col-xs-6 action pull-right">
-                        <a href="next-post.html" class="btn btn btn-info">下一篇</a>
-                    </div>
                     <div id="book-now" class="col-xs-12 action">
                         <a href="contact.html" class="btn btn-primary">立即预订</a>
                     </div>
@@ -128,6 +121,48 @@
         </div>
     </div>
 </article>
+<hr>
+<div class="container">
+        <div class="row">
+            <div class="col-xs-10 col-xs-offset-1">
+                <div class="index-heading">
+                    <h2>相关阅读</h2>
+                </div>
+				<div class="card col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-0">
+					<a href="post.html">
+						<div class="thumbnail">
+							<img src="img/contact-bg.jpg" alt="...">
+							<div class="caption">
+								<h3>日本原点 北陆金泽自由行</h3>
+								<p>艺术应该是一种讽刺文学，对我们麻木了的情感、死气沉沉的思想，和不自然的生活下的一种警告。</p>
+							</div>
+						</div>
+					</a>
+				</div>
+				<div class="card col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-0">
+					<a href="next-post.html">
+						<div class="thumbnail">
+							<img src="img/cover-next-post.jpg" alt="...">
+							<div class="caption">
+								<h3>体验佛国的宁静与幸福</h3>
+								<p>艺术应该是一种讽刺文学，对我们麻木了的情感、死气沉沉的思想，和不自然的生活下的一种警告。</p>
+							</div>
+						</div>
+					</a>
+				</div>
+			</div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-xs-10 col-xs-offset-1">
+                <div class="actions text-center">
+                    <div class="col-xs-12 action">
+                        <a href="themes.html" class="btn btn-info">返回列表</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+	</div>
 
 <!-- Footer -->
 <footer class="dark">
@@ -179,13 +214,14 @@
 <script src="js/clean-blog.min.js"></script>
 <script src="js/custom.js"></script>
 <script>
-    window.onload = function(){
+  window.onload = function(){
+    
         var sticky = new Sticky('book-now');
         sticky.init({
             space: 1630,
             style: 'fixed-book'
         });
-    }
+  }
 </script>
 
 </body>

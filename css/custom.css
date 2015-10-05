@@ -271,6 +271,11 @@ img {
     -webkit-transform: translateX(-50%);
 }
 
+#book-now a {
+	padding-left: 60px;
+	padding-right: 60px;
+}
+
 
 /* ---------------------------------------------- /*
  * Scroll to top

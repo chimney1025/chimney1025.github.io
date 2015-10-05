@@ -1,5 +1,6 @@
 var Sticky = function(id){
     this.element = document.getElementById(id);
+	this.button = document.querySelector('#' + id + ' a');
 };
 
 Sticky.prototype.init = function(option) {
@@ -14,10 +15,10 @@ Sticky.prototype.init = function(option) {
         if(didScroll) {
             didScroll = false;
             if(window.scrollY >= option.space) {
-                self.element.classList.remove('selected');
+				self.button.classList.remove('selected');
                 self.element.classList.remove(option.style);
             } else {
-                self.element.classList.add('selected');
+                self.button.classList.add('selected');
                 self.element.classList.add(option.style);
             }
         }
