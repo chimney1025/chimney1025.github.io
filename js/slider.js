@@ -34,8 +34,6 @@ var Slider = function(id) {
 			
 			prev.addEventListener('click', showPrev);
 			next.addEventListener('click', showNext);
-			
-			console.log(number);
 		}
 	}
 }
