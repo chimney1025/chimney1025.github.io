@@ -320,7 +320,7 @@ footer {
 // Contact Form Styles
 .form-control {
   &:focus {
-    border-color: @brand-primary;
+    border-color: @brand-info;
   }
 }
 
@@ -616,11 +616,10 @@ form .row:first-child .floating-label-form-group {
 			&.card {
 				.thumbnail {
 					overflow: hidden;
-					height: 220px;
 					
 					img {
 						width: 65%;
-						height: 100%;
+						height: auto;
 						float: left;
 					}
 				}
@@ -628,14 +627,6 @@ form .row:first-child .floating-label-form-group {
 				.caption {
 					height: auto;
 					padding: 25px;
-				}
-			}
-		}
-		
-		@media only screen and (min-width: 768px) {
-			&.card {
-				.thumbnail {
-					height: 300px;
 				}
 			}
 		}

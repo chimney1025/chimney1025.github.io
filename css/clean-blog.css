@@ -280,7 +280,7 @@ footer .copyright {
   margin-bottom: 5px;
 }
 .form-control:focus {
-  border-color: #e7746f;
+  border-color: #5dcfca;
 }
 .form-group {
   font-size: 14px;
@@ -552,21 +552,15 @@ form .row:first-child .floating-label-form-group {
 @media only screen and (min-width: 640px) {
   .sliders .slide.card .thumbnail {
     overflow: hidden;
-    height: 220px;
   }
   .sliders .slide.card .thumbnail img {
     width: 65%;
-    height: 100%;
+    height: auto;
     float: left;
   }
   .sliders .slide.card .caption {
     height: auto;
     padding: 25px;
-  }
-}
-@media only screen and (min-width: 768px) {
-  .sliders .slide.card .thumbnail {
-    height: 300px;
   }
 }
 .sliders .prev,
