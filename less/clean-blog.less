@@ -459,11 +459,26 @@ form .row:first-child .floating-label-form-group {
   @media only screen and (max-width: 640px) {
     font-size: 12px;
   }
+  
+  @media only screen and (max-width: 320px) {
+	font-size: 10px;
+	padding: 8px 18px;
+  }
 }
 
 .btn-lg {
   font-size: 16px;
   padding: 25px 35px;
+  
+  @media only screen and (max-width: 640px) {
+	font-size: 14px;
+	padding: 20px 30px;
+  }
+  
+  @media only screen and (max-width: 320px) {
+	font-size: 14px;
+	padding: 12px 22px;
+  }
 }
 
 .btn-default {
@@ -529,7 +544,7 @@ form .row:first-child .floating-label-form-group {
 .selected-items {
     .btn-primary {
 	    &:hover {
-			@media only screen and (max-width: 640px) {
+			@media only screen and (max-width: 768px) {
 			  background-color: transparent;
 			  border: 1px solid @brand-primary;
 			  color: @brand-primary;
@@ -539,7 +554,7 @@ form .row:first-child .floating-label-form-group {
 	
 	.btn-info {
 		&:hover {
-			@media only screen and (max-width: 640px) {
+			@media only screen and (max-width: 768px) {
 			  background-color: transparent;
 			  border: 1px solid @brand-info;
 			  color: @brand-info;
@@ -562,6 +577,9 @@ form .row:first-child .floating-label-form-group {
 	  width: 100%;
       height: 200px;
 	  cursor: pointer;
+	  @media only screen and (max-width: 640px) {
+		height: auto;
+	  }
     }
 	
 	hr {

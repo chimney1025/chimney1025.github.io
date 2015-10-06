@@ -60,10 +60,12 @@ var FormEffect = function(){
 
     function toggleClickToSelect(event) {
         var selection = event.target.getAttribute('data-toggle');
-		closeAllSelection(event);
+		//closeAllSelection(event);
 		
-		if(document.getElementById(selection).style.display == "none") {
-			document.getElementById(selection).style.display = "block"
+		if(document.getElementById(selection).style.display == "block") {
+			document.getElementById(selection).style.display = "none";
+		} else {
+			document.getElementById(selection).style.display = "block";
 		}
     }
 
