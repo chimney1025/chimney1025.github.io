@@ -280,6 +280,11 @@ img {
 	margin-bottom: 10px;
 }
 
+.click-to-select:hover {
+    cursor: pointer;
+    color: #333;
+}
+
 .selection {
     display: none;
 	position: absolute;
