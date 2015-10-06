@@ -15,7 +15,7 @@
 }
 
 .intro-header.about-page {
-    background-image: url('../img/about-bg.jpg');
+    background-image: url('../img/cover-about.jpg');
 }
 .intro-header.post-page {
     background-image: url('../img/cover-post.jpg');
@@ -361,7 +361,7 @@ img {
 	cursor: pointer;
 }
 
-.scroll-up span {
+.scroll-up a {
 	background-color: rgba(135, 135, 135, 0.5);
 	display: block;
 	width: 35px;
@@ -372,8 +372,8 @@ img {
 	line-height: 30px;
 }
 
-.scroll-up span:hover,
-.scroll-up span:active {
+.scroll-up a:hover,
+.scroll-up a:active {
 	background-color: rgba(235, 235, 235, .8);
 	color: #333;
 }

@@ -118,11 +118,6 @@ var FormEffect = function(){
 			
 			/*Disable enter key submit*/
 			_add(window, "keydown", _keyDownListener);
-			
-			/*Scroll to top*/
-			document.querySelector('.scroll-up').addEventListener('click', function(){
-				window.scrollTo(0,0);
-			});
         }
     }
 };

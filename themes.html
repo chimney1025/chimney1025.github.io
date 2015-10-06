@@ -38,7 +38,7 @@
 <body>
 
     <!-- Navigation -->
-    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <nav id="begin" class="navbar navbar-default navbar-custom navbar-fixed-top">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header page-scroll">
@@ -206,7 +206,7 @@
     </footer>
 
     <div class="scroll-up">
-        <span><i class="fa fa-angle-up"></i></span>
+        <a data-scroll href="#begin" ><i class="fa fa-angle-up"></i></a>
     </div>
 
     <!-- jQuery -->
@@ -218,6 +218,10 @@
     <!-- Custom Theme JavaScript -->
     <script src="js/clean-blog.min.js"></script>
     <script src="js/custom.js"></script>
+    <script src="js/smooth-scroll.min.js"></script>
+    <script>
+		smoothScroll.init();
+	</script>
 
 </body>
 
