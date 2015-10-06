@@ -29,7 +29,7 @@
 	var defaults = {
 		selector: '[data-scroll]',
 		selectorHeader: '[data-scroll-header]',
-		speed: 500,
+		speed: 1000,
 		easing: 'easeInOutCubic',
 		offset: 0,
 		updateURL: true,
