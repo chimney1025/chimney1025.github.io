@@ -166,15 +166,15 @@ section {
 
 /*Sliders*/
 .sliders .prev:before {
-	content: '\e809';
+	content: '\e81c';
     font-family:'Fontello';
-	font-size: 1.5em;
+	font-size: 2.5em;
 }
 
 .sliders .next:before {
-	content: '\e808';
+	content: '\e81b';
     font-family:'Fontello';
-	font-size: 1.5em;
+	font-size: 2.5em;
 }
 
 img {

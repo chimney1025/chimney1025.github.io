@@ -25,3 +25,6 @@
 .icon-sun:before { content: '\e817'; } /* '' */
 .icon-sun-filled:before { content: '\e818'; } /* '' */
 .icon-globe:before { content: '\e819'; } /* '' */
+.icon-child:before { content: '\e81a'; } /* '' */
+.icon-right-open-big:before { content: '\e81b'; } /* '' */
+.icon-left-open-big:before { content: '\e81c'; } /* '' */
