@@ -490,27 +490,10 @@ form .row:first-child .floating-label-form-group {
 	  background-color: darken(@brand-primary, 6.5%);
       border: 1px solid @brand-primary;
       color: white;
-	  
-	  @media only screen and (max-width: 640px) {
-		background-color: @brand-primary;
-		border: 1px solid @brand-primary;
-		color: white;
-	  }
 	}
   }
 
-  &:hover {
-    background-color: darken(@brand-primary, 6.5%);
-    border: 1px solid @brand-primary;
-    color: white;
-
-    @media only screen and (max-width: 640px) {
-      background-color: transparent;
-      border: 1px solid @brand-primary;
-      color: @brand-primary;
-    }
-  }
-
+  &:hover,
   &:focus,
   &:active,
   &.active {
@@ -531,18 +514,7 @@ form .row:first-child .floating-label-form-group {
     color: white;
   }
 
-  &:hover  {
-    background-color: darken(@brand-info, 6.5%);
-    border: 1px solid @brand-info;
-    color: white;
-
-    @media only screen and (max-width: 640px) {
-      background-color: transparent;
-      border: 1px solid @brand-info;
-      color: @brand-info;
-    }
-  }
-
+  &:hover,
   &.active,
   &:focus,
   &:active {
@@ -550,6 +522,30 @@ form .row:first-child .floating-label-form-group {
     border: 1px solid @brand-info;
     color: white;
   }
+}
+
+// Remove hover style for buttons under .selection
+.selection,
+.selected-items {
+    .btn-primary {
+	    &:hover {
+			@media only screen and (max-width: 640px) {
+			  background-color: transparent;
+			  border: 1px solid @brand-primary;
+			  color: @brand-primary;
+			}
+		}
+	}
+	
+	.btn-info {
+		&:hover {
+			@media only screen and (max-width: 640px) {
+			  background-color: transparent;
+			  border: 1px solid @brand-info;
+			  color: @brand-info;
+			}
+		}
+	}
 }
 
 // Card Styling

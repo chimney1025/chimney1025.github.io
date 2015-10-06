@@ -444,25 +444,7 @@ form .row:first-child .floating-label-form-group {
   border: 1px solid #e7746f;
   color: white;
 }
-@media only screen and (max-width: 640px) {
-  .btn-primary.selected:hover {
-    background-color: #e7746f;
-    border: 1px solid #e7746f;
-    color: white;
-  }
-}
-.btn-primary:hover {
-  background-color: #e25953;
-  border: 1px solid #e7746f;
-  color: white;
-}
-@media only screen and (max-width: 640px) {
-  .btn-primary:hover {
-    background-color: transparent;
-    border: 1px solid #e7746f;
-    color: #e7746f;
-  }
-}
+.btn-primary:hover,
 .btn-primary:focus,
 .btn-primary:active,
 .btn-primary.active {
@@ -480,24 +462,29 @@ form .row:first-child .floating-label-form-group {
   border: 1px solid #5dcfca;
   color: white;
 }
-.btn-info:hover {
-  background-color: #43c7c2;
-  border: 1px solid #5dcfca;
-  color: white;
-}
-@media only screen and (max-width: 640px) {
-  .btn-info:hover {
-    background-color: transparent;
-    border: 1px solid #5dcfca;
-    color: #5dcfca;
-  }
-}
+.btn-info:hover,
 .btn-info.active,
 .btn-info:focus,
 .btn-info:active {
   background-color: #43c7c2;
   border: 1px solid #5dcfca;
   color: white;
+}
+@media only screen and (max-width: 640px) {
+  .selection .btn-primary:hover,
+  .selected-items .btn-primary:hover {
+    background-color: transparent;
+    border: 1px solid #e7746f;
+    color: #e7746f;
+  }
+}
+@media only screen and (max-width: 640px) {
+  .selection .btn-info:hover,
+  .selected-items .btn-info:hover {
+    background-color: transparent;
+    border: 1px solid #5dcfca;
+    color: #5dcfca;
+  }
 }
 /**/
 .card {
