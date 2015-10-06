@@ -127,6 +127,14 @@
 	padding-right: 0;
 }
 
+@media only screen and (min-width: 767px) {
+    .post-heading,
+    .post-tags,
+    .section-heading {
+        text-align: center;
+    }
+}
+
 .post-heading h1,
 h2.section-heading {
     font-size: 28px;
@@ -190,7 +198,7 @@ img {
     margin: 0 auto;
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 767px) {
 	.slide img:hover {
 		-webkit-transform: scale(1.05);
 		transform: scale(1.05);
