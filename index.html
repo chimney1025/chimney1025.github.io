@@ -83,10 +83,13 @@
 			<a href="themes.html" class="btn btn-lg btn-primary selected">探索浪客</a>
 		</div>
     </div>
+	<div class="start-button">
+		<a data-scroll href="#start" class="btn btn-default selected">开始</a>
+	</div>
 </header>
 
 <!-- Main Content -->
-<section class="container">
+<section id="start" class="container">
     <div class="row">
         <div class="index-heading">
             <h2>旅行</h2>
@@ -112,17 +115,6 @@
 					<span class="next"></span>
 					
 					<div class="slide card" style="display: block">
-						<a href="post.html">
-							<div class="thumbnail">
-								<img src="img/cover-post.jpg" alt="...">
-								<div class="caption">
-									<h3>日本原点 北陆金泽自由行</h3>
-									<p>艺术应该是一种讽刺文学，对我们麻木了的情感、死气沉沉的思想，和不自然的生活下的一种警告。</p>
-								</div>
-							</div>
-						</a>
-					</div>
-					<div class="slide card">
 						<a href="post.html">
 							<div class="thumbnail">
 								<img src="img/cover-1.jpg" alt="...">
@@ -223,6 +215,7 @@
 <script src="js/clean-blog.min.js"></script>
 <script src="js/custom.js"></script>
 <script src="js/slider.js"></script>
+<script src="js/smooth-scroll.min.js"></script>
 <script>
     (function(){
         var resize = function(){
@@ -230,6 +223,8 @@
         };
 
         resize();
+		
+		smoothScroll.init();
 
         window.onload = function(){
 			//console.log('window loaded: ');

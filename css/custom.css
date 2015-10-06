@@ -1,6 +1,6 @@
 /**/
 .intro-header.index-page {
-    background: url('../img/cover-about.jpg') no-repeat center center fixed;
+    background: url('../img/cover-4.jpg') no-repeat center center fixed;
     background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -24,7 +24,7 @@
     background-image: url('../img/cover-next-post.jpg');
 }
 .intro-header.list-page {
-    background-image: url('../img/home-bg.jpg');
+    background-image: url('../img/cover-5.jpg');
 }
 .intro-header.contact-page {
     min-height: 0 !important;
