@@ -518,7 +518,7 @@ form .row:first-child .floating-label-form-group {
   height: 200px;
   cursor: pointer;
 }
-@media only screen and (max-width: 640px) {
+@media only screen and (max-width: 768px) {
   .card .thumbnail img {
     height: auto;
   }
