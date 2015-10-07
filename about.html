@@ -158,9 +158,13 @@
 
 <!-- Custom Theme JavaScript -->
 <script src="js/clean-blog.min.js"></script>
+    <script src="js/fast-click.min.js"></script>
 <script src="js/custom.js"></script>
     <script src="js/smooth-scroll.min.js"></script>
     <script>
+        var attachFastClick = Origami.fastclick;
+        attachFastClick(document.body);
+
 		smoothScroll.init();
 	</script>
 
