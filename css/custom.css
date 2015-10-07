@@ -47,6 +47,10 @@
     margin-bottom: 30px;
 }
 
+.bg-section.action-section {
+    background-image: url('../img/about-bg.jpg');
+}
+
 .bg-section.contact-page {
     background-image: url('../img/cover-list.jpg');
 }
