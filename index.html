@@ -216,16 +216,21 @@
 
 <!-- Custom Theme JavaScript -->
 <script src="js/clean-blog.min.js"></script>
+<script src="js/fast-click.min.js"></script>
 <script src="js/custom.js"></script>
 <script src="js/slider.js"></script>
 <script src="js/smooth-scroll.min.js"></script>
 <script>
     (function(){
+
         var resize = function(){
             document.querySelector('header.index-page').style.height = window.innerHeight-60 + 'px';
         };
 
         resize();
+
+        var attachFastClick = Origami.fastclick;
+        attachFastClick(document.body);
 		
 		smoothScroll.init();
 
