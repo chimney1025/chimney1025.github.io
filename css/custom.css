@@ -371,8 +371,12 @@ img {
     -webkit-transform: translateX(-50%);
 }
 
-#book-now a {
+@media only screen and (max-width: 768px) {
+    #book-now a {
+        width: 100%;
+    }
 }
+
 
 
 /* ---------------------------------------------- /*
