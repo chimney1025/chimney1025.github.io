@@ -71,7 +71,7 @@ var FormEffect = function(){
 
     function toggleSelection(event) {
         var button = event.target;
-		var group = button.getAttribute('data-group');
+		var group = button.getAttribute('data-item');
 		var parent = button.parentNode;
 		var parentGroup = parent.getAttribute('data-group');
 		var selectList = document.getElementById(parentGroup);
@@ -99,22 +99,53 @@ var FormEffect = function(){
 
     return {
         init: function() {
-			/*Event listener for contact page*/
-			var items = document.querySelectorAll('span.click-to-select');
-            var spans = document.querySelectorAll('.selection span');
-            var closes = document.querySelectorAll('.selection i');
-
-            for(var i=0; i<items.length; i++) {
-                items[i].addEventListener('click', toggleClickToSelect);
-            }
-
-            for(var i=0; i<spans.length; i++) {
-                spans[i].addEventListener('click', toggleSelection);
-            }
-
-            for(var i=0; i<closes.length; i++) {
-                closes[i].addEventListener('click', closeSelection);
-            }
+			/*
+			// Using event bubbling
+			_add(document.getElementById('contactForm', 'click', function(event) {
+				var item = event.target;
+				
+				if(item.getAttribute('data-toggle')) {
+					return toggleClickToSelect(event);
+				}
+				
+				if(item.getAttribute('data-item')) {
+					return toggleSelection(event);
+				}
+				
+				if(item.getAttribute('data-close')) {
+					return closeSelection(event);
+				}
+			});
+			*/
+			
+			/*
+			// Using jQuery
+			$('.click-to-select').click(toggleClickToSelect);
+			$('.selection span').click(toggleSelection);
+			$('.selected-items span').click(toggleSelection);
+			$('.selection .icon-cancel').click(closeSelection);
+			*/
+			
+			var selections = document.querySelectorAll('.click-to-select');
+			var spans = document.querySelectorAll('.selection span');
+			var selected = document.querySelectorAll('.selected-items span');
+			var close = document.querySelectorAll('.selection .icon-cancel');
+			
+			for(var i=0; i<selections.length; i++) {
+				_add(selections[i], "click", toggleClickToSelect);
+			}
+			
+			for(var i=0; i<spans.length; i++) {
+				_add(spans[i], "click", toggleSelection);
+			}
+			
+			for(var i=0; i<selected.length; i++) {
+				_add(selected[i], "click", toggleSelection);
+			}
+			
+			for(var i=0; i<close.length; i++) {
+				_add(close[i], "click", closeSelection);
+			}
 			
 			//_add(window, "click", closeAllSelection);
 			

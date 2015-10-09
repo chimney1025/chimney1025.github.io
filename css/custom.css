@@ -1,4 +1,10 @@
 /**/
+body {
+	-webkit-user-select: none; /* webkit (safari, chrome) browsers */
+    -moz-user-select: none; /* mozilla browsers */
+    -khtml-user-select: none; /* webkit (konqueror) browsers */
+    -ms-user-select: none; /* IE10+ */
+}
 .intro-header.index-page {
     background: url('../img/cover-4.jpg') no-repeat center center fixed;
     background-size: cover;
