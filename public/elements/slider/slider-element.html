@@ -1,0 +1,50 @@
+<dom-module id="slider-element">
+<template>
+    <div class="sliders" id="index-slider">
+		<span class="prev"></span>
+		<span class="next"></span>
+			<template is="dom-repeat" items="{{dataSlides}}">
+			<div class="slide card">
+                <a href$="{{getHref(item.id)}}">
+                    <div class="thumbnail">
+                        <img src="{{item.image}}" alt="...">
+                        <div class="caption">
+                            <h3>{{item.title}}</h3>
+                            <p>{{item.description}}</p>
+                        </div>
+                    </div>
+                </a>
+			</div>
+            </template>
+		</div>
+</template>
+
+<script>
+    Polymer({
+        is: "slider-element",
+        properties: {
+            dataSlides: {
+                type: Array,
+                value: [
+                        {
+                            id: '',
+                            image: 'http://cdn-cs.visitbritain.com/cs/Satellite92b4.jpg?blobcol=urldata&blobheader=image%2Fjpeg&blobkey=id&blobtable=MungoBlobs&blobwhere=1266500336482&ssbinary=true',
+                            title: '查看我们的主题',
+                            description: '点击查看'
+                        }
+                ]
+            }
+        },
+        getHref: function(id) {
+            if(id) {
+                return "#/themes/" + id;
+            } else {
+                return "#/themes" ;
+            }
+        },
+        attached: function() {
+            document.querySelector('.slide').style.display = "block";
+        }
+    });
+</script>
+</dom-module>
