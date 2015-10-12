@@ -377,10 +377,8 @@ img {
     -webkit-transform: translateX(-50%);
 }
 
-@media only screen and (max-width: 768px) {
-    .fullwidth {
-        width: 100%;
-    }
+.fullwidth {
+    width: 100%;
 }
 
 
