@@ -9,6 +9,18 @@
         font-size: 14px;
       }
       
+      input {
+          margin: 0;
+          font-family: sans-serif;
+          appearance: none;
+          box-shadow: none;
+          border-radius: none;
+          -webkit-appearance:none;
+      }
+      input:focus {
+          outline: none;
+      }
+      
       .input {
         width: 100%;
         float: left;
@@ -50,7 +62,7 @@
 
 <div class="result">
 <textarea id="searchInput" placeholder="请输入中文歌词 （示例：可贴入《万水千山总是情》简体版进行转换）"></textarea>
-<input id="search" type="button" value="==>">
+<input id="search" type="button" value="转换">
 <div id="result"></div>
 </div>
 
