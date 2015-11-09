@@ -44,11 +44,12 @@
 <div class="input">
 <input id="key" type="text" placeholder="请输入中文">
 <input id="value" type="text" placeholder="请输入读音">
-<input id="getAll" type="button" value="查看所有词库">
+<input id="add" type="button" value="点击或回车添加">
+<input id="getAll" type="button" value="查看已有词库">
 </div>
 
 <div class="result">
-<textarea id="searchInput" placeholder="请输入中文歌词"></textarea>
+<textarea id="searchInput" placeholder="请输入中文歌词 （示例：可贴入《万水千山总是情》简体版进行转换）"></textarea>
 <input id="search" type="button" value="==>">
 <div id="result"></div>
 </div>
@@ -69,7 +70,7 @@ function Words() {
   return {
     add: function(key, value) {
         dict[key] = value;
-        localStorage.setItem("words", dict);
+        localStorage.setItem("words", JSON.stringify(dict));
     },
     
     search: function(key) {
@@ -100,6 +101,19 @@ function Display() {
             }
   }
   
+  function addWord() {
+              var key = document.getElementById('key').value.trim();
+              var value = document.getElementById('value').value.trim();
+              if(key && value) {
+                words.add(key, value);
+                document.getElementById('key').value = '';
+                document.getElementById('value').value = '';
+                document.getElementById('key').focus();
+                
+                getAll();
+              }
+  }
+  
   return {
     
     import: function(orig) {
@@ -127,19 +141,12 @@ function Display() {
     },
     
     init: function() {
+        
+        document.getElementById('add').addEventListener('click', addWord);
     
         document.getElementById('value').addEventListener('keydown', function(event) {
             if(event.keyCode == 13) {
-              var key = document.getElementById('key').value.trim();
-              var value = document.getElementById('value').value.trim();
-              if(key && value) {
-                words.add(key, value);
-                document.getElementById('key').value = '';
-                document.getElementById('value').value = '';
-                document.getElementById('key').focus();
-                
-                getAll();
-              }
+              addWord();
             }
         });
         
@@ -175,6 +182,10 @@ function Display() {
 
 var dict = new Display();
 dict.init();
+
+//Example data
+var data = {"莫":"mou","说":"syut","青":"cing","山":"saan","多":"do","障":"zoeng","碍":"ngoi","风":"fung","也":"jaa","急":"gap","劲":"ging","白":"baak","云":"wan","过":"gwo","峰":"fung","可":"ho","传":"zyun","情":"cing","水":"seoi","中":"zung","变":"bin","幻":"waan","清":"cing","静":"zing","柔":"jau","似":"ci","爱":"ngoi","共":"gung","永":"wing","未":"mei","怕":"paa","罡":"gong","吹":"ceoi","散":"saan","了":"liu","热":"jit","万":"mak","千":"cin","总":"zung","是":"si","聚":"zeoi","有":"jau","天":"tin","注":"zyu","定":"ding","不":"bat","怨":"jyun","命":"ming","但":"daan","求":"kau","作":"zok","证":"zing"};
+dict.setStorage(data);
 
 </script>
 
