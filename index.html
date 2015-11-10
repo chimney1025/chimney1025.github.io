@@ -21,16 +21,11 @@
           outline: none;
       }
       
-      .input {
-        width: 100%;
-        float: left;
-      }
-      
-      .result {
+      .input, .song, .result, .tools {
         width: 100%;
       }
       
-      .result #search {
+      .result #lyric {
         width: 50px;
         float: left;
         margin: 100px 10px 0 10px;
@@ -45,9 +40,6 @@
         border: 1px solid #333;
         padding: 10px;
       }
-      
-      
-      
      
     </style>
 </head>
@@ -57,140 +49,26 @@
 <input id="key" type="text" placeholder="请输入中文">
 <input id="value" type="text" placeholder="请输入读音">
 <input id="add" type="button" value="点击或回车添加">
+</div>
+
+<div class="song">
+<input id="song" type="text" placeholder="请输入歌名">
+<input id="search" type="button" value="查询歌词">
+</div>
+
+<div class="tools">
 <input id="getAll" type="button" value="查看已有词库">
 </div>
 
 <div class="result">
-<textarea id="searchInput" placeholder="请输入中文歌词 （示例：可贴入《万水千山总是情》简体版进行转换）"></textarea>
-<input id="search" type="button" value="转换">
+<textarea id="lyricInput" placeholder="请输入中文歌词 （示例：可贴入《万水千山总是情》简体版进行转换）"></textarea>
+<input id="lyric" type="button" value="转换">
 <div id="result"></div>
 </div>
 
+<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="custom.js"></script>
 <script>
-function Words() {
-  var dict = {};
-  reset();
-  
-  function reset() {
-    if(localStorage.getItem("words")) {
-        dict = JSON.parse(localStorage.getItem("words"));
-    } else {
-        dict = {};
-    }
-  }
-  
-  return {
-    add: function(key, value) {
-        dict[key] = value;
-        localStorage.setItem("words", JSON.stringify(dict));
-    },
-    
-    search: function(key) {
-        return dict[key];
-    },
-    
-    getAll: function() {
-        return dict;
-    },
-    
-    reset: function() {
-        reset();
-    }
-  };
-}
-
-function Display() {
-    
-  var words = new Words();
-  
-  function getAll() {
-            var results = words.getAll();
-            document.getElementById('result').innerHTML = "";
-            for(var key in results) {
-                var node = document.createElement("div");
-                node.innerHTML = "- " + key + " : " + results[key] + "<br>";
-                document.getElementById('result').appendChild(node);
-            }
-  }
-  
-  function addWord() {
-              var key = document.getElementById('key').value.trim();
-              var value = document.getElementById('value').value.trim();
-              if(key && value) {
-                words.add(key, value);
-                document.getElementById('key').value = '';
-                document.getElementById('value').value = '';
-                document.getElementById('key').focus();
-                
-                getAll();
-              }
-  }
-  
-  return {
-    
-    import: function(orig) {
-        var dict = {};
-        //var orig = document.getElementById("result").textContent;
-        var arr = orig.split('- ');
-        for(var i=0; i<arr.length; i++) {
-          if(arr[i]) {
-            var key = arr[i].split(" : ")[0];
-            var value = arr[i].split(" : ")[1];
-            dict[key] = value;
-            localStorage.setItem("words", JSON.stringify(dict));
-          }
-        }
-    },
-    
-    clearStorage: function() {
-        localStorage.removeItem("words");
-        words.reset();
-    },
-    
-    setStorage: function(json) {
-        localStorage.setItem("words", JSON.stringify(json));
-        words.reset();
-    },
-    
-    init: function() {
-        
-        document.getElementById('add').addEventListener('click', addWord);
-    
-        document.getElementById('value').addEventListener('keydown', function(event) {
-            if(event.keyCode == 13) {
-              addWord();
-            }
-        });
-        
-        document.getElementById('getAll').addEventListener('click', getAll);
-
-        document.getElementById('search').addEventListener('click', function() {
-              document.getElementById('result').innerHTML = "";
-              var list = document.getElementById('searchInput').value.trim().split('');
-              
-              for(var i=0; i<list.length; i++) {
-                var key = list[i];
-                if(key) {
-                    if(key == "\n" || key == "\r\n") {
-                        var node = document.createElement("div");
-                        node.innerHTML = "<br>";
-                        document.getElementById('result').appendChild(node);
-                    } else {
-                        var value = words.search(key);
-                        if(!value) {
-                          value = "";
-                        }
-                    
-                        var node = document.createElement("span");
-                        node.innerHTML = key + value + " ";
-                        document.getElementById('result').appendChild(node);
-                    }
-                }
-              }
-        });
-    }
-  };
-}
 
 var dict = new Display();
 dict.init();
