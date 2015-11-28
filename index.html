@@ -163,45 +163,54 @@
                         </a>
                     </div>
                 </div>
+                <p>
+                    <a href="sheetmusic.html" class="btn btn-primary">View All Sheet Music</a>
+                </p>
             </div>
+        </div>
+    </div>
+</section>
+<!-- ============ SPECIAL OFFERS END ============ -->
 
-            <div class="row">
-                <div class="col-sm-12 text-center">
-                    <a href="detail.html" class="btn btn-primary">View All Sheet Music</a>
-                </div>
-            </div>
+<!-- ============ CONTENT START ============ -->
 
-            <div class="row">
-                <div class="col-sm-12 text-center">
-                    <hr>
-                    <h2>View by Categories</h2>
-                </div>
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                <hr>
+                <h2>View by Categories</h2>
             </div>
-            <div class="row">
-                <div class="col-sm-4">
-                    <h3 class="text-center">Instruments</h3>
-                    <ul class="wedding-packages">
-                        <a href="sheetmusic.html"><li><i class="fa fa-check primary-color"></i>Piano<span class="pull-right">(15 sheetmusic)</span></li></a>
-                        <a href="sheetmusic.html"><li><i class="fa fa-check primary-color"></i>Cello<span class="pull-right">(12 sheetmusic)</span></li></a>
-                        <a href="sheetmusic.html"><li><i class="fa fa-check primary-color"></i>Violin<span class="pull-right">(10 sheetmusic)</span></li></a>
-                    </ul>
-                    <p class="text-center"><a href="instruments.html" class="btn btn-primary">View All Instruments</a></p>
-                </div>
-                <div class="col-sm-4">
+            <!-- Item -->
+            <div class="item col-sm-6 col-md-4">
+                <h3 class="text-center">Instruments</h3>
+                <ul>
+                    <a href="sheetmusic.html"><li>Piano<span class="pull-right">(15 sheetmusic)</span></li></a>
+                    <a href="sheetmusic.html"><li>Cello<span class="pull-right">(12 sheetmusic)</span></li></a>
+                    <a href="sheetmusic.html"><li>Violin<span class="pull-right">(10 sheetmusic)</span></li></a>
+                </ul>
+                <p class="text-center"><a href="instruments.html" class="btn btn-primary">View All Instruments</a></p>
+            </div>
+            <!-- Item -->
+            <div class="item col-sm-6 col-md-4">
+                <div class="description">
                     <h3 class="text-center">Composers</h3>
-                    <ul class="wedding-packages">
-                        <a href="sheetmusic.html"><li><i class="fa fa-check primary-color"></i>Joe Hisaishi<span class="pull-right">(5 sheetmusic)</span></li></a>
-                        <a href="sheetmusic.html"><li><i class="fa fa-check primary-color"></i>Johann Pachebell<span class="pull-right">(3 sheetmusic)</span></li></a>
-                        <a href="sheetmusic.html"><li><i class="fa fa-check primary-color"></i>Yann Tierse<span class="pull-right">(2 sheetmusic)</span></li></a>
+                    <ul>
+                        <a href="sheetmusic.html"><li>Joe Hisaishi<span class="pull-right">(15 sheetmusic)</span></li></a>
+                        <a href="sheetmusic.html"><li>Johann Pachebell<span class="pull-right">(12 sheetmusic)</span></li></a>
+                        <a href="sheetmusic.html"><li>Yann Tierse<span class="pull-right">(10 sheetmusic)</span></li></a>
                     </ul>
                     <p class="text-center"><a href="composers.html" class="btn btn-primary">View All Composers</a></p>
                 </div>
-                <div class="col-sm-4">
+            </div>
+            <!-- Item -->
+            <div class="item col-sm-6 col-md-4">
+                <div class="description">
                     <h3 class="text-center">Genres</h3>
-                    <ul class="wedding-packages">
-                        <a href="sheetmusic.html"><li><i class="fa fa-check primary-color"></i>Classical 1750-1820<span class="pull-right">(6 sheetmusic)</span></li></a>
-                        <a href="sheetmusic.html"><li><i class="fa fa-check primary-color"></i>Baroque 1600-1750<span class="pull-right">(5 sheetmusic)</span></li></a>
-                        <a href="sheetmusic.html"><li><i class="fa fa-check primary-color"></i>Traditional<span class="pull-right">(5 sheetmusic)</span></li></a>
+                    <ul>
+                        <a href="sheetmusic.html"><li>Classical 1750-1820<span class="pull-right">(15 sheetmusic)</span></li></a>
+                        <a href="sheetmusic.html"><li>Baroque 1600-1750<span class="pull-right">(12 sheetmusic)</span></li></a>
+                        <a href="sheetmusic.html"><li>Traditional<span class="pull-right">(10 sheetmusic)</span></li></a>
                     </ul>
                     <p class="text-center"><a href="genres.html" class="btn btn-primary">View All Genres</a></p>
                 </div>
@@ -209,7 +218,8 @@
         </div>
     </div>
 </section>
-<!-- ============ SPECIAL OFFERS END ============ -->
+
+<!-- ============ CONTENT END ============ -->
 
 <!-- ============ FOOTER START ============ -->
 
@@ -356,27 +366,6 @@
 
 <!-- Parallax Plugin -->
 <script src="js/parallax.js"></script>
-
-<!-- Masonry Plugin -->
-<script src="js/masonry.pkgd.min.js"></script>
-<script src="js/imagesloaded.pkgd.min.js"></script>
-<script>
-    (function($) {
-        "use strict";
-        $(document).ready(function() {
-
-            // initialize Masonry
-            var $container = $('#reviews-masonry').masonry({
-                itemSelector: '.review'
-            });
-
-            // layout Masonry again after all images have loaded
-            $container.imagesLoaded(function() {
-                $container.masonry();
-            });
-        })
-    })(jQuery);
-</script>
 
 <!-- Fancybox Plugin -->
 <script src="js/fancybox.pack.js"></script>
