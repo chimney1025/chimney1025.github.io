@@ -289,7 +289,7 @@ video#video1 {
     background-image: url("../images/home-golf.jpg");
 }
 #specials {
-    padding:80px 0;
+    padding: 210px 0 80px 0;
 }
 #specials .price {
     background: rgba(0, 0, 0, 0.8) none repeat scroll 0 0;
