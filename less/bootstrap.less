@@ -54,3 +54,22 @@
 // Utility classes
 @import "utilities.less";
 @import "responsive-utilities.less";
+
+// Customize
+h1::after {
+  background: @brand-primary none repeat scroll 0 0;
+}
+.fotorama__thumb-border {
+  border-color: @brand-primary;
+}
+
+.jetmenu > li:hover > a, .jetmenu > li.active > a {
+  color: @brand-primary;
+}
+.jetmenu ul.dropdown li:hover > a {
+  background: @brand-primary none repeat scroll 0 0;
+  color: #fff;
+}
+.menu li h6::after {
+  background: @brand-primary none repeat scroll 0 0;
+}
