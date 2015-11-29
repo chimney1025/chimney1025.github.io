@@ -96,8 +96,20 @@ a.color3:hover, button.color3:hover {
     color: #fff;
 }
 .owl-controls {
-    margin: 30px 0;
+    margin: 0 0 30px 0;
 }
+@media (max-width: 992px) {
+    .owl-controls {
+        margin: -60px 0 60px 0;
+    }
+}
+
+@media (max-width: 767px) {
+    .owl-controls {
+        margin: -70px 0 60px 0;
+    }
+}
+
 .owl-controls .owl-prev, .owl-controls .owl-next {
     color: #000;
     cursor: pointer;
@@ -110,7 +122,9 @@ a.color3:hover, button.color3:hover {
 header {
     background: #1a1a1a none repeat scroll 0 0;
     left: 0;
+    /*
     position: fixed;
+    */
     top: 0;
     transition: all 0.5s ease 0s;
     width: 100%;
@@ -287,7 +301,7 @@ video#video1 {
     background-image: url("../images/home-golf.jpg");
 }
 #specials {
-    padding: 210px 0 80px 0;
+    padding: 80px 0;
 }
 #specials .price {
     background: rgba(0, 0, 0, 0.8) none repeat scroll 0 0;
@@ -357,7 +371,7 @@ video#video1 {
     margin-top: 1em;
 }
 #content {
-    padding: 210px 0 80px;
+    padding: 80px 0;
 }
 .room {
     padding-bottom: 40px;
@@ -406,10 +420,17 @@ video#video1 {
     color: #222;
     float: right;
 }
-.item img {
+
+@media (max-width: 992px) {
+    .detail {
+    }
 }
 
-.item .description {
+@media (max-width: 767px) {
+    .detail {
+
+        text-align: center;
+    }
 }
 .amenities {
     list-style: outside none none;
@@ -424,6 +445,7 @@ video#video1 {
 }
 .amenities li audio, .amenities li video {
     margin-top: 5px;
+    width: 100%;
 }
 .amenities li span {
     color: #ccc;
