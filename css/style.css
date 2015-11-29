@@ -1,5 +1,5 @@
 
-@import "bootstrap.min.css";
+@import "bootstrap.css";
 @import "jetmenu.css";
 @import "owl.carousel.css";
 @import "superslides.css";
@@ -52,6 +52,7 @@ a, button {
 }
 .btn {
     text-transform: uppercase;
+    border-radius: 0;
 }
 #loader {
     background: #fff none repeat scroll 0 0;
@@ -68,18 +69,11 @@ a, button {
     position: absolute;
     top: 50%;
 }
-.primary-background {
-    background: #37ca95 none repeat scroll 0 0;
-    color: #fff;
-}
-.primary-background h1::after {
+.bg-primary h1::after {
     background: #fff none repeat scroll 0 0;
 }
-.primary-background h5 {
+.bg-primary h5 {
     color: #fff;
-}
-.primary-color {
-    color: #37ca95;
 }
 .color2 {
     background: #f4f1e9 none repeat scroll 0 0;
@@ -471,6 +465,15 @@ video#video1 {
 .fotorama__thumb-border {
     border-color: #37ca95;
 }
+
+.jetmenu > li:hover > a, .jetmenu > li.active > a {
+    color: #37ca95;
+}
+.jetmenu ul.dropdown li:hover > a {
+    background: #37ca95 none repeat scroll 0 0;
+    color: #fff;
+}
+
 .gallery a {
     margin-bottom: 30px;
 }

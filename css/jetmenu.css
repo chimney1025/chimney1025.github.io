@@ -22,9 +22,6 @@
     text-decoration: none;
     text-transform: uppercase;
 }
-.jetmenu > li:hover > a, .jetmenu > li.active > a {
-    color: #37ca95;
-}
 .jetmenu-wrapper.scrollable {
     overflow: auto;
 }
@@ -58,10 +55,6 @@
     padding: 12px 24px;
     text-decoration: none;
     width: 100%;
-}
-.jetmenu ul.dropdown li:hover > a {
-    background: #37ca95 none repeat scroll 0 0;
-    color: #fff;
 }
 .jetmenu ul.dropdown li ul.dropdown.left {
     left: auto;
