@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-    <meta name="description" content="The Traveller - HTML Template">
+    <meta name="description" content="LazySheetMusic">
     <meta name="author" content="Haoli Qu, holiday1025@gmail.com">
     <title>Lazy Sheetmusic</title>
     <link rel="shortcut icon" href="images/favicon.png">
@@ -273,7 +273,7 @@
 
                 <!-- Copyright Start -->
                 <div class="col-sm-6">
-                    &copy; 2014 The Traveller by Coffeecream Themes
+                    &copy; 2015 LazySheetMusic
                 </div>
                 <!-- Copyright End -->
 
@@ -301,47 +301,20 @@
 <div id="reservation">
     <div id="reservation-container" class="primary-background img-rounded">
         <button class="close"><i class="fa fa-remove fa-lg"></i></button>
-        <h2>立即预订</h2>
-        <form>
-            <div class="row">
-                <div class="form-group col-sm-6 has-feedback">
-                    <label for="reservation-arrival">到达日期</label>
-                    <input type="text" class="form-control" id="reservation-arrival" value="">
-                    <i class="fa fa-calendar form-control-feedback" aria-hidden="true"></i>
-                </div>
-                <div class="form-group col-sm-6 has-feedback">
-                    <label for="reservation-arrival">离开日期</label>
-                    <input type="text" class="form-control" id="reservation-departure" value="">
-                    <i class="fa fa-calendar form-control-feedback" aria-hidden="true"></i>
-                </div>
+        <h2>My Cart</h2>
+        <div class="row">
+            <ul class="cart">
+                <li><h5>Canon in D Major <a href="#"><i class="pull-right fa fa-remove"></i></a></h5></li>
+                <li><h5>Memory <a href="#"><i class="pull-right fa fa-remove"></i></a></h5></li>
+            </ul>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <button class="btn color3">Checkout</button>
             </div>
-            <div class="row">
-                <div class="form-group col-sm-6">
-                    <label for="reservation-adults">成人</label>
-                    <div class="input-group">
-                        <div class="input-group-addon quantity" data-multi="-1">-</div>
-                        <input type="text" class="form-control text-center" id="reservation-adults" value="1">
-                        <div class="input-group-addon quantity" data-multi="1">+</div>
-                    </div>
-                </div>
-                <div class="form-group col-sm-6">
-                    <label for="reservation-children">儿童</label>
-                    <div class="input-group">
-                        <div class="input-group-addon children-quantity" data-multi="-1">-</div>
-                        <input type="text" class="form-control text-center" id="reservation-children" value="0">
-                        <div class="input-group-addon children-quantity" data-multi="1">+</div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-12">
-                    <button type="submit" class="btn color3">下一步</button>
-                </div>
-            </div>
-        </form>
+        </div>
     </div>
 </div>
-
 <!-- ============ RESERVATION BAR END ============ -->
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
