@@ -12,6 +12,9 @@
 body {
     overflow-x: hidden;
 }
+footer {
+    color: #888;
+}
 hr {
     margin: 40px 0;
 }
