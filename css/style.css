@@ -116,7 +116,7 @@ a.color3:hover, button.color3:hover {
     opacity: 0.2;
 }
 header {
-    background: #1a1a1a none repeat scroll 0 0;
+    background: #2a2a2a none repeat scroll 0 0;
     left: 0;
     /*
     position: fixed;
@@ -163,7 +163,7 @@ header {
     font-size: 24px;
 }
 header nav {
-    background: #222 none repeat scroll 0 0;
+    background: #3a3a3a none repeat scroll 0 0;
     border-top: 1px solid #2e2e2e;
 }
 #slider .tint {
